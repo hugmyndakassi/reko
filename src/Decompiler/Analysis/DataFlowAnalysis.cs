@@ -504,6 +504,11 @@ namespace Reko.Analysis
                 vp.Transform();
                 DumpWatchedProcedure("vp2", "After VP2", ssa.Procedure);
 
+                // Find as many slices as possible.
+                var sp = new SlicePropagator(ssa, eventListener);
+                sp.Transform();
+                DumpWatchedProcedure("slice", "After Slice propagation", ssa.Procedure);
+
                 return sst;
             }
             else
@@ -550,10 +555,10 @@ namespace Reko.Analysis
                     {
                         n = phaseNumbering.Count + 1;
                         phaseNumbering.Add(phase, n);
-                    }
-                    testSvc.ReportProcedure($"analysis_{n:00}_{phase}.txt", $"// {proc.Name} ===========", proc);
-                }
             }
+                    testSvc.ReportProcedure($"analysis_{n:00}_{phase}.txt", $"// {proc.Name} ===========", proc);
+        }
+    }
         }
     }
 }

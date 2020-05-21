@@ -7,8 +7,8 @@ ss:ss
 Mem7: orig: Mem0
 cx:cx
     def:  def cx
-    uses: dx_ax_20 = cx *s ax_17
-          branch cx <= 1<16> l0C00_001C
+    uses: branch cx <= 1<16> l0C00_001C
+          dx_ax_20 = cx *s ax_17
           ax_17 = fn0C00_000B(cx - 1<16>)
 SCZO_9: orig: SCZO
 SZO_10: orig: SZO
