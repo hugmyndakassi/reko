@@ -77,7 +77,7 @@ namespace Reko.Tools.HdrGen
                 }
                 finally
                 {
-                    if (w != null)
+                    if (w is not null)
                         w.Dispose();
                 }
             }
@@ -122,7 +122,7 @@ namespace Reko.Tools.HdrGen
         public void WriteInterfaceDefinition(Type type)
         {
             var guid = type.GetCustomAttribute<GuidAttribute>();
-            if (guid != null)
+            if (guid is not null)
             {
                 WriteGuidDefinition(type.Name, guid.Value);
             }
@@ -183,7 +183,7 @@ namespace Reko.Tools.HdrGen
             else if (pType == typeof(string))
             {
                 var marshalAs = parameter.GetCustomAttribute<MarshalAsAttribute>();
-                if (marshalAs == null || marshalAs.Value != UnmanagedType.LPStr)
+                if (marshalAs is null || marshalAs.Value != UnmanagedType.LPStr)
                     throw new InvalidOperationException($"Expected [MarshalAs(LPStr)] attribute on parameter {parameter.Name} of type {pType.FullName} in {parameter.Member.DeclaringType.Name}.{parameter.Member.Name}.");
                 w.Write("const char *");
             }

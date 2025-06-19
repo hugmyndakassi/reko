@@ -44,10 +44,10 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 			get { return ctrl; }
 			set
 			{
-				if (ctrl != null)
+				if (ctrl is not null)
 					ctrl.Validating -= ctrl_Validating;
 				ctrl = value;
-				if (value != null)
+				if (value is not null)
 					ctrl.Validating += ctrl_Validating;
 			}
 		}
@@ -92,7 +92,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
 		protected override bool EvaluateIsValid()
 		{
-			if (ControlToValidate == null)
+			if (ControlToValidate is null)
 				return true;
 			string text = ControlToValidate.Text.Trim();
 			if (text.Length == 0)

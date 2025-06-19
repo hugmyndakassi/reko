@@ -435,12 +435,12 @@ namespace Reko.ImageLoaders.LLVM
         private Token Tok(TokenType type, StringBuilder? sb = null)
         {
             return new Token(lineStart, type, 
-                sb != null ? sb.ToString() : null);
+                sb is not null ? sb.ToString() : null);
         }
 
         private bool EatWs()
         {
-            if (rdr == null)
+            if (rdr is null)
                 return false;
             int ch = rdr.Peek();
             while (ch >= 0 && Char.IsWhiteSpace((char)ch))

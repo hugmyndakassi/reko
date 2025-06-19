@@ -193,7 +193,7 @@ namespace Reko.Scanning
                 /// <returns>True if transition exists</returns>
                 public bool ContainsTransition(TSymbol c)
                 {
-                    return GetTransition(c) != null;
+                    return GetTransition(c) is not null;
                 }
 
                 #endregion
@@ -305,7 +305,7 @@ namespace Reko.Scanning
                                 break; 
                             }
                         }
-                        if (ndNew == null)
+                        if (ndNew is null)
                         {
                             ndNew = new TreeNode(nd, c);
                             nd.AddTransition(ndNew);
@@ -333,7 +333,7 @@ namespace Reko.Scanning
                         var r = nd.Parent.Failure;
                         var c = nd.Char;
 
-                        while (r != null && !r.ContainsTransition(c)) r = r.Failure;
+                        while (r is not null && !r.ContainsTransition(c)) r = r.Failure;
                         if (r is null)
                             nd.Failure = _root;
                         else
@@ -389,15 +389,15 @@ namespace Reko.Scanning
                 while (index < text.Length)
                 {
                     TreeNode trans = null;
-                    while (trans == null)
+                    while (trans is null)
                     {
                         trans = ptr.GetTransition(text[index]);
                         if (ptr == _root) 
                             break;
-                        if (trans == null)
+                        if (trans is null)
                             ptr = ptr.Failure;
                     }
-                    if (trans != null) ptr = trans;
+                    if (trans is not null) ptr = trans;
 
                     foreach (var found in ptr.Results)
                         ret.Add(new StringSearchResult<TSymbol>(index - found.Length + 1, found));
@@ -420,13 +420,13 @@ namespace Reko.Scanning
                 while (index < text.Length)
                 {
                     TreeNode trans = null;
-                    while (trans == null)
+                    while (trans is null)
                     {
                         trans = ptr.GetTransition(text[index]);
                         if (ptr == _root) break;
-                        if (trans == null) ptr = ptr.Failure;
+                        if (trans is null) ptr = ptr.Failure;
                     }
-                    if (trans != null) ptr = trans;
+                    if (trans is not null) ptr = trans;
 
                     foreach (var found in ptr.Results)
                         return new StringSearchResult<TSymbol>(index - found.Length + 1, found);
@@ -449,13 +449,13 @@ namespace Reko.Scanning
                 while (index < text.Length)
                 {
                     TreeNode trans = null;
-                    while (trans == null)
+                    while (trans is null)
                     {
                         trans = ptr.GetTransition(text[index]);
                         if (ptr == _root) break;
-                        if (trans == null) ptr = ptr.Failure;
+                        if (trans is null) ptr = ptr.Failure;
                     }
-                    if (trans != null) ptr = trans;
+                    if (trans is not null) ptr = trans;
 
                     if (ptr.Results.Length > 0) return true;
                     index++;
@@ -520,9 +520,9 @@ namespace Reko.Scanning
                     TreeNode r = nd.Parent.Failure;
                     TSymbol c = nd.Char;
 
-                    while (r != null && !r.ContainsTransition(c)) 
+                    while (r is not null && !r.ContainsTransition(c)) 
                         r = r.Failure;
-                    if (r == null)
+                    if (r is null)
                         nd.Failure = root;
                     else
                     {
@@ -554,7 +554,7 @@ namespace Reko.Scanning
                     }
                 }
 
-                if (ndNew == null)
+                if (ndNew is null)
                 {
                     ndNew = new TreeNode(nd, c);
                     nd.AddTransition(ndNew);
@@ -589,15 +589,15 @@ namespace Reko.Scanning
             for (var index = 0; index < text.Length; ++index)
             {
                 TreeNode trans = null;
-                while (trans == null)
+                while (trans is null)
                 {
                     trans = ptr.GetTransition(text[index]);
                     if (ptr == root)
                         break;
-                    if (trans == null)
+                    if (trans is null)
                         ptr = ptr.Failure;
                 }
-                if (trans != null)
+                if (trans is not null)
                     ptr = trans;
                 foreach (TSymbol[] found in ptr.Results)
                 {
@@ -645,7 +645,7 @@ namespace Reko.Scanning
 
             public bool ContainsTransition(TSymbol c)
             {
-                return GetTransition(c) != null;
+                return GetTransition(c) is not null;
             }
 
             public ICollection<TreeNode> Transitions

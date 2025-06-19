@@ -87,7 +87,7 @@ namespace Reko.Typing
 
         public void EnsureSegmentTypeVariables(IEnumerable<ImageSegment> segments)
         {
-            foreach (var segment in segments.Where(s => s.Identifier != null))
+            foreach (var segment in segments.Where(s => s.Identifier is not null))
             {
                 var selector = segment.Address.Selector;
                 if (selector.HasValue)
@@ -105,7 +105,7 @@ namespace Reko.Typing
 
         public void EnsureSignatureTypeVariables(FunctionType signature)
         {
-            if (signature == null || !signature.ParametersValid)
+            if (signature is null || !signature.ParametersValid)
                 return;
             if (!signature.HasVoidReturn)
             {
@@ -121,7 +121,7 @@ namespace Reko.Typing
 		{
             var tv = store.EnsureExpressionTypeVariable(factory, stmCur?.Address, e);
             var typeref = e.DataType.ResolveAs<TypeReference>();
-            if (typeref != null)
+            if (typeref is not null)
             {
                 if (this.typeReferenceClasses.TryGetValue(typeref.Name, out var eq))
                 {
@@ -142,7 +142,7 @@ namespace Reko.Typing
 			appl.Procedure.Accept(this);
 			FunctionType? sig = signature;
 
-			if (sig != null)
+			if (sig is not null)
 			{
                 var totalArgs = sig.Parameters!.Length + sig.Outputs.Length - 1;
 				if (!sig.IsVariadic && totalArgs != appl.Arguments.Length)
@@ -318,7 +318,7 @@ namespace Reko.Typing
             if (ret.Expression is null)
                 return;
             ret.Expression.Accept(this);
-            if (signature != null && !signature.HasVoidReturn)
+            if (signature is not null && !signature.HasVoidReturn)
             {
                 if (!store.TryGetTypeVariable(signature.Outputs[0], out var tvReturn))
                 {
@@ -366,7 +366,7 @@ namespace Reko.Typing
 
 		public void VisitProcedure(ProcedureBase proc, FunctionType sig)
 		{
-            if (sig.TypeVariable == null)
+            if (sig.TypeVariable is null)
 			{
                 Address? addr = (proc is Procedure userProc)
                     ? userProc.EntryAddress
@@ -378,7 +378,7 @@ namespace Reko.Typing
                     new Identifier("signature of " + proc.Name, VoidType.Instance, null!),
 					null);
 			}
-			if (sig.Parameters != null)
+			if (sig.Parameters is not null)
 			{
 				foreach (Identifier id in sig.Parameters)
 				{

@@ -70,7 +70,7 @@ namespace Reko.UserInterfaces.WindowsForms
             this.proc = stm.Block.Procedure;
             this.showProcedures = true;
             ProgramChanged();
-            if (program != null)
+            if (program is not null)
             {
                 //var addr = program.SegmentMap.MapLinearAddressToAddress(stm.LinearAddress);
                 //SelectedAddress = addr;
@@ -92,7 +92,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void MixedCodeDataView_ModelChanged(object sender, EventArgs e)
         {
-            //if (combinedCodeView == null)
+            //if (combinedCodeView is null)
             //    return;
 
             //CreateNestedTextModel();
@@ -117,10 +117,10 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private bool ShowItem(MixedCodeDataModel.DataItemNode item)
         {
-            if (!showProcedures && item.Proc != null)
+            if (!showProcedures && item.Proc is not null)
                 return false;
 
-            //if (segment != null && !segment.IsInRange(item.StartAddress))
+            //if (segment is not null && !segment.IsInRange(item.StartAddress))
             //    return false;
 
             return true;
@@ -128,7 +128,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private bool ShowAllItems()
         {
-            //return (segment == null && showProcedures);
+            //return (segment is null && showProcedures);
             return showProcedures;
         }
 
@@ -181,7 +181,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         public void Close()
         {
-            if (codeView != null)
+            if (codeView is not null)
                 codeView.Dispose();
             codeView = null;
         }
@@ -216,7 +216,7 @@ namespace Reko.UserInterfaces.WindowsForms
                     status.Status = MenuStatus.Enabled | MenuStatus.Visible;
                     return true;
                 case CmdIds.EditCopy:
-                    status.Status = FocusedTextView == null || FocusedTextView.Selection.IsEmpty
+                    status.Status = FocusedTextView is null || FocusedTextView.Selection.IsEmpty
                         ? MenuStatus.Visible
                         : MenuStatus.Visible | MenuStatus.Enabled;
                     return true;
@@ -231,7 +231,7 @@ namespace Reko.UserInterfaces.WindowsForms
                         : MenuStatus.Visible | MenuStatus.Enabled | MenuStatus.Checked;
                     return true;
                 case CmdIds.EditDeclaration:
-                    //status.Status = GetAnchorAddress() == null
+                    //status.Status = GetAnchorAddress() is null
                     //    ? MenuStatus.Visible
                     //    : MenuStatus.Enabled | MenuStatus.Visible;
                     return true;
@@ -267,10 +267,10 @@ namespace Reko.UserInterfaces.WindowsForms
 
         public void Copy()
         {
-            if (this.proc == null)
+            if (this.proc is null)
                 return;
 
-            if (FocusedTextView == null)
+            if (FocusedTextView is null)
                 return;
 
             var ms = new MemoryStream();
@@ -303,7 +303,7 @@ namespace Reko.UserInterfaces.WindowsForms
             var addr = tag as Address?;
             var proc = tag as Procedure;
 
-            if (proc != null)
+            if (proc is not null)
                 addr = proc.EntryAddress;
 
             return addr;
@@ -317,7 +317,7 @@ namespace Reko.UserInterfaces.WindowsForms
             if (program.ImageMap.TryFindItem(addr, out item))
             {
                 var blockItem = item as ImageMapBlock;
-                if (blockItem != null)
+                if (blockItem is not null)
                 {
                     addr = program.GetProcedureAddress(blockItem.Block.Procedure);
                 }
@@ -341,7 +341,7 @@ namespace Reko.UserInterfaces.WindowsForms
         private void EditDeclaration()
         {
             var addr = GetAnchorAddress();
-            if (addr == null)
+            if (addr is null)
                 return;
             var anchorPt = FocusedTextView.GetAnchorTopPoint();
             var screenPoint = FocusedTextView.PointToScreen(anchorPt);
@@ -375,7 +375,7 @@ namespace Reko.UserInterfaces.WindowsForms
             var addr = e.Destination as Address?;
             var proc = e.Destination as Procedure;
 
-            if (proc != null)
+            if (proc is not null)
                 addr = proc.EntryAddress;
 
             if (addr is null)
@@ -410,7 +410,7 @@ namespace Reko.UserInterfaces.WindowsForms
             if (gViewer.PanButtonPressed)
                 return;
             var userObj = gViewer.SelectedObject as Node;
-            if (userObj == null)
+            if (userObj is null)
                 return;
         }
 
@@ -420,7 +420,7 @@ namespace Reko.UserInterfaces.WindowsForms
             if (gViewer.PanButtonPressed)
                 return;
             var userObj = gViewer.SelectedObject as Node;
-            if (userObj == null)
+            if (userObj is null)
                 return;
             var blockData = userObj.UserData as CfgBlockNode;
             Debug.Print("Node: {0}", blockData.Block.DisplayName);

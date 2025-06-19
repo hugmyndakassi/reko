@@ -46,7 +46,7 @@ namespace Reko.Gui.Controls
 
         public void Close()
         {
-            if (editor != null)
+            if (editor is not null)
             {
                 this.editor.SaveButton.Click -= textEditor_Save;
                 this.editor.TextBox.TextChanged -= textEditor_Changed;
@@ -57,9 +57,9 @@ namespace Reko.Gui.Controls
 
         public object CreateControl()
         {
-            if (services == null)
+            if (services is null)
                 throw new InvalidOperationException("Services should be set.");
-            if (editor == null)
+            if (editor is null)
             {
                 var svcFactory = services.RequireService<IServiceFactory>();
                 editor = svcFactory.CreateTextFileEditor();
@@ -76,9 +76,9 @@ namespace Reko.Gui.Controls
 
         public void DisplayFile()
         {
-            if (services == null)
+            if (services is null)
                 return;
-            if (editor == null)
+            if (editor is null)
                 return;
             if (textLoaded)
                 return;
@@ -105,9 +105,9 @@ namespace Reko.Gui.Controls
 
         private void textEditor_Save(object? sender, EventArgs e)
         {
-            if (services == null)
+            if (services is null)
                 return;
-            if (editor == null)
+            if (editor is null)
                 return;
             var fsSvc = services.RequireService<IFileSystemService>();
             var uiSvc = services.RequireService<IDecompilerShellUiService>();
@@ -136,11 +136,11 @@ namespace Reko.Gui.Controls
         private void UpdateTitle()
         {
             var title = Path.GetFileName(this.fileName);
-            if (editor != null && editor.TextBox.Modified)
+            if (editor is not null && editor.TextBox.Modified)
             {
                 title += "*";
             }
-            if (Frame != null)
+            if (Frame is not null)
             {
                 Frame.Title = title;
             }

@@ -69,7 +69,7 @@ namespace Reko.Arch.MicrochipPIC.Common
                 do
                 {
                     var regn = PICMemoryDescriptor.GetProgramRegion(curAddr);
-                    if (regn == null)
+                    if (regn is null)
                         throw new InvalidOperationException("Attempt to load a binary image which is not compatible with the selected PIC's program memory space.");
                     var fitSize = Math.Min(regn.PhysicalByteAddrRange.End - curAddr, curSize);
                     if (fitSize <= 0)
@@ -98,7 +98,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         /// <param name="regn">The PIC program memory region descriptor.</param>
         private string GetRegionSequentialName(IMemoryRegion regn)
         {
-            if (renamingCounter == null)
+            if (renamingCounter is null)
             {
                 renamingCounter = new Dictionary<string, int>();
             }
@@ -117,7 +117,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         /// <param name="regn">The binary file image segment.</param>
         private string GetSegmentSequentialName(ImageSegment segt)
         {
-            if (renamingCounter == null)
+            if (renamingCounter is null)
             {
                 renamingCounter = new Dictionary<string, int>();
             }
@@ -163,10 +163,10 @@ namespace Reko.Arch.MicrochipPIC.Common
             PICExecMode pexec = architecture.Options.PICExecutionMode;
 
             var dcf = PICMemoryDescriptor.GetDCRField("XINST");
-            if (dcf != null)
+            if (dcf is not null)
             {
                 var dcr = PICMemoryDescriptor.GetDCR(dcf.RegAddress);
-                if (dcr != null && program.SegmentMap.TryFindSegment(dcr.Address, out ImageSegment? xinstsegt))
+                if (dcr is not null && program.SegmentMap.TryFindSegment(dcr.Address, out ImageSegment? xinstsegt))
                 {
                     var mem = (ByteMemoryArea) xinstsegt.MemoryArea;
                     uint xinstval;

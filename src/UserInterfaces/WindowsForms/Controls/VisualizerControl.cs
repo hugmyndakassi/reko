@@ -69,7 +69,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && selSvc != null)
+            if (disposing && selSvc is not null)
             {
                 selSvc.SelectionChanged -= SelSvc_SelectionChanged;
             }
@@ -81,15 +81,15 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             get { return services; }
             set
             {
-                if (selSvc != null)
+                if (selSvc is not null)
                 {
                     selSvc.SelectionChanged -= SelSvc_SelectionChanged;
                 }
                 services = value;
-                if (value != null)
+                if (value is not null)
                 {
                     selSvc = value.GetService<ISelectionService>();
-                    if (selSvc != null)
+                    if (selSvc is not null)
                     {
                         selSvc.SelectionChanged += SelSvc_SelectionChanged;
                     }
@@ -130,7 +130,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             var addr = AddressFromPosition(e.Location);
             if (addr is not null)
             {
-                if (selSvc != null)
+                if (selSvc is not null)
                 {
                     var ar = new AddressRange(addr.Value, addr.Value);
                     selSvc.SetSelectedComponents(new[] { ar });
@@ -173,7 +173,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                 this.LineLength,
                 this.LinesOnScreen,
                 PixelFormat.Format32bppArgb);
-            if (Visualizer == null || bmem == null)
+            if (Visualizer is null || bmem is null)
                 return bmp;
 
             var bgPattern = new[] { Color.FromArgb(0x7F,0,0), Color.FromArgb(0x30,0x00,0x00) };
@@ -215,7 +215,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         private void RenderAnnotations(Graphics g)
         {
-            if (visualizer == null || bmem == null)
+            if (visualizer is null || bmem is null)
                 return;
             var addrStart = bmem.BaseAddress + vscroll.Value;
             var bytesOnScreen = LinesOnScreen * LineLength;
@@ -268,7 +268,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         protected virtual void OnVisualizerChanged()
         {
-            if (visualizer == null)
+            if (visualizer is null)
             {
                 LineLength = 16;
             }
@@ -296,7 +296,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         private void SelSvc_SelectionChanged(object sender, EventArgs e)
         {
-            if (program == null)
+            if (program is null)
                 return;
             var ar = selSvc.GetSelectedComponents()
                .Cast<AddressRange>()

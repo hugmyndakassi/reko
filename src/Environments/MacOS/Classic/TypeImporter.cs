@@ -76,7 +76,7 @@ namespace Reko.Environments.MacOS.Classic
                     }
                 }
                 var lo = (Constant) dim.Low.Accept(ceval);
-                if (dim.High != null)
+                if (dim.High is not null)
                 {
                     // Range a..b size is (b-a)+1
                     var hi = (Constant)dim.High.Accept(ceval);
@@ -163,14 +163,14 @@ namespace Reko.Environments.MacOS.Classic
 
         private SerializedType DoCallableType(List<ParameterDeclaration> pParameters, PascalType? ret)
         {
-            var dtRet = ret != null
+            var dtRet = ret is not null
                 ? ret.Accept(this)
                 : new VoidType_v1();
 
             var parameters = new List<Argument_v1>();
             foreach (var pc in pParameters)
             {
-                if (pc.Type == null)
+                if (pc.Type is null)
                 {
                     parameters.Add(new Argument_v1 { Name = "..." });
                 }
@@ -290,13 +290,13 @@ namespace Reko.Environments.MacOS.Classic
         public SerializedType VisitRecord(Record record)
         {
             var fields = new List<StructField_v1>();
-            if (record.Fields != null)
+            if (record.Fields is not null)
             {
                 fields.AddRange(VisitFields(record.Fields));
             }
-            if (record.VariantPart != null)
+            if (record.VariantPart is not null)
             {
-                if (record.VariantPart.VariantTag != null)
+                if (record.VariantPart.VariantTag is not null)
                 {
                     var sTagType = record.VariantPart.TagType.Accept(this);
                     fields.Add(new StructField_v1

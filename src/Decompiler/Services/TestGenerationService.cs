@@ -52,7 +52,7 @@ namespace Reko.Services
         {
             var fsSvc = services.RequireService<IFileSystemService>();
             var outDir = GetOutputDirectory(fsSvc);
-            if (outDir == null)
+            if (outDir is null)
                 return;
             var filename = Path.Combine(outDir, Path.ChangeExtension(testPrefix, ".tests"));
             EnsureDecoderFile(fsSvc, filename);
@@ -72,7 +72,7 @@ namespace Reko.Services
         {
             var fsSvc = services.RequireService<IFileSystemService>();
             var outDir = GetOutputDirectory(fsSvc);
-            if (outDir == null)
+            if (outDir is null)
                 return;
             var filename = Path.Combine(outDir, Path.ChangeExtension(testPrefix, ".tests"));
             EnsureDecoderFile(fsSvc, filename);
@@ -131,7 +131,7 @@ namespace Reko.Services
         {
             var fsSvc = services.RequireService<IFileSystemService>();
             var outDir = GetOutputDirectory(fsSvc);
-            if (outDir == null)
+            if (outDir is null)
                 return;
             var filename = Path.Combine(outDir, Path.ChangeExtension(testPrefix, ".tests"));
             EnsureRewriterFile(fsSvc, filename);
@@ -247,14 +247,14 @@ namespace Reko.Services
 
         private string? GetOutputDirectory(IFileSystemService fsSvc)
         {
-            if (OutputDirectory != null)
+            if (OutputDirectory is not null)
                 return OutputDirectory;
             var dcSvc = this.services.GetService<IDecompilerService>();
-            if (dcSvc == null)
+            if (dcSvc is null)
                 return null;
-            if (dcSvc.Decompiler == null)
+            if (dcSvc.Decompiler is null)
                 return null;
-            if (dcSvc.Decompiler.Project == null)
+            if (dcSvc.Decompiler.Project is null)
                 return null;
             if (dcSvc.Decompiler.Project.Programs.Count == 0)
                 return null;

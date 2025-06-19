@@ -188,8 +188,8 @@ namespace Reko.ImageLoaders.Elf
                     sh.VirtualAddress,
                     sh.FileOffset,
                     sh.Size,
-                    sh.LinkedSection != null ? sh.LinkedSection.Name : "",
-                    sh.RelocatedSection != null ? sh.RelocatedSection.Name : "",
+                    sh.LinkedSection is not null ? sh.LinkedSection.Name : "",
+                    sh.RelocatedSection is not null ? sh.RelocatedSection.Name : "",
                     sh.Alignment,
                     sh.EntrySize);
             }
@@ -417,7 +417,7 @@ namespace Reko.ImageLoaders.Elf
             {
                 foreach (var section in BinaryImage.Sections)
                 {
-                    if (section.Name == null || section.VirtualAddress.IsNull)
+                    if (section.Name is null || section.VirtualAddress.IsNull)
                         continue;
                     if (segMap.TryGetLowerBound(section.VirtualAddress, out var mem) &&
                         mem.IsValidAddress(section.VirtualAddress))

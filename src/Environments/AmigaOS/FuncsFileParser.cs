@@ -52,10 +52,10 @@ namespace Reko.Environments.AmigaOS
             for (; ; )
             {
                 var line = streamReader.ReadLine();
-                if (line == null)
+                if (line is null)
                     break;
                 AmigaSystemFunction? func = ParseLine(line);
-                if (func != null)
+                if (func is not null)
                     FunctionsByLibBaseOffset.Add(func.Offset, func);
             }
         }
@@ -156,7 +156,7 @@ namespace Reko.Environments.AmigaOS
 
             public Token PeekToken()
             {
-                if (token == null)
+                if (token is null)
                 {
                     token = ReadToken();
                 }
@@ -165,7 +165,7 @@ namespace Reko.Environments.AmigaOS
 
             public Token GetToken()
             {
-                if (token == null)
+                if (token is null)
                 {
                     return ReadToken();
                 }

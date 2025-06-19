@@ -501,7 +501,7 @@ namespace Reko.Arch.Vax
                 else if (width.Size == 8)
                 {
                     var rHi = arch.GetRegister(1 + (int) reg.Storage.Domain);
-                    if (rHi == null)
+                    if (rHi is null)
                         return null!;
                     var regHi = binder.EnsureRegister(rHi);
                     return binder.EnsureSequence(width, regHi.Storage, reg.Storage);
@@ -540,7 +540,7 @@ namespace Reko.Arch.Vax
                         reg = tmp;
                     }
                     ea = reg;
-                    if (memOp.Offset != null)
+                    if (memOp.Offset is not null)
                     {
                         if (memOp.Offset.DataType.BitSize < ea.DataType.BitSize)
                         {
@@ -638,7 +638,7 @@ namespace Reko.Arch.Vax
                 else if (width.BitSize == 64)
                 {
                     var rHi = arch.GetRegister(1 + (int)reg.Storage.Domain);
-                    if (rHi == null)
+                    if (rHi is null)
                         return null!;
                     var regHi = binder.EnsureRegister(rHi);
                     reg = binder.EnsureSequence(width, regHi.Storage, reg.Storage);
@@ -666,7 +666,7 @@ namespace Reko.Arch.Vax
                         m.Assign(regEa, m.ISub(regEa, width.Size));
                     }
                     ea = regEa;
-                    if (memOp.Offset != null)
+                    if (memOp.Offset is not null)
                     {
                         if (memOp.Offset.DataType.BitSize < ea.DataType.BitSize)
                         {
@@ -687,12 +687,12 @@ namespace Reko.Arch.Vax
                 Expression load;
                 if (memOp.Deferred)
                     ea = m.Mem32(ea);
-                if (index != null)
+                if (index is not null)
                     ea = m.IAdd(ea, index);
                 load = m.Mem(width, ea);
                 m.Assign(load, tmp);
 
-                if (regEa != null && memOp.AutoIncrement)
+                if (regEa is not null && memOp.AutoIncrement)
                 {
                     int inc = (memOp.Deferred) ? 4 : width.Size;
                     m.Assign(regEa, m.IAdd(regEa, inc));
@@ -717,7 +717,7 @@ namespace Reko.Arch.Vax
 
         private bool AllFlags(Expression dst)
         {
-            if (dst == null)
+            if (dst is null)
             {
                 EmitInvalid();
                 return false;
@@ -729,7 +729,7 @@ namespace Reko.Arch.Vax
 
         private bool NZ0(Expression dst)
         {
-            if (dst == null)
+            if (dst is null)
             {
                 EmitInvalid();
                 return false;
@@ -744,7 +744,7 @@ namespace Reko.Arch.Vax
 
         private bool NZ00(Expression dst)
         {
-            if (dst == null)
+            if (dst is null)
             {
                 EmitInvalid();
                 return false;
@@ -760,7 +760,7 @@ namespace Reko.Arch.Vax
 
         private bool VZN(Expression dst)
         {
-            if (dst == null)
+            if (dst is null)
             {
                 EmitInvalid();
                 return false;
@@ -772,7 +772,7 @@ namespace Reko.Arch.Vax
 
         private bool NZV0(Expression dst)
         {
-            if (dst == null)
+            if (dst is null)
             {
                 EmitInvalid();
                 return false;

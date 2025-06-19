@@ -93,7 +93,7 @@ namespace Reko.Scanning
         /// If parsing runs off the end of the trace, the returned block will be
         /// marked as invalid.
         /// </returns>
-        public (RtlBlock?, List<Address>?, ProcessorState) ParseBlock()
+        public (RtlBlock, List<Address>?, ProcessorState) ParseBlock()
         {
             var instrs = new List<RtlInstructionCluster>();
             var trace = this.Trace;
@@ -117,7 +117,8 @@ namespace Reko.Scanning
                         // Couldn't split a block; it means we're outside of our 
                         // scanning area, so this whole block is invalid.
                         log.Verbose("    Unable to find instruction at {0}, stopping", addrLast);
-                        return (null, null, state);
+                        var size = addrLast - this.Address + cluster.Length;
+                        return (MakeInvalidBlock(instrs, size), null, state);
                     }
                     log.Verbose("    Fell through to {0}, stopping", cluster.Address);
                     var block = MakeFallthroughBlock(this.Address, addrLast, instrs);
@@ -188,7 +189,7 @@ namespace Reko.Scanning
                     if (!scanner.TryRegisterBlockStart(cluster.Address, this.Address))
                         return (block, subinstrBranches, state);
                     this.Address = cluster.Address;
-                    instrs = new List<RtlInstructionCluster>();
+                    instrs = [];
                 }
                 if (subinstrBranches.Count > 0)
                 {
@@ -309,6 +310,16 @@ namespace Reko.Scanning
                 // Can't deal with transfer functions in delay slots yet.
                 return false;
             }
+            StealDelaySlotInstruction(rtlTransfer, instrs, rtlDelayed, worker.MkTmp);
+            return true;
+        }
+
+        public static void StealDelaySlotInstruction(
+            RtlInstructionCluster rtlTransfer,
+            List<RtlInstructionCluster> instrs, 
+            RtlInstructionCluster rtlDelayed,
+            Func<RtlInstructionCluster, Expression, (Identifier, RtlInstructionCluster)> mkTmp)
+        {
             // If the delay slot instruction is a nop (padding), we 
             // can ignore it.
             if (!rtlDelayed.Class.HasFlag(InstrClass.Padding))
@@ -320,19 +331,19 @@ namespace Reko.Scanning
                 case RtlBranch branch:
                     if (branch.Condition is not Constant)
                     {
-                        var (tmp, copy) = worker.MkTmp(rtlTransfer, branch.Condition);
+                        var (tmp, copy) = mkTmp(rtlTransfer, branch.Condition);
                         instrs.Add(copy);
 
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
                             rtlTransfer.Length,
-                            new RtlBranch(tmp, (Address)branch.Target, InstrClass.ConditionalTransfer));
+                            new RtlBranch(tmp, (Address) branch.Target, InstrClass.ConditionalTransfer));
                     }
                     break;
                 case RtlGoto g:
                     if (g.Target is not Core.Address)
                     {
-                        var (tmp, copy) = worker.MkTmp(rtlTransfer, g.Target);
+                        var (tmp, copy) = mkTmp(rtlTransfer, g.Target);
                         instrs.Add(copy);
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
@@ -343,12 +354,12 @@ namespace Reko.Scanning
                 case RtlCall call:
                     if (call.Target is not Core.Address)
                     {
-                        var (tmp, copy) = worker.MkTmp(rtlTransfer, call.Target);
+                        var (tmp, copy) = mkTmp(rtlTransfer, call.Target);
                         instrs.Add(copy);
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
                             rtlTransfer.Length,
-                            new RtlCall(tmp, (byte)call.ReturnAddressSize, InstrClass.Transfer | InstrClass.Call));
+                            new RtlCall(tmp, (byte) call.ReturnAddressSize, InstrClass.Transfer | InstrClass.Call));
                     }
                     break;
                 case RtlReturn:
@@ -365,7 +376,6 @@ namespace Reko.Scanning
                     rtlDelayed.Instructions));
             }
             instrs.Add(rtlTransfer);
-            return true;
         }
 
         /// <summary>
@@ -379,7 +389,7 @@ namespace Reko.Scanning
         /// A pair of a completed <see cref="Block"/> and an updated <see cref="ProcessorState"/>.
         /// If parsing runs off the end of the trace, the block reference will be null.
         /// </returns>
-        private RtlBlock? MakeBlock(
+        private RtlBlock MakeBlock(
             List<RtlInstructionCluster> instrs,
             RtlInstruction rtlLast)
         {
@@ -469,7 +479,7 @@ namespace Reko.Scanning
         /// <returns>Null if the size was zero, otherwise a block ending 
         /// with the invalid instruction.
         /// </returns>
-        private RtlBlock? MakeInvalidBlock(
+        private RtlBlock MakeInvalidBlock(
             List<RtlInstructionCluster> instrs,
             long size)
         {

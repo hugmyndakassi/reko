@@ -196,7 +196,7 @@ namespace Reko.Environments.Windows
             //00011648 E59CF000 ldr pc,[ip]
             //0001164C AC 50 01 00.P..
             //var instr = rdr.FirstOrDefault();
-            //if (instr == null)
+            //if (instr is null)
             //    return null;
             //if (!(instr is RtlGoto jump))
             //    return null;
@@ -205,7 +205,7 @@ namespace Reko.Environments.Windows
             //if (!(jump.Target is MemoryAccess access))
             //    return null;
             //var addrTarget = access.EffectiveAddress as Address;
-            //if (addrTarget == null)
+            //if (addrTarget is null)
             //{
             //    if (!(access.EffectiveAddress is Constant wAddr))
             //    {
@@ -214,7 +214,7 @@ namespace Reko.Environments.Windows
             //    addrTarget = MakeAddressFromConstant(wAddr, true);
             //}
             //ProcedureBase proc = host.GetImportedProcedure(this.Architecture, addrTarget, addrInstr);
-            //if (proc != null)
+            //if (proc is not null)
             //    return proc;
             //return host.GetInterceptedCall(this.Architecture, addrTarget);
             var cl = instrs.Take(3).ToArray();
@@ -254,7 +254,7 @@ namespace Reko.Environments.Windows
         public override ExternalProcedure? LookupProcedureByName(string? moduleName, string procName)
         {
             var metadata = EnsureTypeLibraries(PlatformIdentifier);
-            if (moduleName != null && metadata.Modules.TryGetValue(moduleName.ToUpper(), out ModuleDescriptor? mod))
+            if (moduleName is not null && metadata.Modules.TryGetValue(moduleName.ToUpper(), out ModuleDescriptor? mod))
             {
                 if (mod.ServicesByName.TryGetValue(procName, out SystemService? svc))
                 {

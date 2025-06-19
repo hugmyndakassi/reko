@@ -542,13 +542,13 @@ namespace Reko.Arch.Zilog.Z80
             case MemoryOperand memOp:
                 {
                     Identifier? bReg = null;
-                    if (memOp.Base != null)
+                    if (memOp.Base is not null)
                         bReg = binder.EnsureRegister(memOp.Base);
                     if (memOp.Offset is null)
                     {
                         return m.Mem(memOp.DataType, bReg!);
                     }
-                    else if (bReg == null)
+                    else if (bReg is null)
                     {
                         return m.Mem(memOp.DataType, memOp.Offset);
                     }

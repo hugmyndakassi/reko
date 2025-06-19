@@ -141,10 +141,10 @@ namespace Reko.ImageLoaders.Elf
             var a = cfgSvc.GetArchitecture(arch, options);
             if (a is null)
                 throw new InvalidOperationException($"Unknown architecture '{arch}'.");
-            if (stackRegName != null)
+            if (stackRegName is not null)
             {
                 var sp = a.GetRegister(stackRegName);
-                if (sp != null)
+                if (sp is not null)
                 {
                     a.StackRegister = sp;
                 }
@@ -226,8 +226,8 @@ namespace Reko.ImageLoaders.Elf
                     sh.VirtualAddress,
                     sh.FileOffset,
                     sh.Size,
-                    sh.LinkedSection != null ? sh.LinkedSection.Name : "",
-                    sh.RelocatedSection != null ? sh.RelocatedSection.Name : "",
+                    sh.LinkedSection is not null ? sh.LinkedSection.Name : "",
+                    sh.RelocatedSection is not null ? sh.RelocatedSection.Name : "",
                     sh.Alignment,
                     sh.EntrySize);
             }
@@ -333,7 +333,7 @@ namespace Reko.ImageLoaders.Elf
         public string GetSymbolName(ElfSection symSection, uint symbolNo)
         {
             var strSection = symSection.LinkedSection;
-            if (strSection == null)
+            if (strSection is null)
                 return string.Format("null:{0:X8}", symbolNo);
             uint offset = (uint) (symSection.FileOffset + symbolNo * symSection.EntrySize);
             var rdr = CreateReader(offset);
@@ -404,7 +404,7 @@ namespace Reko.ImageLoaders.Elf
                     var imgSegment = new ImageSegment(
                         segment.Value.BaseAddress.GenerateName("seg", ""),
                         segment.Value,
-                        elfSegment != null
+                        elfSegment is not null
                             ? elfSegment.AccessMode
                             : AccessMode.ReadExecute) 
                     {
@@ -509,7 +509,7 @@ namespace Reko.ImageLoaders.Elf
             for (int i = 0; i < BinaryImage.Header.e_shnum; ++i)
             {
                 var shdr = Elf32_SHdr.Load(rdr);
-                if (shdr == null)
+                if (shdr is null)
                     break;
                 var section = new ElfSection
                 {

@@ -62,7 +62,7 @@ namespace Reko.Evaluation
                 if (off is not BinaryExpression binOff)
                     return null;
                 var idOff2 = binOff.Left as Identifier;
-                if (idOff2 != null)
+                if (idOff2 is not null)
                 {
                     // [seg:idOff +/- C] => [seg_idOff + C]
                     basePtr = SlicedSegPointer(seg, idOff2, ctx);
@@ -101,7 +101,7 @@ namespace Reko.Evaluation
         {
             var defSeg = ctx.GetDefiningExpression(seg) as Slice;
             var defOff = ctx.GetDefiningExpression(off) as Slice;
-            if (defSeg == null || defOff == null)
+            if (defSeg is null || defOff is null)
                 return null;
             if (defSeg.Expression == defOff.Expression)
                 return defSeg.Expression as Identifier;

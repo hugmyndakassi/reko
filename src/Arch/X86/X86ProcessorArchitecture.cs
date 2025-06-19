@@ -278,7 +278,7 @@ namespace Reko.Arch.X86
 
         public override RegisterStorage[] GetRegisters()
         {
-            return Registers.All.Where(a => a != null).ToArray();
+            return Registers.All.Where(a => a is not null).ToArray();
         }
 
         public override FlagGroupStorage[] GetFlags()
@@ -294,7 +294,7 @@ namespace Reko.Arch.X86
 
         public override void LoadUserOptions(Dictionary<string, object>? options)
         {
-            if (options != null)
+            if (options is not null)
             {
                 this.rootDecoders = null;
                 this.Options = options;
@@ -303,7 +303,7 @@ namespace Reko.Arch.X86
 
         public override Dictionary<string, object>? SaveUserOptions()
         {
-            if (Options == null)
+            if (Options is null)
                 return null;
             var dict = new Dictionary<string, object>(Options);
             return dict;

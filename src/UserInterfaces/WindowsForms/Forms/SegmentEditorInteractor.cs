@@ -46,7 +46,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
                 return null;
 
             Address addr;
-            if (arch != null)
+            if (arch is not null)
             {
                 if (!arch.TryParseAddress(dlg.Address.Text, out addr))
                     return null;
@@ -117,7 +117,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
         private IProcessorArchitecture SelectedArchitecture()
         {
             var oArch = (ListOption) dlg.Architectures.SelectedItem;
-            if (oArch == null || string.IsNullOrEmpty((string)oArch.Value))
+            if (oArch is null || string.IsNullOrEmpty((string)oArch.Value))
                 return null;
             return (IProcessorArchitecture) oArch.Value;
         }

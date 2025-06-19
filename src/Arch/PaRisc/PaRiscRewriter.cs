@@ -180,7 +180,7 @@ namespace Reko.Arch.PaRisc
             Expression left,
             Expression? right = null)
         {
-            if (instr.Condition == null ||
+            if (instr.Condition is null ||
                 instr.Condition.Type == ConditionType.Never ||
                 instr.Condition.Type == ConditionType.Never64)
                 return false;
@@ -219,7 +219,7 @@ namespace Reko.Arch.PaRisc
             case MemoryOperand mem:
                 Identifier rb = binder.EnsureRegister(mem.Base);
                 Expression ea = rb;
-                if (mem.Index != null)
+                if (mem.Index is not null)
                 {
                     if (mem.Index != arch.Registers.GpRegs[0])
                     {

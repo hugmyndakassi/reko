@@ -94,7 +94,7 @@ namespace Reko.WindowsItp
             var(nDasm, nRewrite) = await Task.Run<(TimeSpan,TimeSpan)>(() =>
             {
                 var bytes = CreateBytes();
-                if (bytes == null)
+                if (bytes is null)
                     return (new TimeSpan(), new TimeSpan());
                 var tsDasm = MeasureTime(DasmInstructions,bytes);
                 var tsRewr = MeasureTime(RewriteA32Instructions, bytes);
@@ -148,7 +148,7 @@ namespace Reko.WindowsItp
             var dasm = CreateA32Disassembler(mem);
             var ei = dasm.GetEnumerator();
             var mis = new List<MachineInstruction>();
-            while (ei.MoveNext() && ei.Current != null)
+            while (ei.MoveNext() && ei.Current is not null)
             {
                 mis.Add(ei.Current);
             }

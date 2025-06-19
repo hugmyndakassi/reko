@@ -60,7 +60,7 @@ namespace Reko.Structure
                 {
                 case AbsynWhile whi:
                     forLoop = TryRewriteWhileLoop(whi, stmts, i);
-                    if (forLoop != null)
+                    if (forLoop is not null)
                     {
                         stmts[i] = forLoop;
                     }
@@ -68,7 +68,7 @@ namespace Reko.Structure
                 case AbsynDoWhile dow:
                     RewriteForLoops(dow.Body);
                     candidate = TryMakeLoopCandidate(dow.Condition, dow.Body, stmts, i);
-                    if (candidate != null && LoopsAtLeastOnce(candidate))
+                    if (candidate is not null && LoopsAtLeastOnce(candidate))
                     {
                         stmts[i] = MakeForLoop(candidate, stmts);
                     }
@@ -77,7 +77,7 @@ namespace Reko.Structure
                     RewriteForLoops(ifStm.Then);
                     RewriteForLoops(ifStm.Else);
                     var whileLoop = TryRewriteGuardedDoWhile(ifStm);
-                    if (whileLoop != null)
+                    if (whileLoop is not null)
                     {
                         forLoop = TryRewriteWhileLoop(whileLoop, stmts, i);
                         stmts[i] = forLoop ?? (AbsynStatement) whileLoop;
@@ -90,14 +90,14 @@ namespace Reko.Structure
                     break;
                 }
             }
-            stmts.RemoveAll(s => s == null);
+            stmts.RemoveAll(s => s is null);
         }
 
         private AbsynFor? TryRewriteWhileLoop(AbsynWhile whi, List<AbsynStatement> stmts, int i)
         {
             RewriteForLoops(whi.Body);
             var candidate = TryMakeLoopCandidate(whi.Condition, whi.Body, stmts, i);
-            if (candidate != null)
+            if (candidate is not null)
             {
                 return MakeForLoop(candidate, stmts);
             }
@@ -163,7 +163,7 @@ namespace Reko.Structure
                 return null;
 
             var (loopVariable, update) = IdentifyLoopVariable(loopBody, cmp);
-            if (loopVariable == null)
+            if (loopVariable is null)
                 return null;
 
             var (initializer, deadDecl) = FindInitializer(loopVariable, container, i);
@@ -245,7 +245,7 @@ namespace Reko.Structure
                 {
                     if (decl.Identifier == loopVariable)
                     {
-                        if (decl.Expression == null)
+                        if (decl.Expression is null)
                             return (null, null);
                         var init = new AbsynAssignment(decl.Identifier, decl.Expression);
                         return (init, decl);
@@ -265,7 +265,7 @@ namespace Reko.Structure
         private List<AbsynAssignment> FindUpdateAssignments(Identifier? id, List<AbsynStatement> stmts)
         {
             var updates = new List<AbsynAssignment>();
-            if (id == null)
+            if (id is null)
                 return updates;
             for (int i = stmts.Count - 1; i >= 0; --i)
             {
@@ -314,7 +314,7 @@ namespace Reko.Structure
                 return false;
             if (!(cond.Right is Constant cRight))
                 return false;
-            if (candidate.Initializer == null)
+            if (candidate.Initializer is null)
                 return false;
             if (!(candidate.Initializer.Src is Constant cInit))
                 return false;
@@ -331,7 +331,7 @@ namespace Reko.Structure
                 // Putting in nulls is bad but we will remove them later.
                 stmts[iInit] = null!;
             }
-            if (candidate.DeadDeclaration != null)
+            if (candidate.DeadDeclaration is not null)
             {
                 candidate.DeadDeclaration.Expression = null;
             }
@@ -351,7 +351,7 @@ namespace Reko.Structure
 
             public static bool Contains(Expression expr, Identifier id)
             {
-                if (expr == null)
+                if (expr is null)
                     return false;
                 var uif = new UsedIdentifierFinder { id = id };
                 expr.Accept(uif);

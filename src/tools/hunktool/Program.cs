@@ -128,7 +128,7 @@ Options:
                 sc.AddService<IConfigurationService>(new StubConfigurationService());
                 var loader = new HunkLoader(sc, ImageLocation.FromUri(scan_file), hunkBytes);
                 Address? addr = null;
-                if (args["--base-address"] == null ||
+                if (args["--base-address"] is null ||
                     !Address.TryParse32((string)args["--base-address"].Value, out var a))
                 {
                     addr = Address.Ptr32(0);
@@ -205,14 +205,14 @@ Options:
                     show_debug: args["--show-debug"].IsTrue,
                     disassemble: args["--disassemble"].IsTrue,
                     disassemble_start:
-                        args["--disassemble-start"] != null
+                        args["--disassemble-start"] is not null
                             ? UInt32.Parse(
                                 (string)args["--disassemble-start"].Value,
                                 NumberStyles.HexNumber,
                                 CultureInfo.InvariantCulture)
                             : 0,
                     use_objdump: args["--use-objdump"].IsTrue,
-                    cpu: args["--cpu"] != null ? (string)args["--cpu"].Value : "",
+                    cpu: args["--cpu"] is not null ? (string)args["--cpu"].Value : "",
                     hexdump: args["--hexdump"].IsTrue,
                     brief: args["--brief"].IsTrue);
                 hs.show_segments();
@@ -246,7 +246,7 @@ Options:
                 //    IEnumerable<uint> addrs = rel.get_seq_addrs(base_addr);
                 //    // relocate and return data of segments
                 //    datas = rel.relocate(addrs);
-                //    if (datas == null)
+                //    if (datas is null)
                 //    {
                 //        Console.WriteLine("ERROR: relocation failed:", path);
                 //        return false;
@@ -293,7 +293,7 @@ Options:
                 //{
                 //    reader = amitools.binfmt.elf.ELFReader();
                 //    elf = reader.load(open(f, "rb"));
-                //    if (elf == null)
+                //    if (elf is null)
                 //    {
                 //        Console.WriteLine("ERROR loading ELF:", elf.error_string);
                 //        return 1;

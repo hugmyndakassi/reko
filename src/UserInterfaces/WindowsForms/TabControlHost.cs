@@ -56,8 +56,8 @@ namespace Reko.UserInterfaces.WindowsForms
 
         public IWindowFrame ActiveFrame
         {
-            get { return tabCtrl.SelectedTab != null ? (IWindowFrame) tabCtrl.SelectedTab.Tag : null; }
-            set { var page = FindPage(value); if (page != null) tabCtrl.SelectedTab = page; }
+            get { return tabCtrl.SelectedTab is not null ? (IWindowFrame) tabCtrl.SelectedTab.Tag : null; }
+            set { var page = FindPage(value); if (page is not null) tabCtrl.SelectedTab = page; }
         }
 
         public bool ContainsFocus
@@ -73,10 +73,10 @@ namespace Reko.UserInterfaces.WindowsForms
         public bool QueryStatus(CommandID cmdId, CommandStatus status, CommandText text)
         {
             var frame = ActiveFrame;
-            if (frame == null)
+            if (frame is null)
                 return false;
             var ct = frame.Pane as ICommandTarget;
-            if (ct == null)
+            if (ct is null)
                 return false;
             return ct.QueryStatus(cmdId, status, text);
         }

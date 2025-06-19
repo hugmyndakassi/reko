@@ -57,7 +57,7 @@ namespace Reko.Gui.TextViewing
             this.program = program ?? throw new ArgumentNullException(nameof(program));
             if (segment is null)
                 throw new ArgumentNullException(nameof(segment));
-            if (segment.MemoryArea == null)
+            if (segment.MemoryArea is null)
                 throw new ArgumentException(nameof(segment), "ImageSegment must have a valid memory area.");
             this.arch = arch;
             this.mem = segment.MemoryArea;
@@ -117,7 +117,7 @@ namespace Reko.Gui.TextViewing
                 {
                     var addr = Align(arch, addrStart + offset, arch.CodeMemoryGranularity);
                     if (program.SegmentMap.TryFindSegment(addr, out ImageSegment? seg) &&
-                        seg.MemoryArea != null &&
+                        seg.MemoryArea is not null &&
                         seg.MemoryArea.IsValidAddress(addr))
                     {
                         var flags = MachineInstructionRendererFlags.None;
@@ -159,8 +159,8 @@ namespace Reko.Gui.TextViewing
             // Try to find a basic block at this address and use its architecture.
             if (program.ImageMap.TryFindItem(addr, out var item) &&
                 item is ImageMapBlock imb &&
-                imb.Block != null &&
-                imb.Block.Procedure != null)
+                imb.Block is not null &&
+                imb.Block.Procedure is not null)
             {
                 arch = imb.Block.Procedure.Architecture;
             }

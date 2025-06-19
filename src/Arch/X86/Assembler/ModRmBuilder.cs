@@ -46,7 +46,7 @@ namespace Reko.Arch.X86.Assembler
 
 		private Constant EmitDirectAddress(int reg, MemoryOperand memOp)
 		{
-			Debug.Assert(memOp.Offset != null && memOp.Offset.IsValid);
+			Debug.Assert(memOp.Offset is not null && memOp.Offset.IsValid);
 			if (defaultWordSize == PrimitiveType.Word16)
 			{
 				reg |= 0x6;
@@ -100,7 +100,7 @@ namespace Reko.Arch.X86.Assembler
 
 				// Add the 'mod' bits
 
-				if (memOp.Offset != null)
+				if (memOp.Offset is not null)
 				{
 					Debug.Assert(memOp.Offset.IsValid);
 					if (memOp.Offset.DataType == PrimitiveType.SByte)
@@ -128,7 +128,7 @@ namespace Reko.Arch.X86.Assembler
 						if (memOp.Base != Registers.esp)
 						{
 							reg |= X86Assembler.RegisterEncoding(memOp.Base);
-							if (memOp.Offset == null && memOp.Base == Registers.ebp)
+							if (memOp.Offset is null && memOp.Base == Registers.ebp)
 							{
 								reg |= 0x40;
 								offset = Constant.Byte(0);
@@ -159,7 +159,7 @@ namespace Reko.Arch.X86.Assembler
 							sib |= 0x05;
 							reg &= ~0xC0;			// clear mod part of modRM.
 
-							if (memOp.Offset == null)
+							if (memOp.Offset is null)
 							{
 								offset = Constant.Word32(0);
 							}
@@ -214,7 +214,7 @@ namespace Reko.Arch.X86.Assembler
 			if (mask == 1<<Registers.bp.Number)
 			{
 				mask = 6;
-				if (memOp.Offset == null || !memOp.Offset.IsValid)
+				if (memOp.Offset is null || !memOp.Offset.IsValid)
 				{
 					mask |= 0x40;
 					offset = Constant.Byte(0);

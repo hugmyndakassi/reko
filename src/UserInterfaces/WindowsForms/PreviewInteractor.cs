@@ -63,7 +63,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void MixedCodeDataControl_MouseDown(object sender, MouseEventArgs e)
         {
-            if (previewWindow != null)
+            if (previewWindow is not null)
             {
                 DestroyPreviewWindow();
             }
@@ -77,13 +77,13 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void MixedCodeDataControl_SpanEnter(object sender, SpanEventArgs e)
         {
-            if (previewWindow != null)
+            if (previewWindow is not null)
             {
                 // Preview window already visible.
                 return;
             }
 
-            if (e.Span.Style == null || !e.Span.Style.Contains("dasm-addrText"))
+            if (e.Span.Style is null || !e.Span.Style.Contains("dasm-addrText"))
                 return;
             this.addressPreview = e.Span.Tag as Address?;
             if (this.addressPreview is null)
@@ -151,7 +151,7 @@ namespace Reko.UserInterfaces.WindowsForms
         private void DestroyPreviewWindow()
         {
             this.previewTimer.Enabled = false;
-            if (previewWindow == null)
+            if (previewWindow is null)
                 return;
             this.mixedCodeDataControl.Controls.Remove(previewWindow);
             szPreview = previewWindow.Size;

@@ -635,7 +635,7 @@ namespace Reko.Gui.Forms
                 {
                     Func<int, Program, bool> filter = GetScannedFilter(dlg);
                     var re = Core.Dfa.Automaton.CreateFromPattern(dlg.Patterns.Text);
-                    if (re == null)
+                    if (re is null)
                         return;
                     var hits = this.decompilerSvc.Decompiler!.Project!.Programs
                         .SelectMany(program => 
@@ -686,7 +686,7 @@ namespace Reko.Gui.Forms
                             (ulong)
                              ((long)program.SegmentMap.BaseAddress.ToLinear() + o));
                         return program.ImageMap.TryFindItem(addr, out var item)
-                            && item.DataType != null &&
+                            && item.DataType is not null &&
                             item.DataType is not UnknownType;
                     };
             }
@@ -827,14 +827,14 @@ namespace Reko.Gui.Forms
         /// <returns>False if the user cancelled the save, true otherwise.</returns>
         public async ValueTask<bool> Save()
         {
-            if (decompilerSvc.Decompiler == null)
+            if (decompilerSvc.Decompiler is null)
                 return true;
             if (string.IsNullOrEmpty(this.ProjectFileName))
             {
                 var filename = decompilerSvc.Decompiler.Project.Programs[0].Location.FilesystemPath;
                 string? newName = await uiSvc.ShowSaveFileDialog(
                     Path.ChangeExtension(filename, Project_v5.FileExtension));
-                if (newName == null)
+                if (newName is null)
                     return false;
                 RememberFilenameInMru(newName);
                 ProjectFileName = newName;
@@ -862,7 +862,7 @@ namespace Reko.Gui.Forms
             if (interactor == CurrentPhase)
                 return;
 
-            if (CurrentPhase != null)
+            if (CurrentPhase is not null)
             {
                 if (!CurrentPhase.LeavePage())
                     return;
@@ -1094,9 +1094,9 @@ namespace Reko.Gui.Forms
         {
             get
             {
-                if (decompilerSvc?.Decompiler == null)
+                if (decompilerSvc?.Decompiler is null)
                     return false;
-                return decompilerSvc.Decompiler.Project != null;
+                return decompilerSvc.Decompiler.Project is not null;
             }
         }
         #endregion

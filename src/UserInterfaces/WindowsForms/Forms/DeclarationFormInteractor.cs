@@ -65,7 +65,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
 
         private string LabelText()
         {
-            var addrStr = (address == null) ? "<null>" : address.ToString();
+            var addrStr = (address is null) ? "<null>" : address.ToString();
             var titleStr = editProcedure ? 
                 "Enter procedure declaration at the address" : 
                 "Enter procedure or global variable declaration at the address";
@@ -190,7 +190,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
         private bool TryParseSignature(string txtSignature, out ProcedureBase_v1 sProc)
         {
             sProc = null;
-            if (program == null || program.Platform == null)
+            if (program is null || program.Platform is null)
             {
                 return false;
             }
@@ -198,13 +198,13 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
             // Attempt to parse the signature.
             var usb = new UserSignatureBuilder(program);
             sProc = usb.ParseFunctionDeclaration(txtSignature);
-            return sProc != null;
+            return sProc is not null;
         }
 
         private bool TryParseGlobal(string txtGlobal, out GlobalDataItem_v2 global)
         {
             global = null;
-            if (program == null || program.Platform == null)
+            if (program is null || program.Platform is null)
             {
                 return false;
             }
@@ -212,7 +212,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
             // Attempt to parse the global declaration.
             var usb = new UserSignatureBuilder(program);
             global = usb.ParseGlobalDeclaration(txtGlobal);
-            return global != null;
+            return global is not null;
         }
 
         private async ValueTask ModifyDeclaration()
@@ -231,7 +231,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
                 CSignature = declText;
             }
             else if (UserSignatureBuilder.IsValidCIdentifier(declText) &&
-                    (proc == null || proc.Name != declText))
+                    (proc is null || proc.Name != declText))
             {
                 procName = declText;
             }

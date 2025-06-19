@@ -141,7 +141,7 @@ namespace Reko.Core.Configuration
 
         private PlatformHeuristics LoadHeuristics(PlatformHeuristics_v1? heuristics)
         {
-            if (heuristics == null)
+            if (heuristics is null)
             {
                 return new PlatformHeuristics
                 {
@@ -149,7 +149,7 @@ namespace Reko.Core.Configuration
                 };
             }
             MaskedPattern[] prologs;
-            if (heuristics.ProcedurePrologs == null)
+            if (heuristics.ProcedurePrologs is null)
             {
                 prologs = Array.Empty<MaskedPattern>();
             }
@@ -157,7 +157,7 @@ namespace Reko.Core.Configuration
             {
                 prologs = heuristics.ProcedurePrologs
                     .Select(p => MaskedPattern.Load(p.Bytes, p.Mask, p.Endianness)!)
-                    .Where(p => p != null && p.Bytes != null)
+                    .Where(p => p is not null && p.Bytes is not null)
                     .ToArray();
             }
 
@@ -178,7 +178,7 @@ namespace Reko.Core.Configuration
                     .Where(s => s.Procedures is not null)
                     .SelectMany(s => s.Procedures!)
                     .OfType<Procedure_v1>()
-                    .Where(p => p.Name != null)
+                    .Where(p => p.Name is not null)
                     //$REVIEW: handle when addresses are not parseable.
                     .Select(p =>
                         (addr: platform.Architecture.TryParseAddress(p.Address, out var addr) ? (Address?)addr : null,

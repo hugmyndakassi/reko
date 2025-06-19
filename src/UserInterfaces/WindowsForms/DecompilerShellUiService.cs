@@ -141,7 +141,7 @@ namespace Reko.UserInterfaces.WindowsForms
                 .Where(de => de.Value == windowFrame)
                 .Select(de => de.Key)
                 .SingleOrDefault();
-            if (name != null)
+            if (name is not null)
                 framesByName.Remove(name);
             var page = framesByTab
                 .Where(de => de.Value == windowFrame)
@@ -268,7 +268,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
             public void Show()
             {
-                if (ctrl == null)
+                if (ctrl is null)
                 {
                     ctrl = (Control) pane.CreateControl();
                     ctrl.Dock = DockStyle.Fill;

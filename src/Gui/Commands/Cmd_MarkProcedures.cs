@@ -59,7 +59,7 @@ namespace Reko.Gui.Commands
             var userProcs =
                 from hit in addresses
                 let uProc = DoScanProcedure(hit, sArch)
-                where uProc != null
+                where uProc is not null
                 select new
                 {
                     hit.Program,
@@ -85,7 +85,7 @@ namespace Reko.Gui.Commands
         private ProcedureBase? DoScanProcedure(ProgramAddress paddr, string? sArch)
         {
             //$TODO: do this in a worker procedure.
-            if (sArch == null)
+            if (sArch is null)
                 return null;
             if (!paddr.Program.Architectures.TryGetValue(sArch, out var arch))
                 return null;

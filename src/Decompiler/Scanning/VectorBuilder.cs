@@ -73,7 +73,7 @@ namespace Reko.Scanning
             //$BUG: all these nulls!
             bw = new Backwalker<Block,Instruction>(this, null!, null!);
             List<BackwalkOperation>? operations = bw.BackWalk(null!);
-            if (operations == null)
+            if (operations is null)
                 return PostError("Unable to determine limit", addrFrom, addrTable);
             return BuildAux(bw, addrFrom, state);
         }
@@ -139,7 +139,7 @@ namespace Reko.Scanning
             var vector = new List<Address>();
 
             var arch = program.Architecture;
-            if (permutation != null)
+            if (permutation is not null)
             {
                 int cbEntry = stride;
                 int iMax = 0;
@@ -169,7 +169,7 @@ namespace Reko.Scanning
                     var entryAddr = program.Architecture.ReadCodeAddress(stride, rdr, state);
                     if (entryAddr is null || !memory.IsValidAddress(entryAddr.Value))
                     {
-                        if (services != null)
+                        if (services is not null)
                         {
                             var diagSvc = services.RequireService<IDecompilerEventListener>();
                             diagSvc.Warn(
@@ -219,7 +219,7 @@ namespace Reko.Scanning
 
         public RegisterStorage IndexRegister
         {
-            get { return bw != null ? bw.Index! : RegisterStorage.None; }
+            get { return bw is not null ? bw.Index! : RegisterStorage.None; }
         }
 
         public bool IsStackRegister(Storage stg)

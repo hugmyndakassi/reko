@@ -65,13 +65,13 @@ namespace Reko.Core.Serialization
         public Identifier? VisitRegister(Register_v1 reg)
         {
             var regName = reg.Name;
-            if (regName == null)
+            if (regName is null)
                 return null;
             var regStorage = arch.GetRegister(regName.Trim());
             if (regStorage is null)
                 return null;
             DataType dt;
-            if (this.argCur!.Type != null)
+            if (this.argCur!.Type is not null)
                 dt = this.argCur.Type.Accept(procSer.TypeLoader);
             else
                 dt = regStorage.DataType;
@@ -164,14 +164,14 @@ namespace Reko.Core.Serialization
         {
             var hName = sq.Registers?[0].Name?.Trim();
             var tName = sq.Registers?[1].Name?.Trim();
-            if (hName == null || tName == null)
+            if (hName is null || tName is null)
                 return null;
             var h = arch.GetRegister(hName);
             var t = arch.GetRegister(tName);
             if (h is null || t is null)
                 return null;
             DataType dt;
-            if (this.argCur!.Type != null)
+            if (this.argCur!.Type is not null)
                 dt = this.argCur.Type.Accept(procSer.TypeLoader);
             else 
                 dt = PrimitiveType.CreateWord(h.DataType.BitSize + h.DataType.BitSize);

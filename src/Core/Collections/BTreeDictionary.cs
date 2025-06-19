@@ -80,7 +80,7 @@ namespace Reko.Core.Collections
         public BTreeDictionary(IDictionary<TKey,TValue> entries) :
             this()
         {
-            if (entries == null)
+            if (entries is null)
                 throw new ArgumentNullException(nameof(entries));
             Populate(entries);
         }
@@ -95,7 +95,7 @@ namespace Reko.Core.Collections
         public BTreeDictionary(IDictionary<TKey,TValue> entries, IComparer<TKey> comparer) :
             this(comparer)
         {
-            if (entries == null)
+            if (entries is null)
                 throw new ArgumentNullException(nameof(entries));
             Populate(entries);
         }
@@ -254,7 +254,7 @@ namespace Reko.Core.Collections
                     : (~idx) - 1;
                 var subnode = nodes[iPos];
                 var (leftNode, rightNode) = subnode.Put(key, value, setting, tree);
-                if (rightNode == null)
+                if (rightNode is null)
                 {
                     this.totalCount = SumNodeCounts(this.nodes, this.count);
                     return (leftNode, null);
@@ -361,7 +361,7 @@ namespace Reko.Core.Collections
             {
                 EnsureRoot();
                 var (left, right) = root!.Put(key, value, true, this);
-                if (right != null)
+                if (right is not null)
                     root = NewInternalRoot(left, right);
                 ++version;
                 // Validate(root);
@@ -388,7 +388,7 @@ namespace Reko.Core.Collections
         public ValueCollection Values => valueCollection;
 
         /// <inheritdoc/>
-        public int Count => root != null ? root.totalCount : 0;
+        public int Count => root is not null ? root.totalCount : 0;
 
         /// <inheritdoc/>
         public bool IsReadOnly => false;
@@ -398,7 +398,7 @@ namespace Reko.Core.Collections
         {
             EnsureRoot();
             var (left, right) = root!.Put(key, value, false, this);
-            if (right != null)
+            if (right is not null)
                 root = NewInternalRoot(left, right);
             ++version;
             // Validate(root);
@@ -470,7 +470,7 @@ namespace Reko.Core.Collections
                 ;
             var leaf = (LeafNode?)node;
             int myVersion = this.version;
-            while (leaf != null)
+            while (leaf is not null)
             {
                 for (int i = 0; i < leaf.count; ++i)
                 {
@@ -492,7 +492,7 @@ namespace Reko.Core.Collections
         /// </returns>
         public int IndexOfKey(TKey key)
         {
-            if (root == null)
+            if (root is null)
                 return ~0;
             int totalBefore = 0;
             Node node = root;
@@ -534,7 +534,7 @@ namespace Reko.Core.Collections
         /// <inheritdoc/>
         public bool Remove(TKey key)
         {
-            if (root == null)
+            if (root is null)
                 return false;
             if (root.Remove(key, this))
             {
@@ -555,7 +555,7 @@ namespace Reko.Core.Collections
         /// <inheritdoc/>
         public bool TryGetValue(TKey key, [NotNullWhen(returnValue: true)] out TValue value)
         {
-            if (root == null)
+            if (root is null)
             {
                 value = default!;
                 return false;
@@ -572,14 +572,14 @@ namespace Reko.Core.Collections
 
         private void EnsureRoot()
         {
-            if (root != null)
+            if (root is not null)
                 return;
             root = new LeafNode(LeafNodeChildren);
         }
 
         private KeyValuePair<TKey,TValue> GetEntry(int index)
         {
-            if (root != null && 0 <= index && index < this.Count)
+            if (root is not null && 0 <= index && index < this.Count)
             {
                 Node node = root;
                 int itemsLeft = index;
@@ -771,7 +771,7 @@ namespace Reko.Core.Collections
             /// <inheritdoc/>
             public override void CopyTo(TKey[] array, int arrayIndex)
             {
-                if (array == null) throw new ArgumentNullException(nameof(array));
+                if (array is null) throw new ArgumentNullException(nameof(array));
                 if (arrayIndex < 0) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
                 if (btree.Count > array.Length - arrayIndex) throw new ArgumentException();
                 var iDst = arrayIndex;
@@ -815,7 +815,7 @@ namespace Reko.Core.Collections
             /// <inheritdoc/>
             public override void CopyTo(TValue[] array, int arrayIndex)
             {
-                if (array == null) throw new ArgumentNullException(nameof(array));
+                if (array is null) throw new ArgumentNullException(nameof(array));
                 if (arrayIndex < 0) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
                 if (btree.Count > array.Length - arrayIndex) throw new ArgumentException();
                 var iDst = arrayIndex;

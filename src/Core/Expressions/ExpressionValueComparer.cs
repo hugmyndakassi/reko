@@ -60,7 +60,7 @@ namespace Reko.Core.Expressions
                     foreach (Expression e in a.Arguments)
                     {
                         h *= 47;
-                        if (e != null)
+                        if (e is not null)
                             h ^= GetHashCodeImpl(e);
                     }
                     return h;
@@ -439,9 +439,9 @@ namespace Reko.Core.Expressions
         /// <inheritdoc/>
         public bool Equals(Expression? x, Expression? y)
         {
-            if (x == null && y == null)
+            if (x is null && y is null)
                 return true;
-            if (x == null || y == null)
+            if (x is null || y is null)
                 return false;
             return EqualsImpl(x, y);
         }

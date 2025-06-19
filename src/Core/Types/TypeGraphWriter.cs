@@ -73,11 +73,11 @@ namespace Reko.Core.Types
         /// <inheritdoc/>
         public Formatter VisitClass(ClassType ct)
         {
-            if (this.visited == null)
+            if (this.visited is null)
                 visited = new HashSet<DataType>();
 
             writer.Write("(class");
-            if (ct.Name != null)
+            if (ct.Name is not null)
             {
                 writer.Write(" \"{0}\"", ct.Name);
             }
@@ -86,7 +86,7 @@ namespace Reko.Core.Types
                 writer.Write(" {0:X4}", ct.Size);
             }
 
-            if (!visited.Contains(ct) && (!reference || ct.Name == null))
+            if (!visited.Contains(ct) && (!reference || ct.Name is null))
             {
                 visited.Add(ct);
                 foreach (ClassField f in ct.Fields)
@@ -139,14 +139,14 @@ namespace Reko.Core.Types
         public Formatter VisitFunctionType(FunctionType ft)
         {
             writer.Write("(fn ");
-            if (ft.ReturnValue!= null)
+            if (ft.ReturnValue is not null)
                 ft.ReturnValue.DataType.Accept(this);
             else
                 writer.Write("void");
             writer.Write(" (");
 
             string separator = "";
-            if (ft.Parameters != null)
+            if (ft.Parameters is not null)
             {
                 for (int i = 0; i < ft.Parameters.Length; ++i)
                 {
@@ -236,7 +236,7 @@ namespace Reko.Core.Types
         {
             writer.Write("(str");
             WriteQualifier(str.Qualifier);
-            if (str.LengthPrefixType != null)
+            if (str.LengthPrefixType is not null)
             {
                 writer.Write(" length-");
                 str.LengthPrefixType.Accept(this);
@@ -252,11 +252,11 @@ namespace Reko.Core.Types
         /// <inheritdoc/>
         public Formatter VisitStructure(StructureType str)
         {
-            if (this.visited == null)
+            if (this.visited is null)
                 visited = new HashSet<DataType>();
 
             writer.Write("({0}", str.IsSegment ? "segment" : "struct");
-            if (str.Name != null)
+            if (str.Name is not null)
             {
                 writer.Write(" \"{0}\"", str.Name);
             }
@@ -265,7 +265,7 @@ namespace Reko.Core.Types
                 writer.Write(" {0:X4}", str.Size);
             }
 
-            if (!visited.Contains(str) && (!reference || str.Name == null))
+            if (!visited.Contains(str) && (!reference || str.Name is null))
             {
                 visited.Add(str);
                 if (str.Fields.Count > SmallCompositeType)
@@ -319,15 +319,15 @@ namespace Reko.Core.Types
         /// <inheritdoc/>
         public Formatter VisitUnion(UnionType ut)
         {
-            if (visited == null)
+            if (visited is null)
                 visited = new HashSet<DataType>(); 
 
             writer.Write("(union");
-            if (ut.Name != null)
+            if (ut.Name is not null)
             {
                 writer.Write(" \"{0}\"", ut.Name);
             }
-            if (!visited.Contains(ut) && (!reference || ut.Name == null))
+            if (!visited.Contains(ut) && (!reference || ut.Name is null))
             {
                 visited.Add(ut);
                 if (ut.Alternatives.Count > SmallCompositeType)

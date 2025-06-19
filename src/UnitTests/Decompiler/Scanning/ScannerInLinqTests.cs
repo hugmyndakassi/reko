@@ -27,7 +27,7 @@ using Reko.Core.Collections;
 using Reko.Core.Expressions;
 using Reko.Core.Loading;
 using Reko.Core.Memory;
-using Reko.Core.Serialization;
+using Reko.Core.Rtl;
 using Reko.Core.Types;
 using Reko.Scanning;
 using Reko.UnitTests.Mocks;
@@ -43,7 +43,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
     [TestFixture]
     public class ScannerInLinqTests
     {
-        private string nl = Environment.NewLine;
+        private readonly string nl = Environment.NewLine;
 
         private ScanResults sr;
         private ScannerInLinq siq;
@@ -146,7 +146,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             program.ImageMap.AddItem(addr, item);
         }
 
-        private void AssertBlocks(string sExp, Dictionary<Address, ScanResults.Block> blocks)
+        private void AssertBlocks(string sExp, Dictionary<Address, RtlBlock> blocks)
         {
             var sw = new StringWriter();
             this.siq.DumpBlocks(sr, blocks, sw.WriteLine);
@@ -159,27 +159,17 @@ namespace Reko.UnitTests.Decompiler.Scanning
             }
         }
 
-        private void Inst(int uAddr, int len, InstrClass rtlc)
-        {
-            var addr = Address.Ptr32((uint)uAddr);
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
-            {
-                addr = addr,
-                size = len,
-                block_id = addr,
-                type = (ushort)rtlc
-            });
-        }
-
         private void Lin(int uAddr, int len, int next)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var cluster = new RtlInstructionCluster(addr, len, [])
+            {
+                Class = InstrClass.Linear
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)InstrClass.Linear
+                rtl = cluster,
             });
             Link(addr, next);
         }
@@ -187,12 +177,19 @@ namespace Reko.UnitTests.Decompiler.Scanning
         private void Call(int uAddr, int len, int next, int uAddrDst)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var iclass = InstrClass.Call | InstrClass.Transfer;
+            var cluster = new RtlInstructionCluster(addr, len, [
+                new RtlCall(
+                    Address.Ptr32((uint)uAddrDst),
+                    0,
+                    iclass)])
+            {
+                Class = iclass,
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)(InstrClass.Transfer|InstrClass.Call)
+                rtl = cluster,
             });
             Link(addr, next);
         }
@@ -200,58 +197,95 @@ namespace Reko.UnitTests.Decompiler.Scanning
         private void Bra(int uAddr, int len, int a, int b)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var m = new RtlEmitter([]);
+            m.Branch(
+                Constant.True(),
+                Address.Ptr32((uint)a),
+                InstrClass.ConditionalTransfer);
+            var cluster = new RtlInstructionCluster(addr, len, m.Instructions.ToArray())
+            {
+                Class = InstrClass.ConditionalTransfer,
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)InstrClass.ConditionalTransfer
+                rtl = cluster
             });
             Link(addr, a);
             Link(addr, b);
         }
 
+        private void BraD(int uAddr, int len, int a, int b, Func<ExpressionEmitter, Expression> generator)
+        {
+            var addr = Address.Ptr32((uint) uAddr);
+            var m = new RtlEmitter([]);
+            var iclass = InstrClass.ConditionalTransfer | InstrClass.Delay;
+            if (generator is not null)
+            {
+                var ee = generator(m);
+                m.Branch(ee, Address.Ptr32((uint) a), iclass);
+            }
+            var cluster = new RtlInstructionCluster(addr, len, m.Instructions.ToArray())
+            {
+                Class = iclass,
+            };
+            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            {
+                block_id = addr,
+                rtl = cluster
+            });
+            Link(addr, a);
+            Link(addr, b);
+        }
+
+
         private void Bad(int uAddr, int len)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var cluster = new RtlInstructionCluster(addr, len, [])
+            {
+                Class = InstrClass.Invalid
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)InstrClass.Invalid,
+                rtl = cluster,
             });
         }
 
         private void End(int uAddr, int len)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var cluster = new RtlInstructionCluster(addr, len, [])
+            {
+                Class = InstrClass.Transfer
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)InstrClass.Transfer,
+                rtl = cluster,
             });
         }
 
         private void Pad(uint uAddr, int len, int next)
         {
             var addr = Address.Ptr32((uint)uAddr);
+            var cluster = new RtlInstructionCluster(addr, len, [])
+            {
+                Class = InstrClass.Linear | InstrClass.Padding
+            };
             sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
             {
-                addr = addr,
-                size = len,
                 block_id = addr,
-                type = (ushort)(InstrClass.Linear | InstrClass.Padding),
+                rtl = cluster,
             });
             Link(addr, next);
         }
 
-        private void Link(Address addrFrom ,int uAddrTo)
+        private void Link(Address addrFrom, int uAddrTo)
         {
             var addrTo = Address.Ptr32((uint)uAddrTo);
-            sr.FlatEdges.Add(new ScanResults.Link { first = addrFrom, second = addrTo });
+            sr.FlatEdges.Add(new ScanResults.Link(addrFrom, addrTo));
         }
 
         private void Given_OverlappingLinearTraces()
@@ -274,7 +308,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Given_OverlappingLinearTraces();
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
 
             Assert.AreEqual(2, blocks.Count);
         }
@@ -285,7 +319,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Given_OverlappingLinearTraces();
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
 
             var sExp =
@@ -312,7 +346,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             End(0x0001B0DE, 2);
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             var sExp =
             #region Expected
 @"0001B0D7-0001B0DD (6): Bra 0001B0DD, 0001B0DE
@@ -335,7 +369,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Bad(0x00010002, 3);
             End(0x00010004, 1);
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
             var sExp =
             #region Expected
@@ -362,8 +396,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 0xC3);
             CreateScanner();
             var seg = program.SegmentMap.Segments.Values.First();
-            var scseg = siq.ScanInstructions(sr);
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var binder = new StorageBinder();
+            var scseg = siq.ScanInstructions(sr, binder);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, binder);
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
             var sExp =
                 "00010000-00010003 (3): Lin 00010003" + nl +
@@ -398,13 +433,14 @@ namespace Reko.UnitTests.Decompiler.Scanning
             });
             CreateScanner();
 
-            siq.ScanInstructions(sr);
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var binder = new StorageBinder();
+            siq.ScanInstructions(sr, binder);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, binder);
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
 
-            var from = blocks.Values.Single(n => n.id == Address.Ptr32(0x00100000));
-            var to = blocks.Values.Single(n => n.id == Address.Ptr32(0x00100001));
-            Assert.IsFalse(sr.FlatEdges.Any(e => e.first == from.id && e.second ==to.id));
+            var from = blocks.Values.Single(n => n.Address.Offset == 0x00100000);
+            var to = blocks.Values.Single(n => n.Address.Offset == 0x00100001);
+            Assert.IsFalse(sr.FlatEdges.Any(e => e.From == from.Address && e.To == to.Address));
         }
 
         [Test(Description = "Stop tracing invalid blocks at call boundaries")]
@@ -416,7 +452,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             End(0x100A, 1);
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
 
             var sExp =
@@ -437,7 +473,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Bad(0x100A, 1);
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
 
             var sExp =
@@ -457,12 +493,12 @@ namespace Reko.UnitTests.Decompiler.Scanning
             End(0x100C, 4);
 
             CreateScanner();
-            sr.KnownProcedures = new HashSet<Address>();
+            sr.KnownProcedures = [];
             sr.DirectlyCalledAddresses = new Dictionary<Address, int>
             {
                 { Address.Ptr32(0x1008), 2 }
             };
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             Assert.IsTrue(blocks.ContainsKey(Address.Ptr32(0x1008)));
         }
 
@@ -477,7 +513,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             End(0x1014, 4);
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             var sExp =
             #region Expected
 @"00001000-00001008 (8): End
@@ -503,7 +539,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var ranges = siq.FindUnscannedRanges().ToArray();
 
             Assert.AreEqual(1, ranges.Length);
-            Assert.AreSame(A.Object, ranges[0].Item1);
+            Assert.AreSame(A.Object, ranges[0].Architecture);
         }
 
         [Test]
@@ -519,7 +555,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var ranges = siq.FindUnscannedRanges().ToArray();
 
             Assert.AreEqual(1, ranges.Length);
-            Assert.AreSame(A.Object, ranges[0].Item1);
+            Assert.AreSame(A.Object, ranges[0].Architecture);
         }
 
         [Test]
@@ -539,7 +575,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var ranges = siq.FindUnscannedRanges().ToArray();
 
             Assert.AreEqual(1, ranges.Length);
-            Assert.AreSame(B.Object, ranges[0].Item1);
+            Assert.AreSame(B.Object, ranges[0].Architecture);
         }
 
         [Test]
@@ -559,7 +595,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var ranges = siq.FindUnscannedRanges().ToArray();
 
             Assert.AreEqual(1, ranges.Length);
-            Assert.AreSame(B.Object, ranges[0].Item1);
+            Assert.AreSame(B.Object, ranges[0].Architecture);
         }
 
         [Test(Description = "Stop tracing invalid blocks at call boundaries")]
@@ -574,12 +610,34 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Bad(0x1014, 4);
 
             CreateScanner();
-            var blocks = ScannerInLinq.BuildBasicBlocks(sr);
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
             blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
 
             var sExp =
             #region Expected
 @"00001000-00001004 (4): Cal 
+";
+            #endregion
+            AssertBlocks(sExp, blocks);
+        }
+
+        [Test(Description = "Steal delay slot instructions after transfer instructions.")]
+        public void Siq_StealDelaySlot()
+        {
+            Lin(0x1000, 3, 0x1003);
+            BraD(0x1003, 2, 0x1005, 0x1007, m => m.Word32(0x123400));
+            Lin(0x1005, 2, 0x1007); // Delay slot stolen by the branch.
+            End(0x1007, 1);
+
+            CreateScanner();
+            var blocks = ScannerInLinq.BuildBasicBlocks(sr, new());
+            blocks = ScannerInLinq.RemoveInvalidBlocks(sr, blocks);
+
+            var sExp =
+            #region Expected
+@"00001000-00001005 (5): BraD 00001005, 00001007
+00001005-00001007 (2): Lin 00001007
+00001007-00001008 (1): End
 ";
             #endregion
             AssertBlocks(sExp, blocks);

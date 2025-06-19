@@ -94,7 +94,7 @@ namespace Reko.Typing
 		{
 			get 
 			{
-				if (globals != null)
+				if (globals is not null)
 				{
 					return globals;
 				}
@@ -122,7 +122,7 @@ namespace Reko.Typing
                 return;
 			DataType dt = store.GetTypeVariable(c).DataType;
             int? offset = StructureField.ToOffset(c);
-            if (offset == null)
+            if (offset is null)
                 return;
             switch (dt)
             {
@@ -133,13 +133,13 @@ namespace Reko.Typing
 
                 var pointee = ptr.Pointee;
                 var segPointee = pointee.ResolveAs<StructureType>();
-                if (segPointee != null && segPointee.IsSegment)
+                if (segPointee is not null && segPointee.IsSegment)
                 {
                     //$TODO: these are getting merged earlier, perhaps this is the right place to do those merges?
                     return;
                 }
                 var strGlobals = store.GetTypeVariable(Globals).Class.ResolveAs<StructureType>();
-                if (strGlobals!.Fields.AtOffset(offset.Value) == null)
+                if (strGlobals!.Fields.AtOffset(offset.Value) is null)
                 {
                     if (!IsInsideArray(strGlobals, offset.Value, pointee) &&
                         !IsInsideStruct(strGlobals, offset.Value))
@@ -152,7 +152,7 @@ namespace Reko.Typing
                 // C is a constant offset into a segment.
                 var seg = ((Pointer) mptr.BasePointer).Pointee.ResolveAs<StructureType>();
                 if (seg is not null && //$DEBUG
-                    seg.Fields.AtOffset(offset.Value) == null)
+                    seg.Fields.AtOffset(offset.Value) is null)
                 {
                     seg.Fields.Add(offset.Value, mptr.Pointee);
                 }
@@ -176,10 +176,10 @@ namespace Reko.Typing
         {
             //$PERF: LowerBound have a complexity of O(n^2)
             var field = strGlobals.Fields.LowerBound(offset);
-            if (field == null)
+            if (field is null)
                 return false;
             var str = field.DataType.ResolveAs<StructureType>();
-            if (str == null)
+            if (str is null)
                 return false;
             return (
                 offset >= field.Offset &&

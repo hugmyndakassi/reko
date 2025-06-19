@@ -300,7 +300,7 @@ namespace Reko.ImageLoaders.Elf
             var a = cfgSvc.GetArchitecture(arch, options);
             if (a is null)
                 throw new InvalidOperationException($"Unable to load architecture '{arch}'.");
-            if (stackRegName != null)
+            if (stackRegName is not null)
             {
                 var sp = a.GetRegister(stackRegName);
                 if (sp is null)
@@ -388,7 +388,7 @@ namespace Reko.ImageLoaders.Elf
         public ulong GuessAreaEnd(ulong addrStart, ElfSegment dynSeg)
         {
             var seg = GetSegmentByAddress(addrStart);
-            if (seg == null)
+            if (seg is null)
                 return 0;
 
             var addrEnd = 0ul;
@@ -450,7 +450,7 @@ namespace Reko.ImageLoaders.Elf
 
         public Program LoadImage(IPlatform platform, byte[] rawImage)
         {
-            Debug.Assert(platform != null);
+            Debug.Assert(platform is not null);
             this.platform = platform;
             this.rawImage = rawImage;
             var addrPreferred = ComputeBaseAddress(platform);
@@ -485,7 +485,7 @@ namespace Reko.ImageLoaders.Elf
         {
             var dynEntries = GetDynamicEntries(rdr).ToList();
             var deStrTab = GetDynamicStringTableFileOffset(dynEntries);
-            if (deStrTab == null)
+            if (deStrTab is null)
             {
                 //$REVIEW: is missing a string table worth a warning?
                 return (new List<string>(), new List<ElfDynamicEntry>());
@@ -524,7 +524,7 @@ namespace Reko.ImageLoaders.Elf
             foreach (var sym in BinaryImage.SymbolsByFileOffset.Values.SelectMany(seg => seg.Values).OrderBy(s => s.Value))
             {
                 var imgSym = CreateImageSymbol(sym, arch, isExecutable);
-                if (imgSym == null || imgSym.Address!.ToLinear() == 0)
+                if (imgSym is null || imgSym.Address!.ToLinear() == 0)
                     continue;
                 imgSymbols[imgSym.Address] = imgSym;
             }
@@ -756,7 +756,7 @@ namespace Reko.ImageLoaders.Elf
 
         public string GetStrPtr(ElfSection strSection, ulong offset)
         {
-            if (strSection == null)
+            if (strSection is null)
             {
                 // Most commonly, this will be an index of -1, because a call to GetSectionIndexByName() failed
                 throw new ArgumentNullException(nameof(strSection));

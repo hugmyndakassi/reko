@@ -246,7 +246,7 @@ namespace Reko.Arch.PowerPC
 
             var addr = Address.Ptr32(uAddr);
             var ep = host.GetImportedProcedure(this, addr, addrInstr);
-            if (ep != null)
+            if (ep is not null)
                 return ep;
             return host.GetInterceptedCall(this, addr);
         }
@@ -261,7 +261,7 @@ namespace Reko.Arch.PowerPC
 
         private Decoder[] EnsureDecoders()
         {
-            if (this.primaryDecoders == null)
+            if (this.primaryDecoders is null)
             {
                 this.Options.TryGetValue(ProcessorOption.Model, out var model);
                 var iset = InstructionSet.Create((string?)model);
@@ -310,7 +310,7 @@ namespace Reko.Arch.PowerPC
         public override bool TryGetRegister(string name, [MaybeNullWhen(false)] out RegisterStorage reg)
         {
             reg = GetRegister(name);
-            return reg != null;
+            return reg is not null;
         }
 
         public FlagGroupStorage? GetCcFieldAsFlagGroup(RegisterStorage reg)
@@ -365,7 +365,7 @@ namespace Reko.Arch.PowerPC
 
         public override void LoadUserOptions(Dictionary<string, object>? options)
         {
-            if (options == null)
+            if (options is null)
                 return;
             foreach (var option in options.ToList())
             {

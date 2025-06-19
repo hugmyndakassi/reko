@@ -162,7 +162,7 @@ namespace Reko.Gui
                     ++idx;
                 }
                 var arg = ParseArg();
-                if (arg == null)
+                if (arg is null)
                     return null;
                 args.Add(arg);
             }
@@ -179,12 +179,12 @@ namespace Reko.Gui
             {
                 type = w;
                 w = GetNextWord();
-                if (w == null)
+                if (w is null)
                     return null;
                 if (w.Contains("_"))
                 {
                     var retval = ParseRegisterSequenceWithUnderscore(w);
-                    if (retval != null)
+                    if (retval is not null)
                         return retval;
                 }
                 if (!arch.TryGetRegister(w, out reg))
@@ -228,7 +228,7 @@ namespace Reko.Gui
 
         private bool PeekChar(char cha)
         {
-            return str != null && idx < str.Length && str[idx] == cha;
+            return str is not null && idx < str.Length && str[idx] == cha;
         }
 
 		private Argument_v1 ParseStackArgument(string typeName, string argName)
@@ -273,7 +273,7 @@ namespace Reko.Gui
 
         private void EatWhiteSpace()
         {
-            while (str != null && idx < str.Length && Char.IsWhiteSpace(str[idx]))
+            while (str is not null && idx < str.Length && Char.IsWhiteSpace(str[idx]))
                 ++idx;
         }
     }

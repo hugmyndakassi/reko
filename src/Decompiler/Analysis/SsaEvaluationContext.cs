@@ -52,10 +52,10 @@ namespace Reko.Analysis
 
         public Expression? GetValue(Identifier id)
         {
-            if (id == null)
+            if (id is null)
                 return null;
             var sid = ssaIds[id];
-            if (sid.DefStatement == null)
+            if (sid.DefStatement is null)
                 return null;
             if (sid.DefStatement.Instruction is Assignment ass &&
                 ass.Dst == sid.Identifier)
@@ -82,7 +82,7 @@ namespace Reko.Analysis
                 access.MemoryId.Storage == MemoryStorage.Instance)
             {
                 var pc = dynamicLinker.ResolveToImportedValue(this.Statement!, c);
-                if (pc != null)
+                if (pc is not null)
                     return pc;
             }
             return access;
@@ -106,7 +106,7 @@ namespace Reko.Analysis
 
         public void RemoveExpressionUse(Expression exp)
         {
-            if (Statement == null)
+            if (Statement is null)
                 return;
             var xu = new ExpressionUseRemover(Statement, ssaIds);
             exp.Accept(xu);
@@ -129,7 +129,7 @@ namespace Reko.Analysis
 
         public void UseExpression(Expression exp)
         {
-            if (Statement == null)
+            if (Statement is null)
                 return;
             var xu = new InstructionUseAdder(Statement, ssaIds);
             exp.Accept(xu);
@@ -138,15 +138,15 @@ namespace Reko.Analysis
         public bool IsUsedInPhi(Identifier id)
         {
             var src = ssaIds[id].DefStatement;
-            if (src == null)
+            if (src is null)
                 return false;
             if (src.Instruction is not Assignment assSrc)
                 return false;
             return ExpressionIdentifierUseFinder.Find(assSrc.Src)
                 .Select(c => ssaIds[c].DefStatement)
-                .Where(d => d != null)
+                .Where(d => d is not null)
                 .Select(ph => ph!.Instruction as PhiAssignment)
-                .Where(ph => ph != null)
+                .Where(ph => ph is not null)
                 .Any();
                 //.SelectMany(ph => ssaIds[ph.Ops].DefStatement)
                 //.Where(opDef => IsOverwriting(opDef) &&

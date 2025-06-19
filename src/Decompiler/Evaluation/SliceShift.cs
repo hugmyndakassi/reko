@@ -42,7 +42,7 @@ namespace Reko.Evaluation
         {
             BinaryExpression? shift;
             var id = slice.Expression as Identifier;
-            if (id != null)
+            if (id is not null)
             {
                 shift = ctx.GetValue(id) as BinaryExpression;
             }
@@ -50,7 +50,7 @@ namespace Reko.Evaluation
             {
                 shift = slice.Expression as BinaryExpression;
             }
-            if (shift == null)
+            if (shift is null)
                 return null;
             if (shift.Operator != BinaryOperator.Shl)
                 return null;

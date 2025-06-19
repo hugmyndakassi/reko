@@ -54,14 +54,14 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         void DrawSpaceFillingCurve()
         {
-            if (segmentMap == null)
+            if (segmentMap is null)
                 return;
             x_old = 0;
             y_old = 0;
 
             this.rdr = SegmentMap.Segments.Values
                 .Select(seg => seg.MemoryArea as ByteMemoryArea)    //$TODO: ony byte granular memory areas
-                .Where(bmem => bmem != null)
+                .Where(bmem => bmem is not null)
                 .OrderBy(bmem => bmem.BaseAddress)
                 .Distinct()
                 .SelectMany(bmeme => bmeme.Bytes).GetEnumerator();
@@ -82,7 +82,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             {
                 if (h != default(GCHandle))
                     h.Free();
-                if (bmp != null)
+                if (bmp is not null)
                     bmp.Dispose();
             }
         }

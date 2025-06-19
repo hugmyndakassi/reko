@@ -153,7 +153,7 @@ namespace Reko.Core.Collections
                 item.DataType = ChopAfter(item.DataType, (int) delta);      // Shrink the existing mofo.
 
                 Items.Add(addr, itemNew);
-                if (itemAfter != null)
+                if (itemAfter is not null)
                 {
                     Items.Add(itemAfter.Address, itemAfter);
                 }
@@ -212,7 +212,7 @@ namespace Reko.Core.Collections
 
         private DataType ChopBefore(DataType type, int offset)
         {
-            if (type == null)
+            if (type is null)
                 throw new ArgumentNullException(nameof(type));
             if (type is UnknownType || type is CodeType)
                 return type;

@@ -74,7 +74,7 @@ Options:
             }
 
             var arch = rekoCfg.GetArchitecture(options["-a"].ToString());
-            if (arch == null)
+            if (arch is null)
             {
                 Console.WriteLine(
                     "c2xml: unknown architecture '{0}'. Check the c2xml config file for supported architectures.",
@@ -83,7 +83,7 @@ Options:
             }
             
             var envElem = rekoCfg.GetEnvironment(options["-e"].ToString());
-            if (envElem == null)
+            if (envElem is null)
             {
                 Console.WriteLine(
                    "c2xml: unknown environment '{0}'. Check the c2xml config file for supported architectures.",
@@ -102,7 +102,7 @@ Options:
                 return 1;
             }
 
-            if (options.ContainsKey("<outputfile>") && options["<outputfile>"] != null)
+            if (options.ContainsKey("<outputfile>") && options["<outputfile>"] is not null)
             {
                 try
                 {
@@ -115,7 +115,7 @@ Options:
                 }
             }
             string dialect = null;
-            if (options.TryGetValue("-d", out var optDialect) && optDialect != null)
+            if (options.TryGetValue("-d", out var optDialect) && optDialect is not null)
             {
                 dialect = (string) optDialect.Value;
             }

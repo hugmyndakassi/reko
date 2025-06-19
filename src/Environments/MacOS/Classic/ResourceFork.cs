@@ -348,7 +348,7 @@ namespace Reko.Environments.MacOS.Classic
             }
 
             // We have found a jump table, so we allocate an A5World.
-            if (jt != null)
+            if (jt is not null)
             {
                 // Find an address beyond all known segments.
                 var addr = program.SegmentMap.Segments.Values.Max(s => s.Address + s.Size)!.Align(0x10);
@@ -359,12 +359,12 @@ namespace Reko.Environments.MacOS.Classic
 
                 // Find first (and only!) segment containing the name %A5Init.
                 var a5dataSegment = program.SegmentMap.Segments.Values.SingleOrDefault(SegmentNamedA5Init);
-                if (a5dataSegment == null)
+                if (a5dataSegment is null)
                     return;
 
                 // Get an image reader to the start of the data.
                 var a5dr = GetA5InitImageReader(a5dataSegment);
-                if (a5dr == null)
+                if (a5dr is null)
                     return;
 
                 var a5hdroffset = a5dr.Offset;
@@ -637,7 +637,7 @@ namespace Reko.Environments.MacOS.Classic
             StringBuilder sb = new StringBuilder();
             sb.Append(type.Name);
             sb.Append(':');
-            if (rsrc.Name != null)
+            if (rsrc.Name is not null)
             {
                 sb.Append(rsrc.Name);
             }

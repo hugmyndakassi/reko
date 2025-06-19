@@ -298,14 +298,14 @@ namespace Reko.UserInterfaces.WindowsForms
                         return true;
                     case CmdIds.OpenLink:
                     case CmdIds.OpenLinkInNewWindow:
-                        status.Status = selAddress != null ? MenuStatus.Visible | MenuStatus.Enabled : 0;
+                        status.Status = selAddress is not null ? MenuStatus.Visible | MenuStatus.Enabled : 0;
                         return true;
                     case CmdIds.EditAnnotation:
                     case CmdIds.EditRegisterValues:
-                        status.Status = instr != null ? MenuStatus.Visible | MenuStatus.Enabled : 0;
+                        status.Status = instr is not null ? MenuStatus.Visible | MenuStatus.Enabled : 0;
                         return true;
                     case CmdIds.ActionCallTerminates:
-                        if (instr != null)
+                        if (instr is not null)
                         {
                             if ((instr.InstructionClass &  InstrClass.Call) != 0)
                             {
@@ -521,7 +521,7 @@ namespace Reko.UserInterfaces.WindowsForms
         public ImageMapItem SetTypeAtAddressRange(Address address, string userText)
         {
             var dataType = HungarianParser.Parse(userText);
-            if (dataType == null)
+            if (dataType is null)
                 return null;
             if (dataType is ArrayType arr && arr.ElementType.Size != 0)
             {
@@ -544,7 +544,7 @@ namespace Reko.UserInterfaces.WindowsForms
             AddressRange addrRange = control.MemoryView.GetAddressRange();
             if (!addrRange.IsValid)
                 return true;
-            if (program == null)
+            if (program is null)
                 return true;
             await services.RequireService<ICommandFactory>().ViewWhatPointsHere(program, addrRange.Begin).DoAsync();
             return true;
@@ -553,7 +553,7 @@ namespace Reko.UserInterfaces.WindowsForms
         public async ValueTask<bool> ViewFindPattern()
         {
             AddressRange addrRange = control.MemoryView.GetAddressRange();
-            if (!addrRange.IsValid || program == null)
+            if (!addrRange.IsValid || program is null)
                 return true;
             var dlgFactory = services.RequireService<IDialogFactory>();
             var uiSvc = services.RequireService<IDecompilerShellUiService>();

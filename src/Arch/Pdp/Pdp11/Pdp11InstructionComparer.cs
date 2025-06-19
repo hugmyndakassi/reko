@@ -48,9 +48,9 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private bool Compare(MachineOperand? opA, MachineOperand? opB)
         {
-            if (opA == null && opB == null)
+            if (opA is null && opB is null)
                 return true;
-            if (opA == null || opB == null)
+            if (opA is null || opB is null)
                 return false;
             if (opA.GetType() != opB.GetType())
                 return false;
@@ -63,7 +63,7 @@ namespace Reko.Arch.Pdp.Pdp11
                 if (NormalizeConstants)
                     return true;
                 var addrB = opB as Address?;
-                return addrB != null && addrA.ToLinear() == addrB.Value.ToLinear();
+                return addrB is not null && addrA.ToLinear() == addrB.Value.ToLinear();
             case Constant immA:
                 var immB = (Constant) opB;
                 return CompareValues(immA, immB);
@@ -115,7 +115,7 @@ namespace Reko.Arch.Pdp.Pdp11
             }
             if (op is MemoryOperand mem)
             {
-                var r = NormalizeRegisters || mem.Register == null
+                var r = NormalizeRegisters || mem.Register is null
                     ? 0
                     : mem.Register.GetHashCode();
                 var o = NormalizeConstants

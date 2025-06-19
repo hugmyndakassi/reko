@@ -448,7 +448,7 @@ IGNORE tab + cr + lf
                         break;
                     // Old-style C definition.
                     var decl = Parse_Decl();
-                    if (decl == null)
+                    if (decl is null)
                         break;
                 }
                 ExpectToken(CTokenType.LBrace);
@@ -477,9 +477,9 @@ IGNORE tab + cr + lf
             List<CAttribute> totalList = null;
             foreach (var list in lists)
             {
-                if (list != null)
+                if (list is not null)
                 {
-                    if (totalList == null)
+                    if (totalList is null)
                     {
                         totalList = new List<CAttribute>();
                     }
@@ -497,7 +497,7 @@ IGNORE tab + cr + lf
             {
                 foreach (var declarator in declarators)
                 {
-                    if (declarator.Init != null)
+                    if (declarator.Init is not null)
                         throw new CParserException("typedefs can't be initialized.");
                     var name = NameExtractor.GetName(declspecs.Skip(1), declarator.Declarator, ParserState);
                     ParserState.Typedefs.Add(name);
@@ -516,7 +516,7 @@ IGNORE tab + cr + lf
         {
             var attrs = ParseAttributeSpecifierSeq();
             var declSpecifiers = Parse_DeclSpecifierList();
-            if (declSpecifiers == null)
+            if (declSpecifiers is null)
                 return null;
             var listDecls = new List<InitDeclarator>();
             if (!PeekThenDiscard(CTokenType.Semicolon))
@@ -579,7 +579,7 @@ IGNORE tab + cr + lf
                 if (token.Type == CTokenType.Id)
                     ++idsSeen;
                 ds = Parse_DeclSpecifier();
-                if (ds == null)
+                if (ds is null)
                     break;
                 if (ds is TypeSpec)
                     ++typeDeclsSeen;
@@ -898,9 +898,9 @@ IGNORE tab + cr + lf
             while (true)
             {
                 DeclSpec t = Parse_TypeSpecifier();
-                if (t == null)
+                if (t is null)
                     t = Parse_TypeQualifier();
-                if (t == null)
+                if (t is null)
                     break;
                 sql.Add(t);
                 var nextToken = PeekToken();
@@ -970,7 +970,7 @@ IGNORE tab + cr + lf
                 decl = Parse_Declarator();
                 if (decl is PointerDeclarator ptr)
                 {
-                    if (ptr.TypeQualifierList == null)
+                    if (ptr.TypeQualifierList is null)
                         ptr.TypeQualifierList = new List<TypeQualifier>();
                     ptr.TypeQualifierList.Add(tq);
                 }
@@ -1033,9 +1033,9 @@ IGNORE tab + cr + lf
             ExpectToken(CTokenType.Star);
             List<TypeQualifier>? tqs = null;
             var tq = Parse_TypeQualifier();
-            while (tq != null)
+            while (tq is not null)
             {
-                if (tqs == null)
+                if (tqs is null)
                     tqs = new List<TypeQualifier>();
                 tqs.Add(tq);
                 tq = Parse_TypeQualifier();
@@ -1049,9 +1049,9 @@ IGNORE tab + cr + lf
             ExpectToken(CTokenType.Ampersand);
             List<TypeQualifier>? tqs = null;
             var tq = Parse_TypeQualifier();
-            while (tq != null)
+            while (tq is not null)
             {
-                if (tqs == null)
+                if (tqs is null)
                     tqs = new List<TypeQualifier>();
                 tqs.Add(tq);
                 tq = Parse_TypeQualifier();
@@ -1065,9 +1065,9 @@ IGNORE tab + cr + lf
             ExpectToken(CTokenType.Star);
             List<TypeQualifier>? tqs = null;
             var tq = Parse_TypeQualifier();
-            while (tq != null)
+            while (tq is not null)
             {
-                if (tqs == null)
+                if (tqs is null)
                     tqs = new List<TypeQualifier>();
                 tqs.Add(tq);
                 tq = Parse_TypeQualifier();
@@ -1171,7 +1171,7 @@ IGNORE tab + cr + lf
             case CTokenType.Star:
                 var ptr = Parse_Pointer();
                 decl = Parse_DirectAbstractDeclarator();
-                if (decl == null)
+                if (decl is null)
                     return ptr;
                 return ptr;
             default:

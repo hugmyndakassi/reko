@@ -98,7 +98,7 @@ namespace Reko.UserInterfaces.WindowsForms
             this.proc = stm.Block.Procedure;
             this.showProcedures = true;
             ProgramChanged();
-            if (program != null)
+            if (program is not null)
             {
                 SelectedAddress = stm.Address;
             }
@@ -128,7 +128,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void ProgramChanged()
         {
-            if (combinedCodeView == null)
+            if (combinedCodeView is null)
                 return;
 
             combinedCodeView.MixedCodeDataView.Program = program;
@@ -136,7 +136,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void MixedCodeDataView_ModelChanged(object sender, EventArgs e)
         {
-            if (combinedCodeView == null)
+            if (combinedCodeView is null)
                 return;
 
             CreateNestedTextModel();
@@ -162,7 +162,7 @@ namespace Reko.UserInterfaces.WindowsForms
                 Procedure proc = dataItemNode.Proc;
                 if (ShowItem(dataItemNode))
                 {
-                    if (proc != null)
+                    if (proc is not null)
                     {
                         var selSvc = services.RequireService<ISelectedAddressService>();
                         var model = new ProcedureCodeModel(proc, factory, selSvc);
@@ -172,7 +172,7 @@ namespace Reko.UserInterfaces.WindowsForms
                         nodeCreated = true;
                     }
                     else if (program.ImageMap.TryFindItem(curAddr, out ImageMapItem item) &&
-                              item.DataType != null &&
+                              item.DataType is not null &&
                             item.DataType is not UnknownType)
                     {
                         var dt = item.DataType;
@@ -212,7 +212,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private bool ShowAllItems()
         {
-            return (segment == null && showProcedures);
+            return (segment is null && showProcedures);
         }
 
         public object CreateControl()
@@ -296,7 +296,7 @@ namespace Reko.UserInterfaces.WindowsForms
         {
             program = null;
             ProgramChanged();
-            if (combinedCodeView != null)
+            if (combinedCodeView is not null)
                 combinedCodeView.Dispose();
             combinedCodeView = null;
         }
@@ -337,7 +337,7 @@ namespace Reko.UserInterfaces.WindowsForms
                     status.Status = MenuStatus.Enabled | MenuStatus.Visible;
                     return true;
                 case CmdIds.EditCopy:
-                    status.Status = FocusedTextView == null || FocusedTextView.Selection.IsEmpty
+                    status.Status = FocusedTextView is null || FocusedTextView.Selection.IsEmpty
                         ? MenuStatus.Visible
                         : MenuStatus.Visible | MenuStatus.Enabled;
                     return true;
@@ -354,13 +354,13 @@ namespace Reko.UserInterfaces.WindowsForms
                 case CmdIds.EditDeclaration:
                 case CmdIds.EditComment:
                 case CmdIds.OpenInNewTab:
-                    status.Status = GetAnchorAddress() == null
+                    status.Status = GetAnchorAddress() is null
                         ? MenuStatus.Visible
                         : MenuStatus.Enabled | MenuStatus.Visible;
                     return true;
                 case CmdIds.EditLabel:
                     Block block = GetSelectedBlock();
-                    status.Status = block != null
+                    status.Status = block is not null
                         ? MenuStatus.Enabled | MenuStatus.Visible
                         : 0;
                     return true;
@@ -415,10 +415,10 @@ namespace Reko.UserInterfaces.WindowsForms
 
         public void Copy()
         {
-            if (this.proc == null)
+            if (this.proc is null)
                 return;
 
-            if (FocusedTextView == null)
+            if (FocusedTextView is null)
                 return;
 
             var ms = new MemoryStream();

@@ -133,7 +133,7 @@ public class UnalignedMemoryAccessFuser : IAnalysis<SsaState>
                 if (stmL is null)
                     return;
                 assL = stmL.Instruction as Assignment;
-                if (assL == null)
+                if (assL is null)
                     return;
 
                 appL = assL.Src as Application;
@@ -161,13 +161,13 @@ public class UnalignedMemoryAccessFuser : IAnalysis<SsaState>
 
             ssa.RemoveUses(stmL);
             ssa.RemoveUses(stmR);
-            if (assL != null)
+            if (assL is not null)
             {
                 assL.Src = appL.Arguments[0];
                 ssa.AddUses(stmL!);
             }
             assR.Src = mem;
-            if (stmL != null)
+            if (stmL is not null)
             {
                 stmL.Block.Statements.Remove(stmL);
             }

@@ -201,7 +201,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         /// <param name="registerValue">The register value.</param>
         protected void AddRegisterAtPOR(UserRegisterValue registerValue)
         {
-            if ((registerValue != null) && (!registersAtPOR.Contains(registerValue)))
+            if ((registerValue is not null) && (!registersAtPOR.Contains(registerValue)))
                 registersAtPOR.Add(registerValue);
         }
 
@@ -280,7 +280,7 @@ namespace Reko.Arch.MicrochipPIC.Common
             lock (symTabLock)
             {
                 reg = registersByAddressAndWidth.FirstOrDefault(r => r.Key.Equals(key)).Value;
-                return (reg != null);
+                return (reg is not null);
             }
         }
 
@@ -416,7 +416,7 @@ namespace Reko.Arch.MicrochipPIC.Common
                 if (parentReg.BitFields!.Count <= 0)
                     return false;
                 field = parentReg.BitFields.FirstOrDefault(f => f.Key.Equals(fldkey)).Value;
-                return field != null;
+                return field is not null;
             }
         }
 
@@ -510,9 +510,9 @@ namespace Reko.Arch.MicrochipPIC.Common
         /// </returns>
         public static RegisterStorage? GetWidestSubregister(RegisterStorage reg, HashSet<RegisterStorage> regs)
         {
-            if (regs == null || regs.Count <= 0)
+            if (regs is null || regs.Count <= 0)
                 return reg;
-            ulong mask = regs.Where(b => b != null && b.OverlapsWith(reg)).Aggregate(0ul, (a, r) => a | r.BitMask);
+            ulong mask = regs.Where(b => b is not null && b.OverlapsWith(reg)).Aggregate(0ul, (a, r) => a | r.BitMask);
             if ((mask & reg.BitMask) == reg.BitMask)
                 return reg;
             RegisterStorage? rMax = null;
@@ -524,7 +524,7 @@ namespace Reko.Arch.MicrochipPIC.Common
                 foreach (var subreg in subregs.Values)
                 {
                     if ((subreg.BitMask & mask) == subreg.BitMask &&
-                        (rMax == null || subreg.BitSize > rMax.BitSize))
+                        (rMax is null || subreg.BitSize > rMax.BitSize))
                     {
                         rMax = subreg;
                     }
@@ -605,7 +605,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="regAddr"/> is null.</exception>
         public static bool TryGetAlwaysAccessibleRegister(PICBankedAddress regAddr, [MaybeNullWhen(false)] out PICRegisterStorage reg)
         {
-            if (regAddr == null)
+            if (regAddr is null)
                 throw new ArgumentNullException(nameof(regAddr));
             return TryGetAlwaysAccessibleRegister(regAddr.BankOffset.ToUInt16(), out reg);
         }
@@ -670,7 +670,7 @@ namespace Reko.Arch.MicrochipPIC.Common
             {
                 invalidDestRegisters.Clear();
             }
-            if (regs != null && regs.Count() > 0)
+            if (regs is not null && regs.Count() > 0)
             {
                 foreach (var r in regs)
                 {
@@ -685,7 +685,7 @@ namespace Reko.Arch.MicrochipPIC.Common
             {
                 indirectParentRegisters.Clear();
             }
-            if (pairs != null && pairs.Count() > 0)
+            if (pairs is not null && pairs.Count() > 0)
             {
                 foreach (var (child, parent) in pairs)
                     indirectParentRegisters.Add(child, parent);
@@ -698,7 +698,7 @@ namespace Reko.Arch.MicrochipPIC.Common
             {
                 alwayAccessibleRegisters.Clear();
             }
-            if (regs != null && regs.Count() > 0)
+            if (regs is not null && regs.Count() > 0)
             {
                 foreach (var reg in regs)
                 {

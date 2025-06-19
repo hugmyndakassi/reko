@@ -70,7 +70,7 @@ namespace Reko.Arch.Arm
             int cRegs;
             IntPtr aRegs;
             native.GetAllRegisters(0, out cRegs, out aRegs);
-            if (aRegs == null)
+            if (aRegs is null)
                 throw new OutOfMemoryException();
             this.regsByName = new Dictionary<string, RegisterStorage>();
             this.regsByNumber = new Dictionary<int, RegisterStorage>();
@@ -79,7 +79,7 @@ namespace Reko.Arch.Arm
             while (cRegs > 0)
             {
                 nReg = (NativeRegister)Marshal.PtrToStructure(aRegs, typeof(NativeRegister));
-                if (nReg.Name != null)
+                if (nReg.Name is not null)
                 {
                     var n = nReg.Name;
                     var i = nReg.Number;
@@ -109,7 +109,7 @@ namespace Reko.Arch.Arm
                 for (;;)
                 {
                     INativeInstruction nInstr = ndasm.NextInstruction();
-                    if (nInstr == null)
+                    if (nInstr is null)
                         yield break;
                     else
                         yield return new Arm32Instruction(nInstr);
@@ -117,11 +117,11 @@ namespace Reko.Arch.Arm
             }
             finally
             {
-                if (ndasm != null)
+                if (ndasm is not null)
                 {
                     ndasm = null;
                 }
-                if (hBytes != null && hBytes.IsAllocated)
+                if (hBytes is not null && hBytes.IsAllocated)
                 {
                     hBytes.Free();
                 }

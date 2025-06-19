@@ -49,7 +49,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
 		public CommandMenuItem(string text, Guid cmdSet, int cmdId)
 		{
-            if (text == null)
+            if (text is null)
             {
                 return;
             }
@@ -81,7 +81,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
 		protected override void OnClick(EventArgs e)
 		{
-			if (Click != null)
+			if (Click is not null)
 				Click(this, new CommandMenuEventArgs(this));
 		}
 	}

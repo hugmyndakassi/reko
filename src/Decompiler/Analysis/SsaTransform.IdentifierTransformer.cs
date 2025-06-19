@@ -82,7 +82,7 @@ namespace Reko.Analysis
                     bs = outer.blockstates[bs.Block.Procedure.EntryBlock];
                 }
                 var sid = ReadBlockLocalVariable(bs);
-                if (sid != null)
+                if (sid is not null)
                     return sid;
                 // Keep probin'.
                 // The commented-out code below is for assistance when troubleshooting
@@ -143,7 +143,7 @@ namespace Reko.Analysis
                     WriteVariable(bs, val);
                     val = AddPhiOperands(val);
                 }
-                if (val != null)
+                if (val is not null)
                     WriteVariable(bs, val);
                 return val;
             }
@@ -249,7 +249,7 @@ namespace Reko.Analysis
                 else
                 {
                     sid = SamePhiArgument(phi)!;
-                    if (sid == null)
+                    if (sid is null)
                         return false;
                 }
 
@@ -312,7 +312,7 @@ namespace Reko.Analysis
                     var op = (Identifier) de.Value;
                     if (op == same || op == phi.Identifier)
                         continue;
-                    if (same != null)
+                    if (same is not null)
                         return null;
                     same = op;
                 }
@@ -351,7 +351,7 @@ namespace Reko.Analysis
             {
                 var sig = outer.ssa.Procedure.Signature;
                 var param = ReadParameter(b, sig, id.Storage);
-                if (param != null)
+                if (param is not null)
                 {
                     var copy = new Assignment(id, param);
                     var stmCopy = b.Statements.Add(b.Address, copy);
@@ -370,7 +370,7 @@ namespace Reko.Analysis
                     return null;
                 var param = sig.Parameters!
                     .FirstOrDefault(p => p.Storage.OverlapsWith(stg));
-                if (param == null)
+                if (param is null)
                     return null;
                 var sidParam = outer.SsaState.EnsureDefInstruction(param, b);
                 var idParam = sidParam.Identifier;
@@ -500,7 +500,7 @@ namespace Reko.Analysis
                     aliasState = new AliasState();
                     bs.currentDef.Add(id.Storage.Domain, aliasState);
                 }
-                if (sid.DefStatement != null && sid.DefStatement.Instruction is not AliasAssignment)
+                if (sid.DefStatement is not null && sid.DefStatement.Instruction is not AliasAssignment)
                 {
                     // Only store a definition if it isn't an alias.
                     var stgDef = id.Storage;
@@ -560,7 +560,7 @@ namespace Reko.Analysis
                     {
                         // Found a gap in the register that wasn't defined in
                         // this basic block. Seek backwards
-                        var bitrangeR = sidElem == null
+                        var bitrangeR = sidElem is null
                             ? useRange
                             : new BitRange(offsetLo, usedRange.Lsb);
                         var idR = MakeTmpIdentifier(id.Storage, bitrangeR);
@@ -572,7 +572,7 @@ namespace Reko.Analysis
                         sids.Add((sidR!, bitrangeR!));
                         offsetLo = bitrangeR.Msb;
                     }
-                    if (sidElem != null)
+                    if (sidElem is not null)
                     {
                         sids.Add((sidElem, defRange));
                         offsetLo = usedRange.Msb;
@@ -618,7 +618,7 @@ namespace Reko.Analysis
                 {
                     var (sid, defRange, offset) = definitions[i];
                     var intersection = defRange.Intersect(useRange);
-                    if (!intersection.IsEmpty && (result.Item1 == null || result.useRange.Lsb > intersection.Lsb))
+                    if (!intersection.IsEmpty && (result.Item1 is null || result.useRange.Lsb > intersection.Lsb))
                     {
                         defRange = new BitRange(intersection.Lsb + offset, intersection.Msb + offset);
                         result = (sid, intersection, defRange);

@@ -64,7 +64,7 @@ namespace Reko.Arch.X86
             ccr.LowLevelDetails(stackAlignment, retAddressOnStack);
             SetReturnStorage(ccr, dtRet, stackAlignment);
 
-            if (dtThis != null)
+            if (dtThis is not null)
             {
                 ccr.ImplicitThisStack(dtThis);
             }
@@ -95,7 +95,7 @@ namespace Reko.Arch.X86
 
         public static void SetReturnStorage(ICallingConventionBuilder ccr, DataType? dtRet, int stackAlignment)
         {
-            if (dtRet == null)
+            if (dtRet is null)
                 return;
 
             int retSize = dtRet.Size;

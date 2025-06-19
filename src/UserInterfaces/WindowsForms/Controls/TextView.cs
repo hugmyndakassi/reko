@@ -132,7 +132,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         private StyleStack GetStyleStack()
         {
-            if (styleStack == null)
+            if (styleStack is null)
                 styleStack = new StyleStack(Services.RequireService<IUiPreferencesService>());
             return styleStack;
         }
@@ -141,7 +141,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
         {
             if (disposing)
             {
-                if (styleStack != null) styleStack.Dispose();
+                if (styleStack is not null) styleStack.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -216,7 +216,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                 // Not captured, so rat is just floating over us.
                 // Show the right cursor.
                 var span = GetSpan(e.Location);
-                if (span != null)
+                if (span is not null)
                 {
                     GetStyleStack().PushStyle(StyleClass);
                     styleStack.PushStyle(span.Style);
@@ -230,12 +230,12 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                 }
                 if (span != spanHover)
                 {
-                    if (spanHover != null)
+                    if (spanHover is not null)
                     {
                         SpanLeave?.Invoke(this, new SpanEventArgs(spanHover));
                     }
                     spanHover = span;
-                    if (span != null)
+                    if (span is not null)
                     {
                         SpanEnter?.Invoke(this, new SpanEventArgs(span));
                     }
@@ -253,7 +253,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                 {
                     cursorPos = anchorPos = pos;
                     var span = GetSpan(e.Location);
-                    if (span != null && span.Tag != null)
+                    if (span is not null && span.Tag is not null)
                     {
                         Navigate?.Invoke(this, new EditorNavigationArgs(span.Tag));
                     }
@@ -264,7 +264,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                     if (IsSelectionEmpty())
                     {
                         var span = GetSpan(e.Location);
-                        if (span != null && span.Tag != null)
+                        if (span is not null && span.Tag is not null)
                         {
                             Navigate?.Invoke(this, new EditorNavigationArgs(span.Tag));
                         }
@@ -288,7 +288,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (Services == null)
+            if (Services is null)
             {
                 Debug.Print("TextView.OnPaint: Services property must be set");
                 return;
@@ -463,7 +463,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
         /// </summary>
         protected void ChangeLayout()
         {
-            if (Services == null)
+            if (Services is null)
                 return;
 
             // Need to recompute the layout first so we can count
@@ -474,7 +474,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
 
             int visibleLines = GetFullyVisibleLines();
             vScroll.Minimum = 0;
-            if (model != null)
+            if (model is not null)
             {
                 vScroll.Maximum = Math.Max(model.LineCount - 1, 0);
                 vScroll.LargeChange = Math.Max(visibleLines - 1, 0);
@@ -569,7 +569,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                 {
                     var span = (iSpan < spans[0].TextSpans.Length) ?
                         spans[0].TextSpans[iSpan] : null;
-                    if (span != null)
+                    if (span is not null)
                     {
                         if (model.ComparePositions(spans[0].Position, end.Line) == 0 &&
                             iSpan == end.Span)

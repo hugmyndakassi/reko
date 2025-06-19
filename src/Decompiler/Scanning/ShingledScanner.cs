@@ -119,7 +119,7 @@ namespace Reko.Scanning
                 location = new NullCodeLocation("");
                 error = ex;
             }
-            if (location != null)
+            if (location is not null)
             {
                 eventListener.Error(location, "An error occurred while scanning {0}.");
             }
@@ -143,7 +143,7 @@ namespace Reko.Scanning
             foreach (var segment in program.SegmentMap.Segments.Values
                 .Where(s => s.IsExecutable))
             {
-                var sc = ScanRange(arch, segment.MemoryArea, segment.Address, segment.Size, workToDo);
+                var sc = ScanRange(new Chunk(arch, segment.MemoryArea, segment.Address, segment.Size), workToDo);
                 map.Add(segment, sc);
             }
             return map;
@@ -164,13 +164,15 @@ namespace Reko.Scanning
         /// <param name="segment"></param>
         /// <returns>An array of bytes classifying each byte as code or data.
         /// </returns>
-        public byte[] ScanRange(IProcessorArchitecture arch, MemoryArea mem, Address addrStart, uint cbAlloc, ulong workToDo)
+        public byte[] ScanRange(in Chunk chunk, ulong workToDo)
         {
+            var (arch, mem, addrStart, cbAlloc) = chunk;
+            Debug.Assert(arch is not null);
             const int ProgressBarUpdateInterval = 256 * 1024;
 
             var y = new byte[cbAlloc];
             // Advance by the instruction granularity.
-            var step = program.Architecture.InstructionBitSize / program.Architecture.MemoryGranularity;
+            var step = arch.InstructionBitSize / arch.MemoryGranularity;
             
             // Align the start address to instruction granularity. If we align off 
             // into invalid memory, return immediately.
@@ -199,7 +201,7 @@ namespace Reko.Scanning
                     sr.Invalid.Add(addr);
                     AddEdge(Bad, i.Address);
                     i.Class = InstrClass.Invalid;
-                    AddInstruction(i);
+                    AddInstruction(arch, i);
                     delaySlot = InstrClass.None;
                     y[a] = Data;
                 }
@@ -219,7 +221,7 @@ namespace Reko.Scanning
                                 // Fell off segment, i must be a bad instruction.
                                 AddEdge(Bad, i.Address);
                                 i.Class = InstrClass.Invalid;
-                                AddInstruction(i);
+                                AddInstruction(arch, i);
                                 y[a] = Data;
                             }
                         }
@@ -250,7 +252,7 @@ namespace Reko.Scanning
                                 // Jump to data / hyperspace.
                                 AddEdge(Bad, i.Address);
                                 i.Class = InstrClass.Invalid;
-                                AddInstruction(i);
+                                AddInstruction(arch, i);
                                 y[a] = Data;
                             }
                         }
@@ -260,7 +262,7 @@ namespace Reko.Scanning
                             {
                                 this.sr.IndirectCalls.Add(i.Address);
                             }
-                            else
+                            else if ((i.Class & InstrClass.Return) == 0)
                             {
                                 this.sr.IndirectJumps.Add(i.Address);
                             }
@@ -273,7 +275,7 @@ namespace Reko.Scanning
 
                 if (y[a] == MaybeCode)
                 {
-                    AddInstruction(i);
+                    AddInstruction(arch, i);
                 }
                 SaveRewriter(addr + i.Length, dasm, rewriterCache);
                 if (++instrCount >= ProgressBarUpdateInterval)
@@ -285,13 +287,11 @@ namespace Reko.Scanning
             return y;
         }
 
-        private void AddInstruction(RtlInstructionCluster i)
+        private void AddInstruction(IProcessorArchitecture arch, RtlInstructionCluster i)
         {
             sr.FlatInstructions.Add(i.Address.ToLinear(), new ScanResults.Instr
             {
-                addr = i.Address,
-                size = i.Length,
-                type = (ushort)i.Class,
+                Architecture = arch,
                 block_id = i.Address,
                 rtl = i,
                 pred = 0,
@@ -304,12 +304,8 @@ namespace Reko.Scanning
         {
             if (from == Bad)
                 return;
-            sr.FlatEdges.Add(new ScanResults.Link
-            {
-                first = to,
-                second = from,
-            });
-    }
+            sr.FlatEdges.Add(new ScanResults.Link(to, from));
+        }
 
         // Remove blocks that fall off the end of the segment
         // or into data.

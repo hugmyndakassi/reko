@@ -830,7 +830,7 @@ namespace Reko.Arch.Arm.AArch32
             {
                 var iReg = field.Read(u);
                 var reg = simdSysRegisters[iReg];
-                if (reg == null)
+                if (reg is null)
                     return false;
                 d.state.ops.Add(reg);
                 return true;
@@ -1810,7 +1810,7 @@ namespace Reko.Arch.Arm.AArch32
                     : 0;
                 bool preIndex = false;
                 bool add = true;
-                if (indexSpec != null)
+                if (indexSpec is not null)
                 {
                     preIndex = indexSpec.preIndex.Read(u) != 0;
                     add = indexSpec.add.Read(u) != 0;

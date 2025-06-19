@@ -46,9 +46,9 @@ namespace Reko.Arch.Tlcs.Tlcs90
 
         private bool CompareOp(MachineOperand opA, MachineOperand opB)
         {
-            if (opA == null && opB == null)
+            if (opA is null && opB is null)
                 return true;
-            if (opA == null || opB == null)
+            if (opA is null || opB is null)
                 return false;
             if (opA.GetType() != opB.GetType())
                 return false;
@@ -115,9 +115,9 @@ namespace Reko.Arch.Tlcs.Tlcs90
             case ConditionOperand<CondCode> condOp:
                 return h * 19 ^ condOp.Condition.GetHashCode();
             case MemoryOperand memOp:
-                if (!NormalizeRegisters && memOp.Base != null)
+                if (!NormalizeRegisters && memOp.Base is not null)
                     h = h * 23 ^ memOp.Base.GetHashCode();
-                if (!NormalizeConstants && memOp.Offset != null)
+                if (!NormalizeConstants && memOp.Offset is not null)
                     h = h * 17 ^ GetConstantHash(memOp.Offset);
                 return h;
             }

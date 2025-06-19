@@ -242,21 +242,21 @@ namespace Reko.Core.Expressions
         private Pointer? GetPossibleFieldType(DataType dtLeft, int offset)
         {
             var ptrLeft = dtLeft.ResolveAs<Pointer>();
-            if (ptrLeft == null)
+            if (ptrLeft is null)
                 return null;
 
             var pointee = ptrLeft.Pointee;
             var strPointee = pointee.ResolveAs<StructureType>();
-            if (strPointee == null)
+            if (strPointee is null)
                 return null;
 
             var field = strPointee.Fields.LowerBound(offset);
-            if (field == null)
+            if (field is null)
                 return null;
             // We're collecting _DataTypes_, so if we encounter
             // a TypeReference, we need to drill past it.
             var dtField = field.DataType.ResolveAs<DataType>();
-            if (dtField == null)
+            if (dtField is null)
                 return null;
             // If we access beyond the start of the field, we can't have the
             // same type as the field.
@@ -273,12 +273,12 @@ namespace Reko.Core.Expressions
         {
             var ptLeft = dtLeft.ResolveAs<PrimitiveType>();
             var ptRight = dtRight.ResolveAs<PrimitiveType>();
-            if (ptLeft != null && ptLeft.Domain == Domain.Pointer)
+            if (ptLeft is not null && ptLeft.Domain == Domain.Pointer)
             {
-                if (ptRight != null && ptRight.Domain != Domain.Pointer)
+                if (ptRight is not null && ptRight.Domain != Domain.Pointer)
                     return PrimitiveType.Create(Domain.Pointer, dtLeft.BitSize);
             }
-            if (ptLeft != null && ptLeft.IsIntegral && ptRight != null && ptRight.IsIntegral)
+            if (ptLeft is not null && ptLeft.IsIntegral && ptRight is not null && ptRight.IsIntegral)
             {
                 // According to the C language definition, the sum
                 // of unsigned and signed integers is always unsigned.
@@ -291,7 +291,7 @@ namespace Reko.Core.Expressions
                     return ptRight;
                 }
             }
-            if (dtLeft.ResolveAs<Pointer>() != null)
+            if (dtLeft.ResolveAs<Pointer>() is not null)
             {
                 if (dtLeft is TypeReference)
                     return dtLeft;
@@ -306,7 +306,7 @@ namespace Reko.Core.Expressions
             var ptRight = dtRight.ResolveAs<PrimitiveType>();
             if (dtLeft.Domain == Domain.Pointer)
             {
-                if (ptRight != null)
+                if (ptRight is not null)
                 {
                     if ((ptRight.Domain & Domain.Integer) != 0)
                         return PrimitiveType.Create(Domain.Pointer, dtLeft.BitSize);
@@ -319,10 +319,10 @@ namespace Reko.Core.Expressions
                 return PrimitiveType.CreateWord(dtLeft.BitSize);
                 //$TODO: should be a warning? throw new TypeInferenceException(string.Format("Pulling difference {0} and {1}", dtLeft, dtRight));
             }
-            if (ptRight != null && ptRight.Domain == Domain.Pointer || 
+            if (ptRight is not null && ptRight.Domain == Domain.Pointer || 
                 dtRight is Pointer)
             {
-                if (ptRight != null && (ptRight.Domain & Domain.Integer) != 0)
+                if (ptRight is not null && (ptRight.Domain & Domain.Integer) != 0)
                     return dtLeft;
                 // If a dtRight is a pointer and it's being subtracted from 
                 // something, then the result has to be a ptrdiff_t, i.e.

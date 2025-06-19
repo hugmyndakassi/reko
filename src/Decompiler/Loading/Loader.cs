@@ -257,7 +257,7 @@ namespace Reko.Loading
             program.Location = imageLocation;
             if (program.NeedsScanning)
             {
-                if (program.Architecture != null)
+                if (program.Architecture is not null)
                 {
                     program.Architecture.PostprocessProgram(program);
                 }
@@ -414,19 +414,19 @@ namespace Reko.Loading
 
         private ImageLoader? CreateRawImageLoader(ImageLocation imageLocation, byte[] image, RawFileDefinition rawFile)
         {
-            if (rawFile.Architecture == null)
+            if (rawFile.Architecture is null)
                 return null;
             var arch = cfgSvc.GetArchitecture(rawFile.Architecture);
             if (arch is null)
                 return null;
 
             PlatformDefinition? env = null;
-            if (rawFile.Environment != null)
+            if (rawFile.Environment is not null)
             {
                 env = cfgSvc.GetEnvironment(rawFile.Environment);
             }
             IPlatform platform;
-            if (env != null)
+            if (env is not null)
             {
                 platform = env.Load(Services, arch);
             }
@@ -446,7 +446,7 @@ namespace Reko.Loading
                 Platform = platform,
                 PreferredBaseAddress = entryAddr!.Value,
             };
-            if (rawFile.EntryPoint != null)
+            if (rawFile.EntryPoint is not null)
             {
                 Address addrEp;
                 if (!string.IsNullOrEmpty(rawFile.EntryPoint.Address))
@@ -624,7 +624,7 @@ namespace Reko.Loading
 
             var cfgSvc = services.RequireService<IConfigurationService>();
             var ldrCfg = cfgSvc.GetImageLoader(loader!);
-            if (ldrCfg != null && (ldrCfg.TypeName is not null || ldrCfg.Type is not null))
+            if (ldrCfg is not null && (ldrCfg.TypeName is not null || ldrCfg.Type is not null))
             {
                 return CreateImageLoader<ProgramImageLoader>(services, ldrCfg.Type, ldrCfg.TypeName, imageLocation, bytes);
             }
@@ -639,7 +639,7 @@ namespace Reko.Loading
 
         protected static void CopyImportReferences(Dictionary<Address, ImportReference> importReference, Program program)
         {
-            if (importReference == null)
+            if (importReference is null)
                 return;
 
             foreach (var item in importReference)

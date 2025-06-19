@@ -74,7 +74,7 @@ namespace Reko.UserInterfaces.WindowsForms
         public void DumpAssembler()
         {
             var decSvc = sp.GetService<IDecompilerService>();
-            if (decSvc == null)
+            if (decSvc is null)
                 throw new InvalidOperationException("Expected IDecompilerService to be available.");
 
             if (!IsProgramLoaded(program))
@@ -127,9 +127,9 @@ namespace Reko.UserInterfaces.WindowsForms
         private bool IsProgramLoaded(Program program)
         {
             return
-                program != null &&
-                program.Architecture != null &&
-                program.ImageMap != null;
+                program is not null &&
+                program.Architecture is not null &&
+                program.ImageMap is not null;
         }
 
         private async ValueTask GotoAddress()

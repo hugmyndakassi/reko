@@ -74,7 +74,7 @@ namespace Reko.UserInterfaces.WindowsForms
         public void SetSite(IServiceProvider sp)
         {
             this.services = sp;
-            if (services != null)
+            if (services is not null)
             {
                 var uiUser = services.RequireService<IUiPreferencesService>();
                 uiUser.UiPreferencesChanged += delegate { uiUser.UpdateControlStyle(UiStyles.List, listView); };
@@ -95,7 +95,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         private void SetSearchResults(ISearchResult result)
         {
-            if (this.result != null)
+            if (this.result is not null)
                 this.result.View = null;
             this.result = result;
             if (!listView.VirtualMode)
@@ -159,7 +159,7 @@ namespace Reko.UserInterfaces.WindowsForms
             if (itemCount < 2)
                 return;
             int i;
-            if (listView.FocusedItem == null)
+            if (listView.FocusedItem is null)
             {
                 i = 0;
             }
@@ -177,7 +177,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         void listView_DoubleClick(object? sender, EventArgs e)
         {
-            if (listView.FocusedItem == null)
+            if (listView.FocusedItem is null)
                 return;
             Debug.Assert(listView.FocusedItem.Tag is not null);
             DoubleClickItem((int)listView.FocusedItem.Tag);
@@ -292,7 +292,7 @@ namespace Reko.UserInterfaces.WindowsForms
 
         public bool QueryStatus(CommandID cmdId, CommandStatus status, CommandText text)
         {
-            if (result == null)
+            if (result is null)
                 return false;
             return result.QueryStatus(cmdId, status, text);
         }

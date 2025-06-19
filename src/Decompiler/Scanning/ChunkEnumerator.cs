@@ -23,6 +23,7 @@ namespace Reko.Scanning;
 using Reko.Core;
 using Reko.Core.Collections;
 using Reko.Core.Loading;
+using Reko.Core.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -41,12 +42,19 @@ public class ChunkEnumerator
     /// </summary>
     /// <param name="sortedSegments">A sorted sequence of <see cref="ImageSegment"/>s.</param>
     /// <param name="sortedBlocks"></param>
-    /// <returns></returns>
-    public IEnumerable<Chunk> EnumerateFragments(IEnumerable<ImageSegment> sortedSegments, IEnumerable<RtlBlock> sortedBlocks)
+    /// <param name="dataBlocks">Data blocks that should be excluded from the result.
+    /// The routine assumes the data blocks are sorted by increasing addresses.
+    /// </param>
+    /// <returns>A sequence of </returns>
+    public IEnumerable<Chunk> EnumerateFragments(
+        IEnumerable<ImageSegment> sortedSegments,
+        IEnumerable<RtlBlock> sortedBlocks,
+        IEnumerable<ImageMapItem> dataBlocks)
     {
         var fragments = ResolveOverlaps(sortedBlocks);
         var gapFragments = GenerateGapFragments(sortedSegments, fragments);
-        return gapFragments;
+        var result = ExcludeDataBlocks(gapFragments, dataBlocks);
+        return result;
     }
 
     /// <summary>
@@ -56,7 +64,9 @@ public class ChunkEnumerator
     /// <param name="fragments">A sorted sequence of non-overlapping <see cref="Chunk"/>.
     /// </param>
     /// <returns></returns>
-    private static IEnumerable<Chunk> GenerateGapFragments(IEnumerable<ImageSegment> segments, IEnumerable<Chunk> fragments)
+    private static IEnumerable<Chunk> GenerateGapFragments(
+        IEnumerable<ImageSegment> segments,
+        IEnumerable<Chunk> fragments)
     {
         var eFragments = new LookaheadEnumerator<Chunk>(fragments);
         foreach (var segment in segments)
@@ -72,7 +82,7 @@ public class ChunkEnumerator
 
                 if (addrLast < fragment.Address)
                 {
-                    yield return new Chunk(null, addrLast, fragment.Address - addrLast);
+                    yield return new Chunk(null, segment.MemoryArea, addrLast, fragment.Address - addrLast);
                 }
                 yield return fragment;
                 addrLast = Align(fragment.Address + fragment.Length, fragment.Architecture);
@@ -81,8 +91,14 @@ public class ChunkEnumerator
             // Rest of segment.
             long cbRemaining = segment.Size - (addrLast - segment.Address);
             if (cbRemaining > 0)
-                yield return new Chunk(null, addrLast, cbRemaining);
+                yield return new Chunk(null, segment.MemoryArea, addrLast, cbRemaining);
         }
+    }
+
+    private IEnumerable<Chunk> ExcludeDataBlocks(IEnumerable<Chunk> gapFragments, IEnumerable<ImageMapItem> dataBlocks)
+    {
+        //$TODO: remove data blocks from list of fragments.
+        return gapFragments;
     }
 
     private static Address Align(Address address, IProcessorArchitecture? arch)
@@ -105,10 +121,10 @@ public class ChunkEnumerator
         var e = sortedBlocks.GetEnumerator();
         if (!e.MoveNext())
             yield break;
-        var fragmentPrev = MakeFragment(e.Current);
+        var fragmentPrev = MakeFragment(e.Current, null!);
         while (e.MoveNext())
         {
-            var fragment = MakeFragment(e.Current);
+            var fragment = MakeFragment(e.Current, null!);
             Debug.Assert(fragmentPrev.Address < fragment.Address);
             var cbSeparation = fragment.Address - fragmentPrev.Address;
             var cbGap = cbSeparation - fragmentPrev.Length;
@@ -123,15 +139,15 @@ public class ChunkEnumerator
             if (cbOverlap >= 0)
             {
                 // Truncate the previous fragment.
-                yield return new(fragmentPrev.Architecture, fragmentPrev.Address, cbSeparation);
+                yield return new(fragmentPrev.Architecture, fragmentPrev.MemoryArea, fragmentPrev.Address, cbSeparation);
                 fragmentPrev = fragment;
             }
         }
         yield return fragmentPrev;
     }
 
-    private static Chunk MakeFragment(RtlBlock block)
+    private static Chunk MakeFragment(RtlBlock block, MemoryArea mem)
     {
-        return new Chunk(block.Architecture, block.Address, block.Length);
+        return new Chunk(block.Architecture, mem, block.Address, block.Length);
     }
 }

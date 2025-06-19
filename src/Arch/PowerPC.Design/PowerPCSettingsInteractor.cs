@@ -52,7 +52,7 @@ namespace Reko.Arch.PowerPC.Design
 
         public void Close()
         {
-            if (control != null)
+            if (control is not null)
             {
                 control.Dispose();
             }
@@ -66,7 +66,7 @@ namespace Reko.Arch.PowerPC.Design
 
         private void Control_Load(object sender, EventArgs e)
         {
-            if (services != null)
+            if (services is not null)
             {
                 this.cfgSvc = services.RequireService<IConfigurationService>();
                 var archOptions = cfgSvc.GetArchitectures().Single(a => a.Name == arch.Name);
@@ -82,7 +82,7 @@ namespace Reko.Arch.PowerPC.Design
 
         private void ProcessorModel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (control.ProcessorModel.SelectedItem == null)
+            if (control.ProcessorModel.SelectedItem is null)
                 return;
             arch.LoadUserOptions(new Dictionary<string, object>
             {

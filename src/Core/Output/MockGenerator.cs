@@ -465,7 +465,7 @@ namespace Reko.Core.Output
         void InstructionVisitor.VisitReturnInstruction(ReturnInstruction ret)
         {
             Method("Return");
-            if (ret.Expression != null)
+            if (ret.Expression is not null)
             {
                 ret.Expression.Accept(this);
             }
@@ -860,7 +860,7 @@ namespace Reko.Core.Output
             }
 
             writer.Write("new FunctionType(");
-            if (ft.ReturnValue == null)
+            if (ft.ReturnValue is null)
             {
                 writer.Write("null");
             }

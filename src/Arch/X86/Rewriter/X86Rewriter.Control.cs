@@ -47,10 +47,10 @@ namespace Reko.Arch.X86.Rewriter
             if (instrs[i-1].code != Mnemonic.test)
                 return tc;
             var ah = instrs[i-1].op1 as RegisterStorage;
-            if (ah == null || ah.Register != Registers.ah)
+            if (ah is null || ah.Register != Registers.ah)
                 return tc;
             var m = instrs[i-1].op2 as ImmediateOperand;
-            if (m == null)
+            if (m is null)
                 return tc;
 
             if (instrs[i-2].code != Mnemonic.fstsw)
@@ -214,7 +214,7 @@ namespace Reko.Arch.X86.Rewriter
 
             iclass = InstrClass.Transfer;
 			Address? addr = OperandAsCodeAddress(instrCur.Operands[0]);
-			if (addr != null)
+			if (addr is not null)
             {
                 m.Goto(addr);
 				return;
@@ -238,7 +238,7 @@ namespace Reko.Arch.X86.Rewriter
         {
             Identifier cx = orw.AluRegister(Registers.rcx, instrCur.DataWidth);
             m.Assign(cx, m.ISub(cx, 1));
-            if (useFlags != null)
+            if (useFlags is not null)
             {
                 m.Branch(
                     m.Cand(

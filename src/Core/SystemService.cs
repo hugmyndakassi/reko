@@ -149,24 +149,24 @@ namespace Reko.Core
         /// </returns>
         public bool Matches(ProcessorState? state)
         {
-            if (state == null &&
-                ((RegisterValues != null && RegisterValues.Length > 0) ||
-                 (StackValues != null && StackValues.Length > 0)))
+            if (state is null &&
+                ((RegisterValues is not null && RegisterValues.Length > 0) ||
+                 (StackValues is not null && StackValues.Length > 0)))
             {
                 return false;
             }
-            if (RegisterValues != null)
+            if (RegisterValues is not null)
             {
                 for (int i = 0; i < RegisterValues.Length; ++i)
                 {
                     Constant v = state!.GetRegister(RegisterValues[i].Register!);
-                    if (v == null || !v.IsValid)
+                    if (v is null || !v.IsValid)
                         return false;
                     if (v.ToUInt32() != RegisterValues[i].Value)
                         return false;
                 }
             }
-            if (StackValues != null && StackValues.Length > 0)
+            if (StackValues is not null && StackValues.Length > 0)
             {
                 for (int i = 0; i < StackValues.Length; ++i)
                 {
