@@ -24,118 +24,132 @@ using Reko.Core;
 using Reko.Core.Memory;
 using Reko.Gui;
 using Reko.Gui.Services;
+using Reko.Gui.Visualizers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Tools
+namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Tools;
+
+public class VisualizerViewModel : Tool
 {
-    public class VisualizerViewModel : Tool
+    private readonly ISelectedAddressService selAddrSvc;
+    private readonly ISelectionService selSvc;
+
+    public VisualizerViewModel(ISelectedAddressService selAddrSvc, ISelectionService selSvc)
     {
-        private readonly ISelectedAddressService selAddrSvc;
-        private readonly ISelectionService selSvc;
-        private Program? program;
+        this.selAddrSvc = selAddrSvc;
+        this.selSvc = selSvc;
+        this.selAddrSvc.SelectedAddressChanged += SelAddrSvc_SelectedAddressChanged;
+        this.selAddrSvc.SelectedProcedureChanged += SelAddrSvc_SelectedProcedureChanged;
+        this.selAddrSvc.SelectedProgramChanged += SelAddrSvc_SelectedProgramChanged;
+        this.selSvc.SelectionChanged += SelSvc_SelectionChanged;
+        this.selectedVisualizer = Visualizers[0];
 
-        public VisualizerViewModel(ISelectedAddressService selAddrSvc, ISelectionService selSvc)
+        // Create sample data - 10240 bytes
+        Bytes = new ByteMemoryArea(Address.Ptr32(0x123400), new byte[10240]);
+        var random = new Random(42);
+        for (int i = 0; i < Bytes.Length; i++)
         {
-            this.selAddrSvc = selAddrSvc;
-            this.selSvc = selSvc;
-            this.selAddrSvc.SelectedAddressChanged += SelAddrSvc_SelectedAddressChanged;
-            this.selAddrSvc.SelectedProcedureChanged += SelAddrSvc_SelectedProcedureChanged;
-            this.selAddrSvc.SelectedProgramChanged += SelAddrSvc_SelectedProgramChanged;
-            this.selSvc.SelectionChanged += SelSvc_SelectionChanged;
-            this.selectedVisualizer = Visualizers[0];
+            // Create some pattern for demonstration
+            Bytes.Bytes[i] = (byte) (Math.Sin(i * 0.1) * 127 + 128);
         }
+    }
 
+    public ByteMemoryArea? Bytes
+    {
+        get => bytes;
+        set { this.RaiseAndSetIfChanged(ref bytes, value); }
+    }
+    private ByteMemoryArea? bytes;
 
-        public List<ListOption> Visualizers { get; } = new List<ListOption>()
+    public Program? Program
+    {
+        get => program;
+        set { this.RaiseAndSetIfChanged(ref program, value); }
+    }
+    private Program? program;
+
+    public ListOption SelectedVisualizer
+    {
+        get => selectedVisualizer;
+        set { this.RaiseAndSetIfChanged(ref selectedVisualizer, value); }
+    }
+    private ListOption selectedVisualizer;
+
+    public List<ListOption> Visualizers { get; } = 
+    [
+        new ListOption("ASCII strings", new AsciiStringVisualizer()),
+        new ListOption("Code and data", new CodeDataVisualizer()),
+        new ListOption("Heat map", new HeatmapVisualizer()),
+    ];
+
+    private void SelAddrSvc_SelectedProgramChanged(object? sender, EventArgs e)
+    {
+        this.Program = this.selAddrSvc.SelectedProgram;
+        if (program is null)
         {
-            new ListOption("V1", "vis-1"),
-            new ListOption("V2", "vis-2"),
-            new ListOption("V3", "vis-3"),
-        };
-
-
-        public Address? Address
-        {
-            get => this.address;
-            set => this.RaiseAndSetIfChanged(ref this.address, value);
+            this.Bytes = null;
+            //this.Address = null;
         }
-        private Address? address;
-
-        public MemoryArea? MemoryArea
+        else
         {
-            get => this.memoryArea;
-            set => this.RaiseAndSetIfChanged(ref this.memoryArea, value);
-        }
-        private MemoryArea? memoryArea;
-
-        public ListOption SelectedVisualizer
-        {
-            get => selectedVisualizer;
-            set { this.RaiseAndSetIfChanged(ref selectedVisualizer, value); }
-        }
-        private ListOption selectedVisualizer;
-
-        private void SelAddrSvc_SelectedProgramChanged(object? sender, EventArgs e)
-        {
-            var program = this.selAddrSvc.SelectedProgram;
-            if (program is null)
-            {
-                this.MemoryArea = null;
-                this.Address = null;
-            }
-            else
-            {
-                if (!program.SegmentMap.TryFindSegment(program.SegmentMap.BaseAddress, out var segment))
-                    return;
-                this.MemoryArea = segment.MemoryArea;
-                this.Address = segment.MemoryArea.BaseAddress;
-            }
-        }
-
-        private void SelAddrSvc_SelectedProcedureChanged(object? sender, EventArgs e)
-        {
-            var proc = this.selAddrSvc.SelectedProcedure;
-            this.program = this.selAddrSvc.SelectedProgram;
-            if (proc is null || program is null || proc.EntryAddress == this.Address)
+            if (!program.SegmentMap.TryFindSegment(program.SegmentMap.BaseAddress, out var segment))
                 return;
-            Debug.Assert(program is not null);
-            if (!program.SegmentMap.TryFindSegment(proc.EntryAddress, out var segment))
+            if (segment.MemoryArea is not ByteMemoryArea bmem)
                 return;
-            this.MemoryArea = segment.MemoryArea;
-            this.Address = proc.EntryAddress;
+            this.Bytes = bmem;
+            //this.Address = segment.MemoryArea.BaseAddress;
         }
+    }
 
-        private void SelAddrSvc_SelectedAddressChanged(object? sender, EventArgs e)
-        {
-            var addrRange = this.selAddrSvc.SelectedAddressRange;
-            this.program = this.selAddrSvc.SelectedProgram;
-            if (addrRange is null || program is null || addrRange.Address == this.Address)
-                return;
-            if (!program.SegmentMap.TryFindSegment(addrRange.Address, out var segment))
-                return;
-            this.MemoryArea = segment.MemoryArea;
-            this.Address = addrRange.Address;
-        }
+    private void SelAddrSvc_SelectedProcedureChanged(object? sender, EventArgs e)
+    {
+        var proc = this.selAddrSvc.SelectedProcedure;
+        this.Program = this.selAddrSvc.SelectedProgram;
+        if (proc is null || program is null) // || proc.EntryAddress == this.Address)
+            return;
+        Debug.Assert(program is not null);
+        if (!program.SegmentMap.TryFindSegment(proc.EntryAddress, out var segment))
+            return;
+        if (segment.MemoryArea is not ByteMemoryArea bmem)
+            return;
+        this.Bytes = bmem;
+        //this.Address = proc.EntryAddress;
+    }
 
-        //$TODO: this should happen in VisualizerViewModel.
-        private void SelSvc_SelectionChanged(object? sender, EventArgs e)
+    private void SelAddrSvc_SelectedAddressChanged(object? sender, EventArgs e)
+    {
+        var addrRange = this.selAddrSvc.SelectedAddressRange;
+        this.Program = this.selAddrSvc.SelectedProgram;
+        if (addrRange is null || Program is null) // || addrRange.Address == this.Address)
+            return;
+        if (!Program.SegmentMap.TryFindSegment(addrRange.Address, out var segment))
+            return;
+        if (segment.MemoryArea is not ByteMemoryArea bmem)
+            return;
+        this.Bytes = bmem;
+        //this.Address = addrRange.Address;
+    }
+
+    //$TODO: this should happen in VisualizerViewModel.
+    private void SelSvc_SelectionChanged(object? sender, EventArgs e)
+    {
+        if (Program is null)
+            return;
+        var ar = selSvc.GetSelectedComponents()
+           .OfType<AddressRange>()
+           .FirstOrDefault();
+        if (ar is null)
+            return;
+        if (!Program.SegmentMap.TryFindSegment(ar.Begin, out var seg))
         {
-            if (program is null)
-                return;
-            var ar = selSvc.GetSelectedComponents()
-               .OfType<AddressRange>()
-               .FirstOrDefault();
-            if (ar is null)
-                return;
-            if (!program.SegmentMap.TryFindSegment(ar.Begin, out var seg))
-            {
-                return;
-            }
-            this.MemoryArea = seg.MemoryArea;
+            return;
         }
+        if (seg.MemoryArea is not ByteMemoryArea bmem)
+            return;
+        this.Bytes = bmem;
     }
 }

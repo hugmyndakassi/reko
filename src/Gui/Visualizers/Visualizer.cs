@@ -82,5 +82,4 @@ namespace Reko.Gui.Visualizers
             this.Text = text;
         }
     }
-
 }
