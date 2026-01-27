@@ -22,64 +22,98 @@ using Reko.Core;
 using Reko.Core.Expressions;
 using Reko.Core.Machine;
 using Reko.Core.Types;
+using System.Collections.Generic;
 using System.Text;
 
-namespace Reko.Arch.IA64
+namespace Reko.Arch.IA64;
+
+public class IA64Instruction : MachineInstruction
 {
-    public class IA64Instruction : MachineInstruction
+    private static readonly Dictionary<Completer, string> completerRender = new()
     {
-        public bool Stop { get; set; }
-        public Mnemonic Mnemonic { get; set; }
+        { Completer.Nt1, ".nt1" },
+        { Completer.Nta, ".nta" },
+        { Completer.Prefetch_Few, ".few" },
+        { Completer.Prefetch_Many, ".many" },
+        { Completer.Whether_Sptk, ".sptk"},
+        { Completer.Whether_Spnt, ".spnt"},
+        { Completer.Whether_Dptk, ".dptk"},
+        { Completer.Whether_Dpnt, ".dpnt" },
+        { Completer.BranchCache_Clr, ".clr" }
+    };
 
-        public RegisterStorage? QualifyingPredicate { get; set; }
+    public bool Stop { get; set; }
+    public Mnemonic Mnemonic { get; set; }
+    public Completer Completer { get; set; }
 
-        /// <summary>
-        /// Execution unit.
-        /// </summary>
-        /*[Obsolete]*/public char Unit { get; set; }
+    public FlagGroupStorage? QualifyingPredicate { get; set; }
+
+    /// <summary>
+    /// Execution unit.
+    /// </summary>
+    /*[Obsolete]*/public char Unit { get; set; }
 
 
-        public override int MnemonicAsInteger => (int) Mnemonic;
-        public override string MnemonicAsString => Mnemonic.ToString();
+    public override int MnemonicAsInteger => (int) Mnemonic;
+    public override string MnemonicAsString => Mnemonic.ToString();
 
+    protected override void DoRender(MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
+    {
+        RenderQualifyingPredicate(renderer);
+        RenderMnemonic(renderer);
+        RenderOperands(renderer, options);
+    }
 
-        protected override void DoRender(MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
+    private void RenderQualifyingPredicate(MachineInstructionRenderer renderer)
+    {
+        if (QualifyingPredicate is null || QualifyingPredicate == Registers.PredicateRegisters[0])
+            return;
+        renderer.WriteFormat("({0}) ", QualifyingPredicate.Name);
+    }
+
+    private void RenderMnemonic(MachineInstructionRenderer renderer)
+    {
+        var sb = new StringBuilder();
+        sb.Append(Mnemonic.ToString().Replace('_', '.'));
+        var ld = Completer & Completer.LdMask;
+        if (ld != 0)
         {
-            RenderQualifyingPredicate(renderer);
-            RenderMnemonic(renderer);
-            RenderOperands(renderer, options);
+            sb.Append(completerRender[ld]);
+        }
+        var wh = Completer & Completer.Whether_Mask;
+        if (wh != 0)
+        {
+            sb.Append(completerRender[wh]);
+        }
+        var ph = Completer & Completer.Prefetch_Mask;
+        if (ph != 0)
+        {
+            sb.Append(completerRender[ph]);
+        }
+        var dh = Completer & Completer.BranchCache_Clr;
+        if (dh != 0)
+        {
+            sb.Append(completerRender[dh]);
         }
 
-        private void RenderQualifyingPredicate(MachineInstructionRenderer renderer)
-        {
-            if (QualifyingPredicate is null || QualifyingPredicate == Registers.PredicateRegisters[0])
-                return;
-            renderer.WriteFormat("({0}) ", QualifyingPredicate.Name);
-        }
+        renderer.WriteMnemonic(sb.ToString());
+    }
 
-        private void RenderMnemonic(MachineInstructionRenderer renderer)
+    protected override void RenderOperand(MachineOperand operand, MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
+    {
+        switch (operand)
         {
-            var sb = new StringBuilder();
-            sb.Append(Mnemonic.ToString().Replace('_', '.'));
-            renderer.WriteMnemonic(sb.ToString());
-        }
-
-        protected override void RenderOperand(MachineOperand operand, MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
-        {
-            switch (operand)
+        case Constant imm:
+            if (imm.DataType.Domain == Domain.SignedInt)
             {
-            case Constant imm:
-                if (imm.DataType.Domain == Domain.SignedInt)
-                {
-                    renderer.WriteFormat("{0}", imm.ToInt64());
-                }
-                else
-                {
-                    renderer.WriteFormat("0x{0:X}", imm.ToUInt64());
-                }
-                return;
+                renderer.WriteFormat("{0}", imm.ToInt64());
             }
-            base.RenderOperand(operand, renderer, options);
+            else
+            {
+                renderer.WriteFormat("0x{0:X}", imm.ToUInt64());
+            }
+            return;
         }
+        base.RenderOperand(operand, renderer, options);
     }
 }

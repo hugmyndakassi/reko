@@ -55,8 +55,8 @@ namespace Reko.Arch.Qualcomm
         {
             this.arch = arch;
             this.rdr = rdr;
-            this.instrs = new List<HexagonInstruction>();
-            this.ops = new List<MachineOperand>();
+            this.instrs = [];
+            this.ops = [];
         }
 
         public override HexagonPacket? DisassembleInstruction()

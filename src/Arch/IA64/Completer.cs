@@ -18,8 +18,6 @@
  */
 #endregion
 
-using Reko.Core;
-using Reko.Core.Machine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,30 +26,28 @@ using System.Threading.Tasks;
 
 namespace Reko.Arch.IA64;
 
-public class IA64Bundle : MachineInstruction
+public enum Completer
 {
-    public IA64Bundle(IA64Instruction[] instructions)
-    {
-        Instructions = instructions;
-    }
+    Invalid = -1,
 
-    public override int MnemonicAsInteger => 0;
-    public override string MnemonicAsString => "";
+    None = 0,
 
-    public IA64Instruction[] Instructions { get; }
+    LdMask = 3,
+    Nt1 = 1,
+    Nta = 2,
 
-    protected override void DoRender(MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
-    {
-        string sep = "";
-        renderer.WriteString("{ ");
-        foreach (var instr in Instructions)
-        {
-            if (instr.InstructionClass == InstrClass.None)
-                continue;
-            renderer.WriteString(sep);
-            sep = "; ";
-            instr.Render(renderer, options);
-        }
-        renderer.WriteString(" }");
-    }
+    Prefetch_Mask = 12,
+    Prefetch_None = 0,
+    Prefetch_Few = 4,
+    Prefetch_Many = 8,
+
+    Whether_Mask = 0b111_0000,
+    Whether_None = 0,
+    Whether_Sptk = 16,
+    Whether_Spnt = 32,
+    Whether_Dptk = 64,
+    Whether_Dpnt = 96,
+
+    BranchCache_None = 0,
+    BranchCache_Clr = 128,
 }

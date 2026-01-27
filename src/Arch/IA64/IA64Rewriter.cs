@@ -24,6 +24,7 @@ using Reko.Core.Rtl;
 using Reko.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reko.Arch.IA64
 {
@@ -34,7 +35,7 @@ namespace Reko.Arch.IA64
         private readonly ProcessorState state;
         private readonly IStorageBinder binder;
         private readonly IRewriterHost host;
-        private readonly IEnumerator<IA64Instruction> dasm;
+        private readonly IEnumerator<IA64Bundle> dasm;
         private readonly List<RtlInstruction> rtls;
         private readonly RtlEmitter m;
 
@@ -58,7 +59,7 @@ namespace Reko.Arch.IA64
         {
             while (dasm.MoveNext())
             {
-                this.instr = dasm.Current;
+                this.instr = dasm.Current.Instructions[0];
                 switch (instr.Mnemonic)
                 {
                 default:

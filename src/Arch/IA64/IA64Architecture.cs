@@ -100,7 +100,7 @@ namespace Reko.Arch.IA64
 
         public override Address MakeAddressFromConstant(Constant c, bool codeAlign)
         {
-            throw new NotImplementedException();
+            return Address.Ptr64(c.ToUInt64());
         }
 
         public override Address? ReadCodeAddress(int size, EndianImageReader rdr, ProcessorState? state)
@@ -116,7 +116,6 @@ namespace Reko.Arch.IA64
         public override bool TryParseAddress(string? txtAddr, [MaybeNullWhen(false)] out Address addr)
         {
             return Address.TryParse64(txtAddr, out addr);
-            throw new NotImplementedException();
         }
     }
 }

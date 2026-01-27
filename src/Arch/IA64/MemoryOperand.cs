@@ -20,38 +20,41 @@
 
 using Reko.Core;
 using Reko.Core.Machine;
+using Reko.Core.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Reko.Arch.IA64;
 
-public class IA64Bundle : MachineInstruction
+public class MemoryOperand : AbstractMachineOperand
 {
-    public IA64Bundle(IA64Instruction[] instructions)
+    public MemoryOperand(RegisterStorage baseReg, long offset, PrimitiveType dt)
+        : base(dt)
     {
-        Instructions = instructions;
+        this.Base = baseReg;
+        this.Offset = offset;
     }
 
-    public override int MnemonicAsInteger => 0;
-    public override string MnemonicAsString => "";
+    public MemoryOperand(RegisterStorage baseReg, RegisterStorage indexReg, PrimitiveType dt)
+        : base(dt)
+    {
+        this.Base = baseReg;
+        this.Index = indexReg;
+    }
 
-    public IA64Instruction[] Instructions { get; }
+    public RegisterStorage Base { get; }
+    public RegisterStorage? Index { get; }
+    public long Offset { get; }
 
     protected override void DoRender(MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
     {
-        string sep = "";
-        renderer.WriteString("{ ");
-        foreach (var instr in Instructions)
-        {
-            if (instr.InstructionClass == InstrClass.None)
-                continue;
-            renderer.WriteString(sep);
-            sep = "; ";
-            instr.Render(renderer, options);
-        }
-        renderer.WriteString(" }");
+        Debug.Assert(Offset == 0 && Index == null);
+        renderer.WriteChar('[');
+        renderer.WriteString(Base.Name);
+        renderer.WriteChar(']');
     }
 }
