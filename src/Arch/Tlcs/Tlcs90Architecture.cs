@@ -182,7 +182,7 @@ namespace Reko.Arch.Tlcs
 
         public override FlagGroupStorage GetFlagGroup(string name)
         {
-            uint grf = 0;
+            ulong grf = 0;
             foreach (var c in name)
             {
                 switch (c)
@@ -199,7 +199,7 @@ namespace Reko.Arch.Tlcs
             return GetFlagGroup(Registers.f, grf);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             foreach (FlagGroupStorage f in Registers.flagBits)
             {
@@ -243,7 +243,7 @@ namespace Reko.Arch.Tlcs
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.S.FlagGroupBits) != 0) yield return Registers.S;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
             if ((grf & Registers.I.FlagGroupBits) != 0) yield return Registers.I;
@@ -253,7 +253,7 @@ namespace Reko.Arch.Tlcs
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             // We ignore the flagRegister, as the architecture only has one flag register.
             var s = new StringBuilder();

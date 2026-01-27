@@ -201,7 +201,7 @@ namespace Reko.Arch.Mips
             return GeneralRegs;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotSupportedException();
         }
@@ -266,7 +266,7 @@ namespace Reko.Arch.Mips
             return base.GetCallingConvention(name);
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             if (grf != 0)   // MIPS has no traditional status register.
                 throw new NotSupportedException();

@@ -77,7 +77,7 @@ namespace Reko.Arch.Telink
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -102,7 +102,7 @@ namespace Reko.Arch.Telink
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

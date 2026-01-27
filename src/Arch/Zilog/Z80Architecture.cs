@@ -120,7 +120,7 @@ namespace Reko.Arch.Zilog
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.S.FlagGroupBits) != 0) yield return Registers.S;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
             if ((grf & Registers.P.FlagGroupBits) != 0) yield return Registers.P;
@@ -128,7 +128,7 @@ namespace Reko.Arch.Zilog
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.f, grf, GrfToString(flagRegister, "", grf));
             return fl;
@@ -170,7 +170,7 @@ namespace Reko.Arch.Zilog
             }
         }
 
-		public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+		public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
 		{
 			StringBuilder sb = new StringBuilder();
             if ((grf & Registers.S.FlagGroupBits) != 0) sb.Append(Registers.S.Name);

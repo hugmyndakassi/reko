@@ -74,7 +74,7 @@ namespace Reko.Arch.Fujitsu
             return new F2MC16FX.Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -99,7 +99,7 @@ namespace Reko.Arch.Fujitsu
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

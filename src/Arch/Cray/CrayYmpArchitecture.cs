@@ -110,7 +110,7 @@ namespace Reko.Arch.Cray
             return new YmpRewriter(this, rootDecoder, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -140,7 +140,7 @@ namespace Reko.Arch.Cray
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

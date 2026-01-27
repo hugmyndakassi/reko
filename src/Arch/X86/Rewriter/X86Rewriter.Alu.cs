@@ -1227,7 +1227,7 @@ namespace Reko.Arch.X86.Rewriter
                 PrimitiveType.CreateWord(dst.DataType.BitSize)));
         }
 
-        private void RewriteSetFlag(FlagGroupStorage flags, uint value)
+        private void RewriteSetFlag(FlagGroupStorage flags, ulong value)
         {
             state.SetFlagGroup(flags, Constant.Create(flags.DataType, value));
             var id = orw.FlagGroup(flags);
@@ -1411,7 +1411,7 @@ namespace Reko.Arch.X86.Rewriter
 
         private Func<Expression,long,Expression> GetIncrementOperator()
         {
-            Constant direction = state.GetFlagGroup((uint)FlagM.DF);
+            Constant? direction = state.GetFlagGroup((ulong) FlagM.DF);
             if (direction is null || !direction.IsValid)
                 return m.IAddS;        // Better safe than sorry.
             if (direction.ToBoolean())

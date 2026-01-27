@@ -39,7 +39,7 @@ namespace Reko.UnitTests.Decompiler.Analysis
 			IProcessorArchitecture arch = new X86ArchitectureReal(new ServiceContainer(), "x86-real-16", new Dictionary<string, object>());
 			SignatureBuilder sb = new(null, arch);
             sb.AddFlagGroupReturnValue(
-                new KeyValuePair<RegisterStorage, uint>(Registers.eflags, (uint) FlagM.CF),
+                new KeyValuePair<RegisterStorage, ulong>(Registers.eflags, (ulong) FlagM.CF),
                 arch.CreateFrame());
 			FunctionType sig = sb.BuildSignature();
 			Assert.AreEqual("bool", sig.ReturnValue.DataType.ToString());

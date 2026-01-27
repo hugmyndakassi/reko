@@ -76,9 +76,9 @@ public class M88kArchitecture : ProcessorArchitecture
         return new M88kRewriter(this, this.Services, rdr, state, binder, host);
     }
 
-    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
     {
-        if (grf != (uint)FlagM.CF)
+        if (grf != (ulong) FlagM.CF)
             return null;
         return Registers.C;
     }
@@ -109,7 +109,7 @@ public class M88kArchitecture : ProcessorArchitecture
         return Registers.GpRegisters;
     }
 
-    public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+    public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
     {
         throw new NotSupportedException();
     }

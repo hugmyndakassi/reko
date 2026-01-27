@@ -1089,7 +1089,7 @@ namespace Reko.Arch.X86
             return new FlagGroupStorage(freg, (uint)grf, name);
         }
 
-        private static FlagGroupStorage FlagRegister(string name, RegisterStorage freg, uint grf)
+        private static FlagGroupStorage FlagRegister(string name, RegisterStorage freg, ulong grf)
         {
             return new FlagGroupStorage(freg, (uint) grf, name);
         }

@@ -42,7 +42,7 @@ namespace Reko.Arch.Arm
         private INativeArchitecture native;
 #endif
         private readonly Dictionary<int, RegisterStorage> regsByNumber;
-        private readonly Dictionary<uint, FlagGroupStorage> flagGroups;
+        private readonly Dictionary<ulong, FlagGroupStorage> flagGroups;
 
         public ThumbArchitecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, Registers.ByName, Registers.ByDomain)
@@ -53,7 +53,7 @@ namespace Reko.Arch.Arm
             this.WordWidth = PrimitiveType.Word32;
             this.InstructionBitSize = 16;
 
-            this.flagGroups = new Dictionary<uint, FlagGroupStorage>();
+            this.flagGroups = [];
 #if NATIVE
             var unk = CreateNativeArchitecture("arm-thumb");
             this.native = (INativeArchitecture)Marshal.GetObjectForIUnknown(unk);
@@ -174,7 +174,7 @@ namespace Reko.Arch.Arm
             return regsByNumber.Values.OrderBy(r => r.Number).ToArray();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagGroups.TryGetValue(grf, out FlagGroupStorage? f))
             {
@@ -193,11 +193,11 @@ namespace Reko.Arch.Arm
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.NF);
-            if ((grf & (uint) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.ZF);
-            if ((grf & (uint) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.CF);
-            if ((grf & (uint) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.VF);
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.NF);
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.ZF);
+            if ((grf & (ulong) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.CF);
+            if ((grf & (ulong) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.VF);
         }
 
         public override Address? ReadCodeAddress(int size, EndianImageReader rdr, ProcessorState? state)
@@ -205,13 +205,13 @@ namespace Reko.Arch.Arm
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
-            if ((grf & (uint)FlagM.NF) != 0) s.Append('N');
-            if ((grf & (uint)FlagM.ZF) != 0) s.Append('Z');
-            if ((grf & (uint)FlagM.CF) != 0) s.Append('C');
-            if ((grf & (uint)FlagM.VF) != 0) s.Append('V');
+            if ((grf & (ulong) FlagM.NF) != 0) s.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) s.Append('Z');
+            if ((grf & (ulong) FlagM.CF) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.VF) != 0) s.Append('V');
             return s.ToString();
         }
 

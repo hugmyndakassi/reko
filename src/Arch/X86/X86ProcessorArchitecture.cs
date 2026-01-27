@@ -209,7 +209,7 @@ namespace Reko.Arch.X86
             return mode.GetControlRegister(v);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
 		{
             var f = new FlagGroupStorage(Registers.eflags, grf, GrfToString(flagRegister, "", grf));
 			return f;
@@ -249,7 +249,7 @@ namespace Reko.Arch.X86
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.S.FlagGroupBits) != 0) yield return Registers.S;
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
@@ -315,7 +315,7 @@ namespace Reko.Arch.X86
             return (reg != RegisterStorage.None);
         }
 
-		public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+		public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
 		{
 			StringBuilder s = new StringBuilder();
             if (flagregister == Registers.eflags)

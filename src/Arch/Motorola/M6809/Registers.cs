@@ -68,10 +68,10 @@ namespace Reko.Arch.Motorola.M6809
 
             AddrRegs = new RegisterStorage[] { X, Y, U, S };
             
-            N = new FlagGroupStorage(CC, (uint)FlagM.N, nameof(N)); 
-            Z = new FlagGroupStorage(CC, (uint)FlagM.Z, nameof(Z)); 
-            V = new FlagGroupStorage(CC, (uint)FlagM.V, nameof(V));
-            C = new FlagGroupStorage(CC, (uint)FlagM.C, nameof(C));
+            N = new FlagGroupStorage(CC, (ulong) FlagM.N, nameof(N)); 
+            Z = new FlagGroupStorage(CC, (ulong) FlagM.Z, nameof(Z)); 
+            V = new FlagGroupStorage(CC, (ulong) FlagM.V, nameof(V));
+            C = new FlagGroupStorage(CC, (ulong) FlagM.C, nameof(C));
 
             NV = new FlagGroupStorage(CC, (uint) (FlagM.N| FlagM.V), nameof(NV));
             NZ = new FlagGroupStorage(CC, (uint) (FlagM.N| FlagM.Z), nameof(NZ));

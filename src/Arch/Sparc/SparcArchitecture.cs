@@ -38,7 +38,7 @@ namespace Reko.Arch.Sparc
 
     public class SparcArchitecture : ProcessorArchitecture
     {
-        private readonly Dictionary<uint, FlagGroupStorage> flagGroups;
+        private readonly Dictionary<ulong, FlagGroupStorage> flagGroups;
 
         public SparcArchitecture(IServiceProvider services, string archId, Registers registers, Decoder rootDecoder, PrimitiveType wordWidth, Dictionary<string, object> options)
             : base(services, archId, options, null, null)
@@ -52,7 +52,7 @@ namespace Reko.Arch.Sparc
             this.StackRegister = Registers.sp;
             this.FramePointerType = PointerType;
             this.InstructionBitSize = 32;
-            this.flagGroups = new Dictionary<uint, FlagGroupStorage>();
+            this.flagGroups = [];
         }
 
         public Registers Registers { get; }
@@ -136,7 +136,7 @@ namespace Reko.Arch.Sparc
             return Registers.TryGetRegister(name, out reg);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagGroups.TryGetValue(grf, out FlagGroupStorage? fl))
                 return fl;
@@ -208,7 +208,7 @@ namespace Reko.Arch.Sparc
         }
 
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
             if ((grf & Registers.N.FlagGroupBits) != 0) s.Append(Registers.N.Name);

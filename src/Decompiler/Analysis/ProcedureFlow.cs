@@ -98,7 +98,7 @@ namespace Reko.Analysis
         /// stack at the entry of the procedure, and popped before 
         /// leaving.
         /// </remarks>
-		public Dictionary<RegisterStorage, uint> PreservedFlags { get; }
+		public Dictionary<RegisterStorage, ulong> PreservedFlags { get; }
 
         /// <summary>
         /// Registers that have been modified at the end of the execution of
@@ -111,7 +111,7 @@ namespace Reko.Analysis
         /// the <see cref="Procedure"/>, grouped by the status register they
         /// are part of.
         /// </summary>
-        public Dictionary<RegisterStorage, uint> grfTrashed { get; }
+        public Dictionary<RegisterStorage, ulong> grfTrashed { get; }
 
         /// <summary>
         /// If present, indicates a register always has a constant value
@@ -140,8 +140,8 @@ namespace Reko.Analysis
             Trashed = new HashSet<Storage>();
             Constants = new Dictionary<Storage, Constant>();
 
-            grfTrashed = new Dictionary<RegisterStorage, uint>();
-            PreservedFlags = new Dictionary<RegisterStorage, uint>();
+            grfTrashed = new Dictionary<RegisterStorage, ulong>();
+            PreservedFlags = new Dictionary<RegisterStorage, ulong>();
             LiveOutFlags = new Dictionary<RegisterStorage, LiveOutFlagsUse>();
 
             BitsLiveOut = new Dictionary<Storage, LiveOutUse>();

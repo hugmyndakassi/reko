@@ -122,7 +122,7 @@ namespace Reko.Environments.C64
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -167,7 +167,7 @@ namespace Reko.Environments.C64
             return Address.Ptr16(c.ToUInt16());
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

@@ -57,10 +57,10 @@ namespace Reko.Arch.WE32100
             ap = GpRegs[10];
             sp = GpRegs[12];
             psw = GpRegs[11];
-            C = new FlagGroupStorage(psw, (uint) FlagM.C, nameof(C));
-            V = new FlagGroupStorage(psw, (uint) FlagM.C, nameof(V));
-            Z = new FlagGroupStorage(psw, (uint) FlagM.C, nameof(Z));
-            N = new FlagGroupStorage(psw, (uint) FlagM.C, nameof(N));
+            C = new FlagGroupStorage(psw, (ulong) FlagM.C, nameof(C));
+            V = new FlagGroupStorage(psw, (ulong) FlagM.C, nameof(V));
+            Z = new FlagGroupStorage(psw, (ulong) FlagM.C, nameof(Z));
+            N = new FlagGroupStorage(psw, (ulong) FlagM.C, nameof(N));
             Flags = new FlagGroupStorage[] { C, V, Z, N };
             NZV = new FlagGroupStorage(psw, (uint) (FlagM.N | FlagM.Z | FlagM.V), nameof(NZV));
             NZVC = new FlagGroupStorage(psw, (uint) (FlagM.N | FlagM.Z | FlagM.V | FlagM.C), nameof(NZVC));

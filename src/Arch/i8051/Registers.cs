@@ -189,10 +189,10 @@ namespace Reko.Arch.i8051
 
             };
 
-            CFlag = new FlagGroupStorage(PSW, (uint) FlagM.C, "C");
-            AFlag = new FlagGroupStorage(PSW, (uint) FlagM.AC, "A");
-            OFlag = new FlagGroupStorage(PSW, (uint) FlagM.OV, "O");
-            PFlag = new FlagGroupStorage(PSW, (uint) FlagM.P, "P");
+            CFlag = new FlagGroupStorage(PSW, (ulong) FlagM.C, "C");
+            AFlag = new FlagGroupStorage(PSW, (ulong) FlagM.AC, "A");
+            OFlag = new FlagGroupStorage(PSW, (ulong) FlagM.OV, "O");
+            PFlag = new FlagGroupStorage(PSW, (ulong) FlagM.P, "P");
             CAOP = new FlagGroupStorage(PSW, (uint) (FlagM.C | FlagM.AC | FlagM.OV | FlagM.P), nameof(CAOP));
 
             ByDomain = factory.DomainsToRegisters.Values

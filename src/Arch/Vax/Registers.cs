@@ -89,16 +89,16 @@ namespace Reko.Arch.Vax
 
             psw = RegisterStorage.Reg32("psw", 20);
 
-            C = new FlagGroupStorage(psw, (uint) FlagM.CF, "C");
-            V = new FlagGroupStorage(psw, (uint) FlagM.VF, "V");
-            Z = new FlagGroupStorage(psw, (uint) FlagM.ZF, "Z");
-            N = new FlagGroupStorage(psw, (uint) FlagM.NF, "N");
-            CVN = new FlagGroupStorage(psw, (uint) FlagM.CVN, "CVN");
-            CVZN = new FlagGroupStorage(psw, (uint) FlagM.CVZN, "CVZN");
-            CZ = new FlagGroupStorage(psw, (uint) FlagM.CZ, "CZ");
-            CZN = new FlagGroupStorage(psw, (uint) FlagM.CZN, "CZN");
-            VZN = new FlagGroupStorage(psw, (uint) FlagM.VZN, "VZN");
-            ZN = new FlagGroupStorage(psw, (uint) FlagM.ZN, "ZN");
+            C = new FlagGroupStorage(psw, (ulong) FlagM.CF, "C");
+            V = new FlagGroupStorage(psw, (ulong) FlagM.VF, "V");
+            Z = new FlagGroupStorage(psw, (ulong) FlagM.ZF, "Z");
+            N = new FlagGroupStorage(psw, (ulong) FlagM.NF, "N");
+            CVN = new FlagGroupStorage(psw, (ulong) FlagM.CVN, "CVN");
+            CVZN = new FlagGroupStorage(psw, (ulong) FlagM.CVZN, "CVZN");
+            CZ = new FlagGroupStorage(psw, (ulong) FlagM.CZ, "CZ");
+            CZN = new FlagGroupStorage(psw, (ulong) FlagM.CZN, "CZN");
+            VZN = new FlagGroupStorage(psw, (ulong) FlagM.VZN, "VZN");
+            ZN = new FlagGroupStorage(psw, (ulong) FlagM.ZN, "ZN");
 
             ByName = factory.NamesToRegisters;
             ByDomain = factory.DomainsToRegisters;

@@ -70,7 +70,7 @@ public class NX8_200Architecture : ProcessorArchitecture
         return new NX8_200Rewriter(this, rdr, state, binder, host);
     }
 
-    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
     {
         throw new NotImplementedException();
     }
@@ -95,7 +95,7 @@ public class NX8_200Architecture : ProcessorArchitecture
         throw new NotImplementedException();
     }
 
-    public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+    public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
     {
         throw new NotImplementedException();
     }

@@ -70,7 +70,7 @@ namespace Reko.Arch.V850
             return new V850Rewriter(arch, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -95,7 +95,7 @@ namespace Reko.Arch.V850
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

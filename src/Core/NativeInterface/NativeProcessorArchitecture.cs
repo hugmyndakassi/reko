@@ -86,7 +86,7 @@ namespace Reko.Core.NativeInterface
 		}
 
         /// <inheritdoc/>
-		public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+		public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
 		{
 			throw new NotImplementedException();
 		}
@@ -128,7 +128,7 @@ namespace Reko.Core.NativeInterface
         }
 
         /// <inheritdoc/>
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
 		{
 			throw new NotImplementedException();
 		}

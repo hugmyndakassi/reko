@@ -71,7 +71,7 @@ public static class Registers
         NV = new FlagGroupStorage(PSR, (uint) (FlagM.NF|FlagM.VF), "NV");
         NVZ = new FlagGroupStorage(PSR, (uint) (FlagM.NF|FlagM.VF|FlagM.ZF), "NVZ");
         NZ = new FlagGroupStorage(PSR, (uint) (FlagM.NF|FlagM.ZF), "NZ");
-        Z = new FlagGroupStorage(PSR, (uint) FlagM.ZF, "Z");
+        Z = new FlagGroupStorage(PSR, (ulong) FlagM.ZF, "Z");
 
         ByName = factory.NamesToRegisters
             .Concat(sysFactory.NamesToRegisters)

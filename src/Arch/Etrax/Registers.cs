@@ -116,17 +116,17 @@ namespace Reko.Arch.Etrax
                 usp,
             };
 
-            F =  new FlagGroupStorage(dccr, (uint)FlagM.FF, nameof(F));
-            P =  new FlagGroupStorage(dccr, (uint)FlagM.PF, nameof(P));
-            U =  new FlagGroupStorage(dccr, (uint)FlagM.UF, nameof(U));
-            M =  new FlagGroupStorage(dccr, (uint)FlagM.MF, nameof(M));
-            B =  new FlagGroupStorage(dccr, (uint)FlagM.BF, nameof(B));
-            I =  new FlagGroupStorage(dccr, (uint)FlagM.IF, nameof(I));
-            X =  new FlagGroupStorage(dccr, (uint)FlagM.XF, nameof(X));
-            N =  new FlagGroupStorage(dccr, (uint)FlagM.NF, nameof(N));
-            Z =  new FlagGroupStorage(dccr, (uint)FlagM.ZF, nameof(Z));
-            V =  new FlagGroupStorage(dccr, (uint)FlagM.VF, nameof(V));
-            C =  new FlagGroupStorage(dccr, (uint)FlagM.CF, nameof(C));
+            F =  new FlagGroupStorage(dccr, (ulong) FlagM.FF, nameof(F));
+            P =  new FlagGroupStorage(dccr, (ulong) FlagM.PF, nameof(P));
+            U =  new FlagGroupStorage(dccr, (ulong) FlagM.UF, nameof(U));
+            M =  new FlagGroupStorage(dccr, (ulong) FlagM.MF, nameof(M));
+            B =  new FlagGroupStorage(dccr, (ulong) FlagM.BF, nameof(B));
+            I =  new FlagGroupStorage(dccr, (ulong) FlagM.IF, nameof(I));
+            X =  new FlagGroupStorage(dccr, (ulong) FlagM.XF, nameof(X));
+            N =  new FlagGroupStorage(dccr, (ulong) FlagM.NF, nameof(N));
+            Z =  new FlagGroupStorage(dccr, (ulong) FlagM.ZF, nameof(Z));
+            V =  new FlagGroupStorage(dccr, (ulong) FlagM.VF, nameof(V));
+            C =  new FlagGroupStorage(dccr, (ulong) FlagM.CF, nameof(C));
 
             NZ = new FlagGroupStorage(dccr, (uint) (FlagM.NF|FlagM.ZF), nameof(NZ));
             NZVC = new FlagGroupStorage(dccr, (uint) (FlagM.NF|FlagM.ZF|FlagM.VF|FlagM.CF), nameof(NZVC));

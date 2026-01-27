@@ -38,7 +38,7 @@ namespace Reko.Arch.Mos6502
 {
     public class Mos6502Architecture : ProcessorArchitecture
     {
-        private readonly Dictionary<uint, FlagGroupStorage> flagGroups;
+        private readonly Dictionary<ulong, FlagGroupStorage> flagGroups;
 
         public Mos6502Architecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, Registers.RegistersByName, null!)
@@ -50,7 +50,7 @@ namespace Reko.Arch.Mos6502
             PointerType = PrimitiveType.Ptr16;
             StackRegister = Registers.s;
             WordWidth = PrimitiveType.Byte;       // 8-bit, baby!
-            flagGroups = new Dictionary<uint, FlagGroupStorage>();
+            flagGroups = [];
         }
 
         public override IEnumerable<MachineInstruction> CreateDisassembler(EndianImageReader imageReader)
@@ -127,7 +127,7 @@ namespace Reko.Arch.Mos6502
             }
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagGroups.TryGetValue(grf, out var fstg))
                 return fstg;
@@ -177,7 +177,7 @@ namespace Reko.Arch.Mos6502
             }
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             var sb = new StringBuilder();
             foreach (var flag in Registers.Flags)
@@ -204,12 +204,12 @@ namespace Reko.Arch.Mos6502
         public static readonly RegisterStorage p = RegisterStorage.Reg8("p", 10);
         public static readonly RegisterStorage pc = RegisterStorage.Reg16("pc", 11);
 
-        public static readonly FlagGroupStorage N = new FlagGroupStorage(p, (uint)FlagM.NF, nameof(N));
-        public static readonly FlagGroupStorage V = new FlagGroupStorage(p, (uint)FlagM.VF, nameof(V));
-        public static readonly FlagGroupStorage I = new FlagGroupStorage(p, (uint)FlagM.IF, nameof(I));
-        public static readonly FlagGroupStorage D = new FlagGroupStorage(p, (uint)FlagM.DF, nameof(D));
-        public static readonly FlagGroupStorage Z = new FlagGroupStorage(p, (uint)FlagM.ZF, nameof(Z));
-        public static readonly FlagGroupStorage C = new FlagGroupStorage(p, (uint)FlagM.CF, nameof(C));
+        public static readonly FlagGroupStorage N = new FlagGroupStorage(p, (ulong) FlagM.NF, nameof(N));
+        public static readonly FlagGroupStorage V = new FlagGroupStorage(p, (ulong) FlagM.VF, nameof(V));
+        public static readonly FlagGroupStorage I = new FlagGroupStorage(p, (ulong) FlagM.IF, nameof(I));
+        public static readonly FlagGroupStorage D = new FlagGroupStorage(p, (ulong) FlagM.DF, nameof(D));
+        public static readonly FlagGroupStorage Z = new FlagGroupStorage(p, (ulong) FlagM.ZF, nameof(Z));
+        public static readonly FlagGroupStorage C = new FlagGroupStorage(p, (ulong) FlagM.CF, nameof(C));
 
         public static readonly FlagGroupStorage NVZC = new(p, (uint) (FlagM.NF | FlagM.VF | FlagM.ZF | FlagM.CF), nameof(NVZC));
         public static readonly FlagGroupStorage NZ = new(p, (uint) (FlagM.NF | FlagM.ZF), nameof(NZ));

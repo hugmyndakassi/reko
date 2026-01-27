@@ -226,7 +226,7 @@ namespace Reko.Core
         /// <param name="freg">The backing status register.</param>
         /// <param name="grfMask">The individual bits constituting the flag storage.</param>
         /// <param name="name">The name of the flag group.</param>
-        public FlagGroupStorage(RegisterStorage freg, uint grfMask, string name)
+        public FlagGroupStorage(RegisterStorage freg, ulong grfMask, string name)
             : base(freg.Domain, name, freg.DataType)
         {
             this.FlagRegister = freg;
@@ -252,7 +252,7 @@ namespace Reko.Core
         /// <summary>
         /// Combined bit mask of the flag group bits.
         /// </summary>
-        public uint FlagGroupBits { get; }
+        public ulong FlagGroupBits { get; }
 
         /// <inheritdoc/>
         public override T Accept<T>(StorageVisitor<T> visitor)

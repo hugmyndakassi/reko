@@ -82,9 +82,9 @@ namespace Reko.Arch.OpenRISC.Or
                 .Concat(SpecialRegisters.Values)
                 .ToDictionary(r => r.Domain);
 
-            F = new FlagGroupStorage(sr, (uint) FlagM.F, nameof(F));
-            C = new FlagGroupStorage(sr, (uint) FlagM.CY, nameof(C));
-            V = new FlagGroupStorage(sr, (uint) FlagM.OV, nameof(V));
+            F = new FlagGroupStorage(sr, (ulong) FlagM.F, nameof(F));
+            C = new FlagGroupStorage(sr, (ulong) FlagM.CY, nameof(C));
+            V = new FlagGroupStorage(sr, (ulong) FlagM.OV, nameof(V));
             CV = new FlagGroupStorage(sr, (uint) (FlagM.CY | FlagM.OV), nameof(CV));
         }
     }

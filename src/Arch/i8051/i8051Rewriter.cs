@@ -162,7 +162,7 @@ namespace Reko.Arch.i8051
         {
             // We do not take the trouble of widening the CF to the word size
             // to simplify code analysis in later stages. 
-            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (uint)FlagM.C));
+            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.C));
             var dst = OpSrc(instr.Operands[0], arch.DataMemory);
             var src = OpSrc(instr.Operands[1], arch.DataMemory);
             m.Assign(
@@ -268,7 +268,7 @@ namespace Reko.Arch.i8051
             m.Assign(dst, fn(dst, m.Const(dst.DataType, 1)));
             if (dst is Identifier id && id.Storage is RegisterStorage)
             {
-                var flg = arch.GetFlagGroup(Registers.PSW, (uint)FlagM.P);
+                var flg = arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.P);
                 AssignCondOf(flg, dst);
             }
         }
@@ -284,7 +284,7 @@ namespace Reko.Arch.i8051
         private void RewriteJc(ConditionCode cc)
         {
             iclass = InstrClass.ConditionalTransfer;
-            var src = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (uint)FlagM.C));
+            var src = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.C));
             var addr = (Address)instr.Operands[0];
             m.Branch(m.Test(cc, src), addr, InstrClass.ConditionalTransfer);
         }
@@ -313,7 +313,7 @@ namespace Reko.Arch.i8051
             m.Assign(dst, fn(dst, src));
             if (dst is Identifier id && id.Storage is RegisterStorage)
             {
-                var flg = arch.GetFlagGroup(Registers.PSW, (uint)FlagM.P);
+                var flg = arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.P);
                 AssignCondOf(flg, dst);
             }
         }
@@ -355,9 +355,9 @@ namespace Reko.Arch.i8051
             var b = binder.EnsureRegister(Registers.B);
             var ab = binder.EnsureSequence(PrimitiveType.Word16, Registers.B, Registers.A);
             m.Assign(ab, m.UMul(PrimitiveType.Word16, a, b));
-            AssignCondOf(arch.GetFlagGroup(Registers.PSW, (uint)FlagM.P), ab);
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (uint)FlagM.OV)), m.Ugt(ab, m.Word16(0xFF)));
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (uint)FlagM.C)), m.False());
+            AssignCondOf(arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.P), ab);
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.OV)), m.Ugt(ab, m.Word16(0xFF)));
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.PSW, (ulong) FlagM.C)), m.False());
         }
 
         private void RewritePop()

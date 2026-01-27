@@ -76,7 +76,7 @@ DPP3	If DPP3 is modified in the assembler subroutine, it must be reset to 3 (SYS
             return new C166Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.PSW, grf, GrfToString(flagRegister, "", grf));
             return fl;
@@ -118,7 +118,7 @@ DPP3	If DPP3 is modified in the assembler subroutine, it must be reset to 3 (SYS
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.E.FlagGroupBits) != 0) yield return Registers.E;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
             if ((grf & Registers.V.FlagGroupBits) != 0) yield return Registers.V;
@@ -126,7 +126,7 @@ DPP3	If DPP3 is modified in the assembler subroutine, it must be reset to 3 (SYS
             if ((grf & Registers.N.FlagGroupBits) != 0) yield return Registers.N;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             StringBuilder sb = new StringBuilder();
             if ((grf & Registers.E.FlagGroupBits) != 0) sb.Append(Registers.E.Name);

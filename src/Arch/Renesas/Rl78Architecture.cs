@@ -74,7 +74,7 @@ namespace Reko.Arch.Renesas.Rl78
             return new Rl78Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.psw, grf, GrfToString(reg, "", grf));
             return fl;
@@ -118,12 +118,12 @@ namespace Reko.Arch.Renesas.Rl78
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
         }
 
-        public override string GrfToString(RegisterStorage reg, string str, uint grf)
+        public override string GrfToString(RegisterStorage reg, string str, ulong grf)
         {
             var s = new StringBuilder();
             var flags = (FlagM) grf;

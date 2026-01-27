@@ -148,7 +148,7 @@ namespace Reko.Arch.X86.Rewriter
 
         private bool IsAutoIncrementingMode()
         {
-            var direction = state.GetFlagGroup((uint) FlagM.DF);
+            var direction = state.GetFlagGroup((ulong) FlagM.DF);
             if (!direction.IsValid)
                 return true;
             return !direction.ToBoolean();

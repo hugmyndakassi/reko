@@ -52,14 +52,14 @@ namespace Reko.Arch.Tlcs.Tlcs90
 
         public static readonly RegisterStorage f = RegisterStorage.Reg8("f", 32);
 
-        public static readonly FlagGroupStorage S = new FlagGroupStorage(f, (uint)FlagM.SF, nameof(S));
-        public static readonly FlagGroupStorage Z = new FlagGroupStorage(f, (uint)FlagM.ZF, nameof(Z));
-        public static readonly FlagGroupStorage I = new FlagGroupStorage(f, (uint)FlagM.IF, nameof(I));
-        public static readonly FlagGroupStorage H = new FlagGroupStorage(f, (uint)FlagM.HF, nameof(H));
-        public static readonly FlagGroupStorage X = new FlagGroupStorage(f, (uint)FlagM.XF, nameof(X));
-        public static readonly FlagGroupStorage V = new FlagGroupStorage(f, (uint)FlagM.VF, nameof(V));
-        public static readonly FlagGroupStorage N = new FlagGroupStorage(f, (uint)FlagM.NF, nameof(N));
-        public static readonly FlagGroupStorage C = new FlagGroupStorage(f, (uint)FlagM.CF, nameof(C));
+        public static readonly FlagGroupStorage S = new FlagGroupStorage(f, (ulong) FlagM.SF, nameof(S));
+        public static readonly FlagGroupStorage Z = new FlagGroupStorage(f, (ulong) FlagM.ZF, nameof(Z));
+        public static readonly FlagGroupStorage I = new FlagGroupStorage(f, (ulong) FlagM.IF, nameof(I));
+        public static readonly FlagGroupStorage H = new FlagGroupStorage(f, (ulong) FlagM.HF, nameof(H));
+        public static readonly FlagGroupStorage X = new FlagGroupStorage(f, (ulong) FlagM.XF, nameof(X));
+        public static readonly FlagGroupStorage V = new FlagGroupStorage(f, (ulong) FlagM.VF, nameof(V));
+        public static readonly FlagGroupStorage N = new FlagGroupStorage(f, (ulong) FlagM.NF, nameof(N));
+        public static readonly FlagGroupStorage C = new FlagGroupStorage(f, (ulong) FlagM.CF, nameof(C));
 
         public static RegisterStorage[] byteRegs = new[]
         {

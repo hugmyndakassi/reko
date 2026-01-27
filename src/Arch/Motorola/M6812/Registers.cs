@@ -41,10 +41,10 @@ namespace Reko.Arch.Motorola.M6812
 
         public static RegisterStorage ccr = RegisterStorage.Reg8("ccr", 5);
 
-        public static readonly FlagGroupStorage C = new FlagGroupStorage(ccr, (uint) FlagM.CF, nameof(C));
-        public static readonly FlagGroupStorage V = new FlagGroupStorage(ccr, (uint) FlagM.VF, nameof(V));
-        public static readonly FlagGroupStorage Z = new FlagGroupStorage(ccr, (uint) FlagM.ZF, nameof(Z));
-        public static readonly FlagGroupStorage N = new FlagGroupStorage(ccr, (uint) FlagM.NF, nameof(N));
+        public static readonly FlagGroupStorage C = new FlagGroupStorage(ccr, (ulong) FlagM.CF, nameof(C));
+        public static readonly FlagGroupStorage V = new FlagGroupStorage(ccr, (ulong) FlagM.VF, nameof(V));
+        public static readonly FlagGroupStorage Z = new FlagGroupStorage(ccr, (ulong) FlagM.ZF, nameof(Z));
+        public static readonly FlagGroupStorage N = new FlagGroupStorage(ccr, (ulong) FlagM.NF, nameof(N));
         public static readonly FlagGroupStorage NV = new FlagGroupStorage(ccr, (uint) (FlagM.NF| FlagM.VF), nameof(NV));
         public static readonly FlagGroupStorage NZ = new FlagGroupStorage(ccr, (uint) (FlagM.NF| FlagM.ZF), nameof(NZ));
         public static readonly FlagGroupStorage NZC = new FlagGroupStorage(ccr, (uint) (FlagM.NF| FlagM.ZF | FlagM.CF), nameof(NZC));

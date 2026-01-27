@@ -49,7 +49,7 @@ namespace Reko.Analysis
         /// <param name="grfFlags">Flag group variables to render.</param>
         /// <param name="regs">Register variables to render.</param>
         /// <param name="sb"><see cref="TextWriter"/> to which the output is written.</param>
-		public static void EmitRegisters(IProcessorArchitecture arch, string caption, Dictionary<RegisterStorage, uint> grfFlags, IEnumerable<Storage> regs, TextWriter sb)
+		public static void EmitRegisters(IProcessorArchitecture arch, string caption, Dictionary<RegisterStorage, ulong> grfFlags, IEnumerable<Storage> regs, TextWriter sb)
 		{
 			sb.Write(caption);
             var sGrf = string.Join(" ", grfFlags
@@ -198,7 +198,7 @@ namespace Reko.Analysis
             /// value is used solely for diagnostic and debugging 
             /// purposes.
             /// </param>
-            public LiveOutFlagsUse(uint liveBits, Procedure proc)
+            public LiveOutFlagsUse(ulong liveBits, Procedure proc)
             {
                 this.Procedure = proc;
                 this.Flags = liveBits;
@@ -217,7 +217,7 @@ namespace Reko.Analysis
             /// <summary>
             /// A mask representing the live bits of a flag register.
             /// </summary>
-            public uint Flags { get; }
+            public ulong Flags { get; }
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Reko.Analysis
     {
         private readonly ExpVisitor expVisitor;
         private readonly HashSet<RegisterStorage> deadRegs;
-        private uint deadFlags;
+        private ulong deadFlags;
 
         /// <summary>
         /// Removes intra block dead registers in all procedures in 

@@ -57,7 +57,7 @@ public static class Registers
         ModifyRegisters = factory.RangeOfReg(4, r => $"m{r}", PrimitiveType.Word16);
         factory.RangeOfReg(4, r => $"l{r}", PrimitiveType.Word16);
 
-        Carry = new FlagGroupStorage(rFlags, (uint)FlagM.CF, "Carry");
+        Carry = new FlagGroupStorage(rFlags, (ulong) FlagM.CF, "Carry");
 
         // Aliases
 

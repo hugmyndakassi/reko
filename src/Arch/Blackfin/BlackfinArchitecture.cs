@@ -69,7 +69,7 @@ namespace Reko.Arch.Blackfin
             return new BlackfinRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, ulong grf)
         {
             if (reg == Registers.ASTAT)
             {
@@ -103,7 +103,7 @@ namespace Reko.Arch.Blackfin
                 .ToArray();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix,  uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

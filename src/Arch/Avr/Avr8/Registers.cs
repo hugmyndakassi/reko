@@ -54,13 +54,13 @@ namespace Reko.Arch.Avr.Avr8
                     sreg
                 }).ToArray();
 
-            I = new FlagGroupStorage(sreg, (uint) FlagM.IF, nameof(I));
-            T = new FlagGroupStorage(sreg, (uint) FlagM.TF, nameof(T));
-            H = new FlagGroupStorage(sreg, (uint) FlagM.HF, nameof(H));
-            V = new FlagGroupStorage(sreg, (uint) FlagM.VF, nameof(V));
-            N = new FlagGroupStorage(sreg, (uint) FlagM.NF, nameof(N));
-            C = new FlagGroupStorage(sreg, (uint) FlagM.CF, nameof(C));
-            Z = new FlagGroupStorage(sreg, (uint) FlagM.ZF, nameof(Z));
+            I = new FlagGroupStorage(sreg, (ulong) FlagM.IF, nameof(I));
+            T = new FlagGroupStorage(sreg, (ulong) FlagM.TF, nameof(T));
+            H = new FlagGroupStorage(sreg, (ulong) FlagM.HF, nameof(H));
+            V = new FlagGroupStorage(sreg, (ulong) FlagM.VF, nameof(V));
+            N = new FlagGroupStorage(sreg, (ulong) FlagM.NF, nameof(N));
+            C = new FlagGroupStorage(sreg, (ulong) FlagM.CF, nameof(C));
+            Z = new FlagGroupStorage(sreg, (ulong) FlagM.ZF, nameof(Z));
             HSVNZC = new FlagGroupStorage(sreg, (uint) (FlagM.HF | FlagM.SF | FlagM.VF | FlagM.NF | FlagM.ZF | FlagM.CF), nameof(HSVNZC));
             SNZ = new FlagGroupStorage(sreg, (uint) (FlagM.SF | FlagM.NF | FlagM.ZF), nameof(SNZ));
             SNZC = new FlagGroupStorage(sreg, (uint) (FlagM.SF | FlagM.NF | FlagM.ZF | FlagM.CF), nameof(SNZC));

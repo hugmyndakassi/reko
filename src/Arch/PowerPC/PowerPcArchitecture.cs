@@ -49,7 +49,7 @@ namespace Reko.Arch.PowerPC
         private readonly ReadOnlyCollection<RegisterStorage> vregs;
         private readonly ReadOnlyCollection<RegisterStorage> cregs;
         private readonly Dictionary<int, RegisterStorage> spregs;
-        private readonly Dictionary<uint, FlagGroupStorage> ccFlagGroups;
+        private readonly Dictionary<ulong, FlagGroupStorage> ccFlagGroups;
 
         private readonly Dictionary<string, FlagGroupStorage> ccFlagGroupsByName;
         private Decoder[]? primaryDecoders;
@@ -325,7 +325,7 @@ namespace Reko.Arch.PowerPC
             return null;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             foreach (var f in ccFlagGroups)
             {
@@ -346,7 +346,7 @@ namespace Reko.Arch.PowerPC
                 .Where(cc => cc.OverlapsWith(flags));
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             //$BUG: this needs to be better conceved. There are 
             // 32 (!) condition codes in the PowerPC architecture

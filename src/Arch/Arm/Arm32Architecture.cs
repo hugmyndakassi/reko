@@ -45,7 +45,7 @@ namespace Reko.Arch.Arm
         private Dictionary<int, RegisterStorage> regsByNumber;
 #endif
         //$BUG: global shared mutable state...
-        private ConcurrentDictionary<uint, FlagGroupStorage> flagGroups;
+        private ConcurrentDictionary<ulong, FlagGroupStorage> flagGroups;
 
         public Arm32Architecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, Registers.ByName, Registers.ByDomain)
@@ -56,7 +56,7 @@ namespace Reko.Arch.Arm
             PointerType = PrimitiveType.Ptr32;
             WordWidth = PrimitiveType.Word32;
             StackRegister = Registers.sp;
-            this.flagGroups = new ConcurrentDictionary<uint, FlagGroupStorage>();
+            this.flagGroups = new ConcurrentDictionary<ulong, FlagGroupStorage>();
 #if NATIVE
 
             var unk = CreateNativeArchitecture("arm");
@@ -183,11 +183,11 @@ namespace Reko.Arch.Arm
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.NF);
-            if ((grf & (uint) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.ZF);
-            if ((grf & (uint) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.CF);
-            if ((grf & (uint) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.VF);
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.NF);
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.ZF);
+            if ((grf & (ulong) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.CF);
+            if ((grf & (ulong) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.VF);
         }
 
         public override int? GetMnemonicNumber(string name)
@@ -203,7 +203,7 @@ namespace Reko.Arch.Arm
             return new SortedList<string, int>();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             FlagGroupStorage? f;
             while (!flagGroups.TryGetValue(grf, out f))
@@ -221,13 +221,13 @@ namespace Reko.Arch.Arm
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
-            if ((grf & (uint)FlagM.NF) != 0) s.Append('N');
-            if ((grf & (uint)FlagM.ZF) != 0) s.Append('Z');
-            if ((grf & (uint)FlagM.CF) != 0) s.Append('C');
-            if ((grf & (uint)FlagM.VF) != 0) s.Append('V');
+            if ((grf & (ulong)FlagM.NF) != 0) s.Append('N');
+            if ((grf & (ulong)FlagM.ZF) != 0) s.Append('Z');
+            if ((grf & (ulong)FlagM.CF) != 0) s.Append('C');
+            if ((grf & (ulong)FlagM.VF) != 0) s.Append('V');
             return s.ToString();
         }
 

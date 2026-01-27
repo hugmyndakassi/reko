@@ -265,8 +265,8 @@ namespace Reko.UnitTests.Arch.Rx
             AssertCode(        // btst\t#7h,r7
                 "0|L--|00100000(2): 3 instructions",
                 "1|L--|r7 = __bit<word32,byte>(r7, 7<8>)",
-                "2|L--|C = r7 ? 1<32> : 0<32>",
-                "3|L--|Z = r7 ? 0<32> : 2<32>");
+                "2|L--|C = r7 ? 1<64> : 0<64>",
+                "3|L--|Z = r7 ? 0<64> : 2<64>");
         }
 
         [Test]
@@ -1306,7 +1306,7 @@ namespace Reko.UnitTests.Arch.Rx
             Given_HexString("7FA0");
             AssertCode(        // setpsw\tc
                 "0|L--|00100000(2): 1 instructions",
-                "1|L--|C = 1<32>");
+                "1|L--|C = 1<64>");
         }
 
         [Test]

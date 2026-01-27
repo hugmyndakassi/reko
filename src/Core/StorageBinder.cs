@@ -33,7 +33,7 @@ namespace Reko.Core
     public class StorageBinder : IStorageBinder, StorageVisitor<Identifier>
     {
         private readonly Dictionary<RegisterStorage, Identifier> regs;
-        private readonly Dictionary<RegisterStorage, Dictionary<uint, Identifier>> grfs;
+        private readonly Dictionary<RegisterStorage, Dictionary<ulong, Identifier>> grfs;
         private readonly Dictionary<Storage[], Identifier> seqs;
         private readonly Dictionary<int, Identifier> fpus;
         private readonly List<Identifier> ids;
@@ -44,7 +44,7 @@ namespace Reko.Core
         public StorageBinder()
         {
             this.regs = new Dictionary<RegisterStorage, Identifier>();
-            this.grfs = new Dictionary<RegisterStorage, Dictionary<uint, Identifier>>();
+            this.grfs = new Dictionary<RegisterStorage, Dictionary<ulong, Identifier>>();
             this.seqs = new Dictionary<Storage[], Identifier>(new Storage.ArrayComparer());
             this.fpus = new Dictionary<int, Identifier>();
             this.ids = new List<Identifier>();
@@ -74,7 +74,7 @@ namespace Reko.Core
         {
             if (!this.grfs.TryGetValue(grf.FlagRegister, out var grfs))
             {
-                grfs = new Dictionary<uint, Identifier>();
+                grfs = new Dictionary<ulong, Identifier>();
                 this.grfs.Add(grf.FlagRegister, grfs);
             }
             if (grfs.TryGetValue(grf.FlagGroupBits, out var id))

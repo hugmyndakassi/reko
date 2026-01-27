@@ -43,11 +43,11 @@ namespace Reko.Arch.Angstrem
             var factory = new StorageFactory();
             GpRegisters = factory.RangeOfReg(32, n => $"r{n}", PrimitiveType.Byte);
             rs = factory.Reg("rs", PrimitiveType.Byte);
-            S = new FlagGroupStorage(rs, (uint) FlagM.S, "S");
-            Z = new FlagGroupStorage(rs, (uint) FlagM.Z, "Z");
-            C = new FlagGroupStorage(rs, (uint) FlagM.C, "C");
-            V = new FlagGroupStorage(rs, (uint) FlagM.V, "V");
-            H = new FlagGroupStorage(rs, (uint) FlagM.H, "H");
+            S = new FlagGroupStorage(rs, (ulong) FlagM.S, "S");
+            Z = new FlagGroupStorage(rs, (ulong) FlagM.Z, "Z");
+            C = new FlagGroupStorage(rs, (ulong) FlagM.C, "C");
+            V = new FlagGroupStorage(rs, (ulong) FlagM.V, "V");
+            H = new FlagGroupStorage(rs, (ulong) FlagM.H, "H");
             factory = new StorageFactory(StorageDomain.SystemRegister);
             ServiceRegisters = factory.RangeOfReg(8, n => $"sr{n}", PrimitiveType.Byte);
         }

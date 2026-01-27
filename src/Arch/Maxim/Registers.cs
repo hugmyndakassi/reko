@@ -104,11 +104,11 @@ public static class Registers
         GRXL = factory.Reg16("grxl");
         GRS = factory.Reg16("grs");
 
-        C = new FlagGroupStorage(PSF, (uint) FlagM.CF, "c");
-        Z = new FlagGroupStorage(PSF, (uint) FlagM.ZF, "z");
-        S = new FlagGroupStorage(PSF, (uint) FlagM.SF, "s");
-        E = new FlagGroupStorage(PSF, (uint) FlagM.EF, "e");
-        V = new FlagGroupStorage(PSF, (uint) FlagM.OV, "v");
+        C = new FlagGroupStorage(PSF, (ulong) FlagM.CF, "c");
+        Z = new FlagGroupStorage(PSF, (ulong) FlagM.ZF, "z");
+        S = new FlagGroupStorage(PSF, (ulong) FlagM.SF, "s");
+        E = new FlagGroupStorage(PSF, (ulong) FlagM.EF, "e");
+        V = new FlagGroupStorage(PSF, (ulong) FlagM.OV, "v");
         CSZ = new FlagGroupStorage(PSF, (uint) (FlagM.CF | FlagM.SF | FlagM.ZF), "csz");
         CSZE = new FlagGroupStorage(PSF, (uint) (FlagM.CF | FlagM.SF | FlagM.ZF | FlagM.EF), "csze");
         CSZV = new FlagGroupStorage(PSF, (uint) (FlagM.CF | FlagM.SF | FlagM.ZF | FlagM.OV), "cszv");

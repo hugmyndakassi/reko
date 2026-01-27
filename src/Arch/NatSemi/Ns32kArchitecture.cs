@@ -69,7 +69,7 @@ public class Ns32kArchitecture : ProcessorArchitecture
         return new Ns32kRewriter(this, rdr, state, binder, host);
     }
 
-    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
     {
         var fl = new FlagGroupStorage(flagRegister, grf, this.GrfToString(flagRegister, "", grf));
         return fl;
@@ -97,7 +97,7 @@ public class Ns32kArchitecture : ProcessorArchitecture
 
     public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
     {
-        uint grf = flags.FlagGroupBits;
+        ulong grf = flags.FlagGroupBits;
         if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
         if ((grf & Registers.F.FlagGroupBits) != 0) yield return Registers.F;
         if ((grf & Registers.I.FlagGroupBits) != 0) yield return Registers.I;
@@ -111,7 +111,7 @@ public class Ns32kArchitecture : ProcessorArchitecture
         if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
     }
 
-    public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+    public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
     {
         StringBuilder sb = new StringBuilder();
         if ((grf & Registers.C.FlagGroupBits) != 0) sb.Append(Registers.S.Name);

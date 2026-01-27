@@ -69,7 +69,7 @@ namespace Reko.Arch.Sanyo
             return new LC8670Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new System.NotImplementedException();
         }
@@ -94,7 +94,7 @@ namespace Reko.Arch.Sanyo
             throw new System.NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new System.NotImplementedException();
         }

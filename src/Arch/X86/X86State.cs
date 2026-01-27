@@ -36,8 +36,8 @@ namespace Reko.Arch.X86
 		private ulong [] regs;              // register values
         private BigInteger[] xmmregs;       // XMM register values
 		private ulong [] valid;             // masks out only valid bits
-        private uint flags;
-        private uint validFlags;
+        private ulong flags;
+        private ulong validFlags;
         private IntelArchitecture arch;
 
         private static readonly int ymm = Registers.ymm0.Number;
@@ -159,7 +159,7 @@ namespace Reko.Arch.X86
             // compilers and code libraries. If you know the DF flag is set on
             // procedure entry, you can manually set that flag using a user-
             // defined register value.
-            SetFlagGroup(arch.GetFlagGroup(Registers.eflags, (uint) FlagM.DF), Constant.False());
+            SetFlagGroup(arch.GetFlagGroup(Registers.eflags, (ulong) FlagM.DF), Constant.False());
             if (addr.Selector.HasValue)
             {
                 var cs = Constant.Create(PrimitiveType.SegmentSelector, addr.Selector.Value);
@@ -180,7 +180,7 @@ namespace Reko.Arch.X86
         {
         }
 
-        public Constant GetFlagGroup(uint mask)
+        public Constant GetFlagGroup(ulong mask)
         {
             bool sigle = Bits.IsSingleBitSet(mask);
             if ((mask & validFlags) == mask)
@@ -201,7 +201,7 @@ namespace Reko.Arch.X86
 
         public void SetFlagGroup(FlagGroupStorage reg, Constant value)
         {
-            uint mask = reg.FlagGroupBits;
+            ulong mask = reg.FlagGroupBits;
             if (value.IsValid)
             {
                 validFlags |= mask;

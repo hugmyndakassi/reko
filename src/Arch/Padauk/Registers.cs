@@ -34,10 +34,10 @@ namespace Reko.Arch.Padauk
             a = factory.Reg("a", PrimitiveType.Byte);
             sp = factory.Reg("sp", PrimitiveType.Ptr16);
 
-            AC = new FlagGroupStorage(f, (uint) FlagM.AC, nameof(AC));
-            C = new FlagGroupStorage(f, (uint) FlagM.CF, nameof(C));
-            V = new FlagGroupStorage(f, (uint) FlagM.OV, nameof(V));
-            Z = new FlagGroupStorage(f, (uint) FlagM.ZF, nameof(Z));
+            AC = new FlagGroupStorage(f, (ulong) FlagM.AC, nameof(AC));
+            C = new FlagGroupStorage(f, (ulong) FlagM.CF, nameof(C));
+            V = new FlagGroupStorage(f, (ulong) FlagM.OV, nameof(V));
+            Z = new FlagGroupStorage(f, (ulong) FlagM.ZF, nameof(Z));
             ZCAV = new FlagGroupStorage(f , (uint) (FlagM.ZF | FlagM.CF | FlagM.AC | FlagM.OV), nameof(ZCAV));
             FlagBits = new[] { AC, C, V, Z };
             RegistersByName = factory.NamesToRegisters;

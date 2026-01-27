@@ -37,7 +37,7 @@ public class M16CArchitecture : ProcessorArchitecture
 {
     public readonly static PrimitiveType Ptr20 = PrimitiveType.Create(Domain.Pointer, 20);
     public readonly static PrimitiveType Word20 = PrimitiveType.CreateWord(20);
-    private readonly static ConcurrentDictionary<uint, FlagGroupStorage> flagGroups = new();
+    private readonly static ConcurrentDictionary<ulong, FlagGroupStorage> flagGroups = [];
 
     public M16CArchitecture(IServiceProvider services, string archId, Dictionary<string, object> options)
         : base(services, archId, options, Registers.ByName, [])
@@ -76,7 +76,7 @@ public class M16CArchitecture : ProcessorArchitecture
         return new M16CRewriter(this, rdr, state, binder, host);
     }
 
-    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
     {
         FlagGroupStorage? f;
         while (!flagGroups.TryGetValue(grf, out f))
@@ -136,28 +136,28 @@ public class M16CArchitecture : ProcessorArchitecture
 
     public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
     {
-        uint grf = flags.FlagGroupBits;
-        if ((grf & (uint) FlagM.UF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.UF)!;
-        if ((grf & (uint) FlagM.IF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.IF)!;
-        if ((grf & (uint) FlagM.OF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.OF)!;
-        if ((grf & (uint) FlagM.BF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.BF)!;
-        if ((grf & (uint) FlagM.SF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.SF)!;
-        if ((grf & (uint) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.ZF)!;
-        if ((grf & (uint) FlagM.DF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.DF)!;
-        if ((grf & (uint) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.CF)!;
+        ulong grf = flags.FlagGroupBits;
+        if ((grf & (ulong) FlagM.UF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.UF)!;
+        if ((grf & (ulong) FlagM.IF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.IF)!;
+        if ((grf & (ulong) FlagM.OF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.OF)!;
+        if ((grf & (ulong) FlagM.BF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.BF)!;
+        if ((grf & (ulong) FlagM.SF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.SF)!;
+        if ((grf & (ulong) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.ZF)!;
+        if ((grf & (ulong) FlagM.DF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.DF)!;
+        if ((grf & (ulong) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.CF)!;
     }
 
-    public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+    public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
     {
         var sb = new StringBuilder();
-        if ((grf & (uint) FlagM.UF) != 0) sb.Append('U');
-        if ((grf & (uint) FlagM.IF) != 0) sb.Append('I');
-        if ((grf & (uint) FlagM.OF) != 0) sb.Append('O');
-        if ((grf & (uint) FlagM.BF) != 0) sb.Append('B');
-        if ((grf & (uint) FlagM.SF) != 0) sb.Append('S');
-        if ((grf & (uint) FlagM.ZF) != 0) sb.Append('Z');
-        if ((grf & (uint) FlagM.DF) != 0) sb.Append('D');
-        if ((grf & (uint) FlagM.CF) != 0) sb.Append('C');
+        if ((grf & (ulong) FlagM.UF) != 0) sb.Append('U');
+        if ((grf & (ulong) FlagM.IF) != 0) sb.Append('I');
+        if ((grf & (ulong) FlagM.OF) != 0) sb.Append('O');
+        if ((grf & (ulong) FlagM.BF) != 0) sb.Append('B');
+        if ((grf & (ulong) FlagM.SF) != 0) sb.Append('S');
+        if ((grf & (ulong) FlagM.ZF) != 0) sb.Append('Z');
+        if ((grf & (ulong) FlagM.DF) != 0) sb.Append('D');
+        if ((grf & (ulong) FlagM.CF) != 0) sb.Append('C');
         return sb.ToString();
     }
 

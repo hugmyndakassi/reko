@@ -1377,11 +1377,11 @@ namespace Reko.Arch.Avr.Avr32
 
         static Avr32Rewriter()
         {
-            C = new FlagGroupStorage(Registers.sr, (uint) FlagM.CF, nameof(C));
-            Z = new FlagGroupStorage(Registers.sr, (uint) FlagM.ZF, nameof(Z));
-            N = new FlagGroupStorage(Registers.sr, (uint) FlagM.NF, nameof(N));
-            Q = new FlagGroupStorage(Registers.sr, (uint) FlagM.QF, nameof(Q));
-            V = new FlagGroupStorage(Registers.sr, (uint) FlagM.VF, nameof(V));
+            C = new FlagGroupStorage(Registers.sr, (ulong) FlagM.CF, nameof(C));
+            Z = new FlagGroupStorage(Registers.sr, (ulong) FlagM.ZF, nameof(Z));
+            N = new FlagGroupStorage(Registers.sr, (ulong) FlagM.NF, nameof(N));
+            Q = new FlagGroupStorage(Registers.sr, (ulong) FlagM.QF, nameof(Q));
+            V = new FlagGroupStorage(Registers.sr, (ulong) FlagM.VF, nameof(V));
             NZ = new FlagGroupStorage(Registers.sr, (uint)(FlagM.NF | FlagM.ZF), nameof(NZ));
             NZC = new FlagGroupStorage(Registers.sr, (uint)(FlagM.NF | FlagM.ZF | FlagM.CF), nameof(NZC));
             VN = new FlagGroupStorage(Registers.sr, (uint)(FlagM.VF | FlagM.NF), nameof(VN));

@@ -130,20 +130,20 @@ namespace Reko.Arch.Sparc
 
             psr = stg.Reg32("psr");
 
-            N = new FlagGroupStorage(psr, (uint) FlagM.NF, nameof(N));
-            Z = new FlagGroupStorage(psr, (uint) FlagM.ZF, nameof(Z));
-            V = new FlagGroupStorage(psr, (uint) FlagM.VF, nameof(V));
-            C = new FlagGroupStorage(psr, (uint) FlagM.CF, nameof(C));
+            N = new FlagGroupStorage(psr, (ulong) FlagM.NF, nameof(N));
+            Z = new FlagGroupStorage(psr, (ulong) FlagM.ZF, nameof(Z));
+            V = new FlagGroupStorage(psr, (ulong) FlagM.VF, nameof(V));
+            C = new FlagGroupStorage(psr, (ulong) FlagM.CF, nameof(C));
             NV = new FlagGroupStorage(psr, (uint) (FlagM.NF | FlagM.VF), nameof(NV));
             NZ = new FlagGroupStorage(psr, (uint) (FlagM.NF | FlagM.ZF), nameof(NZ));
             NZV = new FlagGroupStorage(psr, (uint) (FlagM.NF | FlagM.ZF | FlagM.VF), nameof(NZV));
             NZVC = new FlagGroupStorage(psr, (uint) (FlagM.NF | FlagM.ZF |FlagM.VF | FlagM.CF), nameof(NZVC));
             ZC = new FlagGroupStorage(psr, (uint) (FlagM.ZF | FlagM.CF), nameof(ZC));
 
-            xN = new FlagGroupStorage(psr, (uint) FlagM.xNF, nameof(xN));
-            xZ = new FlagGroupStorage(psr, (uint) FlagM.xZF, nameof(xZ));
-            xV = new FlagGroupStorage(psr, (uint) FlagM.xVF, nameof(xV));
-            xC = new FlagGroupStorage(psr, (uint) FlagM.xCF, nameof(xC));
+            xN = new FlagGroupStorage(psr, (ulong) FlagM.xNF, nameof(xN));
+            xZ = new FlagGroupStorage(psr, (ulong) FlagM.xZF, nameof(xZ));
+            xV = new FlagGroupStorage(psr, (ulong) FlagM.xVF, nameof(xV));
+            xC = new FlagGroupStorage(psr, (ulong) FlagM.xCF, nameof(xC));
             xNV = new FlagGroupStorage(psr, (uint) (FlagM.xNF | FlagM.xVF), nameof(xNV));
             xNZ = new FlagGroupStorage(psr, (uint) (FlagM.xNF | FlagM.xZF), nameof(xNZ));
             xNZV = new FlagGroupStorage(psr, (uint) (FlagM.xNF | FlagM.xZF | FlagM.xVF), nameof(xNZV));
@@ -151,10 +151,10 @@ namespace Reko.Arch.Sparc
             xZC = new FlagGroupStorage(psr, (uint) (FlagM.xZF | FlagM.xCF), nameof(xZC));
 
 
-            E = new FlagGroupStorage(psr, (uint) FlagM.EF, nameof(E));
-            L = new FlagGroupStorage(psr, (uint) FlagM.LF, nameof(L));
-            G = new FlagGroupStorage(psr, (uint) FlagM.GF, nameof(G));
-            U = new FlagGroupStorage(psr, (uint) FlagM.UF, nameof(U));
+            E = new FlagGroupStorage(psr, (ulong) FlagM.EF, nameof(E));
+            L = new FlagGroupStorage(psr, (ulong) FlagM.LF, nameof(L));
+            G = new FlagGroupStorage(psr, (ulong) FlagM.GF, nameof(G));
+            U = new FlagGroupStorage(psr, (ulong) FlagM.UF, nameof(U));
 
             fsr = stg.Reg32("fsr");
 

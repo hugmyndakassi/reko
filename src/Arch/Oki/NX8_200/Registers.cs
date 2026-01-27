@@ -87,8 +87,8 @@ public static class Registers
         Pswl = new RegisterStorage("pswl", Psw.Number, 0, PrimitiveType.Byte);
         Pswh = new RegisterStorage("pswh", Psw.Number, 8, PrimitiveType.Byte);
 
-        C = new FlagGroupStorage(Psw, (uint) FlagM.C, "C");
-        Z = new FlagGroupStorage(Psw, (uint) FlagM.Z, "Z");
+        C = new FlagGroupStorage(Psw, (ulong) FlagM.C, "C");
+        Z = new FlagGroupStorage(Psw, (ulong) FlagM.Z, "Z");
         CZ = new FlagGroupStorage(Psw, (uint)(FlagM.C | FlagM.Z), "CZ");
         CZSV = new FlagGroupStorage(Psw, (uint)(FlagM.C | FlagM.Z | FlagM.S | FlagM.OV), "CZSV");
     }

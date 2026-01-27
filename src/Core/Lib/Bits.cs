@@ -58,6 +58,14 @@ namespace Reko.Core.Lib
         }
 
         /// <summary>
+        /// Returns true if exactly one bit of the word is set.
+        /// </summary>
+        public static bool IsSingleBitSet(ulong w)
+        {
+            return w != 0 && (w & (w - 1)) == 0;
+        }
+
+        /// <summary>
         /// Returns true if <paramref name="n"/> is an even power of two.
         /// </summary>
         /// <param name="n">Number to test.</param>

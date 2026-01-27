@@ -20,7 +20,6 @@
 
 using Reko.Core;
 using Reko.Core.Expressions;
-using Reko.Core.Lib;
 using Reko.Core.Machine;
 using Reko.Core.Memory;
 using Reko.Core.Rtl;
@@ -83,7 +82,7 @@ namespace Reko.Arch.CSky
             return new CSkyRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.Psr, grf, GrfToString(flagRegister, "", grf));
             return fl;
@@ -112,12 +111,12 @@ namespace Reko.Arch.CSky
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.VF) != 0) yield return Registers.C;
-            if ((grf & (uint) FlagM.CF) != 0) yield return Registers.V;
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.VF) != 0) yield return Registers.C;
+            if ((grf & (ulong) FlagM.CF) != 0) yield return Registers.V;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             StringBuilder sb = new StringBuilder();
             if ((grf & Registers.C.FlagGroupBits) != 0) sb.Append(Registers.C.Name);

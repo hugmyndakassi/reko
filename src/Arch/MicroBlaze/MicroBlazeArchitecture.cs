@@ -34,7 +34,7 @@ namespace Reko.Arch.MicroBlaze
 {
     public class MicroBlazeArchitecture : ProcessorArchitecture
     {
-        private readonly Dictionary<uint, FlagGroupStorage> flagGroups = new Dictionary<uint, FlagGroupStorage>();
+        private readonly Dictionary<ulong, FlagGroupStorage> flagGroups = [];
 
         public MicroBlazeArchitecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, Registers.RegistersByName, Registers.RegistersByDomain )
@@ -72,7 +72,7 @@ namespace Reko.Arch.MicroBlaze
             return new MicroBlazeRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagGroups.TryGetValue(grf, out var f))
             {
@@ -107,13 +107,13 @@ namespace Reko.Arch.MicroBlaze
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            if ((flags.FlagGroupBits & (uint) FlagM.CY) != 0) yield return Registers.C;
+            if ((flags.FlagGroupBits & (ulong) FlagM.CY) != 0) yield return Registers.C;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
-            if ((grf & (uint) FlagM.CY) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.CY) != 0) s.Append('C');
             return s.ToString();
         }
 

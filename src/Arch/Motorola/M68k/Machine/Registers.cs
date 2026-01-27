@@ -133,11 +133,11 @@ namespace Reko.Arch.Motorola.M68k.Machine
             pc = RegisterStorage.Reg32("pc", 27);
             fpsr = RegisterStorage.Reg32("fpsr", 28);
 
-            C = new FlagGroupStorage(ccr, (uint) FlagM.CF, nameof(C));
-            V = new FlagGroupStorage(ccr, (uint) FlagM.VF, nameof(V));
-            Z = new FlagGroupStorage(ccr, (uint) FlagM.ZF, nameof(Z));
-            N = new FlagGroupStorage(ccr, (uint) FlagM.NF, nameof(N));
-            X = new FlagGroupStorage(ccr, (uint) FlagM.XF, nameof(X));
+            C = new FlagGroupStorage(ccr, (ulong) FlagM.CF, nameof(C));
+            V = new FlagGroupStorage(ccr, (ulong) FlagM.VF, nameof(V));
+            Z = new FlagGroupStorage(ccr, (ulong) FlagM.ZF, nameof(Z));
+            N = new FlagGroupStorage(ccr, (ulong) FlagM.NF, nameof(N));
+            X = new FlagGroupStorage(ccr, (ulong) FlagM.XF, nameof(X));
 
             CVZN = new FlagGroupStorage(ccr, (uint) (FlagM.NF | FlagM.ZF | FlagM.VF | FlagM.CF), nameof(CVZN));
             CZ = new FlagGroupStorage(ccr, (uint) (FlagM.ZF | FlagM.CF), nameof(CZ));

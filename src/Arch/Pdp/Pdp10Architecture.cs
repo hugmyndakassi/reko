@@ -79,7 +79,7 @@ namespace Reko.Arch.Pdp
             return new Pdp10Rewriter(this, (Word36BeImageReader)rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var flagregister = Registers.Psw;
             var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));
@@ -113,22 +113,22 @@ namespace Reko.Arch.Pdp
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint)FlagM.C0) != 0) yield return Registers.C0;
-            if ((grf & (uint)FlagM.C1) != 0) yield return Registers.C1;
-            if ((grf & (uint)FlagM.V) != 0) yield return Registers.V;
-            if ((grf & (uint)FlagM.T) != 0) yield return Registers.T;
-            if ((grf & (uint)FlagM.ND) != 0) yield return Registers.ND;
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.C0) != 0) yield return Registers.C0;
+            if ((grf & (ulong) FlagM.C1) != 0) yield return Registers.C1;
+            if ((grf & (ulong) FlagM.V) != 0) yield return Registers.V;
+            if ((grf & (ulong) FlagM.T) != 0) yield return Registers.T;
+            if ((grf & (ulong) FlagM.ND) != 0) yield return Registers.ND;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
-            if ((grf & (uint) FlagM.C0) != 0) s.Append("C0");
-            if ((grf & (uint) FlagM.C1) != 0) s.Append("C1");
-            if ((grf & (uint) FlagM.V)  != 0) s.Append("V");
-            if ((grf & (uint) FlagM.T) != 0) s.Append("T");
-            if ((grf & (uint) FlagM.ND) != 0) s.Append("ND");
+            if ((grf & (ulong) FlagM.C0) != 0) s.Append("C0");
+            if ((grf & (ulong) FlagM.C1) != 0) s.Append("C1");
+            if ((grf & (ulong) FlagM.V)  != 0) s.Append("V");
+            if ((grf & (ulong) FlagM.T) != 0) s.Append("T");
+            if ((grf & (ulong) FlagM.ND) != 0) s.Append("ND");
             return s.ToString();
         }
 

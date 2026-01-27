@@ -103,10 +103,10 @@ namespace Reko.Environments.Gameboy
                 sp,
             }.ToDictionary(r => r.Domain);
 
-            C = new FlagGroupStorage(f, (uint) FlagM.CF, nameof(C));
-            H = new FlagGroupStorage(f, (uint) FlagM.HF, nameof(H));
-            N = new FlagGroupStorage(f, (uint) FlagM.NF, nameof(N));
-            Z = new FlagGroupStorage(f, (uint) FlagM.ZF, nameof(Z));
+            C = new FlagGroupStorage(f, (ulong) FlagM.CF, nameof(C));
+            H = new FlagGroupStorage(f, (ulong) FlagM.HF, nameof(H));
+            N = new FlagGroupStorage(f, (ulong) FlagM.NF, nameof(N));
+            Z = new FlagGroupStorage(f, (ulong) FlagM.ZF, nameof(Z));
             HC = new FlagGroupStorage(f, (uint) (FlagM.HF | FlagM.CF), nameof(HC));
             ZC = new FlagGroupStorage(f, (uint) (FlagM.ZF | FlagM.CF), nameof(ZC));
             ZH = new FlagGroupStorage(f, (uint) (FlagM.ZF | FlagM.HF | FlagM.CF), nameof(ZH));

@@ -35,7 +35,7 @@ namespace Reko.Arch.Avr
 {
     public class Avr32Architecture : ProcessorArchitecture
     {
-        private Dictionary<uint, FlagGroupStorage> flagGroups;
+        private Dictionary<ulong, FlagGroupStorage> flagGroups;
 
         public Avr32Architecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, Registers.ByName, Registers.ByDomain)
@@ -47,7 +47,7 @@ namespace Reko.Arch.Avr
             this.PointerType = PrimitiveType.Ptr32;
             this.StackRegister = Registers.sp;
             this.WordWidth = PrimitiveType.Word32;
-            this.flagGroups = new Dictionary<uint, FlagGroupStorage>();
+            this.flagGroups = [];
         }
 
         public override IEnumerable<MachineInstruction> CreateDisassembler(EndianImageReader rdr)
@@ -75,7 +75,7 @@ namespace Reko.Arch.Avr
             return new Avr32Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagGroups.TryGetValue(grf, out var grfStg))
                 return grfStg;
@@ -107,20 +107,20 @@ namespace Reko.Arch.Avr
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.VF);
-            if ((grf & (uint) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.NF);
-            if ((grf & (uint) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.ZF);
-            if ((grf & (uint) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.CF);
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.VF);
+            if ((grf & (ulong) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.NF);
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.ZF);
+            if ((grf & (ulong) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.CF);
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder(prefix);
-            if ((grf & (uint) FlagM.VF) != 0) s.Append('V');
-            if ((grf & (uint) FlagM.NF) != 0) s.Append('N');
-            if ((grf & (uint) FlagM.ZF) != 0) s.Append('Z');
-            if ((grf & (uint) FlagM.CF) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.VF) != 0) s.Append('V');
+            if ((grf & (ulong) FlagM.NF) != 0) s.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) s.Append('Z');
+            if ((grf & (ulong) FlagM.CF) != 0) s.Append('C');
             return s.ToString();
         }
 

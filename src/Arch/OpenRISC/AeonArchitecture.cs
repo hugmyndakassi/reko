@@ -96,7 +96,7 @@ namespace Reko.Arch.OpenRISC
             return new AeonCallingConvention(this);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.SR, grf, GrfToString(flagRegister, "", grf));
             return fl;
@@ -131,7 +131,7 @@ namespace Reko.Arch.OpenRISC
             return Array.Empty<FlagGroupStorage>();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
             if (flagRegister == Registers.SR)

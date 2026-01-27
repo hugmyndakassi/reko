@@ -59,7 +59,7 @@ namespace Reko.Analysis
 
         /// <summary>
         /// </summary>
-		public void AddFlagGroupReturnValue(KeyValuePair<RegisterStorage, uint> bits, IStorageBinder binder)
+		public void AddFlagGroupReturnValue(KeyValuePair<RegisterStorage, ulong> bits, IStorageBinder binder)
 		{
             var grf = arch.GetFlagGroup(bits.Key, bits.Value)!;
             Debug.Assert(outputs.Count == 0, "Flag group return value should be the first output");  

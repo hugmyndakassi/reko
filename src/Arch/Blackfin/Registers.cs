@@ -98,7 +98,7 @@ namespace Reko.Arch.Blackfin
         public static readonly FlagGroupStorage NZV;
         public static readonly FlagGroupStorage NZVC;
 
-        public static Dictionary<uint, FlagGroupStorage> AStatFlags { get; }
+        public static Dictionary<ulong, FlagGroupStorage> AStatFlags { get; }
 
         static Registers()
         {

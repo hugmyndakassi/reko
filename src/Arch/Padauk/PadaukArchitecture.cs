@@ -83,7 +83,7 @@ namespace Reko.Arch.Padauk
             return new PadaukRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var f = new FlagGroupStorage(flagRegister, grf, GrfToString(flagRegister, "", grf));
             return f;
@@ -111,14 +111,14 @@ namespace Reko.Arch.Padauk
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.OV) != 0) yield return Registers.V;
-            if ((grf & (uint) FlagM.AC) != 0) yield return Registers.AC;
-            if ((grf & (uint) FlagM.ZF) != 0) yield return Registers.Z;
-            if ((grf & (uint) FlagM.CF) != 0) yield return Registers.C;
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.OV) != 0) yield return Registers.V;
+            if ((grf & (ulong) FlagM.AC) != 0) yield return Registers.AC;
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return Registers.Z;
+            if ((grf & (ulong) FlagM.CF) != 0) yield return Registers.C;
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
             foreach (var fr in Registers.FlagBits)

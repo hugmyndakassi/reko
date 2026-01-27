@@ -141,7 +141,7 @@ namespace Reko.UnitTests.Core
             }
 
 
-            public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+            public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
             {
                 throw new NotImplementedException();
             }
@@ -182,7 +182,7 @@ namespace Reko.UnitTests.Core
             }
 
 
-            public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+            public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
             {
                 throw new NotImplementedException();
             }

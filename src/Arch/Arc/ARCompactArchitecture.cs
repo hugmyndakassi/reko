@@ -71,7 +71,7 @@ namespace Reko.Arch.Arc
             return new ARCompactRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var flagregister = Registers.Status32;
             var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));
@@ -100,7 +100,7 @@ namespace Reko.Arch.Arc
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if (flags.FlagRegister == Registers.Status32)
             {
                 if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
@@ -114,15 +114,15 @@ namespace Reko.Arch.Arc
             }
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix,  uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             StringBuilder s = new StringBuilder();
             if (flagRegister == Registers.Status32)
             {
-                if ((grf & (uint) FlagM.ZF) != 0) s.Append('Z');
-                if ((grf & (uint) FlagM.NF) != 0) s.Append('N');
-                if ((grf & (uint) FlagM.CF) != 0) s.Append('C');
-                if ((grf & (uint) FlagM.VF) != 0) s.Append('V');
+                if ((grf & (ulong) FlagM.ZF) != 0) s.Append('Z');
+                if ((grf & (ulong) FlagM.NF) != 0) s.Append('N');
+                if ((grf & (ulong) FlagM.CF) != 0) s.Append('C');
+                if ((grf & (ulong) FlagM.VF) != 0) s.Append('V');
             }
             else
             {

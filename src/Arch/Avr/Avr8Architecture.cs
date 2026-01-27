@@ -29,7 +29,6 @@ using Reko.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text;
 
 namespace Reko.Arch.Avr
@@ -83,7 +82,7 @@ namespace Reko.Arch.Avr
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.sreg, grf, GrfToString(flagRegister, "", grf));
             return fl;
@@ -123,12 +122,12 @@ namespace Reko.Arch.Avr
             return Registers.regs;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
             foreach (var tpl in Registers.grfToString)
             {
-                if ((grf & (uint)tpl.Item1) != 0)
+                if ((grf & (ulong)tpl.Item1) != 0)
                 {
                     s.Append(tpl.Item2);
                 }

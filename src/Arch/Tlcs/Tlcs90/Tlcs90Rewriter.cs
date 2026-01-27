@@ -156,7 +156,7 @@ namespace Reko.Arch.Tlcs.Tlcs90
         {
             // SZIH XVNC
             var mask = 1u << 7;
-            uint grf = 0;
+            ulong grf = 0;
             foreach (var c in szhvnc)
             {
                 switch (c)

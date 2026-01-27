@@ -240,7 +240,7 @@ namespace Reko.Arch.Tlcs.Tlcs900
         public void EmitCc(Expression exp, string szhvnc) 
         {
             var mask = 1u << 5;
-            uint grf = 0;
+            ulong grf = 0;
             foreach (var c in szhvnc)
             {
                 switch (c)

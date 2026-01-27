@@ -77,7 +77,7 @@ public class MaxqArchitecture : ProcessorArchitecture
         return new MaxqRewriter(this, rdr, state, binder, host);
     }
 
-    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+    public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
     {
         var flagregister = Registers.PSF;
         var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));
@@ -106,7 +106,7 @@ public class MaxqArchitecture : ProcessorArchitecture
 
     public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
     {
-        uint grf = flags.FlagGroupBits;
+        ulong grf = flags.FlagGroupBits;
         if (flags.FlagRegister == Registers.PSF)
         {
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
@@ -117,16 +117,16 @@ public class MaxqArchitecture : ProcessorArchitecture
         }
     }
 
-    public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+    public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
     {
         var sb = new StringBuilder();
         if (flagRegister == Registers.PSF)
         {
-            if ((grf & (uint) FlagM.CF) != 0) sb.Append('c');
-            if ((grf & (uint) FlagM.SF) != 0) sb.Append('s');
-            if ((grf & (uint) FlagM.ZF) != 0) sb.Append('z');
-            if ((grf & (uint) FlagM.EF) != 0) sb.Append('e');
-            if ((grf & (uint) FlagM.OV) != 0) sb.Append('v');
+            if ((grf & (ulong) FlagM.CF) != 0) sb.Append('c');
+            if ((grf & (ulong) FlagM.SF) != 0) sb.Append('s');
+            if ((grf & (ulong) FlagM.ZF) != 0) sb.Append('z');
+            if ((grf & (ulong) FlagM.EF) != 0) sb.Append('e');
+            if ((grf & (ulong) FlagM.OV) != 0) sb.Append('v');
         }
         return sb.ToString();
     }

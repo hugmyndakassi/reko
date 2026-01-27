@@ -42,7 +42,7 @@ namespace Reko.Arch.MicroBlaze
             GpRegs = factory.RangeOfReg32(32, "r{0}");
 
             msr = factory.Reg32("msr");
-            C = new FlagGroupStorage(msr, (uint) FlagM.CY, nameof(C));
+            C = new FlagGroupStorage(msr, (ulong) FlagM.CY, nameof(C));
 
             RegistersByDomain = GpRegs
                 .Concat(new[] { msr })

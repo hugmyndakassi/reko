@@ -93,19 +93,19 @@ public static class Registers
         r1l = new RegisterStorage("r1l", r1.Number, 0, PrimitiveType.Byte);
         r1h = new RegisterStorage("r1h", r1.Number, 8, PrimitiveType.Byte);
 
-        B = new FlagGroupStorage(flg, (uint) FlagM.BF, "B");
-        C = new FlagGroupStorage(flg, (uint) FlagM.CF, "C");
-        D = new FlagGroupStorage(flg, (uint) FlagM.DF, "D");
-        I = new FlagGroupStorage(flg, (uint) FlagM.IF, "I");
-        O = new FlagGroupStorage(flg, (uint) FlagM.OF, "O");
+        B = new FlagGroupStorage(flg, (ulong) FlagM.BF, "B");
+        C = new FlagGroupStorage(flg, (ulong) FlagM.CF, "C");
+        D = new FlagGroupStorage(flg, (ulong) FlagM.DF, "D");
+        I = new FlagGroupStorage(flg, (ulong) FlagM.IF, "I");
+        O = new FlagGroupStorage(flg, (ulong) FlagM.OF, "O");
         OS = new FlagGroupStorage(flg, (uint) (FlagM.SF | FlagM.OF), "OS");
         OSZ = new FlagGroupStorage(flg, (uint) (FlagM.SF | FlagM.OF | FlagM.ZF), "OSZ");
         OSZC = new FlagGroupStorage(flg, (uint) (FlagM.SF | FlagM.OF | FlagM.ZF | FlagM.CF), "OSZC");
-        S = new FlagGroupStorage(flg, (uint) FlagM.SF, "S");
+        S = new FlagGroupStorage(flg, (ulong) FlagM.SF, "S");
         SZ = new FlagGroupStorage(flg, (uint) (FlagM.SF | FlagM.ZF), "SZ");
         SZC = new FlagGroupStorage(flg, (uint) (FlagM.SF | FlagM.ZF | FlagM.CF), "SZC");
-        U = new FlagGroupStorage(flg, (uint) FlagM.UF, "U");
-        Z = new FlagGroupStorage(flg, (uint) FlagM.ZF, "Z");
+        U = new FlagGroupStorage(flg, (ulong) FlagM.UF, "U");
+        Z = new FlagGroupStorage(flg, (ulong) FlagM.ZF, "Z");
         ZC = new FlagGroupStorage(flg, (uint) (FlagM.ZF | FlagM.CF), "ZC");
 
         a1a0 = new SequenceStorage("a1a0", PrimitiveType.Word32, a1, a0);

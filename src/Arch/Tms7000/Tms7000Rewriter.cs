@@ -203,15 +203,15 @@ namespace Reko.Arch.Tms7000
 
         private void CNZ(Expression e)
         {
-            var cnz = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CNZ));
+            var cnz = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CNZ));
             m.Assign(cnz, m.Cond(cnz.DataType, e));
         }
 
         private void NZ0(Expression e)
         {
-            var nz = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.NZ));
+            var nz = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.NZ));
             m.Assign(nz, m.Cond(nz.DataType, e));
-            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF));
+            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF));
             m.Assign(c, m.False());
         }
 
@@ -221,7 +221,7 @@ namespace Reko.Arch.Tms7000
             var src = Operand(instr.Operands[1]);
             // We do not take the trouble of widening the CF to the word size
             // to simplify code analysis in later stages. 
-            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF));
+            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF));
             m.Assign(
                 dst,
                 opr(
@@ -244,7 +244,7 @@ namespace Reko.Arch.Tms7000
             var opLeft = Operand(instr.Operands[1]);
             var opRight = Operand(instr.Operands[0]);
             NZ0(m.And(opLeft, fn(opRight)));
-            var z = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.ZF));
+            var z = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.ZF));
             m.Branch(
                 m.Test(ConditionCode.NE, z),
                 (Address)instr.Operands[2],
@@ -272,7 +272,7 @@ namespace Reko.Arch.Tms7000
             var opLeft = Operand(instr.Operands[0]);
             var opRight = Operand(instr.Operands[0]);
 
-            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF));
+            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF));
             m.Assign(c, m.Fn(
                 opLeft,
                 opRight,
@@ -285,26 +285,26 @@ namespace Reko.Arch.Tms7000
         {
             var op = Operand(instr.Operands[0]);
             m.Assign(op, Constant.Zero(op.DataType));
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF)), m.False());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.NF)), m.False());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.ZF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.NF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.ZF)), m.True());
         }
 
         private void RewriteDint()
         {
             m.SideEffect(m.Fn(dint_intrinsic));
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF)), m.False());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.NF)), m.False());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.ZF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.NF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.ZF)), m.False());
         }
 
 
         private void RewriteEint()
         {
             m.SideEffect(m.Fn(eint_intrinsic));
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF)), m.True());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.NF)), m.True());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.ZF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.NF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.ZF)), m.True());
         }
 
 
@@ -447,7 +447,7 @@ namespace Reko.Arch.Tms7000
         private void RewriteRotate(IntrinsicProcedure rot)
         {
             var op = Operand(instr.Operands[0]);
-            var C = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint) FlagM.CF));
+            var C = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF));
             m.Assign(op, m.Fn(rot, op, m.Byte(1)));
             m.Assign(C, m.Cond(C.DataType, op));
         }
@@ -455,16 +455,16 @@ namespace Reko.Arch.Tms7000
         private void RewriteRotateC(IntrinsicProcedure rot)
         {
             var op = Operand(instr.Operands[0]);
-            var C = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF));
+            var C = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF));
             m.Assign(op, m.Fn(rot.MakeInstance(op.DataType, PrimitiveType.Byte), op, m.Byte(1), C));
             m.Assign(C, m.Cond(C.DataType, op));
         }
 
         private void RewriteSetc()
         {
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.CF)), m.True());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.NF)), m.False());
-            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)FlagM.ZF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.CF)), m.True());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.NF)), m.False());
+            m.Assign(binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (ulong) FlagM.ZF)), m.True());
         }
 
         private void RewriteSta()

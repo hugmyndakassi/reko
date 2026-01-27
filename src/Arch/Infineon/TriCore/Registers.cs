@@ -372,11 +372,11 @@ namespace Reko.Arch.Infineon.TriCore
             psw = CoreRegisters[0xFE04];
             a11 = AddrRegisters[11];
 
-            C = new FlagGroupStorage(psw, (uint) FlagM.CF, nameof(C));
-            V = new FlagGroupStorage(psw, (uint) FlagM.CF, nameof(V));
-            SV = new FlagGroupStorage(psw, (uint) FlagM.CF, nameof(SV));
-            AV = new FlagGroupStorage(psw, (uint) FlagM.CF, nameof(AV));
-            SAV = new FlagGroupStorage(psw, (uint) FlagM.CF, nameof(AV));
+            C = new FlagGroupStorage(psw, (ulong) FlagM.CF, nameof(C));
+            V = new FlagGroupStorage(psw, (ulong) FlagM.CF, nameof(V));
+            SV = new FlagGroupStorage(psw, (ulong) FlagM.CF, nameof(SV));
+            AV = new FlagGroupStorage(psw, (ulong) FlagM.CF, nameof(AV));
+            SAV = new FlagGroupStorage(psw, (ulong) FlagM.CF, nameof(AV));
             PswFlags = new[] { C, V, SV, AV, SAV };
 
             V_SV = new FlagGroupStorage(psw, (uint) (FlagM.VF | FlagM.SVF), nameof(V_SV));

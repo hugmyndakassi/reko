@@ -74,7 +74,7 @@ namespace Reko.Arch.Etrax
             return new EtraxRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var name = GrfToString(flagRegister, "", grf);
             return new FlagGroupStorage(flagRegister, grf, name);
@@ -116,7 +116,7 @@ namespace Reko.Arch.Etrax
             if (mask.HasFlag(FlagM.CF)) yield return Registers.C;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var mask = (FlagM) grf;
             var sb = new StringBuilder();

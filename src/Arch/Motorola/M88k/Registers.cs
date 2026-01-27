@@ -134,7 +134,7 @@ public static class Registers
         FcrRegisters[62] = FPSR = crFactory.Reg32("FPSR"); // fer62 - F.P.USER STATUS REGISTER 
         FcrRegisters[63] = FPCR = crFactory.Reg32("FPCR"); // fer63 - F.P.USER CONTROL REGISTER 
 
-        C = new FlagGroupStorage(PSR, (uint) FlagM.CF, "C");
+        C = new FlagGroupStorage(PSR, (ulong) FlagM.CF, "C");
 
         ByName = factory.NamesToRegisters.Concat(crFactory.NamesToRegisters)
             .ToDictionary(kv => kv.Key, kv => kv.Value);

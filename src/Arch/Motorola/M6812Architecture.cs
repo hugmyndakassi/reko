@@ -72,7 +72,7 @@ namespace Reko.Arch.Motorola
             return new M6812.M6812Rewriter(this, rdr, (M6812.M6812State)state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var flagregister = M6812.Registers.ccr;
             var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));
@@ -99,13 +99,13 @@ namespace Reko.Arch.Motorola
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var sb = new StringBuilder();
-            if ((grf & (uint)FlagM.NF) != 0) sb.Append('N');
-            if ((grf & (uint)FlagM.ZF) != 0) sb.Append('Z');
-            if ((grf & (uint)FlagM.VF) != 0) sb.Append('V');
-            if ((grf & (uint)FlagM.CF) != 0) sb.Append('C');
+            if ((grf & (ulong) FlagM.NF) != 0) sb.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) sb.Append('Z');
+            if ((grf & (ulong) FlagM.VF) != 0) sb.Append('V');
+            if ((grf & (ulong) FlagM.CF) != 0) sb.Append('C');
             return sb.ToString();
         }
 

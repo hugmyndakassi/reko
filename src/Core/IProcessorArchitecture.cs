@@ -453,11 +453,11 @@ namespace Reko.Core
         /// combination of bitflags in <paramref name="grf"/>.
         /// </summary>
         /// <param name="flagRegister"></param>
-        /// <param name="grf"></param>
+        /// <param name="grf">Flag bits required.</param>
         /// <returns>A <see cref="FlagGroupStorage" /> instance based on <paramref name="flagRegister"/>
         /// with the flags in <paramref name="grf"/> set to TRUE.
         /// </returns>
-        FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf);
+        FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf);
 
         /// <summary>
         /// Given the name of a flag register bit group, returns the corresponding
@@ -554,7 +554,7 @@ namespace Reko.Core
         /// <param name="prefix">Prefix to use.</param>
         /// <param name="grf">Bit mask to render as a string.</param>
         /// <returns>The resulting string representation.</returns>
-        string GrfToString(RegisterStorage flagRegister, string prefix, uint grf);                       // Converts a union of processor flag bits to its string representation
+        string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf); 
 
         /// <summary>
         /// Parses an address according to the preferred base of the 
@@ -965,13 +965,13 @@ namespace Reko.Core
         }
 
         /// <inheritdoc/>
-        public abstract FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf);
+        public abstract FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf);
 
         /// <inheritdoc/>
         public abstract FlagGroupStorage? GetFlagGroup(string name);
 
         /// <inheritdoc/>
-        public abstract string GrfToString(RegisterStorage flagRegister, string prefix, uint grf);
+        public abstract string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf);
 
         /// <inheritdoc/>
         public virtual List<RtlInstruction>? InlineCall(Address addrCallee, Address addrContinuation, EndianImageReader rdr, IStorageBinder binder)

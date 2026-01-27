@@ -44,7 +44,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         private const string opt_execmode = "execution_mode";
         private const string opt_loadertype = "loader_type";
 
-        protected Dictionary<uint, FlagGroupStorage> flagGroups;
+        protected Dictionary<ulong, FlagGroupStorage> flagGroups;
 
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Reko.Arch.MicrochipPIC.Common
         public PICArchitecture(IServiceProvider services, string archId, Dictionary<string, object> options)
             : base(services, archId, options, null, null)
         {
-            flagGroups = new Dictionary<uint, FlagGroupStorage>();
+            flagGroups = [];
             Endianness = EndianServices.Little;
             FramePointerType = PrimitiveType.Offset16;
             InstructionBitSize = 8;
@@ -113,7 +113,7 @@ namespace Reko.Arch.MicrochipPIC.Common
             return (int)result;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grpFlags)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grpFlags)
         {
             if (flagGroups.TryGetValue(grpFlags, out var f))
                 return f;
@@ -155,14 +155,14 @@ namespace Reko.Arch.MicrochipPIC.Common
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
             var grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.C) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint)FlagM.C);
-            if ((grf & (uint) FlagM.Z) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint)FlagM.Z);
-            if ((grf & (uint) FlagM.DC) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint)FlagM.DC);
-            if ((grf & (uint) FlagM.OV) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint)FlagM.OV);
-            if ((grf & (uint) FlagM.N) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint)FlagM.N);
+            if ((grf & (ulong) FlagM.C) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.C);
+            if ((grf & (ulong) FlagM.Z) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.Z);
+            if ((grf & (ulong) FlagM.DC) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.DC);
+            if ((grf & (ulong) FlagM.OV) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.OV);
+            if ((grf & (ulong) FlagM.N) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.N);
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grpFlags)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grpFlags)
         {
             var sb = new StringBuilder();
             byte bitPos = 0;

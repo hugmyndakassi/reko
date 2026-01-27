@@ -71,7 +71,7 @@ namespace Reko.UnitTests.Core.Serialization
                             "C",
                             PrimitiveType.Bool,
                             new FlagGroupStorage(
-                                Registers.eflags, (uint)FlagM.CF, "C")),
+                                Registers.eflags, (ulong) FlagM.CF, "C")),
                         false)
                 }
             };

@@ -158,7 +158,7 @@ namespace Reko.UnitTests.Mocks
         }
 
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var sb = new StringBuilder();
             if (((uint)grf & 0x01) != 0) sb.Append('S');
@@ -173,7 +173,7 @@ namespace Reko.UnitTests.Mocks
 
 		public override FlagGroupStorage GetFlagGroup(string s)
 		{
-            uint grf = 0;
+            ulong grf = 0;
             for (int i = 0; i < s.Length; ++i)
             {
                 switch (char.ToUpper(s[i]))
@@ -269,7 +269,7 @@ namespace Reko.UnitTests.Mocks
 			return new FakeProcessorState(this);
 		}
 
-		public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+		public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
 		{
             var sb = new StringBuilder();
             if ((grf & (uint) StatusFlags.S) != 0) sb.Append('S');
@@ -416,7 +416,7 @@ namespace Reko.UnitTests.Mocks
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             throw new NotImplementedException();
         }
@@ -441,7 +441,7 @@ namespace Reko.UnitTests.Mocks
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             throw new NotImplementedException();
         }

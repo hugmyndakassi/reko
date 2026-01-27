@@ -37,7 +37,7 @@ namespace Reko.Arch.SuperH
     // RaymondC says: https://devblogs.microsoft.com/oldnewthing/20190820-00/?p=102792
     public class SuperHArchitecture : ProcessorArchitecture
     {
-        private readonly Dictionary<uint, FlagGroupStorage> grfs;
+        private readonly Dictionary<ulong, FlagGroupStorage> grfs;
         private Decoder<SuperHDisassembler, Mnemonic, SuperHInstruction> rootDecoder;
 
         public SuperHArchitecture(IServiceProvider services, string archId, Dictionary<string, object> options)
@@ -49,7 +49,7 @@ namespace Reko.Arch.SuperH
             this.PointerType = PrimitiveType.Ptr32;
             this.WordWidth = PrimitiveType.Word32;
             // No architecture-defined stack register -- defined by platform.
-            this.grfs = new Dictionary<uint, FlagGroupStorage>();
+            this.grfs = [];
             this.rootDecoder = default!;
             LoadUserOptions(options);
         }
@@ -88,7 +88,7 @@ namespace Reko.Arch.SuperH
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagRegister == Registers.sr)
             {
@@ -146,12 +146,12 @@ namespace Reko.Arch.SuperH
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.S.FlagGroupBits) != 0) yield return Registers.S;
             if ((grf & Registers.T.FlagGroupBits) != 0) yield return Registers.T;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
             if (flagRegister == Registers.sr)

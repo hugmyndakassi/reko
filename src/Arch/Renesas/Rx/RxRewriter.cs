@@ -379,8 +379,8 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var idDst = RewriteBinary(instr, CommonOps.Bit);
         var c = binder.EnsureFlagGroup(Registers.C);
         var z = binder.EnsureFlagGroup(Registers.Z);
-        m.Assign(c, m.Conditional(c.DataType, idDst, m.Word32((uint) FlagM.CF), m.Word32(0)));
-        m.Assign(z, m.Conditional(c.DataType, idDst, m.Word32(0), m.Word32((uint) FlagM.ZF)));
+        m.Assign(c, m.Conditional(c.DataType, idDst, m.Word64((ulong) FlagM.CF), m.Word64(0)));
+        m.Assign(z, m.Conditional(c.DataType, idDst, m.Word64(0), m.Word64((ulong) FlagM.ZF)));
     }
 
     private void RewriteCmp(RxInstruction instr)
@@ -959,7 +959,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
     {
         var flag = (FlagGroupStorage) instr.Operands[0];
         var grf = binder.EnsureFlagGroup(flag);
-        m.Assign(grf, m.Word32(flag.FlagGroupBits));
+        m.Assign(grf, m.Word64(flag.FlagGroupBits));
     }
 
     private void RewriteShift(RxInstruction instr, BinaryOperator shift)

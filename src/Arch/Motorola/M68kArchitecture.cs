@@ -132,7 +132,7 @@ namespace Reko.Arch.Motorola
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             foreach (var cc in flagRegisters)
             {
                 if ((grf & cc.FlagGroupBits) != 0)
@@ -145,7 +145,7 @@ namespace Reko.Arch.Motorola
             return Registers.regsByName.TryGetValue(name, out reg);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(Registers.ccr, grf, GrfToString(Registers.ccr, "", grf));
             return fl;
@@ -202,7 +202,7 @@ namespace Reko.Arch.Motorola
             Registers.X,
         };
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             if (flagregister == Registers.fpsr)
             {

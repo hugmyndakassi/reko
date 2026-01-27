@@ -361,7 +361,7 @@ namespace Reko.Arch.Msp430
 
         private void RewriteAdcSbc(Func<Expression, Expression, Expression> fn)
         {
-            var c = binder.EnsureFlagGroup(this.arch.GetFlagGroup(arch.Registers.sr, (uint)FlagM.CF));
+            var c = binder.EnsureFlagGroup(this.arch.GetFlagGroup(arch.Registers.sr, (ulong) FlagM.CF));
             var src = RewriteOp(instr.Operands[0]);
             var dst = RewriteDst(instr.Operands[1], src, (a, b) => fn(fn(a, b), c));
             EmitCc(dst, arch.Registers.VNZC);
@@ -394,8 +394,8 @@ namespace Reko.Arch.Msp430
             var right = MaybeExtend(RewriteOp(op0), dtResult);
             var tmp = binder.CreateTemporary(dtResult);
             var grf = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (uint)(FlagM.NF | FlagM.ZF)));
-            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (uint)FlagM.CF));
-            var v = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (uint)FlagM.VF));
+            var c = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (ulong) FlagM.CF));
+            var v = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (ulong) FlagM.VF));
             m.Assign(tmp, m.And(left, right));
             m.Assign(grf, m.Cond(grf.DataType, tmp));
             m.Assign(c, m.Test(ConditionCode.NE, tmp));

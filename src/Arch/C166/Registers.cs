@@ -188,11 +188,11 @@ namespace Reko.Arch.C166
             ByDomain = GpRegs.Concat(SpecialFunctionRegs.Values)
                 .ToDictionary(r => r.Domain);
 
-            E = new FlagGroupStorage(PSW, (uint)FlagM.EF, nameof(E));
-            Z = new FlagGroupStorage(PSW, (uint)FlagM.ZF, nameof(Z));
-            V = new FlagGroupStorage(PSW, (uint)FlagM.VF, nameof(V));
-            C = new FlagGroupStorage(PSW, (uint)FlagM.CF, nameof(C));
-            N = new FlagGroupStorage(PSW, (uint)FlagM.NF, nameof(N));
+            E = new FlagGroupStorage(PSW, (ulong) FlagM.EF, nameof(E));
+            Z = new FlagGroupStorage(PSW, (ulong) FlagM.ZF, nameof(Z));
+            V = new FlagGroupStorage(PSW, (ulong) FlagM.VF, nameof(V));
+            C = new FlagGroupStorage(PSW, (ulong) FlagM.CF, nameof(C));
+            N = new FlagGroupStorage(PSW, (ulong) FlagM.NF, nameof(N));
         }
     }
 

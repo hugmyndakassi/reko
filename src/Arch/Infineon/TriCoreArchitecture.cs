@@ -72,7 +72,7 @@ namespace Reko.Arch.Infineon
             return new TriCoreRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage? GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagRegister != Registers.psw)
                 return null;
@@ -107,7 +107,7 @@ namespace Reko.Arch.Infineon
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
             if ((grf & Registers.V.FlagGroupBits) != 0) yield return Registers.V;
             if ((grf & Registers.SV.FlagGroupBits) != 0) yield return Registers.SV;
@@ -115,7 +115,7 @@ namespace Reko.Arch.Infineon
             if ((grf & Registers.SAV.FlagGroupBits) != 0) yield return Registers.SAV;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var sep = "";
             var sb = new StringBuilder();

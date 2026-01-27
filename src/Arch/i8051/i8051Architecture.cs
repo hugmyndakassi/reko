@@ -80,7 +80,7 @@ namespace Reko.Arch.i8051
             return new i8051Rewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var grfStg = new FlagGroupStorage(Registers.PSW, grf, GrfToString(flagRegister, "", grf));
             return grfStg;
@@ -123,23 +123,23 @@ namespace Reko.Arch.i8051
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.CFlag.FlagGroupBits) != 0) yield return Registers.CFlag;
             if ((grf & Registers.AFlag.FlagGroupBits) != 0) yield return Registers.AFlag;
             if ((grf & Registers.OFlag.FlagGroupBits) != 0) yield return Registers.OFlag;
             if ((grf & Registers.PFlag.FlagGroupBits) != 0) yield return Registers.PFlag;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var sb = new StringBuilder();
-            if ((grf & (uint)FlagM.C) != 0)
+            if ((grf & (ulong) FlagM.C) != 0)
                 sb.Append("C");
-            if ((grf & (uint)FlagM.AC) != 0)
+            if ((grf & (ulong) FlagM.AC) != 0)
                 sb.Append("A");
-            if ((grf & (uint)FlagM.OV) != 0)
+            if ((grf & (ulong) FlagM.OV) != 0)
                 sb.Append("O");
-            if ((grf & (uint)FlagM.P) != 0)
+            if ((grf & (ulong) FlagM.P) != 0)
                 sb.Append("P");
             return sb.ToString();
         }

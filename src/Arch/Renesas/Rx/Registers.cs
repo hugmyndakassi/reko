@@ -76,12 +76,12 @@ namespace Reko.Arch.Renesas.Rx
             FPSW = factory.Reg32("FPSW");   // Floating-point status word
             EXTB = factory.Reg32("EXTB");   // Exception table register
 
-            C = new FlagGroupStorage(PSW, (uint) FlagM.CF, "C");
-            Z = new FlagGroupStorage(PSW, (uint) FlagM.ZF, "Z");
-            S = new FlagGroupStorage(PSW, (uint) FlagM.SF, "S");
-            O = new FlagGroupStorage(PSW, (uint) FlagM.OF, "O");
-            I = new FlagGroupStorage(PSW, (uint) FlagM.IF, "I");
-            U = new FlagGroupStorage(PSW, (uint) FlagM.UF, "U");
+            C = new FlagGroupStorage(PSW, (ulong) FlagM.CF, "C");
+            Z = new FlagGroupStorage(PSW, (ulong) FlagM.ZF, "Z");
+            S = new FlagGroupStorage(PSW, (ulong) FlagM.SF, "S");
+            O = new FlagGroupStorage(PSW, (ulong) FlagM.OF, "O");
+            I = new FlagGroupStorage(PSW, (ulong) FlagM.IF, "I");
+            U = new FlagGroupStorage(PSW, (ulong) FlagM.UF, "U");
             CZ = new FlagGroupStorage(PSW, (uint)(FlagM.CF | FlagM.ZF), "CZ");
             COSZ = new FlagGroupStorage(PSW, (uint)(FlagM.CF | FlagM.OF | FlagM.SF | FlagM.ZF), "COSZ");
             OS = new FlagGroupStorage(PSW, (uint)(FlagM.OF | FlagM.SF), "OS");

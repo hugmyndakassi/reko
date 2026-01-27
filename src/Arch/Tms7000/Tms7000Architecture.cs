@@ -76,7 +76,7 @@ namespace Reko.Arch.Tms7000
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage st, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage st, ulong grf)
         {
             var fl = new FlagGroupStorage(this.st, grf, GrfToString(this.st, "", grf));
             return fl;
@@ -102,13 +102,13 @@ namespace Reko.Arch.Tms7000
             throw new NotImplementedException();
         }
 
-        public override string GrfToString(RegisterStorage st, string str, uint grf)
+        public override string GrfToString(RegisterStorage st, string str, ulong grf)
         {
             StringBuilder s = new StringBuilder();
-            if ((grf & (uint)FlagM.CF) != 0) s.Append('C');
-            if ((grf & (uint)FlagM.NF) != 0) s.Append('N');
-            if ((grf & (uint)FlagM.ZF) != 0) s.Append('Z');
-            if ((grf & (uint)FlagM.IF) != 0) s.Append('I');
+            if ((grf & (ulong) FlagM.CF) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.NF) != 0) s.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) s.Append('Z');
+            if ((grf & (ulong) FlagM.IF) != 0) s.Append('I');
             return s.ToString();
         }
 

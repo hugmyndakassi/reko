@@ -156,7 +156,7 @@ namespace Reko.Arch.Pdp
             return false;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
 		{
             var fl = new FlagGroupStorage(flagRegister, grf, GrfToString(flagRegister, "", grf));
 			return fl;
@@ -164,7 +164,7 @@ namespace Reko.Arch.Pdp
 
         public override FlagGroupStorage GetFlagGroup(string name)
         {
-            uint grf = 0;
+            ulong grf = 0;
             foreach (var c in name)
             {
                 switch (c)
@@ -180,14 +180,14 @@ namespace Reko.Arch.Pdp
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             if ((grf & Registers.N.FlagGroupBits) != 0) yield return Registers.N;
             if ((grf & Registers.Z.FlagGroupBits) != 0) yield return Registers.Z;
             if ((grf & Registers.V.FlagGroupBits) != 0) yield return Registers.V;
             if ((grf & Registers.C.FlagGroupBits) != 0) yield return Registers.C;
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
 			var s = new StringBuilder();
 			foreach (var r in flagRegs)

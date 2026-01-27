@@ -154,16 +154,16 @@ namespace Reko.Arch.CompactRisc
                 USP,
             };
 
-            I = new FlagGroupStorage(PSR, (uint) FlagM.IF, nameof(I));
-            P = new FlagGroupStorage(PSR, (uint) FlagM.PF, nameof(P));
-            E = new FlagGroupStorage(PSR, (uint) FlagM.EF, nameof(E));
-            N = new FlagGroupStorage(PSR, (uint) FlagM.NF, nameof(N));
-            Z = new FlagGroupStorage(PSR, (uint) FlagM.ZF, nameof(Z));
-            F = new FlagGroupStorage(PSR, (uint) FlagM.FF, nameof(F));
-            U = new FlagGroupStorage(PSR, (uint) FlagM.UF, nameof(U));
-            L = new FlagGroupStorage(PSR, (uint) FlagM.LF, nameof(L));
-            T = new FlagGroupStorage(PSR, (uint) FlagM.TF, nameof(T));
-            C = new FlagGroupStorage(PSR, (uint) FlagM.CF, nameof(C));
+            I = new FlagGroupStorage(PSR, (ulong) FlagM.IF, nameof(I));
+            P = new FlagGroupStorage(PSR, (ulong) FlagM.PF, nameof(P));
+            E = new FlagGroupStorage(PSR, (ulong) FlagM.EF, nameof(E));
+            N = new FlagGroupStorage(PSR, (ulong) FlagM.NF, nameof(N));
+            Z = new FlagGroupStorage(PSR, (ulong) FlagM.ZF, nameof(Z));
+            F = new FlagGroupStorage(PSR, (ulong) FlagM.FF, nameof(F));
+            U = new FlagGroupStorage(PSR, (ulong) FlagM.UF, nameof(U));
+            L = new FlagGroupStorage(PSR, (ulong) FlagM.LF, nameof(L));
+            T = new FlagGroupStorage(PSR, (ulong) FlagM.TF, nameof(T));
+            C = new FlagGroupStorage(PSR, (ulong) FlagM.CF, nameof(C));
 
             CF = new FlagGroupStorage(PSR, (uint) (FlagM.CF | FlagM.FF), nameof(CF));
             LNZ = new FlagGroupStorage(PSR, (uint) (FlagM.LF | FlagM.NF | FlagM.ZF), nameof(LNZ));

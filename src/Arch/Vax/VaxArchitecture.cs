@@ -77,7 +77,7 @@ namespace Reko.Arch.Vax
             throw new NotImplementedException();
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var fl = new FlagGroupStorage(flagRegister, grf, GrfToString(Registers.psw, "", grf));
             return fl;
@@ -121,13 +121,13 @@ namespace Reko.Arch.Vax
 
         //$REVIEW: shouldn't this be flaggroup?
         private static readonly FlagGroupStorage[] flagRegisters = {
-            new FlagGroupStorage(Registers.psw, (uint)FlagM.CF, "C"),
-            new FlagGroupStorage(Registers.psw, (uint)FlagM.VF, "V"),
-            new FlagGroupStorage(Registers.psw, (uint)FlagM.ZF, "Z"),
-            new FlagGroupStorage(Registers.psw, (uint)FlagM.NF, "N"),
+            new FlagGroupStorage(Registers.psw, (ulong) FlagM.CF, "C"),
+            new FlagGroupStorage(Registers.psw, (ulong) FlagM.VF, "V"),
+            new FlagGroupStorage(Registers.psw, (ulong) FlagM.ZF, "Z"),
+            new FlagGroupStorage(Registers.psw, (ulong) FlagM.NF, "N"),
         };
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
             for (int r = 0; grf != 0; ++r, grf >>= 1)

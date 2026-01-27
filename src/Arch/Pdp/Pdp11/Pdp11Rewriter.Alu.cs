@@ -149,7 +149,7 @@ namespace Reko.Arch.Pdp.Pdp11
             AddFlagAssignment(grf, Registers.C, setFlag);
         }
 
-        private void AddFlagAssignment(uint grf, FlagGroupStorage flag, bool setFlag)
+        private void AddFlagAssignment(ulong grf, FlagGroupStorage flag, bool setFlag)
         {
             if ((grf & flag.FlagGroupBits) != 0)
             {
@@ -310,7 +310,7 @@ namespace Reko.Arch.Pdp.Pdp11
         private void RewriteRotate(IntrinsicProcedure op, uint cyMask)
         {
             var src = RewriteSrc(instr.Operands[0]);
-            var C = binder.EnsureFlagGroup(this.arch.GetFlagGroup(Registers.psw, (uint) FlagM.CF));
+            var C = binder.EnsureFlagGroup(this.arch.GetFlagGroup(Registers.psw, (ulong) FlagM.CF));
             var tmp = binder.CreateTemporary(src.DataType);
             m.Assign(tmp, src);
             var dst = RewriteDst(instr.Operands[0], src, (a, b) =>
@@ -365,7 +365,7 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private void RewriteSxt()
         {
-            var n  = binder.EnsureFlagGroup(this.arch.GetFlagGroup(Registers.psw, (uint)FlagM.NF));
+            var n  = binder.EnsureFlagGroup(this.arch.GetFlagGroup(Registers.psw, (ulong) FlagM.NF));
 
             var src = m.ISub(m.Int16(0), n);
             var dst = RewriteDst(instr.Operands[0], src, s => s);

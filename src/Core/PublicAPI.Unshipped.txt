@@ -195,12 +195,12 @@ abstract Reko.Core.ProcessorArchitecture.CreateInstructionComparer(Reko.Core.Nor
 abstract Reko.Core.ProcessorArchitecture.CreatePointerScanner(Reko.Core.SegmentMap! map, Reko.Core.Memory.EndianImageReader! rdr, System.Collections.Generic.IEnumerable<Reko.Core.Address!>! knownAddresses, Reko.Core.PointerScannerFlags flags) -> System.Collections.Generic.IEnumerable<Reko.Core.Address!>!
 abstract Reko.Core.ProcessorArchitecture.CreateProcessorState() -> Reko.Core.ProcessorState!
 abstract Reko.Core.ProcessorArchitecture.CreateRewriter(Reko.Core.Memory.EndianImageReader! rdr, Reko.Core.ProcessorState! state, Reko.Core.IStorageBinder! binder, Reko.Core.IRewriterHost! host) -> System.Collections.Generic.IEnumerable<Reko.Core.Rtl.RtlInstructionCluster!>!
-abstract Reko.Core.ProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, uint grf) -> Reko.Core.FlagGroupStorage?
+abstract Reko.Core.ProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, ulong grf) -> Reko.Core.FlagGroupStorage?
 abstract Reko.Core.ProcessorArchitecture.GetFlagGroup(string! name) -> Reko.Core.FlagGroupStorage?
 abstract Reko.Core.ProcessorArchitecture.GetMnemonicNames() -> System.Collections.Generic.SortedList<string!, int>!
 abstract Reko.Core.ProcessorArchitecture.GetMnemonicNumber(string! name) -> int?
 abstract Reko.Core.ProcessorArchitecture.GetRegisters() -> Reko.Core.RegisterStorage![]!
-abstract Reko.Core.ProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagRegister, string! prefix, uint grf) -> string!
+abstract Reko.Core.ProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagRegister, string! prefix, ulong grf) -> string!
 abstract Reko.Core.ProcessorArchitecture.MakeAddressFromConstant(Reko.Core.Expressions.Constant! c, bool codeAlign) -> Reko.Core.Address!
 abstract Reko.Core.ProcessorArchitecture.ReadCodeAddress(int size, Reko.Core.Memory.EndianImageReader! rdr, Reko.Core.ProcessorState? state) -> Reko.Core.Address?
 abstract Reko.Core.ProcessorArchitecture.TryParseAddress(string? txtAddr, out Reko.Core.Address! addr) -> bool
@@ -1946,7 +1946,7 @@ override Reko.Core.NativeInterface.NativeProcessorArchitecture.CreateInstruction
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.CreatePointerScanner(Reko.Core.SegmentMap! map, Reko.Core.Memory.EndianImageReader! rdr, System.Collections.Generic.IEnumerable<Reko.Core.Address!>! knownAddresses, Reko.Core.PointerScannerFlags flags) -> System.Collections.Generic.IEnumerable<Reko.Core.Address!>!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.CreateProcessorState() -> Reko.Core.ProcessorState!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.CreateRewriter(Reko.Core.Memory.EndianImageReader! rdr, Reko.Core.ProcessorState! state, Reko.Core.IStorageBinder! frame, Reko.Core.IRewriterHost! host) -> System.Collections.Generic.IEnumerable<Reko.Core.Rtl.RtlInstructionCluster!>!
-override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, uint grf) -> Reko.Core.FlagGroupStorage!
+override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, ulong grf) -> Reko.Core.FlagGroupStorage!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetFlagGroup(string! name) -> Reko.Core.FlagGroupStorage!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetFlags() -> Reko.Core.FlagGroupStorage![]!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetMnemonicNames() -> System.Collections.Generic.SortedList<string!, int>!
@@ -1955,7 +1955,7 @@ override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetRegister(Reko.
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetRegister(string name) -> Reko.Core.RegisterStorage
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetRegisters() -> Reko.Core.RegisterStorage![]!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.GetSubFlags(Reko.Core.FlagGroupStorage! flags) -> System.Collections.Generic.IEnumerable<Reko.Core.FlagGroupStorage!>!
-override Reko.Core.NativeInterface.NativeProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagregister, string! prefix, uint grf) -> string!
+override Reko.Core.NativeInterface.NativeProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagregister, string! prefix, ulong grf) -> string!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.MakeAddressFromConstant(Reko.Core.Expressions.Constant! c, bool codeAlign) -> Reko.Core.Address!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.ReadCodeAddress(int size, Reko.Core.Memory.EndianImageReader! rdr, Reko.Core.ProcessorState? state) -> Reko.Core.Address!
 override Reko.Core.NativeInterface.NativeProcessorArchitecture.TryGetRegister(string! name, out Reko.Core.RegisterStorage! reg) -> bool
@@ -3951,7 +3951,7 @@ Reko.Core.FieldAttribute.Align -> int
 Reko.Core.FieldAttribute.FieldAttribute() -> void
 Reko.Core.FlagGroupStorage
 Reko.Core.FlagGroupStorage.FlagGroupBits.get -> uint
-Reko.Core.FlagGroupStorage.FlagGroupStorage(Reko.Core.RegisterStorage! freg, uint grfMask, string! name, Reko.Core.Types.DataType! dataType) -> void
+Reko.Core.FlagGroupStorage.FlagGroupStorage(Reko.Core.RegisterStorage! freg, ulong grfMask, string! name, Reko.Core.Types.DataType! dataType) -> void
 Reko.Core.FlagGroupStorage.FlagRegister.get -> Reko.Core.RegisterStorage!
 Reko.Core.FlagGroupStorage.GetFlagBitMasks() -> System.Collections.Generic.IEnumerable<uint>!
 Reko.Core.FpuStackStorage
@@ -3963,7 +3963,7 @@ Reko.Core.Frame.CreateSequence(Reko.Core.Types.DataType! dt, string! name, param
 Reko.Core.Frame.CreateTemporary(Reko.Core.Types.DataType! dt) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.CreateTemporary(string! name, Reko.Core.Types.DataType! dt) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.EnsureFlagGroup(Reko.Core.FlagGroupStorage! grf) -> Reko.Core.Expressions.Identifier!
-Reko.Core.Frame.EnsureFlagGroup(Reko.Core.RegisterStorage! freg, uint grfMask, string! name, Reko.Core.Types.DataType! dt) -> Reko.Core.Expressions.Identifier!
+Reko.Core.Frame.EnsureFlagGroup(Reko.Core.RegisterStorage! freg, ulong grfMask, string! name, Reko.Core.Types.DataType! dt) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.EnsureFpuStackVariable(int depth, Reko.Core.Types.DataType! type) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.EnsureIdentifier(Reko.Core.Storage! stgForeign) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.EnsureOutArgument(Reko.Core.Expressions.Identifier! idOrig, Reko.Core.Types.DataType! outArgumentPointer) -> Reko.Core.Expressions.Identifier!
@@ -3978,7 +3978,7 @@ Reko.Core.Frame.EnsureStackLocal(int cbOffset, Reko.Core.Types.DataType! type, s
 Reko.Core.Frame.EnsureStackVariable(Reko.Core.Expressions.Constant! imm, int cbOffset, Reko.Core.Types.DataType! type) -> Reko.Core.Expressions.Identifier!
 Reko.Core.Frame.Escapes.get -> bool
 Reko.Core.Frame.Escapes.set -> void
-Reko.Core.Frame.FindFlagGroup(Reko.Core.RegisterStorage! reg, uint grfMask) -> Reko.Core.Expressions.Identifier?
+Reko.Core.Frame.FindFlagGroup(Reko.Core.RegisterStorage! reg, ulong grfMask) -> Reko.Core.Expressions.Identifier?
 Reko.Core.Frame.FindFpuStackVariable(int off) -> Reko.Core.Expressions.Identifier?
 Reko.Core.Frame.FindOutArgument(Reko.Core.Expressions.Identifier! idOrig) -> Reko.Core.Expressions.Identifier?
 Reko.Core.Frame.FindRegister(Reko.Core.RegisterStorage! reg) -> Reko.Core.Expressions.Identifier?
@@ -5202,7 +5202,7 @@ Reko.Core.IProcessorArchitecture.Description.get -> string?
 Reko.Core.IProcessorArchitecture.Description.set -> void
 Reko.Core.IProcessorArchitecture.Endianness.get -> Reko.Core.EndianServices!
 Reko.Core.IProcessorArchitecture.FramePointerType.get -> Reko.Core.Types.PrimitiveType!
-Reko.Core.IProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, uint grf) -> Reko.Core.FlagGroupStorage?
+Reko.Core.IProcessorArchitecture.GetFlagGroup(Reko.Core.RegisterStorage! flagRegister, ulong grf) -> Reko.Core.FlagGroupStorage?
 Reko.Core.IProcessorArchitecture.GetFlagGroup(string! name) -> Reko.Core.FlagGroupStorage?
 Reko.Core.IProcessorArchitecture.GetFlags() -> Reko.Core.FlagGroupStorage![]!
 Reko.Core.IProcessorArchitecture.GetMnemonicNames() -> System.Collections.Generic.SortedList<string!, int>!
@@ -5210,7 +5210,7 @@ Reko.Core.IProcessorArchitecture.GetMnemonicNumber(string! sMnemonic) -> int?
 Reko.Core.IProcessorArchitecture.GetRegister(string! name) -> Reko.Core.RegisterStorage?
 Reko.Core.IProcessorArchitecture.GetRegisters() -> Reko.Core.RegisterStorage![]!
 Reko.Core.IProcessorArchitecture.GetSubFlags(Reko.Core.FlagGroupStorage! flags) -> System.Collections.Generic.IEnumerable<Reko.Core.FlagGroupStorage!>!
-Reko.Core.IProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagRegister, string! prefix, uint grf) -> string!
+Reko.Core.IProcessorArchitecture.GrfToString(Reko.Core.RegisterStorage! flagRegister, string! prefix, ulong grf) -> string!
 Reko.Core.IProcessorArchitecture.InlineCall(Reko.Core.Address! addrCallee, Reko.Core.Address! addrContinuation, Reko.Core.Memory.EndianImageReader! rdr, Reko.Core.IStorageBinder! binder) -> System.Collections.Generic.List<Reko.Core.Rtl.RtlInstruction!>?
 Reko.Core.IProcessorArchitecture.InstructionBitSize.get -> int
 Reko.Core.IProcessorArchitecture.IsStackArgumentOffset(long frameOffset) -> bool

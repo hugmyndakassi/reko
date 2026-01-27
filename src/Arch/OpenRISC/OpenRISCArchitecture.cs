@@ -74,7 +74,7 @@ namespace Reko.Arch.OpenRISC
             return new OpenRISCRewriter(this, rdr, state, binder, host);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var flagregister = Registers.sr;
             var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));
@@ -108,11 +108,11 @@ namespace Reko.Arch.OpenRISC
             if ((grf & FlagM.OV) != 0) yield return Registers.V;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
-            if ((grf & (uint) FlagM.CY) != 0) s.Append('C');
-            if ((grf & (uint) FlagM.OV) != 0) s.Append('V');
+            if ((grf & (ulong) FlagM.CY) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.OV) != 0) s.Append('V');
             return s.ToString();
         }
 

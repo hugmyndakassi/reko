@@ -67,10 +67,10 @@ namespace Reko.Arch.MilStd1750
             ByName = factory.NamesToRegisters;
             ByDomain = factory.DomainsToRegisters;
 
-            C = new FlagGroupStorage(Registers.sw, (uint) FlagM.CF, nameof(C));
-            P = new FlagGroupStorage(Registers.sw, (uint) FlagM.PF, nameof(P));
-            Z = new FlagGroupStorage(Registers.sw, (uint) FlagM.ZF, nameof(Z));
-            N = new FlagGroupStorage(Registers.sw, (uint) FlagM.NF, nameof(N));
+            C = new FlagGroupStorage(Registers.sw, (ulong) FlagM.CF, nameof(C));
+            P = new FlagGroupStorage(Registers.sw, (ulong) FlagM.PF, nameof(P));
+            Z = new FlagGroupStorage(Registers.sw, (ulong) FlagM.ZF, nameof(Z));
+            N = new FlagGroupStorage(Registers.sw, (ulong) FlagM.NF, nameof(N));
         }
     }
 

@@ -208,7 +208,7 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
                 { 0xCC, ioPortFactory.Reg("PC_DR", PrimitiveType.Byte) },
                 { 0xCD, ioPortFactory.Reg("PC_CR", PrimitiveType.Byte) },
             };
-            C = new FlagGroupStorage(ccr, (uint) FlagM.C, nameof(C));
+            C = new FlagGroupStorage(ccr, (ulong) FlagM.C, nameof(C));
         }
     }
 

@@ -35,7 +35,7 @@ namespace Reko.Arch.H8
 {
     public class H8Architecture : ProcessorArchitecture
     {
-        private readonly ConcurrentDictionary<uint, FlagGroupStorage> flagGroups;
+        private readonly ConcurrentDictionary<ulong, FlagGroupStorage> flagGroups;
         private readonly H8CallingConvention cc;
 
         public H8Architecture(IServiceProvider services, string archId, Dictionary<string, object> options)
@@ -49,7 +49,7 @@ namespace Reko.Arch.H8
             this.StackRegister = Registers.GpRegisters[7];
             this.WordWidth = PrimitiveType.Word16;      //$TODO: could vary by model.
             this.Ptr24 = PrimitiveType.Create(Domain.Pointer, 24);
-            this.flagGroups = new ConcurrentDictionary<uint, FlagGroupStorage>();
+            this.flagGroups = [];
             this.cc = new H8CallingConvention(WordWidth);
         }
 
@@ -85,7 +85,7 @@ namespace Reko.Arch.H8
             return cc;
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             if (flagRegister != Registers.CcRegister)
                 throw new ArgumentException($"'{flagRegister.Name}' is not a flag register on this architecture.");
@@ -144,21 +144,21 @@ namespace Reko.Arch.H8
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
+            ulong grf = flags.FlagGroupBits;
             var ccr = Registers.CcRegister;
-            if ((grf & (uint) FlagM.NF) != 0) yield return this.GetFlagGroup(ccr, (uint) FlagM.NF)!;
-            if ((grf & (uint) FlagM.ZF) != 0) yield return this.GetFlagGroup(ccr, (uint) FlagM.ZF)!;
-            if ((grf & (uint) FlagM.VF) != 0) yield return this.GetFlagGroup(ccr, (uint) FlagM.VF)!;
-            if ((grf & (uint) FlagM.CF) != 0) yield return this.GetFlagGroup(ccr, (uint) FlagM.CF)!;
+            if ((grf & (ulong) FlagM.NF) != 0) yield return this.GetFlagGroup(ccr, (ulong) FlagM.NF)!;
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return this.GetFlagGroup(ccr, (ulong) FlagM.ZF)!;
+            if ((grf & (ulong) FlagM.VF) != 0) yield return this.GetFlagGroup(ccr, (ulong) FlagM.VF)!;
+            if ((grf & (ulong) FlagM.CF) != 0) yield return this.GetFlagGroup(ccr, (ulong) FlagM.CF)!;
         }
 
-        public override string GrfToString(RegisterStorage flagRegister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagRegister, string prefix, ulong grf)
         {
             var sb = new StringBuilder();
-            if ((grf & (uint) FlagM.NF) != 0) sb.Append('N');
-            if ((grf & (uint) FlagM.ZF) != 0) sb.Append('Z');
-            if ((grf & (uint) FlagM.VF) != 0) sb.Append('V');
-            if ((grf & (uint) FlagM.CF) != 0) sb.Append('C');
+            if ((grf & (ulong) FlagM.NF) != 0) sb.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) sb.Append('Z');
+            if ((grf & (ulong) FlagM.VF) != 0) sb.Append('V');
+            if ((grf & (ulong) FlagM.CF) != 0) sb.Append('C');
             return sb.ToString();
         }
 

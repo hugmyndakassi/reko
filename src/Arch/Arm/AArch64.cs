@@ -198,20 +198,20 @@ namespace Reko.Arch.Arm
 
         public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
         {
-            uint grf = flags.FlagGroupBits;
-            if ((grf & (uint) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.NF);
-            if ((grf & (uint) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.ZF);
-            if ((grf & (uint) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.CF);
-            if ((grf & (uint) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (uint) FlagM.VF);
+            ulong grf = flags.FlagGroupBits;
+            if ((grf & (ulong) FlagM.NF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.NF);
+            if ((grf & (ulong) FlagM.ZF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.ZF);
+            if ((grf & (ulong) FlagM.CF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.CF);
+            if ((grf & (ulong) FlagM.VF) != 0) yield return GetFlagGroup(flags.FlagRegister, (ulong) FlagM.VF);
         }
 
-        public override string GrfToString(RegisterStorage flagregister, string prefix, uint grf)
+        public override string GrfToString(RegisterStorage flagregister, string prefix, ulong grf)
         {
             var s = new StringBuilder();
-            if ((grf & (uint)FlagM.NF) != 0) s.Append('N');
-            if ((grf & (uint)FlagM.ZF) != 0) s.Append('Z');
-            if ((grf & (uint)FlagM.CF) != 0) s.Append('C');
-            if ((grf & (uint)FlagM.VF) != 0) s.Append('V');
+            if ((grf & (ulong) FlagM.NF) != 0) s.Append('N');
+            if ((grf & (ulong) FlagM.ZF) != 0) s.Append('Z');
+            if ((grf & (ulong) FlagM.CF) != 0) s.Append('C');
+            if ((grf & (ulong) FlagM.VF) != 0) s.Append('V');
             return s.ToString();
         }
 
@@ -220,7 +220,7 @@ namespace Reko.Arch.Arm
             return Registers.ByName.TryGetValue(name, out reg);
         }
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
             var flagregister = Registers.pstate;
             var fl = new FlagGroupStorage(flagregister, grf, GrfToString(flagRegister, "", grf));

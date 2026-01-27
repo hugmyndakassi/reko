@@ -246,7 +246,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var eax = m.Frame.EnsureRegister(Registers.eax);
             var SCZO = m.Frame.EnsureFlagGroup(Registers.SCZO);
             var bw = new Backwalker<Block,Instruction>(host, new RtlGoto(m.Mem32(m.IAdd(eax, 0x1000)), InstrClass.Transfer), expSimp);
-            bw.UsedFlagIdentifier = m.Frame.EnsureFlagGroup(new FlagGroupStorage(Registers.eflags,(uint)FlagM.CF, "C"));
+            bw.UsedFlagIdentifier = m.Frame.EnsureFlagGroup(new FlagGroupStorage(Registers.eflags,(ulong) FlagM.CF, "C"));
             Assert.IsFalse(
                 bw.BackwalkInstruction(
                     m.Assign(SCZO, m.Cond(SCZO.DataType, m.ISub(eax, 3)))),

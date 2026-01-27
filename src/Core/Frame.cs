@@ -457,7 +457,7 @@ namespace Reko.Core
         /// <param name="grfMask">Bits of the flag group.</param>
         /// <returns>A matching identifier if one is found; otherwise null.
         /// </returns>
-		public Identifier? FindFlagGroup(RegisterStorage reg, uint grfMask)
+		public Identifier? FindFlagGroup(RegisterStorage reg, ulong grfMask)
 		{
 			foreach (Identifier id in Identifiers)
 			{

@@ -483,7 +483,7 @@ namespace Reko.Analysis
             IStorageBinder binder,
             IProcessorArchitecture arch)
         {
-            var grfs = new SortedList<RegisterStorage, uint>();
+            var grfs = new SortedList<RegisterStorage, ulong>();
             foreach (var id in ids)
             {
                 if (id.Storage is FlagGroupStorage grf)
@@ -1434,7 +1434,7 @@ namespace Reko.Analysis
             /// List of defined flag group identifiers, in chronological order (i.e. the
             /// the most recently defined flag group is last in the list).
             /// </summary>
-            public List<(SsaIdentifier, uint)> Definitions;
+            public List<(SsaIdentifier, ulong)> Definitions;
 
 
             /// <summary>
@@ -1448,7 +1448,7 @@ namespace Reko.Analysis
             /// </summary>
             public FlagAliasState()
             {
-                this.Definitions = new List<(SsaIdentifier, uint)>();
+                this.Definitions = new List<(SsaIdentifier, ulong)>();
                 this.ExactAliases = new Dictionary<Identifier, SsaIdentifier>();
             }
         }

@@ -745,7 +745,7 @@ namespace Reko.Analysis
         /// </summary>
         public class FlagGroupTransformer : IdentifierTransformer
         {
-            private readonly uint flagMask;
+            private readonly ulong flagMask;
             private FlagGroupStorage flagGroup;
 
             /// <summary>
@@ -756,7 +756,7 @@ namespace Reko.Analysis
             /// <param name="stm"><see cref="Statement"/> where the flag group is accessed.</param>
             /// <param name="outer">Reference to the current <see cref="SsaTransform"/>.</param>
             /// <param name="flagMask">Flag mask of the flag group.</param>
-            public FlagGroupTransformer(Identifier id, FlagGroupStorage flagGroup, Statement stm, SsaTransform outer, uint flagMask)
+            public FlagGroupTransformer(Identifier id, FlagGroupStorage flagGroup, Statement stm, SsaTransform outer, ulong flagMask)
                 : base(id, stm, outer)
             {
                 this.flagGroup = flagGroup;
@@ -811,7 +811,7 @@ namespace Reko.Analysis
                 // Has the alias already been calculated?
                 if (alias.ExactAliases.TryGetValue(this.id, out var sid))
                     return sid;
-                var sids = new List<(FlagAliasState, SsaIdentifier,uint)>();
+                var sids = new List<(FlagAliasState, SsaIdentifier, ulong)>();
                 var mask = this.flagMask;
                 for (int i = alias.Definitions.Count - 1; i >= 0; --i)
                 {
@@ -850,7 +850,7 @@ namespace Reko.Analysis
                 }
             }
 
-            private SsaIdentifier MakeSlice((FlagAliasState alias, SsaIdentifier sid, uint mask) elem)
+            private SsaIdentifier MakeSlice((FlagAliasState alias, SsaIdentifier sid, ulong mask) elem)
             {
                 var grfFrom = (FlagGroupStorage) elem.sid.Identifier.Storage;
                 if (grfFrom.FlagGroupBits == elem.mask)

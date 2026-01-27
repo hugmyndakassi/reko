@@ -73,7 +73,7 @@ namespace Reko.Arch.PaRisc
         // PA-RISC uses a link register
         public override int ReturnAddressOnStack => 0;
 
-        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, uint grf)
+        public override FlagGroupStorage GetFlagGroup(RegisterStorage reg, ulong grf)
         {
             var dt = Bits.IsSingleBitSet(grf) ? PrimitiveType.Bool : PrimitiveType.Byte;
             var f = new FlagGroupStorage(reg, grf, GrfToString(reg, "", grf));
@@ -105,7 +105,7 @@ namespace Reko.Arch.PaRisc
             return new FlagGroupStorage[] { flags };
         }
 
-        public override string GrfToString(RegisterStorage reg, string str, uint grf)
+        public override string GrfToString(RegisterStorage reg, string str, ulong grf)
         {
             return "C";
         }
