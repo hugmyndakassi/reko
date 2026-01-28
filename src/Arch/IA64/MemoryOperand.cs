@@ -32,27 +32,17 @@ namespace Reko.Arch.IA64;
 
 public class MemoryOperand : AbstractMachineOperand
 {
-    public MemoryOperand(RegisterStorage baseReg, long offset, PrimitiveType dt)
+    public MemoryOperand(RegisterStorage baseReg, PrimitiveType dt)
         : base(dt)
     {
         this.Base = baseReg;
-        this.Offset = offset;
-    }
-
-    public MemoryOperand(RegisterStorage baseReg, RegisterStorage indexReg, PrimitiveType dt)
-        : base(dt)
-    {
-        this.Base = baseReg;
-        this.Index = indexReg;
     }
 
     public RegisterStorage Base { get; }
     public RegisterStorage? Index { get; }
-    public long Offset { get; }
 
     protected override void DoRender(MachineInstructionRenderer renderer, MachineInstructionRendererOptions options)
     {
-        Debug.Assert(Offset == 0 && Index == null);
         renderer.WriteChar('[');
         renderer.WriteString(Base.Name);
         renderer.WriteChar(']');

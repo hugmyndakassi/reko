@@ -50,4 +50,12 @@ public enum Completer
 
     BranchCache_None = 0,
     BranchCache_Clr = 128,
+
+    Important = 0x100,
+
+    FpStatusMask = 0xE00,
+    FpS0 = 0x200,
+    FpS1 = 0x400,
+    FpS2 = 0x600,
+    FpS3 = 0x800,
 }

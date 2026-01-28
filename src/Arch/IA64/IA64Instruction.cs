@@ -39,7 +39,12 @@ public class IA64Instruction : MachineInstruction
         { Completer.Whether_Spnt, ".spnt"},
         { Completer.Whether_Dptk, ".dptk"},
         { Completer.Whether_Dpnt, ".dpnt" },
-        { Completer.BranchCache_Clr, ".clr" }
+        { Completer.BranchCache_Clr, ".clr" },
+        { Completer.Important, ".imp" },
+        { Completer.FpS0, ".s0" },
+        { Completer.FpS1, ".s1" },
+        { Completer.FpS2, ".s2" },
+        { Completer.FpS3, ".s3" },
     };
 
     public bool Stop { get; set; }
@@ -95,7 +100,16 @@ public class IA64Instruction : MachineInstruction
         {
             sb.Append(completerRender[dh]);
         }
-
+        var ih = Completer & Completer.Important;
+        if (ih != 0)
+        {
+            sb.Append(completerRender[ih]);
+        }
+        var sh = Completer & Completer.FpStatusMask;
+        if (sh != 0)
+        {
+            sb.Append(completerRender[sh]);
+        }
         renderer.WriteMnemonic(sb.ToString());
     }
 

@@ -63,16 +63,26 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     private static readonly Bitfield bf12_1 = new Bitfield(12, 1);
     private static readonly Bitfield bf13_3 = new Bitfield(13, 3);
     private static readonly Bitfield bf13_7 = new Bitfield(13, 7);
+    private static readonly Bitfield bf14_6 = new Bitfield(14, 6);
+    private static readonly Bitfield bf20_2 = new Bitfield(20, 2);
+    private static readonly Bitfield bf20_6 = new Bitfield(20, 6);
     private static readonly Bitfield bf20_7 = new Bitfield(20, 7);
+    private static readonly Bitfield bf23_1 = new Bitfield(23, 1);
+    private static readonly Bitfield bf24_9 = new Bitfield(24, 9);
     private static readonly Bitfield bf27_2 = new Bitfield(27, 2);
     private static readonly Bitfield bf27_6 = new Bitfield(27, 6);
+    private static readonly Bitfield bf27_7 = new Bitfield(27, 7);
     private static readonly Bitfield bf28_2 = new Bitfield(28, 2);
     private static readonly Bitfield bf33_2 = new Bitfield(33, 2);
+    private static readonly Bitfield bf34_2 = new Bitfield(34, 2);
     private static readonly Bitfield bf35_1 = new Bitfield(35, 1);
+    private static readonly Bitfield[] bf36_1_6_20 = Bf((36, 1), (6, 20));
     private static readonly Bitfield[] bf36_1_13_7 = Bf((36, 1), (13, 7));
     private static readonly Bitfield[] bf36_1_13_20 = Bf((36, 1), (13, 20));
-    private static readonly Bitfield[] bf36_1_6_20 = Bf((36, 1), (6, 20));
+    private static readonly Bitfield[] bf36_1_24_8_6_7 = Bf((36, 1), (24, 8), (6, 7));
     private static readonly Bitfield[] bf36_1_27_1_13_7 = Bf((36, 1), (27, 1), (13, 7));
+    private static readonly Bitfield[] bf36_1_27_6_13_7 = Bf((36, 1), (27, 6), (13, 7));
+
     private static readonly Bitfield[] bf36_1_27_1_6_7 = Bf((36, 1), (27, 1), (6, 7));
 
     private readonly IA64Architecture arch;
@@ -253,7 +263,6 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     private static readonly WideMutator I9 = Imm(PrimitiveType.UInt16, Bf((6, 7), (27, 1), (36, 1)));
     private static readonly WideMutator I13_7 = Imm(PrimitiveType.UInt32, Bf((13, 7)));
     private static readonly WideMutator I20_7 = Imm(PrimitiveType.UInt32, Bf((20, 7)));
-    private static readonly WideMutator I21 = Imm(PrimitiveType.UInt32, Bf((6, 20), (36, 1)));
     private static readonly WideMutator I27_4 = Imm(PrimitiveType.UInt32, Bf((27, 4)));
     private static readonly WideMutator I32_1_20 = Imm(PrimitiveType.Word32, Bf((36, 1), (6, 20)));
     private static readonly WideMutator I41 = Imm(PrimitiveType.Word64, Bf((0, 41)));
@@ -271,7 +280,6 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     }
 
     private static readonly WideMutator IsImm9 = ImmS(PrimitiveType.Int64, Bf((13, 7), (27, 1), (36, 1)));
-    private static readonly WideMutator IsImm14 = ImmS(PrimitiveType.Int64, Bf((36, 1), (27, 6), (13, 7)));
     private static readonly WideMutator IsImm22 = ImmS(PrimitiveType.Int64, Bf((36, 1), (22, 5), (27, 9), (13, 7)));
 
     private static bool LImmediate(ulong uInstr, IA64Disassembler dasm)
@@ -365,6 +373,20 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     }
 
     /// <summary>
+    /// Instruction format A4.
+    /// </summary>
+    private static bool A4(ulong uInstr, IA64Disassembler dasm)
+    {
+        var imm = Constant.Word64(Bitfield.ReadSignedFields(bf36_1_27_6_13_7, uInstr));
+        var src2 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(imm);
+        dasm.ops.Add(src2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
     /// Instruction format A6
     /// </summary>
     private static bool A6(ulong uInstr, IA64Disassembler dasm)
@@ -412,6 +434,36 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     }
 
     /// <summary>
+    /// Instruction format F6.
+    /// </summary>
+    private static bool F6(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f2 = Registers.FpRegisters[bf13_7.Read(uInstr)];
+        var f3 = Registers.FpRegisters[bf20_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        var p2 = Registers.PredicateRegisters[bf20_6.Read(uInstr)];
+        dasm.ops.Add(f1);
+        dasm.ops.Add(p2);
+        dasm.ops.Add(f2);
+        dasm.ops.Add(f3);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format F7.
+    /// </summary>
+    private static bool F7(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f3 = Registers.FpRegisters[bf20_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        var p2 = Registers.PredicateRegisters[bf20_6.Read(uInstr)];
+        dasm.ops.Add(f1);
+        dasm.ops.Add(p2);
+        dasm.ops.Add(f3);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
     /// Instruction format F9.
     /// </summary>
     private static bool F9(ulong uInstr, IA64Disassembler dasm)
@@ -422,6 +474,32 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         dasm.ops.Add(dst);
         dasm.ops.Add(src1);
         dasm.ops.Add(src2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format F10.
+    /// </summary>
+    private static bool F10(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f2 = Registers.FpRegisters[bf13_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        var completer = fpStatusField[bf34_2.Read(uInstr)];
+        dasm.completer |= completer;
+        dasm.ops.Add(f1);
+        dasm.ops.Add(f2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format F11.
+    /// </summary>
+    private static bool F11(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f2 = Registers.FpRegisters[bf13_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(f1);
+        dasm.ops.Add(f2);
         return qp(uInstr, dasm);
     }
 
@@ -504,8 +582,26 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         return qp(uInstr, dasm);
     }
 
+
     /// <summary>
+    /// Instruction format B5.
+    /// </summary>
+    private static bool B5(ulong uInstr, IA64Disassembler dasm)
+    {
+        dasm.completer |= whether[bf33_2.Read(uInstr)];
+        dasm.completer |= branchPrefetch[bf12_1.Read(uInstr)];
+        dasm.completer |= branchCacheDealloc[bf35_1.Read(uInstr)];
+        var b1 = Registers.BranchRegisters[bf6_3.Read(uInstr)];
+        var b2 = Registers.BranchRegisters[bf13_3.Read(uInstr)];
+        dasm.ops.Add(b1);
+        dasm.ops.Add(b2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+
     /// Instruction format B9.
+
     /// </summary>
     private static bool B9(ulong uInstr, IA64Disassembler dasm)
     {
@@ -514,8 +610,194 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         return qp(uInstr, dasm);
     }
 
+    private static readonly Completer[] fpStatusField = [
+        Completer.FpS0,
+        Completer.FpS1,
+        Completer.FpS2,
+        Completer.FpS3,
+    ];
     /// <summary>
-    /// Instruction format I22
+    /// Instruction format F1.
+    /// </summary>
+    private static bool F1(ulong uInstr, IA64Disassembler dasm)
+    {
+        var sf = fpStatusField[bf34_2.Read(uInstr)];
+        var f3 = Registers.FpRegisters[bf20_7.Read(uInstr)];
+        var f4 = Registers.FpRegisters[bf27_7.Read(uInstr)];
+        var f2 = Registers.FpRegisters[bf13_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        dasm.completer |= sf;
+        dasm.ops.Add(f1);
+        dasm.ops.Add(f3);
+        dasm.ops.Add(f4);
+        dasm.ops.Add(f2);
+        return qp(uInstr, dasm);
+    }
+
+
+    /// <summary>
+    /// Instruction format F3.
+    /// </summary>
+    private static bool F3(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f3 = Registers.FpRegisters[bf20_7.Read(uInstr)];
+        var f4 = Registers.FpRegisters[bf27_7.Read(uInstr)];
+        var f2 = Registers.FpRegisters[bf13_7.Read(uInstr)];
+        var dst = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(f3);
+        dasm.ops.Add(f4);
+        dasm.ops.Add(f2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I2.
+    /// </summary>
+    private static bool I2(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r2 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var r3 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var r1 = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(r1);
+        dasm.ops.Add(r2);
+        dasm.ops.Add(r3);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I5.
+    /// </summary>
+    private static bool I5(ulong uInstr, IA64Disassembler dasm)
+    {
+        var src1 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var src2 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(src1);
+        dasm.ops.Add(src2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I11.
+    /// </summary>
+    private static bool I11(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r3 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var pos6 = Constant.Int32((int)bf14_6.Read(uInstr));
+        var len6 = Constant.Int32((int)bf27_6.Read(uInstr));
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(r3);
+        dasm.ops.Add(pos6);
+        dasm.ops.Add(len6);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I12.
+    /// </summary>
+    private static bool I12(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r2 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var pos = Constant.Int32(63 - (int) bf20_6.Read(uInstr));
+        var len = Constant.Int32(1 +  (int) bf27_6.Read(uInstr));
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(r2);
+        dasm.ops.Add(pos);
+        dasm.ops.Add(len);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I13.
+    /// </summary>
+    private static bool I13(ulong uInstr, IA64Disassembler dasm)
+    {
+        var imm = Constant.Word64(Bitfield.ReadSignedFields(bf36_1_13_7, uInstr));
+        var pos = Constant.Int32(63 - (int) bf20_6.Read(uInstr));
+        var len = Constant.Int32(1 + (int) bf27_6.Read(uInstr));
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(imm);
+        dasm.ops.Add(pos);
+        dasm.ops.Add(len);
+        return qp(uInstr, dasm);
+    }
+
+
+    /// <summary>
+    /// Instruction format I7.
+    /// </summary>
+    private static bool I7(ulong uInstr, IA64Disassembler dasm)
+    {
+        var src1 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var src2 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(src1);
+        dasm.ops.Add(src2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I16.
+    /// </summary>
+    private static bool I16(ulong uInstr, IA64Disassembler dasm)
+    {
+        var p1 = Registers.PredicateRegisters[bf6_6.Read(uInstr)];
+        var p2 = Registers.PredicateRegisters[bf27_6.Read(uInstr)];
+        var src = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var pos = Constant.Word32(bf14_6.Read(uInstr));
+        dasm.ops.Add(p1);
+        dasm.ops.Add(p2);
+        dasm.ops.Add(src);
+        dasm.ops.Add(pos);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I17.
+    /// </summary>
+    private static bool I17(ulong uInstr, IA64Disassembler dasm)
+    {
+        var p1 = Registers.PredicateRegisters[bf6_6.Read(uInstr)];
+        var p2 = Registers.PredicateRegisters[bf27_6.Read(uInstr)];
+        var src = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        dasm.ops.Add(p1);
+        dasm.ops.Add(p2);
+        dasm.ops.Add(src);
+        return qp(uInstr, dasm);
+    }
+
+    private static readonly Completer[] importance = [
+
+        Completer.None,
+        Completer.Important
+    ];
+
+    /// <summary>
+    /// Instruction format I21.
+    /// </summary>
+    private static bool I21(ulong uInstr, IA64Disassembler dasm)
+    {
+        var src = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var tag = bf24_9.ReadSigned(uInstr);
+        var b = Registers.BranchRegisters[bf6_3.Read(uInstr)];
+        var wh = whether[bf20_2.Read(uInstr)];
+        var ih = importance[bf23_1.Read(uInstr)];
+        dasm.completer |= wh;
+        dasm.completer |= ih;
+        dasm.ops.Add(b);
+        dasm.ops.Add(src);
+        dasm.ops.Add(dasm.addr + (tag << 4));
+        return qp(uInstr, dasm);
+    }
+    
+    /// <summary>
+    /// Instruction format I22.
     /// </summary>
     private static bool I22(ulong uInstr, IA64Disassembler dasm)
     {
@@ -523,6 +805,18 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
         dasm.ops.Add(dst);
         dasm.ops.Add(src);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format I23
+    /// </summary>
+    private static bool I23(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r2 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var mask = Constant.Word64(Bitfield.ReadSignedFields(bf36_1_24_8_6_7, uInstr) << 1);
+        dasm.ops.Add(r2);
+        dasm.ops.Add(mask);
         return qp(uInstr, dasm);
     }
 
@@ -606,7 +900,7 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             var dst = Registers.GpRegisters[bf6_7.Read(u)];
             d.completer = completer;
             d.ops.Add(dst);
-            d.ops.Add(new MemoryOperand(src, 0, dt));
+            d.ops.Add(new MemoryOperand(src, dt));
             return qp(u, d);
         };
     }
@@ -630,7 +924,8 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             var dst = Registers.GpRegisters[bf6_7.Read(u)];
             d.completer = completer;
             d.ops.Add(dst);
-            d.ops.Add(new MemoryOperand(src, offset, dt));
+            d.ops.Add(new MemoryOperand(src, dt));
+            d.ops.Add(Constant.Int64(offset));
             return qp(u, d);
         };
     }
@@ -653,7 +948,7 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             var src = Registers.GpRegisters[bf13_7.Read(u)];
             var dst = Registers.GpRegisters[bf20_7.Read(u)];
             d.completer = completer;
-            d.ops.Add(new MemoryOperand(src, 0, dt));
+            d.ops.Add(new MemoryOperand(src, dt));
             d.ops.Add(dst);
             return qp(u, d);
         };
@@ -665,7 +960,7 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
 
 
     /// <summary>
-    /// Instruction format M5
+    /// Instruction format M5.
     /// </summary>
     private static WideMutator M5(PrimitiveType dt)
     {
@@ -678,7 +973,7 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             var offset = Bitfield.ReadSignedFields(bf36_1_27_1_6_7, u);
             var src = Registers.GpRegisters[bf6_7.Read(u)];
             d.completer = completer;
-            d.ops.Add(new MemoryOperand(dst, 0, dt));
+            d.ops.Add(new MemoryOperand(dst, dt));
             d.ops.Add(src);
             d.ops.Add(Constant.Int64(offset));
             return qp(u, d);
@@ -689,6 +984,112 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     private static readonly WideMutator M5_4 = M5(PrimitiveType.Word32);
     private static readonly WideMutator M5_8 = M5(PrimitiveType.Word64);
 
+    /// <summary>
+    /// Instruction format M6.
+    /// </summary>
+    private static bool M6(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r3 = Registers.GpRegisters[bf20_7.ReadSigned(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.ReadSigned(uInstr)];
+            var completer = ldHints[bf28_2.Read(uInstr)];
+        dasm.completer |= completer;
+        dasm.ops.Add(f1);
+        dasm.ops.Add(new MemoryOperand(r3, PrimitiveType.Byte));
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format M9.
+    /// </summary>
+    private static bool M9(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f2 = Registers.FpRegisters[bf13_7.ReadSigned(uInstr)];
+        var r3 = Registers.GpRegisters[bf20_7.ReadSigned(uInstr)];
+        var completer = stHints[bf28_2.Read(uInstr)];
+        dasm.completer |= completer;
+        dasm.ops.Add(new MemoryOperand(r3, PrimitiveType.Byte));
+        dasm.ops.Add(f2);
+        return qp(uInstr, dasm);
+    }
+
+
+    /// <summary>
+    /// Instruction format M11.
+    /// </summary>
+    private static bool M11(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r3 = Registers.GpRegisters[bf20_7.ReadSigned(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.ReadSigned(uInstr)];
+        var f2 = Registers.FpRegisters[bf13_7.ReadSigned(uInstr)];
+        dasm.ops.Add(f1);
+        dasm.ops.Add(f2);
+        dasm.ops.Add(new MemoryOperand(r3, PrimitiveType.Byte));
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format M18.
+    /// </summary>
+    private static bool M18(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r2 = Registers.GpRegisters[bf13_7.ReadSigned(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.ReadSigned(uInstr)];
+        dasm.ops.Add(f1);
+        dasm.ops.Add(r2);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format M19.
+    /// </summary>
+    private static bool M19(ulong uInstr, IA64Disassembler dasm)
+    {
+        var f2 = Registers.FpRegisters[bf13_7.ReadSigned(uInstr)];
+        var r1 = Registers.GpRegisters[bf6_7.ReadSigned(uInstr)];
+        dasm.ops.Add(r1);
+        dasm.ops.Add(f2);
+        return qp(uInstr, dasm);
+    }
+
+
+    /// <summary>
+    /// Instruction format M22.
+    /// </summary>
+    private static bool M22(ulong uInstr, IA64Disassembler dasm)
+    {
+        var target = dasm.addr + (Bitfield.ReadSignedFields(bf36_1_13_20, uInstr) << 4);
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(target);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format M29.
+    /// </summary>
+    private static bool M29(ulong uInstr, IA64Disassembler dasm)
+    {
+        if (!Registers.ApplicationRegisters.TryGetValue(bf20_7.Read(uInstr), out var dst))
+            return false;
+
+        var imm = Constant.Word64(Bitfield.ReadSignedFields(bf36_1_13_7, uInstr));
+        dasm.ops.Add(dst);
+        dasm.ops.Add(imm);
+        return qp(uInstr, dasm);
+    }
+
+    /// <summary>
+    /// Instruction format M29.
+    /// </summary>
+    private static bool M31(ulong uInstr, IA64Disassembler dasm)
+    {
+        if (!Registers.ApplicationRegisters.TryGetValue(bf20_7.Read(uInstr), out var ar3))
+            return false;
+        var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
+        dasm.ops.Add(dst);
+        dasm.ops.Add(ar3);
+        return qp(uInstr, dasm);
+    }
 
     #endregion
 
@@ -973,8 +1374,8 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             Mask(34, 2, "  0",
                 alu4_2ext,
                 multimediaAlu1_2ext,
-                Instr(Mnemonic.adds, r1, IsImm14, r3, qp),
-                Nyi("addp4 - imm14")),
+                Instr(Mnemonic.adds, A4),
+                Instr(Mnemonic.addp4, A4)),
             Mask(34, 2, "  1",
                 invalid,
                 multimediaAlu1_2ext,
@@ -1131,13 +1532,104 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
                 (0x2, Instr(Mnemonic.mov, I28)),
                 (0x3, Instr(Mnemonic.mov, r1, pr))));
 
-        var misc = Sparse(33, 3, "  misc", Nyi("misc"),
-            (0, misc6bitExt));
+        var misc = Mask(33, 3, "  misc",
+            misc6bitExt,
+            Nyi("chk.s.i"),
+            Nyi("mov to pr.rot - imm44"),
+            Instr(Mnemonic.mov,pr,I23),
 
+            invalid,
+            invalid,
+            invalid,
+            Instr(Mnemonic.mov, I21));
+
+        var testbit = Mask(31, 1, "  y",
+            Mask(Bf((33, 1), (36, 1), (12, 1)), "  test",
+                Instr(Mnemonic.tbit_z, I16),
+                Instr(Mnemonic.tbit_z_unc, I16),
+                Instr(Mnemonic.tbit_z_and, I16),
+                Instr(Mnemonic.tbit_nz_and, I16),
+                Instr(Mnemonic.tbit_z_or, I16),
+                Instr(Mnemonic.tbit_nz_or, I16),
+                Instr(Mnemonic.tbit_z_or_andcm, I16),
+                Instr(Mnemonic.tbit_nz_or_andcm, I16)),
+            Mask(Bf((33, 1), (36, 1), (12, 1)), "  tnat",
+                Instr(Mnemonic.tnat_z, I17),
+                Instr(Mnemonic.tnat_z_unc, I17),
+                Instr(Mnemonic.tnat_z_and, I17),
+                Instr(Mnemonic.tnat_nz_and, I17),
+                Instr(Mnemonic.tnat_z_or, I17),
+                Instr(Mnemonic.tnat_nz_or, I17),
+                Instr(Mnemonic.tnat_z_or_andcm, I17),
+                Instr(Mnemonic.tnat_nz_or_andcm, I17)));
 
         var deposit = Nyi("deposit");
-        var shiftTestBit = Nyi("shift/test bit");
-        var mmMpyShift = Nyi("mm/mpy shift");
+        var shiftTestBit = Mask(33, 1, "  shift/test bit",
+            Mask(34, 2, "  x_2",
+                testbit,
+                Mask(31, 1, "  y",
+                    Instr(Mnemonic.extr_u, I11),
+                    Instr(Mnemonic.extr, I11)),
+                invalid,
+                Nyi("shrp I10")),
+            Mask(34, 2, "  0",
+                testbit,
+                Mask(13, 1, "  y",
+                    Instr(Mnemonic.dep_z, I12),
+                    Instr(Mnemonic.dep_z, I13)),
+                invalid,
+                Nyi("dep - imm1 I14")));
+        var variableShift = Mask(32, 1, "  v_e",
+            Mask(34, 2, "  x_2a",
+                Sparse(28, 4, "x_2c:x_2b", invalid,
+                    (0, Instr(Mnemonic.shr_u, I5)),
+                    (2, Instr(Mnemonic.shr, I5)),
+                    (4, Instr(Mnemonic.shl, I7))),
+                invalid,
+                invalid,
+                invalid),
+            Nyi("x_2a == 1"));
+
+        var mmSize2 = Mask(32, 1, "  mm size 2",
+            Mask(34, 2, "  x_2a",
+                Sparse(28, 6, "  x_2a = 0", Nyi("x_2a = 0"),
+                    (0x00, Instr(Mnemonic.pshr4_u, I5))),
+                Nyi("x_2a = 1"),
+                Nyi("x_2a = 2"),
+                Nyi("x_2a = 3")
+            ),
+            Nyi("  v_e = 1"));
+
+        var mmSize4 = Mask(32, 1, "  mm size 4",
+            Mask(34, 2, "  x_2a",
+                Sparse(28, 2, "  x_2a = 0", Nyi("x_2a = 0"),
+                    (0, Mask(30, 2, "  x_2b = 0",
+                        Instr(Mnemonic.pshr4_u, I5),
+                        Instr(Mnemonic.pshl4, I7),
+                        invalid,
+                        invalid)),
+                    (2, Mask(30, 2, "  x_2b = 1",
+                        Instr(Mnemonic.pshr4, I5),
+                        invalid,
+                        invalid,
+                        invalid))),
+                Nyi("x_2a = 1"),
+                Sparse(28, 2, "  x_2a = 2",  Nyi("x_2a = 2"),
+                    (2, Mask(30, 2, "  x_2b = 2",
+                        Nyi("pack4.sss I2"),
+                        Nyi("upack4.l I2"),
+                        Instr(Mnemonic.mix4_l, I2),
+                        invalid))),
+                Nyi("x_2a = 3")
+            ),
+            Nyi("  v_e = 1"));
+
+
+        var mmMpyShift = Mask(Bf((36, 1), (33, 1)), "  mm/mpy shift",
+            Nyi("  mm size 1"),
+            mmSize2,
+            mmSize4,
+            variableShift);
 
         return new UnitDecoder('i', Mask(37, 4, "  I",
             misc,
@@ -1181,12 +1673,17 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             invalid,
             invalid,
 
-            Nyi("chk.a.nc - int"),
-            Nyi("chk.a.clr - int"),
+            Instr(Mnemonic.chk_a_nc, M22),
+            Instr(Mnemonic.chk_a_clr, M22),
             Nyi("chk.a.nc - fp"),
             Nyi("chk.a.clr - fp"));
 
+        var sysMemMgmt6bit = Sparse(27, 6, "  sysMemMgmt6bit", Nyi("sysMemMgmt6bit"),
+            (0x22, Instr(Mnemonic.mov_m, M31)),
+            (0x2A, Instr(Mnemonic.mov_m, M29)),
+            (0x38, Nyi("probe.r M38")));
         var sysMemMgmt = Sparse(33, 3, "Sys/Mem Mgmt", Nyi("Sys/Mem Mgmt"),
+            (0, sysMemMgmt6bit),
             (6, Instr(Mnemonic.alloc, r1, ar_pfs, I13_7, I27_4, I20_7)));
         var loadStore = Mask(30, 6, "  Load/Store",
             Instr(Mnemonic.ld1, M1_1),
@@ -1353,7 +1850,9 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             invalid,
             invalid);
 
-        var semaphoreGetf = Nyi("Semaphore Getf");
+        var semaphoreGetf = Sparse(30, 6, "  Semaphore Getf", Nyi("Semaphore Getf"),
+            (0x1C, Instr(Mnemonic.getf_sig, M19))
+            );
         var loadReg = Nyi("Load Reg");
 
         var intLdRegGetf = Mask(Bf((36, 1), (27, 1)), "  Int Ld +Reg/getf",
@@ -1362,7 +1861,49 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
             loadReg,
             invalid);
 
-        var fpLdStRegSetf = Nyi("FP Ld/St +Reg/setf");
+        var flLoadStore = Sparse(30, 6, "  fpLoadStore", Nyi("fpLoadStore"),
+            (0x00, Instr(Mnemonic.ldfe, M6)),
+            (0x1B, Instr(Mnemonic.ldf_fill, M6)),
+            (0x30, Instr(Mnemonic.stfe, M9)),
+            (0x31, Instr(Mnemonic.stf8, M9)),
+            (0x32, Instr(Mnemonic.stfs, M9)),
+            (0x33, Instr(Mnemonic.stfd, M9)),
+            (0x3B, Instr(Mnemonic.stf_spill, M9)));
+
+        var fpLoadPair_setFr = Sparse(30, 6, "  fpLoadPair/set FR", Nyi("fpLoadPair/set FR"),
+            (0x01, Instr(Mnemonic.ldfp8, M11)),
+            (0x02, Instr(Mnemonic.ldfps, M11)),
+            (0x03, Instr(Mnemonic.ldfpd, M11)),
+            (0x05, Instr(Mnemonic.ldfp8_s, M11)),
+            (0x06, Instr(Mnemonic.ldfps_s, M11)),
+            (0x07, Instr(Mnemonic.ldfpd_s, M11)),
+            (0x09, Instr(Mnemonic.ldfp8_a, M11)),
+            (0x0A, Instr(Mnemonic.ldfps_a, M11)),
+            (0x0B, Instr(Mnemonic.ldfpd_a, M11)),
+            (0x0D, Instr(Mnemonic.ldfp8_sa, M11)),
+            (0x0E, Instr(Mnemonic.ldfps_sa, M11)),
+            (0x0F, Instr(Mnemonic.ldfpd_sa, M11)),
+            (0x1C, Instr(Mnemonic.setf_sig, M18)),
+            (0x1D, Instr(Mnemonic.setf_exp, M18)),
+            (0x1E, Instr(Mnemonic.setf_s, M18)),
+            (0x1F, Instr(Mnemonic.setf_d, M18)),
+            (0x21, Instr(Mnemonic.ldfp8_c_clr, M11)),
+            (0x22, Instr(Mnemonic.ldfps_c_clr, M11)),
+            (0x23, Instr(Mnemonic.ldfpd_c_clr, M11)),
+            (0x25, Instr(Mnemonic.ldfp8_c_nc, M11)),
+            (0x26, Instr(Mnemonic.ldfps_c_nc, M11)),
+            (0x27, Instr(Mnemonic.ldfpd_c_nc, M11))
+            );
+
+
+        var fpLoad_reg = Nyi("fpLoad_reg");
+        var fpLoadPair_imm = Nyi("fpLoadPair_imm");
+
+        var fpLdStRegSetf = Mask(Bf((36, 1), (27, 1)), "  FP Ld/St +Reg/setf",
+            flLoadStore,
+            fpLoadPair_setFr,
+            fpLoad_reg,
+            fpLoadPair_imm);
         var fpLdStImm = Nyi("FP Ld/St +Imm");
 
 
@@ -1392,13 +1933,23 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     {
         var fp6bitExt0 = Sparse(27, 6, "  6 bit ext 0", Nyi("6 bit ext 0"),
             (0, Instr(Mnemonic.break_f, F15)),
-            (1, Instr(Mnemonic.nop_f, F15)));
+            (1, Instr(Mnemonic.nop_f, F15)),
+            (0x10, Instr(Mnemonic.fmerge_s, F9)),
+            (0x11, Instr(Mnemonic.fmerge_ns, F9)),
+            (0x12, Instr(Mnemonic.fmerge_se, F9)),
+            (0x1A, Instr(Mnemonic.fcvt_fx_trunc, F10)),
+            (0x1B, Instr(Mnemonic.fcvt_fxu_trunc, F10)),
+            (0x1C, Instr(Mnemonic.fcvt_xf, F11)));
+        var fpReciprocalApprox0 = Mask(36, 1, "  Reciprocal approx 0",
+            Instr(Mnemonic.frcpa, F6),
+            Instr(Mnemonic.frsqrta, F7));
         var fp6bitExt1 = Sparse(27, 6, "  6 bit ext 1", Nyi("6 bit ext 1"),
             (0x10, Instr(Mnemonic.fpmerge_s, F9)));
 
         var fpMisc0 = Mask(33, 1, "  FP Misc 0",
             fp6bitExt0,
-            Nyi("Reciprocal approx 0"));
+            fpReciprocalApprox0);
+
         var fpMisc1 = Mask(33, 1, "  FP Misc 1",
             fp6bitExt1,
             Nyi("Reciprocal approx 1")
@@ -1406,10 +1957,24 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         var fpCompare = Nyi("FP Compare");
         var fpClass = Nyi("FP Class");
 
-        var fma = Nyi("fma");
-        var fms = Nyi("fms");
-        var fnma = Nyi("fnma");
-        var fselextXma = Nyi("fselext/xma");
+        var fma = Mask(36, 2, "  fma",
+            Instr(Mnemonic.fma, F1),
+            Instr(Mnemonic.fma_s, F1),
+            Instr(Mnemonic.fma_d, F1),
+            Instr(Mnemonic.fpma, F1));
+        var fms = Mask(36, 2, "  fms",
+            Instr(Mnemonic.fms, F1),
+            Instr(Mnemonic.fms_s, F1),
+            Instr(Mnemonic.fms_d, F1),
+            Instr(Mnemonic.fpms, F1));
+        var fnma = Mask(36, 2, "  fnma",
+            Instr(Mnemonic.fpma, F1),
+            Instr(Mnemonic.fnma_s, F1),
+            Instr(Mnemonic.fnma_d, F1),
+            Instr(Mnemonic.fpnma, F1));
+        var fselectXma = Mask(36, 1, "  fselext/xma",
+            Nyi("xma"),
+            Instr(Mnemonic.fselect, F3));
 
         return new UnitDecoder('f', Mask(37, 4, "  F",
             fpMisc0,
@@ -1429,18 +1994,22 @@ public class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
 
             fnma,
             fnma,
-            fselextXma,
+            fselectXma,
             invalid));
     }
 
     private static UnitDecoder MakeBdecoders()
     {
+        var indirectBranch = Sparse(6, 3, "  indirectBranch", invalid,
+            (0, Instr(Mnemonic.br_cond, B4)),
+            (1, Instr(Mnemonic.br_ia, B4)));
         var indirectReturn = Sparse(6, 3, "  indirectReturn", invalid,
             (4, Instr(Mnemonic.br_ret, B4)));
         var miscIndirectBranch = Sparse(27, 6, "  Misc/IndirectBranch", Nyi("Misc/IndirectBranch"),
             (0x00, Instr(Mnemonic.break_b, B9)),
+            (0x20, indirectBranch),
             (0x21, indirectReturn));
-        var indirectCall = Nyi("IndirectCall");
+        var indirectCall = Instr(Mnemonic.br_call, B5);
         var indirectPredictNop = Sparse(27, 6, "  Indirect Predict/Nop", Nyi("Indirect Predict/Nop"),
             (0x00, Instr(Mnemonic.nop_b, B9)));
         var ipRelativeBranch = Mask(6, 3, "IP-relative Branch",
