@@ -244,4 +244,5 @@ public enum Mnemonic
     fmerge_se,
     fmerge_ns,
     stf_spill,
+    ldfs_c_nc,
 }

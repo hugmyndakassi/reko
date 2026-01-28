@@ -124,6 +124,27 @@ public partial class IA64Disassembler
                 invalid),
             Nyi("x_2a == 1"));
 
+       var mmSize1 = Mask(32, 1, "  mm size 1",
+            Mask(34, 2, "  x_2a",
+                invalid,
+                invalid,
+                Mask(28, 2, "  x_2a = 2",
+                    Nyi("x_2c = 0"),
+                    Nyi("x_2c = 1"),
+                    Nyi("x_2c = 2"),
+                    Nyi("x_2c = 3")),
+                Mask(28, 2, "  x_2a = 3",
+                    invalid,
+                    invalid,
+                    Mask(30, 2, "x_2b = 2",
+                        invalid,
+                        invalid,
+                        Nyi("Mnemonic.mux1, I3"),
+                        invalid),
+                    invalid)
+           ),
+           Nyi("  v_e = 1"));
+
         var mmSize2 = Mask(32, 1, "  mm size 2",
             Mask(34, 2, "  x_2a",
                 Sparse(28, 6, "  x_2a = 0", Nyi("x_2a = 0"),
@@ -160,7 +181,7 @@ public partial class IA64Disassembler
 
 
         var mmMpyShift = Mask(Bf((36, 1), (33, 1)), "  mm/mpy shift",
-            Nyi("  mm size 1"),
+            mmSize1,
             mmSize2,
             mmSize4,
             variableShift);

@@ -987,14 +987,31 @@ public partial class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     /// </summary>
     private static bool M6(ulong uInstr, IA64Disassembler dasm)
     {
-        var r3 = Registers.GpRegisters[bf20_7.ReadSigned(uInstr)];
-        var f1 = Registers.FpRegisters[bf6_7.ReadSigned(uInstr)];
+        var r3 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
             var completer = ldHints[bf28_2.Read(uInstr)];
         dasm.completer |= completer;
         dasm.ops.Add(f1);
         dasm.ops.Add(new MemoryOperand(r3, PrimitiveType.Byte));
         return qp(uInstr, dasm);
     }
+
+    /// <summary>
+    /// Instruction format M7.
+    /// </summary>
+    private static bool M7(ulong uInstr, IA64Disassembler dasm)
+    {
+        var r3 = Registers.GpRegisters[bf20_7.Read(uInstr)];
+        var r2 = Registers.GpRegisters[bf13_7.Read(uInstr)];
+        var f1 = Registers.FpRegisters[bf6_7.Read(uInstr)];
+        var completer = ldHints[bf28_2.Read(uInstr)];
+        dasm.completer |= completer;
+        dasm.ops.Add(f1);
+        dasm.ops.Add(new MemoryOperand(r3, PrimitiveType.Byte));
+        dasm.ops.Add(r2);
+        return qp(uInstr, dasm);
+    }
+
 
     /// <summary>
     /// Instruction format M9.

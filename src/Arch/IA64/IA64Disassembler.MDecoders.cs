@@ -270,7 +270,10 @@ public partial class IA64Disassembler
             );
 
 
-        var fpLoad_reg = Nyi("fpLoad_reg");
+        var fpLoad_reg = Sparse(30, 6, "fpLoad_reg", Nyi("fpLoad_reg"),
+            (0, Instr(Mnemonic.ldfe, M7)),
+            (0x26, Instr(Mnemonic.ldfs_c_nc, M7))
+            );
         var fpLoadPair_imm = Nyi("fpLoadPair_imm");
 
         var fpLdStRegSetf = Mask(Bf((36, 1), (27, 1)), "  FP Ld/St +Reg/setf",
