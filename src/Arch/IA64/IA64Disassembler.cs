@@ -107,28 +107,36 @@ public partial class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
         {
             return null;
         }
-        var template = uBundleLo & 0x1F;
+        var iTemplate = uBundleLo & 0x1F;
         var uSlot0 = (uBundleLo >> 5) & slot0Mask;
         var uSlot1 = ((uBundleLo >> 46) & slot1MaskLo) | ((uBundleHi & slot1MaskHi) << 18);
         var uSlot2 = (uBundleHi >> 23) & slot2Mask;
 
-        var slot0 = templates[template].Slot0.Decode(uSlot0, this);
-        slot0.Address = addr;
-        slot0.Length = 6;
-        Clear();
-        var slot1 = templates[template].Slot1.Decode(uSlot1, this);
-        slot1.Address = addr + 6;
-        slot1.Length = 6;
-        Clear();
-        var slot2 = templates[template].Slot2.Decode(uSlot2, this);
-        slot2.Address = addr + 12;
-        slot2.Length = 6;
-        Clear();
+        var template = templates[iTemplate];
+        var instr0 = DisassembleSlot(uSlot0, template, template.Slot0, 0x100, 0, 6);
+        var instr1 = DisassembleSlot(uSlot1, template, template.Slot1, 0x010, 6, 6);
+        var instr2 = DisassembleSlot(uSlot2, template, template.Slot2, 0x001, 12, 4);
 
-        var result = MakeBundle(slot0, slot1, slot2);
+        var result = MakeBundle(instr0, instr1, instr2);
         result.Address = addr;
         result.Length = (int) (rdr.Address - addr);
         return result;
+    }
+
+    private IA64Instruction DisassembleSlot(
+        ulong uInstr, 
+        TemplateDecoders template,
+        WideDecoder decoder,
+        int stopMask,
+        int offset,
+        int length)
+    {
+        var instr = decoder.Decode(uInstr, this);
+        instr.Address = addr + offset;
+        instr.Length = length;
+        instr.Stop = (template.StopMask & stopMask) != 0;
+        Clear();
+        return instr;
     }
 
     private IA64Bundle MakeBundle(IA64Instruction slot0, IA64Instruction slot1, IA64Instruction slot2)

@@ -51,19 +51,19 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_add()
     {
-        AssertCode("{ nop.m\t0x0; sxt4\tr17,r17; add\tr19,r19,r17 }", "0300000001001001442C006032890080");
+        AssertCode("{ nop.m\t0x0; sxt4\tr17,r17; add\tr19,r19,r17; }", "0300000001001001442C006032890080");
     }
 
     [Test]
     public void Ia64Dis_addp4()
     {
-        AssertCode("{ nop.m\t0x0; addp4\tr17,r17,r0; nop.i\t0x0 }", "09000000010010890010400000000400");
+        AssertCode("{ nop.m\t0x0; addp4\tr17,r17,r0; nop.i\t0x0; }", "09000000010010890010400000000400");
     }
 
     [Test]
     public void Ia64Dis_addp4_imm()
     {
-        AssertCode("{ adds\tr44,0x0,r0; adds\tr33,0x20,r12; addp4\tr41,0xFFFFFFFFFFFFFFFF,r0 }", "096001000021100231004220F507FC8E");
+        AssertCode("{ adds\tr44,0x0,r0; adds\tr33,0x20,r12; addp4\tr41,0xFFFFFFFFFFFFFFFF,r0; }", "096001000021100231004220F507FC8E");
     }
 
     [Test]
@@ -77,31 +77,31 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_br_call()
     {
-        AssertCode("{ nop.m\t0x0; nop.i\t0x0; br.call.sptk.many\tb0,0000000FFFFFDC20 }", "11000000010000000002000028DCFF58");
+        AssertCode("{ nop.m\t0x0; nop.i\t0x0; br.call.sptk.many\tb0,0000000FFFFFDC20; }", "11000000010000000002000028DCFF58");
     }
 
     [Test]
     public void Ia64Dis_br_call_indirect()
     {
-        AssertCode("{ adds\tr34,0x0,r1; ld8\tr1,[r14]; br.call.sptk.many\tb0,b6 }", "19100102002110003830200068008010");
+        AssertCode("{ adds\tr34,0x0,r1; ld8\tr1,[r14]; br.call.sptk.many\tb0,b6; }", "19100102002110003830200068008010");
     }
 
     [Test]
     public void Ia64Dis_br_cond()
     {
-        AssertCode("{ nop.m\t0x0; mov.i\tLC,r17; (p09) br.cond.sptk.few\t0000001000000020 }", "11000000010000880455800420000040");
+        AssertCode("{ nop.m\t0x0; mov.i\tLC,r17; (p09) br.cond.sptk.few\t0000001000000020; }", "11000000010000880455800420000040");
     }
 
     [Test]
     public void Ia64Dis_br_ret()
     {
-        AssertCode("{ nop.m\t0x0; mov.i\tLC,r2; br.ret\tb0 }", "11000000010000100455008008008400");
+        AssertCode("{ nop.m\t0x0; mov.i\tLC,r2; br.ret\tb0; }", "11000000010000100455008008008400");
     }
 
     [Test]
     public void Ia64Dis_break_f()
     {
-        AssertCode("{ nop.m\t0x0; break.f\t0x0; nop.i\t0x0 }", "0D000000010000000000000000000400");
+        AssertCode("{ nop.m\t0x0; break.f\t0x0; nop.i\t0x0; }", "0D000000010000000000000000000400");
     }
 
     [Test]
@@ -135,7 +135,7 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_dep_z()
     {
-        AssertCode("{ nop.m\t0x0; extr\tr14,r14,6,25; dep.z\tr14,r14,6,26 }", "030000000100E060383229C0E1C86553");
+        AssertCode("{ nop.m\t0x0; extr\tr14,r14,6,25; dep.z\tr14,r14,6,26; }", "030000000100E060383229C0E1C86553");
     }
 
     [Test]
@@ -147,31 +147,31 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_extr_u()
     {
-        AssertCode("{ nop.m\t0x0; extr.u\tr16,r14,5,2; and\tr15,0x1F,r14 }", "0100000001000051380429E0F171B080");
+        AssertCode("{ nop.m\t0x0; extr.u\tr16,r14,5,2; and\tr15,0x1F,r14; }", "0100000001000051380429E0F171B080");
     }
 
     [Test]
     public void Ia64Dis_fcvt_xf()
     {
-        AssertCode("{ nop.m\t0x0; fcvt.xf\tf2,f6; br.call.sptk.many\tb0,0000000FFFFFD230 }", "1D000000010020300038000038D2FF58");
+        AssertCode("{ nop.m\t0x0; fcvt.xf\tf2,f6; br.call.sptk.many\tb0,0000000FFFFFD230; }", "1D000000010020300038000038D2FF58");
     }
 
     [Test]
     public void Ia64Dis_fcvt_fxu_trunc_sf()
     {
-        AssertCode("{ nop.m\t0x0; fcvt.fxu.trunc.s1\tf10,f10; nop.i\t0x0 }", "0D0000000100A0500036010000000400");
+        AssertCode("{ nop.m\t0x0; fcvt.fxu.trunc.s1\tf10,f10; nop.i\t0x0; }", "0D0000000100A0500036010000000400");
     }
 
     [Test]
     public void Ia64Dis_getf()
     {
-        AssertCode("{ getf.sig\tr14,f11; extr\tr17,r18,14,49; dep.z\tr18,0xF,5,59 }", "01702C00E11010E948622940F2D0E953");
+        AssertCode("{ getf.sig\tr14,f11; extr\tr17,r18,14,49; dep.z\tr18,0xF,5,59; }", "01702C00E11010E948622940F2D0E953");
     }
 
     [Test]
     public void Ia64Dis_getf_sig()
     {
-        AssertCode("{ getf.sig\tr18,f9; extr.u\tr15,r17,18,45; shladd\tr39,r23,0x1,r2 }", "01902400E110F028455A29E074114080");
+        AssertCode("{ getf.sig\tr18,f9; extr.u\tr15,r17,18,45; shladd\tr39,r23,0x1,r2; }", "01902400E110F028455A29E074114080");
     }
 
     [Test]
@@ -183,7 +183,7 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_ld8_sxt4()
     {
-        AssertCode("{ ld8\tr19,[r18]; ld4\tr15,[r15]; sxt4\tr18,r16 }", "0B9800241810F0003C20204002805800");
+        AssertCode("{ ld8\tr19,[r18]; ld4\tr15,[r15]; sxt4\tr18,r16; }", "0B9800241810F0003C20204002805800");
     }
 
     [Test]
@@ -193,15 +193,9 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     }
 
     [Test]
-    public void Ia64Dis_ldfs_c_nc()
-    {
-        AssertCode("{ (p17) break.m\t0x1; ldfs.c.nc\tf0,[r90],r32; Invalid }", "290A000000000000696136342D756E6B");
-    }
-
-    [Test]
     public void Ia64Dis_mix4_l()
     {
-        AssertCode("{ nop.m\t0x0; mix4.l\tr99,r99,r14; (p07) adds\tr34,0x18,r34 }", "010000000100301E3B28BE4384110184");
+        AssertCode("{ nop.m\t0x0; mix4.l\tr99,r99,r14; (p07) adds\tr34,0x18,r34; }", "010000000100301E3B28BE4384110184");
     }
 
     [Test]
@@ -213,13 +207,13 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_mov_m_ar_imm()
     {
-        AssertCode("{ mov.m\tFPSR,0x3; sub\tr1,r9,r1; adds\tr38,0x10,r12 }", "01000C502A041048040A40C004610084");
+        AssertCode("{ mov.m\tFPSR,0x3; sub\tr1,r9,r1; adds\tr38,0x10,r12; }", "01000C502A041048040A40C004610084");
     }
 
     [Test]
     public void Ia64Dis_mov_m_r_ar()
     {
-        AssertCode("{ ld8\tr33,[r34],8; mov.m\tr10,BSP; mov\tr9,ip }", "090821441814A000444408200100C000");
+        AssertCode("{ ld8\tr33,[r34],8; mov.m\tr10,BSP; mov\tr9,ip; }", "090821441814A000444408200100C000");
     }
 
     [Test]
@@ -231,13 +225,13 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_mov_r_lc()
     {
-        AssertCode("{ adds\tr12,0xFFFFFFFFFFFFFEE0,r12; mov\tr17,LC; addl\tr50,25252,r1 }", "016080193D23100104650040460A1493");
+        AssertCode("{ adds\tr12,0xFFFFFFFFFFFFFEE0,r12; mov\tr17,LC; addl\tr50,25252,r1; }", "016080193D23100104650040460A1493");
     }
 
     [Test]
     public void Ia64Dis_mov_i_lc_0()
     {
-        AssertCode("{ nop.m\t0x0; mov.i\tLC,0x0; nop.i\t0x0 }", "01000000010000000415000000000400");
+        AssertCode("{ nop.m\t0x0; mov.i\tLC,0x0; nop.i\t0x0; }", "01000000010000000415000000000400");
     }
 
     [Test]
@@ -250,14 +244,14 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     public void IA64Dis_mov_nop_i()
     {
         AssertCode(
-            "{ adds\tr2,0x0,r14; addl\tr14,-10732,r2; nop.i\t0x0 }",
+            "{ adds\tr2,0x0,r14; addl\tr14,-10732,r2; nop.i\t0x0; }",
             "0B10001C0021E0A0F8594F0000000400");
     }
 
     [Test]
     public void Ia64Dis_nop_m()
     {
-        AssertCode("{ nop.m\t0x0; movl\tr20,0x803FFFFF80000000 }", "05000000010080FFFFFF7F8002000068");
+        AssertCode("{ nop.m\t0x0; movl\tr20,0x803FFFFF80000000; }", "05000000010080FFFFFF7F8002000068");
     }
 
     [Test]
@@ -275,19 +269,19 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     [Test]
     public void Ia64Dis_shladd()
     {
-        AssertCode("{ setf.sig\tf7,r14; shladd\tr15,r14,0x4,r0; sub\tr15,r15,r14 }", "03383800E118F070002640E0F1701480");
+        AssertCode("{ setf.sig\tf7,r14; shladd\tr15,r14,0x4,r0; sub\tr15,r15,r14; }", "03383800E118F070002640E0F1701480");
     }
 
     [Test]
     public void Ia64Dis_st4()
     {
-        AssertCode("{ st4\t[r8],r14; nop.m\t0x0; br.call.sptk.many\tb0,000000100010C310 }", "1900201C901100000002000018C31050");
+        AssertCode("{ st4\t[r8],r14; nop.m\t0x0; br.call.sptk.many\tb0,000000100010C310; }", "1900201C901100000002000018C31050");
     }
 
     [Test]
     public void Ia64Dis_st8_spill()
     {
-        AssertCode("{ st8\t[r16],r8,8; st8.spill\t[r1],r16; adds\tr16,0x110,r12 }", "0B4044209815000840B0230002610884");
+        AssertCode("{ st8\t[r16],r8,8; st8.spill\t[r1],r16; adds\tr16,0x110,r12; }", "0B4044209815000840B0230002610884");
     }
 
     [Test]

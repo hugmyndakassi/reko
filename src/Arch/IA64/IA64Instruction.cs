@@ -67,6 +67,8 @@ public class IA64Instruction : MachineInstruction
         RenderQualifyingPredicate(renderer);
         RenderMnemonic(renderer);
         RenderOperands(renderer, options);
+        if (Stop)
+            renderer.WriteChar(';');
     }
 
     private void RenderQualifyingPredicate(MachineInstructionRenderer renderer)
