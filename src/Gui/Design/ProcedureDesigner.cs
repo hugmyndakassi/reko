@@ -161,12 +161,14 @@ namespace Reko.Gui.Design
             var addrControl = arch.CreatePointerScanner(
                 program.SegmentMap,
                 rdr,
-                new Address[]  {
+                [
                     this.Address,
-                },
+                ],
                 PointerScannerFlags.All);
             resultSvc.ShowAddressSearchResults(
-                addrControl.Select(a => new AddressSearchHit(program, a, 1)),
+                addrControl
+                    .Select(a => new AddressSearchHit(program, a, 1))
+                    .ToArray(),
                 new CodeSearchDetails());
         }
 

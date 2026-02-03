@@ -108,18 +108,29 @@ namespace Reko.Gui.Forms
         public bool ViewUnscannedBlocks()
         {
             var srSvc = Services.RequireService<ISearchResultService>();
-            var hits = Decompiler!.Project.Programs
-                .SelectMany(p => p.ImageMap.Items
-                        .Where(i => i.Value.DataType is UnknownType)
-                        .Select(i => new AddressSearchHit(p, i.Key, 1)));
-            srSvc.ShowSearchResults(
-                new AddressSearchResult(
-                    Services,
-                    hits,
-                    new CodeSearchDetails()));
-            return true;
-        }
+            try
+            {
+                var hits = Decompiler!.Project.Programs
+                    .SelectMany(p => p.ImageMap.Items
+                    .Where(i => i.Value.DataType is UnknownType)
+                    .Select(i => new AddressSearchHit(p, i.Key, 1)))
+                    .ToArray();
 
+                srSvc.ShowSearchResults(
+                    new AddressSearchResult(
+                        Services,
+                        hits,
+                        new CodeSearchDetails()));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                var uiSvc = Services.RequireService<IDecompilerUIService>();
+                uiSvc.ShowError(ex, "An error occurred while searching.");
+                return false;
+            }
+        }
+            
         public override bool QueryStatus(CommandID cmdId, CommandStatus status, CommandText text)
         {
             if (cmdId.Guid == CmdSets.GuidReko)

@@ -564,16 +564,24 @@ namespace Reko.UserInterfaces.WindowsForms
                 dlg.InitialPattern = SelectionToHex(addrRange);
                 if (await uiSvc.ShowModalDialog(dlg) == Gui.Services.DialogResult.OK)
                 {
-                    var re = Core.Dfa.Automaton.CreateFromPattern(dlg.Patterns.Text);
-                    var hits =
-                        //$BUG: wrong result
-                        program.SegmentMap.Segments.Values
-                        .SelectMany(s => GetMatches(s, re))
-                        .Select(offset => new AddressSearchHit(
-                            program,
-                            program.ImageMap.BaseAddress + offset,
-                            1));
-                    srSvc.ShowAddressSearchResults(hits, new CodeSearchDetails());
+                    try
+                    {
+                        var re = Core.Dfa.Automaton.CreateFromPattern(dlg.Patterns.Text);
+                        var hits =
+                            //$BUG: wrong result
+                            program.SegmentMap.Segments.Values
+                            .SelectMany(s => GetMatches(s, re))
+                            .Select(offset => new AddressSearchHit(
+                                program,
+                                program.ImageMap.BaseAddress + offset,
+                                1))
+                            .ToArray();
+                        srSvc.ShowAddressSearchResults(hits, new CodeSearchDetails());
+                    }
+                    catch (Exception ex)
+                    {
+                        await uiSvc.ShowError(ex, "An error occurred while searching.");
+                    }
                 }
             }
             return true;

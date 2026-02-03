@@ -642,7 +642,8 @@ namespace Reko.Gui.Forms
                             program.SegmentMap.Segments.Values.SelectMany(seg =>
                             {
                                 return ReMatches(program, seg, filter, re);
-                            }));
+                            }))
+                        .ToArray();
                     srSvc.ShowAddressSearchResults(hits, new CodeSearchDetails());
                 }
             }
@@ -745,10 +746,17 @@ namespace Reko.Gui.Forms
             var criteria = await uiSvc.ShowModalDialog(dlgStrings);
             if (criteria is not null)
             {
-                var hits = new StringFinder(program).FindStrings(criteria);
-                srSvc.ShowAddressSearchResults(
-                   hits,
-                   new StringSearchDetails(criteria));
+                try
+                {
+                    var hits = new StringFinder(program).FindStrings(criteria).ToArray();
+                    srSvc.ShowAddressSearchResults(
+                       hits,
+                       new StringSearchDetails(criteria));
+                }
+                catch (Exception ex)
+                {
+                    await uiSvc.ShowError(ex, "An error occurred while searching for strings.");
+                }
             }
         }
 

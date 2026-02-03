@@ -41,16 +41,16 @@ namespace Reko.Gui
     public class AddressSearchResult : ISearchResult
     {
         protected readonly IServiceProvider services;
-        private readonly List<AddressSearchHit> hits;
+        private readonly AddressSearchHit[] hits;
         private AddressSearchDetails details;
 
         public AddressSearchResult(
             IServiceProvider services,
-            IEnumerable<AddressSearchHit> addresses,
+            AddressSearchHit[] addresses,
             AddressSearchDetails details)
         {
             this.services = services;
-            this.hits = addresses.ToList();
+            this.hits = addresses;
             this.details = details;
         }
 
@@ -58,7 +58,7 @@ namespace Reko.Gui
 
         public int Count
         {
-            get { return hits.Count; }
+            get { return hits.Length; }
         }
 
         public int ContextMenuID

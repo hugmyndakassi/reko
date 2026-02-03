@@ -44,15 +44,23 @@ namespace Reko.Gui.Commands
         public override ValueTask DoItAsync()
         {
             var resultSvc = Services.RequireService<ISearchResultService>();
-            var arch = program.Architecture;
-            var progAddresses = program.SegmentMap.Segments.Values
-                .Where(s => s.MemoryArea is not null)
-                .SelectMany(s => GetPointersInSegment(s));
-            resultSvc.ShowSearchResults(
-                new AddressSearchResult(
-                    Services,
-                    progAddresses,
-                    new CodeSearchDetails()));
+            try
+            {
+                var arch = program.Architecture;
+                var progAddresses = program.SegmentMap.Segments.Values
+                    .Where(s => s.MemoryArea is not null)
+                    .SelectMany(s => GetPointersInSegment(s));
+                resultSvc.ShowSearchResults(
+                    new AddressSearchResult(
+                        Services,
+                        progAddresses.ToArray(),
+                        new CodeSearchDetails()));
+            }
+            catch (Exception ex)
+            {
+                return Services.RequireService<IDecompilerShellUiService>()
+                    .ShowError(ex, "An error occurred while searching for pointers.");
+            }
             return ValueTask.CompletedTask;
         }
 
