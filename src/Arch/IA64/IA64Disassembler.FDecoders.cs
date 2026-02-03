@@ -1,3 +1,4 @@
+using Reko.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ public partial class IA64Disassembler
     private static UnitDecoder MakeFdecoders()
     {
         var fp6bitExt0 = Sparse(27, 6, "  6 bit ext 0", Nyi("6 bit ext 0"),
-            (0, Instr(Mnemonic.break_f, F15)),
-            (1, Instr(Mnemonic.nop_f, F15)),
+            (0, Instr(Mnemonic.break_f, InstrClass.Terminates, F15)),
+            (1, Instr(Mnemonic.nop_f, InstrClass.Linear|InstrClass.Padding, F15)),
             (0x10, Instr(Mnemonic.fmerge_s, F9)),
             (0x11, Instr(Mnemonic.fmerge_ns, F9)),
             (0x12, Instr(Mnemonic.fmerge_se, F9)),

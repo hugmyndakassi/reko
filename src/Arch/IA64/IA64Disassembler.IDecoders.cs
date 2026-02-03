@@ -34,7 +34,7 @@ public partial class IA64Disassembler
         WideDecoder addImm22)
     {
         var misc6bitExt = Mask(31, 2, "  Misc I-Unit 6-bit Opcode Extensions",
-            Sparse(27, 4, "  0", Nyi("0"),
+            Sparse(27, 4, "  0", invalid,
                 (0b0000, Instr(Mnemonic.break_i, InstrClass.Terminates, I32_1_20, qp)),
                 (0b0001, Instr(Mnemonic.nop_i, InstrClass.Linear | InstrClass.Padding, I32_1_20, qp)),
                 (0b1010, Instr(Mnemonic.mov_i, I27))),
@@ -69,7 +69,7 @@ public partial class IA64Disassembler
         var misc = Mask(33, 3, "  misc",
             misc6bitExt,
             Nyi("chk.s.i"),
-            Nyi("mov to pr.rot - imm44"),
+            Instr(Mnemonic.mov, I24),
             Instr(Mnemonic.mov, pr, I23),
 
             invalid,
@@ -97,7 +97,6 @@ public partial class IA64Disassembler
                 Instr(Mnemonic.tnat_z_or_andcm, I17),
                 Instr(Mnemonic.tnat_nz_or_andcm, I17)));
 
-        var deposit = Nyi("deposit");
         var shiftTestBit = Mask(33, 1, "  shift/test bit",
             Mask(34, 2, "  x_2",
                 testbit,
@@ -192,7 +191,7 @@ public partial class IA64Disassembler
             invalid,
             invalid,
 
-            deposit,
+            Instr(Mnemonic.deposit, I15),
             shiftTestBit,
             invalid,
             mmMpyShift,

@@ -23,6 +23,7 @@ namespace Reko.Arch.IA64;
 public enum Mnemonic
 {
     Invalid,
+    Nyi,
     _long_immediate,
 
     add,
@@ -245,4 +246,13 @@ public enum Mnemonic
     fmerge_ns,
     stf_spill,
     ldfs_c_nc,
+    invala,
+    fwb,
+    srlz_d,
+    srlz_i,
+    deposit,
+    invala_e,
+    mf_a,
+    sync_i,
+    mf,
 }

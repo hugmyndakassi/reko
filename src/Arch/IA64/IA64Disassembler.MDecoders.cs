@@ -35,10 +35,29 @@ public partial class IA64Disassembler
         var sysMemMgmt4_2bit = Sparse(27, 4, "  Sys/Mem Mgmt 4+2-bit opcode extensions", Nyi(""),
             (0, Mask(31, 2, "  2-bits",
                 Instr(Mnemonic.break_m, InstrClass.Terminates, I32_1_20, qp),
-                Nyi("invala"),
-                Nyi("fwb"),
-                Nyi("srlz.d"))),
-            (1u, Instr(Mnemonic.nop_m, InstrClass.Linear | InstrClass.Padding, I32_1_20, qp)));
+                Instr(Mnemonic.invala, M24),
+                Instr(Mnemonic.fwb, M24),
+                Instr(Mnemonic.srlz_d, M24))),
+            (1u, Mask(31, 2, "  2-bits",
+                Instr(Mnemonic.nop_m, InstrClass.Linear | InstrClass.Padding, I32_1_20, qp),
+                invalid,
+                invalid,
+                Instr(Mnemonic.srlz_i, M24))),
+            (2, Mask(31, 2, "  0010",
+                invalid,
+                Instr(Mnemonic.invala_e, M26),
+                Instr(Mnemonic.mf, M24),
+                invalid)),
+            (3, Mask(31, 2, "  0010",
+                invalid,
+                Instr(Mnemonic.invala_e, M27),
+                Instr(Mnemonic.mf_a, M24),
+                Instr(Mnemonic.sync_i, M24))),
+            (9, invalid),
+            (0xBu, invalid),
+            (0xDu, invalid),
+            (0xEu, invalid),
+            (0xFu, invalid));
 
 
         var sysMemMgmt3bit = Mask(33, 3, "  Sys/Mem Mgmt 3-bit opcode extensions",
@@ -49,8 +68,8 @@ public partial class IA64Disassembler
 
             Instr(Mnemonic.chk_a_nc, M22),
             Instr(Mnemonic.chk_a_clr, M22),
-            Nyi("chk.a.nc - fp"),
-            Nyi("chk.a.clr - fp"));
+            Instr(Mnemonic.chk_a_nc, M23),
+            Instr(Mnemonic.chk_a_clr, M23));
 
         var sysMemMgmt6bit = Sparse(27, 6, "  sysMemMgmt6bit", Nyi("sysMemMgmt6bit"),
             (0x22, Instr(Mnemonic.mov_m, M31)),

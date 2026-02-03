@@ -18,6 +18,7 @@
  */
 #endregion
 
+using Reko.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,37 @@ namespace Reko.Arch.IA64;
 
 public partial class IA64Rewriter
 {
+    private void RewriteBr_call(IA64Instruction instr)
+    {
+        var target = ReadOp(instr, 0);
+        m.Call(target, 0);
+    }
+
+    private void RewriteBr_cloop(IA64Instruction instr)
+    {
+        var target = ReadOp(instr, 0);
+        var lc = binder.EnsureRegister(Registers.LC);
+        var addrNext = instr.Address + instr.Length;
+        m.BranchInMiddleOfInstruction(m.Eq0(lc), addrNext, InstrClass.ConditionalTransfer);
+        m.Assign(lc, m.ISub(lc, 1));
+        m.Goto(target);
+    }
+
+    private void RewriteBr_cond(IA64Instruction instr)
+    {
+        var target = ReadOp(instr, 0);
+        m.Goto(target, 0);
+    }
+
     private void RewriteBr_ret(IA64Instruction instr)
     {
         var target = ReadOp(instr, 0);
         m.Return(0, 0);
     }
+
+    private void RewriteBreak(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(break_intrinsic));
+    }
+
 }
