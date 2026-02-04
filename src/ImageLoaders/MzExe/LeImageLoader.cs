@@ -461,9 +461,8 @@ namespace Reko.ImageLoaders.MzExe
 
         public override Address PreferredBaseAddress { get; set; }
 
-        public override Program LoadProgram(Address? a, string? sPlatformOverride)
+        public override Program LoadProgram(Address? addrLoad, string? sPlatformOverride)
         {
-            var addrLoad = a ?? PreferredBaseAddress;
             var cfgSvc = Services.RequireService<IConfigurationService>();
             this.arch = cfgSvc.GetArchitecture("x86-protected-32")!;
             var rdr = new LeImageReader(RawImage, this.lfaNew);
@@ -474,7 +473,7 @@ namespace Reko.ImageLoaders.MzExe
             LoadModuleTable();
             var leSegs = LoadSegmentTable();
 
-            var segments = MakeSegmentMap(addrLoad, leSegs);
+            var segments = MakeSegmentMap(leSegs);
             var platform = MakePlatform(sPlatformOverride);
             var program  = new Program(new ByteProgramMemory(segments), arch, platform);
             var eip_module = leSegs[hdr.eip_object - 1].BaseAddress;
@@ -622,13 +621,13 @@ namespace Reko.ImageLoaders.MzExe
             return sections;
         }
 
-        private SegmentMap MakeSegmentMap(Address addrLoad, Segment[] leSegments)
+        private SegmentMap MakeSegmentMap(Segment[] leSegments)
         {
-            var segments = leSegments.Select(s => MakeImageSegment(s, addrLoad)).ToArray();
-            return new SegmentMap(addrLoad, segments);
+            var segments = leSegments.Select(s => MakeImageSegment(s)).ToArray();
+            return new SegmentMap(segments);
         }
 
-        private ImageSegment MakeImageSegment(Segment seg, Address addrLoad)
+        private ImageSegment MakeImageSegment(Segment seg)
         {
             AccessMode access = 0;
             if ((seg.Flags & ObjectFlags.Readable) != 0)

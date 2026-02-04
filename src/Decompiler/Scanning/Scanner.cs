@@ -50,8 +50,8 @@ namespace Reko.Scanning
     /// procedures.
     /// </summary>
     /// <remarks>
-    /// Callers feed the scanner by calling EnqueueXXX methods before calling ProcessQueue().
-    /// ProcessQueue() then processes the queues.
+    /// Callers feed the scanner by calling EnqueueXXX methods before calling <see cref="ProcessQueue"/>.
+    /// <see cref="ProcessQueue" /> then processes the queues.
     /// </remarks>
     public class Scanner : ScannerBase, IScanner, IScannerServices, IRewriterHost
     {
@@ -77,7 +77,7 @@ namespace Reko.Scanning
         private readonly Dictionary<Address, ImportReference> importReferences;
         private readonly HashSet<Procedure> visitedProcs;
         private readonly CancellationTokenSource? cancelSvc;
-        private readonly HashSet<Address> scannedGlobalData = new();
+        private readonly HashSet<Address> scannedGlobalData = [];
         private readonly CommentInjector cinj;
         private PriorityQueue<WorkItem> procQueue;
         private ScanResults sr;
@@ -1156,21 +1156,32 @@ namespace Reko.Scanning
                     }
                 }
             }
-            EnqueueImageSymbolProcedures(Program.EntryPoints.Values, noDecompiles);
+            EnqueueImageSymbolProcedures(Program.EntryPoints.Values, noDecompiles, true);
             EnqueueImageSymbolProcedures(Program.ImageSymbols.Values
                 .Where(sym => sym.Type == SymbolType.Procedure ||
                               sym.Type == SymbolType.ExternalProcedure),    // PLT entries.
-                              noDecompiles);
-
+                              noDecompiles,
+                              false);
             this.ProcessQueue();
         }
 
-        private void EnqueueImageSymbolProcedures(IEnumerable<ImageSymbol> imageSymbols, HashSet<Address> noDecompiles)
+        private void EnqueueImageSymbolProcedures(
+            IEnumerable<ImageSymbol> imageSymbols,
+            HashSet<Address> noDecompiles,
+            bool forceSegmentExecutable)
         {
             foreach (var sym in imageSymbols)
             {
-                if (!Program.SegmentMap.IsExecutableAddress(sym.Address))
+                if (!Program.SegmentMap.TryFindSegment(sym.Address, out var segment))
                     continue;
+                if (!segment.IsExecutable)
+                {
+                    if (!forceSegmentExecutable)
+                        continue;
+                    this.eventListener.Info($"Marking segment at {segment.Address} as executable because it contains known procedure entry points.");
+                    segment.Access |= AccessMode.Execute;
+                }
+
                 if (sym.NoDecompile || noDecompiles.Contains(sym.Address!))
                 {
                     Program.EnsureUserProcedure(sym.Address!, sym.Name, false);

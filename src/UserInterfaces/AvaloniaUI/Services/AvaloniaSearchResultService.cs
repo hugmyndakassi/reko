@@ -38,7 +38,7 @@ namespace Reko.UserInterfaces.AvaloniaUI.Services
             this.services = services;
         }
 
-        public void ShowAddressSearchResults(IEnumerable<AddressSearchHit> hits, AddressSearchDetails details)
+        public void ShowAddressSearchResults(AddressSearchHit[] hits, AddressSearchDetails details)
         {
             ShowSearchResults(new AddressSearchResult(services, hits, details));
         }
