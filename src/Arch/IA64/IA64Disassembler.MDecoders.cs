@@ -53,8 +53,19 @@ public partial class IA64Disassembler
                 Instr(Mnemonic.invala_e, M27),
                 Instr(Mnemonic.mf_a, M24),
                 Instr(Mnemonic.sync_i, M24))),
-            (9, invalid),
+            (4, Instr(Mnemonic.sum, M44)),
+            (5, Instr(Mnemonic.rum, M44)),
+            (6, Instr(Mnemonic.ssm, M44)),
+            (7, Instr(Mnemonic.rsm, M44)),
+            (8, Mask(31, 2, "  1000",
+                prReserved,
+                prReserved,
+                Instr(Mnemonic.mov_m, M30),
+                prReserved)),
+            (9, prReserved),
+            (0xAu, Instr(Mnemonic.loadrs, M25)),
             (0xBu, invalid),
+            (0xCu, Instr(Mnemonic.flushrs, M25)),
             (0xDu, invalid),
             (0xEu, invalid),
             (0xFu, invalid));
@@ -71,12 +82,21 @@ public partial class IA64Disassembler
             Instr(Mnemonic.chk_a_nc, M23),
             Instr(Mnemonic.chk_a_clr, M23));
 
-        var sysMemMgmt6bit = Sparse(27, 6, "  sysMemMgmt6bit", Nyi("sysMemMgmt6bit"),
+        var sysMemMgmt6bit = Sparse(27, 6, "  sysMemMgmt6bit", prReserved, //  Nyi("sysMemMgmt6bit"),
+            (0x00, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+            (0x01, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+            (0x02, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+            (0x03, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+            (0x04, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+            (0x05, Instr(Mnemonic.mov_m, M42)),  //$TODO: specify regs
+
             (0x22, Instr(Mnemonic.mov_m, M31)),
             (0x2A, Instr(Mnemonic.mov_m, M29)),
-            (0x38, Nyi("probe.r M38")));
-        var sysMemMgmt = Sparse(33, 3, "Sys/Mem Mgmt", Nyi("Sys/Mem Mgmt"),
+            (0x38, Instr(Mnemonic.probe_r, M38)));
+        var sysMemMgmt = Sparse(33, 3, "Sys/Mem Mgmt", prReserved,
             (0, sysMemMgmt6bit),
+            (1, Instr(Mnemonic.chk_s_m, M20)),
+            (3, Instr(Mnemonic.chk_s, M21)),
             (6, Instr(Mnemonic.alloc, r1, ar_pfs, I13_7, I27_4, I20_7)));
         var loadStore = Mask(30, 6, "  Load/Store",
             Instr(Mnemonic.ld1, M1_1),
@@ -243,10 +263,46 @@ public partial class IA64Disassembler
             invalid,
             invalid);
 
-        var semaphoreGetf = Sparse(30, 6, "  Semaphore Getf", Nyi("Semaphore Getf"),
-            (0x1C, Instr(Mnemonic.getf_sig, M19))
+        var semaphoreGetf = Sparse(30, 6, "  Semaphore Getf", prReserved,
+            (0x00, Instr(Mnemonic.cmpxchg1_acq, M16)),
+            (0x01, Instr(Mnemonic.cmpxchg2_acq, M16)),
+            (0x02, Instr(Mnemonic.cmpxchg4_acq, M16)),
+            (0x03, Instr(Mnemonic.cmpxchg8_acq, M16)),
+            (0x04, Instr(Mnemonic.cmpxchg1_rel, M16)),
+            (0x05, Instr(Mnemonic.cmpxchg2_rel, M16)),
+            (0x06, Instr(Mnemonic.cmpxchg4_rel, M16)),
+            (0x07, Instr(Mnemonic.cmpxchg8_rel, M16)),
+            (0x08, Instr(Mnemonic.xchg1, M16)),
+            (0x09, Instr(Mnemonic.xchg2, M16)),
+            (0x0A, Instr(Mnemonic.xchg4, M16)),
+            (0x0B, Instr(Mnemonic.xchg8, M16)),
+            (0x12, Instr(Mnemonic.fetchadd4_acq, M17)),
+            (0x13, Instr(Mnemonic.fetchadd8_acq, M17)),
+            (0x16, Instr(Mnemonic.fetchadd4_rel, M17)),
+            (0x17, Instr(Mnemonic.fetchadd8_rel, M17)),
+            (0x1C, Instr(Mnemonic.getf_sig, M19)),
+            (0x1D, Instr(Mnemonic.getf_exp, M19)),
+            (0x1E, Instr(Mnemonic.getf_s, M19)),
+            (0x1F, Instr(Mnemonic.getf_d, M19))
             );
-        var loadReg = Nyi("Load Reg");
+
+        var loadReg = Sparse(30, 6, "   load int + reg", prReserved,
+            (0x00, Instr(Mnemonic.ld1, M2)),
+            (0x01, Instr(Mnemonic.ld2, M2)),
+            (0x02, Instr(Mnemonic.ld4, M2)),
+            (0x03, Instr(Mnemonic.ld8, M2)),
+            (0x04, Instr(Mnemonic.ld1_s, M2)),
+            (0x05, Instr(Mnemonic.ld2_s, M2)),
+            (0x06, Instr(Mnemonic.ld4_s, M2)),
+            (0x07, Instr(Mnemonic.ld8_s, M2)),
+            (0x08, Instr(Mnemonic.ld1_a, M2)),
+            (0x09, Instr(Mnemonic.ld2_a, M2)),
+            (0x0A, Instr(Mnemonic.ld4_a, M2)),
+            (0x0B, Instr(Mnemonic.ld8_a, M2)),
+            (0x0C, Instr(Mnemonic.ld1_sa, M2)),
+            (0x0D, Instr(Mnemonic.ld2_sa, M2)),
+            (0x0E, Instr(Mnemonic.ld4_sa, M2)),
+            (0x0F, Instr(Mnemonic.ld8_sa, M2)));
 
         var intLdRegGetf = Mask(Bf((36, 1), (27, 1)), "  Int Ld +Reg/getf",
             loadStore,
@@ -254,8 +310,23 @@ public partial class IA64Disassembler
             loadReg,
             invalid);
 
-        var flLoadStore = Sparse(30, 6, "  fpLoadStore", Nyi("fpLoadStore"),
+        var flLoadStore = Sparse(30, 6, "  fpLoadStore", prReserved,
             (0x00, Instr(Mnemonic.ldfe, M6)),
+            (0x01, Instr(Mnemonic.ldf8, M6)),
+            (0x02, Instr(Mnemonic.ldfs, M6)),
+            (0x03, Instr(Mnemonic.ldfd, M6)),
+            (0x04, Instr(Mnemonic.ldfe_s, M6)),
+            (0x05, Instr(Mnemonic.ldf8_s, M6)),
+            (0x06, Instr(Mnemonic.ldfs_s, M6)),
+            (0x07, Instr(Mnemonic.ldfd_s, M6)),
+            (0x08, Instr(Mnemonic.ldfe_a, M6)),
+            (0x09, Instr(Mnemonic.ldf8_a, M6)),
+            (0x0A, Instr(Mnemonic.ldfs_a, M6)),
+            (0x0B, Instr(Mnemonic.ldfd_a, M6)),
+            (0x0C, Instr(Mnemonic.ldfe_sa, M6)),
+            (0x0D, Instr(Mnemonic.ldf8_sa, M6)),
+            (0x0E, Instr(Mnemonic.ldfs_sa, M6)),
+            (0x0F, Instr(Mnemonic.ldfd_sa, M6)),
             (0x1B, Instr(Mnemonic.ldf_fill, M6)),
             (0x30, Instr(Mnemonic.stfe, M9)),
             (0x31, Instr(Mnemonic.stf8, M9)),
@@ -263,7 +334,7 @@ public partial class IA64Disassembler
             (0x33, Instr(Mnemonic.stfd, M9)),
             (0x3B, Instr(Mnemonic.stf_spill, M9)));
 
-        var fpLoadPair_setFr = Sparse(30, 6, "  fpLoadPair/set FR", Nyi("fpLoadPair/set FR"),
+        var fpLoadPair_setFr = Sparse(30, 6, "  fpLoadPair/set FR", prReserved,
             (0x01, Instr(Mnemonic.ldfp8, M11)),
             (0x02, Instr(Mnemonic.ldfps, M11)),
             (0x03, Instr(Mnemonic.ldfpd, M11)),
@@ -285,29 +356,110 @@ public partial class IA64Disassembler
             (0x23, Instr(Mnemonic.ldfpd_c_clr, M11)),
             (0x25, Instr(Mnemonic.ldfp8_c_nc, M11)),
             (0x26, Instr(Mnemonic.ldfps_c_nc, M11)),
-            (0x27, Instr(Mnemonic.ldfpd_c_nc, M11))
-            );
+            (0x27, Instr(Mnemonic.ldfpd_c_nc, M11)));
 
+        var fpLoad_reg = Sparse(30, 6, "fpLoad_reg", prReserved,
+            (0x00, Instr(Mnemonic.ldfe, M7)),
+            (0x01, Instr(Mnemonic.ldf8, M7)),
+            (0x02, Instr(Mnemonic.ldfs, M7)),
+            (0x03, Instr(Mnemonic.ldfd, M7)),
+            (0x04, Instr(Mnemonic.ldfe_s, M7)),
+            (0x05, Instr(Mnemonic.ldf8_s, M7)),
+            (0x06, Instr(Mnemonic.ldfs_s, M7)),
+            (0x07, Instr(Mnemonic.ldfd_s, M7)),
+            (0x08, Instr(Mnemonic.ldfe_a, M7)),
+            (0x09, Instr(Mnemonic.ldf8_a, M7)),
+            (0x0A, Instr(Mnemonic.ldfs_a, M7)),
+            (0x0B, Instr(Mnemonic.ldfd_a, M7)),
+            (0x0C, Instr(Mnemonic.ldfe_sa, M7)),
+            (0x0D, Instr(Mnemonic.ldf8_sa, M7)),
+            (0x0E, Instr(Mnemonic.ldfs_sa, M7)),
+            (0x0F, Instr(Mnemonic.ldfd_sa, M7)),
+            (0x1B, Instr(Mnemonic.ldf_fill, M7)),
+            (0x20, Instr(Mnemonic.ldfe_c_clr, M7)),
+            (0x21, Instr(Mnemonic.ldf8_c_clr, M7)),
+            (0x22, Instr(Mnemonic.ldfs_c_clr, M7)),
+            (0x23, Instr(Mnemonic.ldfd_c_clr, M7)),
+            (0x24, Instr(Mnemonic.ldfe_c_nc, M7)),
+            (0x25, Instr(Mnemonic.ldf8_c_nc, M7)),
+            (0x26, Instr(Mnemonic.ldfs_c_nc, M7)),
+            (0x27, Instr(Mnemonic.ldfd_c_nc, M7)),
+            (0x2C, Instr(Mnemonic.lfetch, M14)),
+            (0x2D, Instr(Mnemonic.lfetch_excl, M14)),
+            (0x2E, Instr(Mnemonic.lfetch_fault, M14)),
+            (0x2F, Instr(Mnemonic.lfetch_fault_excl, M14))
 
-        var fpLoad_reg = Sparse(30, 6, "fpLoad_reg", Nyi("fpLoad_reg"),
-            (0, Instr(Mnemonic.ldfe, M7)),
-            (0x26, Instr(Mnemonic.ldfs_c_nc, M7))
             );
-        var fpLoadPair_imm = Nyi("fpLoadPair_imm");
+        var fpLoadPair_imm = Sparse(30, 6, "  fpLoadPair_imm", prReserved,
+            (0x01, Instr(Mnemonic.ldfp8, M12, N16)),
+            (0x02, Instr(Mnemonic.ldfps, M12, N8)),
+            (0x03, Instr(Mnemonic.ldfpd, M12, N16)),
+            (0x05, Instr(Mnemonic.ldfp8_s, M12, N16)),
+            (0x06, Instr(Mnemonic.ldfps_s, M12, N8)),
+            (0x07, Instr(Mnemonic.ldfpd_s, M12, N16)),
+            (0x09, Instr(Mnemonic.ldfp8_a, M12, N16)),
+            (0x0A, Instr(Mnemonic.ldfps_a, M12, N8)),
+            (0x0B, Instr(Mnemonic.ldfpd_a, M12, N16)),
+            (0x0D, Instr(Mnemonic.ldfp8_sa, M12, N16)),
+            (0x0E, Instr(Mnemonic.ldfps_sa, M12, N8)),
+            (0x0F, Instr(Mnemonic.ldfpd_sa, M12, N16)),
+            (0x21, Instr(Mnemonic.ldfp8_c_clr, M12, N16)),
+            (0x22, Instr(Mnemonic.ldfps_c_clr, M12, N8)),
+            (0x23, Instr(Mnemonic.ldfpd_c_clr, M12, N16)),
+            (0x25, Instr(Mnemonic.ldfp8_c_nc, M12, N16)),
+            (0x26, Instr(Mnemonic.ldfps_c_nc, M12, N8)),
+            (0x27, Instr(Mnemonic.ldfpd_c_nc, M12, N16)));
 
         var fpLdStRegSetf = Mask(Bf((36, 1), (27, 1)), "  FP Ld/St +Reg/setf",
             flLoadStore,
             fpLoadPair_setFr,
             fpLoad_reg,
             fpLoadPair_imm);
-        var fpLdStImm = Nyi("FP Ld/St +Imm");
+        var fpLdStImm = Sparse(30, 6, "  FP Ld/St +Imm", prReserved,
+            (0x00, Instr(Mnemonic.ldfe, M8)),
+            (0x01, Instr(Mnemonic.ldf8, M8)),
+            (0x02, Instr(Mnemonic.ldfs, M8)),
+            (0x03, Instr(Mnemonic.ldfd, M8)),
+            (0x04, Instr(Mnemonic.ldfe_s, M8)),
+            (0x05, Instr(Mnemonic.ldf8_s, M8)),
+            (0x06, Instr(Mnemonic.ldfs_s, M8)),
+            (0x07, Instr(Mnemonic.ldfd_s, M8)),
+            (0x08, Instr(Mnemonic.ldfe_a, M8)),
+            (0x09, Instr(Mnemonic.ldf8_a, M8)),
+            (0x0A, Instr(Mnemonic.ldfs_a, M8)),
+            (0x0B, Instr(Mnemonic.ldfd_a, M8)),
+            (0x0C, Instr(Mnemonic.ldfe_sa, M8)),
+            (0x0D, Instr(Mnemonic.ldf8_sa, M8)),
+            (0x0E, Instr(Mnemonic.ldfs_sa, M8)),
+            (0x0F, Instr(Mnemonic.ldfd_sa, M8)),
+
+            (0x1B, Instr(Mnemonic.ldf_fill, M8)),
+
+            (0x20, Instr(Mnemonic.ldfe_c_clr, M8)),
+            (0x21, Instr(Mnemonic.ldf8_c_clr, M8)),
+            (0x22, Instr(Mnemonic.ldfs_c_clr, M8)),
+            (0x23, Instr(Mnemonic.ldfd_c_clr, M8)),
+            (0x24, Instr(Mnemonic.ldfe_c_nc, M8)),
+            (0x25, Instr(Mnemonic.ldf8_c_nc, M8)),
+            (0x26, Instr(Mnemonic.ldfs_c_nc, M8)),
+            (0x27, Instr(Mnemonic.ldfd_c_nc, M8)),
+            (0x2C, Instr(Mnemonic.lfetch, M15)),
+            (0x2D, Instr(Mnemonic.lfetch_excl, M15)),
+            (0x2E, Instr(Mnemonic.lfetch_fault, M15)),
+            (0x2F, Instr(Mnemonic.lfetch_fault_excl, M15)),
+            (0x30, Instr(Mnemonic.stfe, M10)),
+            (0x31, Instr(Mnemonic.stf8, M10)),
+            (0x32, Instr(Mnemonic.stfs, M10)),
+            (0x33, Instr(Mnemonic.stfd, M10)),
+
+            (0x3B, Instr(Mnemonic.stf_fill, M10)));
 
 
         return new UnitDecoder('m', Mask(37, 4, "  M",
             sysMemMgmt3bit,
             sysMemMgmt,
-            invalid,
-            invalid,
+            prReserved,
+            prReserved,
 
             intLdRegGetf,
             intLdStImm,
@@ -316,13 +468,13 @@ public partial class IA64Disassembler
 
             aluMmAlu,
             addImm22,
-            invalid,
-            invalid,
+            prReserved,
+            prReserved,
 
             compare,
             compare,
             compare,
-            invalid));
+            prReserved));
     }
 
 }
