@@ -884,7 +884,7 @@ public partial class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     {
         var r3 = Registers.GpRegisters[bf20_7.Read(uInstr)];
         var pos6 = Constant.Int32((int)bf14_6.Read(uInstr));
-        var len6 = Constant.Int32((int)bf27_6.Read(uInstr));
+        var len6 = Constant.Int32((int)bf27_6.Read(uInstr)+1);
         var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
         dasm.ops.Add(dst);
         dasm.ops.Add(r3);

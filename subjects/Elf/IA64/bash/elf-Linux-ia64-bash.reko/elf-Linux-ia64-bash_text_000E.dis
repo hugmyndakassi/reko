@@ -1,348 +1,5241 @@
-void history_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// history_builtin
+// Return size: 0
+define history_builtin
 history_builtin_entry:
+	r11 = fp
+	// succ:  l40000000000FDCC0
 l40000000000FDCC0:
+	r46 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFE0<64>
+	r34 = r1 + -9324<i64>
+	r47 = r1 + 0<64>
+	r48 = pr
+	r45 = b5
+	r34 = Mem0[r34:word64]
+	r33 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r47 + 0<64>
+	r36 = 0<64> + 128<i64>
+	r35 = r1 + 9252<i64>
+	r50 = r1 + -9380<i64>
+	r49 = r32 + 0<64>
+	r50 = Mem0[r50:word64]
+	call b0 (retsize: 0;)
+	r1 = r47 + 0<64>
+	v22 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v23 = SLICE(r8, word32, 0)
+	p07 = v22 == v23
+	p06 = v22 != v23
+	branch !p07 l40000000000FDD50
+	// succ:  l40000000000FDD4C_1 l40000000000FDD50
+l40000000000FDD4C_1:
+	goto l40000000000FDE20
+	// succ:  l40000000000FDE20
+l40000000000FDD50:
+	r8 = r8 + 0xFFFFFFFFFFFFFF9F<64>
+	v26 = SLICE(0x16<64>, word32, 0)
+	v27 = SLICE(r8, word32, 0)
+	p06 = v26 <u v27
+	p07 = v26 >=u v27
+	branch !p07 l40000000000FDD70
+	// succ:  l40000000000FDD6C_1 l40000000000FDD70
+l40000000000FDD6C_1:
+	goto l40000000000FDDB0
+	// succ:  l40000000000FDDB0
+l40000000000FDD70:
+	r33 = 0<64> + 258<i64>
+	call b0 (retsize: 0;)
+	r8 = r33 + 0<64>
+	r1 = r47 + 0<64>
+	pr = r48
+	ar.pfs = r46
+	b0 = r45
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  history_builtin_exit
+l40000000000FDDB0:
+	r8 = __addp4(0<64>, r8)
+	r8 = (r8 << 3<u32>) + r34
+	r14 = Mem0[r8:word64]
+	r8 = r14 + r8
+	b6 = r8
+	call b6 (retsize: 0;)
+	return
+	// succ:  history_builtin_exit
+l40000000000FDE20:
+	r15 = r1 + 9268<i64>
+	r14 = r33 & 0xF<64>
+	v30 = SLICE(2<64>, word32, 0)
+	v31 = SLICE(r14, word32, 0)
+	p06 = v30 <u v31
+	p07 = v30 >=u v31
+	v32 = SLICE(4<64>, word32, 0)
+	v33 = SLICE(r14, word32, 0)
+	p09 = v32 == v33
+	p08 = v32 != v33
+	branch !p06 l40000000000FDE4C
+	// succ:  l40000000000FDE46_1 l40000000000FDE4C
+l40000000000FDE46_1:
+	r16 = 0<64> + 1<i64>
+	// succ:  l40000000000FDE4C
+l40000000000FDE4C:
+	branch !p04 l40000000000FDE58
+	// succ:  l40000000000FDE52_1 l40000000000FDE58
+l40000000000FDE52_1:
+	pr = r3
+	// succ:  l40000000000FDE58
+l40000000000FDE58:
 history_builtin_exit:
 
 
-void jobs_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// jobs_builtin
+// Return size: 0
+define jobs_builtin
 jobs_builtin_entry:
+	r11 = fp
+	// succ:  l40000000000FEEC0
 l40000000000FEEC0:
+	r40 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFF00<64>
+	r41 = r1 + 0<64>
+	r39 = b7
+	r36 = 0<64> + 0<64>
+	r35 = 0<64> + 0<64>
+	r34 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r33 = r1 + -4476<i64>
+	r33 = Mem0[r33:word64]
+	// succ:  l40000000000FEF20
+l40000000000FEF20:
+	r43 = r1 + -4508<i64>
+	r42 = r32 + 0<64>
+	r43 = Mem0[r43:word64]
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	v20 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v21 = SLICE(r8, word32, 0)
+	p07 = v20 == v21
+	p06 = v20 != v21
+	branch !p07 l40000000000FEF50
+	// succ:  l40000000000FEF4C_1 l40000000000FEF50
+l40000000000FEF4C_1:
+	goto l40000000000FF020
+	// succ:  l40000000000FF020
+l40000000000FEF50:
+	r8 = r8 + 0xFFFFFFFFFFFFFF94<64>
+	v24 = SLICE(0xC<64>, word32, 0)
+	v25 = SLICE(r8, word32, 0)
+	p06 = v24 <u v25
+	p07 = v24 >=u v25
+	branch !p07 l40000000000FEF70
+	// succ:  l40000000000FEF6C_1 l40000000000FEF70
+l40000000000FEF6C_1:
+	goto l40000000000FEFB0
+	// succ:  l40000000000FEFB0
+l40000000000FEF70:
+	r33 = 0<64> + 258<i64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r8 = r33 + 0<64>
+	ar.pfs = r40
+	b0 = r39
+	r12 = r12 + 0x100<64>
+	return
+	// succ:  jobs_builtin_exit
+l40000000000FEFB0:
+	r8 = __addp4(0<64>, r8)
+	r8 = (r8 << 3<u32>) + r33
+	r14 = Mem0[r8:word64]
+	r8 = r14 + r8
+	b6 = r8
+	call b6 (retsize: 0;)
+	return
+	// succ:  jobs_builtin_exit
+l40000000000FF020:
+	r14 = r1 + 9268<i64>
+	v27 = SLICE(0<64>, word32, 0)
+	v28 = SLICE(r35, word32, 0)
+	p06 = v27 == v28
+	p07 = v27 != v28
+	r35 = r1 + 7444<i64>
+	r33 = Mem0[r14:word64]
+	branch !p07 l40000000000FF050
+	// succ:  l40000000000FF04C_1 l40000000000FF050
+l40000000000FF04C_1:
+	goto l40000000000FF2D0
+	// succ:  l40000000000FF2D0
+l40000000000FF050:
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p07 l40000000000FF060
+	// succ:  l40000000000FF05C_1 l40000000000FF060
+l40000000000FF05C_1:
+	goto l40000000000FF660
+	// succ:  l40000000000FF660
+l40000000000FF060:
+	r36 = 0<64> + 0<64>
+	// succ:  l40000000000FF080
+l40000000000FF080:
+	r42 = r12 + 0x90<64>
+	call b0 (retsize: 0;)
+	r43 = 0<64> + 17<i64>
+	r1 = r41 + 0<64>
+	r42 = r12 + 0x90<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r43 = r12 + 0x90<64>
+	r44 = r12 + 0x10<64>
+	r1 = r41 + 0<64>
+	r42 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	v56 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v57 = SLICE(r8, word32, 0)
+	p06 = v56 == v57
+	p07 = v56 != v57
+	v58 = SLICE(r8, int32, 0)
+	r15 = CONVERT(v58, int32, int64)
+	r42 = 0<64> + 0<64>
+	r43 = r34 + 0<64>
+	branch !p06 l40000000000FF110
+	// succ:  l40000000000FF10C_1 l40000000000FF110
+l40000000000FF10C_1:
+	goto l40000000000FF250
+	// succ:  l40000000000FF250
+l40000000000FF110:
+	r14 = Mem0[r35:word64]
+	r44 = 0<64> + 0<64>
+	r45 = r8 + 0<64>
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	r14 = (r15 << 3<u32>) + r14
+	branch !p06 l40000000000FF130
+	// succ:  l40000000000FF12C_1 l40000000000FF130
+l40000000000FF12C_1:
+	goto l40000000000FF250
+	// succ:  l40000000000FF250
+l40000000000FF130:
+	r14 = Mem0[r14:word64]
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	branch !p07 l40000000000FF150
+	// succ:  l40000000000FF14C_1 l40000000000FF150
+l40000000000FF14C_1:
+	goto l40000000000FF250
+	// succ:  l40000000000FF250
+l40000000000FF150:
+	v68 = SLICE(0xFFFFFFFFFFFFFFFE<64>, word32, 0)
+	v69 = SLICE(r8, word32, 0)
+	p06 = v68 == v69
+	p07 = v68 != v69
+	branch !p06 l40000000000FF160
+	// succ:  l40000000000FF15C_1 l40000000000FF160
+l40000000000FF15C_1:
+	goto l40000000000FF180
+	// succ:  l40000000000FF180
+l40000000000FF160:
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	// succ:  l40000000000FF180
+l40000000000FF180:
+	r42 = 0<64> + 2<i64>
+	r43 = r12 + 0x10<64>
+	r44 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r33 = Mem0[r33:word64]
+	r1 = r41 + 0<64>
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l40000000000FF1C0
+	// succ:  l40000000000FF1BC_1 l40000000000FF1C0
+l40000000000FF1BC_1:
+	goto l40000000000FF080
+	// succ:  l40000000000FF080
+l40000000000FF1C0:
+	v64 = SLICE(0<64>, word32, 0)
+	v65 = SLICE(r36, word32, 0)
+	p07 = v64 == v65
+	p06 = v64 != v65
+	branch !p06 l40000000000FF1CC
+	// succ:  l40000000000FF1C6_1 l40000000000FF1CC
+l40000000000FF1C6_1:
+	r36 = 0<64> + 1<i64>
+	// succ:  l40000000000FF1CC
+l40000000000FF1CC:
+	branch !p04 l40000000000FF1D8
+	// succ:  l40000000000FF1D2_1 l40000000000FF1D8
+l40000000000FF1D2_1:
+	// succ:  l40000000000FF1D8
+l40000000000FF1D8:
+	branch !p04 l40000000000FF1DE
+	// succ:  l40000000000FF1D8_1 l40000000000FF1DE
+l40000000000FF1D8_1:
+	__break()
+	// succ:  l40000000000FF1DE
+l40000000000FF1DE:
+	__break()
+	branch !p42 l40000000000FF1EE
+	// succ:  l40000000000FF1EA_1 l40000000000FF1EE
+l40000000000FF1EA_1:
+	// succ:  l40000000000FF1EE
+l40000000000FF1EE:
+	branch !p56 l40000000000FF1F4
+	// succ:  l40000000000FF1EE_1 l40000000000FF1F4
+l40000000000FF1EE_1:
+	__break()
+	// succ:  l40000000000FF1F4
+l40000000000FF1F4:
+	branch !p08 l40000000000FF200
+	// succ:  l40000000000FF1FA_1 l40000000000FF200
+l40000000000FF1FA_1:
+	__break()
+	// succ:  l40000000000FF200
+l40000000000FF200:
+	r36 = 0<64> + 2<i64>
+	goto l40000000000FEF20
+	// succ:  l40000000000FEF20
+l40000000000FF250:
+	r14 = r33 + 8<64>
+	r36 = r36 + 1<64>
+	r14 = Mem0[r14:word64]
+	r42 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = 0<64> + 2<i64>
+	r43 = r12 + 0x10<64>
+	r44 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r33 = Mem0[r33:word64]
+	r1 = r41 + 0<64>
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l40000000000FF2C0
+	// succ:  l40000000000FF2BC_1 l40000000000FF2C0
+l40000000000FF2BC_1:
+	goto l40000000000FF080
+	// succ:  l40000000000FF080
+l40000000000FF2C0:
+	goto l40000000000FF1C0
+	// succ:  l40000000000FF1C0
+l40000000000FF2D0:
+	r36 = r1 + -20676<i64>
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	r37 = r1 + 7444<i64>
+	r34 = r33 + 0<64>
+	branch !p07 l40000000000FF2F0
+	// succ:  l40000000000FF2EC_1 l40000000000FF2F0
+l40000000000FF2EC_1:
+	goto l40000000000FF380
+	// succ:  l40000000000FF380
+l40000000000FF2F0:
+	r36 = r36 + 0x1C<64>
+	// succ:  l40000000000FF320
+l40000000000FF320:
+	r35 = r34 + 8<64>
+	r14 = Mem0[r35:word64]
+	r14 = Mem0[r14:word64]
+	v31 = Mem0[r14:byte]
+	r14 = CONVERT(v31, byte, word64)
+	v32 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v32, int8, int64)
+	v33 = SLICE(0x25<64>, word32, 0)
+	v34 = SLICE(r14, word32, 0)
+	p06 = v33 == v34
+	p07 = v33 != v34
+	branch !p06 l40000000000FF360
+	// succ:  l40000000000FF35C_1 l40000000000FF360
+l40000000000FF35C_1:
+	goto l40000000000FF4E0
+	// succ:  l40000000000FF4E0
+l40000000000FF360:
+	r34 = Mem0[r34:word64]
+	p07 = 0<64> == r34
+	p06 = 0<64> != r34
+	branch !p06 l40000000000FF380
+	// succ:  l40000000000FF37C_1 l40000000000FF380
+l40000000000FF37C_1:
+	goto l40000000000FF320
+	// succ:  l40000000000FF320
+l40000000000FF380:
+	r42 = r1 + -4500<i64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	call b0 (retsize: 0;)
+	r35 = r8 + 0x18<64>
+	r34 = r8 + 0<64>
+	r1 = r41 + 0<64>
+	r42 = r33 + 0<64>
+	r33 = Mem0[r35:word64]
+	call b0 (retsize: 0;)
+	r14 = r33 + 8<64>
+	r15 = r34 + 4<64>
+	r1 = r41 + 0<64>
+	r43 = r34 + 0<64>
+	Mem0[r8:word64] = r14
+	v36 = Mem0[r15:word32]
+	r16 = CONVERT(v36, word32, word64)
+	r42 = r1 + -9796<i64>
+	r14 = Mem0[r35:word64]
+	r17 = r16 | 0x20<64>
+	r42 = Mem0[r42:word64]
+	r18 = r14 + 0x10<64>
+	v40 = Mem0[r14:word32]
+	r16 = CONVERT(v40, word32, word64)
+	Mem0[r0:word64] = r18
+	Mem0[r17:word32] = SLICE(r15, word32, 0)
+	r16 = r16 | 0x20<64>
+	Mem0[r16:word32] = SLICE(r14, word32, 0)
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r33 = r8 + 0<64>
+	r42 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = r1 + -4500<i64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r8 = r33 + 0<64>
+	r1 = r41 + 0<64>
+	ar.pfs = r40
+	b0 = r39
+	r12 = r12 + 0x100<64>
+	return
+	// succ:  jobs_builtin_exit
+l40000000000FF4E0:
+	r42 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	v44 = SLICE(r8, word32, 0)
+	v45 = SLICE(0<64>, word32, 0)
+	p06 = v44 < v45
+	p07 = v44 >= v45
+	branch !p06 l40000000000FF500
+	// succ:  l40000000000FF4FC_1 l40000000000FF500
+l40000000000FF4FC_1:
+	goto l40000000000FF360
+	// succ:  l40000000000FF360
+l40000000000FF500:
+	v48 = Mem0[r36:word32]
+	r14 = CONVERT(v48, word32, word64)
+	v49 = SLICE(r8, word32, 0)
+	v50 = SLICE(r14, word32, 0)
+	p07 = v49 < v50
+	p06 = v49 >= v50
+	branch !p06 l40000000000FF520
+	// succ:  l40000000000FF51C_1 l40000000000FF520
+l40000000000FF51C_1:
+	goto l40000000000FF360
+	// succ:  l40000000000FF360
+l40000000000FF520:
+	v53 = SLICE(r8, int32, 0)
+	r8 = CONVERT(v53, int32, int64)
+	r14 = Mem0[r37:word64]
+	r14 = (r8 << 3<u32>) + r14
+	r38 = Mem0[r14:word64]
+	p06 = 0<64> == r38
+	p07 = 0<64> != r38
+	r38 = r38 + 0x10<64>
+	branch !p06 l40000000000FF560
+	// succ:  l40000000000FF55C_1 l40000000000FF560
+l40000000000FF55C_1:
+	goto l40000000000FF360
+	// succ:  l40000000000FF360
+l40000000000FF560:
+	r14 = Mem0[r35:word64]
+	r42 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	v60 = Mem0[r38:word32]
+	r42 = CONVERT(v60, word32, word64)
+	r1 = r41 + 0<64>
+	r35 = Mem0[r35:word64]
+	v61 = SLICE(r42, int32, 0)
+	r42 = CONVERT(v61, int32, int64)
+	call b0 (retsize: 0;)
+	r34 = Mem0[r34:word64]
+	r1 = r41 + 0<64>
+	Mem0[r8:word64] = r35
+	p07 = 0<64> == r34
+	p06 = 0<64> != r34
+	branch !p06 l40000000000FF5E0
+	// succ:  l40000000000FF5DC_1 l40000000000FF5E0
+l40000000000FF5DC_1:
+	goto l40000000000FF320
+	// succ:  l40000000000FF320
+l40000000000FF5E0:
+	goto l40000000000FF380
+	// succ:  l40000000000FF380
+l40000000000FF660:
+	v42 = SLICE(1<64>, word32, 0)
+	v43 = SLICE(r36, word32, 0)
+	p06 = v42 == v43
+	p07 = v42 != v43
+	branch !p06 l40000000000FF670
+	// succ:  l40000000000FF66C_1 l40000000000FF670
+l40000000000FF66C_1:
+	goto l40000000000FF6E0
+	// succ:  l40000000000FF6E0
+l40000000000FF670:
+	v46 = SLICE(2<64>, word32, 0)
+	v47 = SLICE(r36, word32, 0)
+	p06 = v46 == v47
+	p07 = v46 != v47
+	branch !p06 l40000000000FF680
+	// succ:  l40000000000FF67C_1 l40000000000FF680
+l40000000000FF67C_1:
+	goto l40000000000FF720
+	// succ:  l40000000000FF720
+l40000000000FF680:
+	v51 = SLICE(0<64>, word32, 0)
+	v52 = SLICE(r36, word32, 0)
+	p06 = v51 == v52
+	p07 = v51 != v52
+	branch !p07 l40000000000FF69C
+	// succ:  l40000000000FF696_1 l40000000000FF69C
+l40000000000FF696_1:
+	r33 = 0<64> + 0<64>
+	// succ:  l40000000000FF69C
+l40000000000FF69C:
+	branch !p08 l40000000000FF6A2
+	// succ:  l40000000000FF69C_1 l40000000000FF6A2
+l40000000000FF69C_1:
+	// succ:  l40000000000FF6A2
+l40000000000FF6A2:
+	branch !p32 l40000000000FF6A8
+	// succ:  l40000000000FF6A2_1 l40000000000FF6A8
+l40000000000FF6A2_1:
+	__break()
+	// succ:  l40000000000FF6A8
+l40000000000FF6A8:
+	branch !p16 l40000000000FF6AE
+	// succ:  l40000000000FF6A8_1 l40000000000FF6AE
+l40000000000FF6A8_1:
+	// succ:  l40000000000FF6AE
+l40000000000FF6AE:
+	branch !p07 l40000000000FF6B4
+	// succ:  l40000000000FF6AE_1 l40000000000FF6B4
+l40000000000FF6AE_1:
+	__break()
+	// succ:  l40000000000FF6B4
+l40000000000FF6B4:
+l40000000000FF6E0:
+	r42 = r34 + 0<64>
+	r33 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r33 + 0<64>
+	r1 = r41 + 0<64>
+	ar.pfs = r40
+	b0 = r39
+	r12 = r12 + 0x100<64>
+	return
+	// succ:  jobs_builtin_exit
+l40000000000FF720:
+	r42 = r34 + 0<64>
+	r33 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r33 + 0<64>
+	r1 = r41 + 0<64>
+	ar.pfs = r40
+	b0 = r39
+	r12 = r12 + 0x100<64>
+	return
+	// succ:  jobs_builtin_exit
 jobs_builtin_exit:
 
 
-void disown_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// disown_builtin
+// Return size: 0
+define disown_builtin
 disown_builtin_entry:
+	r11 = fp
+	// succ:  l40000000000FF780
 l40000000000FF780:
+	r42 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFEF0<64>
+	r43 = r1 + 0<64>
+	r44 = pr
+	r41 = b1
+	r37 = 0<64> + 0<64>
+	r36 = 0<64> + 0<64>
+	r35 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	// succ:  l40000000000FF7D0
+l40000000000FF7D0:
+	r46 = r1 + -4492<i64>
+	r45 = r32 + 0<64>
+	r46 = Mem0[r46:word64]
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	v21 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v22 = SLICE(r8, word32, 0)
+	p07 = v21 == v22
+	p06 = v21 != v22
+	branch !p07 l40000000000FF800
+	// succ:  l40000000000FF7FC_1 l40000000000FF800
+l40000000000FF7FC_1:
+	goto l40000000000FF8B0
+	// succ:  l40000000000FF8B0
+l40000000000FF800:
+	v25 = SLICE(0x68<64>, word32, 0)
+	v26 = SLICE(r8, word32, 0)
+	p06 = v25 == v26
+	p07 = v25 != v26
+	r34 = 0<64> + 258<i64>
+	branch !p06 l40000000000FF810
+	// succ:  l40000000000FF80C_1 l40000000000FF810
+l40000000000FF80C_1:
+	goto l40000000000FFB40
+	// succ:  l40000000000FFB40
+l40000000000FF810:
+	v37 = SLICE(0x72<64>, word32, 0)
+	v38 = SLICE(r8, word32, 0)
+	p06 = v37 == v38
+	p07 = v37 != v38
+	branch !p06 l40000000000FF820
+	// succ:  l40000000000FF81C_1 l40000000000FF820
+l40000000000FF81C_1:
+	goto l40000000000FFB50
+	// succ:  l40000000000FFB50
+l40000000000FF820:
+	v39 = SLICE(0x61<64>, word32, 0)
+	v40 = SLICE(r8, word32, 0)
+	p06 = v39 == v40
+	p07 = v39 != v40
+	branch !p06 l40000000000FF830
+	// succ:  l40000000000FF82C_1 l40000000000FF830
+l40000000000FF82C_1:
+	goto l40000000000FF880
+	// succ:  l40000000000FF880
+l40000000000FF830:
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	r8 = r34 + 0<64>
+	pr = r44
+	ar.pfs = r42
+	b0 = r41
+	r12 = r12 + 0x110<64>
+	return
+	// succ:  disown_builtin_exit
+l40000000000FF880:
+	r46 = r1 + -4492<i64>
+	r45 = r32 + 0<64>
+	r37 = 0<64> + 1<i64>
+	r46 = Mem0[r46:word64]
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	v41 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v42 = SLICE(r8, word32, 0)
+	p07 = v41 == v42
+	p06 = v41 != v42
+	branch !p06 l40000000000FF8B0
+	// succ:  l40000000000FF8AC_1 l40000000000FF8B0
+l40000000000FF8AC_1:
+	goto l40000000000FF800
+	// succ:  l40000000000FF800
+l40000000000FF8B0:
+	r14 = r1 + 9268<i64>
+	r40 = r1 + -20676<i64>
+	r39 = r1 + 7444<i64>
+	r34 = 0<64> + 0<64>
+	r38 = r12 + 0x110<64>
+	v32 = SLICE(0<64>, word32, 0)
+	v33 = SLICE(r35, word32, 0)
+	p18 = v32 == v33
+	p19 = v32 != v33
+	r40 = r40 + 0x1C<64>
+	r33 = Mem0[r14:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p07 l40000000000FF910
+	// succ:  l40000000000FF90C_1 l40000000000FF910
+l40000000000FF90C_1:
+	goto l40000000000FFBE0
+	// succ:  l40000000000FFBE0
+l40000000000FF910:
+	r45 = r12 + 0x90<64>
+	p16 = 0<64> == r33
+	p17 = 0<64> != r33
+	call b0 (retsize: 0;)
+	r46 = 0<64> + 17<i64>
+	r1 = r43 + 0<64>
+	r45 = r12 + 0x90<64>
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	r45 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	r45 = 0<64> + 0<64>
+	r46 = r12 + 0x90<64>
+	r47 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r14 = r33 + 8<64>
+	r1 = r43 + 0<64>
+	r46 = r38 + 0<64>
+	branch !p16 l40000000000FF9A0
+	// succ:  l40000000000FF99C_1 l40000000000FF9A0
+l40000000000FF99C_1:
+	goto l40000000000FF9F0
+	// succ:  l40000000000FF9F0
+l40000000000FF9A0:
+	r14 = Mem0[r14:word64]
+	r45 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	v46 = SLICE(0<64>, word32, 0)
+	v47 = SLICE(r8, word32, 0)
+	p06 = v46 == v47
+	p07 = v46 != v47
+	branch !p06 l40000000000FF9D0
+	// succ:  l40000000000FF9CC_1 l40000000000FF9D0
+l40000000000FF9CC_1:
+	goto l40000000000FF9F0
+	// succ:  l40000000000FF9F0
+l40000000000FF9D0:
+	r45 = Mem0[r38:word64]
+	v50 = SLICE(r45, int32, 0)
+	r14 = CONVERT(v50, int32, int64)
+	p07 = r14 == r45
+	p06 = r14 != r45
+	branch !p07 l40000000000FF9F0
+	// succ:  l40000000000FF9EC_1 l40000000000FF9F0
+l40000000000FF9EC_1:
+	goto l40000000000FFB60
+	// succ:  l40000000000FFB60
+l40000000000FF9F0:
+	r45 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	v48 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v49 = SLICE(r8, word32, 0)
+	p06 = v48 == v49
+	p07 = v48 != v49
+	branch !p06 l40000000000FFA10
+	// succ:  l40000000000FFA0C_1 l40000000000FFA10
+l40000000000FFA0C_1:
+	goto l40000000000FFB80
+	// succ:  l40000000000FFB80
+l40000000000FFA10:
+	r14 = Mem0[r39:word64]
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	branch !p06 l40000000000FFA30
+	// succ:  l40000000000FFA2C_1 l40000000000FFA30
+l40000000000FFA2C_1:
+	goto l40000000000FFB80
+	// succ:  l40000000000FFB80
+l40000000000FFA30:
+	v53 = SLICE(r8, word32, 0)
+	v54 = SLICE(0<64>, word32, 0)
+	p06 = v53 < v54
+	p07 = v53 >= v54
+	branch !p06 l40000000000FFA40
+	// succ:  l40000000000FFA3C_1 l40000000000FFA40
+l40000000000FFA3C_1:
+	goto l40000000000FFB80
+	// succ:  l40000000000FFB80
+l40000000000FFA40:
+	v55 = Mem0[r40:word32]
+	r15 = CONVERT(v55, word32, word64)
+	v57 = SLICE(r8, word32, 0)
+	v58 = SLICE(r15, word32, 0)
+	p07 = v57 < v58
+	p06 = v57 >= v58
+	branch !p06 l40000000000FFA60
+	// succ:  l40000000000FFA5C_1 l40000000000FFA60
+l40000000000FFA5C_1:
+	goto l40000000000FFB80
+	// succ:  l40000000000FFB80
+l40000000000FFA60:
+	v59 = SLICE(r8, int32, 0)
+	r15 = CONVERT(v59, int32, int64)
+	r14 = (r15 << 3<u32>) + r14
+	r14 = Mem0[r14:word64]
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	branch !p07 l40000000000FFA90
+	// succ:  l40000000000FFA8C_1 l40000000000FFA90
+l40000000000FFA8C_1:
+	goto l40000000000FFB80
+	// succ:  l40000000000FFB80
+l40000000000FFA90:
+	r45 = r8 + 0<64>
+	branch !p19 l40000000000FFAA0
+	// succ:  l40000000000FFA9C_1 l40000000000FFAA0
+l40000000000FFA9C_1:
+	call b0 (retsize: 0;)
+	// succ:  l40000000000FFAA0
+l40000000000FFAA0:
+	branch !p18 l40000000000FFAAC
+	// succ:  l40000000000FFAA6_1 l40000000000FFAAC
+l40000000000FFAA6_1:
+	r46 = 0<64> + 1<i64>
+	// succ:  l40000000000FFAAC
+l40000000000FFAAC:
+	branch !p11 l40000000000FFAB2
+	// succ:  l40000000000FFAAC_1 l40000000000FFAB2
+l40000000000FFAAC_1:
+	// succ:  l40000000000FFAB2
+l40000000000FFAB2:
+	branch !p48 l40000000000FFAB8
+	// succ:  l40000000000FFAB2_1 l40000000000FFAB8
+l40000000000FFAB2_1:
+	__break()
+	// succ:  l40000000000FFAB8
+l40000000000FFAB8:
+	branch !p16 l40000000000FFABE
+	// succ:  l40000000000FFAB8_1 l40000000000FFABE
+l40000000000FFAB8_1:
+	__break()
+	// succ:  l40000000000FFABE
+l40000000000FFABE:
+	branch !p04 l40000000000FFACE
+	// succ:  l40000000000FFACA_1 l40000000000FFACE
+l40000000000FFACA_1:
+l40000000000FFACE:
+	branch !p32 l40000000000FFAD4
+	// succ:  l40000000000FFACE_1 l40000000000FFAD4
+l40000000000FFACE_1:
+	// succ:  l40000000000FFAD4
+l40000000000FFAD4:
+	branch !p08 l40000000000FFADA
+	// succ:  l40000000000FFAD4_1 l40000000000FFADA
+l40000000000FFAD4_1:
+	__break()
+	// succ:  l40000000000FFADA
+l40000000000FFADA:
+l40000000000FFB40:
+	r35 = 0<64> + 1<i64>
+	goto l40000000000FF7D0
+	// succ:  l40000000000FF7D0
+l40000000000FFB50:
+	r36 = 0<64> + 1<i64>
+	goto l40000000000FF7D0
+	// succ:  l40000000000FF7D0
+l40000000000FFB60:
+	r46 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r43 + 0<64>
+	v51 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v52 = SLICE(r8, word32, 0)
+	p06 = v51 == v52
+	p07 = v51 != v52
+	branch !p07 l40000000000FFB80
+	// succ:  l40000000000FFB7C_1 l40000000000FFB80
+l40000000000FFB7C_1:
+	goto l40000000000FFA10
+	// succ:  l40000000000FFA10
+l40000000000FFB80:
+	branch !p17 l40000000000FFB86
+	// succ:  l40000000000FFB80_1 l40000000000FFB86
+l40000000000FFB80_1:
+	r14 = r33 + 8<64>
+	// succ:  l40000000000FFB86
+l40000000000FFB86:
+l40000000000FFBE0:
+	r37 = r37 | r36
+	branch !p18 l40000000000FFBEC
+	// succ:  l40000000000FFBE6_1 l40000000000FFBEC
+l40000000000FFBE6_1:
+	// succ:  l40000000000FFBEC
+l40000000000FFBEC:
+	__break()
 disown_builtin_exit:
 
 
-void kill_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// kill_builtin
+// Return size: 0
+define kill_builtin
 kill_builtin_entry:
+	r11 = fp
+	// succ:  l40000000000FFDC0
 l40000000000FFDC0:
+	r43 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFEF0<64>
+	r14 = r1 + 6456<i64>
+	r42 = b2
+	r44 = r1 + 0<64>
+	p07 = 0<64> == r32
+	p06 = 0<64> != r32
+	r33 = r1 + 956<i64>
+	r34 = 0<64> + 0<64>
+	r38 = 0<64> + 0<64>
+	r35 = 0<64> + 15<i64>
+	branch !p07 l40000000000FFE00
+	// succ:  l40000000000FFDFC_1 l40000000000FFE00
+l40000000000FFDFC_1:
+	goto l40000000001006B0
+	// succ:  l40000000001006B0
+l40000000000FFE00:
+	r33 = Mem0[r33:word64]
+	v19 = Mem0[r14:word32]
+	r36 = CONVERT(v19, word32, word64)
+	r14 = r32 + 8<64>
+	r14 = Mem0[r14:word64]
+	v21 = SLICE(0<64>, word32, 0)
+	v22 = SLICE(r36, word32, 0)
+	p07 = v21 == v22
+	p06 = v21 != v22
+	branch !p07 l40000000000FFE36
+	// succ:  l40000000000FFE30_1 l40000000000FFE36
+l40000000000FFE30_1:
+	r36 = 0<64> + 3<i64>
+	// succ:  l40000000000FFE36
+l40000000000FFE36:
+	branch !p22 l40000000000FFE3C
+	// succ:  l40000000000FFE36_1 l40000000000FFE3C
+l40000000000FFE36_1:
+	// succ:  l40000000000FFE3C
+l40000000000FFE3C:
+	branch !p01 l40000000000FFE42
+	// succ:  l40000000000FFE3C_1 l40000000000FFE42
+l40000000000FFE3C_1:
+	0<64> == r72
+	p11 = 0<64> != r72
+	// succ:  l40000000000FFE42
+l40000000000FFE42:
+	branch !p16 l40000000000FFE48
+	// succ:  l40000000000FFE42_1 l40000000000FFE48
+l40000000000FFE42_1:
+	__break()
+	// succ:  l40000000000FFE48
+l40000000000FFE48:
+	branch !p16 l40000000000FFE4E
+	// succ:  l40000000000FFE48_1 l40000000000FFE4E
+l40000000000FFE48_1:
+	0<64> == r112
+	p01 = 0<64> != r112
+	// succ:  l40000000000FFE4E
+l40000000000FFE4E:
+	branch !p02 l40000000000FFE54
+	// succ:  l40000000000FFE4E_1 l40000000000FFE54
+l40000000000FFE4E_1:
+	__break()
+	// succ:  l40000000000FFE54
+l40000000000FFE54:
+	branch !p12 l40000000000FFE60
+	// succ:  l40000000000FFE5A_1 l40000000000FFE60
+l40000000000FFE5A_1:
+	// succ:  l40000000000FFE60
+l40000000000FFE60:
+	r40 = r1 + -20676<i64>
+	v34 = SLICE(0<64>, word32, 0)
+	v35 = SLICE(r38, word32, 0)
+	p06 = v34 == v35
+	p07 = v34 != v35
+	r41 = r1 + 7444<i64>
+	r39 = 0<64> + 0<64>
+	r37 = r12 + 0x110<64>
+	branch !p07 l40000000000FFE80
+	// succ:  l40000000000FFE7C_1 l40000000000FFE80
+l40000000000FFE7C_1:
+	goto l40000000001006F0
+	// succ:  l40000000001006F0
+l40000000000FFE80:
+	v39 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v40 = SLICE(r35, word32, 0)
+	p07 = v39 == v40
+	p06 = v39 != v40
+	branch !p07 l40000000000FFEA0
+	// succ:  l40000000000FFE9C_1 l40000000000FFEA0
+l40000000000FFE9C_1:
+	goto l4000000000100720
+	// succ:  l4000000000100720
+l40000000000FFEA0:
+	r40 = r40 + 0x1C<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	branch !p06 l40000000000FFEB0
+	// succ:  l40000000000FFEAC_1 l40000000000FFEB0
+l40000000000FFEAC_1:
+	goto l40000000001006B0
+	// succ:  l40000000001006B0
+l40000000000FFEB0:
+	r34 = r32 + 8<64>
+	r14 = Mem0[r34:word64]
+	r45 = Mem0[r14:word64]
+	v43 = Mem0[r45:byte]
+	r15 = CONVERT(v43, byte, word64)
+	v45 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v45, int8, int64)
+	v46 = SLICE(0x2D<64>, word32, 0)
+	v47 = SLICE(r15, word32, 0)
+	p07 = v46 == v47
+	p06 = v46 != v47
+	r14 = r15 + 0<64>
+	branch !p07 l40000000000FFEFC
+	// succ:  l40000000000FFEF6_1 l40000000000FFEFC
+l40000000000FFEF6_1:
+	r36 = r45 + 1<64>
+	// succ:  l40000000000FFEFC
+l40000000000FFEFC:
+	branch !p01 l40000000000FFF08
+	// succ:  l40000000000FFF02_1 l40000000000FFF08
+l40000000000FFF02_1:
+	// succ:  l40000000000FFF08
+l40000000000FFF08:
+l40000000001006B0:
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r44 + 0<64>
+	ar.pfs = r43
+	b0 = r42
+	r12 = r12 + 0x110<64>
+	return
+	// succ:  kill_builtin_exit
+l40000000001006F0:
+	r45 = r32 + 0<64>
+	r46 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	ar.pfs = r43
+	b0 = r42
+	r12 = r12 + 0x110<64>
+	return
+	// succ:  kill_builtin_exit
+l4000000000100720:
+	r45 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r44 + 0<64>
+	ar.pfs = r43
+	b0 = r42
+	r12 = r12 + 0x110<64>
+	return
+	// succ:  kill_builtin_exit
 kill_builtin_exit:
 
 
-void let_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// let_builtin
+// Return size: 0
+define let_builtin
 let_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000100840
 l4000000000100840:
+	r34 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r33 = b1
+	r14 = r32 + 8<64>
+	r35 = r1 + 0<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	branch !p06 l4000000000100870
+	// succ:  l400000000010086C_1 l4000000000100870
+l400000000010086C_1:
+	goto l4000000000100A40
+	// succ:  l4000000000100A40
+l4000000000100870:
+	r14 = Mem0[r14:word64]
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	r36 = Mem0[r14:word64]
+	branch !p07 l4000000000100890
+	// succ:  l400000000010088C_1 l4000000000100890
+l400000000010088C_1:
+	goto l40000000001008B0
+	// succ:  l40000000001008B0
+l4000000000100890:
+	v20 = Mem0[r36:byte]
+	r14 = CONVERT(v20, byte, word64)
+	v21 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v21, int8, int64)
+	v22 = SLICE(0x2D<64>, word32, 0)
+	v23 = SLICE(r14, word32, 0)
+	p07 = v22 == v23
+	p06 = v22 != v23
+	branch !p07 l40000000001008B0
+	// succ:  l40000000001008AC_1 l40000000001008B0
+l40000000001008AC_1:
+	goto l40000000001009C0
+	// succ:  l40000000001009C0
+l40000000001008B0:
+	r37 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r15 = r12 + 0x10<64>
+	r1 = r35 + 0<64>
+	v25 = Mem0[r15:word32]
+	r14 = CONVERT(v25, word32, word64)
+	v26 = SLICE(0<64>, word32, 0)
+	v27 = SLICE(r14, word32, 0)
+	p06 = v26 == v27
+	p07 = v26 != v27
+	branch !p06 l40000000001008F0
+	// succ:  l40000000001008EC_1 l40000000001008F0
+l40000000001008EC_1:
+	goto l4000000000100970
+	// succ:  l4000000000100970
+l40000000001008F0:
+	// succ:  l4000000000100900
+l4000000000100900:
+	r32 = Mem0[r32:word64]
+	r14 = r32 + 8<64>
+	p07 = 0<64> == r32
+	p06 = 0<64> != r32
+	branch !p07 l4000000000100920
+	// succ:  l400000000010091C_1 l4000000000100920
+l400000000010091C_1:
+	goto l4000000000100990
+	// succ:  l4000000000100990
+l4000000000100920:
+	r14 = Mem0[r14:word64]
+	r37 = r12 + 0x10<64>
+	r36 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r15 = r12 + 0x10<64>
+	r1 = r35 + 0<64>
+	v36 = Mem0[r15:word32]
+	r14 = CONVERT(v36, word32, word64)
+	v37 = SLICE(0<64>, word32, 0)
+	v38 = SLICE(r14, word32, 0)
+	p06 = v37 == v38
+	p07 = v37 != v38
+	branch !p07 l4000000000100970
+	// succ:  l400000000010096C_1 l4000000000100970
+l400000000010096C_1:
+	goto l4000000000100900
+	// succ:  l4000000000100900
+l4000000000100970:
+	r8 = 0<64> + 1<i64>
+	ar.pfs = r34
+	b0 = r33
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  let_builtin_exit
+l4000000000100990:
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l400000000010099C
+	// succ:  l4000000000100996_1 l400000000010099C
+l4000000000100996_1:
+	r8 = 0<64> + 1<i64>
+	// succ:  l400000000010099C
+l400000000010099C:
+l40000000001009C0:
+	r14 = r36 + 2<64>
+	r15 = r36 + 1<64>
+	v28 = Mem0[r14:byte]
+	r14 = CONVERT(v28, byte, word64)
+	v29 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v29, int8, int64)
+	v30 = SLICE(0<64>, word32, 0)
+	v31 = SLICE(r14, word32, 0)
+	p07 = v30 == v31
+	p06 = v30 != v31
+	branch !p06 l40000000001009F0
+	// succ:  l40000000001009EC_1 l40000000001009F0
+l40000000001009EC_1:
+	goto l40000000001008B0
+	// succ:  l40000000001008B0
+l40000000001009F0:
+	v32 = Mem0[r15:byte]
+	r14 = CONVERT(v32, byte, word64)
+	v33 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v33, int8, int64)
+	v34 = SLICE(0x2D<64>, word32, 0)
+	v35 = SLICE(r14, word32, 0)
+	p07 = v34 == v35
+	p06 = v34 != v35
+	branch !p06 l4000000000100A10
+	// succ:  l4000000000100A0C_1 l4000000000100A10
+l4000000000100A0C_1:
+	goto l40000000001008B0
+	// succ:  l40000000001008B0
+l4000000000100A10:
+	r32 = Mem0[r32:word64]
+	r14 = r32 + 8<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	branch !p07 l4000000000100A30
+	// succ:  l4000000000100A2C_1 l4000000000100A30
+l4000000000100A2C_1:
+	goto l4000000000100920
+	// succ:  l4000000000100920
+l4000000000100A30:
+	// succ:  l4000000000100A40
+l4000000000100A40:
+	r37 = r1 + -8444<i64>
+	r38 = 0<64> + 5<i64>
+	r36 = 0<64> + 0<64>
+	r37 = Mem0[r37:word64]
+	call b0 (retsize: 0;)
+	r1 = r35 + 0<64>
+	r36 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r35 + 0<64>
+	ar.pfs = r34
+	b0 = r33
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  let_builtin_exit
 let_builtin_exit:
 
 
-void mapfile_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// mapfile_builtin
+// Return size: 0
+define mapfile_builtin
 mapfile_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000100AC0
 l4000000000100AC0:
+	r49 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFE0<64>
+	r50 = r1 + 0<64>
+	r51 = pr
+	r45 = 0<64> + 0<64>
+	r37 = 0<64> + 5000<i64>
+	r48 = b0
+	r35 = 0<64> + 0<64>
+	r40 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	r36 = 0<64> + 0<64>
+	r39 = 0<64> + 1<i64>
+	r44 = 0<64> + 0<64>
+	r33 = r12 + 0x20<64>
+	r41 = __addp4(0<64>, 0xFFFFFFFFFFFFFFFF<64>)
+	r38 = r1 + -4572<i64>
+	r34 = r1 + 9252<i64>
+	r38 = Mem0[r38:word64]
+	r53 = r1 + -4612<i64>
+	r52 = r32 + 0<64>
+	r53 = Mem0[r53:word64]
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	v28 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v29 = SLICE(r8, word32, 0)
+	p07 = v28 == v29
+	p06 = v28 != v29
+	branch !p07 l4000000000100B70
+	// succ:  l4000000000100B6C_1 l4000000000100B70
+l4000000000100B6C_1:
+	goto l4000000000100D60
+	// succ:  l4000000000100D60
+l4000000000100B70:
+	r8 = r8 + 0xFFFFFFFFFFFFFFBD<64>
+	v32 = SLICE(0x32<64>, word32, 0)
+	v33 = SLICE(r8, word32, 0)
+	p06 = v32 <u v33
+	p07 = v32 >=u v33
+	branch !p07 l4000000000100B90
+	// succ:  l4000000000100B8C_1 l4000000000100B90
+l4000000000100B8C_1:
+	goto l4000000000100BD0
+	// succ:  l4000000000100BD0
+l4000000000100B90:
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 258<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l4000000000100BD0:
+	r8 = __addp4(0<64>, r8)
+	r8 = (r8 << 3<u32>) + r38
+	r14 = Mem0[r8:word64]
+	r8 = r14 + r8
+	b6 = r8
+	call b6 (retsize: 0;)
+	return
+	// succ:  mapfile_builtin_exit
+l4000000000100D60:
+	r14 = r1 + 9268<i64>
+	r14 = Mem0[r14:word64]
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	r14 = r14 + 8<64>
+	branch !p06 l4000000000100D90
+	// succ:  l4000000000100D8C_1 l4000000000100D90
+l4000000000100D8C_1:
+	goto l4000000000101900
+	// succ:  l4000000000101900
+l4000000000100D90:
+	r14 = Mem0[r14:word64]
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	branch !p06 l4000000000100DB0
+	// succ:  l4000000000100DAC_1 l4000000000100DB0
+l4000000000100DAC_1:
+	goto l40000000001018B0
+	// succ:  l40000000001018B0
+l4000000000100DB0:
+	r33 = Mem0[r14:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	r52 = r33 + 0<64>
+	branch !p07 l4000000000100DD0
+	// succ:  l4000000000100DCC_1 l4000000000100DD0
+l4000000000100DCC_1:
+	goto l40000000001018B0
+	// succ:  l40000000001018B0
+l4000000000100DD0:
+	v45 = Mem0[r33:byte]
+	r14 = CONVERT(v45, byte, word64)
+	v46 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v46, int8, int64)
+	v47 = SLICE(0<64>, word32, 0)
+	v48 = SLICE(r14, word32, 0)
+	p07 = v47 == v48
+	p06 = v47 != v48
+	branch !p07 l4000000000100DF0
+	// succ:  l4000000000100DEC_1 l4000000000100DF0
+l4000000000100DEC_1:
+	goto l4000000000101410
+	// succ:  l4000000000101410
+l4000000000100DF0:
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	v49 = SLICE(0<64>, word32, 0)
+	v50 = SLICE(r8, word32, 0)
+	p07 = v49 == v50
+	p06 = v49 != v50
+	branch !p06 l4000000000100E10
+	// succ:  l4000000000100E0C_1 l4000000000100E10
+l4000000000100E0C_1:
+	goto l4000000000101120
+	// succ:  l4000000000101120
+l4000000000100E10:
+	r52 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	v40 = SLICE(0<64>, word32, 0)
+	v41 = SLICE(r8, word32, 0)
+	p07 = v40 == v41
+	p06 = v40 != v41
+	branch !p06 l4000000000100E30
+	// succ:  l4000000000100E2C_1 l4000000000100E30
+l4000000000100E2C_1:
+	goto l4000000000101120
+	// succ:  l4000000000101120
+l4000000000100E30:
+	r52 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l4000000000101120:
+	r14 = r12 + 0x10<64>
+	r34 = r12 + 0x18<64>
+	r52 = r33 + 0<64>
+	r53 = 0<64> + 1<i64>
+	Mem0[r0:word64] = r14
+	Mem0[r0:word64] = r34
+	call b0 (retsize: 0;)
+	r14 = r8 + 0x28<64>
+	r1 = r50 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r16 = 0<64> + 16386<i64>
+	r41 = r8 + 0<64>
+	branch !p06 l4000000000101170
+	// succ:  l400000000010116C_1 l4000000000101170
+l400000000010116C_1:
+	goto l4000000000101470
+	// succ:  l4000000000101470
+l4000000000101170:
+	r15 = Mem0[r14:word64]
+	v43 = Mem0[r14:word32]
+	r14 = CONVERT(v43, word32, word64)
+	r15 = r16 & r15
+	p06 = 0<64> == r15
+	p07 = 0<64> != r15
+	branch !p07 l40000000001011A0
+	// succ:  l400000000010119C_1 l40000000001011A0
+l400000000010119C_1:
+	goto l4000000000101860
+	// succ:  l4000000000101860
+l40000000001011A0:
+	r52 = r44 + 0<64>
+	r53 = 0<64> + 0<64>
+	r54 = 0<64> + 1<i64>
+	branch !p07 l40000000001011C0
+	// succ:  l40000000001011BC_1 l40000000001011C0
+l40000000001011BC_1:
+	goto l4000000000101940
+	// succ:  l4000000000101940
+l40000000001011C0:
+	branch !p07 l40000000001011D0
+	// succ:  l40000000001011CC_1 l40000000001011D0
+l40000000001011CC_1:
+	goto l40000000001016F0
+	// succ:  l40000000001016F0
+l40000000001011D0:
+	call b0 (retsize: 0;)
+	p07 = r8 < 0<64>
+	p06 = r8 >= 0<64>
+	r1 = r50 + 0<64>
+	branch !p07 l4000000000101200
+	// succ:  l40000000001011FC_1 l4000000000101200
+l40000000001011FC_1:
+	goto l4000000000101750
+	// succ:  l4000000000101750
+l4000000000101200:
+	branch !p06 l4000000000101206
+	// succ:  l4000000000101200_1 l4000000000101206
+l4000000000101200_1:
+	r38 = 0<64> + 0<64>
+	// succ:  l4000000000101206
+l4000000000101206:
+	__break()
+	__break()
+	__break()
+	branch !p32 l4000000000101222
+	// succ:  l400000000010121C_1 l4000000000101222
+l400000000010121C_1:
+	// succ:  l4000000000101222
+l4000000000101222:
+l4000000000101410:
+	r53 = r1 + -4596<i64>
+	r54 = 0<64> + 5<i64>
+	r52 = 0<64> + 0<64>
+	r53 = Mem0[r53:word64]
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	r52 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 258<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l4000000000101470:
+	r8 = 0<64> + 1<i64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l40000000001016F0:
+	r14 = r8 + 8<64>
+	r52 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	r52 = r44 + 0<64>
+	r53 = 0<64> + 0<64>
+	r54 = 0<64> + 1<i64>
+	call b0 (retsize: 0;)
+	p07 = r8 < 0<64>
+	p06 = r8 >= 0<64>
+	r1 = r50 + 0<64>
+	branch !p06 l400000000010174C
+	// succ:  l4000000000101746_1 l400000000010174C
+l4000000000101746_1:
+	r38 = 0<64> + 0<64>
+	// succ:  l400000000010174C
+l400000000010174C:
+l4000000000101750:
+	call b0 (retsize: 0;)
+	v51 = Mem0[r8:word32]
+	r38 = CONVERT(v51, word32, word64)
+	r1 = r50 + 0<64>
+	v52 = SLICE(0x1D<64>, word32, 0)
+	v53 = SLICE(r38, word32, 0)
+	p06 = v52 == v53
+	p07 = v52 != v53
+	branch !p06 l400000000010177C
+	// succ:  l4000000000101776_1 l400000000010177C
+l4000000000101776_1:
+	r38 = 0<64> + 1<i64>
+	// succ:  l400000000010177C
+l400000000010177C:
+	v56 = SLICE(r64, byte, 0)
+l4000000000101860:
+	branch !p06 l4000000000101870
+	// succ:  l400000000010186C_1 l4000000000101870
+l400000000010186C_1:
+	goto l4000000000101470
+	// succ:  l4000000000101470
+l4000000000101870:
+	r52 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l40000000001018B0:
+	r52 = r1 + -4604<i64>
+	r52 = Mem0[r52:word64]
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
+l4000000000101900:
+	r33 = r1 + -4660<i64>
+	r33 = Mem0[r33:word64]
+	r52 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r8, word32, 0)
+	p07 = v36 == v37
+	p06 = v36 != v37
+	branch !p06 l4000000000101930
+	// succ:  l400000000010192C_1 l4000000000101930
+l400000000010192C_1:
+	goto l4000000000101120
+	// succ:  l4000000000101120
+l4000000000101930:
+	goto l4000000000100E10
+	// succ:  l4000000000100E10
+l4000000000101940:
+	r53 = r1 + -4588<i64>
+	r54 = 0<64> + 5<i64>
+	r52 = 0<64> + 0<64>
+	r53 = Mem0[r53:word64]
+	call b0 (retsize: 0;)
+	r1 = r50 + 0<64>
+	r52 = r8 + 0<64>
+	r53 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r50 + 0<64>
+	pr = r51
+	ar.pfs = r49
+	b0 = r48
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  mapfile_builtin_exit
 mapfile_builtin_exit:
 
 
-void dirs_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// dirs_builtin
+// Return size: 0
+define dirs_builtin
 dirs_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000101D00
 l4000000000101D00:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r34 = r1 + 612<i64>
+	r41 = pr
+	r40 = r1 + 0<64>
+	r35 = r12 + 0x18<64>
+	r37 = 0<64> + 0<64>
+	r8 = 0<64> + -1<i64>
+	r34 = Mem0[r34:word64]
+	r36 = 0<64> + 0<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	r42 = LC
+	Mem0[r0:word32] = SLICE(r35, word32, 0)
+	r38 = b6
+	branch !p06 l4000000000101D70
+	// succ:  l4000000000101D6C_1 l4000000000101D70
+l4000000000101D6C_1:
+	goto l4000000000102250
+	// succ:  l4000000000102250
+l4000000000101D70:
+	r33 = r32 + 8<64>
+	r14 = Mem0[r33:word64]
+	r43 = Mem0[r14:word64]
+	r16 = r43 + 1<64>
+	v28 = Mem0[r43:byte]
+	r15 = CONVERT(v28, byte, word64)
+	v30 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v30, int8, int64)
+	v31 = SLICE(0x2D<64>, word32, 0)
+	v32 = SLICE(r15, word32, 0)
+	p07 = v31 == v32
+	p06 = v31 != v32
+	branch !p07 l4000000000101DC0
+	// succ:  l4000000000101DBC_1 l4000000000101DC0
+l4000000000101DBC_1:
+	goto l4000000000102020
+	// succ:  l4000000000102020
+l4000000000101DC0:
+	v34 = SLICE(0x2B<64>, word32, 0)
+	v35 = SLICE(r15, word32, 0)
+	p07 = v34 == v35
+	p06 = v34 != v35
+	branch !p06 l4000000000101DD0
+	// succ:  l4000000000101DCC_1 l4000000000101DD0
+l4000000000101DCC_1:
+	goto l40000000001021F0
+	// succ:  l40000000001021F0
+l4000000000101DD0:
+	r34 = r16 + 0<64>
+	r44 = r12 + 0x10<64>
+	r43 = r16 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r14 = Mem0[r33:word64]
+	v42 = SLICE(0<64>, word32, 0)
+	v43 = SLICE(r8, word32, 0)
+	p07 = v42 == v43
+	p06 = v42 != v43
+	branch !p07 l4000000000101E10
+	// succ:  l4000000000101E0C_1 l4000000000101E10
+l4000000000101E0C_1:
+	goto l4000000000102100
+	// succ:  l4000000000102100
+l4000000000101E10:
+	r14 = Mem0[r14:word64]
+	r15 = r12 + 0x10<64>
+	r45 = r35 + 0<64>
+	r43 = Mem0[r15:word64]
+	v48 = Mem0[r14:byte]
+	r44 = CONVERT(v48, byte, word64)
+	v49 = SLICE(r44, int8, 0)
+	r44 = CONVERT(v49, int8, int64)
+	v50 = SLICE(0x2B<64>, word32, 0)
+	v51 = SLICE(r44, word32, 0)
+	p07 = v50 == v51
+	p06 = v50 != v51
+	branch !p06 l4000000000101E4C
+	// succ:  l4000000000101E46_1 l4000000000101E4C
+l4000000000101E46_1:
+	r44 = 0<64> + -1<i64>
+	// succ:  l4000000000101E4C
+l4000000000101E4C:
+l4000000000101F90:
+	r14 = r1 + -10260<i64>
+	r43 = 0<64> + 10<i64>
+	r14 = Mem0[r14:word64]
+	r44 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r43 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	pr = r41
+	ar.pfs = r39
+	LC = r42
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  dirs_builtin_exit
+l4000000000102020:
+	r15 = r43 + 2<64>
+	r16 = r43 + 1<64>
+	v36 = Mem0[r15:byte]
+	r15 = CONVERT(v36, byte, word64)
+	v37 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v37, int8, int64)
+	v38 = SLICE(0<64>, word32, 0)
+	v39 = SLICE(r15, word32, 0)
+	p07 = v38 == v39
+	p06 = v38 != v39
+	branch !p06 l4000000000102050
+	// succ:  l400000000010204C_1 l4000000000102050
+l400000000010204C_1:
+	goto l4000000000101DD0
+	// succ:  l4000000000101DD0
+l4000000000102050:
+	v44 = Mem0[r16:byte]
+	r14 = CONVERT(v44, byte, word64)
+	r44 = r12 + 0x10<64>
+	v45 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v45, int8, int64)
+	v46 = SLICE(0x6C<64>, word32, 0)
+	v47 = SLICE(r14, word32, 0)
+	p07 = v46 == v47
+	p06 = v46 != v47
+	branch !p07 l4000000000102076
+	// succ:  l4000000000102070_1 l4000000000102076
+l4000000000102070_1:
+	r36 = r36 | 4<64>
+	// succ:  l4000000000102076
+l4000000000102076:
+	branch !p32 l4000000000102086
+	// succ:  l4000000000102082_1 l4000000000102086
+l4000000000102082_1:
+	// succ:  l4000000000102086
+l4000000000102086:
+	branch !p32 l4000000000102096
+	// succ:  l4000000000102092_1 l4000000000102096
+l4000000000102092_1:
+	// succ:  l4000000000102096
+l4000000000102096:
+	branch !p32 l40000000001020A6
+	// succ:  l40000000001020A2_1 l40000000001020A6
+l40000000001020A2_1:
+	// succ:  l40000000001020A6
+l40000000001020A6:
+	branch !p32 l40000000001020B6
+	// succ:  l40000000001020B2_1 l40000000001020B6
+l40000000001020B2_1:
+	// succ:  l40000000001020B6
+l40000000001020B6:
+	branch !p32 l40000000001020C6
+	// succ:  l40000000001020C2_1 l40000000001020C6
+l40000000001020C2_1:
+	// succ:  l40000000001020C6
+l40000000001020C6:
+l4000000000102100:
+	r43 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r40 + 0<64>
+	pr = r41
+	ar.pfs = r39
+	LC = r42
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  dirs_builtin_exit
+l40000000001021F0:
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r40 + 0<64>
+	pr = r41
+	ar.pfs = r39
+	LC = r42
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  dirs_builtin_exit
+l4000000000102250:
+	r37 = 0<64> + 0<64>
+	r36 = 0<64> + 0<64>
+	r43 = r1 + 636<i64>
+	r43 = Mem0[r43:word64]
+	call b0 (retsize: 0;)
+	r33 = r8 + 0<64>
+	r1 = r40 + 0<64>
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	branch !p07 l40000000001022A0
+	// succ:  l400000000010229C_1 l40000000001022A0
+l400000000010229C_1:
+	goto l40000000001028D0
+	// succ:  l40000000001028D0
+l40000000001022A0:
+	r36 = r36 & 4<64>
+	branch !p06 l40000000001022B0
+	// succ:  l40000000001022AC_1 l40000000001022B0
+l40000000001022AC_1:
+	goto l4000000000102740
+	// succ:  l4000000000102740
+l40000000001022B0:
+	p07 = 0<64> == r36
+	p06 = 0<64> != r36
+	r44 = r1 + 652<i64>
+	r43 = 0<64> + 1<i64>
+	r45 = 0<64> + 0<64>
+	branch !p07 l40000000001022D0
+	// succ:  l40000000001022CC_1 l40000000001022D0
+l40000000001022CC_1:
+	goto l4000000000102880
+	// succ:  l4000000000102880
+l40000000001022D0:
+	branch !p06 l40000000001022DC
+	// succ:  l40000000001022D6_1 l40000000001022DC
+l40000000001022D6_1:
+	r46 = r33 + 0<64>
+	// succ:  l40000000001022DC
+l40000000001022DC:
+l4000000000102300:
+	r43 = r33 + 0<64>
+	v53 = SLICE(1<64>, word32, 0)
+	v54 = SLICE(r37, word32, 0)
+	p17 = v53 < v54
+	p16 = v53 >= v54
+	p18 = 0<64> == r36
+	p19 = 0<64> != r36
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	v59 = Mem0[r35:word32]
+	r14 = CONVERT(v59, word32, word64)
+	r15 = r12 + 0x10<64>
+	r35 = r1 + 8428<i64>
+	v60 = SLICE(0<64>, word32, 0)
+	v61 = SLICE(r14, word32, 0)
+	p06 = v60 == v61
+	p07 = v60 != v61
+	r34 = r1 + 8436<i64>
+	branch !p07 l4000000000102350
+	// succ:  l400000000010234C_1 l4000000000102350
+l400000000010234C_1:
+	goto l4000000000101F90
+	// succ:  l4000000000101F90
+l4000000000102350:
+	v62 = Mem0[r35:word32]
+	r14 = CONVERT(v62, word32, word64)
+	r14 = r14 + 0xFFFFFFFFFFFFFFFF<64>
+	v63 = SLICE(r14, int32, 0)
+	r14 = CONVERT(v63, int32, int64)
+	p07 = r14 < 0<64>
+	p06 = r14 >= 0<64>
+	Mem0[r14:word64] = r15
+	branch !p07 l4000000000102380
+	// succ:  l400000000010237C_1 l4000000000102380
+l400000000010237C_1:
+	goto l4000000000101F90
+	// succ:  l4000000000101F90
+l4000000000102380:
+	branch !p06 l4000000000102390
+	// succ:  l400000000010238C_1 l4000000000102390
+l400000000010238C_1:
+	r37 = r1 + 628<i64>
+	// succ:  l4000000000102390
+l4000000000102390:
+	branch !p07 l4000000000102396
+	// succ:  l4000000000102390_1 l4000000000102396
+l4000000000102390_1:
+	r37 = r1 + 620<i64>
+	// succ:  l4000000000102396
+l4000000000102396:
+	branch !p18 l400000000010239C
+	// succ:  l4000000000102396_1 l400000000010239C
+l4000000000102396_1:
+	// succ:  l400000000010239C
+l400000000010239C:
+l4000000000102740:
+	p07 = 0<64> == r36
+	p06 = 0<64> != r36
+	r44 = r1 + 660<i64>
+	r43 = 0<64> + 1<i64>
+	branch !p07 l4000000000102760
+	// succ:  l400000000010275C_1 l4000000000102760
+l400000000010275C_1:
+	goto l4000000000102830
+	// succ:  l4000000000102830
+l4000000000102760:
+	branch !p06 l400000000010276C
+	// succ:  l4000000000102766_1 l400000000010276C
+l4000000000102766_1:
+	r45 = r33 + 0<64>
+	// succ:  l400000000010276C
+l400000000010276C:
+l4000000000102830:
+	r43 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r45 = r8 + 0<64>
+	r43 = 0<64> + 1<i64>
+	r44 = r1 + 660<i64>
+	r44 = Mem0[r44:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	goto l4000000000102300
+	// succ:  l4000000000102300
+l4000000000102880:
+	r43 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r46 = r8 + 0<64>
+	r43 = 0<64> + 1<i64>
+	r45 = 0<64> + 0<64>
+	r44 = r1 + 652<i64>
+	r44 = Mem0[r44:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	goto l4000000000102300
+	// succ:  l4000000000102300
+l40000000001028D0:
+	r44 = r1 + 644<i64>
+	r45 = 0<64> + 5<i64>
+	r43 = 0<64> + 0<64>
+	r36 = r36 & 4<64>
+	r44 = Mem0[r44:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r43 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r43 = r8 + 1<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r33 = r8 + 0<64>
+	r45 = 0<64> + 5<i64>
+	r43 = 0<64> + 0<64>
+	r44 = r1 + 644<i64>
+	r44 = Mem0[r44:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r43 = r33 + 0<64>
+	r44 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r33 = r8 + 0<64>
+	branch !p06 l4000000000102990
+	// succ:  l400000000010298C_1 l4000000000102990
+l400000000010298C_1:
+	goto l4000000000102740
+	// succ:  l4000000000102740
+l4000000000102990:
+	goto l40000000001022B0
+	// succ:  l40000000001022B0
 dirs_builtin_exit:
 
 
-void popd_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// popd_builtin
+// Return size: 0
+define popd_builtin
 popd_builtin_entry:
+	r11 = fp
+	// succ:  l40000000001029C0
 l40000000001029C0:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r38 = b6
+	r40 = r1 + 0<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	r14 = r12 + 0x10<64>
+	r15 = 0<64> + 0<64>
+	r16 = 0<64> + 43<i64>
+	r35 = 0<64> + 0<64>
+	Mem0[r0:word64] = r14
+	branch !p06 l4000000000102A00
+	// succ:  l40000000001029FC_1 l4000000000102A00
+l40000000001029FC_1:
+	goto l4000000000102EC0
+	// succ:  l4000000000102EC0
+l4000000000102A00:
+	r34 = r32 + 8<64>
+	r36 = r1 + 8428<i64>
+	r14 = Mem0[r34:word64]
+	r14 = Mem0[r14:word64]
+	v21 = Mem0[r14:byte]
+	r33 = CONVERT(v21, byte, word64)
+	v23 = SLICE(r33, int8, 0)
+	r33 = CONVERT(v23, int8, int64)
+	v24 = SLICE(0x2D<64>, word32, 0)
+	v25 = SLICE(r33, word32, 0)
+	p07 = v24 == v25
+	p06 = v24 != v25
+	branch !p07 l4000000000102A40
+	// succ:  l4000000000102A3C_1 l4000000000102A40
+l4000000000102A3C_1:
+	goto l4000000000102AE0
+	// succ:  l4000000000102AE0
+l4000000000102A40:
+	v28 = SLICE(0x2B<64>, word32, 0)
+	v29 = SLICE(r33, word32, 0)
+	p06 = v28 == v29
+	p07 = v28 != v29
+	r16 = r12 + 0x10<64>
+	branch !p06 l4000000000102A50
+	// succ:  l4000000000102A4C_1 l4000000000102A50
+l4000000000102A4C_1:
+	goto l4000000000102BF0
+	// succ:  l4000000000102BF0
+l4000000000102A50:
+	v37 = Mem0[r36:word32]
+	r34 = CONVERT(v37, word32, word64)
+	r14 = Mem0[r16:word64]
+	v38 = SLICE(r34, int32, 0)
+	r16 = CONVERT(v38, int32, int64)
+	p06 = r16 < r14
+	p07 = r16 >= r14
+	branch !p07 l4000000000102A80
+	// succ:  l4000000000102A7C_1 l4000000000102A80
+l4000000000102A7C_1:
+	goto l4000000000102CA0
+	// succ:  l4000000000102CA0
+l4000000000102A80:
+	p07 = 0<64> == r15
+	p06 = 0<64> != r15
+	r41 = r34 + 0<64>
+	branch !p07 l4000000000102A90
+	// succ:  l4000000000102A8C_1 l4000000000102A90
+l4000000000102A8C_1:
+	r42 = r1 + 612<i64>
+	// succ:  l4000000000102A90
+l4000000000102A90:
+	branch !p06 l4000000000102A9C
+	// succ:  l4000000000102A96_1 l4000000000102A9C
+l4000000000102A96_1:
+	r42 = r15 + 0<64>
+	// succ:  l4000000000102A9C
+l4000000000102A9C:
+l4000000000102AC0:
+	ar.pfs = r39
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  popd_builtin_exit
+l4000000000102AE0:
+	r17 = r14 + 2<64>
+	r41 = r14 + 1<64>
+	v32 = Mem0[r17:byte]
+	r17 = CONVERT(v32, byte, word64)
+	v33 = SLICE(r17, int8, 0)
+	r17 = CONVERT(v33, int8, int64)
+	v34 = SLICE(0<64>, word32, 0)
+	v35 = SLICE(r17, word32, 0)
+	p07 = v34 == v35
+	p06 = v34 != v35
+	branch !p06 l4000000000102B10
+	// succ:  l4000000000102B0C_1 l4000000000102B10
+l4000000000102B0C_1:
+	goto l4000000000102B40
+	// succ:  l4000000000102B40
+l4000000000102B10:
+	v51 = Mem0[r41:byte]
+	r14 = CONVERT(v51, byte, word64)
+	v52 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v52, int8, int64)
+	v53 = SLICE(0x6E<64>, word32, 0)
+	v54 = SLICE(r14, word32, 0)
+	p06 = v53 == v54
+	p07 = v53 != v54
+	branch !p06 l4000000000102B30
+	// succ:  l4000000000102B2C_1 l4000000000102B30
+l4000000000102B2C_1:
+	goto l4000000000102C70
+	// succ:  l4000000000102C70
+l4000000000102B30:
+	v68 = SLICE(0x2D<64>, word32, 0)
+	v69 = SLICE(r14, word32, 0)
+	p07 = v68 == v69
+	p06 = v68 != v69
+	branch !p07 l4000000000102B40
+	// succ:  l4000000000102B3C_1 l4000000000102B40
+l4000000000102B3C_1:
+	goto l4000000000102BA0
+	// succ:  l4000000000102BA0
+l4000000000102B40:
+	r42 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r14 = Mem0[r34:word64]
+	v43 = SLICE(0<64>, word32, 0)
+	v44 = SLICE(r8, word32, 0)
+	p07 = v43 == v44
+	p06 = v43 != v44
+	branch !p07 l4000000000102B70
+	// succ:  l4000000000102B6C_1 l4000000000102B70
+l4000000000102B6C_1:
+	goto l4000000000102C20
+	// succ:  l4000000000102C20
+l4000000000102B70:
+	r32 = Mem0[r32:word64]
+	r16 = r33 + 0<64>
+	r15 = Mem0[r14:word64]
+	p07 = 0<64> == r32
+	p06 = 0<64> != r32
+	branch !p06 l4000000000102BA0
+	// succ:  l4000000000102B9C_1 l4000000000102BA0
+l4000000000102B9C_1:
+	goto l4000000000102A00
+	// succ:  l4000000000102A00
+l4000000000102BA0:
+	r36 = r1 + 8428<i64>
+	r17 = r12 + 0x10<64>
+	r33 = r16 + 0<64>
+	v49 = Mem0[r36:word32]
+	r34 = CONVERT(v49, word32, word64)
+	r14 = Mem0[r17:word64]
+	v50 = SLICE(r34, int32, 0)
+	r16 = CONVERT(v50, int32, int64)
+	p06 = r16 < r14
+	p07 = r16 >= r14
+	branch !p06 l4000000000102BE0
+	// succ:  l4000000000102BDC_1 l4000000000102BE0
+l4000000000102BDC_1:
+	goto l4000000000102A80
+	// succ:  l4000000000102A80
+l4000000000102BE0:
+	goto l4000000000102CA0
+	// succ:  l4000000000102CA0
+l4000000000102BF0:
+	r41 = r14 + 1<64>
+	r42 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r14 = Mem0[r34:word64]
+	v41 = SLICE(0<64>, word32, 0)
+	v42 = SLICE(r8, word32, 0)
+	p07 = v41 == v42
+	p06 = v41 != v42
+	branch !p06 l4000000000102C20
+	// succ:  l4000000000102C1C_1 l4000000000102C20
+l4000000000102C1C_1:
+	goto l4000000000102B70
+	// succ:  l4000000000102B70
+l4000000000102C20:
+	r41 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r40 + 0<64>
+	ar.pfs = r39
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  popd_builtin_exit
+l4000000000102C70:
+	r32 = Mem0[r32:word64]
+	r35 = 0<64> + 1<i64>
+	p07 = 0<64> == r32
+	p06 = 0<64> != r32
+	branch !p06 l4000000000102C90
+	// succ:  l4000000000102C8C_1 l4000000000102C90
+l4000000000102C8C_1:
+	goto l4000000000102A00
+	// succ:  l4000000000102A00
+l4000000000102C90:
+	goto l4000000000102BA0
+	// succ:  l4000000000102BA0
+l4000000000102CA0:
+	v45 = SLICE(0<64>, word32, 0)
+	v46 = SLICE(r34, word32, 0)
+	p07 = v45 == v46
+	p06 = v45 != v46
+	branch !p06 l4000000000102CB0
+	// succ:  l4000000000102CAC_1 l4000000000102CB0
+l4000000000102CAC_1:
+	goto l4000000000102DE0
+	// succ:  l4000000000102DE0
+l4000000000102CB0:
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	branch !p07 l4000000000102CC0
+	// succ:  l4000000000102CBC_1 l4000000000102CC0
+l4000000000102CBC_1:
+	goto l4000000000102A80
+	// succ:  l4000000000102A80
+l4000000000102CC0:
+	v57 = SLICE(0x2B<64>, word32, 0)
+	v58 = SLICE(r33, word32, 0)
+	p06 = v57 == v58
+	p07 = v57 != v58
+	branch !p06 l4000000000102CD0
+	// succ:  l4000000000102CCC_1 l4000000000102CD0
+l4000000000102CCC_1:
+	goto l4000000000102EB0
+	// succ:  l4000000000102EB0
+l4000000000102CD0:
+	// succ:  l4000000000102CE0
+l4000000000102CE0:
+	v55 = SLICE(0x2D<64>, word32, 0)
+	v56 = SLICE(r33, word32, 0)
+	p07 = v55 == v56
+	p06 = v55 != v56
+	r33 = r14 + 0<64>
+	branch !p07 l4000000000102CF0
+	// succ:  l4000000000102CEC_1 l4000000000102CF0
+l4000000000102CEC_1:
+	goto l4000000000102E90
+	// succ:  l4000000000102E90
+l4000000000102CF0:
+	r14 = r1 + 8436<i64>
+	v59 = SLICE(r33, int32, 0)
+	r35 = CONVERT(v59, int32, int64)
+	r37 = Mem0[r14:word64]
+	r14 = (r35 << 3<u32>) + r37
+	r41 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r17 = r34 + 0xFFFFFFFFFFFFFFFE<64>
+	r14 = r34 + 0xFFFFFFFFFFFFFFFF<64>
+	r15 = r37 + 0x10<64>
+	r1 = r40 + 0<64>
+	r17 = r33 - r17
+	Mem0[r14:word32] = SLICE(r36, word32, 0)
+	v61 = SLICE(r33, word32, 0)
+	v62 = SLICE(r14, word32, 0)
+	p06 = v61 < v62
+	p07 = v61 >= v62
+	r14 = r35 + 1<64>
+	branch !p07 l4000000000102D60
+	// succ:  l4000000000102D5C_1 l4000000000102D60
+l4000000000102D5C_1:
+	goto l4000000000102DA0
+	// succ:  l4000000000102DA0
+l4000000000102D60:
+	r17 = __addp4(0<64>, r17)
+	r14 = (r14 << 3<u32>) + r37
+	r17 = r17 + r35
+	r17 = (r17 << 3<u32>) + r15
+	// succ:  l4000000000102D80
+l4000000000102D80:
+	r16 = Mem0[r14:word64]
+	r14 = r14 + 8<i64>
+	r15 = r14 + 0xFFFFFFFFFFFFFFF0<64>
+	p07 = r17 == r14
+	p06 = r17 != r14
+	Mem0[r16:word64] = r15
+	branch !p06 l4000000000102DA0
+	// succ:  l4000000000102D9C_1 l4000000000102DA0
+l4000000000102D9C_1:
+	goto l4000000000102D80
+	// succ:  l4000000000102D80
+l4000000000102DA0:
+	r41 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r8 = 0<64> + 0<64>
+	// succ:  l4000000000102DC0
+l4000000000102DC0:
+	ar.pfs = r39
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  popd_builtin_exit
+l4000000000102DE0:
+	v47 = SLICE(0x2B<64>, word32, 0)
+	v48 = SLICE(r33, word32, 0)
+	p07 = v47 == v48
+	p06 = v47 != v48
+	branch !p06 l4000000000102DF0
+	// succ:  l4000000000102DEC_1 l4000000000102DF0
+l4000000000102DEC_1:
+	goto l4000000000102CE0
+	// succ:  l4000000000102CE0
+l4000000000102DF0:
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	branch !p07 l4000000000102E00
+	// succ:  l4000000000102DFC_1 l4000000000102E00
+l4000000000102DFC_1:
+	goto l4000000000102EB0
+	// succ:  l4000000000102EB0
+l4000000000102E00:
+	r33 = r1 + 8436<i64>
+	r34 = r34 + 0xFFFFFFFFFFFFFFFF<64>
+	v63 = SLICE(0<64>, word32, 0)
+	v64 = SLICE(r35, word32, 0)
+	p07 = v63 == v64
+	p06 = v63 != v64
+	branch !p07 l4000000000102E20
+	// succ:  l4000000000102E1C_1 l4000000000102E20
+l4000000000102E1C_1:
+	goto l4000000000102F10
+	// succ:  l4000000000102F10
+l4000000000102E20:
+	v67 = SLICE(r34, int32, 0)
+	r15 = CONVERT(v67, int32, int64)
+	r14 = Mem0[r33:word64]
+	Mem0[r34:word32] = SLICE(r36, word32, 0)
+	r14 = (r15 << 3<u32>) + r14
+	r41 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	// succ:  l4000000000102E70
+l4000000000102E70:
+	r41 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r8 = 0<64> + 0<64>
+	goto l4000000000102DC0
+	// succ:  l4000000000102DC0
+l4000000000102E90:
+	p07 = r14 == r16
+	p06 = r14 != r16
+	r33 = r14 + 0<64>
+	branch !p07 l4000000000102EAC
+	// succ:  l4000000000102EA6_1 l4000000000102EAC
+l4000000000102EA6_1:
+	goto l4000000000102E00
+	// succ:  l4000000000102E00
+l4000000000102EAC:
+l4000000000102EB0:
+	r33 = r14 - r34
+	goto l4000000000102CF0
+	// succ:  l4000000000102CF0
+l4000000000102EC0:
+	r36 = r1 + 8428<i64>
+	r14 = 0<64> + 0<64>
+	r35 = 0<64> + 0<64>
+	r33 = 0<64> + 43<i64>
+	r15 = 0<64> + 0<64>
+	v26 = Mem0[r36:word32]
+	r34 = CONVERT(v26, word32, word64)
+	v27 = SLICE(r34, int32, 0)
+	r16 = CONVERT(v27, int32, int64)
+	p06 = r16 < r14
+	p07 = r16 >= r14
+	branch !p06 l4000000000102F00
+	// succ:  l4000000000102EFC_1 l4000000000102F00
+l4000000000102EFC_1:
+	goto l4000000000102A80
+	// succ:  l4000000000102A80
+l4000000000102F00:
+	goto l4000000000102CA0
+	// succ:  l4000000000102CA0
+l4000000000102F10:
+	r16 = r16 + 0xFFFFFFFFFFFFFFFF<64>
+	r14 = Mem0[r33:word64]
+	r14 = (r16 << 3<u32>) + r14
+	r41 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	v65 = SLICE(0<64>, word32, 0)
+	v66 = SLICE(r8, word32, 0)
+	p07 = v65 == v66
+	p06 = v65 != v66
+	branch !p06 l4000000000102F50
+	// succ:  l4000000000102F4C_1 l4000000000102F50
+l4000000000102F4C_1:
+	goto l4000000000102AC0
+	// succ:  l4000000000102AC0
+l4000000000102F50:
+	v70 = Mem0[r36:word32]
+	r34 = CONVERT(v70, word32, word64)
+	r14 = Mem0[r33:word64]
+	r34 = r34 + 0xFFFFFFFFFFFFFFFF<64>
+	v71 = SLICE(r34, int32, 0)
+	r15 = CONVERT(v71, int32, int64)
+	Mem0[r34:word32] = SLICE(r36, word32, 0)
+	r14 = (r15 << 3<u32>) + r14
+	r41 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	goto l4000000000102E70
+	// succ:  l4000000000102E70
 popd_builtin_exit:
 
 
-void pushd_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// pushd_builtin
+// Return size: 0
+define pushd_builtin
 pushd_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000103080
 l4000000000103080:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r41 = LC
+	r14 = r32 + 8<64>
+	r40 = r1 + 0<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	r38 = b6
+	branch !p06 l40000000001030B0
+	// succ:  l40000000001030AC_1 l40000000001030B0
+l40000000001030AC_1:
+	goto l4000000000103420
+	// succ:  l4000000000103420
+l40000000001030B0:
+	r14 = Mem0[r14:word64]
+	p06 = 0<64> == r14
+	p07 = 0<64> != r14
+	r14 = Mem0[r14:word64]
+	v17 = Mem0[r14:byte]
+	r15 = CONVERT(v17, byte, word64)
+	v19 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v19, int8, int64)
+	branch !p06 l40000000001030E0
+	// succ:  l40000000001030DC_1 l40000000001030E0
+l40000000001030DC_1:
+	goto l4000000000103600
+	// succ:  l4000000000103600
+l40000000001030E0:
+	v25 = SLICE(0x2D<64>, word32, 0)
+	v26 = SLICE(r15, word32, 0)
+	p07 = v25 == v26
+	p06 = v25 != v26
+	branch !p07 l40000000001030F0
+	// succ:  l40000000001030EC_1 l40000000001030F0
+l40000000001030EC_1:
+	goto l40000000001033A0
+	// succ:  l40000000001033A0
+l40000000001030F0:
+	r33 = r32 + 0<64>
+	r34 = 0<64> + 0<64>
+	r35 = r1 + 8428<i64>
+	// succ:  l4000000000103100
+l4000000000103100:
+	branch !p07 l4000000000103110
+	// succ:  l400000000010310C_1 l4000000000103110
+l400000000010310C_1:
+	goto l4000000000103230
+	// succ:  l4000000000103230
+l4000000000103110:
+	v84 = SLICE(0x2B<64>, word32, 0)
+	v85 = SLICE(r15, word32, 0)
+	p06 = v84 == v85
+	p07 = v84 != v85
+	branch !p06 l4000000000103120
+	// succ:  l400000000010311C_1 l4000000000103120
+l400000000010311C_1:
+	goto l4000000000103B30
+	// succ:  l4000000000103B30
+l4000000000103120:
+	branch !p06 l400000000010313C
+	// succ:  l4000000000103136_1 l400000000010313C
+l4000000000103136_1:
+	goto l4000000000103620
+	// succ:  l4000000000103620
+l400000000010313C:
+	v72 = SLICE(r64, byte, 0)
+l4000000000103160:
+	r42 = r1 + 692<i64>
+	r34 = r34 & 1<64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r1 = r40 + 0<64>
+	r35 = r8 + 0<64>
+	branch !p06 l40000000001031A0
+	// succ:  l400000000010319C_1 l40000000001031A0
+l400000000010319C_1:
+	goto l40000000001039B0
+	// succ:  l40000000001039B0
+l40000000001031A0:
+	v94 = SLICE(0<64>, word32, 0)
+	v95 = SLICE(r34, word32, 0)
+	p07 = v94 == v95
+	p06 = v94 != v95
+	branch !p06 l40000000001031B0
+	// succ:  l40000000001031AC_1 l40000000001031B0
+l40000000001031AC_1:
+	goto l40000000001036B0
+	// succ:  l40000000001036B0
+l40000000001031B0:
+	v96 = SLICE(0<64>, word32, 0)
+	v97 = SLICE(r36, word32, 0)
+	p06 = v96 == v97
+	p07 = v96 != v97
+	branch !p06 l40000000001031BC
+	// succ:  l40000000001031B6_1 l40000000001031BC
+l40000000001031B6_1:
+	r42 = r33 + 0<64>
+	// succ:  l40000000001031BC
+l40000000001031BC:
+	v103 = SLICE(r64, byte, 0)
+l4000000000103230:
+	r15 = r14 + 2<64>
+	r42 = r14 + 1<64>
+	r43 = r12 + 0x10<64>
+	v46 = Mem0[r15:byte]
+	r15 = CONVERT(v46, byte, word64)
+	v47 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v47, int8, int64)
+	v48 = SLICE(0<64>, word32, 0)
+	v49 = SLICE(r15, word32, 0)
+	p07 = v48 == v49
+	p06 = v48 != v49
+	branch !p06 l4000000000103260
+	// succ:  l400000000010325C_1 l4000000000103260
+l400000000010325C_1:
+	goto l4000000000103380
+	// succ:  l4000000000103380
+l4000000000103260:
+	v55 = Mem0[r42:byte]
+	r14 = CONVERT(v55, byte, word64)
+	v56 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v56, int8, int64)
+	v57 = SLICE(0x6E<64>, word32, 0)
+	v58 = SLICE(r14, word32, 0)
+	p07 = v57 == v58
+	p06 = v57 != v58
+	branch !p07 l4000000000103286
+	// succ:  l4000000000103280_1 l4000000000103286
+l4000000000103280_1:
+	r34 = r34 | 1<64>
+	// succ:  l4000000000103286
+l4000000000103286:
+	__break()
+	branch !p03 l400000000010329C
+	// succ:  l4000000000103296_1 l400000000010329C
+l4000000000103296_1:
+	// succ:  l400000000010329C
+l400000000010329C:
+	branch !p23 l40000000001032A2
+	// succ:  l400000000010329C_1 l40000000001032A2
+l400000000010329C_1:
+	r64 < r33
+	p17 = r64 >= r33
+	goto l40000000001032A2
+	// succ:  l40000000001032A2
+l40000000001032A0:
+	v60 = SLICE(0<64>, word32, 0)
+	v61 = SLICE(r14, word32, 0)
+	p06 = v60 == v61
+	p07 = v60 != v61
+	branch !p06 l40000000001032B0
+	goto l40000000001032AC_1
+	// succ:  l40000000001032AC_1 l40000000001032B0
+l40000000001032A2:
+	branch !p32 l40000000001032A8
+	// succ:  l40000000001032A2_1 l40000000001032A8
+l40000000001032A2_1:
+	__break()
+	// succ:  l40000000001032A8
+l40000000001032A8:
+	branch !p16 l40000000001032AE
+	// succ:  l40000000001032A8_1 l40000000001032AE
+l40000000001032A8_1:
+	goto l40000000001032AE
+	// succ:  l40000000001032AE
+l40000000001032AC_1:
+	goto l4000000000103120
+	// succ:  l4000000000103120
+l40000000001032AE:
+l40000000001032B0:
+	call b0 (retsize: 0;)
+	r16 = r12 + 0x10<64>
+	r1 = r40 + 0<64>
+	v64 = SLICE(0<64>, word32, 0)
+	v65 = SLICE(r8, word32, 0)
+	p06 = v64 == v65
+	p07 = v64 != v65
+	branch !p06 l40000000001032E0
+	// succ:  l40000000001032DC_1 l40000000001032E0
+l40000000001032DC_1:
+	goto l4000000000103AC0
+	// succ:  l4000000000103AC0
+l40000000001032E0:
+	v82 = Mem0[r35:word32]
+	r42 = CONVERT(v82, word32, word64)
+	r14 = Mem0[r16:word64]
+	v83 = SLICE(r42, int32, 0)
+	r15 = CONVERT(v83, int32, int64)
+	r14 = r14 - r15
+	Mem0[r14:word64] = r16
+	// succ:  l4000000000103310
+l4000000000103310:
+	p06 = r15 < r14
+	p07 = r15 >= r14
+	r34 = r34 | 2<64>
+	branch !p06 l4000000000103320
+	// succ:  l400000000010331C_1 l4000000000103320
+l400000000010331C_1:
+	goto l4000000000103520
+	// succ:  l4000000000103520
+l4000000000103320:
+	p07 = r14 < 0<64>
+	p06 = r14 >= 0<64>
+	branch !p07 l4000000000103330
+	// succ:  l400000000010332C_1 l4000000000103330
+l400000000010332C_1:
+	goto l4000000000103520
+	// succ:  l4000000000103520
+l4000000000103330:
+	r33 = Mem0[r33:word64]
+	r14 = r33 + 8<64>
+	p06 = 0<64> == r33
+	p07 = 0<64> != r33
+	branch !p06 l4000000000103350
+	// succ:  l400000000010334C_1 l4000000000103350
+l400000000010334C_1:
+	goto l40000000001035A0
+	// succ:  l40000000001035A0
+l4000000000103350:
+	r14 = Mem0[r14:word64]
+	r14 = Mem0[r14:word64]
+	v86 = Mem0[r14:byte]
+	r15 = CONVERT(v86, byte, word64)
+	v87 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v87, int8, int64)
+	v88 = SLICE(0x2D<64>, word32, 0)
+	v89 = SLICE(r15, word32, 0)
+	p07 = v88 == v89
+	p06 = v88 != v89
+	goto l4000000000103100
+	// succ:  l4000000000103100
+l4000000000103380:
+	r42 = r14 + 1<64>
+	v53 = Mem0[r42:byte]
+	r14 = CONVERT(v53, byte, word64)
+	v54 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v54, int8, int64)
+	goto l40000000001032A0
+	// succ:  l40000000001032A0
+l40000000001033A0:
+	r16 = r14 + 2<64>
+	v36 = Mem0[r16:byte]
+	r16 = CONVERT(v36, byte, word64)
+	v37 = SLICE(r16, int8, 0)
+	r16 = CONVERT(v37, int8, int64)
+	v38 = SLICE(0<64>, word32, 0)
+	v39 = SLICE(r16, word32, 0)
+	p09 = v38 == v39
+	p08 = v38 != v39
+	branch !p08 l40000000001033D0
+	// succ:  l40000000001033CC_1 l40000000001033D0
+l40000000001033CC_1:
+	goto l40000000001030F0
+	// succ:  l40000000001030F0
+l40000000001033D0:
+	r16 = r14 + 1<64>
+	v42 = Mem0[r16:byte]
+	r16 = CONVERT(v42, byte, word64)
+	v43 = SLICE(r16, int8, 0)
+	r16 = CONVERT(v43, int8, int64)
+	v44 = SLICE(0x2D<64>, word32, 0)
+	v45 = SLICE(r16, word32, 0)
+	p09 = v44 == v45
+	p08 = v44 != v45
+	branch !p08 l4000000000103400
+	// succ:  l40000000001033FC_1 l4000000000103400
+l40000000001033FC_1:
+	goto l40000000001030F0
+	// succ:  l40000000001030F0
+l4000000000103400:
+	r33 = Mem0[r32:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l4000000000103416
+	// succ:  l4000000000103410_1 l4000000000103416
+l4000000000103410_1:
+	r36 = 0<64> + 1<i64>
+	// succ:  l4000000000103416
+l4000000000103416:
+	branch !p17 l400000000010341C
+	// succ:  l4000000000103416_1 l400000000010341C
+l4000000000103416_1:
+	// succ:  l400000000010341C
+l400000000010341C:
+	branch !p42 l4000000000103422
+	// succ:  l400000000010341C_1 l4000000000103422
+l400000000010341C_1:
+	goto l4000000000103422
+	// succ:  l4000000000103422
+l4000000000103420:
+	r33 = r1 + 8428<i64>
+	r42 = r1 + 692<i64>
+	v22 = Mem0[r33:word32]
+	r14 = CONVERT(v22, word32, word64)
+	v23 = SLICE(0<64>, word32, 0)
+	v24 = SLICE(r14, word32, 0)
+	p07 = v23 == v24
+	p06 = v23 != v24
+	branch !p07 l4000000000103450
+	goto l400000000010344C_1
+	// succ:  l400000000010344C_1 l4000000000103450
+l4000000000103422:
+	branch !p29 l4000000000103428
+	// succ:  l4000000000103422_1 l4000000000103428
+l4000000000103422_1:
+	__break()
+	// succ:  l4000000000103428
+l4000000000103428:
+	branch !p16 l400000000010342E
+	// succ:  l4000000000103428_1 l400000000010342E
+l4000000000103428_1:
+	// succ:  l400000000010342E
+l400000000010342E:
+l400000000010344C_1:
+	goto l40000000001037D0
+	// succ:  l40000000001037D0
+l4000000000103450:
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	branch !p07 l4000000000103470
+	// succ:  l400000000010346C_1 l4000000000103470
+l400000000010346C_1:
+	goto l40000000001039B0
+	// succ:  l40000000001039B0
+l4000000000103470:
+	v50 = Mem0[r33:word32]
+	r15 = CONVERT(v50, word32, word64)
+	r14 = r1 + 8436<i64>
+	r15 = r15 + 0xFFFFFFFFFFFFFFFF<64>
+	r14 = Mem0[r14:word64]
+	v51 = SLICE(r15, int32, 0)
+	r15 = CONVERT(v51, int32, int64)
+	r14 = (r15 << 3<u32>) + r14
+	r33 = Mem0[r14:word64]
+	Mem0[r8:word64] = r14
+	// succ:  l40000000001034B0
+l40000000001034B0:
+	r42 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r35 = r8 + 0<64>
+	r42 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	// succ:  l40000000001034F0
+l40000000001034F0:
+	r8 = r35 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l4000000000103520:
+	r33 = r33 + 8<64>
+	r35 = 0<64> + 1<i64>
+	r14 = Mem0[r33:word64]
+	r43 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r8 = r35 + 0<64>
+	r1 = r40 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l40000000001035A0:
+	r36 = 0<64> + 0<64>
+	branch !p07 l40000000001035C0
+	// succ:  l40000000001035BC_1 l40000000001035C0
+l40000000001035BC_1:
+	goto l4000000000103620
+	// succ:  l4000000000103620
+l40000000001035C0:
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l40000000001035D0
+	// succ:  l40000000001035CC_1 l40000000001035D0
+l40000000001035CC_1:
+	goto l4000000000103160
+	// succ:  l4000000000103160
+l40000000001035D0:
+	r35 = 0<64> + 0<64>
+	r8 = r35 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l4000000000103600:
+	v27 = SLICE(0x2D<64>, word32, 0)
+	v28 = SLICE(r15, word32, 0)
+	p07 = v27 == v28
+	p06 = v27 != v28
+	r33 = r32 + 0<64>
+	r34 = 0<64> + 0<64>
+	r35 = r1 + 8428<i64>
+	goto l4000000000103100
+	// succ:  l4000000000103100
+l4000000000103620:
+	r42 = r1 + 692<i64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r15 = r12 + 0x10<64>
+	r1 = r40 + 0<64>
+	r33 = r8 + 0<64>
+	r14 = Mem0[r15:word64]
+	r17 = r14 + 0<64>
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	branch !p06 l4000000000103670
+	// succ:  l400000000010366C_1 l4000000000103670
+l400000000010366C_1:
+	goto l4000000000103840
+	// succ:  l4000000000103840
+l4000000000103670:
+	r42 = r33 + 0<64>
+	r35 = 0<64> + 0<64>
+	branch !p07 l4000000000103690
+	// succ:  l400000000010368C_1 l4000000000103690
+l400000000010368C_1:
+	goto l40000000001034B0
+	// succ:  l40000000001034B0
+l4000000000103690:
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	goto l40000000001034F0
+	// succ:  l40000000001034F0
+l40000000001036B0:
+	r33 = r33 + 8<64>
+	r14 = Mem0[r33:word64]
+	r42 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r42 = r8 + 1<64>
+	call b0 (retsize: 0;)
+	r14 = Mem0[r33:word64]
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	r43 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r36 = r8 + 0<64>
+	r33 = r1 + 8428<i64>
+	r15 = r1 + 8444<i64>
+	r42 = 0<64> + 0<64>
+	v98 = Mem0[r33:word32]
+	r14 = CONVERT(v98, word32, word64)
+	v99 = Mem0[r15:word32]
+	r16 = CONVERT(v99, word32, word64)
+	v100 = SLICE(r16, word32, 0)
+	v101 = SLICE(r14, word32, 0)
+	p06 = v100 == v101
+	p07 = v100 != v101
+	v102 = SLICE(r14, int32, 0)
+	r16 = CONVERT(v102, int32, int64)
+	branch !p06 l4000000000103740
+	// succ:  l400000000010373C_1 l4000000000103740
+l400000000010373C_1:
+	goto l4000000000103A30
+	// succ:  l4000000000103A30
+l4000000000103740:
+	r15 = r1 + 8436<i64>
+	r14 = r14 + 1<64>
+	r8 = Mem0[r15:word64]
+	Mem0[r14:word32] = SLICE(r33, word32, 0)
+	r15 = (r16 << 3<u32>) + r8
+	Mem0[r36:word64] = r15
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	v104 = SLICE(0<64>, word32, 0)
+	v105 = SLICE(r34, word32, 0)
+	p06 = v104 == v105
+	p07 = v104 != v105
+	branch !p06 l4000000000103790
+	// succ:  l400000000010378C_1 l4000000000103790
+l400000000010378C_1:
+	goto l40000000001035D0
+	// succ:  l40000000001035D0
+l4000000000103790:
+	r42 = r35 + 0<64>
+	r35 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r35 + 0<64>
+	r1 = r40 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l40000000001037D0:
+	r43 = r1 + 684<i64>
+	r44 = 0<64> + 5<i64>
+	r42 = 0<64> + 0<64>
+	r35 = 0<64> + 1<i64>
+	r43 = Mem0[r43:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r35 + 0<64>
+	r1 = r40 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l4000000000103840:
+	r14 = r1 + 8428<i64>
+	v73 = Mem0[r14:word32]
+	r15 = CONVERT(v73, word32, word64)
+	r14 = r1 + 8436<i64>
+	r18 = r15 + 0xFFFFFFFFFFFFFFFE<64>
+	v75 = SLICE(r15, int32, 0)
+	r15 = CONVERT(v75, int32, int64)
+	r14 = Mem0[r14:word64]
+	v76 = SLICE(r18, word32, 0)
+	v77 = SLICE(0<64>, word32, 0)
+	p08 = v76 < v77
+	p09 = v76 >= v77
+	v78 = SLICE(r18, int32, 0)
+	r21 = CONVERT(v78, int32, int64)
+	r20 = r15 + 0xFFFFFFFFFFFFFFFF<64>
+	branch !p08 l4000000000103886
+	// succ:  l4000000000103880_1 l4000000000103886
+l4000000000103880_1:
+	r19 = r18 + 0<64>
+	// succ:  l4000000000103886
+l4000000000103886:
+l40000000001039B0:
+	r35 = 0<64> + 1<i64>
+	r8 = r35 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l4000000000103A30:
+	r37 = r1 + 8436<i64>
+	r43 = r14 + 0xA<64>
+	Mem0[r43:word32] = SLICE(r15, word32, 0)
+	r42 = Mem0[r37:word64]
+	call b0 (retsize: 0;)
+	v107 = Mem0[r33:word32]
+	r14 = CONVERT(v107, word32, word64)
+	r1 = r40 + 0<64>
+	Mem0[r8:word64] = r37
+	r42 = 0<64> + 0<64>
+	v108 = SLICE(r14, int32, 0)
+	r16 = CONVERT(v108, int32, int64)
+	r14 = r14 + 1<64>
+	r15 = (r16 << 3<u32>) + r8
+	Mem0[r14:word32] = SLICE(r33, word32, 0)
+	Mem0[r36:word64] = r15
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	v109 = SLICE(0<64>, word32, 0)
+	v110 = SLICE(r34, word32, 0)
+	p06 = v109 == v110
+	p07 = v109 != v110
+	branch !p06 l4000000000103AB0
+	// succ:  l4000000000103AAC_1 l4000000000103AB0
+l4000000000103AAC_1:
+	goto l40000000001035D0
+	// succ:  l40000000001035D0
+l4000000000103AB0:
+	goto l4000000000103790
+	// succ:  l4000000000103790
+l4000000000103AC0:
+	r33 = r33 + 8<64>
+	r35 = 0<64> + 1<i64>
+	r14 = Mem0[r33:word64]
+	r42 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r35 + 0<64>
+	r1 = r40 + 0<64>
+	ar.pfs = r39
+	LC = r41
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  pushd_builtin_exit
+l4000000000103B30:
+	r42 = r14 + 1<64>
+	r43 = r12 + 0x10<64>
+	call b0 (retsize: 0;)
+	r15 = r12 + 0x10<64>
+	r1 = r40 + 0<64>
+	v90 = SLICE(0<64>, word32, 0)
+	v91 = SLICE(r8, word32, 0)
+	p06 = v90 == v91
+	p07 = v90 != v91
+	branch !p06 l4000000000103B60
+	// succ:  l4000000000103B5C_1 l4000000000103B60
+l4000000000103B5C_1:
+	goto l4000000000103AC0
+	// succ:  l4000000000103AC0
+l4000000000103B60:
+	v92 = Mem0[r35:word32]
+	r42 = CONVERT(v92, word32, word64)
+	r14 = Mem0[r15:word64]
+	v93 = SLICE(r42, int32, 0)
+	r15 = CONVERT(v93, int32, int64)
+	goto l4000000000103310
+	// succ:  l4000000000103310
 pushd_builtin_exit:
 
 
-void get_dirstack_from_string()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// get_dirstack_from_string
+// Return size: 0
+define get_dirstack_from_string
 get_dirstack_from_string_entry:
+	r11 = fp
+	// succ:  l4000000000103B80
 l4000000000103B80:
+	r36 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r35 = b3
+	v10 = Mem0[r32:byte]
+	r15 = CONVERT(v10, byte, word64)
+	r37 = r1 + 0<64>
+	r38 = r32 + 0<64>
+	v15 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v15, int8, int64)
+	v16 = SLICE(0x2D<64>, word32, 0)
+	v17 = SLICE(r15, word32, 0)
+	p08 = v16 == v17
+	p09 = v16 != v17
+	v20 = SLICE(0x2B<64>, word32, 0)
+	v21 = SLICE(r15, word32, 0)
+	p06 = v20 == v21
+	p07 = v20 != v21
+	branch !p08 l4000000000103BC0
+	// succ:  l4000000000103BBC_1 l4000000000103BC0
+l4000000000103BBC_1:
+	r14 = 0<64> + 1<i64>
+	// succ:  l4000000000103BC0
+l4000000000103BC0:
+	branch !p09 l4000000000103BC6
+	// succ:  l4000000000103BC0_1 l4000000000103BC6
+l4000000000103BC0_1:
+	r14 = 0<64> + 0<64>
+	// succ:  l4000000000103BC6
+l4000000000103BC6:
 get_dirstack_from_string_exit:
 
 
-void set_dirstack_element()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_dirstack_element
+// Return size: 0
+define set_dirstack_element
 set_dirstack_element_entry:
+	r11 = fp
+	// succ:  l4000000000103D80
 l4000000000103D80:
+	r37 = ar.pfs
+	r36 = b4
+	r38 = r1 + 0<64>
+	r40 = r33 + 0<64>
+	r39 = r32 + 0<64>
+	r41 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	p06 = 0<64> == r32
+	p07 = 0<64> != r32
+	r14 = r1 + 8428<i64>
+	branch !p06 l4000000000103DD0
+	// succ:  l4000000000103DCC_1 l4000000000103DD0
+l4000000000103DCC_1:
+	goto l4000000000103DF0
+	// succ:  l4000000000103DF0
+l4000000000103DD0:
+	v19 = Mem0[r14:word32]
+	r14 = CONVERT(v19, word32, word64)
+	v21 = SLICE(r14, word32, 0)
+	v22 = SLICE(r8, word32, 0)
+	p06 = v21 < v22
+	p07 = v21 >= v22
+	branch !p07 l4000000000103DF0
+	// succ:  l4000000000103DEC_1 l4000000000103DF0
+l4000000000103DEC_1:
+	goto l4000000000103E10
+	// succ:  l4000000000103E10
+l4000000000103DF0:
+	ar.pfs = r37
+	b0 = r36
+	return
+	// succ:  set_dirstack_element_exit
+l4000000000103E10:
+	r14 = r1 + 8436<i64>
+	v23 = SLICE(r8, int32, 0)
+	r8 = CONVERT(v23, int32, int64)
+	r14 = Mem0[r14:word64]
+	r35 = (r8 << 3<u32>) + r14
+	r39 = Mem0[r35:word64]
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	r39 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	r39 = r8 + 1<64>
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	r39 = r8 + 0<64>
+	r40 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	Mem0[r8:word64] = r35
+	ar.pfs = r37
+	b0 = r36
+	return
+	// succ:  set_dirstack_element_exit
 set_dirstack_element_exit:
 
 
-void get_directory_stack()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// get_directory_stack
+// Return size: 0
+define get_directory_stack
 get_directory_stack_entry:
+	r11 = fp
+	// succ:  l4000000000103EC0
 l4000000000103EC0:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r41 = pr
+	r36 = r1 + 8428<i64>
+	r37 = r1 + 8436<i64>
+	r40 = r1 + 0<64>
+	v13 = Mem0[r36:word32]
+	r14 = CONVERT(v13, word32, word64)
+	r35 = 0<64> + 0<64>
+	r34 = 0<64> + 0<64>
+	r33 = 0<64> + 0<64>
+	v18 = SLICE(0<64>, word32, 0)
+	v19 = SLICE(r14, word32, 0)
+	p07 = v18 < v19
+	p06 = v18 >= v19
+	r38 = b6
+	branch !p06 l4000000000103F1C
+	// succ:  l4000000000103F16_1 l4000000000103F1C
+l4000000000103F16_1:
+	r35 = 0<64> + 0<64>
+	// succ:  l4000000000103F1C
+l4000000000103F1C:
+	branch !p04 l4000000000103F22
+l4000000000103F1C_1:
+	r64 < r33
+	p09 = r64 >= r33
+	goto l4000000000103F22
+	// succ:  l4000000000103F22
+l4000000000103F20:
+	r14 = Mem0[r37:word64]
+	// succ:  l4000000000103F1C_1 l4000000000103F22 l4000000000103F26
+l4000000000103F22:
+	branch !p16 l4000000000103F28
+l4000000000103F22_1:
+	__break()
+	goto l4000000000103F28
+	// succ:  l4000000000103F28
+l4000000000103F26:
+	// succ:  l4000000000103F22_1 l4000000000103F28
+l4000000000103F28:
+	branch !p16 l4000000000103F2E
+	// succ:  l4000000000103F28_1 l4000000000103F2E
+l4000000000103F28_1:
+	// succ:  l4000000000103F2E
+l4000000000103F2E:
+	branch !p32 l4000000000103F34
+	// succ:  l4000000000103F2E_1 l4000000000103F34
+l4000000000103F2E_1:
+	// succ:  l4000000000103F34
+l4000000000103F34:
+	__break()
+	pr = 0x1084400<64>
+	branch !p08 l4000000000103F44
+	// succ:  l4000000000103F40_1 l4000000000103F44
+l4000000000103F40_1:
+	// succ:  l4000000000103F44
+l4000000000103F44:
+	__break()
+	branch !p55 l4000000000103F54
+	// succ:  l4000000000103F50_1 l4000000000103F54
+l4000000000103F50_1:
+	call b2 (retsize: 0;)
+	// succ:  l4000000000103F54
+l4000000000103F54:
+	branch !p08 l4000000000103F5A
+	// succ:  l4000000000103F54_1 l4000000000103F5A
+l4000000000103F54_1:
+	// succ:  l4000000000103F5A
+l4000000000103F5A:
+	branch !p02 l4000000000103F60
+	// succ:  l4000000000103F5A_1 l4000000000103F60
+l4000000000103F5A_1:
+	// succ:  l4000000000103F60
+l4000000000103F60:
+	r43 = r35 + 0<64>
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	v37 = Mem0[r36:word32]
+	r14 = CONVERT(v37, word32, word64)
+	r1 = r40 + 0<64>
+	r35 = r8 + 0<64>
+	v38 = SLICE(r33, word32, 0)
+	v39 = SLICE(r14, word32, 0)
+	p06 = v38 < v39
+	p07 = v38 >= v39
+	branch !p06 l4000000000103FA0
+	// succ:  l4000000000103F9C_1 l4000000000103FA0
+l4000000000103F9C_1:
+	goto l4000000000103F20
+	// succ:  l4000000000103F20
+l4000000000103FA0:
+	r42 = r1 + 716<i64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r33 = r8 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	branch !p06 l4000000000103FE0
+	// succ:  l4000000000103FDC_1 l4000000000103FE0
+l4000000000103FDC_1:
+	goto l4000000000104120
+	// succ:  l4000000000104120
+l4000000000103FE0:
+	call b0 (retsize: 0;)
+	p06 = r33 == r8
+	p07 = r33 != r8
+	r34 = r8 + 0<64>
+	r1 = r40 + 0<64>
+	r42 = r33 + 0<64>
+	branch !p06 l4000000000104010
+	// succ:  l400000000010400C_1 l4000000000104010
+l400000000010400C_1:
+	goto l4000000000104090
+	// succ:  l4000000000104090
+l4000000000104010:
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r42 = r34 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	r43 = r35 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	// succ:  l4000000000104060
+l4000000000104060:
+	pr = r41
+	ar.pfs = r39
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  get_directory_stack_exit
+l4000000000104090:
+	r42 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r43 = r35 + 0<64>
+	r42 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r14 = r12 + 0x10<64>
+	r1 = r40 + 0<64>
+	r42 = r34 + 0<64>
+	Mem0[r8:word64] = r14
+	call b0 (retsize: 0;)
+	r14 = r12 + 0x10<64>
+	r1 = r40 + 0<64>
+	r8 = Mem0[r14:word64]
+	pr = r41
+	ar.pfs = r39
+	b0 = r38
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  get_directory_stack_exit
+l4000000000104120:
+	r42 = r1 + 708<i64>
+	r42 = Mem0[r42:word64]
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r42 = r8 + 0<64>
+	r43 = r35 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	goto l4000000000104060
+	// succ:  l4000000000104060
 get_directory_stack_exit:
 
 
-void read_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// read_builtin
+// Return size: 0
+define read_builtin
 read_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000104680
 l4000000000104680:
+	r72 = ar.pfs
+	r16 = r12 + 0<64>
+	r12 = r12 + 0xFFFFFFFFFFFFFE00<64>
+	r17 = LC
+	r34 = r1 + 8452<i64>
+	r14 = r12 + 0x1E0<64>
+	r15 = r12 + 0x1D8<64>
+	r19 = r12 + 0x1B4<64>
+	r20 = r12 + 0x1D4<64>
+	r73 = pr
+	Mem0[r0:word64] = r14
+	r14 = 0<64> + 10<i64>
+	r71 = b7
+	Mem0[r0:word64] = r15
+	r39 = r34 + 0<64>
+	r40 = 0<64> + 0<64>
+	Mem0[r0:word32] = SLICE(r19, word32, 0)
+	Mem0[r0:word32] = SLICE(r20, word32, 0)
+	r37 = 0<64> + 1<i64>
+	r36 = r12 + 0x160<64>
+	r41 = 0<64> + -1<i64>
+	Mem0[r16:word64] = r8
+	r16 = r16 + 8<i64>
+	r17 = r12 + 0x1D0<64>
+	Mem0[r1:word64] = r16
+	r16 = r12 + 0x1B8<64>
+	Mem0[r14:byte] = SLICE(r34, byte, 0)
+	Mem0[r0:word64] = r16
+	Mem0[r0:word32] = SLICE(r17, word32, 0)
+	call b0 (retsize: 0;)
+	r1 = r12 + 0x208<64>
+	r14 = r12 + 0x180<64>
+	r15 = r12 + 0x1B0<64>
+	r16 = r12 + 0x184<64>
+	r17 = r12 + 0x1C0<64>
+	r19 = r12 + 0x1E8<64>
+	r1 = Mem0[r1:word64]
+	Mem0[r0:word32] = SLICE(r14, word32, 0)
+	Mem0[r0:word32] = SLICE(r15, word32, 0)
+	r33 = r1 + -6268<i64>
+	r35 = r1 + -6212<i64>
+	r34 = r1 + 9252<i64>
+	Mem0[r0:word32] = SLICE(r16, word32, 0)
+	Mem0[r0:word32] = SLICE(r17, word32, 0)
+	Mem0[r0:word32] = SLICE(r19, word32, 0)
+	r33 = Mem0[r33:word64]
+	r35 = Mem0[r35:word64]
+	r74 = r32 + 0<64>
+	r75 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r12 + 0x208<64>
+	v33 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v34 = SLICE(r8, word32, 0)
+	p07 = v33 == v34
+	p06 = v33 != v34
+	r1 = Mem0[r1:word64]
+	branch !p07 l40000000001047F0
+	// succ:  l40000000001047EC_1 l40000000001047F0
+l40000000001047EC_1:
+	goto l4000000000104AA0
+	// succ:  l4000000000104AA0
+l40000000001047F0:
+	r8 = r8 + 0xFFFFFFFFFFFFFFB2<64>
+	v37 = SLICE(0x27<64>, word32, 0)
+	v38 = SLICE(r8, word32, 0)
+	p06 = v37 <u v38
+	p07 = v37 >=u v38
+	branch !p07 l4000000000104810
+	// succ:  l400000000010480C_1 l4000000000104810
+l400000000010480C_1:
+	goto l4000000000104870
+	// succ:  l4000000000104870
+l4000000000104810:
+	r33 = 0<64> + 258<i64>
+	call b0 (retsize: 0;)
+	r1 = r12 + 0x208<64>
+	r8 = r33 + 0<64>
+	r18 = r12 + 0x200<64>
+	r1 = Mem0[r1:word64]
+	pr = r73
+	r19 = Mem0[r18:word64]
+	ar.pfs = r72
+	LC = r19
+	b0 = r71
+	r12 = r12 + 0x200<64>
+	return
+	// succ:  read_builtin_exit
+l4000000000104870:
+	r8 = __addp4(0<64>, r8)
+	r8 = (r8 << 3<u32>) + r35
+	r14 = Mem0[r8:word64]
+	r8 = r14 + r8
+	b6 = r8
+	call b6 (retsize: 0;)
+	return
+	// succ:  read_builtin_exit
+l4000000000104AA0:
+	r14 = r1 + 9268<i64>
+	r16 = r12 + 0x1D4<64>
+	r17 = r12 + 0x1B8<64>
+	r19 = r12 + 0x188<64>
+	v39 = SLICE(0<64>, word32, 0)
+	v40 = SLICE(r40, word32, 0)
+	p06 = v39 == v40
+	p07 = v39 != v40
+	v41 = Mem0[r16:word32]
+	r34 = CONVERT(v41, word32, word64)
+	r33 = Mem0[r17:word64]
+	r14 = Mem0[r14:word64]
+	Mem0[r14:word64] = r19
+	branch !p06 l4000000000104AF0
+	// succ:  l4000000000104AEC_1 l4000000000104AF0
+l4000000000104AEC_1:
+	goto l4000000000104E30
+	// succ:  l4000000000104E30
+l4000000000104AF0:
+	r20 = r12 + 0x1B4<64>
+	v47 = Mem0[r20:word32]
+	r20 = CONVERT(v47, word32, word64)
+	v48 = SLICE(0<64>, word32, 0)
+	v49 = SLICE(r20, word32, 0)
+	p07 = v48 == v49
+	p06 = v48 != v49
+	branch !p06 l4000000000104B10
+	// succ:  l4000000000104B0C_1 l4000000000104B10
+l4000000000104B0C_1:
+	goto l4000000000104E30
+	// succ:  l4000000000104E30
+l4000000000104B10:
+	r14 = r12 + 0x1D0<64>
+	v50 = Mem0[r14:word32]
+	r14 = CONVERT(v50, word32, word64)
+	v51 = SLICE(0<64>, word32, 0)
+	v52 = SLICE(r14, word32, 0)
+	p07 = v51 == v52
+	p06 = v51 != v52
+	branch !p06 l4000000000104B30
+	// succ:  l4000000000104B2C_1 l4000000000104B30
+l4000000000104B2C_1:
+	goto l4000000000104E30
+	// succ:  l4000000000104E30
+l4000000000104B30:
+	r15 = r12 + 0x184<64>
+	v53 = Mem0[r15:word32]
+	r74 = CONVERT(v53, word32, word64)
+	call b0 (retsize: 0;)
+	v54 = SLICE(0<64>, word32, 0)
+	v55 = SLICE(r8, word32, 0)
+	p06 = v54 == v55
+	p07 = v54 != v55
+	r1 = r12 + 0x208<64>
+	r18 = r12 + 0x200<64>
+	branch !p06 l4000000000104B66
+	// succ:  l4000000000104B60_1 l4000000000104B66
+l4000000000104B60_1:
+	r8 = 0<64> + 1<i64>
+	// succ:  l4000000000104B66
+l4000000000104B66:
+	v56 = SLICE(0<64>, word32, 0)
+	v57 = SLICE(r1, word32, 0)
+	v56 <u v57
+	v56 >=u v57
+	branch !p01 l4000000000104B76
+	// succ:  l4000000000104B72_1 l4000000000104B76
+l4000000000104B72_1:
+	// succ:  l4000000000104B76
+l4000000000104B76:
+l4000000000104E30:
+	r14 = r12 + 0x1C0<64>
+	v44 = Mem0[r14:word32]
+	r14 = CONVERT(v44, word32, word64)
+	v45 = SLICE(0<64>, word32, 0)
+	v46 = SLICE(r14, word32, 0)
+	p06 = v45 == v46
+	p07 = v45 != v46
+	branch !p07 l4000000000104E4C
+	// succ:  l4000000000104E46_1 l4000000000104E4C
+l4000000000104E46_1:
+	r14 = r1 + 8452<i64>
+	// succ:  l4000000000104E4C
+l4000000000104E4C:
 read_builtin_exit:
 
 
-void return_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// return_builtin
+// Return size: 0
+define return_builtin
 return_builtin_entry:
+	r11 = fp
+	// succ:  l40000000001084C0
 l40000000001084C0:
+	r34 = ar.pfs
+	r33 = b1
+	r35 = r1 + 0<64>
+	r36 = r32 + 0<64>
+	call b0 (retsize: 0;)
+	v14 = SLICE(0<64>, word32, 0)
+	v15 = SLICE(r8, word32, 0)
+	p07 = v14 == v15
+	p06 = v14 != v15
+	r1 = r35 + 0<64>
+	ar.pfs = r34
+	branch !p07 l4000000000108510
+	// succ:  l400000000010850C_1 l4000000000108510
+l400000000010850C_1:
+	goto l4000000000108520
+	// succ:  l4000000000108520
+l4000000000108510:
+	branch !p06 l4000000000108516
+	// succ:  l4000000000108510_1 l4000000000108516
+l4000000000108510_1:
+	r8 = 0<64> + 258<i64>
+	// succ:  l4000000000108516
+l4000000000108516:
+l4000000000108520:
+	r14 = r1 + 9268<i64>
+	r36 = Mem0[r14:word64]
+	call b0 (retsize: 0;)
+	r1 = r35 + 0<64>
+	r14 = r1 + 9032<i64>
+	r15 = r1 + 9012<i64>
+	v20 = Mem0[r14:word32]
+	r14 = CONVERT(v20, word32, word64)
+	Mem0[r8:word32] = SLICE(r15, word32, 0)
+	v21 = SLICE(0<64>, word32, 0)
+	v22 = SLICE(r14, word32, 0)
+	p06 = v21 == v22
+	p07 = v21 != v22
+	branch !p07 l400000000010857C
+	// succ:  l4000000000108576_1 l400000000010857C
+l4000000000108576_1:
+	r36 = r1 + 22740<i64>
+	// succ:  l400000000010857C
+l400000000010857C:
 return_builtin_exit:
 
 
-void minus_o_option_value()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// minus_o_option_value
+// Return size: 0
+define minus_o_option_value
 minus_o_option_value_entry:
+	r11 = fp
+	// succ:  l4000000000108DC0
 l4000000000108DC0:
+	r37 = ar.pfs
+	r40 = r1 + -8564<i64>
+	r36 = b4
+	v11 = Mem0[r32:byte]
+	r35 = CONVERT(v11, byte, word64)
+	r14 = r1 + 6196<i64>
+	r38 = r1 + 0<64>
+	r34 = 0<64> + 0<64>
+	r40 = Mem0[r40:word64]
+	v16 = SLICE(r35, int8, 0)
+	r35 = CONVERT(v16, int8, int64)
+	r33 = Mem0[r14:word64]
+	// succ:  l4000000000108E00
+l4000000000108E00:
+	v18 = Mem0[r40:byte]
+	r14 = CONVERT(v18, byte, word64)
+	r33 = r33 + 0x28<64>
+	v19 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v19, int8, int64)
+	v20 = SLICE(r14, word32, 0)
+	v21 = SLICE(r35, word32, 0)
+	p07 = v20 == v21
+	p06 = v20 != v21
+	branch !p07 l4000000000108E20
+	// succ:  l4000000000108E1C_1 l4000000000108E20
+l4000000000108E1C_1:
+	goto l4000000000108E70
+	// succ:  l4000000000108E70
+l4000000000108E20:
+	r14 = r33 + 0xFFFFFFFFFFFFFFD8<64>
+	r34 = r34 + 1<64>
+	r40 = Mem0[r14:word64]
+	p07 = 0<64> == r40
+	p06 = 0<64> != r40
+	branch !p06 l4000000000108E50
+	// succ:  l4000000000108E4C_1 l4000000000108E50
+l4000000000108E4C_1:
+	goto l4000000000108E00
+	// succ:  l4000000000108E00
+l4000000000108E50:
+	r8 = 0<64> + -1<i64>
+	ar.pfs = r37
+	b0 = r36
+	return
+	// succ:  minus_o_option_value_exit
+l4000000000108E70:
+	r39 = r32 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	v27 = SLICE(0<64>, word32, 0)
+	v28 = SLICE(r8, word32, 0)
+	p07 = v27 == v28
+	p06 = v27 != v28
+	branch !p06 l4000000000108E90
+	// succ:  l4000000000108E8C_1 l4000000000108E90
+l4000000000108E8C_1:
+	goto l4000000000108E20
+	// succ:  l4000000000108E20
+l4000000000108E90:
+	r14 = r1 + -25004<i64>
+	v29 = SLICE(r34, int32, 0)
+	r34 = CONVERT(v29, int32, int64)
+	r39 = r32 + 0<64>
+	r34 = (r34 << 2<u32>) + r34
+	r14 = (r34 << 3<u32>) + r14
+	r15 = r14 + 8<64>
+	r16 = r14 + 0x20<64>
+	v32 = Mem0[r15:word32]
+	r15 = CONVERT(v32, word32, word64)
+	v33 = SLICE(0<64>, word32, 0)
+	v34 = SLICE(r15, word32, 0)
+	p06 = v33 == v34
+	p07 = v33 != v34
+	branch !p07 l4000000000108EE0
+	// succ:  l4000000000108EDC_1 l4000000000108EE0
+l4000000000108EDC_1:
+	goto l4000000000108F40
+	// succ:  l4000000000108F40
+l4000000000108EE0:
+	r8 = Mem0[r16:word64]
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l4000000000108F00
+	// succ:  l4000000000108EFC_1 l4000000000108F00
+l4000000000108EFC_1:
+	goto l4000000000108F80
+	// succ:  l4000000000108F80
+l4000000000108F00:
+	r14 = Mem0[r8:word64]
+	r8 = r8 + 8<i64>
+	b6 = r14
+	r1 = Mem0[r8:word64]
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	ar.pfs = r37
+	b0 = r36
+	return
+	// succ:  minus_o_option_value_exit
+l4000000000108F40:
+	r39 = r15 + 0<64>
+	call b0 (retsize: 0;)
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	r1 = r38 + 0<64>
+	ar.pfs = r37
+	branch !p07 l4000000000108F70
+	// succ:  l4000000000108F6C_1 l4000000000108F70
+l4000000000108F6C_1:
+	goto l4000000000108E50
+	// succ:  l4000000000108E50
+l4000000000108F70:
+	branch !p06 l4000000000108F76
+	// succ:  l4000000000108F70_1 l4000000000108F76
+l4000000000108F70_1:
+	v37 = Mem0[r8:word32]
+	r8 = CONVERT(v37, word32, word64)
+	// succ:  l4000000000108F76
+l4000000000108F76:
+l4000000000108F80:
+	r14 = r14 + 0x10<64>
+	ar.pfs = r37
+	r14 = Mem0[r14:word64]
+	b0 = r36
+	v36 = Mem0[r14:word32]
+	r8 = CONVERT(v36, word32, word64)
+	return
+	// succ:  minus_o_option_value_exit
 minus_o_option_value_exit:
 
 
-void list_minus_o_opts()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// list_minus_o_opts
+// Return size: 0
+define list_minus_o_opts
 list_minus_o_opts_entry:
+	r11 = fp
+	// succ:  l4000000000108FC0
 l4000000000108FC0:
+	r37 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r36 = b4
+	r35 = r1 + -8564<i64>
+	r14 = r1 + 6204<i64>
+	r38 = r1 + 0<64>
+	r39 = pr
+	r35 = Mem0[r35:word64]
+	r34 = Mem0[r14:word64]
+	v17 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v18 = SLICE(r32, word32, 0)
+	p16 = v17 == v18
+	p17 = v17 != v18
+	// succ:  l4000000000109000
+l4000000000109000:
+	v21 = Mem0[r34:word32]
+	r40 = CONVERT(v21, word32, word64)
+	r14 = r34 + 0x18<64>
+	v23 = SLICE(0<64>, word32, 0)
+	v24 = SLICE(r40, word32, 0)
+	p06 = v23 == v24
+	p07 = v23 != v24
+	branch !p07 l4000000000109020
+	// succ:  l400000000010901C_1 l4000000000109020
+l400000000010901C_1:
+	goto l4000000000109150
+	// succ:  l4000000000109150
+l4000000000109020:
+	r8 = Mem0[r14:word64]
+	r40 = r35 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l4000000000109040
+	// succ:  l400000000010903C_1 l4000000000109040
+l400000000010903C_1:
+	goto l4000000000109210
+	// succ:  l4000000000109210
+l4000000000109040:
+	r14 = Mem0[r8:word64]
+	r8 = r8 + 8<i64>
+	r1 = Mem0[r8:word64]
+	b6 = r14
+	call b0 (retsize: 0;)
+	r1 = r38 + 0<64>
+	// succ:  l4000000000109070
+l4000000000109070:
+	r14 = r12 + 0x10<64>
+	v33 = SLICE(r32, word32, 0)
+	v34 = SLICE(r8, word32, 0)
+	p07 = v33 == v34
+	p06 = v33 != v34
+	Mem0[r8:word32] = SLICE(r14, word32, 0)
+	branch !p16 l400000000010908C
+	// succ:  l4000000000109086_1 l400000000010908C
+l4000000000109086_1:
+	goto l40000000001090F0
+	// succ:  l40000000001090F0
+l400000000010908C:
+	branch !p03 l4000000000109092
+	// succ:  l400000000010908C_1 l4000000000109092
+l400000000010908C_1:
+	// succ:  l4000000000109092
+l4000000000109092:
+l40000000001090C0:
+	pr = r39
+	ar.pfs = r37
+	b0 = r36
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  list_minus_o_opts_exit
+l40000000001090F0:
+	r40 = r35 + 0<64>
+	r34 = r34 + 0x28<64>
+	r41 = r8 + 0<64>
+	r42 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r14 = r34 + 0xFFFFFFFFFFFFFFF8<64>
+	r1 = r38 + 0<64>
+	r35 = Mem0[r14:word64]
+	p07 = 0<64> == r35
+	p06 = 0<64> != r35
+	branch !p06 l4000000000109140
+	// succ:  l400000000010913C_1 l4000000000109140
+l400000000010913C_1:
+	goto l4000000000109000
+	// succ:  l4000000000109000
+l4000000000109140:
+	goto l40000000001090C0
+	// succ:  l40000000001090C0
+l4000000000109150:
+	r14 = r12 + 0x10<64>
+	Mem0[r0:word32] = SLICE(r14, word32, 0)
+	call b0 (retsize: 0;)
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r1 = r38 + 0<64>
+	branch !p07 l400000000010918C
+	// succ:  l4000000000109186_1 l400000000010918C
+l4000000000109186_1:
+	v30 = Mem0[r8:word32]
+	r41 = CONVERT(v30, word32, word64)
+	// succ:  l400000000010918C
+l400000000010918C:
+	v37 = SLICE(r64, byte, 0)
+l4000000000109210:
+	r14 = r34 + 8<64>
+	r14 = Mem0[r14:word64]
+	v35 = Mem0[r14:word32]
+	r8 = CONVERT(v35, word32, word64)
+	goto l4000000000109070
+	// succ:  l4000000000109070
 list_minus_o_opts_exit:
 
 
-void get_minus_o_opts()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// get_minus_o_opts
+// Return size: 0
+define get_minus_o_opts
 get_minus_o_opts_entry:
+	r11 = fp
+	// succ:  l4000000000109240
 l4000000000109240:
+	r33 = ar.pfs
+	r34 = r1 + 0<64>
+	r32 = b0
+	r35 = 0<64> + 29<i64>
+	call b0 (retsize: 0;)
+	r1 = r34 + 0<64>
+	r18 = r8 + 0<64>
+	r17 = r8 + 0<64>
+	r16 = 0<64> + 0<64>
+	r15 = r1 + -8564<i64>
+	r14 = r1 + 6212<i64>
+	r15 = Mem0[r15:word64]
+	r14 = Mem0[r14:word64]
+	// succ:  l40000000001092A0
+l40000000001092A0:
+	r14 = r14 + 0x28<64>
+	Mem0[r17:word64] = r8
+	r17 = r17 + 8<i64>
+	r16 = r16 + 1<64>
+	r15 = r14 + 0xFFFFFFFFFFFFFFD8<64>
+	r15 = Mem0[r15:word64]
+	p07 = 0<64> == r15
+	p06 = 0<64> != r15
+	branch !p06 l40000000001092D0
+	// succ:  l40000000001092CC_1 l40000000001092D0
+l40000000001092CC_1:
+	goto l40000000001092A0
+	// succ:  l40000000001092A0
+l40000000001092D0:
+	r8 = r18 + 0<64>
+	ar.pfs = r33
+	v19 = SLICE(r16, int32, 0)
+	r16 = CONVERT(v19, int32, int64)
+	r18 = (r16 << 3<u32>) + r18
+	b0 = r32
+	Mem0[r0:word64] = r18
+	return
+	// succ:  get_minus_o_opts_exit
 get_minus_o_opts_exit:
 
 
-void set_minus_o_option()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_minus_o_option
+// Return size: 0
+define set_minus_o_option
 set_minus_o_option_entry:
+	r11 = fp
+	// succ:  l4000000000109300
 l4000000000109300:
+	r38 = ar.pfs
+	r41 = r1 + -8564<i64>
+	r37 = b5
+	v11 = Mem0[r33:byte]
+	r36 = CONVERT(v11, byte, word64)
+	r14 = r1 + 6220<i64>
+	r39 = r1 + 0<64>
+	r41 = Mem0[r41:word64]
+	r35 = 0<64> + 0<64>
+	v16 = SLICE(r36, int8, 0)
+	r36 = CONVERT(v16, int8, int64)
+	r34 = Mem0[r14:word64]
+	// succ:  l4000000000109340
+l4000000000109340:
+	v18 = Mem0[r41:byte]
+	r14 = CONVERT(v18, byte, word64)
+	r34 = r34 + 0x28<64>
+	v19 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v19, int8, int64)
+	v20 = SLICE(r14, word32, 0)
+	v21 = SLICE(r36, word32, 0)
+	p07 = v20 == v21
+	p06 = v20 != v21
+	branch !p07 l4000000000109360
+	// succ:  l400000000010935C_1 l4000000000109360
+l400000000010935C_1:
+	goto l40000000001093D0
+	// succ:  l40000000001093D0
+l4000000000109360:
+	r14 = r34 + 0xFFFFFFFFFFFFFFD8<64>
+	r35 = r35 + 1<64>
+	r41 = Mem0[r14:word64]
+	p07 = 0<64> == r41
+	p06 = 0<64> != r41
+	branch !p06 l4000000000109390
+	// succ:  l400000000010938C_1 l4000000000109390
+l400000000010938C_1:
+	goto l4000000000109340
+	// succ:  l4000000000109340
+l4000000000109390:
+	r40 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r39 + 0<64>
+	r14 = 0<64> + 258<i64>
+	// succ:  l40000000001093B0
+l40000000001093B0:
+	r8 = r14 + 0<64>
+	ar.pfs = r38
+	b0 = r37
+	return
+	// succ:  set_minus_o_option_exit
+l40000000001093D0:
+	r40 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r39 + 0<64>
+	v27 = SLICE(0<64>, word32, 0)
+	v28 = SLICE(r8, word32, 0)
+	p07 = v27 == v28
+	p06 = v27 != v28
+	branch !p06 l40000000001093F0
+	// succ:  l40000000001093EC_1 l40000000001093F0
+l40000000001093EC_1:
+	goto l4000000000109360
+	// succ:  l4000000000109360
+l40000000001093F0:
+	v29 = SLICE(r35, int32, 0)
+	r35 = CONVERT(v29, int32, int64)
+	r15 = r1 + -25004<i64>
+	r40 = r32 + 0<64>
+	r41 = r33 + 0<64>
+	r35 = (r35 << 2<u32>) + r35
+	r14 = (r35 << 3<u32>) + 0<64>
+	r16 = r14 + r15
+	r17 = r16 + 8<64>
+	r15 = r16 + 0x18<64>
+	v34 = Mem0[r17:word32]
+	r14 = CONVERT(v34, word32, word64)
+	v35 = SLICE(0<64>, word32, 0)
+	v36 = SLICE(r14, word32, 0)
+	p07 = v35 == v36
+	p06 = v35 != v36
+	branch !p06 l4000000000109460
+	// succ:  l400000000010945C_1 l4000000000109460
+l400000000010945C_1:
+	goto l40000000001094C0
+	// succ:  l40000000001094C0
+l4000000000109460:
+	r8 = Mem0[r15:word64]
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l4000000000109480
+	// succ:  l400000000010947C_1 l4000000000109480
+l400000000010947C_1:
+	goto l4000000000109520
+	// succ:  l4000000000109520
+l4000000000109480:
+	r14 = Mem0[r8:word64]
+	r8 = r8 + 8<i64>
+	b6 = r14
+	r1 = Mem0[r8:word64]
+	call b0 (retsize: 0;)
+	r14 = 0<64> + 0<64>
+	r1 = r39 + 0<64>
+	ar.pfs = r38
+	r8 = r14 + 0<64>
+	b0 = r37
+	return
+	// succ:  set_minus_o_option_exit
+l40000000001094C0:
+	r40 = r14 + 0<64>
+	r41 = r32 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r39 + 0<64>
+	r14 = 0<64> + 0<64>
+	v37 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v38 = SLICE(r8, word32, 0)
+	p07 = v37 == v38
+	p06 = v37 != v38
+	branch !p06 l40000000001094F0
+	// succ:  l40000000001094EC_1 l40000000001094F0
+l40000000001094EC_1:
+	goto l40000000001093B0
+	// succ:  l40000000001093B0
+l40000000001094F0:
+	r40 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r14 = 0<64> + 1<i64>
+	r1 = r39 + 0<64>
+	ar.pfs = r38
+	r8 = r14 + 0<64>
+	b0 = r37
+	return
+	// succ:  set_minus_o_option_exit
+l4000000000109520:
+	r16 = r16 + 0x10<64>
+	v40 = SLICE(0x2D<64>, word32, 0)
+	v41 = SLICE(r32, word32, 0)
+	p06 = v40 == v41
+	p07 = v40 != v41
+	r14 = 0<64> + 0<64>
+	ar.pfs = r38
+	r15 = Mem0[r16:word64]
+	branch !p06 l400000000010954C
+	// succ:  l4000000000109546_1 l400000000010954C
+l4000000000109546_1:
+	r32 = 0<64> + 1<i64>
+	// succ:  l400000000010954C
+l400000000010954C:
 set_minus_o_option_exit:
 
 
-void set_shellopts()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_shellopts
+// Return size: 0
+define set_shellopts
 set_shellopts_entry:
+	r11 = fp
+	// succ:  l4000000000109580
 l4000000000109580:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFE0<64>
+	r38 = b6
+	r33 = r1 + -8564<i64>
+	r14 = r1 + 6228<i64>
+	r40 = r1 + 0<64>
+	r35 = r12 + 0x10<64>
+	r33 = Mem0[r33:word64]
+	r36 = 0<64> + 0<64>
+	r37 = 0<64> + 1<i64>
+	r32 = Mem0[r14:word64]
+	r34 = r35 + 0<64>
+	// succ:  l40000000001095E0
+l40000000001095E0:
+	v18 = Mem0[r32:word32]
+	r14 = CONVERT(v18, word32, word64)
+	r15 = r32 + 0x18<64>
+	Mem0[r0:byte] = SLICE(r34, byte, 0)
+	r41 = r33 + 0<64>
+	v22 = SLICE(0<64>, word32, 0)
+	v23 = SLICE(r14, word32, 0)
+	p06 = v22 == v23
+	p07 = v22 != v23
+	branch !p07 l4000000000109610
+	// succ:  l400000000010960C_1 l4000000000109610
+l400000000010960C_1:
+	goto l4000000000109930
+	// succ:  l4000000000109930
+l4000000000109610:
+	r8 = Mem0[r15:word64]
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l4000000000109630
+	// succ:  l400000000010962C_1 l4000000000109630
+l400000000010962C_1:
+	goto l40000000001099B0
+	// succ:  l40000000001099B0
+l4000000000109630:
+	r14 = Mem0[r8:word64]
+	r8 = r8 + 8<i64>
+	r1 = Mem0[r8:word64]
+	b6 = r14
+	call b0 (retsize: 0;)
+	v48 = SLICE(0<64>, word32, 0)
+	v49 = SLICE(r8, word32, 0)
+	p07 = v48 == v49
+	p06 = v48 != v49
+	r41 = r33 + 0<64>
+	r1 = r40 + 0<64>
+	branch !p06 l4000000000109666
+	// succ:  l4000000000109660_1 l4000000000109666
+l4000000000109660_1:
+	r8 = 0<64> + 1<i64>
+	// succ:  l4000000000109666
+l4000000000109666:
+l40000000001096A0:
+	r14 = r32 + 0x20<64>
+	r34 = r34 + 1<64>
+	r32 = r32 + 0x28<64>
+	r33 = Mem0[r14:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l40000000001096D0
+	// succ:  l40000000001096CC_1 l40000000001096D0
+l40000000001096CC_1:
+	goto l40000000001095E0
+	// succ:  l40000000001095E0
+l40000000001096D0:
+	r33 = r1 + -8564<i64>
+	r41 = r36 + 1<64>
+	r34 = 0<64> + 0<64>
+	r37 = 0<64> + 58<i64>
+	r33 = Mem0[r33:word64]
+	v28 = SLICE(r41, int32, 0)
+	r41 = CONVERT(v28, int32, int64)
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r36 = r8 + 0<64>
+	r14 = r1 + 6236<i64>
+	r32 = Mem0[r14:word64]
+	// succ:  l4000000000109720
+l4000000000109720:
+	v29 = Mem0[r35:byte]
+	r14 = CONVERT(v29, byte, word64)
+	r35 = r35 + 1<i64>
+	r32 = r32 + 0x28<64>
+	v30 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v30, int8, int64)
+	v31 = SLICE(0<64>, word32, 0)
+	v32 = SLICE(r14, word32, 0)
+	p06 = v31 == v32
+	p07 = v31 != v32
+	r14 = r32 + 0xFFFFFFFFFFFFFFD8<64>
+	branch !p07 l4000000000109740
+	// succ:  l400000000010973C_1 l4000000000109740
+l400000000010973C_1:
+	goto l40000000001098A0
+	// succ:  l40000000001098A0
+l4000000000109740:
+	r33 = Mem0[r14:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l4000000000109760
+	// succ:  l400000000010975C_1 l4000000000109760
+l400000000010975C_1:
+	goto l4000000000109720
+	// succ:  l4000000000109720
+l4000000000109760:
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r34, word32, 0)
+	p06 = v36 == v37
+	p07 = v36 != v37
+	r41 = r1 + -8556<i64>
+	branch !p07 l4000000000109770
+	// succ:  l400000000010976C_1 l4000000000109770
+l400000000010976C_1:
+	r14 = r34 + 0xFFFFFFFFFFFFFFFF<64>
+	// succ:  l4000000000109770
+l4000000000109770:
+	r41 = Mem0[r41:word64]
+	v38 = SLICE(r14, int32, 0)
+	r14 = CONVERT(v38, int32, int64)
+	branch !p06 l4000000000109786
+	// succ:  l4000000000109780_1 l4000000000109786
+l4000000000109780_1:
+	r14 = 0<64> + 0<64>
+	// succ:  l4000000000109786
+l4000000000109786:
+l40000000001098A0:
+	v33 = SLICE(r34, int32, 0)
+	r41 = CONVERT(v33, int32, int64)
+	r42 = r33 + 0<64>
+	r41 = r41 + r36
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	r41 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = r8 + r34
+	r1 = r40 + 0<64>
+	v35 = SLICE(r8, int32, 0)
+	r14 = CONVERT(v35, int32, int64)
+	r34 = r8 + 1<64>
+	r14 = r14 + r36
+	Mem0[r37:byte] = SLICE(r14, byte, 0)
+	r14 = r32 + 0xFFFFFFFFFFFFFFD8<64>
+	r33 = Mem0[r14:word64]
+	p07 = 0<64> == r33
+	p06 = 0<64> != r33
+	branch !p06 l4000000000109920
+	// succ:  l400000000010991C_1 l4000000000109920
+l400000000010991C_1:
+	goto l4000000000109720
+	// succ:  l4000000000109720
+l4000000000109920:
+	goto l4000000000109760
+	// succ:  l4000000000109760
+l4000000000109930:
+	r41 = r14 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r41 = r33 + 0<64>
+	branch !p06 l4000000000109960
+	// succ:  l400000000010995C_1 l4000000000109960
+l400000000010995C_1:
+	goto l40000000001096A0
+	// succ:  l40000000001096A0
+l4000000000109960:
+	v39 = Mem0[r8:word32]
+	r14 = CONVERT(v39, word32, word64)
+	v40 = SLICE(0<64>, word32, 0)
+	v41 = SLICE(r14, word32, 0)
+	p06 = v40 == v41
+	p07 = v40 != v41
+	branch !p06 l4000000000109980
+	// succ:  l400000000010997C_1 l4000000000109980
+l400000000010997C_1:
+	goto l40000000001096A0
+	// succ:  l40000000001096A0
+l4000000000109980:
+	call b0 (retsize: 0;)
+	r1 = r40 + 0<64>
+	Mem0[r37:byte] = SLICE(r34, byte, 0)
+	r36 = r36 + r8
+	goto l40000000001096A0
+	// succ:  l40000000001096A0
+l40000000001099B0:
+	r14 = r32 + 8<64>
+	r41 = r33 + 0<64>
+	r14 = Mem0[r14:word64]
+	v42 = Mem0[r14:word32]
+	r8 = CONVERT(v42, word32, word64)
+	v43 = SLICE(0<64>, word32, 0)
+	v44 = SLICE(r8, word32, 0)
+	p07 = v43 == v44
+	p06 = v43 != v44
+	branch !p06 l40000000001099DC
+	// succ:  l40000000001099D6_1 l40000000001099DC
+l40000000001099D6_1:
+	r8 = 0<64> + 1<i64>
+	// succ:  l40000000001099DC
+l40000000001099DC:
+	pr = r32
+	v47 = SLICE(r64, byte, 0)
 set_shellopts_exit:
 
 
-void parse_shellopts()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// parse_shellopts
+// Return size: 0
+define parse_shellopts
 parse_shellopts_entry:
+	r11 = fp
+	// succ:  l4000000000109AC0
 l4000000000109AC0:
+	r35 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r34 = b2
+	r36 = r1 + 0<64>
+	r37 = r32 + 0<64>
+	r14 = r12 + 0x10<64>
+	r38 = r12 + 0x10<64>
+	Mem0[r0:word32] = SLICE(r14, word32, 0)
+	call b0 (retsize: 0;)
+	r33 = r8 + 0<64>
+	r38 = r8 + 0<64>
+	r1 = r36 + 0<64>
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	branch !p07 l4000000000109B20
+	// succ:  l4000000000109B1C_1 l4000000000109B20
+l4000000000109B1C_1:
+	goto l4000000000109B80
+	// succ:  l4000000000109B80
+l4000000000109B20:
+	r37 = 0<64> + 45<i64>
+	call b0 (retsize: 0;)
+	r37 = r33 + 0<64>
+	r1 = r36 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	r38 = r12 + 0x10<64>
+	r37 = r32 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	r33 = r8 + 0<64>
+	r38 = r8 + 0<64>
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	branch !p06 l4000000000109B80
+	// succ:  l4000000000109B7C_1 l4000000000109B80
+l4000000000109B7C_1:
+	goto l4000000000109B20
+	// succ:  l4000000000109B20
+l4000000000109B80:
+	ar.pfs = r35
+	b0 = r34
+	r12 = r12 + 0x10<64>
+	return
+	// succ:  parse_shellopts_exit
 parse_shellopts_exit:
 
 
-void initialize_shell_options()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// initialize_shell_options
+// Return size: 0
+define initialize_shell_options
 initialize_shell_options_entry:
+	r11 = fp
+	// succ:  l4000000000109BC0
 l4000000000109BC0:
+	r35 = ar.pfs
+	r34 = b2
+	r36 = r1 + 0<64>
+	v11 = SLICE(0<64>, word32, 0)
+	v12 = SLICE(r32, word32, 0)
+	p06 = v11 == v12
+	p07 = v11 != v12
+	branch !p06 l4000000000109BE0
+	// succ:  l4000000000109BDC_1 l4000000000109BE0
+l4000000000109BDC_1:
+	goto l4000000000109C00
+	// succ:  l4000000000109C00
+l4000000000109BE0:
+	b0 = r34
+	ar.pfs = r35
+	r2 = ar.pfs
+	// succ:  l4000000000109BF6_thunk_set_shellopts
+l4000000000109BF6_thunk_set_shellopts:
+	call set_shellopts (retsize: 0;)
+	return
+	// succ:  initialize_shell_options_exit
+l4000000000109C00:
+	r37 = r1 + -8556<i64>
+	r37 = Mem0[r37:word64]
+	call b0 (retsize: 0;)
+	r14 = r8 + 0x28<64>
+	r1 = r36 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l4000000000109C40
+	// succ:  l4000000000109C3C_1 l4000000000109C40
+l4000000000109C3C_1:
+	goto l4000000000109BE0
+	// succ:  l4000000000109BE0
+l4000000000109C40:
+	v32 = Mem0[r14:word32]
+	r15 = CONVERT(v32, word32, word64)
+	branch !p06 l4000000000109C60
+	// succ:  l4000000000109C5C_1 l4000000000109C60
+l4000000000109C5C_1:
+	goto l4000000000109BE0
+	// succ:  l4000000000109BE0
+l4000000000109C60:
+	r14 = Mem0[r14:word64]
+	r14 = r14 & 0x44<64>
+	p07 = 0<64> == r14
+	p06 = 0<64> != r14
+	branch !p06 l4000000000109C80
+	// succ:  l4000000000109C7C_1 l4000000000109C80
+l4000000000109C7C_1:
+	goto l4000000000109BE0
+	// succ:  l4000000000109BE0
+l4000000000109C80:
+	r33 = r8 + 8<64>
+	r37 = Mem0[r33:word64]
+	call b0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	r37 = r8 + 1<64>
+	call b0 (retsize: 0;)
+	r38 = Mem0[r33:word64]
+	r1 = r36 + 0<64>
+	r37 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r37 = r8 + 0<64>
+	r1 = r36 + 0<64>
+	r33 = r8 + 0<64>
+	branch !p06 l4000000000109CF0
+	// succ:  l4000000000109CEC_1 l4000000000109CF0
+l4000000000109CEC_1:
+	goto l4000000000109BE0
+	// succ:  l4000000000109BE0
+l4000000000109CF0:
+	call b0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	r37 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	b0 = r34
+	ar.pfs = r35
+	r2 = ar.pfs
+	// succ:  l4000000000109D20_thunk_set_shellopts
+l4000000000109D20_thunk_set_shellopts:
+	call set_shellopts (retsize: 0;)
+	return
+	// succ:  initialize_shell_options_exit
 initialize_shell_options_exit:
 
 
-void reset_shell_options()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// reset_shell_options
+// Return size: 0
+define reset_shell_options
 reset_shell_options_entry:
+	r11 = fp
+	// succ:  l4000000000109D40
 l4000000000109D40:
+	r15 = r1 + 6112<i64>
+	r14 = 0<64> + 1<i64>
+	Mem0[r14:word32] = SLICE(r15, word32, 0)
+	r15 = r1 + 6116<i64>
+	Mem0[r14:word32] = SLICE(r15, word32, 0)
+	r14 = r1 + 6624<i64>
+	Mem0[r0:word32] = SLICE(r14, word32, 0)
+	return
+	// succ:  reset_shell_options_exit
 reset_shell_options_exit:
 
 
-void set_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_builtin
+// Return size: 0
+define set_builtin
 set_builtin_entry:
+	r11 = fp
+	// succ:  l4000000000109DC0
 l4000000000109DC0:
+	r41 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFE0<64>
+	p07 = 0<64> == r32
+	p06 = 0<64> != r32
+	r42 = r1 + 0<64>
+	r40 = b0
+	branch !p07 l4000000000109DE6
+	// succ:  l4000000000109DE0_1 l4000000000109DE6
+l4000000000109DE0_1:
+	goto l400000000010A1B0
+	// succ:  l400000000010A1B0
+l4000000000109DE6:
+	branch !p32 l4000000000109DF2
+	// succ:  l4000000000109DEC_1 l4000000000109DF2
+l4000000000109DEC_1:
+	// succ:  l4000000000109DF2
+l4000000000109DF2:
+	branch !p32 l4000000000109DF8
+	// succ:  l4000000000109DF2_1 l4000000000109DF8
+l4000000000109DF2_1:
+	__break()
+	// succ:  l4000000000109DF8
+l4000000000109DF8:
+	branch !p16 l4000000000109DFE
+	// succ:  l4000000000109DF8_1 l4000000000109DFE
+l4000000000109DF8_1:
+	__break()
+	// succ:  l4000000000109DFE
+l4000000000109DFE:
+	branch !p32 l4000000000109E14
+	// succ:  l4000000000109E0E_1 l4000000000109E14
+l4000000000109E0E_1:
+	__break()
+	// succ:  l4000000000109E14
+l4000000000109E14:
+	__break()
+	pr = 0x6B8000<64>
+	branch !p32 l4000000000109E24
+	// succ:  l4000000000109E20_1 l4000000000109E24
+l4000000000109E20_1:
+	// succ:  l4000000000109E24
+l4000000000109E24:
+l400000000010A1B0:
+	call b0 (retsize: 0;)
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r1 = r42 + 0<64>
+	r33 = r8 + 0<64>
+	r43 = r8 + 0<64>
+	branch !p06 l400000000010A1E0
+	// succ:  l400000000010A1DC_1 l400000000010A1E0
+l400000000010A1DC_1:
+	goto l400000000010A220
+	// succ:  l400000000010A220
+l400000000010A1E0:
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	r43 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	// succ:  l400000000010A220
+l400000000010A220:
+	r14 = r1 + 6456<i64>
+	v19 = Mem0[r14:word32]
+	r14 = CONVERT(v19, word32, word64)
+	v20 = SLICE(0<64>, word32, 0)
+	v21 = SLICE(r14, word32, 0)
+	p06 = v20 == v21
+	p07 = v20 != v21
+	branch !p06 l400000000010A250
+	// succ:  l400000000010A24C_1 l400000000010A250
+l400000000010A24C_1:
+	goto l400000000010A370
+	// succ:  l400000000010A370
+l400000000010A250:
+	r43 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	// succ:  l400000000010A270
+l400000000010A270:
+	ar.pfs = r41
+	b0 = r40
+	r12 = r12 + 0x20<64>
+	return
+	// succ:  set_builtin_exit
+l400000000010A370:
+	call b0 (retsize: 0;)
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r33 = r8 + 0<64>
+	r1 = r42 + 0<64>
+	r43 = r8 + 0<64>
+	branch !p06 l400000000010A3A0
+	// succ:  l400000000010A39C_1 l400000000010A3A0
+l400000000010A39C_1:
+	goto l400000000010A250
+	// succ:  l400000000010A250
+l400000000010A3A0:
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	r43 = r33 + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	r43 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	goto l400000000010A270
+	// succ:  l400000000010A270
 set_builtin_exit:
 
 
-void unset_builtin()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// unset_builtin
+// Return size: 0
+define unset_builtin
 unset_builtin_entry:
+	r11 = fp
+	// succ:  l400000000010A500
 l400000000010A500:
+	r43 = ar.pfs
+	r44 = r1 + 0<64>
+	r45 = pr
+	r42 = b2
+	r34 = 0<64> + 0<64>
+	r33 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	// succ:  l400000000010A540
+l400000000010A540:
+	r47 = r1 + -8532<i64>
+	r46 = r32 + 0<64>
+	r47 = Mem0[r47:word64]
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	v19 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v20 = SLICE(r8, word32, 0)
+	p07 = v19 == v20
+	p06 = v19 != v20
+	branch !p07 l400000000010A570
+	// succ:  l400000000010A56C_1 l400000000010A570
+l400000000010A56C_1:
+	goto l400000000010A600
+	// succ:  l400000000010A600
+l400000000010A570:
+	v23 = SLICE(0x66<64>, word32, 0)
+	v24 = SLICE(r8, word32, 0)
+	p06 = v23 == v24
+	p07 = v23 != v24
+	branch !p06 l400000000010A580
+	// succ:  l400000000010A57C_1 l400000000010A580
+l400000000010A57C_1:
+	goto l400000000010A8A0
+	// succ:  l400000000010A8A0
+l400000000010A580:
+	v39 = SLICE(0x76<64>, word32, 0)
+	v40 = SLICE(r8, word32, 0)
+	p06 = v39 == v40
+	p07 = v39 != v40
+	branch !p06 l400000000010A590
+	// succ:  l400000000010A58C_1 l400000000010A590
+l400000000010A58C_1:
+	goto l400000000010A5D0
+	// succ:  l400000000010A5D0
+l400000000010A590:
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	r8 = 0<64> + 258<i64>
+	pr = r45
+	ar.pfs = r43
+	b0 = r42
+	return
+	// succ:  unset_builtin_exit
+l400000000010A5D0:
+	r47 = r1 + -8532<i64>
+	r46 = r32 + 0<64>
+	r34 = 0<64> + 1<i64>
+	r47 = Mem0[r47:word64]
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	v46 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v47 = SLICE(r8, word32, 0)
+	p07 = v46 == v47
+	p06 = v46 != v47
+	branch !p06 l400000000010A600
+	// succ:  l400000000010A5FC_1 l400000000010A600
+l400000000010A5FC_1:
+	goto l400000000010A570
+	// succ:  l400000000010A570
+l400000000010A600:
+	r15 = r1 + 9268<i64>
+	v26 = SLICE(0<64>, word32, 0)
+	v27 = SLICE(r33, word32, 0)
+	p18 = v26 == v27
+	p19 = v26 != v27
+	r14 = r34 & r33
+	r38 = r1 + 6456<i64>
+	v32 = SLICE(0<64>, word32, 0)
+	v33 = SLICE(r34, word32, 0)
+	p21 = v32 == v33
+	p20 = v32 != v33
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r14, word32, 0)
+	p07 = v36 == v37
+	p06 = v36 != v37
+	branch !p18 l400000000010A630
+	// succ:  l400000000010A62C_1 l400000000010A630
+l400000000010A62C_1:
+	r41 = r1 + -8540<i64>
+	// succ:  l400000000010A630
+l400000000010A630:
+	r35 = 0<64> + 0<64>
+	v42 = SLICE(0<64>, word32, 0)
+	v43 = SLICE(r33, word32, 0)
+	p17 = v42 == v43
+	p16 = v42 != v43
+	branch !p06 l400000000010A640
+	// succ:  l400000000010A63C_1 l400000000010A640
+l400000000010A63C_1:
+	goto l400000000010AC30
+	// succ:  l400000000010AC30
+l400000000010A640:
+	branch !p19 l400000000010A646
+	// succ:  l400000000010A640_1 l400000000010A646
+l400000000010A640_1:
+	r41 = r1 + -8548<i64>
+	// succ:  l400000000010A646
+l400000000010A646:
+	__break()
+	branch !p20 l400000000010A652
+	// succ:  l400000000010A64C_1 l400000000010A652
+l400000000010A64C_1:
+	// succ:  l400000000010A652
+l400000000010A652:
+l400000000010A8A0:
+	r33 = 0<64> + 1<i64>
+	goto l400000000010A540
+	// succ:  l400000000010A540
+l400000000010AC30:
+	r47 = r1 + -8524<i64>
+	r48 = 0<64> + 5<i64>
+	r46 = 0<64> + 0<64>
+	r47 = Mem0[r47:word64]
+	call b0 (retsize: 0;)
+	r1 = r44 + 0<64>
+	r46 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r8 = 0<64> + 1<i64>
+	r1 = r44 + 0<64>
+	pr = r45
+	ar.pfs = r43
+	b0 = r42
+	return
+	// succ:  unset_builtin_exit
 unset_builtin_exit:
 
 
-void show_var_attributes()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// show_var_attributes
+// Return size: 0
+define show_var_attributes
 show_var_attributes_entry:
+	r11 = fp
+	// succ:  l400000000010ACC0
 l400000000010ACC0:
+	r39 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFFF0<64>
+	r38 = b6
+	v10 = SLICE(0<64>, word32, 0)
+	v11 = SLICE(r33, word32, 0)
+	p06 = v10 == v11
+	p07 = v10 != v11
+	r40 = r1 + 0<64>
+	r36 = r32 + 0x28<64>
+	branch !p07 l400000000010ACEC
+	// succ:  l400000000010ACE6_1 l400000000010ACEC
+l400000000010ACE6_1:
+	r33 = 0<64> + 0<64>
+	// succ:  l400000000010ACEC
+l400000000010ACEC:
+	branch !p20 l400000000010ACFC
+	// succ:  l400000000010ACF8_1 l400000000010ACFC
+l400000000010ACF8_1:
+	pr = 0<64>
+	// succ:  l400000000010ACFC
+l400000000010ACFC:
+	branch !p02 l400000000010AD02
+	// succ:  l400000000010ACFC_1 l400000000010AD02
+l400000000010ACFC_1:
+	// succ:  l400000000010AD02
+l400000000010AD02:
+	branch !p23 l400000000010AD08
+	// succ:  l400000000010AD02_1 l400000000010AD08
+l400000000010AD02_1:
+	__break()
+	// succ:  l400000000010AD08
+l400000000010AD08:
+	branch !p16 l400000000010AD0E
+	// succ:  l400000000010AD08_1 l400000000010AD0E
+l400000000010AD08_1:
+	__break()
+	// succ:  l400000000010AD0E
+l400000000010AD0E:
+	__break()
+	__break()
+	branch !p24 l400000000010AD2E
+	// succ:  l400000000010AD2A_1 l400000000010AD2E
+l400000000010AD2A_1:
+	// succ:  l400000000010AD2E
+l400000000010AD2E:
+	branch !p16 l400000000010AD34
+	// succ:  l400000000010AD2E_1 l400000000010AD34
+l400000000010AD2E_1:
+	// succ:  l400000000010AD34
+l400000000010AD34:
+	__break()
+	branch !p32 l400000000010AD44
+	// succ:  l400000000010AD40_1 l400000000010AD44
+l400000000010AD40_1:
+	call b2 (retsize: 0;)
+	// succ:  l400000000010AD44
+l400000000010AD44:
 show_var_attributes_exit:
 
 
-void show_all_var_attributes()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// show_all_var_attributes
+// Return size: 0
+define show_all_var_attributes
 show_all_var_attributes_entry:
+	r11 = fp
+	// succ:  l400000000010B5C0
 l400000000010B5C0:
+	r40 = ar.pfs
+	r39 = b7
+	r41 = r1 + 0<64>
+	v11 = SLICE(0<64>, word32, 0)
+	v12 = SLICE(r32, word32, 0)
+	p06 = v11 == v12
+	p07 = v11 != v12
+	branch !p06 l400000000010B5E0
+	// succ:  l400000000010B5DC_1 l400000000010B5E0
+l400000000010B5DC_1:
+	goto l400000000010B730
+	// succ:  l400000000010B730
+l400000000010B5E0:
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r38 = r8 + 0<64>
+	// succ:  l400000000010B600
+l400000000010B600:
+	p06 = 0<64> == r38
+	p07 = 0<64> != r38
+	r34 = r38 + 8<64>
+	r37 = r1 + 8388<i64>
+	r35 = r1 + -9924<i64>
+	r36 = r1 + -9868<i64>
+	branch !p06 l400000000010B620
+	// succ:  l400000000010B61C_1 l400000000010B620
+l400000000010B61C_1:
+	r34 = 0<64> + 0<64>
+	// succ:  l400000000010B620
+l400000000010B620:
+	r35 = Mem0[r35:word64]
+	branch !p06 l400000000010B630
+	// succ:  l400000000010B62C_1 l400000000010B630
+l400000000010B62C_1:
+	goto l400000000010B710
+	// succ:  l400000000010B710
+l400000000010B630:
+	r36 = Mem0[r36:word64]
+	r42 = Mem0[r38:word64]
+	p07 = 0<64> == r42
+	p06 = 0<64> != r42
+	branch !p07 l400000000010B650
+	// succ:  l400000000010B64C_1 l400000000010B650
+l400000000010B64C_1:
+	goto l400000000010B6E0
+	// succ:  l400000000010B6E0
+l400000000010B650:
+	r14 = Mem0[r37:word64]
+	p08 = r35 == r14
+	p09 = r35 != r14
+	p06 = r36 == r14
+	p07 = r36 != r14
+	branch !p08 l400000000010B676
+	// succ:  l400000000010B670_1 l400000000010B676
+l400000000010B670_1:
+	r43 = 0<64> + 1<i64>
+	// succ:  l400000000010B676
+l400000000010B676:
+l400000000010B6E0:
+	r42 = r38 + 0<64>
+	r34 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	// succ:  l400000000010B710
+l400000000010B710:
+	r8 = r34 + 0<64>
+	ar.pfs = r40
+	b0 = r39
+	return
+	// succ:  show_all_var_attributes_exit
+l400000000010B730:
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r38 = r8 + 0<64>
+	goto l400000000010B600
+	// succ:  l400000000010B600
 show_all_var_attributes_exit:
 
 
-void show_name_attributes()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// show_name_attributes
+// Return size: 0
+define show_name_attributes
 show_name_attributes_entry:
+	r11 = fp
+	// succ:  l400000000010B780
 l400000000010B780:
+	r35 = ar.pfs
+	r34 = b2
+	r36 = r1 + 0<64>
+	r37 = r32 + 0<64>
+	r38 = 0<64> + 1<i64>
+	call b0 (retsize: 0;)
+	r14 = r8 + 0x28<64>
+	r1 = r36 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l400000000010B7D0
+	// succ:  l400000000010B7CC_1 l400000000010B7D0
+l400000000010B7CC_1:
+	goto l400000000010B880
+	// succ:  l400000000010B880
+l400000000010B7D0:
+	v18 = Mem0[r14:word32]
+	r14 = CONVERT(v18, word32, word64)
+	r15 = r1 + -9924<i64>
+	r38 = r1 + -9868<i64>
+	r14 = r1 + 8388<i64>
+	branch !p06 l400000000010B800
+	// succ:  l400000000010B7FC_1 l400000000010B800
+l400000000010B7FC_1:
+	goto l400000000010B880
+	// succ:  l400000000010B880
+l400000000010B800:
+	r15 = Mem0[r15:word64]
+	r38 = Mem0[r38:word64]
+	r14 = Mem0[r14:word64]
+	p08 = r15 == r14
+	p09 = r15 != r14
+	p06 = r38 == r14
+	p07 = r38 != r14
+	branch !p08 l400000000010B836
+	// succ:  l400000000010B830_1 l400000000010B836
+l400000000010B830_1:
+	r38 = 0<64> + 1<i64>
+	// succ:  l400000000010B836
+l400000000010B836:
+l400000000010B880:
+	r8 = 0<64> + 1<i64>
+	ar.pfs = r35
+	b0 = r34
+	return
+	// succ:  show_name_attributes_exit
 show_name_attributes_exit:
 
 
-void set_var_attribute()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_var_attribute
+// Return size: 0
+define set_var_attribute
 set_var_attribute_entry:
+	r11 = fp
+	// succ:  l400000000010B8C0
 l400000000010B8C0:
+	r40 = ar.pfs
+	r39 = b7
+	r41 = r1 + 0<64>
+	r42 = r32 + 0<64>
+	v13 = SLICE(0<64>, word32, 0)
+	v14 = SLICE(r34, word32, 0)
+	p06 = v13 == v14
+	p07 = v13 != v14
+	branch !p06 l400000000010B8E0
+	// succ:  l400000000010B8DC_1 l400000000010B8E0
+l400000000010B8DC_1:
+	goto l400000000010B9A0
+	// succ:  l400000000010B9A0
+l400000000010B8E0:
+	call b0 (retsize: 0;)
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	r8 = r8 + 0x28<64>
+	r1 = r41 + 0<64>
+	branch !p07 l400000000010B910
+	// succ:  l400000000010B90C_1 l400000000010B910
+l400000000010B90C_1:
+	goto l400000000010B980
+	// succ:  l400000000010B980
+l400000000010B910:
+	v21 = Mem0[r8:word32]
+	r14 = CONVERT(v21, word32, word64)
+	r15 = r15 & r14
+	r14 = r15 + 0<64>
+	Mem0[r15:word32] = SLICE(r8, word32, 0)
+	// succ:  l400000000010B930
+l400000000010B930:
+	r33 = r14 | r33
+	r14 = r1 + 5780<i64>
+	branch !p07 l400000000010B950
+	// succ:  l400000000010B94C_1 l400000000010B950
+l400000000010B94C_1:
+	goto l400000000010B980
+	// succ:  l400000000010B980
+l400000000010B950:
+	v27 = Mem0[r14:word32]
+	r15 = CONVERT(v27, word32, word64)
+	r15 = r15 + 1<64>
+	Mem0[r15:word32] = SLICE(r14, word32, 0)
+	// succ:  l400000000010B980
+l400000000010B980:
+	ar.pfs = r40
+	b0 = r39
+	return
+	// succ:  set_var_attribute_exit
+l400000000010B9A0:
+	call b0 (retsize: 0;)
+	r37 = r8 + 0x28<64>
+	r1 = r41 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	r36 = r8 + 0<64>
+	branch !p06 l400000000010B9D0
+	// succ:  l400000000010B9CC_1 l400000000010B9D0
+l400000000010B9CC_1:
+	goto l400000000010BB70
+	// succ:  l400000000010BB70
+l400000000010B9D0:
+	v28 = Mem0[r37:word32]
+	r14 = CONVERT(v28, word32, word64)
+	branch !p06 l400000000010B9F0
+	// succ:  l400000000010B9EC_1 l400000000010B9F0
+l400000000010B9EC_1:
+	goto l400000000010BB70
+	// succ:  l400000000010BB70
+l400000000010B9F0:
+	r35 = r8 + 8<64>
+	r42 = Mem0[r35:word64]
+	p06 = 0<64> == r42
+	p07 = 0<64> != r42
+	branch !p06 l400000000010BA10
+	// succ:  l400000000010BA0C_1 l400000000010BA10
+l400000000010BA0C_1:
+	goto l400000000010BC10
+	// succ:  l400000000010BC10
+l400000000010BA10:
+	call b0 (retsize: 0;)
+	r1 = r41 + 0<64>
+	r42 = r8 + 1<64>
+	call b0 (retsize: 0;)
+	r43 = Mem0[r35:word64]
+	r1 = r41 + 0<64>
+	r42 = r8 + 0<64>
+	call b0 (retsize: 0;)
+	r38 = r8 + 0<64>
+	r44 = 0<64> + 0<64>
+	r1 = r41 + 0<64>
+	r42 = Mem0[r36:word64]
+	r43 = r38 + 0<64>
+	call b0 (retsize: 0;)
+	v48 = Mem0[r37:word32]
+	r15 = CONVERT(v48, word32, word64)
+	r35 = r8 + 0x28<64>
+	r17 = 0<64> + -1048577<i64>
+	r8 = r8 + 0x2C<64>
+	r16 = 0x200000<64>
+	v49 = Mem0[r35:word32]
+	r14 = CONVERT(v49, word32, word64)
+	r15 = r15 & r17
+	r1 = r41 + 0<64>
+	v50 = Mem0[r8:word32]
+	r17 = CONVERT(v50, word32, word64)
+	r14 = r15 | r14
+	v51 = SLICE(0<64>, word32, 0)
+	v52 = SLICE(r17, word32, 0)
+	p06 = v51 == v52
+	p07 = v51 != v52
+	r42 = Mem0[r36:word64]
+	Mem0[r14:word32] = SLICE(r35, word32, 0)
+	v53 = Mem0[r37:word32]
+	r14 = CONVERT(v53, word32, word64)
+	r14 = r14 | r16
+	Mem0[r14:word32] = SLICE(r37, word32, 0)
+	r15 = r14 + 0<64>
+	branch !p07 l400000000010BAF6
+	// succ:  l400000000010BAF0_1 l400000000010BAF6
+l400000000010BAF0_1:
+	v54 = Mem0[r35:word32]
+	r14 = CONVERT(v54, word32, word64)
+	// succ:  l400000000010BAF6
+l400000000010BAF6:
+l400000000010BB70:
+	r42 = r32 + 0<64>
+	r43 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r14 = r8 + 0x2C<64>
+	r1 = r41 + 0<64>
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	r35 = r8 + 0x28<64>
+	branch !p07 l400000000010BBA0
+	// succ:  l400000000010BB9C_1 l400000000010BBA0
+l400000000010BB9C_1:
+	goto l400000000010BD30
+	// succ:  l400000000010BD30
+l400000000010BBA0:
+	v31 = Mem0[r14:word32]
+	r14 = CONVERT(v31, word32, word64)
+	v32 = SLICE(0<64>, word32, 0)
+	v33 = SLICE(r14, word32, 0)
+	p06 = v32 == v33
+	p07 = v32 != v33
+	branch !p06 l400000000010BBB6
+	// succ:  l400000000010BBB0_1 l400000000010BBB6
+l400000000010BBB0_1:
+	v34 = Mem0[r35:word32]
+	r15 = CONVERT(v34, word32, word64)
+	// succ:  l400000000010BBB6
+l400000000010BBB6:
+	pr = 0xCAFFFFA<64>
+	branch !p32 l400000000010BBC6
+	// succ:  l400000000010BBC2_1 l400000000010BBC6
+l400000000010BBC2_1:
+	// succ:  l400000000010BBC6
+l400000000010BBC6:
+l400000000010BC10:
+	r42 = 0<64> + 1<i64>
+	call b0 (retsize: 0;)
+	r38 = r8 + 0<64>
+	r44 = 0<64> + 0<64>
+	r1 = r41 + 0<64>
+	Mem0[r0:byte] = SLICE(r8, byte, 0)
+	r43 = r38 + 0<64>
+	r42 = Mem0[r36:word64]
+	call b0 (retsize: 0;)
+	v39 = Mem0[r37:word32]
+	r15 = CONVERT(v39, word32, word64)
+	r35 = r8 + 0x28<64>
+	r17 = 0<64> + -1048577<i64>
+	r8 = r8 + 0x2C<64>
+	r16 = 0x200000<64>
+	v42 = Mem0[r35:word32]
+	r14 = CONVERT(v42, word32, word64)
+	r15 = r15 & r17
+	r1 = r41 + 0<64>
+	v43 = Mem0[r8:word32]
+	r17 = CONVERT(v43, word32, word64)
+	r14 = r15 | r14
+	v44 = SLICE(0<64>, word32, 0)
+	v45 = SLICE(r17, word32, 0)
+	p06 = v44 == v45
+	p07 = v44 != v45
+	r42 = Mem0[r36:word64]
+	Mem0[r14:word32] = SLICE(r35, word32, 0)
+	v46 = Mem0[r37:word32]
+	r14 = CONVERT(v46, word32, word64)
+	r14 = r14 | r16
+	Mem0[r14:word32] = SLICE(r37, word32, 0)
+	r15 = r14 + 0<64>
+	branch !p07 l400000000010BCC6
+	// succ:  l400000000010BCC0_1 l400000000010BCC6
+l400000000010BCC0_1:
+	v47 = Mem0[r35:word32]
+	r14 = CONVERT(v47, word32, word64)
+	// succ:  l400000000010BCC6
+l400000000010BCC6:
+l400000000010BD30:
+	r42 = r32 + 0<64>
+	r43 = 0<64> + 0<64>
+	r44 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r35 = r8 + 0x28<64>
+	r15 = 0<64> + 4096<i64>
+	r1 = r41 + 0<64>
+	v30 = Mem0[r35:word32]
+	r14 = CONVERT(v30, word32, word64)
+	r14 = r14 | r15
+	r15 = r14 + 0<64>
+	Mem0[r14:word32] = SLICE(r35, word32, 0)
+	r15 = r15 | r33
+	r14 = r15 + 0<64>
+	Mem0[r15:word32] = SLICE(r35, word32, 0)
+	goto l400000000010B930
+	// succ:  l400000000010B930
 set_var_attribute_exit:
 
 
-void set_or_show_attributes()
-// stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
-// MayUse: 
-// LiveOut:
-// Trashed:
-// Preserved:
-// Terminates process
+// set_or_show_attributes
+// Return size: 0
+define set_or_show_attributes
 set_or_show_attributes_entry:
+	r11 = fp
+	// succ:  l400000000010BDC0
 l400000000010BDC0:
+	r50 = ar.pfs
+	r51 = r1 + 0<64>
+	r52 = pr
+	r38 = 0<64> + 0<64>
+	r49 = b1
+	r36 = 0<64> + 0<64>
+	r39 = 0<64> + 0<64>
+	r37 = 0<64> + 0<64>
+	call b0 (retsize: 0;)
+	r1 = r51 + 0<64>
+	r35 = r1 + -1076<i64>
+	r35 = Mem0[r35:word64]
+	r54 = r1 + -1108<i64>
+	r53 = r32 + 0<64>
+	r54 = Mem0[r54:word64]
+	call b0 (retsize: 0;)
+	r1 = r51 + 0<64>
+	v21 = SLICE(0xFFFFFFFFFFFFFFFF<64>, word32, 0)
+	v23 = SLICE(r8, word32, 0)
+	p07 = v21 == v23
+	p06 = v21 != v23
+	branch !p07 l400000000010BE40
+	// succ:  l400000000010BE3C_1 l400000000010BE40
+l400000000010BE3C_1:
+	goto l400000000010BF00
+	// succ:  l400000000010BF00
+l400000000010BE40:
+	r8 = r8 + 0xFFFFFFFFFFFFFFBF<64>
+	v56 = SLICE(0x2F<64>, word32, 0)
+	v57 = SLICE(r8, word32, 0)
+	p06 = v56 <u v57
+	p07 = v56 >=u v57
+	branch !p07 l400000000010BE60
+	// succ:  l400000000010BE5C_1 l400000000010BE60
+l400000000010BE5C_1:
+	goto l400000000010BEA0
+	// succ:  l400000000010BEA0
+l400000000010BE60:
+	r35 = 0<64> + 258<i64>
+	call b0 (retsize: 0;)
+	r1 = r51 + 0<64>
+	r8 = r35 + 0<64>
+	pr = r52
+	ar.pfs = r50
+	b0 = r49
+	return
+	// succ:  set_or_show_attributes_exit
+l400000000010BEA0:
+	r8 = __addp4(0<64>, r8)
+	r8 = (r8 << 3<u32>) + r35
+	r14 = Mem0[r8:word64]
+	r8 = r14 + r8
+	b6 = r8
+	call b6 (retsize: 0;)
+	return
+	// succ:  set_or_show_attributes_exit
+l400000000010BF00:
+	r14 = r1 + 9268<i64>
+	r35 = Mem0[r14:word64]
+	p06 = 0<64> == r35
+	p07 = 0<64> != r35
+	branch !p06 l400000000010BF30
+	// succ:  l400000000010BF2C_1 l400000000010BF30
+l400000000010BF2C_1:
+	goto l400000000010C3F0
+	// succ:  l400000000010C3F0
+l400000000010BF30:
+	branch !p07 l400000000010BF40
+	// succ:  l400000000010BF3C_1 l400000000010BF40
+l400000000010BF3C_1:
+	r14 = r1 + 5780<i64>
+	// succ:  l400000000010BF40
+l400000000010BF40:
+	branch !p07 l400000000010BF46
+	// succ:  l400000000010BF40_1 l400000000010BF46
+l400000000010BF40_1:
+	r15 = 0<64> + 1<i64>
+	// succ:  l400000000010BF46
+l400000000010BF46:
+	__break()
+	v52 = SLICE(0<64>, word32, 0)
+	v53 = SLICE(r1, word32, 0)
+	v52 == v53
+	v52 != v53
+	branch !p01 l400000000010BF56
+	// succ:  l400000000010BF52_1 l400000000010BF56
+l400000000010BF52_1:
+	// succ:  l400000000010BF56
+l400000000010BF56:
+	branch !p03 l400000000010BF5C
+	// succ:  l400000000010BF56_1 l400000000010BF5C
+l400000000010BF56_1:
+	// succ:  l400000000010BF5C
+l400000000010BF5C:
+l400000000010C3F0:
+	r14 = r33 & 8<64>
+	r39 = r14 | r39
+	v28 = SLICE(0<64>, word32, 0)
+	v29 = SLICE(r39, word32, 0)
+	p06 = v28 == v29
+	p07 = v28 != v29
+	branch !p06 l400000000010C410
+	// succ:  l400000000010C40C_1 l400000000010C410
+l400000000010C40C_1:
+	goto l400000000010C650
+	// succ:  l400000000010C650
+l400000000010C410:
+	call b0 (retsize: 0;)
+	v49 = SLICE(8<64>, word32, 0)
+	v50 = SLICE(r33, word32, 0)
+	p06 = v49 == v50
+	p07 = v49 != v50
+	r1 = r51 + 0<64>
+	r40 = r8 + 0<64>
+	branch !p06 l400000000010C440
+	// succ:  l400000000010C43C_1 l400000000010C440
+l400000000010C43C_1:
+	goto l400000000010C470
+	// succ:  l400000000010C470
+l400000000010C440:
+	branch !p07 l400000000010C446
+	// succ:  l400000000010C440_1 l400000000010C446
+l400000000010C440_1:
+	r33 = r33 & 0xF7<64>
+	// succ:  l400000000010C446
+l400000000010C446:
+	__break()
+	goto l400000000010C452
+	// succ:  l400000000010C452
+l400000000010C450:
+	// succ:  l400000000010C452
+l400000000010C452:
+	branch !p06 l400000000010C460
+	// succ:  l400000000010C45C_1 l400000000010C460
+l400000000010C45C_1:
+	goto l400000000010C670
+	// succ:  l400000000010C670
+l400000000010C460:
+	v47 = SLICE(4<64>, word32, 0)
+	v48 = SLICE(r33, word32, 0)
+	p06 = v47 == v48
+	p07 = v47 != v48
+	r36 = r36 + 1<64>
+	branch !p07 l400000000010C470
+	// succ:  l400000000010C46C_1 l400000000010C470
+l400000000010C46C_1:
+	r33 = r33 & 0xFB<64>
+	// succ:  l400000000010C470
+l400000000010C470:
+	p06 = 0<64> == r40
+	p07 = 0<64> != r40
+	r39 = r1 + 8388<i64>
+	r37 = r1 + -9924<i64>
+	r41 = r1 + -9868<i64>
+	v32 = SLICE(0<64>, word32, 0)
+	v33 = SLICE(r36, word32, 0)
+	p19 = v32 == v33
+	p18 = v32 != v33
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r38, word32, 0)
+	p16 = v36 == v37
+	p17 = v36 != v37
+	branch !p06 l400000000010C496
+	// succ:  l400000000010C490_1 l400000000010C496
+l400000000010C490_1:
+	r35 = 0<64> + 0<64>
+	// succ:  l400000000010C496
+l400000000010C496:
+	branch !p16 l400000000010C4A6
+	// succ:  l400000000010C4A2_1 l400000000010C4A6
+l400000000010C4A2_1:
+	// succ:  l400000000010C4A6
+l400000000010C4A6:
+l400000000010C650:
+	call b0 (retsize: 0;)
+	r1 = r51 + 0<64>
+	r40 = r8 + 0<64>
+	goto l400000000010C450
+	// succ:  l400000000010C450
+l400000000010C670:
+	branch !p06 l400000000010C680
+	// succ:  l400000000010C67C_1 l400000000010C680
+l400000000010C67C_1:
+	goto l400000000010C470
+	// succ:  l400000000010C470
+l400000000010C680:
+	v40 = SLICE(0x40<64>, word32, 0)
+	v41 = SLICE(r33, word32, 0)
+	p06 = v40 == v41
+	p07 = v40 != v41
+	r38 = r38 + 1<64>
+	branch !p07 l400000000010C69C
+	// succ:  l400000000010C696_1 l400000000010C69C
+l400000000010C696_1:
+	r33 = r33 & 0xBF<64>
+	// succ:  l400000000010C69C
+l400000000010C69C:
+	branch !p47 l400000000010C6A2
+	// succ:  l400000000010C69C_1 l400000000010C6A2
+l400000000010C69C_1:
+	// succ:  l400000000010C6A2
+l400000000010C6A2:
+	branch !p32 l400000000010C6AE
+	// succ:  l400000000010C6A8_1 l400000000010C6AE
+l400000000010C6A8_1:
+	p10 = r64 <u r16
+	r64 >=u r16
+	// succ:  l400000000010C6AE
+l400000000010C6AE:
 set_or_show_attributes_exit:
 
 

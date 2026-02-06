@@ -27,13 +27,15 @@ using Reko.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
 
 namespace Reko.Arch.IA64
 {
     public class IA64Architecture : ProcessorArchitecture
     {
         public IA64Architecture(IServiceProvider services, string archId, Dictionary<string, object> options)
-            : base(services, archId, options, Registers.RegistersByName, null!)
+            : base(services, archId, options, Registers.RegistersByName, Registers.RegistersByDomain)
         {
             Endianness = EndianServices.Little;
             this.FramePointerType = PrimitiveType.Ptr64;
@@ -70,12 +72,30 @@ namespace Reko.Arch.IA64
 
         public override FlagGroupStorage GetFlagGroup(RegisterStorage flagRegister, ulong grf)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new();
+            char sep = 'p';
+            ulong mask = 1;
+            for (int i = 0; i < 64; ++i, mask <<= 1) 
+            {
+                if ((grf & mask) != 0)
+                {
+                    sb.Append(sep);
+                    sep = '_';
+                    sb.Append(i);
+                }
+            }
+            return new FlagGroupStorage(flagRegister, grf, sb.ToString());
         }
 
         public override FlagGroupStorage GetFlagGroup(string name)
         {
             throw new NotImplementedException();
+        }
+
+        public override IEnumerable<FlagGroupStorage> GetSubFlags(FlagGroupStorage flags)
+        {
+            return Registers.PredicateRegisters
+                .Where(f => (f.FlagGroupBits & flags.FlagGroupBits) != 0);
         }
 
         public override SortedList<string, int> GetMnemonicNames()

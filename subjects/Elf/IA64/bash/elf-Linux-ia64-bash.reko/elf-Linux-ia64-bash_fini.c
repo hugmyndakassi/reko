@@ -4,8 +4,19 @@
 
 #include "elf-Linux-ia64-bash.h"
 
-// 4000000000137EA0: void _fini()
-void _fini()
+// 4000000000137EA0: define _fini
+define _fini
 {
+	word64 b1;
+	word64 r12;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word64 r32 = r12 + 0x00;
+	word64 r33 = b1;
+	r12 = r32 + 0x00;
+	ar.pfs = r34;
+	word64 b0 = r33;
 }
 

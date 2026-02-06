@@ -72,8 +72,8 @@ public static class Registers
             { 65, (LC = sysregs.Reg64("LC")) },         // Loop Count Register
             { 66, (EC = sysregs.Reg64("EC")) },         // Epilog Count Register
         };
-        RegistersByName = GpRegisters
-            .ToDictionary(r => r.Name);
+        RegistersByDomain = factory.DomainsToRegisters;
+        RegistersByName = factory.NamesToRegisters;
     }
 
     public static RegisterStorage[] GpRegisters { get; }
@@ -82,6 +82,7 @@ public static class Registers
     public static FlagGroupStorage[] PredicateRegisters { get; }
 
     public static Dictionary<uint, RegisterStorage> ApplicationRegisters { get; }
+    public static Dictionary<StorageDomain, RegisterStorage> RegistersByDomain{ get; }
     public static Dictionary<string, RegisterStorage> RegistersByName { get; }
 
 

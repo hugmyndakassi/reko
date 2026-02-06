@@ -4,8 +4,18 @@
 
 #include "elf-Linux-ia64-bash.h"
 
-// 4000000000019230: void _init()
-void _init()
+// 4000000000019230: define _init
+define _init
 {
+	word64 b1;
+	word64 r12;
+	word64 ar.pfs;
+	word64 ar.pfs;
+	word64 r12;
+	word64 b1;
+	word64 r34_n = ar.pfs;
+	word64 r32_n = r12;
+	word64 r33_n = b1;
+	word64 b0_n = b1;
 }
 

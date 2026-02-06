@@ -4,6 +4,12 @@
 
 #include "elf-Linux-ia64-bash.h"
 
+word32 g_dw0001; // 0000000000000001
+byte g_b000A; // 000000000000000A
+word16 g_w002F; // 000000000000002F
+word32 g_dw0030; // 0000000000000030
+word64 g_qw0040; // 0000000000000040
+word32 g_dw0119; // 0000000000000119
 <anonymous> * set_login_shell_GOT; // 0000000000003128
 <anonymous> * sv_xtracefd_GOT; // 0000000000003830
 <anonymous> * sv_comp_wordbreaks_GOT; // 0000000000003840
@@ -100,6 +106,7 @@
 <anonymous> * compopt_builtin_GOT; // 00000000000054B8
 <anonymous> * mapfile_builtin_GOT; // 00000000000054E8
 <anonymous> * mapfile_builtin_GOT; // 0000000000005518
+Eq_n g_t56F4;
 <anonymous> * rl_tilde_expand_GOT; // 00000000000061C0
 <anonymous> * rl_complete_GOT; // 0000000000006210
 <anonymous> * rl_yank_last_arg_GOT; // 0000000000006218
@@ -503,3 +510,8 @@ word64 current_builtin; // 000000000000AF88
 word64 list_optarg; // 000000000000AFA0
 word64 loptend; // 000000000000AFB0
 word64 glob_error_return; // 000000000000AFC0
+Eq_n g_t70A3D70B;
+Eq_n g_tE353F7CF;
+word64 g_qwFFFFFFFB; // 00000000FFFFFFFB
+word32 g_dwFFFFFFFE; // 00000000FFFFFFFE
+word32 g_dwFFFFFFFF; // 00000000FFFFFFFF

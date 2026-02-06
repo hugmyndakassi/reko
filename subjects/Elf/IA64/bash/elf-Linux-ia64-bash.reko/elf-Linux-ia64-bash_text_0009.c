@@ -4,583 +4,8793 @@
 
 #include "elf-Linux-ia64-bash.h"
 
-// 40000000000AD3C0: void signal_name()
-void signal_name()
+// 40000000000AC6C0: define fn40000000000AC6C0
+// Called from:
+//      run_error_trap
+//      run_interrupt_trap
+define fn40000000000AC6C0
 {
+	<anonymous> * b5;
+	word64 r12;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	Eq_n r16 = r12 + 0x08;
+	r12 += ~0x031F;
+	Eq_n r17;
+	Eq_n r1;
+	r17.u0 = (word32) r1 + 0x00005EFC;
+	<anonymous> * r37 = b5;
+	r1.u1->t0000.u1 = (struct Eq_n *) r16;
+	Eq_n r15 = r12 + 744;
+	Eq_n r32;
+	r16 = __addp4(0x00, r32);
+	union Eq_n * r14 = r12 + 0x02D0;
+	union Eq_n * r33;
+	r33->u1 = (struct Eq_n *) r15;
+	int32 v16 = (int32) r16;
+	r15.u1 = (int64) v16;
+	r16.u0 = (word32) r1 + 0x00004B44;
+	r32.u3->t0000.u1 = (word32) r14;
+	r16.u1 += r15;
+	Eq_n v17;
+	v17.u0 = r16.u1->t0000.u0;
+	r14 = (word64) v17;
+	Eq_n p06;
+	<anonymous> * b0;
+	union Eq_n * r8;
+	ptr64 r34;
+	if (!p06 && !p06)
+	{
+		r15.u1 = r17.u1 + r15 *64 2;
+		r17 = r12 + 0x02E0;
+		r15.u1 = r15.u1->t0000.u1;
+		r15.u1->t0000.u1 = (struct Eq_n *) r17;
+		r15.u0 = (word32) r1 - 9668;
+		r17.u1 = r17.u1->t0000.u1;
+		r15.u1 = r15.u1->t0000.u1;
+		p06 = r15 == r17;
+		Eq_n p07 = r15 != r17;
+		if (!p06 && p07)
+		{
+			r14 &= 223;
+			word64 * r39 = (word64 *) &r17.u1->t0000.u0;
+			r14 |= 0x10;
+			r14->u0 = (word32) (word32) r16;
+			b0();
+			r1 = r12 + 808;
+			r39 = (word64 *) ((char *) r8 + 1);
+			r1.u1 = r1.u1->t0000.u1;
+			b0();
+			r16 = r12 + 0x02E0;
+			r1 = r12 + 808;
+			r39 = (word64 *) &r8->u0;
+			Eq_n r40;
+			r40.u1 = r16.u1->t0000.u1;
+			r1.u1 = r1.u1->t0000.u1;
+			b0();
+			r1 = r12 + 808;
+			r14 = r12 + 0x02D0;
+			r17 = r12 + 0x0310;
+			r1.u1 = r1.u1->t0000.u1;
+			r8->u1 = (struct Eq_n *) r17;
+			Eq_n v25;
+			v25.u0 = r14->u0;
+			r14 = (word64) v25;
+			r16.u1 = (char *) r14 + 1;
+			r14 = (union Eq_n *) ((word32) r1 + 9044);
+			Eq_n v26;
+			v26.u0 = r14->u0;
+			r15.u1 = (word64) v26;
+			r14 = (union Eq_n *) ((word32) r1 + 9124);
+			r16.u1->t0000.u0 = (word32) (word32) r14;
+			r14 = (union Eq_n *) ((word32) r1 + 9128);
+			r15.u1->t0000.u0 = (word32) (word32) r14;
+			b0();
+			r15 = r12 + 0x0300;
+			r1 = r12 + 808;
+			r1.u1 = r1.u1->t0000.u1;
+			r8->u1 = (struct Eq_n *) r15;
+			b0();
+			r1 = r12 + 808;
+			r17 = r12 + 0x02F0;
+			r16 = r12 + 0x02F8;
+			r1.u1 = r1.u1->t0000.u1;
+			r8->u1 = (struct Eq_n *) r16;
+			r15.u0 = (word32) r1 + 9032;
+			r14 = (union Eq_n *) ((word32) r1 + 7540);
+			Eq_n v27;
+			v27.u0 = r15.u1->t0000.u0;
+			r15.u1 = (word64) v27;
+			r16.u1 = r14->u1;
+			union Eq_n ** r0;
+			*r0 = (union Eq_n **) r14;
+			r15.u1->t0000.u0 = (word32) (word32) r17;
+			r15 = r12 + 776;
+			Eq_n v29;
+			v29.u0 = r17.u1->t0000.u0;
+			r17.u1 = (word64) v29;
+			r16.u1->t0000.u1 = (struct Eq_n *) r15;
+			word32 v30 = (word32) 0x00;
+			word32 v31 = (word32) r17;
+			p06 = v30 == v31;
+			p07 = v30 != v31;
+			word64 * r36;
+			if (!p07)
+			{
+				if (p06)
+					r36 = 0x00 + 0x00;
+				__break();
+			}
+			else
+			{
+				r34 = (ptr64) ((word32) r1 + 22740);
+				r40 = r12 + 0x10;
+				word64 r41 = 0x00 + 704;
+				r39 = r34 + 0x00;
+				b0();
+				r1 = r12 + 808;
+				r39 = r34 + 0x00;
+				r40 = 0x00 + 1;
+				r1.u1 = r1.u1->t0000.u1;
+				b0();
+				r1 = r12 + 808;
+				r36 = (word64 *) &r8->u0;
+				r1.u1 = r1.u1->t0000.u1;
+				r15 = r12 + 0x02D0;
+				r1 < 0x00;
+				Eq_n p11 = r1 >= 0x00;
+			}
+		}
+	}
+	r34 = 0x00 + 0x00;
+	r8 = r34 + 0x00;
+	ar.pfs = r38;
+	b0 = r37;
+	r12 += 800;
 }
 
-// 40000000000AD480: void decode_signal()
-void decode_signal()
+// 40000000000ACF00: define fn40000000000ACF00
+// Called from:
+//      reset_signal_handlers
+//      restore_original_signals
+define fn40000000000ACF00
 {
+	Eq_n r32;
+	<anonymous> * b5;
+	word64 LC;
+	Eq_n r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word32 * r36 = (word32 *) ((word32) r1 + 0x00004B44);
+	Eq_n r15;
+	r15.u0 = (word32) r1 - 4388;
+	word64 r40 = LC;
+	word64 r39 = (word64) &r1.u1->t0000.u0;
+	<anonymous> * r37 = b5;
+	word64 r33 = 0x00 + 1;
+	r15.u1 = r15.u1->t0000.u1;
+	Eq_n p06 = r15 == r32;
+	Eq_n p07 = r15 != r32;
+	word32 v18 = *r36;
+	Eq_n r14;
+	r14.u1 = (word64) v18;
+	word32 * r16 = r14 & 0xFE;
+	Eq_n p09;
+	word64 r41;
+	if (!p09)
+	{
+		*r16 = (word32) r36;
+		r41 = 0x00 + 0x00;
+		if (!p06)
+			;
+	}
+	r14.u0 = (word32) r1 + 5996;
+	LC = 0x3F;
+	Eq_n r35;
+	r35.u1 = r14.u1->t0000.u1;
+	r14.u0 = (word32) r1 + 6004;
+	Eq_n r34;
+	r34.u1 = r14.u1->t0000.u1;
+	Eq_n b6;
+	<anonymous> * b0;
+	while (true)
+	{
+l40000000000ACFE0:
+		Eq_n v24;
+		v24.u0 = r35.u1->t0000.u0;
+		r14.u1 = (word64) v24;
+		r35.u0 = (word32) r35 + 4;
+		r41 = r33 + 0x00;
+		if (p06)
+			break;
+		r14.u1 = r34.u1->t0000.u1;
+		p07 = 0x01 == r14;
+		p06 = 0x01 != r14;
+		if (!p07)
+		{
+			r14.u1 = r32.u1->t0000.u1;
+			r32.u0 = (word32) r32 + 8;
+			r1.u1 = r32.u1->t0000.u1;
+			r32.u0 = (word32) r32 - 8;
+			b6 = r14;
+			b0();
+			r1 = r39 + 0x00;
+			goto l40000000000AD050;
+		}
+		word64 r42 = 0x00 + 1;
+		++r33;
+		r34.u0 = (word32) r34 + 8;
+		b0();
+		r1 = r39 + 0x00;
+		if (LC == 0x00)
+			goto l40000000000AD060;
+		--LC;
+	}
+	if (!p06)
+	{
+		r14.u1 = r32.u1->t0000.u1;
+		r32.u0 = (word32) r32 + 8;
+		r41 = r33 + 0x00;
+		r1.u1 = r32.u1->t0000.u1;
+		r32.u0 = (word32) r32 - 8;
+		b6 = r14;
+		b0();
+		r1 = r39 + 0x00;
+	}
+l40000000000AD050:
+	++r33;
+	r34.u0 = (word32) r34 + 8;
+	if (LC == 0x00)
+	{
+l40000000000AD060:
+		r15.u0 = (word32) r1 + 0x00001CAC;
+		r14.u1 = r36 + 66;
+		word32 * r17 = r36 + 65;
+		r36 += 67;
+		ar.pfs = r38;
+		LC = r40;
+		b0 = r37;
+		Eq_n v28;
+		v28.u0 = r15.u1->t0000.u0;
+		r16 = (word64) v28;
+		r15.u0 = (word32) r1 + 7336;
+		word32 v29 = (word32) 0x00;
+		word32 v30 = (word32) r16;
+		p07 = v29 == v30;
+		p06 = v29 != v30;
+		if (p07)
+		{
+			word32 v31 = *r17;
+			word64 r18 = (word64) v31;
+		}
+		r1 == 0x00;
+		p09 = r1 != 0x00;
+	}
+	else
+	{
+		--LC;
+		goto l40000000000ACFE0;
+	}
 }
 
-// 40000000000AD780: void set_sigint_handler()
-void set_sigint_handler()
+// 40000000000AD3C0: define signal_name
+define signal_name
 {
+	<anonymous> * b1;
+	word64 r32;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word64 * r14 = r1 + -20604;
+	int32 v9 = (int32) r32;
+	int64 r15 = (int64) v9;
+	struct Eq_n * r37 = r1 + -0x00001104;
+	word64 r35 = r1 + 0x00;
+	up32 v13 = (word32) 0x43;
+	up32 v14 = (word32) r32;
+	Eq_n p06 = v13 < v14;
+	Eq_n p07 = v13 >= v14;
+	<anonymous> * r33 = b1;
+	word64 r36 = 0x00 + 0x00;
+	word64 r38 = 0x00 + 5;
+	r37 = r37->ptr0000;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		r14 += r15;
+		ar.pfs = r34;
+		word64 r8 = *r14;
+		b0 = r33;
+		p07 = 0x00 == r8;
+		p06 = 0x00 != r8;
+		if (!p07)
+			;
+	}
+	b0();
+	r1 = r35 + 0x00;
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000AD900: void trap_to_sighandler()
-void trap_to_sighandler()
+// 40000000000AD480: define decode_signal
+define decode_signal
 {
+	word64 * r8;
+	word64 LC;
+	<anonymous> * b5;
+	word64 r32;
+	word64 r1;
+	word64 pr;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word64 r12 = r12 + ~0x0F;
+	word64 r40 = pr;
+	byte ** r36 = r1 + -20604;
+	word64 r39 = r1 + 0x00;
+	byte * r42 = r32 + 0x00;
+	<anonymous> * r37 = b5;
+	byte * r43 = r12 + 0x10;
+	<anonymous> * b0;
+	b0();
+	word64 *** r35 = 0x00 + 0x00;
+	word64 r41 = LC;
+	r1 = r39 + 0x00;
+	word64 ** r14 = r12 + 0x10;
+	word32 v23 = (word32) 0x00;
+	word32 v24 = (word32) r8;
+	Eq_n p06 = v23 == v24;
+	Eq_n p07 = v23 != v24;
+	if (!p06)
+	{
+		r8 = *r14;
+		p07 = (word64 *) 0x40 < r8;
+		p06 = (word64 *) 0x40 >= r8;
+		if (!p07)
+		{
+			pr = r40;
+			ar.pfs = r38;
+			LC = r41;
+			b0 = r37;
+			r12 += 0x10;
+			return;
+		}
+		goto l40000000000AD600;
+	}
+	word64 *** r0;
+	*r0 = r14;
+	LC = 0x43;
+l40000000000AD560:
+	byte * r34 = (byte *) *r36;
+	r36 = (byte **) ((char *) r36 + 8);
+	p06 = null == r34;
+	p07 = null != r34;
+	if (p06)
+	{
+l40000000000AD5E0:
+		r35 = (word64 ***) ((char *) r35 + 1);
+		r14 = r12 + 0x10;
+		*r35 = r14;
+		if (LC != 0x00)
+		{
+			--LC;
+			goto l40000000000AD560;
+		}
+l40000000000AD600:
+		r8 = 0x00 + -1;
+		pr = r40;
+		ar.pfs = r38;
+		LC = r41;
+		b0 = r37;
+		r12 += 0x10;
+		return;
+	}
+	byte v29 = *r34;
+	r14 = (word64) v29;
+	int8 v30 = (int8) r14;
+	r14 = (int64) v30;
+	word32 v31 = (word32) 0x00;
+	word32 v32 = (word32) r14;
+	p06 = v31 == v32;
+	p07 = v31 != v32;
+	if (p06)
+		goto l40000000000AD5E0;
+	word32 v33 = (word32) 0x53;
+	word32 v34 = (word32) r14;
+	p06 = v33 == v34;
+	p07 = v33 != v34;
+	word64 p16;
+	if (p06)
+	{
+		r43 = r1 + -4348;
+		r42 = r34;
+		word64 r44 = 0x00 + 3;
+		r43 = (byte *) *r43;
+		b0();
+		r1 = r39 + 0x00;
+		word32 v37 = (word32) 0x00;
+		word32 v38 = (word32) r8;
+		p06 = v37 == v38;
+		p07 = v37 != v38;
+		if (!p07)
+		{
+			r43 = r34 + 3;
+			r42 = r32 + 0x00;
+			if (p16)
+			{
+				b0();
+				r1 = r39 + 0x00;
+				word32 v45 = (word32) 0x00;
+				word32 v46 = (word32) r8;
+				p07 = v45 == v46;
+				p06 = v45 != v46;
+				if (!p07)
+					;
+				goto l40000000000AD6F0;
+			}
+			b0();
+			r1 = r39 + 0x00;
+			word32 v43 = (word32) 0x00;
+			word32 v44 = (word32) r8;
+			p07 = v43 == v44;
+			p06 = v43 != v44;
+			if (p07)
+				goto l40000000000AD6F0;
+			word64 p48;
+			if (p48)
+				__break();
+			if (p16)
+				;
+			word64 p12;
+			if (p12)
+				__break();
+			word64 p01;
+			if (p01)
+				pr = 0x01;
+			__break();
+l40000000000AD6D2:
+			b0();
+			r1 = r39 + 0x00;
+			word32 v41 = (word32) 0x00;
+			word32 v42 = (word32) r8;
+			p07 = v41 == v42;
+			p06 = v41 != v42;
+			if (p06)
+				goto l40000000000AD5E0;
+l40000000000AD6F0:
+			r8 = r35;
+			pr = r40;
+			ar.pfs = r38;
+			LC = r41;
+			b0 = r37;
+			r12 += 0x10;
+			return;
+		}
+	}
+	r42 = r32 + 0x00;
+	r43 = r34;
+	if (!p16)
+	{
+		b0();
+		r1 = r39 + 0x00;
+		word32 v39 = (word32) 0x00;
+		word32 v40 = (word32) r8;
+		p07 = v39 == v40;
+		p06 = v39 != v40;
+		if (!p07)
+			goto l40000000000AD5E0;
+		goto l40000000000AD6F0;
+	}
+	goto l40000000000AD6D2;
 }
 
-// 40000000000AD980: void set_signal()
-void set_signal()
+// 40000000000AD780: define set_sigint_handler
+define set_sigint_handler
 {
+	word64 b0;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r33 = ar.pfs;
+	word32 * r14 = r1 + 0x00004B44;
+	word64 r32 = b0;
+	word64 r34 = r1 + 0x00;
+	word64 r36 = r1 + -9964;
+	word64 r35 = 0x00 + 2;
+	r14 += 2;
+	word32 v13 = *r14;
+	r14 = (word64) v13;
+	word64 p06;
+	if (p06)
+	{
+		word64 r8 = 0x00 + 1;
+	}
+	__break();
+	word64 p05;
+	if (p05)
+		__break();
 }
 
-// 40000000000ADDC0: void set_return_trap()
-void set_return_trap()
+// 40000000000AD900: define trap_to_sighandler
+define trap_to_sighandler
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	ui64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r14 = r8 & 66;
+	word64 p07;
+	if (p07)
+		r8 = r1 + -9628;
 }
 
-// 40000000000ADE00: void set_error_trap()
-void set_error_trap()
+// 40000000000AD980: define set_signal
+// Called from:
+//      set_return_trap
+//      set_error_trap
+//      set_debug_trap
+//      maybe_set_sigchld_trap
+define set_signal
 {
+	int64 r66;
+	word64 r1;
+	word64 b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word32 v7 = (word32) 0x00;
+	word32 v8 = (word32) r32;
+	Eq_n p08 = v7 == v8;
+	Eq_n p09 = v7 != v8;
+	word32 v11 = (word32) 0x41;
+	word32 v12 = (word32) r32;
+	Eq_n p06 = v11 == v12;
+	Eq_n p07 = v11 != v12;
+	word64 r37 = b5;
+	word64 r39 = r1 + 0x00;
+	if (p08)
+	{
+		word64 r14 = 0x00 + 1;
+	}
+	if (p07)
+		__break();
+	Eq_n p32 = 0x00 < r66;
+	Eq_n p34 = 0x00 >= r66;
 }
 
-// 40000000000ADE40: void set_debug_trap()
-void set_debug_trap()
+// 40000000000ADDC0: define set_return_trap
+define set_return_trap
 {
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r33 = r32 + 0x00;
+	r32 = 0x00 + 67;
+	word64 r2 = ar.pfs;
+	set_signal();
 }
 
-// 40000000000ADE80: void maybe_set_sigchld_trap()
-void maybe_set_sigchld_trap()
+// 40000000000ADE00: define set_error_trap
+define set_error_trap
 {
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r33 = r32 + 0x00;
+	r32 = 0x00 + 66;
+	word64 r2 = ar.pfs;
+	set_signal();
 }
 
-// 40000000000ADF40: void get_all_original_signals()
-void get_all_original_signals()
+// 40000000000ADE40: define set_debug_trap
+define set_debug_trap
 {
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r33 = r32 + 0x00;
+	r32 = 0x00 + 65;
+	word64 r2 = ar.pfs;
+	set_signal();
 }
 
-// 40000000000AE080: void set_original_signal()
-void set_original_signal()
+// 40000000000ADE80: define maybe_set_sigchld_trap
+define maybe_set_sigchld_trap
 {
+	word64 r32;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	Eq_n r14 = r1 + 0x00004B44;
+	word64 r33 = r32 + 0x00;
+	r14.u0 = (word32) r14 + 0x0044;
+	Eq_n v10;
+	v10.u0 = r14.u1->t0000.u0;
+	r14 = r1 + 0x00005EFC;
+	Eq_n p06;
+	if (p06)
+		return;
+	r14.u0 = (word32) r14 + 0x0088;
+	Eq_n r15;
+	r15.u1 = r14.u1->t0000.u1;
+	r14 = r1 + -9668;
+	r14.u1 = r14.u1->t0000.u1;
+	Eq_n p07 = r14 == r15;
+	p06 = r14 != r15;
+	if (p06)
+		return;
+	r32 = 0x00 + 0x0011;
+	word64 r2 = ar.pfs;
+	set_signal();
 }
 
-// 40000000000AE140: void restore_default_signal()
-void restore_default_signal()
+// 40000000000ADF40: define get_all_original_signals
+define get_all_original_signals
 {
+	word64 LC;
+	<anonymous> * b4;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	Eq_n r14 = r1 + 0x0000177C;
+	Eq_n r35 = r1 + -9668;
+	<anonymous> * r36 = b4;
+	word64 r38 = r1 + 0x00;
+	Eq_n r32;
+	r32.u1 = r14.u1->t0000.u1;
+	r14 = r1 + 6020;
+	word64 r33 = 0x00 + 1;
+	r35.u1 = r35.u1->t0000.u1;
+	word64 r39 = LC;
+	Eq_n r34;
+	r34.u1 = r14.u1->t0000.u1;
+	LC = 0x3F;
+	Eq_n p06;
+	Eq_n p07;
+	<anonymous> * b0;
+	while (true)
+	{
+		r14.u1 = r32.u1->t0000.u1;
+		p06 = r35 == r14;
+		p07 = r35 != r14;
+		if (p06)
+			break;
+		++r33;
+		r32.u0 = (word32) r32 + 8;
+		r34.u0 = (word32) r34 + 4;
+		if (LC == 0x00)
+		{
+			ar.pfs = r37;
+			LC = r39;
+			b0 = r36;
+			return;
+		}
+		--LC;
+	}
+	word64 r40 = r33 + 0x00;
+	word64 * r41 = 0x00 + 0x00;
+	b0();
+	r1 = r38 + 0x00;
+	union Eq_n * r8;
+	r8->u1 = (struct Eq_n *) r32;
+	r40 = r33 + 0x00;
+	r41 = (word64 *) &r8->u0;
+	++r33;
+	b0();
+	r14.u1 = r32.u1->t0000.u1;
+	r1 = r38 + 0x00;
+	r32.u0 = (word32) r32 + 8;
+	p07 = 0x01 == r14;
+	p06 = 0x01 != r14;
+	if (p07)
+	{
+		Eq_n v23;
+		v23.u0 = r34.u1->t0000.u0;
+		r14.u1 = (word64) v23;
+	}
+	byte v24 = (byte) r11;
+	word64 r64 = (word64) v24;
 }
 
-// 40000000000AE4C0: void set_impossible_sigchld_trap()
-void set_impossible_sigchld_trap()
+// 40000000000AE080: define set_original_signal
+define set_original_signal
 {
+	word64 r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	struct Eq_n ** r15 = r1 + 0x00005CF4;
+	int32 v7 = (int32) r32;
+	int64 r14 = (int64) v7;
+	r32 += ~0x00;
+	struct Eq_n * r17 = r1 + -9668;
+	up32 v10 = (word32) 0x3F;
+	up32 v11 = (word32) r32;
+	Eq_n p07 = v10 < v11;
+	Eq_n p06 = v10 >= v11;
+	if (p07)
+		return;
+	r15 = (struct Eq_n **) ((char *) r15 + (r14 << 0x03));
+	r17 = r17->ptr0000;
+	struct Eq_n * r16 = (struct Eq_n *) *r15;
+	p07 = r17 == r16;
+	p06 = r17 != r16;
+	if (p06)
+		return;
+	struct Eq_n *** r33;
+	p07 = (struct Eq_n ***) 0x01 == r33;
+	p06 = (struct Eq_n ***) 0x01 != r33;
+	*r33 = (struct Eq_n ***) r15;
+	if (p07)
+		r15 = r1 + 0x00004B44;
+	__break();
+	up32 v17 = (word32) 0x00;
+	up32 v18 = (word32) r1;
+	v17 < v18;
+	v17 >= v18;
+	byte v20 = (byte) r11;
+	word64 r96 = (word64) v20;
 }
 
-// 40000000000AE580: void ignore_signal()
-void ignore_signal()
+// 40000000000AE140: define restore_default_signal
+define restore_default_signal
 {
+	word64 r1;
+	<anonymous> * b3;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word32 v7 = (word32) 0x41;
+	word32 v8 = (word32) r32;
+	Eq_n p07 = v7 == v8;
+	Eq_n p06 = v7 != v8;
+	<anonymous> * r35 = b3;
+	word64 r37 = r1 + 0x00;
+	Eq_n r14;
+	union Eq_n * r34;
+	word32 * r33;
+	Eq_n r15;
+	word64 r38;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		r14 = r32 + ~0x41;
+		up32 v16 = (word32) 0x01;
+		up32 v17 = (word32) r14;
+		p06 = v16 < v17;
+		p07 = v16 >= v17;
+		if (!p07)
+		{
+			int32 v23 = (word32) 0x40;
+			int32 v24 = (word32) r32;
+			p07 = v23 < v24;
+			p06 = v23 >= v24;
+			Eq_n r39;
+			if (p07)
+			{
+				r34 = r1 + 0x00004B44;
+				int32 v28 = (int32) r32;
+				r33 = (int64) v28;
+				r14.u1 = &r34->u0 + r33;
+				Eq_n v29;
+				v29.u0 = r14.u1->t0000.u0;
+				r14.u1 = (word64) v29;
+			}
+			else
+			{
+				r34 = r1 + 0x00005CF4;
+				int32 v32 = (int32) r32;
+				r33 = (int64) v32;
+				r15 = r1 + -9668;
+				r15.u1 = r15.u1->t0000.u1;
+				r34 = &r34->u0 + r33 *64 2;
+				r14.u1 = r34->u1;
+				p06 = r15 == r14;
+				p07 = r15 != r14;
+				if (p06)
+				{
+					r38 = r32 + 0x00;
+					r39 = 0x00 + 0x00;
+					b0();
+					r1 = r37 + 0x00;
+					union Eq_n ** r8;
+					r39.u1 = r8;
+					*r8 = (union Eq_n **) r34;
+					r38 = r32 + 0x00;
+					b0();
+					r1 = r37 + 0x00;
+					r14.u1 = r34->u1;
+					r34 = r1 + 0x00004B44;
+					p06 = 0x01 == r14;
+					p07 = 0x01 != r14;
+					if (p06)
+						r15.u1 = &r34->u0 + r33;
+				}
+				r34 = r1 + 0x00004B44;
+				r14.u1 = &r34->u0 + r33;
+				Eq_n v38;
+				v38.u0 = r14.u1->t0000.u0;
+				r14.u1 = (word64) v38;
+			}
+			r38 = r32 + 0x00;
+			r39 = 0x00 + 0x00;
+			if (p06 || p06)
+			{
+l40000000000AE280:
+				ar.pfs = r36;
+				b0 = r35;
+				return;
+			}
+			if (!p07)
+			{
+				r33 = (word32 *) (&r34->u0 + r33);
+				b0();
+				word32 v41 = *r33;
+				r14.u1 = (word64) v41;
+				r1 = r37 + 0x00;
+				r14 &= 0xFE;
+				r14.u1->t0000.u0 = (word32) (word32) r33;
+				goto l40000000000AE280;
+			}
+l40000000000AE390:
+			r14 = r1 + 0x00005CF4;
+			r38 = r32 + 0x00;
+			r14.u1 += r33 *64 2;
+			r33 = (word32 *) (&r34->u0 + r33);
+			r39.u1 = r14.u1->t0000.u1;
+			b0();
+			r1 = r37 + 0x00;
+			r38 = r32 + 0x00;
+			r39 = 0x00 + 0x00;
+			b0();
+			word32 v39 = *r33;
+			r14.u1 = (word64) v39;
+			r1 = r37 + 0x00;
+			r14 &= 0xFE;
+			r14.u1->t0000.u0 = (word32) (word32) r33;
+			goto l40000000000AE280;
+		}
+	}
+	r34 = r1 + 0x00004B44;
+	int32 v19 = (int32) r32;
+	r33 = (int64) v19;
+	r14 = r32 + ~0x40;
+	up32 v21 = (word32) 0x02;
+	up32 v22 = (word32) r14;
+	p06 = v21 < v22;
+	p07 = v21 >= v22;
+	if (!p06)
+	{
+		r14.u1 = &r34->u0 + r33;
+		Eq_n v25;
+		v25.u0 = r14.u1->t0000.u0;
+		r14.u1 = (word64) v25;
+		if (p06)
+			goto l40000000000AE300;
+	}
+	r38 = r32 + 0x00;
+	b0();
+	r1 = r37 + 0x00;
+l40000000000AE300:
+	r34 = &r34->u0 + r33;
+	r15 = r1 + 0x00005EFC;
+	ar.pfs = r36;
+	Eq_n v31;
+	v31.u0 = r34->u0;
+	r14.u1 = (word64) v31;
+	b0 = r35;
+	r33 = (word32 *) (r15.u1 + r33 *64 2);
+	r15 = r14 & 0xFE;
+	r15.u1->t0000.u0 = (word32) (word32) r34;
+	if (p06)
+		r15 |= 0x20;
+	word32 ** r0;
+	*r0 = (word32 **) r33;
+	if (p06)
+		r15.u1->t0000.u0 = (word32) (word32) r34;
+	__break();
+	word64 p24;
+	if (p24)
+		__break();
+	word64 p02;
+	if (p02)
+		__break();
+	__break();
+	__break();
+	goto l40000000000AE390;
 }
 
-// 40000000000AE800: void run_exit_trap()
-void run_exit_trap()
+// 40000000000AE4C0: define set_impossible_sigchld_trap
+define set_impossible_sigchld_trap
 {
+	word64 r1;
+	<anonymous> * b0;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r33 = ar.pfs;
+	<anonymous> * r32 = b0;
+	word64 r34 = r1 + 0x00;
+	word64 r35 = 0x00 + 0x0011;
+	b0();
+	r1 = r34 + 0x00;
+	r35 = 0x00 + 0x0011;
+	struct Eq_n * r36 = r1 + -9668;
+	r36 = r36->ptr0000;
+	b0();
+	r1 = r34 + 0x00;
+	ar.pfs = r33;
+	word32 * r14 = r1 + 0x00004B44;
+	b0 = r32;
+	r14 += 0x0011;
+	word32 v13 = *r14;
+	word32 * r15 = (word64) v13;
+	r15 &= 0xFE;
+	*r15 = (word32) r14;
 }
 
-// 40000000000AEC80: void run_trap_cleanup()
-void run_trap_cleanup()
+// 40000000000AE580: define ignore_signal
+define ignore_signal
 {
+	word64 r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word32 v7 = (word32) 0x00;
+	word32 v8 = (word32) r32;
+	Eq_n p06 = v7 == v8;
+	Eq_n p07 = v7 != v8;
+	<anonymous> * r37 = b5;
+	ui64 r35 = r1 + 0x00004B44;
+	word64 r39 = r1 + 0x00;
+	int32 v16 = (int32) r32;
+	word32 * r34 = (int64) v16;
+	Eq_n r14;
+	if (!p06)
+	{
+		r14 = r32 + ~0x41;
+		up32 v19 = (word32) 0x01;
+		up32 v20 = (word32) r14;
+		p06 = v19 < v20;
+		p07 = v19 >= v20;
+		if (!p07)
+		{
+			int32 v22 = (word32) 0x40;
+			int32 v23 = (word32) r32;
+			p07 = v22 < v23;
+			p06 = v22 >= v23;
+			if (p07)
+				goto l40000000000AE640;
+			goto l40000000000AE600;
+		}
+	}
+	r14 = (r34 << 0x02) + r35;
+	Eq_n v21;
+	v21.u0 = r14.u1->t0000.u0;
+	r14.u1 = (word64) v21;
+	if (p07)
+		goto l40000000000AE690;
+	int32 v24 = (word32) 0x40;
+	int32 v25 = (word32) r32;
+	p07 = v24 < v25;
+	p06 = v24 >= v25;
+	Eq_n r15;
+	<anonymous> * b0;
+	word64 r40;
+	word64 r41;
+	union Eq_n * r36;
+	word64 pr;
+	if (!p06)
+	{
+l40000000000AE640:
+		r34 = (r34 << 0x02) + r35;
+		word32 v29 = *r34;
+		r14.u1 = (word64) v29;
+		r15 = r14 & 66;
+		word32 v31 = (word32) 0x00;
+		word32 v32 = (word32) r15;
+		p07 = v31 == v32;
+		p06 = v31 != v32;
+		if (p06)
+		{
+			ar.pfs = r38;
+			b0 = r37;
+			return;
+		}
+		word64 r33;
+		word64 r2;
+		if (p07)
+		{
+			r40 = r32 + 0x00;
+			r41 = 0x00 + 1;
+			r33 = 0x00 + 1;
+			b0();
+			r1 = r39 + 0x00;
+			b0 = r37;
+			ar.pfs = r38;
+			r2 = ar.pfs;
+l40000000000AD180:
+			r38 = ar.pfs;
+			r36 = r1 + 0x00004B44;
+			r37 = b5;
+			r39 = r1 + 0x00;
+			word64 r17 = r1 + 0x00005EFC;
+			int32 v35 = (int32) r32;
+			r34 = (int64) v35;
+			ar.pfs = r38;
+			r14.u1 = &r36->u0 + r34;
+			r15.u1 = &r36->u0 + r34;
+			b0 = r37;
+			Eq_n v36;
+			v36.u0 = r14.u1->t0000.u0;
+			r35 = (word64) v36;
+			ui64 r16 = r35 & 191;
+			r14 = r35 | 0x01;
+			if (!p07)
+			{
+				r16 |= 0x01;
+				p07 = 0x01 == r33;
+				p06 = 0x01 != r33;
+				r14.u1->t0000.u0 = (word32) (word32) r15;
+				r14 = r16 + 0x00;
+				if (p07)
+					r35 |= 0x41;
+				word64 p34;
+				if (p34)
+				{
+					word64 r68;
+					pr = r68;
+				}
+			}
+			else
+			{
+				r40 = r32 + 0x00;
+				b0();
+				r16 = r35 & 191;
+				r15.u1 = &r36->u0 + r34;
+				ar.pfs = r38;
+				p07 = 0x01 == r33;
+				p06 = 0x01 != r33;
+				r14 = r35 | 0x01;
+				r1 = r39 + 0x00;
+				r16 |= 0x01;
+				r14.u1->t0000.u0 = (word32) (word32) r15;
+				if (p07)
+					r35 |= 0x41;
+			}
+		}
+l40000000000AE690:
+		r33 = 0x00 + 1;
+		b0 = r37;
+		ar.pfs = r38;
+		r2 = ar.pfs;
+		goto l40000000000AD180;
+	}
+l40000000000AE600:
+	r36 = r1 + 0x00005CF4;
+	r15 = r1 + -9668;
+	r15.u1 = r15.u1->t0000.u1;
+	r36 = &r36->u0 + r34 *64 2;
+	r14.u1 = r36->u1;
+	p06 = r15 == r14;
+	p07 = r15 != r14;
+	if (p06)
+	{
+		r40 = r32 + 0x00;
+		r41 = 0x00 + 0x00;
+		r34 = (r34 << 0x02) + r35;
+		b0();
+		r1 = r39 + 0x00;
+		union Eq_n ** r8;
+		r41 = r8;
+		*r8 = (union Eq_n **) r36;
+		r40 = r32 + 0x00;
+		b0();
+		r14.u1 = r36->u1;
+		r1 = r39 + 0x00;
+		p06 = 0x01 == r14;
+		p07 = 0x01 != r14;
+		if (p06)
+		{
+			word32 v44 = *r34;
+			r15.u1 = (word64) v44;
+		}
+		byte v45 = (byte) r11;
+		word64 r96 = (word64) v45;
+		pr = r32;
+	}
+	goto l40000000000AE640;
 }
 
-// 40000000000AECC0: void run_debug_trap()
-void run_debug_trap()
+// 40000000000AE800: define run_exit_trap
+define run_exit_trap
 {
+	word64 r17;
+	word64 r67;
+	word64 r3;
+	<anonymous> * b3;
+	word64 r12;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	Eq_n r16 = r12 + 0x08;
+	r12 += ~0x2F;
+	Eq_n r14;
+	Eq_n r1;
+	r14.u0 = (word32) r1 + 9044;
+	word32 * r32 = (word32 *) ((word32) r1 + 9128);
+	word32 * r33 = (word32 *) ((word32) r1 + 0x00004B44);
+	r1.u1->t0000.u1 = (struct Eq_n *) r16;
+	<anonymous> * r35 = b3;
+	Eq_n v14;
+	v14.u0 = r14.u1->u0;
+	r14.u1 = (word64) v14;
+	r14.u1->u0 = (word32) (word32) r32;
+	<anonymous> * b0;
+	b0();
+	word32 v16 = *r33;
+	r14.u1 = (word64) v16;
+	r1 = r12 + 0x38;
+	Eq_n r37;
+	union Eq_n * r8;
+	r37.u1 = &r8->u0;
+	r14 &= 0x51;
+	r1.u1 = r1.u1->t0000.u1;
+	word32 v19 = (word32) 0x01;
+	word32 v20 = (word32) r14;
+	Eq_n p07 = v19 == v20;
+	Eq_n p06 = v19 != v20;
+	word32 * r15;
+	if (!p07)
+	{
+		b0();
+		r1 = r12 + 0x38;
+		word32 v23 = *r32;
+		r32 = (word64) v23;
+		r14 = r12 + 0x10;
+		r15 = r12 + 0x10;
+		*r32 = (word32) r14;
+		r1.u1 = r1.u1->t0000.u1;
+		word32 v25 = *r15;
+		r8 = (word64) v25;
+		ar.pfs = r36;
+		b0 = r35;
+		r12 += 0x30;
+	}
+	else
+	{
+		union Eq_n * r34 = (union Eq_n *) ((word32) r1 + 0x00005EFC);
+		r37.u1 = r34->u1;
+		b0();
+		r1 = r12 + 0x38;
+		r37.u1 = (char *) r8 + 1;
+		r1.u1 = r1.u1->t0000.u1;
+		b0();
+		r1 = r12 + 0x38;
+		Eq_n r38;
+		r38.u1 = r34->u1;
+		r37.u1 = &r8->u0;
+		r1.u1 = r1.u1->t0000.u1;
+		b0();
+		r1 = r12 + 0x38;
+		r14 = r12 + 0x18;
+		r15 = r12 + 0x10;
+		word32 v28 = *r32;
+		r32 = (word64) v28;
+		r16 = 0x00 + 1;
+		r38 = 0x00 + 1;
+		r1.u1 = r1.u1->t0000.u1;
+		r8->u1 = (union Eq_n *) r14;
+		*r32 = (word32) r15;
+		word32 v29 = *r33;
+		r14.u1 = (word64) v29;
+		r15 = (word32 *) ((word32) r1 + 9124);
+		r14 &= 0xFE;
+		r37.u0 = (word32) r1 + 25252;
+		r14 |= 0x10;
+		r14.u1->u0 = (word32) (word32) r33;
+		r16.u1->t0000.u0 = (word32) (word32) r15;
+		b0();
+		r1 = r12 + 0x38;
+		r14 = r12 + 0x20;
+		r15 = r12 + 0x20;
+		r1.u1 = r1.u1->t0000.u1;
+		r8->u0 = (word32) (word32) r14;
+		r14.u0 = (word32) r1 + 9032;
+		Eq_n v30;
+		v30.u0 = r14.u1->u0;
+		r14.u1 = (word64) v30;
+		word32 v31 = (word32) 0x00;
+		word32 v32 = (word32) r14;
+		p06 = v31 == v32;
+		p07 = v31 != v32;
+		if (!p07)
+		{
+			if (p06)
+				r8 = 0x00 + 0x00;
+			r32 < null;
+			r32 >= null;
+			byte v40 = (byte) r3;
+			r3 = (word64) v40;
+			r32 == null;
+			r32 != null;
+			word64 pr = r67;
+			if (p07)
+			{
+				word32 * r64;
+				r64 == r33;
+				Eq_n p09 = r64 != r33;
+			}
+			word64 p04;
+			if (p04)
+				__break();
+			word64 p16;
+			if (!p16)
+			{
+				word64 p32;
+				if (p32)
+					__break();
+			}
+		}
+		else
+		{
+			r37.u0 = (word32) r1 + 22740;
+			r38 = 0x00 + 1;
+			b0();
+			r15 = r12 + 0x20;
+			r1 = r12 + 0x38;
+			word32 v33 = *r15;
+			r15 = (word64) v33;
+			r1.u1 = r1.u1->t0000.u1;
+			r14 = r8 | r15;
+			word32 v34 = (word32) 0x00;
+			word32 v35 = (word32) r14;
+			p07 = v34 == v35;
+			p06 = v34 != v35;
+			word32 * r0;
+			if (p06)
+			{
+				r15 = r12 + 0x20;
+				r14 = r12 + 0x20;
+				word32 v36 = *r15;
+				r15 = (word64) v36;
+				word32 v37 = (word32) 0x04;
+				word32 v38 = (word32) r15;
+				p07 = v37 == v38;
+				p06 = v37 != v38;
+				r15 = r12 + 0x10;
+				if (!p07)
+				{
+					Eq_n v50;
+					v50.u0 = r14.u1->u0;
+					r14.u1 = (word64) v50;
+					word32 v51 = (word32) 0x03;
+					word32 v52 = (word32) r14;
+					p06 = v51 == v52;
+					p07 = v51 != v52;
+					if (!p06)
+					{
+						word32 v55 = (word32) 0x00;
+						word32 v56 = (word32) r8;
+						p06 = v55 == v56;
+						p07 = v55 != v56;
+						if (p07)
+							r14.u0 = (word32) r1 + 0x00002334;
+						word32 v59 = (word32) r17;
+						word64 r42 = (word64) v59;
+						__break();
+					}
+				}
+				r14.u0 = (word32) r1 + 9044;
+				r15 = r12 + 0x10;
+				Eq_n v47;
+				v47.u0 = r14.u1->u0;
+				r14.u1 = (word64) v47;
+				r14.u1->u0 = (word32) (word32) r15;
+				r14.u0 = (word32) r1 + 9124;
+				*r0 = (word32) r14;
+			}
+			else
+			{
+				b0();
+				r1 = r12 + 0x38;
+				r14 = r12 + 0x18;
+				word64 r39 = 0x00 + 21;
+				r1.u1 = r1.u1->t0000.u1;
+				r37.u1 = r14.u1->u1;
+				r38.u0 = (word32) r1 - 4340;
+				r38.u1 = r38.u1->t0000.u1;
+				b0();
+				r1 = r12 + 0x38;
+				r1.u1 = r1.u1->t0000.u1;
+				r14.u0 = (word32) r1 + 9124;
+				*r0 = (word32) r14;
+			}
+			r15 = r12 + 0x10;
+			word32 v49 = *r15;
+			r8 = (word64) v49;
+			ar.pfs = r36;
+			b0 = r35;
+			r12 += 0x30;
+		}
+	}
 }
 
-// 40000000000AEF00: void run_error_trap()
-void run_error_trap()
+// 40000000000AEC80: define run_trap_cleanup
+define run_trap_cleanup
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = r14 + r32;
+	word32 v8 = *r32;
+	r14 = (word64) v8;
+	r14 &= 0xCF;
+	*r14 = (word32) r32;
 }
 
-// 40000000000AEF80: void run_return_trap()
-void run_return_trap()
+// 40000000000AECC0: define run_debug_trap
+define run_debug_trap
 {
+	<anonymous> * b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word64 r12 = r12 + ~0x0F;
+	word32 * r14 = r1 + 0x00004B44;
+	<anonymous> * r35 = b3;
+	word64 r37 = r1 + 0x00;
+	r14 += 65;
+	word32 v12 = *r14;
+	r14 = (word64) v12;
+	r14 &= 0x51;
+	word32 v13 = (word32) 0x01;
+	word32 v14 = (word32) r14;
+	Eq_n p07 = v13 == v14;
+	Eq_n p06 = v13 != v14;
+	word32 * r32;
+	if (!p07)
+	{
+		if (p06)
+			r32 = 0x00 + 0x00;
+		__break();
+	}
+	else
+	{
+		word32 * r33 = r1 + 7436;
+		word64 r38 = 0x00 + 1;
+		word32 v20 = *r33;
+		word32 * r34 = (word64) v20;
+		word32 * r0;
+		*r0 = (word32) r33;
+		<anonymous> * b0;
+		b0();
+		r38 = r12 + 0x10;
+		struct Eq_n * r39 = 0x00 + 1;
+		r1 = r37 + 0x00;
+		b0();
+		r1 = r37 + 0x00;
+		b0();
+		r1 = r37 + 0x00;
+		r38 = 0x00 + 65;
+		r39 = r1 + -4332;
+		r39 = r39->ptr0000;
+		b0();
+		r38 = 0x00 + 1;
+		word64 r8;
+		r32 = r8 + 0x00;
+		r1 = r37 + 0x00;
+		*r34 = (word32) r33;
+		b0();
+		r1 = r37 + 0x00;
+		b0();
+		r1 = r37 + 0x00;
+		r38 = r12 + 0x10;
+		b0();
+		word32 v26 = *r33;
+		r38 = (word64) v26;
+		r1 = r37 + 0x00;
+		r39 = 0x00 + 1;
+		int32 v27 = (word32) 0x00;
+		int32 v28 = (word32) r38;
+		p07 = v27 < v28;
+		p06 = v27 >= v28;
+		if (!p06)
+		{
+			b0();
+			r1 = r37 + 0x00;
+		}
+		b0();
+		r1 = r37 + 0x00;
+		r14 = r1 + 6472;
+		word32 v29 = *r14;
+		r14 = (word64) v29;
+		word32 v30 = (word32) 0x00;
+		word32 v31 = (word32) r14;
+		p06 = v30 == v31;
+		p07 = v30 != v31;
+		if (!p06)
+		{
+			word32 v32 = (word32) 0x02;
+			word32 v33 = (word32) r32;
+			p07 = v32 == v33;
+			p06 = v32 != v33;
+			if (!p06)
+			{
+				r14 = r1 + 9032;
+				word32 v34 = *r14;
+				r14 = (word64) v34;
+				word32 v35 = (word32) 0x00;
+				word32 v36 = (word32) r14;
+				p06 = v35 == v36;
+				p07 = v35 != v36;
+				if (!p06)
+				{
+					r14 = r1 + 0x00002334;
+					r38 = r1 + 22740;
+					r39 = 0x00 + 1;
+					*r32 = (word32) r14;
+					b0();
+					__break();
+					run_error_trap();
+					return;
+				}
+			}
+		}
+		r8 = r32;
+		ar.pfs = r36;
+		b0 = r35;
+		r12 += 0x10;
+	}
 }
 
-// 40000000000AF040: void run_interrupt_trap()
-void run_interrupt_trap()
+// 40000000000AEF00: define run_error_trap
+// Called from:
+//      run_debug_trap
+define run_error_trap
 {
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word32 * r14 = r1 + 0x00004B44;
+	r14 += 66;
+	word32 v8 = *r14;
+	r14 = (word64) v8;
+	r14 &= 0x51;
+	word32 v9 = (word32) 0x01;
+	word32 v10 = (word32) r14;
+	Eq_n p07 = v9 == v10;
+	Eq_n p06 = v9 != v10;
+	if (p06)
+		return;
+	struct Eq_n * r33 = r1 + -4324;
+	word64 r32 = 0x00 + 66;
+	r33 = r33->ptr0000;
+	word64 r2 = ar.pfs;
+	fn40000000000AC6C0();
 }
 
-// 40000000000AF080: void run_pending_traps()
-void run_pending_traps()
+// 40000000000AEF80: define run_return_trap
+define run_return_trap
 {
+	word64 b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word32 * r14 = r1 + 0x00004B44;
+	word64 r34 = b2;
+	word64 r36 = r1 + 0x00;
+	ar.pfs = r35;
+	r14 += 67;
+	word64 b0 = r34;
+	word32 v12 = *r14;
+	r14 = (word64) v12;
+	r14 &= 0x51;
+	word32 v13 = (word32) 0x01;
+	word32 v14 = (word32) r14;
+	Eq_n p07 = v13 == v14;
+	Eq_n p06 = v13 != v14;
+	if (p07)
+	{
+		word64 r32 = r1 + 9044;
+	}
 }
 
-// 40000000000AF640: void trap_handler()
-void trap_handler()
+// 40000000000AF040: define run_interrupt_trap
+define run_interrupt_trap
 {
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	struct Eq_n * r33 = r1 + -4308;
+	word64 r32 = 0x00 + 2;
+	r33 = r33->ptr0000;
+	word64 r2 = ar.pfs;
+	fn40000000000AC6C0();
 }
 
-// 40000000000AF8C0: void free_trap_strings()
-void free_trap_strings()
+// 40000000000AF080: define run_pending_traps
+define run_pending_traps
 {
+	word64 r8;
+	<anonymous> * b6;
+	word64 LC;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r47 = ar.pfs;
+	word64 r12 = r12 + ~0xFF;
+	Eq_n r14 = r1 + 7624;
+	word64 r49 = LC;
+	word64 r48 = r1 + 0x00;
+	Eq_n v12;
+	v12.u0 = r14.u1->t0000.u0;
+	word64 r15 = (word64) v12;
+	<anonymous> * r46 = b6;
+	word32 v16 = (word32) 0x00;
+	word32 v17 = (word32) r15;
+	Eq_n p06 = v16 == v17;
+	Eq_n p07 = v16 != v17;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		ar.pfs = r47;
+		LC = r49;
+		b0 = r46;
+		r12 += 0x0100;
+		return;
+	}
+	word32 * r42 = r1 + 9044;
+	Eq_n r35 = r1 + 7540;
+	Eq_n r0;
+	r0.u3->t0000.u1 = (word32) r14;
+	word64 r33 = 0x00 + 1;
+	word32 v25 = *r42;
+	word32 * r44 = (word64) v25;
+	b0();
+	r1 = r48 + 0x00;
+	word64 r45 = r8 + 0x00;
+	LC = 0x3F;
+	r14 = r1 + 6028;
+	word32 * r40 = r1 + 0x00004B44;
+	Eq_n r37 = r1 + -9668;
+	Eq_n r41 = r1 + 7684;
+	Eq_n r32;
+	r32.u1 = r14.u1->t0000.u1;
+	r14 = r1 + 6036;
+	Eq_n r34;
+	r34.u1 = r14.u1->t0000.u1;
+	r40 += 0x0011;
+	Eq_n r43;
+	r43.u0 = (word32) r32 + 64;
+	r37.u1 = r37.u1->t0000.u1;
+	Eq_n r39;
+	r39.u0 = (word32) r34 + 0x0080;
+	while (true)
+	{
+l40000000000AF1A0:
+		Eq_n v36;
+		v36.u0 = r32.u1->t0000.u0;
+		r14.u1 = (word64) v36;
+		word32 v37 = (word32) 0x00;
+		word32 v38 = (word32) r14;
+		p06 = v37 == v38;
+		p07 = v37 != v38;
+		if (p07)
+			break;
+		++r33;
+		r32.u0 = (word32) r32 + 4;
+		r34.u0 = (word32) r34 + 8;
+		if (LC == 0x00)
+			goto l40000000000AF1E0;
+		--LC;
+	}
+	Eq_n r50 = r12 + 0x90;
+	b0();
+	r1 = r48 + 0x00;
+	r50 = r12 + 0x10;
+	b0();
+	r1 = r48 + 0x00;
+	r50 = r12 + 0x90;
+	Eq_n r51 = r33 + 0x00;
+	b0();
+	r1 = r48 + 0x00;
+	r50 = 0x00 + 0x00;
+	r51 = r12 + 0x90;
+	Eq_n r52 = r12 + 0x10;
+	b0();
+	word32 v42 = (word32) 0x02;
+	word32 v43 = (word32) r33;
+	p07 = v42 == v43;
+	p06 = v42 != v43;
+	r1 = r48 + 0x00;
+	if (p07)
+	{
+		b0();
+		r1 = r48 + 0x00;
+		__st_release<word32>(r0, r41);
+		*r0.u2 = (word64) r41;
+		r50 = 0x00 + 2;
+		r0.u3->t0000.u1 = (word32) r32;
+		r51 = r12 + 0x10;
+		r52 = 0x00 + 0x00;
+		b0();
+		r1 = r48 + 0x00;
+		goto l40000000000AF3D0;
+	}
+	word32 v44 = (word32) 0x11;
+	word32 v45 = (word32) r33;
+	p07 = v44 == v45;
+	p06 = v44 != v45;
+	word64 r36;
+	if (p07)
+	{
+		r14.u1 = r39.u1->u1;
+		p06 = r37 == r14;
+		p07 = r37 != r14;
+		if (p06)
+			goto l40000000000AF460;
+		word32 v46 = *r40;
+		r14.u1 = (word64) v46;
+		if (p07)
+		{
+			Eq_n v47;
+			v47.u0 = r43.u1->u0;
+			r50.u1 = (word64) v47;
+			b0();
+			r1 = r48 + 0x00;
+			r0.u3->t0000.u1 = (word32) r32;
+			r50 = 0x00 + 2;
+			r51 = r12 + 0x10;
+			r52 = 0x00 + 0x00;
+			b0();
+			r1 = r48 + 0x00;
+l40000000000AF3D0:
+			++r33;
+			r32.u0 = (word32) r32 + 4;
+			r34.u0 = (word32) r34 + 8;
+			if (LC == 0x00)
+			{
+l40000000000AF1E0:
+				r50 = r45 + 0x00;
+				b0();
+				r1 = r48 + 0x00;
+				*r44 = (word32) r42;
+				ar.pfs = r47;
+				LC = r49;
+				b0 = r46;
+				r12 += 0x0100;
+				return;
+			}
+			else
+			{
+				--LC;
+				goto l40000000000AF1A0;
+			}
+		}
+		r14.u1 = r34.u1->t0000.u1;
+		p07 = 0x01 < r14;
+		p06 = 0x01 >= r14;
+		if (p07)
+		{
+l40000000000AF2D0:
+			b0();
+			r1 = r48 + 0x00;
+			r36 = r8 + 0x00;
+			struct Eq_n * r38 = r35.u1->ptr0000;
+			*r0.u2 = (word64) r35;
+			r50.u1 = r34.u1->t0000.u1;
+			b0();
+			r1 = r48 + 0x00;
+			r50 = r8 + 0x01;
+			b0();
+			r1 = r48 + 0x00;
+			r50 = r8 + 0x00;
+			r51.u1 = r34.u1->t0000.u1;
+			b0();
+			r1 = r48 + 0x00;
+			r52 = 0x00 + 21;
+			r50 = r8 + 0x00;
+			r51 = r1 + -4284;
+			r51.u1 = r51.u1->t0000.u1;
+			b0();
+			r1 = r48 + 0x00;
+			r50 = r36 + 0x00;
+			b0();
+			r1 = r48 + 0x00;
+			r50 = r36 + 0x00;
+			b0();
+			r1 = r48 + 0x00;
+			r38->t0000.u1 = (struct Eq_n *) r35;
+l40000000000AF3A0:
+			r0.u3->t0000.u1 = (word32) r32;
+			r50 = 0x00 + 2;
+			r51 = r12 + 0x10;
+			r52 = 0x00 + 0x00;
+			b0();
+			r1 = r48 + 0x00;
+			goto l40000000000AF3D0;
+		}
+	}
+	else
+	{
+		r14.u1 = r34.u1->t0000.u1;
+		p07 = 0x01 < r14;
+		p06 = 0x01 >= r14;
+		if (p06)
+			goto l40000000000AF460;
+		p07 = r37 == r14;
+		p06 = r37 != r14;
+		if (!p07)
+			goto l40000000000AF2D0;
+	}
+l40000000000AF460:
+	r51 = r1 + -4300;
+	r52 = 0x00 + 5;
+	r50 = 0x00 + 0x00;
+	r51.u1 = r51.u1->t0000.u1;
+	b0();
+	r1 = r48 + 0x00;
+	r50 = r8 + 0x00;
+	r51 = r33 + 0x00;
+	r52.u1 = r34.u1->t0000.u1;
+	b0();
+	r14.u1 = r34.u1->t0000.u1;
+	r1 = r48 + 0x00;
+	p07 = 0x00 == r14;
+	p06 = 0x00 != r14;
+	if (!p06)
+	{
+		r51 = r1 + -4292;
+		r52 = 0x00 + 5;
+		r50 = 0x00 + 0x00;
+		r51.u1 = r51.u1->t0000.u1;
+		b0();
+		r1 = r48 + 0x00;
+		r36 = r8 + 0x00;
+		r50 = r33 + 0x00;
+		b0();
+		r50 = r36 + 0x00;
+		r51 = r33 + 0x00;
+		r52 = r8 + 0x00;
+		r1 = r48 + 0x00;
+		b0();
+		r1 = r48 + 0x00;
+		b0();
+		r1 = r48 + 0x00;
+		r51 = r33 + 0x00;
+		r50 = r8 + 0x00;
+		b0();
+		r1 = r48 + 0x00;
+		r0.u3->t0000.u1 = (word32) r32;
+		r50 = 0x00 + 2;
+		r51 = r12 + 0x10;
+		r52 = 0x00 + 0x00;
+		b0();
+		r1 = r48 + 0x00;
+		goto l40000000000AF3D0;
+	}
+	goto l40000000000AF3A0;
 }
 
-// 40000000000AF9C0: void reset_signal_handlers()
-void reset_signal_handlers()
+// 40000000000AF640: define trap_handler
+define trap_handler
 {
+	word32 * r32;
+	<anonymous> * b4;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	Eq_n r15 = r1 + 0x00004B44;
+	<anonymous> * r36 = b4;
+	word64 r38 = r1 + 0x00;
+	int32 v12 = (int32) r32;
+	Eq_n r14;
+	r14.u1 = (int64) v12;
+	word32 * r33 = (r14 << 0x02) + 0x00;
+	r15.u1 = r33 + r15;
+	Eq_n v15;
+	v15.u0 = r15.u1->t0000.u0;
+	r15 = r1 + 0x00005EFC;
+	Eq_n p06;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		int32 v17 = (word32) 0x40;
+		int32 v18 = (word32) r32;
+		p06 = v17 < v18;
+		Eq_n p07 = v17 >= v18;
+		word32 * r8;
+		word64 r39;
+		struct Eq_n * r40;
+		if (!p06)
+		{
+			r14.u1 = r15.u1 + r14 *64 2;
+			r14.u1 = r14.u1->t0000.u1;
+			p06 = 0x00 == r14;
+			p07 = 0x00 != r14;
+			if (!p06)
+			{
+				p07 = 0x01 == r14;
+				p06 = 0x01 != r14;
+				if (!p07)
+				{
+					b0();
+					r1 = r38 + 0x00;
+					word32 * r17 = 0x00 + 1;
+					word32 v26 = *r8;
+					word32 * r35 = (word64) v26;
+					word32 * r34 = r8;
+					r14 = r1 + 0x0000611C;
+					word64 r16 = r1 + 7624;
+					*r17 = (word32) r16;
+					r33 += r14;
+					r14 = r1 + 7672;
+					Eq_n v30;
+					v30.u0 = r14.u1->t0000.u0;
+					r15.u1 = (word64) v30;
+					word32 v31 = *r33;
+					r14.u1 = (word64) v31;
+					r14.u0 = (word32) r14 + 1;
+					word32 v32 = (word32) 0x00;
+					word32 v33 = (word32) r15;
+					p06 = v32 == v33;
+					p07 = v32 != v33;
+					r14.u1->t0000.u0 = (word32) (word32) r33;
+					if (!p06)
+					{
+						r14 = r1 + 8388;
+						r15 = r1 + -9804;
+						r14.u1 = r14.u1->t0000.u1;
+						p06 = 0x00 == r14;
+						p07 = 0x00 != r14;
+						if (!p06)
+						{
+							r15.u1 = r15.u1->t0000.u1;
+							p07 = r15 == r14;
+							p06 = r15 != r14;
+							if (p07)
+							{
+								r14 = r1 + 9132;
+								r39 = r1 + 0x00006564;
+								r40 = 0x00 + 1;
+								*r32 = (word32) r14;
+								b0();
+								__break();
+								free_trap_strings();
+								return;
+							}
+						}
+						b0();
+						r1 = r38 + 0x00;
+					}
+					*r35 = (word32) r34;
+					goto l40000000000AF7E0;
+				}
+			}
+		}
+		r40 = r1 + -4276;
+		word64 r41 = 0x00 + 5;
+		r39 = 0x00 + 0x00;
+		r40 = r40->ptr0000;
+		b0();
+		r1 = r38 + 0x00;
+		r39 = r8;
+		r40 = (struct Eq_n *) r32;
+		b0();
+		r1 = r38 + 0x00;
+		ar.pfs = r37;
+		b0 = r36;
+	}
+	else
+	{
+l40000000000AF7E0:
+		ar.pfs = r37;
+		b0 = r36;
+	}
 }
 
-// 40000000000AFA00: void restore_original_signals()
-void restore_original_signals()
+// 40000000000AF8C0: define free_trap_strings
+// Called from:
+//      trap_handler
+define free_trap_strings
 {
+	word64 LC;
+	<anonymous> * b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word32 * r32 = r1 + 0x00004B44;
+	<anonymous> * r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r33 = 0x00 + 0x00;
+	word64 r37 = LC;
+	LC = 0x43;
+	<anonymous> * b0;
+	ui64 r14;
+	while (true)
+	{
+		word64 r38 = r33 + 0x00;
+		word64 r39 = 0x00 + 0x00;
+		++r33;
+		b0();
+		word32 v17 = *r32;
+		r14 = (word64) v17;
+		r1 = r36 + 0x00;
+		r14 &= 0xFE;
+		word64 r4;
+		*r32 = (word32) r4;
+		++r32;
+		if (LC == 0x00)
+			break;
+		--LC;
+	}
+	r14 = r1 + 0x00005EFC;
+	ar.pfs = r35;
+	LC = r37;
+	ui64 r17 = r14 + 0x0218;
+	ui64 r16 = r14 + 0x0210;
+	ui64 r15 = r14 + 0x0208;
+	b0 = r34;
+	ui64 * r0;
+	*r0 = r14;
+	*r0 = r17;
+	*r0 = r16;
+	*r0 = r15;
 }
 
-// 40000000000AFA40: void maybe_call_trap_handler()
-void maybe_call_trap_handler()
+// 40000000000AF9C0: define reset_signal_handlers
+define reset_signal_handlers
 {
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	struct Eq_n * r32 = r1 + -4388;
+	r32 = r32->ptr0000;
+	word64 r2 = ar.pfs;
+	fn40000000000ACF00();
 }
 
-// 40000000000AFC00: void signal_is_trapped()
-void signal_is_trapped()
+// 40000000000AFA00: define restore_original_signals
+define restore_original_signals
 {
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	struct Eq_n * r32 = r1 + -4364;
+	r32 = r32->ptr0000;
+	word64 r2 = ar.pfs;
+	fn40000000000ACF00();
 }
 
-// 40000000000AFC40: void signal_is_special()
-void signal_is_special()
+// 40000000000AFA40: define maybe_call_trap_handler
+define maybe_call_trap_handler
 {
+	word64 r32;
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word32 * r14 = r1 + 0x00004B44;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	int32 v12 = (int32) r32;
+	int64 r15 = (int64) v12;
+	r14 += r15;
+	word32 v14 = *r14;
+	r14 = (word64) v14;
+	Eq_n p06;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p06 && !p06)
+	{
+		word32 v18 = (word32) 0x02;
+		word32 v19 = (word32) r32;
+		p06 = v18 == v19;
+		Eq_n p07 = v18 != v19;
+		if (!p06)
+		{
+			int32 v21 = (word32) 0x02;
+			int32 v22 = (word32) r32;
+			p06 = v21 < v22;
+			p07 = v21 >= v22;
+			if (p07)
+			{
+				word32 v25 = (word32) 0x00;
+				word32 v26 = (word32) r32;
+				p06 = v25 == v26;
+				p07 = v25 != v26;
+				if (!p07)
+				{
+					b0();
+					r8 = 0x00 + 1;
+					r1 = r35 + 0x00;
+					ar.pfs = r34;
+					b0 = r33;
+					return;
+				}
+			}
+			else
+			{
+				word32 v23 = (word32) 0x41;
+				word32 v24 = (word32) r32;
+				p06 = v23 == v24;
+				p07 = v23 != v24;
+				if (p06)
+				{
+					b0();
+					r8 = 0x00 + 1;
+					r1 = r35 + 0x00;
+					ar.pfs = r34;
+					b0 = r33;
+					return;
+				}
+				word32 v27 = (word32) 66;
+				word32 v28 = (word32) r32;
+				p06 = v27 == v28;
+				p07 = v27 != v28;
+				if (p06)
+				{
+					b0();
+					r8 = 0x00 + 1;
+					r1 = r35 + 0x00;
+					ar.pfs = r34;
+					b0 = r33;
+					return;
+				}
+			}
+			word64 r36 = r32 + 0x00;
+			b0();
+			r8 = 0x00 + 1;
+			r1 = r35 + 0x00;
+			ar.pfs = r34;
+			b0 = r33;
+		}
+		else
+		{
+			b0();
+			r8 = 0x00 + 1;
+			r1 = r35 + 0x00;
+			ar.pfs = r34;
+			b0 = r33;
+		}
+	}
+	else
+	{
+		r8 = 0x00 + 0x00;
+		ar.pfs = r34;
+		b0 = r33;
+	}
 }
 
-// 40000000000AFC80: void signal_is_ignored()
-void signal_is_ignored()
+// 40000000000AFC00: define signal_is_trapped
+define signal_is_trapped
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r8 &= 0x01;
 }
 
-// 40000000000AFCC0: void signal_is_hard_ignored()
-void signal_is_hard_ignored()
+// 40000000000AFC40: define signal_is_special
+define signal_is_special
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r8 &= 0x04;
 }
 
-// 40000000000AFD00: void set_signal_ignored()
-void set_signal_ignored()
+// 40000000000AFC80: define signal_is_ignored
+define signal_is_ignored
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r8 &= 0x40;
 }
 
-// 40000000000AFD80: void signal_in_progress()
-void signal_in_progress()
+// 40000000000AFCC0: define signal_is_hard_ignored
+define signal_is_hard_ignored
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r8 &= 0x02;
 }
 
-// 40000000000AFDC0: void buffered_ungetchar()
-void buffered_ungetchar()
+// 40000000000AFD00: define set_signal_ignored
+define set_signal_ignored
 {
+	int64 r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	int64 * r16 = r1 + 0x00005CF4;
+	r14 += r32;
+	r32 = r16 + r32;
+	r16 = 0x00 + 1;
+	word32 v9 = *r14;
+	word32 * r15 = (word64) v9;
+	*r16 = r32;
+	r15 |= 0x02;
+	*r15 = (word32) r14;
 }
 
-// 40000000000AFE80: void buffered_getchar()
-void buffered_getchar()
+// 40000000000AFD80: define signal_in_progress
+define signal_in_progress
 {
+	word32 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r14 = r1 + 0x00004B44;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r32 = (r32 << 0x02) + r14;
+	word32 v8 = *r32;
+	ui64 r8 = (word64) v8;
+	r8 &= 0x10;
 }
 
-// 40000000000B0380: void getc_with_restart()
-void getc_with_restart()
+// 40000000000AFDC0: define buffered_ungetchar
+define buffered_ungetchar
 {
+	word64 r96;
+	word64 r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r14 = r1 + 7636;
+	word64 r8 = r32 + 0x00;
+	word32 v8 = (word32) ~0x00;
+	word32 v9 = (word32) r32;
+	Eq_n p06 = v8 == v9;
+	Eq_n p07 = v8 != v9;
+	if (p06)
+		return;
+	Eq_n r15;
+	r15.u1 = r14.u1->t0000.u1;
+	r14 = r1 + 22532;
+	r14.u0 = (word32) r14 + 16;
+	Eq_n v14;
+	v14.u0 = r14.u1->t0000.u0;
+	r14.u1 = (word64) v14;
+	int32 v15 = (int32) r14;
+	r14.u1 = (int64) v15;
+	r14.u1 = r15.u1 + r14 *64 2;
+	r14.u1 = r14.u1->t0000.u1;
+	union Eq_n * r17 = (union Eq_n *) ((word32) r14 + 8);
+	r14.u0 = (word32) r14 + 40;
+	r15.u1 = r14.u1->t0000.u1;
+	p06 = 0x00 == r15;
+	p07 = 0x00 != r15;
+	word64 r16 = (word64) ((word32) r15 - 1);
+	if (p07)
+		r15.u1 = r17->u1;
+	Eq_n p32 = 0x00 == r96;
+	Eq_n p01 = 0x00 != r96;
+	if (p01)
+		__break();
+	word64 p04;
+	if (p04)
+		__break();
+	__break();
+	__break();
+	buffered_getchar();
 }
 
-// 40000000000B0700: void ungetc_with_restart()
-void ungetc_with_restart()
+// 40000000000AFE80: define buffered_getchar
+// Called from:
+//      buffered_ungetchar
+define buffered_getchar
 {
+	<anonymous> * b0;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r41 = ar.pfs;
+	Eq_n r34 = r1 + 7676;
+	<anonymous> * r40 = b0;
+	word64 r42 = r1 + 0x00;
+	Eq_n r14 = __ld_acquire<word32>(r34);
+	word32 v12 = (word32) 0x00;
+	word32 v13 = (word32) r14;
+	Eq_n p06 = v12 == v13;
+	Eq_n p07 = v12 != v13;
+	Eq_n r43;
+	if (p07)
+	{
+		r43 = __ld_acquire<word32>(r34);
+		b0();
+		r1 = r42 + 0x00;
+	}
+	r14 = r1 + 7636;
+	ar.pfs = r41;
+	Eq_n r15;
+	r15.u2 = *r14.u2;
+	r14 = r1 + 22532;
+	b0 = r40;
+	r14.u1 = (word32) r14 + 16;
+	Eq_n v17;
+	v17.u1 = r14.u3->t0000.u1;
+	r14.u2 = (word64) v17;
+	int32 v18 = (int32) r14;
+	r14.u2 = (int64) v18;
+	r14.u2 = r15.u2 + r14;
+	Eq_n r32;
+	r32.u2 = *r14.u2;
+	Eq_n r33;
+	r33.u1 = (word32) r32 + 40;
+	Eq_n r35;
+	r35.u1 = (word32) r32 + 24;
+	r14.u2 = *r33.u2;
+	r15.u2 = *r35.u2;
+	p06 = r15 == r14;
+	p07 = r15 != r14;
+	union Eq_n * r8;
+	if (!p06)
+	{
+		p07 = 0x00 == r15;
+		p06 = 0x00 != r15;
+		r15.u2 = &r14.u3->ptr0001;
+		if (!p07)
+		{
+			r32.u1 = (word32) r32 + 8;
+			Eq_n r16;
+			r16.u1 = *r32.u2;
+			r14.u2 = r14 + r16;
+			Eq_n v27;
+			v27.u0 = r14.u3->t0000.u0;
+			r8 = (word64) v27;
+			*r15.u2 = (word64) r33;
+			return;
+		}
+	}
+	r14 = __ld_acquire<word32>(r34);
+	word32 * r37 = (word32 *) ((word32) r32 + 32);
+	word32 v24 = (word32) 0x00;
+	word32 v25 = (word32) r14;
+	p06 = v24 == v25;
+	p07 = v24 != v25;
+	Eq_n r44;
+	Eq_n r45;
+	union Eq_n * r36;
+	if (p07)
+	{
+		r14 = r1 + 7676;
+		r37 = (word32 *) ((word32) r32 + 32);
+		r43 = __ld_acquire<word32>(r14);
+		b0();
+		word32 v32 = *r37;
+		r14.u2 = (word64) v32;
+		r1 = r42 + 0x00;
+		r14 &= 0x14;
+		word32 v33 = (word32) 0x10;
+		word32 v34 = (word32) r14;
+		p07 = v33 == v34;
+		p06 = v33 != v34;
+		if (p06)
+		{
+l40000000000AFFE0:
+			r34.u1 = (word32) r32 + 8;
+			r14.u1 = (word32) r32 + 16;
+			Eq_n v35;
+			v35.u0 = r32.u3->t0000.u1;
+			r43.u2 = (word64) v35;
+			r44.u0 = *r34.u2;
+			r45.u2 = *r14.u2;
+			b0();
+			r36 = (union Eq_n *) &r8->u0;
+			r1 = r42 + 0x00;
+			p06 = null < r36;
+			p07 = null >= r36;
+			if (p07)
+				goto l40000000000B0200;
+			goto l40000000000B0030;
+		}
+	}
+	else
+	{
+		word32 v29 = *r37;
+		r14.u2 = (word64) v29;
+		r14 &= 0x14;
+		word32 v30 = (word32) 0x10;
+		word32 v31 = (word32) r14;
+		p07 = v30 == v31;
+		p06 = v30 != v31;
+		if (!p07)
+			goto l40000000000AFFE0;
+	}
+	r34.u2 = r32.u2;
+	r44 = 0x00 + 0x00;
+	r45 = 0x00 + 1;
+	Eq_n r38;
+	r38.u1 = (word32) r32 + 16;
+	Eq_n v40;
+	v40.u1 = r34.u3->t0000.u1;
+	r43.u2 = (word64) v40;
+	r34.u1 = (word32) r34 + 8;
+	b0();
+	r1 = r42 + 0x00;
+	word64 r39 = &r8->u0;
+	Eq_n v42;
+	v42.u0 = r32.u3->t0000.u1;
+	r43.u2 = (word64) v42;
+	r44.u0 = *r34.u2;
+	r45.u2 = *r38.u2;
+	b0();
+	p07 = null < r8;
+	p06 = null >= r8;
+	r36 = (union Eq_n *) &r8->u0;
+	r1 = r42 + 0x00;
+	r44 = 0x00 + 0x00;
+	r45 = 0x00 + 1;
+	union Eq_n * r0;
+	if (!p06)
+	{
+		Eq_n v46;
+		v46.u0 = r32.u3->t0000.u1;
+		r43.u2 = (word64) v46;
+		b0();
+		r8 = r39 - r8;
+		r1 = r42 + 0x00;
+		p07 = r36 < r8;
+		p06 = r36 >= r8;
+		if (!p06)
+		{
+			Eq_n v47;
+			v47.u0 = r32.u3->t0000.u1;
+			r43.u2 = (word64) v47;
+			r44 = r39 + 0x00;
+			r45 = 0x00 + 0x00;
+			b0();
+			word32 v48 = *r37;
+			r14.u2 = (word64) v48;
+			r15 = 0x00 + 1;
+			r1 = r42 + 0x00;
+			r45 = 0x00 + 1;
+			Eq_n v49;
+			v49.u0 = r32.u3->t0000.u1;
+			r43.u2 = (word64) v49;
+			r14 |= 0x04;
+			*r15.u2 = (word64) r38;
+			r44.u0 = *r34.u2;
+			r14.u3->t0000.u1 = (word32) (word32) r37;
+			b0();
+			r36 = (union Eq_n *) &r8->u0;
+			r1 = r42 + 0x00;
+			p06 = null < r36;
+			p07 = null >= r36;
+			if (!p06)
+				goto l40000000000B0200;
+		}
+l40000000000B0030:
+		r14.u2 = *r34.u2;
+		r0->u2 = (word64 *) r33;
+		r36->u2 = (word64 *) r35;
+		ar.pfs = r41;
+		b0 = r40;
+		Eq_n v44;
+		v44.u0 = r14.u3->t0000.u0;
+		r8 = (word64) v44;
+		r14 = 0x00 + 1;
+		*r14.u2 = (word64) r33;
+	}
+	else
+	{
+l40000000000B0200:
+		r14.u2 = *r34.u2;
+		r0->u2 = (word64 *) r35;
+		p07 = null == r36;
+		p06 = null != r36;
+		r8 = 0x00 + -1;
+		ar.pfs = r41;
+		b0 = r40;
+		r0->u0 = (byte) (byte) r14;
+		word32 v45 = *r37;
+		r14.u2 = (word64) v45;
+		if (p07)
+			r14 |= 0x01;
+	}
 }
 
-// 40000000000B0780: void set_bash_input_fd()
-void set_bash_input_fd()
+// 40000000000B0380: define getc_with_restart
+define getc_with_restart
 {
+	<anonymous> * b6;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r39 = ar.pfs;
+	Eq_n r34 = r1 + 7676;
+	<anonymous> * r38 = b6;
+	word64 r40 = r1 + 0x00;
+	word32 * r37 = r1 + 0x00001DCC;
+	word32 * r35 = r1 + 0x00001DD0;
+	Eq_n r36;
+	r36.u2 = r34.u2;
+	Eq_n r14 = __ld_acquire<word32>(r34);
+	word32 v15 = (word32) 0x00;
+	word32 v16 = (word32) r14;
+	Eq_n p06 = v15 == v16;
+	Eq_n p07 = v15 != v16;
+	Eq_n r41;
+	<anonymous> * b0;
+	if (p07)
+	{
+		r41 = __ld_acquire<word32>(r34);
+		b0();
+		r1 = r40 + 0x00;
+	}
+	word32 v19 = *r35;
+	Eq_n r15;
+	r15.u1 = (word64) v19;
+	word32 v21 = *r37;
+	r14.u2 = (word64) v21;
+	word32 v22 = (word32) r15;
+	word32 v23 = (word32) r14;
+	p06 = v22 == v23;
+	p07 = v22 != v23;
+	if (!p06)
+	{
+		word32 v26 = (word32) 0x00;
+		word32 v27 = (word32) r15;
+		p06 = v26 == v27;
+		p07 = v26 != v27;
+		if (!p06)
+		{
+			if (p07)
+				r15.u1 = &r14.u3->ptr0001;
+			__break();
+		}
+	}
+	word64 r32;
+	word32 * r8;
+	word64 r43;
+	word32 * r42;
+	word32 * r33;
+	do
+	{
+		r14 = __ld_acquire<word32>(r34);
+		r41 = r32 + 0x00;
+		word32 v29 = (word32) 0x00;
+		word32 v30 = (word32) r14;
+		p06 = v29 == v30;
+		p07 = v29 != v30;
+		if (p07)
+		{
+			r41 = __ld_acquire<word32>(r36);
+			b0();
+			r1 = r40 + 0x00;
+			r41 = r32 + 0x00;
+			b0();
+			r1 = r40 + 0x00;
+			r41.u2 = r8;
+			r43 = 0x00 + 0x0080;
+			r42 = r1 + 0x00004C54;
+			b0();
+			r1 = r40 + 0x00;
+			r33 = r8;
+			*r8 = (word32) r35;
+			int32 v37 = (word32) 0x00;
+			int32 v38 = (word32) r8;
+			p06 = v37 < v38;
+			p07 = v37 >= v38;
+			if (p07)
+				goto l40000000000B0520;
+l40000000000B05F0:
+			r15 = 0x00 + 1;
+			r14 = 0x00 + 0x00;
+			r15.u1->u1 = (word32) (word32) r37;
+			r15 = r1 + 0x00004C54;
+			int32 v39 = (int32) r14;
+			r14.u2 = (int64) v39;
+			r14.u2 = r14 + r15;
+			Eq_n v40;
+			v40.u0 = r14.u3->t0000.u0;
+			r8 = (word64) v40;
+			ar.pfs = r39;
+			b0 = r38;
+			return;
+		}
+		b0();
+		r1 = r40 + 0x00;
+		r41.u2 = r8;
+		r43 = 0x00 + 0x0080;
+		r42 = r1 + 0x00004C54;
+		b0();
+		r33 = r8;
+		r1 = r40 + 0x00;
+		*r8 = (word32) r35;
+		int32 v35 = (word32) 0x00;
+		int32 v36 = (word32) r8;
+		p06 = v35 < v36;
+		p07 = v35 >= v36;
+		if (p06)
+			goto l40000000000B05F0;
+l40000000000B0520:
+		b0();
+		word32 v41 = *r8;
+		r14.u2 = (word64) v41;
+		r1 = r40 + 0x00;
+		word32 v42 = (word32) 0x00;
+		word32 v43 = (word32) r33;
+		Eq_n p08 = v42 == v43;
+		Eq_n p09 = v42 != v43;
+		word32 v46 = (word32) 11;
+		word32 v47 = (word32) r14;
+		p07 = v46 == v47;
+		p06 = v46 != v47;
+		if (!p07)
+			;
+		r41 = r32 + 0x00;
+		b0();
+		r1 = r40 + 0x00;
+		r41.u2 = r8;
+		b0();
+		r1 = r40 + 0x00;
+		int32 v49 = (word32) r8;
+		int32 v50 = (word32) 0x00;
+		p07 = v49 < v50;
+		p06 = v49 >= v50;
+	} while (!p07);
+	r42 = r1 + 0x007C;
+	r43 = 0x00 + 5;
+	r41 = 0x00 + 0x00;
+	r42 = (word32 *) *r42;
+	b0();
+	r1 = r40 + 0x00;
+	r33 = r8;
+	r41 = r32 + 0x00;
+	b0();
+	r1 = r40 + 0x00;
+	r42 = r8;
+	r41.u2 = r33;
+	b0();
+	r8 = 0x00 + -1;
+	r1 = r40 + 0x00;
+	ar.pfs = r39;
+	b0 = r38;
 }
 
-// 40000000000B0840: void fd_is_bash_input()
-void fd_is_bash_input()
+// 40000000000B0700: define ungetc_with_restart
+define ungetc_with_restart
 {
+	word64 r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r15 = r1 + 0x00001DCC;
+	word32 v7 = (word32) ~0x00;
+	word32 v8 = (word32) r32;
+	Eq_n p06 = v7 == v8;
+	Eq_n p07 = v7 != v8;
+	word64 r8 = r32 + 0x00;
+	word32 v12 = *r15;
+	int64 r14 = (word64) v12;
+	if (p07)
+	{
+		word64 r17 = r1 + 0x00004C54;
+	}
+	word32 * r16 = r14 + ~0x00;
+	word32 v16 = (word32) 0x00;
+	word32 v17 = (word32) r14;
+	Eq_n p08 = v16 == v17;
+	Eq_n p09 = v16 != v17;
+	if (!p08)
+	{
+		int32 v20 = (int32) r16;
+		r14 = (int64) v20;
+		if (p07)
+			*r16 = (word32) r15;
+		byte v22 = (byte) 0x00;
+		word64 r68 = (word64) v22;
+	}
+	else
+		r8 = 0x00 + -1;
 }
 
-// 40000000000B0940: void fd_to_buffered_stream()
-void fd_to_buffered_stream()
+// 40000000000B0780: define set_bash_input_fd
+define set_bash_input_fd
 {
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r14 = r1 + 22532;
+	word32 v6 = *r14;
+	word64 r15 = (word64) v6;
+	word32 v8 = (word32) 0x04;
+	word32 v9 = (word32) r15;
+	Eq_n p07 = v8 == v9;
+	Eq_n p06 = v8 != v9;
+	if (p07)
+		r14 += 4;
 }
 
-// 40000000000B0C00: void open_buffered_stream()
-void open_buffered_stream()
+// 40000000000B0840: define fd_is_bash_input
+define fd_is_bash_input
 {
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r14 = r1 + 22532;
+	word64 r8 = 0x00 + 0x00;
+	word32 v7 = *r14;
+	word64 r15 = (word64) v7;
+	word32 v9 = (word32) 0x04;
+	word32 v10 = (word32) r15;
+	Eq_n p07 = v9 == v10;
+	Eq_n p06 = v9 != v10;
+	word64 r32;
+	if (p07)
+	{
+		r14 += 4;
+		word32 v17 = *r14;
+		r14 = (word64) v17;
+		word32 v19 = (word32) r32;
+		word32 v20 = (word32) r14;
+		p06 = v19 == v20;
+		p07 = v19 != v20;
+		r14 = r1 + 6512;
+		if (p06)
+			goto l40000000000B08D0;
+		word32 v24 = *r14;
+		r14 = (word64) v24;
+		word32 v25 = (word32) 0x00;
+		word32 v26 = (word32) r14;
+		p06 = v25 == v26;
+		p07 = v25 != v26;
+		if (p07)
+			return;
+	}
+	else
+	{
+		r14 = r1 + 6512;
+		word32 v13 = *r14;
+		r14 = (word64) v13;
+		word32 v14 = (word32) 0x00;
+		word32 v15 = (word32) r14;
+		p06 = v14 == v15;
+		p07 = v14 != v15;
+		if (p07)
+			return;
+	}
+	r14 = r1 + 5636;
+	word32 v21 = *r14;
+	r14 = (word64) v21;
+	word32 v22 = (word32) r32;
+	word32 v23 = (word32) r14;
+	p07 = v22 == v23;
+	p06 = v22 != v23;
+	if (p06)
+		return;
+l40000000000B08D0:
+	r8 = 0x00 + 1;
 }
 
-// 40000000000B0CC0: void free_buffered_stream()
-void free_buffered_stream()
+// 40000000000B0940: define fd_to_buffered_stream
+// Called from:
+//      open_buffered_stream
+define fd_to_buffered_stream
 {
+	int64 r8;
+	word64 r32;
+	<anonymous> * b4;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	word64 r12 = r12 + ~0x8F;
+	word64 r38 = r1 + 0x00;
+	<anonymous> * r36 = b4;
+	word64 r40 = r32 + 0x00;
+	word64 r41 = r12 + 0x10;
+	word64 r39 = 0x00 + 1;
+	<anonymous> * b0;
+	b0();
+	int32 v17 = (word32) r8;
+	int32 v18 = (word32) 0x00;
+	Eq_n p07 = v17 < v18;
+	Eq_n p06 = v17 >= v18;
+	r1 = r38 + 0x00;
+	r40 = 0x00 + 0x00;
+	r41 = 0x00 + 1;
+	r39 = r32 + 0x00;
+	if (!p07)
+	{
+		b0();
+		p06 = r8 < 0x00;
+		p07 = r8 >= 0x00;
+		word64 r14 = r12 + 0x40;
+		r1 = r38 + 0x00;
+		if (p06)
+		{
+			word64 r34 = 0x00 + 1;
+		}
+		r1 == 0x00;
+		Eq_n p11 = r1 != 0x00;
+		word64 p01;
+		if (p01)
+			__break();
+		__break();
+	}
+	else
+	{
+		r39 = r32 + 0x00;
+		word64 r33 = 0x00 + 0x00;
+		b0();
+		r8 = r33 + 0x00;
+		r1 = r38 + 0x00;
+		ar.pfs = r37;
+		b0 = r36;
+		r12 += 0x90;
+	}
 }
 
-// 40000000000B0D80: void duplicate_buffered_stream()
-void duplicate_buffered_stream()
+// 40000000000B0C00: define open_buffered_stream
+define open_buffered_stream
 {
+	word64 r8;
+	word64 r32;
+	word64 r1;
+	<anonymous> * b1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r36 = r32 + 0x00;
+	word64 r37 = 0x00 + 0x00;
+	<anonymous> * b0;
+	b0();
+	r1 = r35 + 0x00;
+	int32 v15 = (word32) r8;
+	int32 v16 = (word32) 0x00;
+	Eq_n p06 = v15 < v16;
+	Eq_n p07 = v15 >= v16;
+	r32 = r8 + 0x00;
+	b0 = r33;
+	if (!p06)
+	{
+		ar.pfs = r34;
+		word64 r2 = ar.pfs;
+		fd_to_buffered_stream();
+	}
+	else
+	{
+		r8 = 0x00 + 0x00;
+		ar.pfs = r34;
+		b0 = r33;
+	}
 }
 
-// 40000000000B1100: void close_buffered_stream()
-void close_buffered_stream()
+// 40000000000B0CC0: define free_buffered_stream
+define free_buffered_stream
 {
+	word64 r1;
+	<anonymous> * b2;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	Eq_n r14 = r32 + 0x00;
+	<anonymous> * r34 = b2;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word64 r36 = r1 + 0x00;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		Eq_n v14;
+		v14.u0 = r14.u1->t0000.u0;
+		int64 r33 = (word64) v14;
+		r14.u0 = (word32) r14 + 8;
+		Eq_n r37;
+		r37.u1 = r14.u1->t0000.u1;
+		p06 = 0x00 == r37;
+		p07 = 0x00 != r37;
+		if (!p06)
+		{
+			b0();
+			r1 = r36 + 0x00;
+		}
+		r37 = r32 + 0x00;
+		int32 v18 = (int32) r33;
+		r33 = (int64) v18;
+		b0();
+		r1 = r36 + 0x00;
+		r14 = r1 + 7636;
+		r14.u1 = r14.u1->t0000.u1;
+		r33 = r14.u1 + r33 *64 2;
+		int64 * r0;
+		*r0 = r33;
+	}
+	ar.pfs = r35;
+	b0 = r34;
 }
 
-// 40000000000B11C0: void close_buffered_fd()
-void close_buffered_fd()
+// 40000000000B0D80: define duplicate_buffered_stream
+define duplicate_buffered_stream
 {
+	word64 r1;
+	word64 b0;
+	word64 r32;
+	word64 r33;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r41 = ar.pfs;
+	word32 v8 = (word32) r33;
+	word32 v9 = (word32) r32;
+	Eq_n p06 = v8 == v9;
+	Eq_n p07 = v8 != v9;
+	word64 r40 = b0;
+	word64 r14 = r1 + 7644;
+	word64 r42 = r1 + 0x00;
+	if (p06)
+		r33 = 0x00 + 0x00;
+	word64 p04;
+	if (p04)
+		__break();
+	word64 p24;
+	if (p24)
+		__break();
 }
 
-// 40000000000B1300: void set_buffered_stream()
-void set_buffered_stream()
+// 40000000000B1100: define close_buffered_stream
+// Called from:
+//      close_buffered_fd
+define close_buffered_stream
 {
+	word64 r1;
+	word64 b2;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word64 r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r37 = r32 + 0x00;
+	if (p06)
+	{
+		word64 r8 = 0x00 + 0x00;
+	}
+	__break();
 }
 
-// 40000000000B1340: void sync_buffered_stream()
-void sync_buffered_stream()
+// 40000000000B11C0: define close_buffered_fd
+define close_buffered_fd
 {
+	Eq_n r32;
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	Eq_n r14 = r1 + 7644;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	int32 v12 = (word32) r32;
+	int32 v13 = (word32) 0x00;
+	Eq_n p07 = v12 < v13;
+	Eq_n p06 = v12 >= v13;
+	union Eq_n * r15;
+	<anonymous> * b0;
+	Eq_n r8;
+	if (!p07)
+	{
+		Eq_n v16;
+		v16.u0 = r14.u1->t0000.u0;
+		r14.u1 = (word64) v16;
+		word64 r36 = (word64) r32;
+		ar.pfs = r34;
+		int32 v18 = (int32) r32;
+		r15 = (int64) v18;
+		int32 v20 = (word32) r32;
+		int32 v21 = (word32) r14;
+		p07 = v20 < v21;
+		p06 = v20 >= v21;
+		r14 = r1 + 7636;
+		b0 = r33;
+		if (!p06)
+		{
+			r14.u1 = r14.u1->t0000.u1;
+			r15 = (union Eq_n *) (r14.u1 + r15 *64 2);
+			p06 = 0x00 == r14;
+			p07 = 0x00 != r14;
+			if (!p06)
+			{
+				r32.u0 = r15->u0;
+				p07 = 0x00 == r32;
+				p06 = 0x00 != r32;
+				if (!p07)
+				{
+					word64 r2 = ar.pfs;
+					close_buffered_stream();
+					return;
+				}
+			}
+		}
+		b0();
+		r14.u1 = r8.u1;
+		r1 = r35 + 0x00;
+		ar.pfs = r34;
+		r8.u1 = &r14.u1->t0000.u0;
+		b0 = r33;
+	}
+	else
+	{
+		b0();
+		r14 = 0x00 + -1;
+		r15 = 0x00 + 9;
+		r1 = r35 + 0x00;
+		ar.pfs = r34;
+		r15->u1 = (word32) (word32) r8;
+		b0 = r33;
+		r8.u1 = &r14.u1->t0000.u0;
+	}
 }
 
-// 40000000000B1480: void save_bash_input()
-void save_bash_input()
+// 40000000000B1300: define set_buffered_stream
+define set_buffered_stream
 {
+	word64 * r32;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	struct Eq_n * r14 = r1 + 7636;
+	int32 v7 = (int32) r32;
+	r32 = (int64) v7;
+	r14 = r14->ptr0000;
+	r32 = (word64 *) (r14 + r32);
+	word64 r8 = *r32;
+	word64 ** r33;
+	*r33 = r32;
 }
 
-// 40000000000B1800: void check_bash_input()
-void check_bash_input()
+// 40000000000B1340: define sync_buffered_stream
+define sync_buffered_stream
 {
+	union Eq_n * r32;
+	<anonymous> * b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	Eq_n r14 = r1 + 7636;
+	<anonymous> * r35 = b3;
+	word64 r37 = r1 + 0x00;
+	int32 v12 = (int32) r32;
+	r32 = (int64) v12;
+	r14.u1 = r14.u1->t0000.u1;
+	word64 r8 = 0x00 + 0x00;
+	r32 = (union Eq_n *) (r14.u1 + r32 *64 2);
+	Eq_n p06 = 0x00 == r14;
+	Eq_n p07 = 0x00 != r14;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		r14.u1 = r32->u1;
+		word64 * r33 = (word64 *) ((word32) r14 + 24);
+		word64 * r34 = (word64 *) ((word32) r14 + 40);
+		p06 = 0x00 == r14;
+		p07 = 0x00 != r14;
+		if (!p06)
+		{
+			word64 r39 = *r33;
+			word64 r15 = *r34;
+			r39 = r15 - r39;
+			p06 = 0x00 == r39;
+			p07 = 0x00 != r39;
+			word64 ** r0;
+			if (p07)
+			{
+				Eq_n v22;
+				v22.u0 = r14.u1->t0000.u0;
+				word64 r38 = (word64) v22;
+				r39 -= 0x00;
+				word64 r40 = 0x00 + 1;
+				b0();
+				r1 = r37 + 0x00;
+				*r0 = r34;
+				*r0 = r33;
+				r8 = 0x00 + 0x00;
+			}
+			else
+			{
+				*r0 = r34;
+				*r0 = r33;
+			}
+			ar.pfs = r36;
+			b0 = r35;
+			return;
+		}
+	}
+	r8 = 0x00 + -1;
+	ar.pfs = r36;
+	b0 = r35;
 }
 
-// 40000000000B19C0: void with_input_from_buffered_stream()
-void with_input_from_buffered_stream()
+// 40000000000B1480: define save_bash_input
+define save_bash_input
 {
+	word32 * r33;
+	word64 r32;
+	word64 b5;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	union Eq_n * r35 = r1 + 7636;
+	word64 r37 = b5;
+	word64 r39 = r1 + 0x00;
+	word32 * r40 = r32 + 0x00;
+	int32 v13 = (int32) r32;
+	Eq_n r14;
+	r14.u1 = (int64) v13;
+	Eq_n r34;
+	r34.u1 = r35->u1;
+	r14.u1 = r34.u1 + r14 *64 2;
+	r14.u1 = r14.u1->t0000.u1;
+	Eq_n p06 = 0x00 == r14;
+	Eq_n p07 = 0x00 != r14;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		b0();
+		r1 = r39 + 0x00;
+	}
+	word32 v20 = (word32) ~0x00;
+	word32 v21 = (word32) r33;
+	p07 = v20 == v21;
+	p06 = v20 != v21;
+	struct Eq_n * r41;
+	word64 r42;
+	word64 r8;
+	if (!p07)
+	{
+		int32 v22 = (int32) r33;
+		word32 ** r36 = (int64) v22;
+		r41 = r1 + 0x008C;
+		r42 = 0x00 + 5;
+		r40 = 0x00 + 0x00;
+		r36 = (r36 << 0x03) + 0x00;
+		r34.u1 = r36 + r34;
+		r14.u1 = r34.u1->t0000.u1;
+		p06 = 0x00 == r14;
+		p07 = 0x00 != r14;
+		if (!p06)
+		{
+			r41 = r41->ptr0000;
+			b0();
+			r1 = r39 + 0x00;
+			r40 = r8 + 0x00;
+			r41 = (struct Eq_n *) r33;
+			b0();
+			r14.u1 = r35->u1;
+			r1 = r39 + 0x00;
+			r36 += r14;
+			r40 = (word32 *) *r36;
+			b0();
+			r1 = r39 + 0x00;
+		}
+		r14 = r1 + 22532;
+		r40 = r33;
+		r41 = 0x00 + 2;
+		r42 = 0x00 + 1;
+		Eq_n v29;
+		v29.u0 = r14.u1->t0000.u0;
+		word32 * r15 = (word64) v29;
+		word32 v31 = (word32) 0x04;
+		word32 v32 = (word32) r15;
+		p07 = v31 == v32;
+		p06 = v31 != v32;
+		if (p07)
+		{
+			r14.u0 = (word32) r14 + 16;
+			r40 = r33;
+			*r33 = (word32) r14;
+			b0();
+			r1 = r39 + 0x00;
+			r40 = r32 + 0x00;
+			b0();
+			r1 = r39 + 0x00;
+			r40 = r33;
+			r41 = 0x00 + 2;
+			r42 = 0x00 + 1;
+			r14 = r1 + 5636;
+			Eq_n v38;
+			v38.u0 = r14.u1->t0000.u0;
+			r15 = (word64) v38;
+			word32 v39 = (word32) r32;
+			word32 v40 = (word32) r15;
+			p07 = v39 == v40;
+			p06 = v39 != v40;
+			if (p07)
+				*r33 = (word32) r14;
+			__break();
+		}
+		r14 = r1 + 9136;
+		Eq_n v34;
+		v34.u0 = r14.u1->t0000.u0;
+		r15 = (word64) v34;
+		r15 = (word32 *) ((char *) r15 + 1);
+		*r15 = (word32) r14;
+		r14 = r1 + 5636;
+		Eq_n v35;
+		v35.u0 = r14.u1->t0000.u0;
+		r15 = (word64) v35;
+		word32 v36 = (word32) r32;
+		word32 v37 = (word32) r15;
+		p07 = v36 == v37;
+		p06 = v36 != v37;
+		if (p07)
+			*r33 = (word32) r14;
+		__break();
+		word64 p48;
+		if (p48)
+			__break();
+		word64 p16;
+		if (p16)
+			__break();
+		__break();
+		word64 p05;
+		if (p05)
+			__break();
+		word64 p14;
+		if (p14)
+			__break();
+	}
+	r40 = r32 + 0x00;
+	r41 = 0x00 + 0x00;
+	r42 = 0x00 + 0x0A;
+	b0();
+	word32 v27 = (word32) ~0x00;
+	word32 v28 = (word32) r8;
+	p06 = v27 == v28;
+	p07 = v27 != v28;
+	r1 = r39 + 0x00;
+	r33 = r8 + 0x00;
+	r40 = r32 + 0x00;
+	r41 = 0x00 + 1;
+	r42 = 0x00 + 0x00;
+	if (p07)
+		r34.u1 = r35->u1;
 }
 
-// 40000000000B1D80: void discard_unwind_frame()
-void discard_unwind_frame()
+// 40000000000B1800: define check_bash_input
+define check_bash_input
 {
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word32 * r14 = r1 + 22532;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word32 v11 = *r14;
+	word64 r15 = (word64) v11;
+	word32 v13 = (word32) 0x04;
+	word32 v14 = (word32) r15;
+	Eq_n p07 = v13 == v14;
+	Eq_n p06 = v13 != v14;
+	word64 r32;
+	if (p07)
+	{
+		r14 += 4;
+		word32 v20 = *r14;
+		r14 = (word64) v20;
+		word32 v22 = (word32) r14;
+		word32 v23 = (word32) r32;
+		p06 = v22 == v23;
+		p07 = v22 != v23;
+		if (!p07)
+			goto l40000000000B18F0;
+	}
+	r14 = r1 + 6512;
+	word32 v17 = *r14;
+	r14 = (word64) v17;
+	word32 v18 = (word32) 0x00;
+	word32 v19 = (word32) r14;
+	p07 = v18 == v19;
+	p06 = v18 != v19;
+	if (p06)
+		goto l40000000000B18A0;
+	r14 = r1 + 5636;
+	word32 v24 = *r14;
+	r14 = (word64) v24;
+	word32 v25 = (word32) r14;
+	word32 v26 = (word32) r32;
+	p06 = v25 == v26;
+	p07 = v25 != v26;
+	word64 r8;
+	<anonymous> * b0;
+	if (!p06)
+	{
+l40000000000B18A0:
+		r8 = 0x00 + 0x00;
+		ar.pfs = r34;
+		b0 = r33;
+		return;
+	}
+l40000000000B18F0:
+	int32 v29 = (word32) 0x00;
+	int32 v30 = (word32) r32;
+	p06 = v29 < v30;
+	p07 = v29 >= v30;
+	word64 r36 = r32 + 0x00;
+	word64 r37 = 0x00 + -1;
+	if (p07)
+	{
+		word32 v35 = (word32) 0x00;
+		word32 v36 = (word32) r32;
+		p07 = v35 == v36;
+		p06 = v35 != v36;
+		if (p06)
+			goto l40000000000B18A0;
+		r36 = 0x00 + 0x00;
+		b0();
+		r1 = r35 + 0x00;
+		word32 v37 = (word32) ~0x00;
+		word32 v38 = (word32) r8;
+		p06 = v37 == v38;
+		p07 = v37 != v38;
+		r8 = 0x00 + 0x00;
+		if (!p06)
+		{
+			__break();
+			__break();
+		}
+	}
+	else
+	{
+		b0();
+		r1 = r35 + 0x00;
+		word32 v33 = (word32) ~0x00;
+		word32 v34 = (word32) r8;
+		p07 = v33 == v34;
+		p06 = v33 != v34;
+		if (p06)
+			goto l40000000000B18A0;
+	}
+	r8 = 0x00 + -1;
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000B1F40: void run_unwind_frame()
-void run_unwind_frame()
+// 40000000000B19C0: define with_input_from_buffered_stream
+define with_input_from_buffered_stream
 {
+	word64 r33;
+	word64 r8;
+	word64 r1;
+	word64 b3;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word64 r38 = r32 + 0x00;
+	word64 r35 = b3;
+	word64 r37 = r1 + 0x00;
+	word64 r34 = 0x00 + 0x00;
+	<anonymous> * b0;
+	b0();
+	r1 = r37 + 0x00;
+	Eq_n p07 = 0x00 == r8;
+	Eq_n p06 = 0x00 != r8;
+	word64 r40 = 0x00 + 4;
+	word64 r41 = r33 + 0x00;
+	if (p07)
+		r38 = r1 + -9980;
 }
 
-// 40000000000B2000: void add_unwind_protect()
-void add_unwind_protect()
+// 40000000000B1D80: define discard_unwind_frame
+define discard_unwind_frame
 {
+	word64 r8;
+	<anonymous> * b6;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r39 = ar.pfs;
+	word32 * r36 = r1 + 7672;
+	struct Eq_n * r35 = r1 + 7652;
+	<anonymous> * r38 = b6;
+	word64 r40 = r1 + 0x00;
+	struct Eq_n * r33 = r35->ptr0000;
+	Eq_n p06 = null == r33;
+	Eq_n p07 = null != r33;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		word32 v15 = *r36;
+		word32 * r37 = (word64) v15;
+		word32 * r0;
+		*r0 = (word32) r36;
+		byte * r32;
+		Eq_n r41;
+		byte * r42;
+		do
+		{
+			struct Eq_n * r14 = (struct Eq_n *) &r33->ptr0000;
+			struct Eq_n * r34 = r14->ptr0000;
+			r14 = (struct Eq_n *) ((char *) &r14->ptr0000 + 8);
+			r14 = r14->ptr0000;
+			r34->ptr0000 = r35;
+			p07 = null == r14;
+			p06 = null != r14;
+			if (p07)
+			{
+				union Eq_n * r15 = (union Eq_n *) ((char *) &r33->ptr0000 + 16);
+				byte v24 = *r32;
+				r14 = (word64) v24;
+				r41.u1 = r15->u1;
+				int8 v25 = (int8) r14;
+				r15 = (int64) v25;
+				Eq_n v26;
+				v26.u0 = r41.u1->t0000.u0;
+				r14 = (word64) v26;
+				int8 v27 = (int8) r14;
+				r14 = (int64) v27;
+				word32 v28 = (word32) r14;
+				word32 v29 = (word32) r15;
+				p07 = v28 == v29;
+				p06 = v28 != v29;
+				if (!p06)
+				{
+					r42 = r32;
+					b0();
+					r1 = r40 + 0x00;
+					word32 v32 = (word32) 0x00;
+					word32 v33 = (word32) r8;
+					p07 = v32 == v33;
+					p06 = v32 != v33;
+					if (!p06)
+					{
+						r41.u1 = &r33->ptr0000;
+						b0();
+						r1 = r40 + 0x00;
+						*r37 = (word32) r36;
+						goto l40000000000B1E60;
+					}
+				}
+			}
+			r41.u1 = &r33->ptr0000;
+			r33 = (struct Eq_n *) &r34->ptr0000;
+			b0();
+			r1 = r40 + 0x00;
+			p07 = null == r34;
+			p06 = null != r34;
+		} while (p06);
+		r41 = r1 + -4524;
+		r42 = r32;
+		r41.u1 = r41.u1->t0000.u1;
+		b0();
+		r1 = r40 + 0x00;
+		*r37 = (word32) r36;
+	}
+l40000000000B1E60:
+	ar.pfs = r39;
+	b0 = r38;
 }
 
-// 40000000000B20C0: void begin_unwind_frame()
-void begin_unwind_frame()
+// 40000000000B1F40: define run_unwind_frame
+define run_unwind_frame
 {
+	word64 r32;
+	<anonymous> * b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word32 * r33 = r1 + 7672;
+	<anonymous> * r35 = b3;
+	struct Eq_n * r14 = r1 + 7652;
+	word64 r37 = r1 + 0x00;
+	word64 r38 = r32 + 0x00;
+	r14 = r14->ptr0000;
+	Eq_n p06 = null == r14;
+	Eq_n p07 = null != r14;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		word32 v16 = *r33;
+		word32 * r34 = (word64) v16;
+		word32 * r0;
+		*r0 = (word32) r33;
+		b0();
+		r1 = r37 + 0x00;
+		*r34 = (word32) r33;
+	}
+	ar.pfs = r36;
+	b0 = r35;
 }
 
-// 40000000000B2100: void remove_unwind_protect()
-void remove_unwind_protect()
+// 40000000000B2000: define add_unwind_protect
+// Called from:
+//      begin_unwind_frame
+define add_unwind_protect
 {
+	word64 ** r8;
+	<anonymous> * b4;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	word32 * r34 = r1 + 7672;
+	<anonymous> * r36 = b4;
+	word64 r38 = r1 + 0x00;
+	word64 r39 = 0x00 + 32;
+	word32 v12 = *r34;
+	word32 * r35 = (word64) v12;
+	word32 * r0;
+	*r0 = (word32) r34;
+	<anonymous> * b0;
+	b0();
+	r1 = r38 + 0x00;
+	word64 *** r14 = r8;
+	word64 r16 = (char *) r8 + 16;
+	ar.pfs = r37;
+	word64 * r15 = r1 + 7652;
+	word64 * r33;
+	*r33 = r16;
+	b0 = r36;
+	word64 r17 = *r15;
+	*r8 = r15;
+	*r14 = r8;
+	r14 = (word64 ***) ((char *) r14 + 8);
+	*r35 = (word32) r34;
+	word64 **** r32;
+	*r32 = r14;
 }
 
-// 40000000000B21C0: void run_unwind_protects()
-void run_unwind_protects()
+// 40000000000B20C0: define begin_unwind_frame
+define begin_unwind_frame
 {
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r33 = r32 + 0x00;
+	r32 = 0x00 + 0x00;
+	word64 r2 = ar.pfs;
+	add_unwind_protect();
 }
 
-// 40000000000B2280: void clear_unwind_protect_list()
-void clear_unwind_protect_list()
+// 40000000000B2100: define remove_unwind_protect
+define remove_unwind_protect
 {
+	<anonymous> * b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word32 * r32 = r1 + 7672;
+	struct Eq_n * r15 = r1 + 7652;
+	<anonymous> * r34 = b2;
+	word64 r36 = r1 + 0x00;
+	struct Eq_n * r14 = r15->ptr0000;
+	Eq_n p06 = null == r14;
+	Eq_n p07 = null != r14;
+	word64 r37 = &r14->ptr0000;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		word32 v16 = *r32;
+		word32 * r33 = (word64) v16;
+		word32 * r0;
+		*r0 = (word32) r32;
+		r14 = r14->ptr0000;
+		r14->ptr0000 = r15;
+		b0();
+		r1 = r36 + 0x00;
+		*r33 = (word32) r32;
+	}
+	ar.pfs = r35;
+	b0 = r34;
 }
 
-// 40000000000B2380: void have_unwind_protects()
-void have_unwind_protects()
+// 40000000000B21C0: define run_unwind_protects
+define run_unwind_protects
 {
+	<anonymous> * b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word32 * r32 = r1 + 7672;
+	struct Eq_n * r14 = r1 + 7652;
+	<anonymous> * r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r37 = 0x00 + 0x00;
+	r14 = r14->ptr0000;
+	Eq_n p06 = null == r14;
+	Eq_n p07 = null != r14;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		word32 v15 = *r32;
+		word32 * r33 = (word64) v15;
+		word32 * r0;
+		*r0 = (word32) r32;
+		b0();
+		r1 = r36 + 0x00;
+		*r33 = (word32) r32;
+	}
+	ar.pfs = r35;
+	b0 = r34;
 }
 
-// 40000000000B23C0: void unwind_protect_mem()
-void unwind_protect_mem()
+// 40000000000B2280: define clear_unwind_protect_list
+define clear_unwind_protect_list
 {
+	word64 r32;
+	word64 b5;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word64 * r34 = r1 + 7652;
+	word64 r37 = b5;
+	word64 r35 = r1 + 7672;
+	word64 r39 = r1 + 0x00;
+	word32 v13 = (word32) 0x00;
+	word32 v14 = (word32) r32;
+	Eq_n p09 = v13 == v14;
+	Eq_n p08 = v13 != v14;
+	word64 r40 = *r34;
+	Eq_n p06 = 0x00 == r40;
+	Eq_n p07 = 0x00 != r40;
+	if (p06)
+	{
+		ar.pfs = r38;
+		word64 b0 = r37;
+	}
 }
 
-// 40000000000B26C0: void unquoted_glob_pattern_p()
-void unquoted_glob_pattern_p()
+// 40000000000B2380: define have_unwind_protects
+define have_unwind_protects
 {
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	struct Eq_n * r14 = r1 + 7652;
+	r14 = r14->ptr0000;
+	Eq_n p07 = null == r14;
+	Eq_n p06 = null != r14;
+	if (p06)
+	{
+		word64 r8 = 0x00 + 1;
+	}
 }
 
-// 40000000000B2A40: void glob_char_p()
-void glob_char_p()
+// 40000000000B23C0: define unwind_protect_mem
+define unwind_protect_mem
 {
+	word64 * r32;
+	struct Eq_n * r8;
+	word32 * r33;
+	<anonymous> * b6;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r39 = ar.pfs;
+	word32 * r35 = r1 + 7672;
+	<anonymous> * r38 = b6;
+	int64 r41 = r33 + 7;
+	struct Eq_n ** r36 = r1 + 7652;
+	word64 r40 = r1 + 0x00;
+	int32 v14 = (int32) r41;
+	r41 = (int64) v14;
+	word32 v15 = *r35;
+	word32 * r37 = (word64) v15;
+	word32 * r0;
+	*r0 = (word32) r35;
+	<anonymous> * b0;
+	b0();
+	r1 = r40 + 0x00;
+	struct Eq_n * r15 = (struct Eq_n *) *r36;
+	struct Eq_n * r14 = (struct Eq_n *) &r8->ptr0000;
+	word64 r17 = (char *) &r8->ptr0000 + 16;
+	word64 r16 = (char *) &r8->ptr0000 + 24;
+	struct Eq_n *** r34 = (struct Eq_n ***) &r8->ptr0000;
+	r14->ptr0000 = r8;
+	r14 = (struct Eq_n *) ((char *) &r14->ptr0000 + 8);
+	r15 = r1 + -4540;
+	r41 = (char *) &r8->ptr0000 + 28;
+	word64 r42 = r32;
+	*r32 = r17;
+	int32 v27 = (int32) r33;
+	int64 r43 = (int64) v27;
+	r15 = r15->ptr0000;
+	*r33 = (word32) r16;
+	r15->ptr0000 = r14;
+	b0();
+	r1 = r40 + 0x00;
+	*r34 = (struct Eq_n ***) r36;
+	*r37 = (word32) r35;
+	ar.pfs = r39;
+	b0 = r38;
 }
 
-// 40000000000B2B40: void quote_string_for_globbing()
-void quote_string_for_globbing()
+// 40000000000B26C0: define unquoted_glob_pattern_p
+define unquoted_glob_pattern_p
 {
+	up64 r8;
+	union Eq_n * r32;
+	word64 r1;
+	<anonymous> * b5;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word64 r12 = r12 + ~0x0F;
+	<anonymous> * r37 = b5;
+	struct Eq_n * r35 = r1 + -9996;
+	word64 r39 = r1 + 0x00;
+	word64 r40 = &r32->u0;
+	Eq_n r34 = r12 + 0x18;
+	r35 = r35->ptr0000;
+	word64 r33 = 0x00 + 0x00;
+	union Eq_n * r0;
+	r0->u1 = (struct Eq_n *) r34;
+	<anonymous> * b0;
+	b0();
+	byte v18 = r32->u0;
+	Eq_n r14;
+	r14.u1 = (word64) v18;
+	r1 = r39 + 0x00;
+	ui64 r36 = &r32->u0 + r8;
+	int8 v22 = (int8) r14;
+	r14.u1 = (int64) v22;
+	while (true)
+	{
+		word32 v23 = (word32) 0x00;
+		word32 v24 = (word32) r14;
+		Eq_n p07 = v23 == v24;
+		Eq_n p06 = v23 != v24;
+		Eq_n r15;
+		r15.u1 = (char *) r32 + 1;
+		if (p07)
+			break;
+		word32 v28 = (word32) 0x3F;
+		word32 v29 = (word32) r14;
+		p06 = v28 == v29;
+		p07 = v28 != v29;
+		Eq_n r16 = &r15.u1->t0000.u0;
+		if (p06)
+		{
+l40000000000B28E0:
+			r8 = 0x00 + 1;
+			ar.pfs = r38;
+			b0 = r37;
+			r12 += 0x10;
+			return;
+		}
+		int32 v31 = (word32) 0x3F;
+		int32 v32 = (word32) r14;
+		p06 = v31 < v32;
+		p07 = v31 >= v32;
+		if (!p06)
+		{
+			word32 v33 = (word32) 33;
+			word32 v34 = (word32) r14;
+			p06 = v33 == v34;
+			p07 = v33 != v34;
+			if (p06)
+				goto l40000000000B28C0;
+			int32 v37 = (word32) 33;
+			int32 v38 = (word32) r14;
+			p06 = v37 < v38;
+			p07 = v37 >= v38;
+			if (p07)
+			{
+				word32 v47 = (word32) 0x01;
+				word32 v48 = (word32) r14;
+				p06 = v47 == v48;
+				p07 = v47 != v48;
+				if (p07)
+					goto l40000000000B27A0;
+				goto l40000000000B2940;
+			}
+			word32 v45 = (word32) 0x2A;
+			word32 v46 = (word32) r14;
+			p06 = v45 == v46;
+			p07 = v45 != v46;
+			if (p06)
+				goto l40000000000B28E0;
+			word32 v49 = (word32) 0x2B;
+			word32 v50 = (word32) r14;
+			p06 = v49 == v50;
+			p07 = v49 != v50;
+			if (p06)
+				goto l40000000000B28C0;
+			goto l40000000000B27A0;
+		}
+		word32 v35 = (word32) 0x5B;
+		word32 v36 = (word32) r14;
+		p06 = v35 == v36;
+		p07 = v35 != v36;
+		if (!p06)
+		{
+			int32 v61 = (word32) 0x5B;
+			int32 v62 = (word32) r14;
+			p06 = v61 < v62;
+			p07 = v61 >= v62;
+			if (p07)
+			{
+				word32 v66 = (word32) 0x40;
+				word32 v67 = (word32) r14;
+				p06 = v66 == v67;
+				p07 = v66 != v67;
+				if (p07)
+					goto l40000000000B27A0;
+l40000000000B28C0:
+				Eq_n v39;
+				v39.u0 = r15.u1->t0000.u0;
+				r14.u1 = (word64) v39;
+				int8 v40 = (int8) r14;
+				r14.u1 = (int64) v40;
+				word32 v41 = (word32) 0x28;
+				word32 v42 = (word32) r14;
+				p06 = v41 == v42;
+				p07 = v41 != v42;
+				if (p07)
+				{
+					r32 = (union Eq_n *) &r15.u1->t0000.u0;
+					continue;
+				}
+				goto l40000000000B28E0;
+			}
+			word32 v70 = (word32) 0x5C;
+			word32 v71 = (word32) r14;
+			p06 = v70 == v71;
+			p07 = v70 != v71;
+			if (p06)
+			{
+l40000000000B2940:
+				Eq_n v51;
+				v51.u0 = r15.u1->t0000.u0;
+				r14.u1 = (word64) v51;
+				r16 = (char *) r32 + 2;
+				int8 v52 = (int8) r14;
+				r14.u1 = (int64) v52;
+				word32 v53 = (word32) 0x00;
+				word32 v54 = (word32) r14;
+				p06 = v53 == v54;
+				p07 = v53 != v54;
+				if (!p07)
+					break;
+				goto l40000000000B27A0;
+			}
+			word32 v72 = (word32) 0x5D;
+			word32 v73 = (word32) r14;
+			p06 = v72 == v73;
+			p07 = v72 != v73;
+			if (p07)
+			{
+l40000000000B27A0:
+				r32 = (union Eq_n *) ((word32) r16 - 1);
+				b0();
+				r1 = r39 + 0x00;
+				p07 = 0x01 < r8;
+				p06 = 0x01 >= r8;
+				if (!p06)
+				{
+					byte v55 = r32->u0;
+					r14.u1 = (word64) v55;
+					int8 v56 = (int8) r14;
+					r14.u1 = (int64) v56;
+					word3 v57 = SLICE(r14, word3, 5);
+					r16 = (word64) v57;
+					r15 = r14 & 0x1F;
+					r14.u1 = (char *) &r35->ptr0000 + (r16 << 0x02);
+					Eq_n v58;
+					v58.u0 = r14.u1->t0000.u0;
+					r14.u1 = (word64) v58;
+					r14 = 0x00 + 0x00;
+					if (p07)
+					{
+						r14.u1 = r34.u1->t0000.u1;
+						r15 = r12 + 0x10;
+						byte * r41 = &r32->u0;
+						ptr64 r42 = r32 - r36;
+						r40 = 0x00 + 0x00;
+						word64 * r43 = (word64 *) &r34.u1->t0000.u0;
+						r14.u1->t0000.u1 = (struct Eq_n *) r15;
+						b0();
+						r14 = r8 + 0x02;
+						r15 = r12 + 0x10;
+						r1 = r39 + 0x00;
+						p06 = 0x01 < r14;
+						p07 = 0x01 >= r14;
+						if (!p06)
+						{
+							r14.u1 = r15.u1->t0000.u1;
+							r32 = (union Eq_n *) ((char *) r32 + 1);
+							r14.u1->t0000.u1 = (struct Eq_n *) r34;
+							byte v68 = r32->u0;
+							r14.u1 = (word64) v68;
+							int8 v69 = (int8) r14;
+							r14.u1 = (int64) v69;
+							continue;
+						}
+						else
+						{
+							p06 = 0x00 == r8;
+							p07 = 0x00 != r8;
+							if (p07)
+								r14 = r8 + ~0x00;
+							__break();
+						}
+					}
+					r32 = r14 + r32;
+				}
+				r32 = (union Eq_n *) ((char *) r32 + 1);
+				byte v59 = r32->u0;
+				r14.u1 = (word64) v59;
+				int8 v60 = (int8) r14;
+				r14.u1 = (int64) v60;
+				continue;
+			}
+			word32 v74 = (word32) 0x00;
+			word32 v75 = (word32) r33;
+			p07 = v74 == v75;
+			p06 = v74 != v75;
+			r32 = (union Eq_n *) &r15.u1->t0000.u0;
+			if (!p06)
+			{
+				Eq_n v76;
+				v76.u0 = r15.u1->t0000.u0;
+				r14.u1 = (word64) v76;
+				int8 v77 = (int8) r14;
+				r14.u1 = (int64) v77;
+				continue;
+			}
+			goto l40000000000B28E0;
+		}
+		Eq_n v43;
+		v43.u0 = r15.u1->t0000.u0;
+		r14.u1 = (word64) v43;
+		++r33;
+		r32 = (union Eq_n *) &r15.u1->t0000.u0;
+		int8 v44 = (int8) r14;
+		r14.u1 = (int64) v44;
+	}
+	r8 = 0x00 + 0x00;
+	ar.pfs = r38;
+	b0 = r37;
+	r12 += 0x10;
 }
 
-// 40000000000B2F00: void quote_globbing_chars()
-void quote_globbing_chars()
+// 40000000000B2A40: define glob_char_p
+define glob_char_p
 {
+	byte * r32;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	byte v5 = *r32;
+	ui64 r14 = (word64) v5;
+	ui64 r16 = 0x00 + 1;
+	r14 += ~0x20;
+	int8 v8 = (int8) r14;
+	int64 r15 = (int64) v8;
+	byte v10 = (byte) r14;
+	r14 = (word64) v10;
+	r15 = r16 << r15;
+	up32 v11 = (word32) 0x3C;
+	up32 v12 = (word32) r14;
+	Eq_n p06 = v11 < v12;
+	Eq_n p07 = v11 >= v12;
+	int64 r8;
+	if (p07)
+	{
+		r14 = 0x40000200;
+		r8 = 0x00 + 1;
+		r16 = 0x80000401;
+		r14 = r15 & r14;
+		r15 &= r16;
+		p07 = 0x00 == r14;
+		p06 = 0x00 != r14;
+		if (p06)
+			return;
+		++r32;
+		p07 = 0x00 == r15;
+		p06 = 0x00 != r15;
+		if (!p07)
+		{
+			byte v17 = *r32;
+			r8 = (word64) v17;
+			int8 v18 = (int8) r8;
+			r8 = (int64) v18;
+			word32 v19 = (word32) 0x28;
+			word32 v20 = (word32) r8;
+			p06 = v19 == v20;
+			p07 = v19 != v20;
+			if (p06)
+				r8 = 0x00 + 1;
+		}
+	}
+	r8 = 0x00 + 0x00;
 }
 
-// 40000000000B32C0: void should_ignore_glob_matches()
-void should_ignore_glob_matches()
+// 40000000000B2B40: define quote_string_for_globbing
+define quote_string_for_globbing
 {
+	byte * r32;
+	word64 r1;
+	word64 b2;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word64 r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r37 = r32;
+	<anonymous> * b0;
+	b0();
+	r1 = r36 + 0x00;
+	word64 r8;
+	r37 = r8 + 0x01;
+	b0();
+	byte v14 = *r32;
+	int64 r15 = (word64) v14;
+	r1 = r36 + 0x00;
+	int8 v16 = (int8) r15;
+	r15 = (int64) v16;
+	Eq_n p07;
+	Eq_n p06;
+	byte * r14;
+	word64 r20;
+	word64 r17;
+	word64 r16;
+	word64 r19;
+	if (!p07)
+	{
+		word32 v18 = (word32) 0x7F;
+		word32 v19 = (word32) r15;
+		p07 = v18 == v19;
+		p06 = v18 != v19;
+		if (p07)
+		{
+			r14 = r32 + 1;
+			r20 = r1 + 724;
+			r17 = 0x00 + 0x00;
+			r16 = 0x00 + 0x00;
+			r19 = 0x00 + 92;
+			byte v28 = *r14;
+			r14 = (word64) v28;
+			int8 v29 = (int8) r14;
+			r14 = (int64) v29;
+			word32 v30 = (word32) 0x00;
+			word32 v31 = (word32) r14;
+			p07 = v30 == v31;
+			p06 = v30 != v31;
+			r14 = 0x00 + 0x00;
+			if (p07)
+			{
+				byte * r0;
+				*r0 = (byte) r8;
+			}
+			__break();
+			__break();
+			__break();
+			__break();
+			__break();
+			__break();
+			__break();
+			fn40000000000B2F02();
+			return;
+		}
+	}
+	word32 v21 = (word32) 0x00;
+	word32 v22 = (word32) r15;
+	p07 = v21 == v22;
+	p06 = v21 != v22;
+	r20 = r1 + 724;
+	r17 = 0x00 + 0x00;
+	r14 = 0x00 + 0x00;
+	r19 = 0x00 + 92;
+	if (p07)
+		r16 = 0x00 + 0x00;
+	__break();
 }
 
-// 40000000000B3300: void ignore_glob_matches()
-void ignore_glob_matches()
+// 40000000000B2F00: define quote_globbing_chars
+define quote_globbing_chars
 {
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r41 = ar.pfs;
+	fn40000000000B2F02();
 }
 
-// 40000000000B3600: void shell_glob_filename()
-void shell_glob_filename()
+// 40000000000B2F02: define fn40000000000B2F02
+// Called from:
+//      quote_string_for_globbing
+//      quote_globbing_chars
+define fn40000000000B2F02
 {
+	ptr64 fp;
+	ptr64 r11 = fp;
 }
 
-// 40000000000B3840: void setup_ignore_patterns()
-void setup_ignore_patterns()
+// 40000000000B32C0: define should_ignore_glob_matches
+define should_ignore_glob_matches
 {
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r14 = r1 + -0x00004E54;
+	r14 += 4;
+	word32 v6 = *r14;
+	word64 r8 = (word64) v6;
 }
 
-// 40000000000B3D80: void setup_glob_ignore()
-void setup_glob_ignore()
+// 40000000000B3300: define ignore_glob_matches
+define ignore_glob_matches
 {
+	word64 * r32;
+	word64 b5;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	word32 * r14 = r1 + -0x00004E54;
+	word64 r37 = b5;
+	word64 r39 = r1 + 0x00;
+	ar.pfs = r38;
+	r14 += 4;
+	word64 b0 = r37;
+	word32 v12 = *r14;
+	r14 = (word64) v12;
+	word32 v13 = (word32) 0x00;
+	word32 v14 = (word32) r14;
+	Eq_n p06 = v13 == v14;
+	Eq_n p07 = v13 != v14;
+	if (!p07)
+	{
+		word64 r33;
+		r33 == 0x00;
+		Eq_n p09 = r33 != 0x00;
+	}
+	else
+	{
+		word64 r15 = *r32;
+	}
 }
 
-// 40000000000B3E80: void sigwinch_sighandler()
-void sigwinch_sighandler()
+// 40000000000B3600: define shell_glob_filename
+define shell_glob_filename
 {
+	word64 r32;
+	word64 b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word32 * r14 = r1 + 9140;
+	word64 r35 = b3;
+	word64 r37 = r1 + 0x00;
+	word64 r38 = r32 + 0x00;
+	word64 r39 = 0x00 + 2;
+	word32 v14 = *r14;
+	r14 = (word64) v14;
+	word32 v15 = (word32) 0x00;
+	word32 v16 = (word32) r14;
+	Eq_n p06 = v15 == v16;
+	Eq_n p07 = v15 != v16;
+	r14 = r1 + 6372;
+	if (p06)
+	{
+		word64 r15 = 0x00 + 1;
+	}
 }
 
-// 40000000000B3EC0: void initialize_terminating_signals()
-void initialize_terminating_signals()
+// 40000000000B3840: define setup_ignore_patterns
+define setup_ignore_patterns
 {
+	Eq_n r8;
+	<anonymous> * b3;
+	word64 pr;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r44 = ar.pfs;
+	word64 r45 = r1 + 0x00;
+	word64 r46 = pr;
+	Eq_n r35;
+	union Eq_n ** r32;
+	r35.u2 = (char *) r32 + 24;
+	union Eq_n * r47 = (union Eq_n *) *r32;
+	Eq_n r40;
+	r40.u2 = (char *) r32 + 8;
+	<anonymous> * r43 = b3;
+	ptr64 r42 = (char *) r32 + 16;
+	<anonymous> * b0;
+	b0();
+	r1 = r45 + 0x00;
+	byte * r34 = r8.u2;
+	Eq_n p16 = 0x00 == r8;
+	Eq_n p17 = 0x00 != r8;
+	Eq_n r14;
+	Eq_n p06;
+	Eq_n p07;
+	Eq_n r48;
+	int64 r15;
+	if (p16)
+	{
+		r35.u2 = (char *) r32 + 24;
+		r14.u2 = *r35.u3;
+		p06 = 0x00 == r14;
+		p07 = 0x00 != r14;
+		if (!p07)
+		{
+			pr = r46;
+			ar.pfs = r44;
+			b0 = r43;
+			return;
+		}
+	}
+	else
+	{
+		r48.u2 = *r35.u3;
+		p06 = 0x00 == r48;
+		p07 = 0x00 != r48;
+		if (!p06)
+		{
+			byte v26 = *r48.u2;
+			r14.u2 = (word64) v26;
+			Eq_n v27;
+			v27.u0 = *r8.u2;
+			r15 = (word64) v27;
+			int8 v29 = (int8) r15;
+			r15 = (int64) v29;
+			int8 v30 = (int8) r14;
+			r14.u2 = (int64) v30;
+			word32 v31 = (word32) r15;
+			word32 v32 = (word32) r14;
+			p07 = v31 == v32;
+			p06 = v31 != v32;
+			if (p07)
+			{
+				r47 = (union Eq_n *) r8.u2;
+				b0();
+				r1 = r45 + 0x00;
+				word32 v35 = (word32) 0x00;
+				word32 v36 = (word32) r8;
+				p07 = v35 == v36;
+				p06 = v35 != v36;
+				if (!p06)
+				{
+					pr = r46;
+					ar.pfs = r44;
+					b0 = r43;
+					return;
+				}
+			}
+		}
+	}
+	Eq_n r33;
+	r33.u2 = *r40.u3;
+	union Eq_n * r0;
+	r0->u1 = (word32) (word32) r42;
+	p06 = 0x00 == r33;
+	p07 = 0x00 != r33;
+	if (!p06)
+	{
+		r47 = *r33.u3;
+		p06 = null == r47;
+		p07 = null != r47;
+		if (!p06)
+		{
+			do
+			{
+				r33.u1 = (word32) r33 + 16;
+				b0();
+				r47 = *r33.u3;
+				r1 = r45 + 0x00;
+				p07 = null == r47;
+				p06 = null != r47;
+			} while (p06);
+			r33.u2 = *r40.u3;
+		}
+		r47 = (union Eq_n *) r33.u2;
+		b0();
+		r1 = r45 + 0x00;
+		r0->u2 = (byte *) r40;
+	}
+	r14.u2 = *r35.u3;
+	p06 = 0x00 == r14;
+	p07 = 0x00 != r14;
+	r47 = (union Eq_n *) r14.u2;
+	if (!p06)
+	{
+		b0();
+		r1 = r45 + 0x00;
+		r0->u2 = (byte *) r35;
+	}
+	if (!p16)
+	{
+		byte v37 = *r34;
+		r14.u2 = (word64) v37;
+		int8 v38 = (int8) r14;
+		r14.u2 = (int64) v38;
+		word32 v39 = (word32) 0x00;
+		word32 v40 = (word32) r14;
+		p06 = v39 == v40;
+		p07 = v39 != v40;
+		if (p07)
+		{
+			r47 = (union Eq_n *) r34;
+			word64 r39 = 0x00 + 0x00;
+			r33 = 0x00 + 0x00;
+			word64 r41 = 0x00 + 0x00;
+			word32 * r38 = 0x00 + 0x00;
+			b0();
+			r1 = r45 + 0x00;
+			r47 = (union Eq_n *) ((word32) r8 + 1);
+			r32 = (union Eq_n **) ((char *) r32 + 32);
+			b0();
+			r1 = r45 + 0x00;
+			r47 = (union Eq_n *) r8.u2;
+			r48.u2 = r34;
+			b0();
+			r1 = r45 + 0x00;
+			*r8.u3 = (word64) r35;
+			word64 * r49 = r1 + 732;
+			int32 v45 = (int32) r33;
+			r14.u2 = (int64) v45;
+			word64 r50 = 0x00 + 0x0011;
+			r48.u2 = r33.u2;
+			r47 = (union Eq_n *) r34;
+			r14.u2 = r14 + r34;
+			r49 = *r49;
+			byte v47 = *r14.u2;
+			r14.u2 = (word64) v47;
+			int8 v48 = (int8) r14;
+			r14.u2 = (int64) v48;
+			word32 v49 = (word32) 0x00;
+			word32 v50 = (word32) r14;
+			p07 = v49 == v50;
+			p06 = v49 != v50;
+			if (!p07)
+			{
+				b0();
+				r1 = r45 + 0x00;
+				r35.u2 = r8.u2;
+				r47 = (union Eq_n *) r34;
+				r48.u2 = r33.u2;
+				r49 = (word64 *) r8.u2;
+				b0();
+				int32 v51 = (int32) r35;
+				r14.u2 = (int64) v51;
+				p07 = 0x00 == r8;
+				p06 = 0x00 != r8;
+				r1 = r45 + 0x00;
+				word64 * r37 = (word64 *) r8.u2;
+				if (!p07)
+				{
+					r14.u2 = r14 + r34;
+					r38 = (word32 *) ((char *) r38 + 1);
+					byte v54 = *r14.u2;
+					r14.u2 = (word64) v54;
+					int32 v55 = (word32) r38;
+					int32 v56 = (word32) r41;
+					p07 = v55 < v56;
+					p06 = v55 >= v56;
+					int8 v57 = (int8) r14;
+					r14.u2 = (int64) v57;
+					if (p07)
+						r8.u2 = *r40.u3;
+				}
+			}
+			r14.u2 = *r40.u3;
+			pr = r46;
+			int32 v53 = (int32) r38;
+			r15 = (int64) v53;
+			r14.u2 += r15 << 0x04;
+			ar.pfs = r44;
+			r0->u2 = (byte *) r14;
+			b0 = r43;
+			*r38 = (word32) r42;
+			return;
+		}
+	}
+	pr = r46;
+	ar.pfs = r44;
+	b0 = r43;
 }
 
-// 40000000000B41C0: void reset_terminating_signals()
-void reset_terminating_signals()
+// 40000000000B3D80: define setup_glob_ignore
+define setup_glob_ignore
 {
+	word64 r8;
+	word64 r32;
+	word64 b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word32 * r33 = r1 + -0x00004E54;
+	word64 r35 = b3;
+	word64 r37 = r1 + 0x00;
+	word64 r38 = r32 + 0x00;
+	<anonymous> * b0;
+	b0();
+	r1 = r37 + 0x00;
+	word64 r34 = r8 + 0x00;
+	r38 = r33;
+	r33 += 4;
+	b0();
+	word32 v16 = *r33;
+	word64 r14 = (word64) v16;
+	Eq_n p09 = 0x00 == r34;
+	Eq_n p08 = 0x00 != r34;
+	r1 = r37 + 0x00;
+	ar.pfs = r36;
+	word32 v20 = (word32) 0x00;
+	word32 v21 = (word32) r14;
+	Eq_n p06 = v20 == v21;
+	Eq_n p07 = v20 != v21;
+	if (p09)
+		r14 = r1 + 9140;
+	__break();
 }
 
-// 40000000000B4380: void top_level_cleanup()
-void top_level_cleanup()
+// 40000000000B3E80: define sigwinch_sighandler
+define sigwinch_sighandler
 {
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r15 = 0x00 + 1;
+	Eq_n r14 = r1 + 0x00001E00;
+	__st_release<word32>(r15, r14);
+	*r15.u2 = (word64) r14;
 }
 
-// 40000000000B44C0: void jump_to_top_level()
-void jump_to_top_level()
+// 40000000000B3EC0: define initialize_terminating_signals
+define initialize_terminating_signals
 {
+	word64 r8;
+	<anonymous> * b0;
+	word64 LC;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r41 = ar.pfs;
+	word64 r12 = r12 + ~0x011F;
+	word32 * r35 = r1 + 7688;
+	word64 r43 = LC;
+	word64 r42 = r1 + 0x00;
+	word32 v12 = *r35;
+	Eq_n r14;
+	r14.u1 = (word64) v12;
+	<anonymous> * r40 = b0;
+	word32 v16 = (word32) 0x00;
+	word32 v17 = (word32) r14;
+	Eq_n p07 = v16 == v17;
+	Eq_n p06 = v16 != v17;
+	if (!p07)
+	{
+		ar.pfs = r41;
+		LC = r43;
+		b0 = r40;
+		r12 += 288;
+	}
+	else
+	{
+		r14 = r1 + -9964;
+		Eq_n r36 = r12 + 0xA0;
+		word32 * r32 = r1 + -20012;
+		word64 r44 = r12 + 0xB0;
+		r14.u1 = r14.u1->t0000.u1;
+		r14.u1->t0000.u1 = (struct Eq_n *) r36;
+		r14 = r12 + 0xA8;
+		word32 * r34 = r32 + 0x0066;
+		union Eq_n * r33 = (union Eq_n *) r32;
+		union Eq_n * r0;
+		r0->u1 = (struct Eq_n *) r14;
+		b0();
+		r1 = r42 + 0x00;
+		r44 = r12 + 0x20;
+		b0();
+		r1 = r42 + 0x00;
+		LC = 0x10;
+		word64 * r45;
+		while (true)
+		{
+			Eq_n v26;
+			v26.u0 = r33->u0;
+			r45 = (word64) v26;
+			r33 = (union Eq_n *) ((char *) r33 + 24);
+			r44 = r12 + 0xB0;
+			b0();
+			r1 = r42 + 0x00;
+			if (LC == 0x00)
+				break;
+			--LC;
+		}
+		word32 * r38 = r1 + 6512;
+		word32 ** r37 = r12 + 0x18;
+		do
+		{
+			word32 v30 = *r32;
+			r44 = (word64) v30;
+			b0();
+			r1 = r42 + 0x00;
+			word32 v32 = (word32) 0x00;
+			word32 v33 = (word32) r8;
+			p06 = v32 == v33;
+			p07 = v32 != v33;
+			if (p06)
+			{
+				r33 = (union Eq_n *) r32;
+				r45 = (word64 *) &r36.u1->t0000.u0;
+				word64 r46 = r12 + 0x10;
+				Eq_n v35;
+				v35.u0 = r33->u0;
+				r44 = (word64) v35;
+				r33 = (union Eq_n *) ((char *) r33 + 8);
+				b0();
+				union Eq_n *** r18 = r12 + 0x10;
+				word32 * r15 = (word32 *) *r37;
+				word64 r17 = r32 + 4;
+				r1 = r42 + 0x00;
+				word32 v39 = *r38;
+				r14.u1 = (word64) v39;
+				union Eq_n ** r16 = (union Eq_n **) *r18;
+				*r15 = (word32) r17;
+				word32 v41 = (word32) 0x00;
+				word32 v42 = (word32) r14;
+				p07 = v41 == v42;
+				p06 = v41 != v42;
+				*r16 = (union Eq_n **) r33;
+				if (!p06)
+				{
+					r14.u1 = r33->u1;
+					p07 = 0x01 == r14;
+					p06 = 0x01 != r14;
+					if (p07)
+					{
+						word32 v46 = *r32;
+						word64 r39 = (word64) v46;
+						r45 = r18;
+						r46 = (word64) &r36.u1->t0000.u0;
+						r44 = r39 + 0x00;
+						b0();
+						r1 = r42 + 0x00;
+						r44 = r39 + 0x00;
+						b0();
+						r1 = r42 + 0x00;
+					}
+				}
+				word32 v43 = *r32;
+				r14.u1 = (word64) v43;
+				word32 v44 = (word32) 0x1B;
+				word32 v45 = (word32) r14;
+				p07 = v44 == v45;
+				p06 = v44 != v45;
+				if (!p06)
+				{
+					r14.u1 = r33->u1;
+					r44 = 0x00 + 27;
+					r45 = r12 + 0x10;
+					r46 = 0x00 + 0x00;
+					p06 = 0x00 == r14;
+					p07 = 0x00 != r14;
+					if (!p06)
+					{
+						p06 = 0x01 == r14;
+						p07 = 0x01 != r14;
+						if (!p06)
+						{
+							r32 += 6;
+							b0();
+							r1 = r42 + 0x00;
+							p07 = r34 == r32;
+							p06 = r34 != r32;
+							if (p06)
+								continue;
+							break;
+						}
+					}
+				}
+			}
+			r32 += 6;
+			p07 = r34 == r32;
+			p06 = r34 != r32;
+		} while (p06);
+		r14 = 0x00 + 1;
+		r14.u1->t0000.u0 = (word32) (word32) r35;
+		ar.pfs = r41;
+		LC = r43;
+		b0 = r40;
+		r12 += 288;
+	}
 }
 
-// 40000000000B4500: void throw_to_top_level()
-void throw_to_top_level()
+// 40000000000B41C0: define reset_terminating_signals
+define reset_terminating_signals
 {
+	word64 r8;
+	<anonymous> * b2;
+	word64 LC;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word64 r12 = r12 + ~0x8F;
+	Eq_n r14 = r1 + 7688;
+	word64 r37 = LC;
+	word64 r36 = r1 + 0x00;
+	Eq_n v12;
+	v12.u0 = r14.u1->t0000.u0;
+	r14.u1 = (word64) v12;
+	<anonymous> * r34 = b2;
+	word32 v15 = (word32) 0x00;
+	word32 v16 = (word32) r14;
+	Eq_n p06 = v15 == v16;
+	Eq_n p07 = v15 != v16;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		ar.pfs = r35;
+		LC = r37;
+		b0 = r34;
+		r12 += 0x90;
+		return;
+	}
+	word32 * r32 = r1 + -20012;
+	Eq_n r33 = r12 + 0x18;
+	word64 r38 = r12 + 0x20;
+	union Eq_n * r0;
+	r0->u0 = (word64) r33;
+	b0();
+	r1 = r36 + 0x00;
+	LC = 0x10;
+	while (true)
+	{
+l40000000000B4280:
+		word32 v24 = *r32;
+		r38 = (word64) v24;
+		b0();
+		r1 = r36 + 0x00;
+		word32 v26 = (word32) 0x00;
+		word32 v27 = (word32) r8;
+		p06 = v26 == v27;
+		p07 = v26 != v27;
+		if (!p06)
+			break;
+		word32 v28 = *r32;
+		r38 = (word64) v28;
+		b0();
+		r1 = r36 + 0x00;
+		word32 v29 = (word32) 0x00;
+		word32 v30 = (word32) r8;
+		p07 = v29 == v30;
+		p06 = v29 != v30;
+		if (p06)
+			break;
+		union Eq_n * r15 = (union Eq_n *) (r32 + 4);
+		r14.u1 = r32 + 2;
+		Eq_n r39 = r12 + 0x10;
+		word32 v33 = *r32;
+		r38 = (word64) v33;
+		word64 r40 = 0x00 + 0x00;
+		r32 += 6;
+		Eq_n v35;
+		v35.u1 = r15->u1;
+		r15 = (word64) v35;
+		r14.u1 = r14.u1->t0000.u1;
+		int32 v36 = (int32) r15;
+		r15 = (int64) v36;
+		r14.u1->t0000.u1 = (struct Eq_n *) r39;
+		r15->u0 = (word64) r33;
+		b0();
+		r1 = r36 + 0x00;
+		if (LC == 0x00)
+			goto l40000000000B42B0;
+		--LC;
+	}
+	r32 += 6;
+	if (LC == 0x00)
+	{
+l40000000000B42B0:
+		ar.pfs = r35;
+		LC = r37;
+		b0 = r34;
+		r12 += 0x90;
+	}
+	else
+	{
+		--LC;
+		goto l40000000000B4280;
+	}
 }
 
-// 40000000000B4A40: void sigint_sighandler()
-void sigint_sighandler()
+// 40000000000B4380: define top_level_cleanup
+define top_level_cleanup
 {
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word32 * r32 = r1 + 0x000020E0;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word32 v11 = *r32;
+	word64 r14 = (word64) v11;
+	word32 v13 = (word32) 0x00;
+	word32 v14 = (word32) r14;
+	Eq_n p07 = v13 == v14;
+	Eq_n p06 = v13 != v14;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		do
+		{
+			b0();
+			word32 v18 = *r32;
+			r14 = (word64) v18;
+			r1 = r35 + 0x00;
+			word32 v19 = (word32) 0x00;
+			word32 v20 = (word32) r14;
+			p07 = v19 == v20;
+			p06 = v19 != v20;
+		} while (p06);
+	}
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	ar.pfs = r34;
+	r14 = r1 + 7028;
+	b0 = r33;
+	word32 * r0;
+	*r0 = (word32) r14;
+	r14 = r1 + 8360;
+	*r0 = (word32) r14;
+	r14 = r1 + 8356;
+	*r0 = (word32) r14;
+	r14 = r1 + 8364;
+	*r0 = (word32) r14;
+	r14 = r1 + 9032;
+	*r0 = (word32) r14;
+	r14 = r1 + 7044;
+	*r0 = (word32) r14;
+	r14 = r1 + 0x00001B88;
+	*r0 = (word32) r14;
 }
 
-// 40000000000B4B00: void set_signal_handler()
-void set_signal_handler()
+// 40000000000B44C0: define jump_to_top_level
+define jump_to_top_level
 {
+	word64 r32;
+	word64 b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word64 r36 = r1 + 25252;
+	word64 r33 = b1;
+	word64 r37 = r32 + 0x00;
+	<anonymous> * b0;
+	b0();
+	__break();
+	throw_to_top_level();
 }
 
-// 40000000000B4BC0: void unset_sigwinch_handler()
-void unset_sigwinch_handler()
+// 40000000000B4500: define throw_to_top_level
+// Called from:
+//      jump_to_top_level
+define throw_to_top_level
 {
+	word64 b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	Eq_n r14 = r1 + 7684;
+	word64 r34 = b2;
+	word64 r32 = r1 + 0x000020E0;
+	word64 r36 = r1 + 0x00;
+	Eq_n r15 = __ld_acquire<word32>(r14);
+	word64 r16 = 0x00 + 0x0080;
+	word32 v14 = (word32) 0x00;
+	word32 v15 = (word32) r15;
+	Eq_n p06 = v14 == v15;
+	Eq_n p07 = v14 != v15;
+	if (p07)
+		r15 = __ld_acquire<word32>(r14);
 }
 
-// 40000000000B4C00: void set_sigwinch_handler()
-void set_sigwinch_handler()
+// 40000000000B4A40: define sigint_sighandler
+define sigint_sighandler
 {
+	word64 r64;
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r14 = r1 + 7684;
+	word32 * r15 = r1 + 7672;
+	Eq_n r17 = __ld_acquire<word32>(r14);
+	word32 v8 = *r15;
+	word64 r16 = (word64) v8;
+	word32 v10 = (word32) 0x00;
+	word32 v11 = (word32) r17;
+	Eq_n p07 = v10 == v11;
+	Eq_n p06 = v10 != v11;
+	if (p07)
+		r17 = __ld_acquire<word32>(r14);
+	byte v15 = (byte) r64;
+	word64 r32 = (word64) v15;
 }
 
-// 40000000000B4C80: void termsig_handler()
-void termsig_handler()
+// 40000000000B4B00: define set_signal_handler
+// Called from:
+//      unset_sigwinch_handler
+define set_signal_handler
 {
+	word64 r1;
+	word64 b3;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word64 r12 = r12 + ~0x011F;
+	word32 v7 = (word32) 0x11;
+	word32 v9 = (word32) r32;
+	Eq_n p06 = v7 == v9;
+	Eq_n p07 = v7 != v9;
+	word64 r35 = b3;
+	word64 r37 = r1 + 0x00;
+	if (p07)
+	{
+		word64 r14 = r12 + 0xA8;
+	}
 }
 
-// 40000000000B5080: void termsig_sighandler()
-void termsig_sighandler()
+// 40000000000B4BC0: define unset_sigwinch_handler
+define unset_sigwinch_handler
 {
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 * r14 = r1 + 7700;
+	word64 r32 = 0x00 + 28;
+	word64 r33 = *r14;
+	word64 r2 = ar.pfs;
+	set_signal_handler();
 }
 
-// 40000000000B52C0: void initialize_signals()
-void initialize_signals()
+// 40000000000B4C00: define set_sigwinch_handler
+define set_sigwinch_handler
 {
+	<anonymous> * b0;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r33 = ar.pfs;
+	struct Eq_n * r36 = r1 + -0x00002744;
+	<anonymous> * r32 = b0;
+	word64 r34 = r1 + 0x00;
+	word64 r35 = 0x00 + 28;
+	r36 = r36->ptr0000;
+	b0();
+	r1 = r34 + 0x00;
+	ar.pfs = r33;
+	word64 r14 = r1 + 7700;
+	b0 = r32;
+	word64 * r8;
+	*r8 = r14;
 }
 
-// 40000000000B5C00: void binary_test()
-void binary_test()
+// 40000000000B4C80: define termsig_handler
+// Called from:
+//      termsig_sighandler
+define termsig_handler
 {
+	word64 r32;
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	Eq_n r14 = r1 + 7692;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word32 v11 = r14.u3->t0000.u1;
+	word32 * r15 = (word64) v11;
+	word32 v13 = (word32) 0x00;
+	word32 v14 = (word32) r15;
+	Eq_n p07 = v13 == v14;
+	Eq_n p06 = v13 != v14;
+	r15 = 0x00 + 1;
+	<anonymous> * b0;
+	if (p06)
+	{
+l40000000000B4E40:
+		ar.pfs = r34;
+		b0 = r33;
+		return;
+	}
+	*r15 = (word32) r14;
+	r14 = r1 + 7676;
+	word32 v18 = (word32) 0x02;
+	word32 v20 = (word32) r32;
+	p07 = v18 == v20;
+	p06 = v18 != v20;
+	Eq_n r0;
+	__st_release<word32>(r0, r14);
+	*r0.u2 = (word64) r14;
+	r14 = r1 + 6512;
+	word64 r36;
+	word64 r8;
+	word64 r37;
+	if (p07)
+	{
+		r36 = 0x00 + 2;
+		b0();
+		r1 = r35 + 0x00;
+		word32 v23 = (word32) 0x00;
+		word32 v25 = (word32) r8;
+		p06 = v23 == v25;
+		p07 = v23 != v25;
+		if (p07)
+		{
+			b0();
+			r1 = r35 + 0x00;
+		}
+		r14 = r1 + 6512;
+		word32 v26 = r14.u3->t0000.u1;
+		r14.u2 = (word64) v26;
+		word32 v27 = (word32) 0x00;
+		word32 v28 = (word32) r14;
+		p07 = v27 == v28;
+		p06 = v27 != v28;
+		if (p07)
+		{
+l40000000000B4D30:
+			b0();
+			r1 = r35 + 0x00;
+			b0();
+			r1 = r35 + 0x00;
+			r14 = r1 + 7028;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 8360;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 8356;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 8364;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 9032;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 7044;
+			r0.u3->t0000.u1 = (word32) r14;
+			r14 = r1 + 0x00001B88;
+			r0.u3->t0000.u1 = (word32) r14;
+			b0();
+			r36 = r32 + 0x00;
+			r37 = 0x00 + 0x00;
+			r1 = r35 + 0x00;
+			b0();
+			r1 = r35 + 0x00;
+			b0();
+			r1 = r35 + 0x00;
+			r36 = r8 + 0x00;
+			r37 = r32 + 0x00;
+			b0();
+			r1 = r35 + 0x00;
+			goto l40000000000B4E40;
+		}
+		b0();
+		r1 = r35 + 0x00;
+	}
+	else
+	{
+		word32 v38 = r14.u3->t0000.u1;
+		r14.u2 = (word64) v38;
+		word32 v39 = (word32) 0x00;
+		word32 v40 = (word32) r14;
+		p07 = v39 == v40;
+		p06 = v39 != v40;
+		if (!p07)
+		{
+			word32 v41 = (word32) 0x06;
+			word32 v42 = (word32) r32;
+			p07 = v41 == v42;
+			p06 = v41 != v42;
+			if (p07)
+				goto l40000000000B4D30;
+			b0();
+			r1 = r35 + 0x00;
+		}
+	}
+	word32 v30 = (word32) 0x01;
+	word32 v31 = (word32) r32;
+	p07 = v30 == v31;
+	p06 = v30 != v31;
+	if (!p07)
+		goto l40000000000B4D30;
+	r14 = r1 + 6516;
+	word32 v32 = r14.u3->t0000.u1;
+	r14.u2 = (word64) v32;
+	word32 v33 = (word32) 0x00;
+	word32 v34 = (word32) r14;
+	p07 = v33 == v34;
+	p06 = v33 != v34;
+	r14 = r1 + 0x00002344;
+	if (!p06)
+	{
+		word32 v35 = r14.u3->t0000.u1;
+		r14.u2 = (word64) v35;
+		r14 &= 0x24;
+		word32 v36 = (word32) 0x00;
+		word32 v37 = (word32) r14;
+		p06 = v36 == v37;
+		p07 = v36 != v37;
+		if (p06)
+			goto l40000000000B4D30;
+	}
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	r14 = r1 + 7028;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 8360;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 8356;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 8364;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 9032;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 7044;
+	r0.u3->t0000.u1 = (word32) r14;
+	r14 = r1 + 0x00001B88;
+	r0.u3->t0000.u1 = (word32) r14;
+	b0();
+	r36 = r32 + 0x00;
+	r1 = r35 + 0x00;
+	r37 = 0x00 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	r36 = r8 + 0x00;
+	r37 = r32 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	goto l40000000000B4E40;
 }
 
-// 40000000000B6400: void unary_test()
-void unary_test()
+// 40000000000B5080: define termsig_sighandler
+define termsig_sighandler
 {
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r14;
+	Eq_n r32;
+	r14.u1 = (word32) r32 - 1;
+	up32 v6 = (word32) 0x01;
+	up32 v7 = (word32) r14;
+	Eq_n p06 = v6 < v7;
+	Eq_n p07 = v6 >= v7;
+	Eq_n r15;
+	word64 r1;
+	if (!p07)
+	{
+		r14.u1 = (word32) r32 - 0x0E;
+		up32 v10 = (word32) 0x01;
+		up32 v11 = (word32) r14;
+		p06 = v10 < v11;
+		p07 = v10 >= v11;
+		r14.u1 = (word32) r32 - 24;
+		if (!p07)
+		{
+			up32 v18 = (word32) 0x01;
+			up32 v19 = (word32) r14;
+			p06 = v18 < v19;
+			p07 = v18 >= v19;
+			r14 = r32 & 0xEF;
+			if (!p07)
+			{
+				word32 v24 = (word32) 0x0A;
+				word32 v25 = (word32) r14;
+				p07 = v24 == v25;
+				p06 = v24 != v25;
+				if (!p07)
+				{
+					r15 = r1 + 7676;
+					word32 v32 = (word32) 0x0C;
+					word32 v33 = (word32) r32;
+					p07 = v32 == v33;
+					p06 = v32 != v33;
+					if (!p07)
+					{
+						r14 = __ld_acquire<word32>(r15);
+						word32 v43 = (word32) r14;
+						word32 v44 = (word32) r32;
+						p06 = v43 == v44;
+						p07 = v43 != v44;
+						r14 = r1 + 7668;
+						if (p06)
+						{
+							__st_release<word32>(r32, r15);
+							*r32.u2 = (word64) r15;
+						}
+						word64 p08;
+						if (!p08)
+							;
+					}
+				}
+			}
+		}
+	}
+	r14 = r1 + 7668;
+	r15 = r1 + 7676;
+	word32 v14 = r14.u3->t0000.u1;
+	word64 r16 = (word64) v14;
+	__st_release<word32>(r32, r15);
+	*r32.u2 = (word64) r15;
+	word32 v16 = (word32) 0x00;
+	word32 v17 = (word32) r16;
+	p06 = v16 == v17;
+	p07 = v16 != v17;
+	if (!p07)
+		return;
+	r15 = r1 + 6512;
+	Eq_n v21;
+	v21.u1 = r15.u3->t0000.u1;
+	r15.u2 = (word64) v21;
+	word32 v22 = (word32) 0x00;
+	word32 v23 = (word32) r15;
+	p06 = v22 == v23;
+	p07 = v22 != v23;
+	word32 * r0;
+	if (p07)
+	{
+		r15 = r1 + 6516;
+		Eq_n v29;
+		v29.u1 = r15.u3->t0000.u1;
+		r15.u2 = (word64) v29;
+		word32 v30 = (word32) 0x00;
+		word32 v31 = (word32) r15;
+		p06 = v30 == v31;
+		p07 = v30 != v31;
+		if (!p06)
+		{
+			word32 v41 = (word32) 0x01;
+			word32 v42 = (word32) r32;
+			p07 = v41 == v42;
+			p06 = v41 != v42;
+			if (!p06)
+			{
+				r15 = r1 + 6468;
+				Eq_n v45;
+				v45.u1 = r15.u3->t0000.u1;
+				r15.u2 = (word64) v45;
+				word32 v46 = (word32) 0x00;
+				word32 v47 = (word32) r15;
+				p07 = v46 == v47;
+				p06 = v46 != v47;
+				if (!p06)
+				{
+					r15 = r1 + -10404;
+					r15.u2 = *r15.u2;
+					Eq_n v51;
+					v51.u1 = r15.u3->t0000.u1;
+					r15.u2 = (word64) v51;
+					if (!p06)
+					{
+						r15 = r1 + 9148;
+						*r0 = (word32) r15;
+					}
+l40000000000B5190:
+					*r0 = (word32) r14;
+					word64 r2 = ar.pfs;
+					termsig_handler();
+					return;
+				}
+			}
+		}
+	}
+	r15 = r1 + 9148;
+	*r0 = (word32) r15;
+	goto l40000000000B5190;
 }
 
-// 40000000000B6D00: void test_binop()
-void test_binop()
+// 40000000000B52C0: define initialize_signals
+define initialize_signals
 {
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word32 * r32 = r1 + 6516;
+	word64 r36 = r1 + 0x00006224;
+	word64 r35 = r1 + 0x00;
+	<anonymous> * r33 = b1;
+	word32 v12 = *r32;
+	word64 r14 = (word64) v12;
+	word32 v14 = (word32) 0x00;
+	word32 v15 = (word32) r14;
+	Eq_n p06 = v14 == v15;
+	Eq_n p07 = v14 != v15;
+	<anonymous> * b0;
+	struct Eq_n * r37;
+	word64 r38;
+	if (p07)
+	{
+		b0();
+		r1 = r35 + 0x00;
+		r36 = r1 + 0x00006224;
+		b0();
+		r1 = r35 + 0x00;
+		r36 = 0x00 + 0x00;
+		r37 = 0x00 + 0x00;
+		r38 = r1 + 0x00006224;
+		b0();
+		r1 = r35 + 0x00;
+		r37 = 0x00 + 0x0011;
+		r36 = r1 + 0x00006224;
+		b0();
+		r1 = r35 + 0x00;
+		r36 = 0x00 + 3;
+		r37 = 0x00 + 1;
+		b0();
+		word32 v24 = *r32;
+		r14 = (word64) v24;
+		r1 = r35 + 0x00;
+		word32 v25 = (word32) 0x00;
+		word32 v26 = (word32) r14;
+		p06 = v25 == v26;
+		p07 = v25 != v26;
+		if (p06)
+		{
+l40000000000B53A0:
+			b0();
+			r1 = r35 + 0x00;
+			ar.pfs = r34;
+			b0 = r33;
+			return;
+		}
+	}
+	else
+	{
+		b0();
+		r1 = r35 + 0x00;
+		r36 = 0x00 + 0x00;
+		r37 = 0x00 + 0x00;
+		r38 = r1 + 0x00006224;
+		b0();
+		r1 = r35 + 0x00;
+		r37 = 0x00 + 0x0011;
+		r36 = r1 + 0x00006224;
+		b0();
+		r1 = r35 + 0x00;
+		r36 = 0x00 + 3;
+		r37 = 0x00 + 1;
+		b0();
+		word32 v21 = *r32;
+		r14 = (word64) v21;
+		r1 = r35 + 0x00;
+		word32 v22 = (word32) 0x00;
+		word32 v23 = (word32) r14;
+		p06 = v22 == v23;
+		p07 = v22 != v23;
+		if (!p07)
+			goto l40000000000B53A0;
+	}
+	r37 = r1 + -10004;
+	r36 = 0x00 + 2;
+	r37 = r37->ptr0000;
+	b0();
+	r36 = 0x00 + 0x0F;
+	r37 = 0x00 + 1;
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	b0();
+	r1 = r35 + 0x00;
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000B7300: void test_unop()
-void test_unop()
+// 40000000000B5C00: define binary_test
+define binary_test
 {
+	Eq_n r35;
+	ptr64 r1;
+	Eq_n b4;
+	Eq_n r32;
+	Eq_n ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r37 = ar.pfs;
+	byte v7 = *r32.u1;
+	Eq_n r14;
+	r14.u2 = (word64) v7;
+	Eq_n r36 = b4;
+	Eq_n r38 = r1 + 0x00;
+	ui64 r17 = r35 & 0x01;
+	int8 v15 = (int8) r14;
+	r14.u2 = (int64) v15;
+	int8 v16 = (int8) r14;
+	Eq_n r15;
+	r15.u2 = (int64) v16;
+	word32 v18 = (word32) 0x3D;
+	word32 v19 = (word32) r14;
+	Eq_n p07 = v18 == v19;
+	Eq_n p06 = v18 != v19;
+	int64 r16;
+	Eq_n r33;
+	Eq_n r34;
+	union Eq_n * r8;
+	Eq_n r39;
+	Eq_n r40;
+	Eq_n p08;
+	Eq_n p09;
+	word64 p20;
+	word64 p17;
+	if (p07)
+	{
+		r14.u1 = (word32) r32 + 1;
+		Eq_n v24;
+		v24.u0 = r14.u3->t0000.u0;
+		r15.u2 = (word64) v24;
+		int8 v25 = (int8) r15;
+		r15.u2 = (int64) v25;
+		word32 v26 = (word32) 0x00;
+		word32 v27 = (word32) r15;
+		p06 = v26 == v27;
+		p07 = v26 != v27;
+		Eq_n b0;
+		if (p07)
+		{
+			r32.u0 = (word32) r32 + 2;
+			word32 v39 = (word32) 0x3D;
+			word32 v40 = (word32) r15;
+			p07 = v39 == v40;
+			p06 = v39 != v40;
+			byte v41 = *r32.u1;
+			r16 = (word64) v41;
+			int8 v42 = (int8) r16;
+			r16 = (int64) v42;
+			if (p06)
+				goto l40000000000B5CB0;
+			word32 v55 = (word32) 0x00;
+			word32 v56 = (word32) r16;
+			p07 = v55 == v56;
+			p06 = v55 != v56;
+			if (!p07)
+			{
+				word32 v61 = (word32) 116;
+				word32 v62 = (word32) r16;
+				p07 = v61 == v62;
+				p06 = v61 != v62;
+				Eq_n r2;
+				word64 r12;
+				byte * r41;
+				word32 * r42;
+				if (!p06)
+				{
+l40000000000B5F40:
+					word32 v59 = (word32) 0x6C;
+					word32 v60 = (word32) r15;
+					p06 = v59 == v60;
+					p07 = v59 != v60;
+					if (p06)
+					{
+						r32.u1 = r33.u1;
+						b0 = r36;
+						r33.u1 = r34.u2;
+						r34 = 0x00 + 2;
+						ar.pfs = r37;
+						r2 = ar.pfs;
+						goto l40000000000B5880;
+					}
+					int32 v115 = (word32) 0x6C;
+					int32 v116 = (word32) r15;
+					p06 = v115 < v116;
+					p07 = v115 >= v116;
+					if (p06)
+					{
+						word32 v119 = (word32) 110;
+						word32 v120 = (word32) r15;
+						p06 = v119 == v120;
+						p07 = v119 != v120;
+						if (p06)
+						{
+							r32.u1 = r33.u1;
+							b0 = r36;
+							r33.u1 = r34.u2;
+							r34 = 0x00 + 0x00;
+							ar.pfs = r37;
+							r2 = ar.pfs;
+							goto l40000000000B5640;
+						}
+						word32 v131 = (word32) 111;
+						word32 v132 = (word32) r15;
+						p06 = v131 == v132;
+						p07 = v131 != v132;
+						if (p07)
+						{
+l40000000000B5CE0:
+							r8 = 0x00 + 0x00;
+							ar.pfs = r37;
+							b0 = r36;
+							return;
+						}
+						r32.u1 = r33.u1;
+						b0 = r36;
+						r33.u1 = r34.u2;
+						r34 = 0x00 + 1;
+						ar.pfs = r37;
+						r2 = ar.pfs;
+l40000000000B5640:
+						r37 = ar.pfs;
+						r12 += ~0x011F;
+						r38 = r1 + 0x00;
+						r36 = b4;
+						r39.u1 = r32.u1;
+						r40 = r12 + 0xA0;
+						b0();
+						int32 v129 = (word32) r8;
+						int32 v130 = (word32) 0x00;
+						p07 = v129 < v130;
+						p06 = v129 >= v130;
+						r1 = r38.u2;
+						r35 = &r8->u0;
+						r39.u1 = r33.u1;
+						r40 = r12 + 0x10;
+						if (p07)
+						{
+							word32 v135 = (word32) 0x02;
+							word32 v136 = (word32) r34;
+							p07 = v135 == v136;
+							p06 = v135 != v136;
+							r39.u1 = r33.u1;
+							r40 = r12 + 0x10;
+							if (p07)
+								goto l40000000000B5740;
+							b0();
+							r1 = r38.u2;
+						}
+						else
+						{
+							b0();
+							r1 = r38.u2;
+							int32 v133 = (word32) r8;
+							int32 v134 = (word32) 0x00;
+							p07 = v133 < v134;
+							p06 = v133 >= v134;
+							if (p07)
+							{
+								word32 v139 = (word32) 0x02;
+								word32 v140 = (word32) r34;
+								p06 = v139 == v140;
+								p07 = v139 != v140;
+								if (p06)
+									goto l40000000000B5740;
+								word32 v143 = (word32) 0x01;
+								word32 v144 = (word32) r34;
+								p06 = v143 == v144;
+								p07 = v143 != v144;
+								if (!p07)
+								{
+l40000000000B5780:
+									int32 v141 = (word32) r35;
+									int32 v142 = (word32) r8;
+									p06 = v141 < v142;
+									p07 = v141 >= v142;
+									if (p06)
+										goto l40000000000B57E0;
+									word32 v147 = (word32) 0x00;
+									word32 v148 = (word32) r8;
+									p06 = v147 == v148;
+									p07 = v147 != v148;
+									if (p07)
+										goto l40000000000B5740;
+									r14 = r12 + 232;
+									r15.u2 = *r14.u2;
+									r14 = r12 + 88;
+									r14.u2 = *r14.u2;
+									p06 = r15 < r14;
+									p07 = r15 >= r14;
+									if (p07)
+										goto l40000000000B5740;
+l40000000000B57E0:
+									r8 = 0x00 + 1;
+									ar.pfs = r37;
+									b0 = r36;
+									r12 += 288;
+									return;
+								}
+l40000000000B56C0:
+								word32 v145 = (word32) 0x02;
+								word32 v146 = (word32) r34;
+								p06 = v145 == v146;
+								p07 = v145 != v146;
+								if (p06)
+								{
+									r39.u1 = r32.u1;
+									r40.u1 = r33.u1;
+									r41 = r12 + 0xA0;
+									r42 = r12 + 0x10;
+									b0();
+									r1 = r38.u2;
+									ar.pfs = r37;
+									b0 = r36;
+									r12 += 288;
+									return;
+								}
+								word32 v149 = (word32) 0x00;
+								word32 v150 = (word32) r34;
+								p06 = v149 == v150;
+								p07 = v149 != v150;
+								if (p07)
+									goto l40000000000B5740;
+								int32 v151 = (word32) r8;
+								int32 v152 = (word32) r35;
+								p06 = v151 < v152;
+								p07 = v151 >= v152;
+								if (!p06)
+								{
+									word32 v155 = (word32) 0x00;
+									word32 v156 = (word32) r35;
+									p07 = v155 == v156;
+									p06 = v155 != v156;
+									if (p06)
+										goto l40000000000B5740;
+									r14 = r12 + 232;
+									r15.u2 = *r14.u2;
+									r14 = r12 + 88;
+									r14.u2 = *r14.u2;
+									p06 = r14 < r15;
+									p07 = r14 >= r15;
+									if (!p06)
+									{
+l40000000000B5740:
+										r8 = 0x00 + 0x00;
+										ar.pfs = r37;
+										b0 = r36;
+										r12 += 288;
+										return;
+									}
+								}
+								goto l40000000000B57E0;
+							}
+						}
+						word32 v137 = (word32) 0x01;
+						word32 v138 = (word32) r34;
+						p06 = v137 == v138;
+						p07 = v137 != v138;
+						if (p06)
+							goto l40000000000B5780;
+						goto l40000000000B56C0;
+					}
+					word32 v125 = (word32) 0x67;
+					word32 v126 = (word32) r15;
+					p06 = v125 == v126;
+					p07 = v125 != v126;
+					if (p07)
+						goto l40000000000B5CE0;
+					r32.u1 = r33.u1;
+					b0 = r36;
+					r33.u1 = r34.u2;
+					r34 = 0x00 + 3;
+					ar.pfs = r37;
+					r2 = ar.pfs;
+					goto l40000000000B5880;
+				}
+l40000000000B5CC0:
+				word32 v117 = (word32) 101;
+				word32 v118 = (word32) r15;
+				p07 = v117 == v118;
+				p06 = v117 != v118;
+				if (p07)
+				{
+					word32 v121 = (word32) 0x66;
+					word32 v122 = (word32) r16;
+					p06 = v121 == v122;
+					p07 = v121 != v122;
+					if (p06)
+					{
+						r32.u1 = r33.u1;
+						b0 = r36;
+						r33.u1 = r34.u2;
+						r34 = 0x00 + 2;
+						ar.pfs = r37;
+						r2 = ar.pfs;
+						goto l40000000000B5640;
+					}
+					word32 v127 = (word32) 113;
+					word32 v128 = (word32) r16;
+					p06 = v127 == v128;
+					p07 = v127 != v128;
+					if (p07)
+						goto l40000000000B5CE0;
+					r32.u1 = r33.u1;
+					b0 = r36;
+					r33.u1 = r34.u2;
+					r34 = 0x00 + 0x00;
+					ar.pfs = r37;
+					r2 = ar.pfs;
+l40000000000B5880:
+					r39 = ar.pfs;
+					r12 += ~0x1F;
+					Eq_n b6;
+					r38 = b6;
+					r40 = r1 + 0x00;
+					if (!p06)
+					{
+						r37 = r12 + 0x20;
+						r41 = r32.u1;
+						r36 = r12 + 0x18;
+						r42 = (word32 *) r37.u1;
+						b0();
+						word32 v94 = r37.u2->u1;
+						r14.u2 = (word64) v94;
+						r1 = r40.u1;
+						r8->u2 = (word64 *) r36;
+						word32 v95 = (word32) 0x00;
+						word32 v96 = (word32) r14;
+						p07 = v95 == v96;
+						p06 = v95 != v96;
+						if (p06)
+						{
+							r41 = r33.u1;
+							r42 = (word32 *) r37.u1;
+							b0();
+							word32 v101 = r37.u2->u1;
+							r14.u2 = (word64) v101;
+							r15 = r12 + 0x10;
+							r1 = r40.u1;
+							word32 v102 = (word32) 0x00;
+							word32 v103 = (word32) r14;
+							p06 = v102 == v103;
+							p07 = v102 != v103;
+							r8->u2 = (word64 *) r15;
+							if (!p06)
+							{
+								up32 v105 = (word32) 0x05;
+								up32 v106 = (word32) r34;
+								p06 = v105 < v106;
+								p07 = v105 >= v106;
+								if (!p06)
+								{
+									r14 = r1 + -9180;
+									r34 = __addp4(0x00, r34);
+									r15 = r12 + 0x10;
+									r8 = *r36.u2;
+									r14.u2 = *r14.u2;
+									r34.u2 = r14.u2 + r34;
+									r14.u2 = *r34.u2;
+									r34.u2 = r14 + r34;
+									r14.u2 = *r15.u2;
+									b6 = r34;
+									b6();
+									return;
+								}
+							}
+						}
+						r8 = 0x00 + 0x00;
+						ar.pfs = r39;
+						b0 = r38;
+						r12 += 0x20;
+						return;
+					}
+					else
+					{
+						r36 = r12 + 0x18;
+						r41 = r32.u1;
+						r42 = (word32 *) r36.u2;
+						b0();
+						word32 v92 = (word32) 0x00;
+						word32 v93 = (word32) r8;
+						p07 = v92 == v93;
+						p06 = v92 != v93;
+						r1 = r40.u1;
+						if (p07)
+							r41 = r32.u1;
+					}
+				}
+				word32 v123 = (word32) 101;
+				word32 v124 = (word32) r16;
+				p07 = v123 == v124;
+				p06 = v123 != v124;
+				if (!p07)
+					goto l40000000000B5CE0;
+l40000000000B5FF0:
+				word32 v99 = (word32) 0x6C;
+				word32 v100 = (word32) r15;
+				p06 = v99 == v100;
+				p07 = v99 != v100;
+				if (p06)
+				{
+					r32.u1 = r33.u1;
+					b0 = r36;
+					r33.u1 = r34.u2;
+					r34 = 0x00 + 4;
+					ar.pfs = r37;
+					r2 = ar.pfs;
+				}
+				else
+				{
+					word32 v107 = (word32) 110;
+					word32 v108 = (word32) r15;
+					p06 = v107 == v108;
+					p07 = v107 != v108;
+					if (p06)
+					{
+						r32.u1 = r33.u1;
+						b0 = r36;
+						r33.u1 = r34.u2;
+						r34 = 0x00 + 1;
+						ar.pfs = r37;
+						r2 = ar.pfs;
+					}
+					else
+					{
+						word32 v110 = (word32) 0x67;
+						word32 v111 = (word32) r15;
+						p06 = v110 == v111;
+						p07 = v110 != v111;
+						if (p07)
+							goto l40000000000B5CE0;
+						r32.u1 = r33.u1;
+						b0 = r36;
+						r33.u1 = r34.u2;
+						r34 = 0x00 + 5;
+						ar.pfs = r37;
+						r2 = ar.pfs;
+					}
+				}
+				goto l40000000000B5880;
+			}
+		}
+		word32 v153 = (word32) 0x00;
+		word32 v154 = (word32) r17;
+		p06 = v153 == v154;
+		p07 = v153 != v154;
+		if (p07)
+		{
+			r14 = r1 + 7664;
+			r39.u1 = r34.u2;
+			r40.u1 = r33.u1;
+			Eq_n v157;
+			v157.u1 = r14.u3->t0000.u1;
+			r15.u2 = (word64) v157;
+			r14 = r1 + 7036;
+			word32 v158 = (word32) 0x00;
+			word32 v159 = (word32) r15;
+			p06 = v158 == v159;
+			p07 = v158 != v159;
+			Eq_n v160;
+			v160.u1 = r14.u3->t0000.u1;
+			r14.u2 = (word64) v160;
+			word32 v161 = (word32) 0x00;
+			word32 v162 = (word32) r14;
+			p08 = v161 == v162;
+			p09 = v161 != v162;
+			if (p06)
+				r14 = 0x00 + 0x00;
+			if (p07)
+				r14 = 0x00 + 32;
+			if (!p20)
+			{
+				if (p17)
+					__break();
+			}
+		}
+		byte v163 = *r33.u1;
+		r15.u2 = (word64) v163;
+		byte v164 = r34.u3->t0000.u0;
+		r14.u2 = (word64) v164;
+		int8 v165 = (int8) r15;
+		r15.u2 = (int64) v165;
+		int8 v166 = (int8) r14;
+		r14.u2 = (int64) v166;
+		word32 v167 = (word32) r15;
+		word32 v168 = (word32) r14;
+		p07 = v167 == v168;
+		p06 = v167 != v168;
+		if (!p06)
+		{
+			r39.u1 = r33.u1;
+			r40.u1 = r34.u2;
+			b0();
+			word32 v169 = (word32) 0x00;
+			word32 v170 = (word32) r8;
+			p06 = v169 == v170;
+			p07 = v169 != v170;
+			r1 = r38.u2;
+			ar.pfs = r37;
+			if (p06)
+				r8 = 0x00 + 1;
+			__break();
+			0x00 < r32;
+			0x00 >= r32;
+		}
+		goto l40000000000B5CE0;
+	}
+	r15 &= 0xFD;
+	word32 v22 = (word32) 0x3C;
+	word32 v23 = (word32) r15;
+	p06 = v22 == v23;
+	p07 = v22 != v23;
+	r15.u1 = (word32) r32 + 1;
+	if (p07)
+	{
+		r32.u0 = (word32) r32 + 2;
+		Eq_n v32;
+		v32.u0 = r15.u3->t0000.u0;
+		r15.u2 = (word64) v32;
+		word32 v33 = (word32) 33;
+		word32 v34 = (word32) r14;
+		p07 = v33 == v34;
+		p06 = v33 != v34;
+		byte v35 = *r32.u1;
+		r16 = (word64) v35;
+		int8 v37 = (int8) r15;
+		r15.u2 = (int64) v37;
+		int8 v38 = (int8) r16;
+		r16 = (int64) v38;
+		if (p06)
+			goto l40000000000B5CB0;
+	}
+	else
+	{
+		Eq_n v28;
+		v28.u0 = r15.u3->t0000.u0;
+		r15.u2 = (word64) v28;
+		int8 v29 = (int8) r15;
+		r15.u2 = (int64) v29;
+		word32 v30 = (word32) 0x00;
+		word32 v31 = (word32) r15;
+		p06 = v30 == v31;
+		p07 = v30 != v31;
+		if (p06)
+		{
+			r15 = r1 + 6044;
+			word32 v47 = (word32) 0x3E;
+			word32 v48 = (word32) r14;
+			p06 = v47 == v48;
+			p07 = v47 != v48;
+			r39.u1 = r33.u1;
+			r40.u1 = r34.u2;
+			if (p06)
+				r14 = 0x00 + 1;
+			if (p07)
+				r14 = 0x00 + 0x00;
+		}
+		r32.u0 = (word32) r32 + 2;
+		word32 v43 = (word32) 33;
+		word32 v44 = (word32) r14;
+		p07 = v43 == v44;
+		p06 = v43 != v44;
+		byte v45 = *r32.u1;
+		r16 = (word64) v45;
+		int8 v46 = (int8) r16;
+		r16 = (int64) v46;
+		if (!p07)
+		{
+l40000000000B5CB0:
+			word32 v53 = (word32) 116;
+			word32 v54 = (word32) r16;
+			p07 = v53 == v54;
+			p06 = v53 != v54;
+			if (p07)
+				goto l40000000000B5F40;
+			goto l40000000000B5CC0;
+		}
+	}
+	word32 v57 = (word32) 0x3D;
+	word32 v58 = (word32) r15;
+	p07 = v57 == v58;
+	p06 = v57 != v58;
+	if (!p06)
+	{
+		word32 v63 = (word32) 0x00;
+		word32 v64 = (word32) r16;
+		p07 = v63 == v64;
+		p06 = v63 != v64;
+		if (p07)
+		{
+			word32 v69 = (word32) 0x00;
+			word32 v70 = (word32) r17;
+			p06 = v69 == v70;
+			p07 = v69 != v70;
+			if (!p07)
+			{
+				byte v84 = *r33.u1;
+				r15.u2 = (word64) v84;
+				Eq_n v85;
+				v85.u0 = r34.u3->t0000.u0;
+				r14.u2 = (word64) v85;
+				int8 v86 = (int8) r15;
+				r15.u2 = (int64) v86;
+				int8 v87 = (int8) r14;
+				r14.u2 = (int64) v87;
+				word32 v88 = (word32) r15;
+				word32 v89 = (word32) r14;
+				p07 = v88 == v89;
+				p06 = v88 != v89;
+				if (p06)
+					r8 = 0x00 + 1;
+			}
+			else
+			{
+				r14 = r1 + 7664;
+				r39.u1 = r34.u2;
+				r40.u1 = r33.u1;
+				Eq_n v76;
+				v76.u1 = r14.u3->t0000.u1;
+				r15.u2 = (word64) v76;
+				r14 = r1 + 7036;
+				word32 v77 = (word32) 0x00;
+				word32 v78 = (word32) r15;
+				p06 = v77 == v78;
+				p07 = v77 != v78;
+				Eq_n v79;
+				v79.u1 = r14.u3->t0000.u1;
+				r14.u2 = (word64) v79;
+				word32 v80 = (word32) 0x00;
+				word32 v81 = (word32) r14;
+				p08 = v80 == v81;
+				p09 = v80 != v81;
+				if (p06)
+					r14 = 0x00 + 0x00;
+				if (p07)
+					r14 = 0x00 + 32;
+				if (!p20)
+				{
+					if (p17)
+						__break();
+					word64 p16;
+					if (p16)
+					{
+						word32 v113 = (word32) 0x00;
+						word32 v114 = (word32) 0x00;
+						v113 == v114;
+						p08 = v113 != v114;
+					}
+				}
+			}
+		}
+		word32 v67 = (word32) 116;
+		word32 v68 = (word32) r16;
+		p06 = v67 == v68;
+		p07 = v67 != v68;
+		if (p06)
+			goto l40000000000B5CE0;
+		word32 v73 = (word32) 101;
+		word32 v74 = (word32) r16;
+		p07 = v73 == v74;
+		p06 = v73 != v74;
+		if (p06)
+			goto l40000000000B5CE0;
+		goto l40000000000B5FF0;
+	}
+	goto l40000000000B5CB0;
 }
 
-// 40000000000B8540: void test_command()
-void test_command()
+// 40000000000B6400: define unary_test
+define unary_test
 {
+	word64 b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word64 r12 = r12 + ~0x9F;
+	byte * r32 = r32 + 1;
+	word64 r36 = r1 + 0x00;
+	word64 r34 = b2;
+	byte v12 = *r32;
+	<anonymous> * r14 = (word64) v12;
+	r14 = (<anonymous> *) ((char *) r14 - 71);
+	byte v14 = (byte) r14;
+	r14 = (word64) v14;
+	up32 v15 = (word32) 0x33;
+	up32 v16 = (word32) r14;
+	Eq_n p06 = v15 < v16;
+	Eq_n p07 = v15 >= v16;
+	if (!p06)
+	{
+		struct Eq_n * r15 = r1 + -9172;
+		r15 = r15->ptr0000;
+		r14 = (<anonymous> *) (r15 + r14);
+		r15 = *r14;
+		r14 = r15 + r14;
+		<anonymous> * b6 = r14;
+		b6();
+	}
+	else
+	{
+		word64 r8 = 0x00 + 0x00;
+		ar.pfs = r35;
+		word64 b0 = r34;
+		r12 += 0xA0;
+	}
 }
 
-// 40000000000B8C00: void shell_version_string()
-void shell_version_string()
+// 40000000000B6D00: define test_binop
+define test_binop
 {
+	byte * r32;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	byte v5 = *r32;
+	union Eq_n * r14 = (word64) v5;
+	int8 v7 = (int8) r14;
+	r14 = (int64) v7;
+	int8 v8 = (int8) r14;
+	Eq_n r15;
+	r15.u1 = (int64) v8;
+	word32 v10 = (word32) 0x3D;
+	word32 v11 = (word32) r14;
+	Eq_n p07 = v10 == v11;
+	Eq_n p06 = v10 != v11;
+	if (!p07)
+	{
+		r15 &= 0xFD;
+		word32 v14 = (word32) 0x3C;
+		word32 v15 = (word32) r15;
+		p06 = v14 == v15;
+		p07 = v14 != v15;
+		if (p07)
+			goto l40000000000B6D80;
+	}
+	r15.u1 = r32 + 1;
+	Eq_n v16;
+	v16.u0 = r15.u1->t0000.u0;
+	r15.u1 = (word64) v16;
+	int8 v17 = (int8) r15;
+	r15.u1 = (int64) v17;
+	word32 v18 = (word32) 0x00;
+	word32 v19 = (word32) r15;
+	p06 = v18 == v19;
+	p07 = v18 != v19;
+	if (p06)
+		goto l40000000000B6EE0;
+l40000000000B6D80:
+	word32 v20 = (word32) 33;
+	word32 v21 = (word32) r14;
+	p07 = v20 == v21;
+	p06 = v20 != v21;
+	if (!p06)
+	{
+		r15.u1 = r32 + 1;
+		Eq_n v24;
+		v24.u0 = r15.u1->t0000.u0;
+		r15.u1 = (word64) v24;
+		int8 v25 = (int8) r15;
+		r15.u1 = (int64) v25;
+		word32 v26 = (word32) 0x3D;
+		word32 v27 = (word32) r15;
+		p07 = v26 == v27;
+		p06 = v26 != v27;
+		if (p07)
+		{
+			r15.u1 = r32 + 2;
+			Eq_n v30;
+			v30.u0 = r15.u1->t0000.u0;
+			r15.u1 = (word64) v30;
+			int8 v31 = (int8) r15;
+			r15.u1 = (int64) v31;
+			word32 v32 = (word32) 0x00;
+			word32 v33 = (word32) r15;
+			p06 = v32 == v33;
+			p07 = v32 != v33;
+			if (p06)
+				goto l40000000000B6EE0;
+			word32 v38 = (word32) 0x2D;
+			word32 v39 = (word32) r14;
+			p07 = v38 == v39;
+			p06 = v38 != v39;
+			if (p06)
+				goto l40000000000B6DE0;
+l40000000000B6DF0:
+			r14 = (union Eq_n *) (r32 + 2);
+			r15.u1 = r32 + 3;
+			++r32;
+			Eq_n v34;
+			v34.u0 = r14->u0;
+			r14 = (word64) v34;
+			int8 v35 = (int8) r14;
+			r14 = (int64) v35;
+			word32 v36 = (word32) 0x00;
+			word32 v37 = (word32) r14;
+			p06 = v36 == v37;
+			p07 = v36 != v37;
+			if (p06)
+				goto l40000000000B6DE0;
+			Eq_n v40;
+			v40.u0 = r15.u1->t0000.u0;
+			r15.u1 = (word64) v40;
+			int8 v41 = (int8) r15;
+			r15.u1 = (int64) v41;
+			word32 v42 = (word32) 0x00;
+			word32 v43 = (word32) r15;
+			p07 = v42 == v43;
+			p06 = v42 != v43;
+			word64 r8;
+			if (p06)
+			{
+l40000000000B6DE0:
+				r8 = 0x00 + 0x00;
+				return;
+			}
+			word32 v44 = (word32) 116;
+			word32 v45 = (word32) r14;
+			p07 = v44 == v45;
+			p06 = v44 != v45;
+			if (p07)
+			{
+				byte v50 = *r32;
+				r14 = (word64) v50;
+				r14 += (union Eq_n *) ~0x66;
+				byte v51 = (byte) r14;
+				r15.u1 = (word64) v51;
+				up32 v52 = (word32) 0x08;
+				up32 v53 = (word32) r15;
+				p06 = v52 < v53;
+				p07 = v52 >= v53;
+				if (!p06)
+				{
+					r15 = 0x00 + 1;
+					int8 v59 = (int8) r14;
+					r14 = (int64) v59;
+					r15 <<= r14;
+					r14 = 0x00 + 0x01A1;
+					r14 = r15 & r14;
+					p07 = null == r14;
+					p06 = null != r14;
+					if (!p07)
+					{
+						r8 = 0x00 + 1;
+						return;
+					}
+				}
+				goto l40000000000B6DE0;
+			}
+			byte v46 = *r32;
+			r15.u1 = (word64) v46;
+			int8 v47 = (int8) r15;
+			r15.u1 = (int64) v47;
+			word32 v48 = (word32) 101;
+			word32 v49 = (word32) r15;
+			p07 = v48 == v49;
+			p06 = v48 != v49;
+			if (p07)
+			{
+				r14 += (union Eq_n *) ~0x65;
+				byte v56 = (byte) r14;
+				r14 = (word64) v56;
+				up32 v57 = (word32) 11;
+				up32 v58 = (word32) r14;
+				p06 = v57 < v58;
+				p07 = v57 >= v58;
+				if (!p06)
+				{
+					word64 r1;
+					r15 = r1 + -0x000023CC;
+					byte v64 = (byte) r14;
+					r14 = (word64) v64;
+					r15.u1 = r15.u1->t0000.u1;
+					r14 = (union Eq_n *) (r15.u1 + r14);
+					Eq_n v65;
+					v65.u1 = r14->u1;
+					r8 = (word64) v65;
+					return;
+				}
+				goto l40000000000B6DE0;
+			}
+			word32 v54 = (word32) 101;
+			word32 v55 = (word32) r14;
+			p07 = v54 == v55;
+			p06 = v54 != v55;
+			if (p06)
+				goto l40000000000B6DE0;
+			r15.u1 = (word32) r15 - 0x0067;
+			byte v60 = (byte) r15;
+			r14 = (word64) v60;
+			up32 v61 = (word32) 0x07;
+			up32 v62 = (word32) r14;
+			p06 = v61 < v62;
+			p07 = v61 >= v62;
+			if (p06)
+				goto l40000000000B6DE0;
+			r14 = 0x00 + 1;
+			int8 v66 = (int8) r15;
+			r15.u1 = (int64) v66;
+			r15 = r14 << r15;
+			r14 = 0x00 + 161;
+			r14 = r15 & r14;
+			p07 = null == r14;
+			p06 = null != r14;
+			if (p07)
+				goto l40000000000B6DE0;
+l40000000000B6EE0:
+			r8 = 0x00 + 1;
+			return;
+		}
+	}
+	word32 v28 = (word32) 0x2D;
+	word32 v29 = (word32) r14;
+	p07 = v28 == v29;
+	p06 = v28 != v29;
+	if (!p07)
+		goto l40000000000B6DE0;
+	goto l40000000000B6DF0;
 }
 
-// 40000000000B8D00: void show_shell_version()
-void show_shell_version()
+// 40000000000B7300: define test_unop
+define test_unop
 {
+	byte * r32;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	byte v5 = *r32;
+	int64 r14 = (word64) v5;
+	word64 r8 = 0x00 + 0x00;
+	int8 v8 = (int8) r14;
+	r14 = (int64) v8;
+	word32 v9 = (word32) 0x2D;
+	word32 v10 = (word32) r14;
+	Eq_n p07 = v9 == v10;
+	Eq_n p06 = v9 != v10;
+	if (p06)
+		return;
+	byte * r15 = r32 + 1;
+	r32 += 2;
+	ui64 r16 = 0x00 + 1;
+	byte v16 = *r32;
+	r14 = (word64) v16;
+	int8 v17 = (int8) r14;
+	r14 = (int64) v17;
+	word32 v18 = (word32) 0x00;
+	word32 v19 = (word32) r14;
+	p07 = v18 == v19;
+	p06 = v18 != v19;
+	if (!p06)
+	{
+		byte v20 = *r15;
+		r14 = (word64) v20;
+		r14 += ~0x46;
+		int8 v21 = (int8) r14;
+		r15 = (int64) v21;
+		byte v22 = (byte) r14;
+		r14 = (word64) v22;
+		r15 = r16 << r15;
+		up32 v23 = (word32) 0x33;
+		up32 v24 = (word32) r14;
+		p06 = v23 < v24;
+		p07 = v23 >= v24;
+		if (p06)
+			return;
+		r16 = 3372837750444449;
+		r15 &= r16;
+		p07 = null == r15;
+		p06 = null != r15;
+		if (p06)
+			r8 = 0x00 + 1;
+	}
+	else
+		r8 = 0x00 + 0x00;
 }
 
-// 40000000000B91C0: void initialize_aliases()
-void initialize_aliases()
+// 40000000000B8540: define test_command
+define test_command
 {
+	word64 r8;
+	word64 b3;
+	struct Eq_n * r1;
+	word64 r12;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	struct Eq_n * r16 = r12 + 0x08;
+	r12 += ~0x1F;
+	word64 r37 = (char *) &r1->ptr0000 + 0x00004CD4;
+	word64 r35 = b3;
+	ptr64 r14 = r12 + 0x10;
+	word64 r15 = r12 + 0x18;
+	r1->ptr0000 = r16;
+	word64 r38 = 0x00 + 1;
+	word32 * r32;
+	*r32 = (word32) r14;
+	word64 * r33;
+	*r33 = r15;
+	<anonymous> * b0;
+	b0();
+	r1 = r12 + 0x28;
+	word32 v19 = (word32) 0x00;
+	word32 v20 = (word32) r8;
+	Eq_n p06 = v19 == v20;
+	Eq_n p07 = v19 != v20;
+	r1 = r1->ptr0000;
+	if (p07)
+		r14 = (char *) &r1->ptr0000 + 7708;
 }
 
-// 40000000000B9240: void find_alias()
-void find_alias()
+// 40000000000B8C00: define shell_version_string
+define shell_version_string
 {
+	word64 r1;
+	<anonymous> * b0;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r33 = ar.pfs;
+	word64 r12 = r12 + ~0x0F;
+	<anonymous> * r32 = b0;
+	byte * r35 = r1 + 0x00004F94;
+	word64 r8 = r1 + 0x00004F94;
+	word64 r34 = r1 + 0x00;
+	byte v13 = *r35;
+	struct Eq_n * r14 = (word64) v13;
+	int8 v15 = (int8) r14;
+	r14 = (int64) v15;
+	word32 v16 = (word32) 0x00;
+	word32 v17 = (word32) r14;
+	Eq_n p07 = v16 == v17;
+	Eq_n p06 = v16 != v17;
+	if (!p07)
+	{
+		ar.pfs = r33;
+		b0 = r32;
+		r12 += 0x10;
+	}
+	else
+	{
+		struct Eq_n * r15 = r1 + -8868;
+		r14 = r12 + 0x10;
+		struct Eq_n * r39 = r1 + -8884;
+		struct Eq_n * r40 = r1 + -8876;
+		word64 r36 = 0x00 + 32;
+		word64 r37 = 0x00 + 1;
+		r15 = r15->ptr0000;
+		word64 r38 = 0x00 + 32;
+		word64 r41 = 0x00 + 45;
+		word64 r42 = 0x00 + 1;
+		r39 = r39->ptr0000;
+		r15->ptr0000 = r14;
+		r40 = r40->ptr0000;
+		b0();
+		r1 = r34 + 0x00;
+		r8 = r1 + 0x00004F94;
+		ar.pfs = r33;
+		b0 = r32;
+		r12 += 0x10;
+	}
 }
 
-// 40000000000B9300: void get_alias_value()
-void get_alias_value()
+// 40000000000B8D00: define show_shell_version
+define show_shell_version
 {
+	word64 r32;
+	word64 r8;
+	<anonymous> * b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	struct Eq_n * r38 = r1 + -8860;
+	<anonymous> * r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r37 = 0x00 + 0x00;
+	r38 = r38->ptr0000;
+	word64 r39 = 0x00 + 5;
+	<anonymous> * b0;
+	b0();
+	r1 = r36 + 0x00;
+	word64 r33 = r8 + 0x00;
+	b0();
+	r1 = r36 + 0x00;
+	r37 = 0x00 + 1;
+	r38 = r33 + 0x00;
+	r39 = r8 + 0x00;
+	struct Eq_n * r40 = r1 + -8852;
+	r40 = r40->ptr0000;
+	b0();
+	r1 = r36 + 0x00;
+	word32 v18 = (word32) 0x00;
+	word32 v19 = (word32) r32;
+	Eq_n p06 = v18 == v19;
+	Eq_n p07 = v18 != v19;
+	ar.pfs = r35;
+	if (!p07)
+		b0 = r34;
+	else
+	{
+		r38 = r1 + -8844;
+		r39 = 0x00 + 5;
+		r37 = 0x00 + 0x00;
+		r38 = r38->ptr0000;
+		b0();
+		r1 = r36 + 0x00;
+		r37 = r8 + 0x00;
+		b0();
+		r1 = r36 + 0x00;
+		r39 = 0x00 + 5;
+		r37 = 0x00 + 0x00;
+		r38 = r1 + -8836;
+		r38 = r38->ptr0000;
+		b0();
+		r1 = r36 + 0x00;
+		r37 = r8 + 0x00;
+		b0();
+		r1 = r36 + 0x00;
+		r39 = 0x00 + 5;
+		r37 = 0x00 + 0x00;
+		r38 = r1 + -8828;
+		r38 = r38->ptr0000;
+		b0();
+		r1 = r36 + 0x00;
+		r37 = 0x00 + 1;
+		r38 = r8 + 0x00;
+		b0();
+		r1 = r36 + 0x00;
+		r39 = 0x00 + 5;
+		r37 = 0x00 + 0x00;
+		r38 = r1 + -8820;
+		r38 = r38->ptr0000;
+		b0();
+		r1 = r36 + 0x00;
+		r37 = 0x00 + 1;
+		r38 = r8 + 0x00;
+		b0();
+		r1 = r36 + 0x00;
+		ar.pfs = r35;
+		b0 = r34;
+	}
 }
 
-// 40000000000B93C0: void add_alias()
-void add_alias()
+// 40000000000B91C0: define initialize_aliases
+define initialize_aliases
 {
+	word64 r1;
+	<anonymous> * b1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	<anonymous> * r33 = b1;
+	word64 * r32 = r1 + 7740;
+	word64 r35 = r1 + 0x00;
+	word64 r14 = *r32;
+	ar.pfs = r34;
+	Eq_n p07 = 0x00 == r14;
+	Eq_n p06 = 0x00 != r14;
+	<anonymous> * b0 = r33;
+	if (p07)
+	{
+		word64 r36 = 0x00 + 16;
+		b0();
+		r1 = r35 + 0x00;
+		word64 ** r8;
+		*r8 = r32;
+		ar.pfs = r34;
+		b0 = r33;
+	}
 }
 
-// 40000000000B9700: void remove_alias()
-void remove_alias()
+// 40000000000B9240: define find_alias
+define find_alias
 {
+	word64 r32;
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	struct Eq_n * r14 = r1 + 7740;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r36 = r32 + 0x00;
+	r14 = r14->ptr0000;
+	word64 r38 = 0x00 + 0x00;
+	Eq_n p07 = null == r14;
+	Eq_n p06 = null != r14;
+	word64 * r37 = &r14->ptr0000;
+	<anonymous> * b0;
+	struct Eq_n * r8;
+	if (!p07)
+	{
+		b0();
+		r14 = (struct Eq_n *) ((char *) &r8->ptr0000 + 16);
+		p06 = null == r8;
+		p07 = null != r8;
+		r1 = r35 + 0x00;
+		ar.pfs = r34;
+		if (!p06)
+		{
+			b0 = r33;
+			r8 = r14->ptr0000;
+			return;
+		}
+	}
+	r8 = 0x00 + 0x00;
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000B9840: void delete_all_aliases()
-void delete_all_aliases()
+// 40000000000B9300: define get_alias_value
+define get_alias_value
 {
+	word64 r32;
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	struct Eq_n * r14 = r1 + 7740;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r36 = r32 + 0x00;
+	r14 = r14->ptr0000;
+	Eq_n p07 = null == r14;
+	Eq_n p06 = null != r14;
+	<anonymous> * b0;
+	struct Eq_n * r8;
+	if (!p07)
+	{
+		b0();
+		r14 = (struct Eq_n *) ((char *) &r8->ptr0000 + 8);
+		p06 = null == r8;
+		p07 = null != r8;
+		r1 = r35 + 0x00;
+		ar.pfs = r34;
+		if (!p06)
+		{
+			b0 = r33;
+			r8 = r14->ptr0000;
+			return;
+		}
+	}
+	r8 = 0x00 + 0x00;
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000B9940: void all_aliases()
-void all_aliases()
+// 40000000000B93C0: define add_alias
+define add_alias
 {
+	word64 r32;
+	<anonymous> * b6;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r39 = ar.pfs;
+	int64 * r36 = r1 + 7740;
+	<anonymous> * r38 = b6;
+	word64 r40 = r1 + 0x00;
+	Eq_n r41 = r32 + 0x00;
+	int64 r14 = *r36;
+	Eq_n p07 = 0x00 == r14;
+	Eq_n p06 = 0x00 != r14;
+	<anonymous> * b0;
+	word64 ** r8;
+	word64 * r35;
+	word64 * r34;
+	Eq_n r33;
+	Eq_n r42;
+	if (p07)
+	{
+		b0();
+		r1 = r40 + 0x00;
+	}
+	else
+	{
+		b0();
+		p06 = null == r8;
+		p07 = null != r8;
+		r35 = (word64 *) ((char *) r8 + 8);
+		r34 = (word64 *) ((char *) r8 + 16);
+		r1 = r40 + 0x00;
+		if (!p06)
+		{
+			r41.u2 = *r35;
+			b0();
+			r1 = r40 + 0x00;
+			r41.u2 = r33.u0;
+			b0();
+			r1 = r40 + 0x00;
+			r41.u2 = (char *) r8 + 1;
+			b0();
+			r42.u2 = r33.u0;
+			r1 = r40 + 0x00;
+			r41.u2 = r8;
+			b0();
+			byte v22 = (byte) *r34;
+			r14 = (word64) v22;
+			*r8 = r35;
+			r1 = r40 + 0x00;
+			r41.u2 = r33.u0;
+			r35 = r14 & 0xFE;
+			int8 v23 = (int8) r35;
+			r35 = (int64) v23;
+			*r35 = (word64) (byte) r34;
+			r35 |= 0x01;
+			b0();
+			r8 += r33;
+			r1 = r40 + 0x00;
+			ar.pfs = r39;
+			r33.u0 = (char *) r8 - 1;
+			b0 = r38;
+			byte v24 = *r33.u0;
+			r14 = (word64) v24;
+			int8 v25 = (int8) r14;
+			r14 = (int64) v25;
+			word32 v26 = (word32) 0x09;
+			word32 v27 = (word32) r14;
+			p07 = v26 == v27;
+			p06 = v26 != v27;
+			if (p07)
+				*r35 = (word64) (byte) r34;
+			__break();
+			__break();
+		}
+	}
+	r41 = 0x00 + 24;
+	b0();
+	r1 = r40 + 0x00;
+	r34 = r8;
+	r41 = r32 + 0x00;
+	b0();
+	r1 = r40 + 0x00;
+	r41.u2 = (char *) r8 + 1;
+	r35 = r34;
+	ptr64 r37 = r34 + 2;
+	b0();
+	r42 = r32 + 0x00;
+	r1 = r40 + 0x00;
+	r41.u2 = r8;
+	b0();
+	r1 = r40 + 0x00;
+	r41.u2 = r33.u0;
+	*r35 = r8;
+	++r35;
+	b0();
+	r1 = r40 + 0x00;
+	r41.u2 = (char *) r8 + 1;
+	b0();
+	r42.u2 = r33.u0;
+	r1 = r40 + 0x00;
+	r41.u2 = r8;
+	b0();
+	r1 = r40 + 0x00;
+	r41.u2 = r33.u0;
+	*r8 = r35;
+	byte * r0;
+	*r0 = (byte) r37;
+	b0();
+	r8 += r33;
+	r1 = r40 + 0x00;
+	r41 = r32 + 0x00;
+	r33.u0 = (char *) r8 - 1;
+	byte v30 = *r33.u0;
+	r14 = (word64) v30;
+	int8 v31 = (int8) r14;
+	r14 = (int64) v31;
+	word32 v32 = (word32) 0x09;
+	word32 v33 = (word32) r14;
+	p07 = v32 == v33;
+	p06 = v32 != v33;
+	if (p07)
+		r14 = 0x00 + 1;
 }
 
-// 40000000000B9B40: void alias_expand_word()
-void alias_expand_word()
+// 40000000000B9700: define remove_alias
+define remove_alias
 {
+	word64 r32;
+	<anonymous> * b3;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	union Eq_n ** r34 = r1 + 7740;
+	<anonymous> * r35 = b3;
+	word64 r37 = r1 + 0x00;
+	Eq_n r38 = r32 + 0x00;
+	union Eq_n * r14 = (union Eq_n *) *r34;
+	word64 r40 = 0x00 + 0x00;
+	Eq_n p07 = null == r14;
+	Eq_n p06 = null != r14;
+	word64 r39 = &r14->u0;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p07)
+	{
+		b0();
+		r14 = r8 + 0x10;
+		p06 = 0x00 == r8;
+		p07 = 0x00 != r8;
+		word64 r33 = r8 + 0x00;
+		r1 = r37 + 0x00;
+		if (!p06)
+		{
+			r38.u0 = r14->u0;
+			b0();
+			r14 = r33 + 0x08;
+			r1 = r37 + 0x00;
+			r38.u0 = r14->u0;
+			b0();
+			r1 = r37 + 0x00;
+			r38 = r33 + 0x00;
+			b0();
+			r1 = r37 + 0x00;
+			r38 = r1 + -0x000048A4;
+			b0();
+			r14 = (union Eq_n *) *r34;
+			r1 = r37 + 0x00;
+			ar.pfs = r36;
+			r14 = (union Eq_n *) ((char *) r14 + 0x0C);
+			b0 = r35;
+			Eq_n v21;
+			v21.u1 = r14->u1;
+			r8 = (word64) v21;
+			return;
+		}
+	}
+	r8 = 0x00 + -1;
+	ar.pfs = r36;
+	b0 = r35;
 }
 
-// 40000000000B9C00: void alias_expand()
-void alias_expand()
+// 40000000000B9840: define delete_all_aliases
+define delete_all_aliases
 {
+	<anonymous> * b1;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word64 * r32 = r1 + 7740;
+	struct Eq_n * r37 = r1 + -0x0F8C;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r14 = *r32;
+	r37 = r37->ptr0000;
+	Eq_n p06 = 0x00 == r14;
+	Eq_n p07 = 0x00 != r14;
+	word64 r36 = r14 + 0x00;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		b0();
+		r1 = r35 + 0x00;
+		r36 = *r32;
+		b0();
+		r1 = r35 + 0x00;
+		word64 ** r0;
+		*r0 = r32;
+		r36 = r1 + -0x000048A4;
+		b0();
+		r1 = r35 + 0x00;
+	}
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000BA880: void array_walk()
-void array_walk()
+// 40000000000B9940: define all_aliases
+define all_aliases
 {
+	<anonymous> * b2;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	struct Eq_n ** r32 = r1 + 7740;
+	<anonymous> * r34 = b2;
+	word64 r36 = r1 + 0x00;
+	struct Eq_n * r14 = (struct Eq_n *) *r32;
+	union Eq_n * r15 = (union Eq_n *) ((char *) &r14->ptr0000 + 0x0C);
+	Eq_n p07 = null == r14;
+	Eq_n p06 = null != r14;
+	<anonymous> * b0;
+	word64 r33;
+	Eq_n r8;
+	if (!p07)
+	{
+		Eq_n v15;
+		v15.u1 = r15->u1;
+		r14 = (word64) v15;
+		r15 = (union Eq_n *) ((char *) &r14->ptr0000 + 1);
+		word32 v16 = (word32) 0x00;
+		word32 v17 = (word32) r14;
+		p06 = v16 == v17;
+		p07 = v16 != v17;
+		if (!p06)
+		{
+			int32 v21 = (int32) r15;
+			int64 r37 = (int64) v21;
+			r37 = (r37 << 0x03) + 0x00;
+			b0();
+			r14 = (struct Eq_n *) *r32;
+			word64 r19 = 0x00 + 0x00;
+			word64 r16 = 0x00 + 0x00;
+			word64 r18 = 0x00 + 0x00;
+			r1 = r36 + 0x00;
+			r33 = r8.u0;
+			r15 = (union Eq_n *) ((char *) &r14->ptr0000 + 8);
+			Eq_n v26;
+			v26.u1 = r15->u1;
+			r15 = (word64) v26;
+			int32 v27 = (word32) 0x00;
+			int32 v28 = (word32) r15;
+			p06 = v27 < v28;
+			p07 = v27 >= v28;
+			if (!p07)
+			{
+				do
+				{
+					r14 = r14->ptr0000;
+					int32 v29 = (int32) r16;
+					r15 = (int64) v29;
+					r14 = (struct Eq_n *) ((char *) &r14->ptr0000 + r19);
+					r15 = (r15 << 0x03) + r33;
+					r14 = r14->ptr0000;
+					p06 = null == r14;
+					p07 = null != r14;
+					if (!p06)
+					{
+						do
+						{
+							struct Eq_n * r17 = (struct Eq_n *) ((char *) &r14->ptr0000 + 16);
+							++r16;
+							r17 = r17->ptr0000;
+							r15->u0 = (word64) r8;
+							r15 = (union Eq_n *) ((char *) r15 + 8);
+							union Eq_n ** r0;
+							*r0 = (union Eq_n **) r15;
+							r14 = r14->ptr0000;
+							p07 = null == r14;
+							p06 = null != r14;
+						} while (p06);
+					}
+					r14 = (struct Eq_n *) *r32;
+					++r18;
+					r19 += 0x08;
+					r15 = (union Eq_n *) ((char *) &r14->ptr0000 + 8);
+					Eq_n v32;
+					v32.u1 = r15->u1;
+					r15 = (word64) v32;
+					int32 v33 = (word32) r18;
+					int32 v34 = (word32) r15;
+					p06 = v33 < v34;
+					p07 = v33 >= v34;
+				} while (p06);
+			}
+			p07 = 0x00 == r33;
+			p06 = 0x00 != r33;
+			r37 = r33 + 0x00;
+			if (!p07)
+			{
+				b0();
+				r1 = r36 + 0x00;
+				int32 v35 = (int32) r8;
+				int64 r38 = (int64) v35;
+				r37 = r33 + 0x00;
+				word64 r39 = 0x00 + 8;
+				struct Eq_n * r40 = r1 + -0x0F84;
+				r40 = r40->ptr0000;
+				b0();
+				r8 = r33 + 0x00;
+				r1 = r36 + 0x00;
+				ar.pfs = r35;
+				b0 = r34;
+				return;
+			}
+		}
+	}
+	r33 = 0x00 + 0x00;
+	ar.pfs = r35;
+	r8 = r33 + 0x00;
+	b0 = r34;
 }
 
-// 40000000000BA980: void array_quote()
-void array_quote()
+// 40000000000B9B40: define alias_expand_word
+define alias_expand_word
 {
+	word64 r8;
+	word64 r32;
+	word64 r1;
+	word64 b2;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r35 = ar.pfs;
+	word64 r34 = b2;
+	word64 r36 = r1 + 0x00;
+	word64 r37 = r32 + 0x00;
+	<anonymous> * b0;
+	b0();
+	Eq_n p06 = 0x00 == r8;
+	Eq_n p07 = 0x00 != r8;
+	word64 r33 = r8 + 0x08;
+	r1 = r36 + 0x00;
+	if (p06)
+		r8 = 0x00 + 0x00;
+	__break();
 }
 
-// 40000000000BAB00: void array_quote_escapes()
-void array_quote_escapes()
+// 40000000000B9C00: define alias_expand
+define alias_expand
 {
+	word64 r64;
+	word64 r20;
+	union Eq_n * r8;
+	int64 r32;
+	<anonymous> * b0;
+	word64 r1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r49 = ar.pfs;
+	word64 r50 = r1 + 0x00;
+	<anonymous> * r48 = b0;
+	word32 * r41 = r1 + 7752;
+	byte * r51 = r32 + 0x00;
+	word32 * r46 = r1 + 7748;
+	int64 r37 = 0x00 + 0x00;
+	int64 r35 = 0x00 + 0x00;
+	ui64 r44 = 0x00 + 0x00;
+	ui64 r45 = 0x00 + 0x0400;
+	word64 r47 = r41;
+	b0();
+	word32 * r34 = (word32 *) ((char *) r8 + 1);
+	r1 = r50 + 0x00;
+	Eq_n r36 = 0x00 + 0x00;
+	int32 v22 = (int32) r34;
+	word64 * r33 = (int64) v22;
+	r51 = (byte *) r33;
+	b0();
+	r1 = r50 + 0x00;
+	word64 * r38 = &r8->u0;
+	r51 = (byte *) r33;
+	r33 = r35 + 0x00;
+	b0();
+	byte * r15 = r37 + r32;
+	Eq_n r14 = 0x00 + 1;
+	byte * r39 = (byte *) &r8->u0;
+	r37 = 0x00 + 0x00;
+	union Eq_n * r0;
+	r0->u0 = (byte) (byte) r38;
+	r1 = r50 + 0x00;
+	*r14.u2 = (word32) (word32) r41;
+	byte v29 = *r15;
+	r14.u0 = (word64) v29;
+	r0->u0 = (byte) (byte) r39;
+	byte * r43 = r15;
+	int8 v31 = (int8) r14;
+	r14.u0 = (int64) v31;
+	Eq_n r52;
+	r52.u0 = r14.u0;
+	word32 v33 = (word32) 0x00;
+	word32 v34 = (word32) r14;
+	Eq_n p06 = v33 == v34;
+	Eq_n p07 = v33 != v34;
+	if (!p06)
+	{
+		do
+		{
+			word32 v37 = (word32) 0x00;
+			word32 v38 = (word32) r36;
+			p07 = v37 == v38;
+			p06 = v37 != v38;
+			if (p06)
+			{
+				r33 = (word64 *) ((char *) r33 + 1);
+				r36 = 0x00 + 0x00;
+				int32 v41 = (int32) r33;
+				r15 = (int64) v41;
+				r15 += r32;
+				byte v42 = *r15;
+				r14.u0 = (word64) v42;
+				int8 v43 = (int8) r14;
+				r14.u0 = (int64) v43;
+				r52.u0 = r14.u0;
+				word32 v44 = (word32) 0x00;
+				word32 v45 = (word32) r14;
+				p07 = v44 == v45;
+				p06 = v44 != v45;
+				if (p06)
+					continue;
+				goto l40000000000B9E00;
+			}
+			word32 v39 = (word32) 0x20;
+			word32 v40 = (word32) r52;
+			p06 = v39 == v40;
+			p07 = v39 != v40;
+			if (p06)
+			{
+				r33 = (word64 *) ((char *) r33 + 1);
+				r37 = 0x00 + 0x00;
+				int32 v48 = (int32) r33;
+				r15 = (int64) v48;
+				r15 += r32;
+				byte v49 = *r15;
+				r14.u0 = (word64) v49;
+				int8 v50 = (int8) r14;
+				r14.u0 = (int64) v50;
+				r52.u0 = r14.u0;
+				word32 v51 = (word32) 0x00;
+				word32 v52 = (word32) r14;
+				p07 = v51 == v52;
+				p06 = v51 != v52;
+				if (p06)
+					continue;
+				goto l40000000000B9E00;
+			}
+			word32 v46 = (word32) 0x5C;
+			word32 v47 = (word32) r52;
+			p07 = v46 == v47;
+			p06 = v46 != v47;
+			word64 * r40;
+			if (p07)
+			{
+				++r15;
+				byte v55 = *r15;
+				r40 = (word64) v55;
+				word32 v57 = (word32) 0x00;
+				word32 v58 = (word32) r40;
+				p06 = v57 == v58;
+				p07 = v57 != v58;
+				byte v59 = (byte) r40;
+				r40 = (word64) v59;
+				if (p06)
+					goto l40000000000B9E00;
+				b0();
+				r14.u0 = r8->u0;
+				r1 = r50 + 0x00;
+				r40 = (word64 *) (r14.u0 + (r40 << 0x01));
+				Eq_n v69 = *r40;
+				r14.u0 = (word64) v69;
+				r14 &= r45;
+				word32 v70 = (word32) 0x00;
+				word32 v71 = (word32) r14;
+				p06 = v70 == v71;
+				p07 = v70 != v71;
+				if (p06)
+					r36 = 0x00 + 1;
+				word64 p16;
+				if (p16)
+					__break();
+				if (p16)
+					__break();
+				goto l40000000000BA754;
+			}
+			word32 v53 = (word32) 0x22;
+			word32 v54 = (word32) r52;
+			p07 = v53 == v54;
+			p06 = v53 != v54;
+			if (p07)
+			{
+				r52.u0 = r33;
+				r51 = r32 + 0x00;
+				b0();
+				int32 v62 = (int32) r8;
+				r40 = (int64) v62;
+				r1 = r50 + 0x00;
+				r33 = &r8->u0;
+				r40 = (word64 *) ((char *) r40 + r32);
+				Eq_n v63 = *r40;
+				r14.u0 = (word64) v63;
+				r40 = (word64 *) ((char *) r40 + 1);
+				int8 v64 = (int8) r14;
+				r14.u0 = (int64) v64;
+				word32 v65 = (word32) 0x00;
+				word32 v66 = (word32) r14;
+				p06 = v65 == v66;
+				p07 = v65 != v66;
+				if (p06)
+					goto l40000000000B9E00;
+				b0();
+				Eq_n v77 = *r40;
+				r15 = (word64) v77;
+				r1 = r50 + 0x00;
+				r14.u0 = r8->u0;
+				r14.u0 += r15 << 0x01;
+				Eq_n v78;
+				v78.u0 = r14.u3->u0;
+				r14.u0 = (word64) v78;
+				r14 &= r45;
+				word32 v79 = (word32) 0x00;
+				word32 v80 = (word32) r14;
+				p06 = v79 == v80;
+				p07 = v79 != v80;
+				if (p06)
+					goto l40000000000B9DC0;
+				++r37;
+				r33 = (word64 *) ((char *) r33 + 1);
+l40000000000BA754:
+				int32 v100 = (int32) r33;
+				r15 = (int64) v100;
+				r15 += r32;
+				byte v101 = *r15;
+				r14.u0 = (word64) v101;
+				int8 v102 = (int8) r14;
+				r14.u0 = (int64) v102;
+				r52.u0 = r14.u0;
+				word32 v103 = (word32) 0x00;
+				word32 v104 = (word32) r14;
+				p07 = v103 == v104;
+				p06 = v103 != v104;
+				if (p06)
+					continue;
+				goto l40000000000B9E00;
+			}
+			word32 v60 = (word32) 0x00;
+			word32 v61 = (word32) r37;
+			p07 = v60 == v61;
+			p06 = v60 != v61;
+			if (p06)
+			{
+l40000000000B9DC0:
+				r33 = (word64 *) ((char *) r33 + 1);
+				int32 v72 = (int32) r33;
+				r15 = (int64) v72;
+				r15 += r32;
+				byte v73 = *r15;
+				r14.u0 = (word64) v73;
+				int8 v74 = (int8) r14;
+				r14.u0 = (int64) v74;
+				r52.u0 = r14.u0;
+				word32 v75 = (word32) 0x00;
+				word32 v76 = (word32) r14;
+				p07 = v75 == v76;
+				p06 = v75 != v76;
+				if (p06)
+					continue;
+				goto l40000000000B9E00;
+			}
+			r51 = r1 + -0x0F7C;
+			r51 = (byte *) *r51;
+			b0();
+			r1 = r50 + 0x00;
+			p06 = null == r8;
+			p07 = null != r8;
+			if (!p06)
+			{
+				word32 v105 = *r41;
+				r14.u0 = (word64) v105;
+				r14.u0 = (word32) r14 + 1;
+				*r14.u2 = (word32) (word32) r41;
+				goto l40000000000B9DC0;
+			}
+l40000000000B9E00:
+			r51 = (byte *) r38;
+			word32 v67 = (word32) r33;
+			word32 v68 = (word32) r35;
+			p07 = v67 == v68;
+			p06 = v67 != v68;
+			if (p07)
+			{
+				byte v81 = *r43;
+				r14.u0 = (word64) v81;
+				r33 = r35 + 0x00;
+				int8 v82 = (int8) r14;
+				r14.u0 = (int64) v82;
+				word32 v83 = (word32) 0x00;
+				word32 v84 = (word32) r14;
+				p07 = v83 == v84;
+				p06 = v83 != v84;
+				if (!p06)
+					break;
+			}
+			r35 -= r33;
+			b0();
+			r14.u0 = (char *) &r8->u0 + r35;
+			r1 = r50 + 0x00;
+			r36.u0 = &r8->u0;
+			int32 v86 = (word32) r14;
+			int32 v87 = (word32) r34;
+			p06 = v86 < v87;
+			p07 = v86 >= v87;
+			if (!p06)
+			{
+				r15 = r35 + 0x32;
+				do
+				{
+					r34 = r15 + r34;
+					int32 v158 = (word32) r14;
+					int32 v159 = (word32) r34;
+					p07 = v158 < v159;
+					p06 = v158 >= v159;
+				} while (p06);
+				r51 = (byte *) r38;
+				int32 v161 = (int32) r34;
+				r52.u0 = (int64) v161;
+				b0();
+				r1 = r50 + 0x00;
+				r38 = &r8->u0;
+			}
+			int32 v89 = (int32) r36;
+			r51 = (int64) v89;
+			r52.u0 = r43;
+			word32 * r42 = 0x00 + 1;
+			int32 v91 = (int32) r35;
+			Eq_n r53;
+			r53.u0 = (int64) v91;
+			r51 += r38;
+			int32 v93 = (int32) r33;
+			r40 = (int64) v93;
+			r35 = r36.u0 + r35;
+			b0();
+			r40 = (word64 *) ((char *) r40 + r32);
+			word32 v94 = *r41;
+			r14.u0 = (word64) v94;
+			int32 v95 = (int32) r35;
+			r35 = (int64) v95;
+			r1 = r50 + 0x00;
+			word32 v96 = (word32) 0x00;
+			word32 v97 = (word32) r14;
+			p06 = v96 == v97;
+			p07 = v96 != v97;
+			r35 = (char *) r38 + r35;
+			Eq_n v98 = *r40;
+			r52.u0 = (word64) v98;
+			r0->u0 = (byte) (byte) r35;
+			int8 v99 = (int8) r52;
+			r52.u0 = (int64) v99;
+			if (p07)
+			{
+				word32 v106 = (word32) 0x09;
+				word32 v107 = (word32) r52;
+				p07 = v106 == v107;
+				p06 = v106 != v107;
+				r35 = r33;
+				*r42 = (word32) r41;
+				word32 v108 = (word32) 0x00;
+				word32 v109 = (word32) r52;
+				Eq_n p08 = v108 == v109;
+				Eq_n p09 = v108 != v109;
+				if (p08)
+				{
+					r35 = r33;
+					goto l40000000000B9F62;
+				}
+				if (!p07)
+				{
+					if (p06)
+						r36.u0 = r40;
+					__break();
+					__break();
+				}
+				r36 = 0x00 + 1;
+				r51 = r39;
+				r52.u0 = r40;
+				++r35;
+				r53 = r36.u0;
+				r36.u0 = r36 + r39;
+				int32 v121 = (int32) r35;
+				r37 = (int64) v121;
+				b0();
+				r1 = r50 + 0x00;
+				r51 = r39;
+				r52 = 0x00 + 92;
+				r0->u0 = (byte) (byte) r36;
+				b0();
+				byte v122 = *r39;
+				r14.u0 = (word64) v122;
+				r1 = r50 + 0x00;
+				p07 = null == r8;
+				p06 = null != r8;
+				int8 v123 = (int8) r14;
+				r14.u0 = (int64) v123;
+				if (p06)
+					goto l40000000000B9FE0;
+				goto l40000000000BA3B0;
+			}
+			int8 v112 = (int8) r52;
+			r52.u0 = (int64) v112;
+			r42 = 0x00 + 0x00;
+			word32 v113 = (word32) 0x00;
+			word32 v114 = (word32) r52;
+			p06 = v113 == v114;
+			p07 = v113 != v114;
+			if (p07)
+			{
+				r51 = r1 + -0x0F7C;
+				r51 = (byte *) *r51;
+				b0();
+				p07 = null == r8;
+				p06 = null != r8;
+				Eq_n v118 = *r40;
+				r14.u0 = (word64) v118;
+				r1 = r50 + 0x00;
+				if (p06)
+					r8 = 0x00 + 1;
+				__break();
+				word64 p26;
+				if (p26)
+				{
+					int32 v126 = (word32) 0x0E;
+					int32 v127 = (word32) r20;
+					v126 < v127;
+					v126 >= v127;
+				}
+				__break();
+				word64 pr = 0x0C000020;
+			}
+			if (p06)
+				r0->u1 = (word32) (word32) r47;
+			__break();
+l40000000000B9F62:
+			r36 = 0x00 + 0x00;
+			int32 v115 = (int32) r33;
+			r37 = (int64) v115;
+			r53 = r36.u0;
+			r51 = r39;
+			r52.u0 = r40;
+			r36.u0 = r36 + r39;
+			b0();
+			r1 = r50 + 0x00;
+			r51 = r39;
+			r52 = 0x00 + 92;
+			r0->u0 = (byte) (byte) r36;
+			b0();
+			byte v116 = *r39;
+			r14.u0 = (word64) v116;
+			r1 = r50 + 0x00;
+			p07 = null == r8;
+			p06 = null != r8;
+			int8 v117 = (int8) r14;
+			r14.u0 = (int64) v117;
+			if (p07)
+			{
+l40000000000BA3B0:
+				word32 v119 = (word32) 0x00;
+				word32 v120 = (word32) r14;
+				p06 = v119 == v120;
+				p07 = v119 != v120;
+				if (p06)
+					goto l40000000000BA000;
+				r42 |= r44;
+				word32 v128 = (word32) 0x00;
+				word32 v129 = (word32) r42;
+				p07 = v128 == v129;
+				p06 = v128 != v129;
+				if (!p06)
+					goto l40000000000BA3E0;
+				r42 = 0x00 + 1;
+				r51 = r39;
+				goto l40000000000BA412;
+			}
+l40000000000B9FE0:
+			word32 v148 = (word32) 0x00;
+			word32 v149 = (word32) r14;
+			p07 = v148 == v149;
+			p06 = v148 != v149;
+			if (p06)
+			{
+l40000000000BA3E0:
+				word32 v133 = *r46;
+				r14.u0 = (word64) v133;
+				word32 v134 = (word32) 0x00;
+				word32 v135 = (word32) r14;
+				p06 = v134 == v135;
+				p07 = v134 != v135;
+				if (p06)
+					goto l40000000000BA000;
+				if (p07)
+					r42 = 0x00 + 0x00;
+				__break();
+l40000000000BA412:
+				b0();
+				p06 = null == r8;
+				p07 = null != r8;
+				r8 = (union Eq_n *) ((char *) r8 + 8);
+				r1 = r50 + 0x00;
+				if (p06)
+					goto l40000000000BA000;
+				r36.u0 = r8->u0;
+				r51 = r36.u0;
+				b0();
+				r1 = r50 + 0x00;
+				r33 = &r8->u0;
+				r51 = (byte *) r38;
+				b0();
+				r15 = (char *) r33 + 3;
+				r1 = r50 + 0x00;
+				r40 = &r8->u0;
+				r15 = r8 + r15;
+				int32 v146 = (word32) r15;
+				int32 v147 = (word32) r34;
+				p06 = v146 < v147;
+				p07 = v146 >= v147;
+				if (!p06)
+				{
+					Eq_n r16 = (char *) r33 + 50;
+					r14.u0 = r16 + r34;
+					do
+					{
+						r34 = (word32 *) r14.u0;
+						r14.u0 = r16 + r14;
+						int32 v155 = (word32) r15;
+						int32 v156 = (word32) r34;
+						p07 = v155 < v156;
+						p06 = v155 >= v156;
+					} while (p06);
+					r51 = (byte *) r38;
+					int32 v162 = (int32) r34;
+					r52.u0 = (int64) v162;
+					b0();
+					r1 = r50 + 0x00;
+					r38 = &r8->u0;
+				}
+				int32 v150 = (int32) r40;
+				r51 = (int64) v150;
+				r52.u0 = r36.u0;
+				r51 += r38;
+				b0();
+				int32 v151 = (int32) r33;
+				r14.u0 = (int64) v151;
+				word32 v152 = (word32) 0x00;
+				word32 v153 = (word32) r33;
+				p07 = v152 == v153;
+				p06 = v152 != v153;
+				r1 = r50 + 0x00;
+				if (p06)
+					r33 = 0x00 + 1;
+				word64 p01;
+				if (p01)
+					__break();
+				word64 p12;
+				if (p12)
+					__break();
+				byte v165 = *r36.u0;
+				r14.u0 = (word64) v165;
+				r44 = 0x00 + 1;
+				int8 v166 = (int8) r14;
+				r14.u0 = (int64) v166;
+				word32 v167 = (word32) 0x20;
+				word32 v168 = (word32) r14;
+				p06 = v167 == v168;
+				p07 = v167 != v168;
+				if (!p06)
+				{
+					word32 v169 = *r46;
+					r44 = (word64) v169;
+					r0->u1 = (word32) (word32) r41;
+					word32 v170 = (word32) 0x00;
+					word32 v171 = (word32) r44;
+					p07 = v170 == v171;
+					p06 = v170 != v171;
+					if (p06)
+						r44 = 0x00 + 1;
+					byte v173 = (byte) r64;
+				}
+			}
+			else
+			{
+l40000000000BA000:
+				r33 -= r35;
+				r51 = (byte *) r38;
+				b0();
+				r14.u0 = r33 + r8;
+				r1 = r50 + 0x00;
+				r36.u0 = &r8->u0;
+				r43 = r33 + r8;
+				int32 v130 = (word32) r14;
+				int32 v131 = (word32) r34;
+				p07 = v130 < v131;
+				p06 = v130 >= v131;
+				if (!p07)
+				{
+					r15 = r43 + 50;
+					do
+					{
+						r34 = r15 + r34;
+						int32 v143 = (word32) r14;
+						int32 v144 = (word32) r34;
+						p07 = v143 < v144;
+						p06 = v143 >= v144;
+					} while (p06);
+					r51 = (byte *) r38;
+					int32 v145 = (int32) r34;
+					r52.u0 = (int64) v145;
+					b0();
+					r1 = r50 + 0x00;
+					r38 = &r8->u0;
+				}
+				int32 v136 = (int32) r36;
+				r51 = (int64) v136;
+				int32 v137 = (int32) r43;
+				r43 = (int64) v137;
+				r52.u0 = r40;
+				r44 = 0x00 + 0x00;
+				int32 v138 = (int32) r33;
+				r53.u0 = (int64) v138;
+				r51 += r38;
+				r43 += r38;
+				b0();
+				r1 = r50 + 0x00;
+				r0->u0 = (byte) (byte) r43;
+			}
+			r0->u1 = (word32) (word32) r41;
+			r15 = r37 + r32;
+			r0->u0 = (byte) (byte) r39;
+			r33 = r35 + 0x00;
+			r37 = 0x00 + 0x00;
+			r36 = 0x00 + 0x00;
+			byte v139 = *r15;
+			r14.u0 = (word64) v139;
+			r43 = r15;
+			int8 v140 = (int8) r14;
+			r14.u0 = (int64) v140;
+			r52.u0 = r14 + 0x00;
+			word32 v141 = (word32) 0x00;
+			word32 v142 = (word32) r14;
+			p06 = v141 == v142;
+			p07 = v141 != v142;
+		} while (p07);
+	}
+	r51 = r39;
+	b0();
+	r8 = (union Eq_n *) r38;
+	r1 = r50 + 0x00;
+	ar.pfs = r49;
+	b0 = r48;
 }
 
-// 40000000000BAC80: void array_dequote()
-void array_dequote()
+// 40000000000BA880: define array_walk
+define array_walk
 {
+	word64 r8;
+	word64 r34;
+	struct Eq_n * r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	struct Eq_n * r14 = r32 + 0x10;
+	<anonymous> * r37 = b5;
+	Eq_n p07 = 0x00 == r32;
+	Eq_n p06 = 0x00 != r32;
+	struct Eq_n ** r36 = r32 + 0x18;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		struct Eq_n * v13 = r14->ptr0000;
+		r14 = (word64) v13;
+		word64 r39 = &r1->ptr0000;
+		word32 v16 = (word32) 0x00;
+		word32 v17 = (word32) r14;
+		p06 = v16 == v17;
+		p07 = v16 != v17;
+		if (!p06)
+		{
+			r14 = (struct Eq_n *) *r36;
+			struct Eq_n ** r15 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+			struct Eq_n * r35 = (struct Eq_n *) *r15;
+			p06 = r35 == r14;
+			p07 = r35 != r14;
+			if (!p06)
+			{
+				do
+				{
+					struct Eq_n ** r33;
+					r14 = (struct Eq_n *) *r33;
+					r33 = (struct Eq_n **) ((char *) r33 + 8);
+					word64 * r40 = &r35->ptr0000;
+					word64 r41 = r34 + 0x00;
+					r35 = (struct Eq_n *) ((char *) &r35->ptr0000 + 16);
+					r1 = (struct Eq_n *) *r33;
+					r33 = (struct Eq_n **) ((char *) r33 - 8);
+					struct Eq_n * b6 = r14;
+					b0();
+					r1 = r39 + 0x00;
+					int32 v27 = (word32) r8;
+					int32 v28 = (word32) 0x00;
+					p06 = v27 < v28;
+					p07 = v27 >= v28;
+					if (p06)
+						break;
+					r35 = r35->ptr0000;
+					r14 = (struct Eq_n *) *r36;
+					p07 = r35 == r14;
+					p06 = r35 != r14;
+				} while (p06);
+			}
+		}
+	}
+	ar.pfs = r38;
+	b0 = r37;
 }
 
-// 40000000000BAE00: void array_dequote_escapes()
-void array_dequote_escapes()
+// 40000000000BA980: define array_quote
+define array_quote
 {
+	word64 r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	struct Eq_n ** r36 = r32 + 0x18;
+	<anonymous> * r37 = b5;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word32 * r15 = r32 + 0x10;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p06)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r36;
+		word64 r39 = r1 + 0x00;
+		p06 = null == r14;
+		p07 = null != r14;
+		struct Eq_n ** r16 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+		if (!p06)
+		{
+			word32 v19 = *r15;
+			r15 = (word64) v19;
+			word32 v20 = (word32) 0x00;
+			word32 v21 = (word32) r15;
+			p06 = v20 == v21;
+			p07 = v20 != v21;
+			if (!p06)
+			{
+				struct Eq_n * r33 = (struct Eq_n *) *r16;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+				if (!p07)
+				{
+					do
+					{
+						word64 * r34 = (word64 *) ((char *) &r33->ptr0000 + 8);
+						word64 r40 = *r34;
+						b0();
+						r40 = *r34;
+						r1 = r39 + 0x00;
+						word64 ** r35 = r8 + 0x00;
+						p06 = 0x00 == r40;
+						p07 = 0x00 != r40;
+						if (!p06)
+						{
+							b0();
+							r1 = r39 + 0x00;
+						}
+						r33 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+						r14 = (struct Eq_n *) *r36;
+						*r35 = r34;
+						r33 = r33->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				goto l40000000000BAA90;
+			}
+		}
+		r32 = 0x00 + 0x00;
+		ar.pfs = r38;
+		r8 = r32 + 0x00;
+		b0 = r37;
+	}
+	else
+	{
+l40000000000BAA90:
+		r8 = r32 + 0x00;
+		ar.pfs = r38;
+		b0 = r37;
+	}
 }
 
-// 40000000000BAF80: void array_remove_quoted_nulls()
-void array_remove_quoted_nulls()
+// 40000000000BAB00: define array_quote_escapes
+define array_quote_escapes
 {
+	word64 r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	struct Eq_n ** r36 = r32 + 0x18;
+	<anonymous> * r37 = b5;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word32 * r15 = r32 + 0x10;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p06)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r36;
+		word64 r39 = r1 + 0x00;
+		p06 = null == r14;
+		p07 = null != r14;
+		struct Eq_n ** r16 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+		if (!p06)
+		{
+			word32 v19 = *r15;
+			r15 = (word64) v19;
+			word32 v20 = (word32) 0x00;
+			word32 v21 = (word32) r15;
+			p06 = v20 == v21;
+			p07 = v20 != v21;
+			if (!p06)
+			{
+				struct Eq_n * r33 = (struct Eq_n *) *r16;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+				if (!p07)
+				{
+					do
+					{
+						word64 * r34 = (word64 *) ((char *) &r33->ptr0000 + 8);
+						word64 r40 = *r34;
+						b0();
+						r40 = *r34;
+						r1 = r39 + 0x00;
+						word64 ** r35 = r8 + 0x00;
+						p06 = 0x00 == r40;
+						p07 = 0x00 != r40;
+						if (!p06)
+						{
+							b0();
+							r1 = r39 + 0x00;
+						}
+						r33 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+						r14 = (struct Eq_n *) *r36;
+						*r35 = r34;
+						r33 = r33->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				goto l40000000000BAC10;
+			}
+		}
+		r32 = 0x00 + 0x00;
+		ar.pfs = r38;
+		r8 = r32 + 0x00;
+		b0 = r37;
+	}
+	else
+	{
+l40000000000BAC10:
+		r8 = r32 + 0x00;
+		ar.pfs = r38;
+		b0 = r37;
+	}
 }
 
-// 40000000000BB0C0: void array_create_element()
-void array_create_element()
+// 40000000000BAC80: define array_dequote
+define array_dequote
 {
+	word64 r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	struct Eq_n ** r36 = r32 + 0x18;
+	<anonymous> * r37 = b5;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word32 * r15 = r32 + 0x10;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p06)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r36;
+		word64 r39 = r1 + 0x00;
+		p06 = null == r14;
+		p07 = null != r14;
+		struct Eq_n ** r16 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+		if (!p06)
+		{
+			word32 v19 = *r15;
+			r15 = (word64) v19;
+			word32 v20 = (word32) 0x00;
+			word32 v21 = (word32) r15;
+			p06 = v20 == v21;
+			p07 = v20 != v21;
+			if (!p06)
+			{
+				struct Eq_n * r33 = (struct Eq_n *) *r16;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+				if (!p07)
+				{
+					do
+					{
+						word64 * r34 = (word64 *) ((char *) &r33->ptr0000 + 8);
+						word64 r40 = *r34;
+						b0();
+						r40 = *r34;
+						r1 = r39 + 0x00;
+						word64 ** r35 = r8 + 0x00;
+						p06 = 0x00 == r40;
+						p07 = 0x00 != r40;
+						if (!p06)
+						{
+							b0();
+							r1 = r39 + 0x00;
+						}
+						r33 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+						r14 = (struct Eq_n *) *r36;
+						*r35 = r34;
+						r33 = r33->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				goto l40000000000BAD90;
+			}
+		}
+		r32 = 0x00 + 0x00;
+		ar.pfs = r38;
+		r8 = r32 + 0x00;
+		b0 = r37;
+	}
+	else
+	{
+l40000000000BAD90:
+		r8 = r32 + 0x00;
+		ar.pfs = r38;
+		b0 = r37;
+	}
 }
 
-// 40000000000BB1C0: void array_rshift()
-void array_rshift()
+// 40000000000BAE00: define array_dequote_escapes
+define array_dequote_escapes
 {
+	word64 r1;
+	<anonymous> * b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	struct Eq_n ** r36 = r32 + 0x18;
+	<anonymous> * r37 = b5;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word32 * r15 = r32 + 0x10;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p06)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r36;
+		word64 r39 = r1 + 0x00;
+		p06 = null == r14;
+		p07 = null != r14;
+		struct Eq_n ** r16 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+		if (!p06)
+		{
+			word32 v19 = *r15;
+			r15 = (word64) v19;
+			word32 v20 = (word32) 0x00;
+			word32 v21 = (word32) r15;
+			p06 = v20 == v21;
+			p07 = v20 != v21;
+			if (!p06)
+			{
+				struct Eq_n * r33 = (struct Eq_n *) *r16;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+				if (!p07)
+				{
+					do
+					{
+						word64 * r34 = (word64 *) ((char *) &r33->ptr0000 + 8);
+						word64 r40 = *r34;
+						b0();
+						r40 = *r34;
+						r1 = r39 + 0x00;
+						word64 ** r35 = r8 + 0x00;
+						p06 = 0x00 == r40;
+						p07 = 0x00 != r40;
+						if (!p06)
+						{
+							b0();
+							r1 = r39 + 0x00;
+						}
+						r33 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+						r14 = (struct Eq_n *) *r36;
+						*r35 = r34;
+						r33 = r33->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				goto l40000000000BAF10;
+			}
+		}
+		r32 = 0x00 + 0x00;
+		ar.pfs = r38;
+		r8 = r32 + 0x00;
+		b0 = r37;
+	}
+	else
+	{
+l40000000000BAF10:
+		r8 = r32 + 0x00;
+		ar.pfs = r38;
+		b0 = r37;
+	}
 }
 
-// 40000000000BB400: void array_shift_element()
-void array_shift_element()
+// 40000000000BAF80: define array_remove_quoted_nulls
+define array_remove_quoted_nulls
 {
+	word64 r1;
+	<anonymous> * b4;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	struct Eq_n ** r35 = r32 + 0x18;
+	<anonymous> * r36 = b4;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word32 * r15 = r32 + 0x10;
+	<anonymous> * b0;
+	word64 ** r8;
+	if (!p06)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r35;
+		word64 r38 = r1 + 0x00;
+		p06 = null == r14;
+		p07 = null != r14;
+		struct Eq_n ** r16 = (struct Eq_n **) ((char *) &r14->ptr0000 + 16);
+		if (!p06)
+		{
+			word32 v19 = *r15;
+			r15 = (word64) v19;
+			word32 v20 = (word32) 0x00;
+			word32 v21 = (word32) r15;
+			p06 = v20 == v21;
+			p07 = v20 != v21;
+			if (!p06)
+			{
+				struct Eq_n * r33 = (struct Eq_n *) *r16;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+				if (!p07)
+				{
+					do
+					{
+						word64 * r34 = (word64 *) ((char *) &r33->ptr0000 + 8);
+						r33 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+						word64 r39 = *r34;
+						b0();
+						r14 = (struct Eq_n *) *r35;
+						r1 = r38 + 0x00;
+						*r8 = r34;
+						r33 = r33->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				goto l40000000000BB050;
+			}
+		}
+		r32 = 0x00 + 0x00;
+		ar.pfs = r37;
+		r8 = r32 + 0x00;
+		b0 = r36;
+	}
+	else
+	{
+l40000000000BB050:
+		r8 = r32 + 0x00;
+		ar.pfs = r37;
+		b0 = r36;
+	}
 }
 
-// 40000000000BB440: void array_create()
-void array_create()
+// 40000000000BB0C0: define array_create_element
+define array_create_element
 {
+	word64 r8;
+	word64 r33;
+	word64 r1;
+	word64 b3;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	word64 r35 = b3;
+	word64 r37 = r1 + 0x00;
+	word64 r38 = 0x00 + 32;
+	<anonymous> * b0;
+	b0();
+	Eq_n p06 = 0x00 == r33;
+	Eq_n p07 = 0x00 != r33;
+	r1 = r37 + 0x00;
+	word64 r34 = r8 + 0x00;
+	r38 = r33 + 0x00;
+	word64 * r32;
+	*r32 = r8;
+	if (p06)
+	{
+		word64 r17 = 0x00 + 0x00;
+	}
+	__break();
+	__break();
+	word64 p01;
+	if (p01)
+		__break();
 }
 
-// 40000000000BB500: void array_slice()
-void array_slice()
+// 40000000000BB1C0: define array_rshift
+// Called from:
+//      array_shift_element
+define array_rshift
 {
+	word64 r1;
+	word64 b6;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r39 = ar.pfs;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word64 r36 = r32 + 0x10;
+	word64 r38 = b6;
+	word64 r40 = r1 + 0x00;
+	if (p06)
+	{
+		word64 r8 = 0x00 + 0x00;
+	}
+	__break();
 }
 
-// 40000000000BB680: void array_copy()
-void array_copy()
+// 40000000000BB400: define array_shift_element
+define array_shift_element
 {
+	word64 r33;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r34 = r33 + 0x00;
+	r33 = 0x00 + 1;
+	word64 r2 = ar.pfs;
+	array_rshift();
 }
 
-// 40000000000BB800: void array_dispose_element()
-void array_dispose_element()
+// 40000000000BB440: define array_create
+define array_create
 {
+	word64 r8;
+	word64 r1;
+	<anonymous> * b1;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r36 = 0x00 + 32;
+	<anonymous> * b0;
+	b0();
+	struct Eq_n * r14 = r8 + 0x00;
+	Eq_n r15 = r8 + 0x10;
+	r1 = r35 + 0x00;
+	Eq_n r32 = r8 + 0x00;
+	r36 = 0x00 + -1;
+	word64 r37 = 0x00 + 0x00;
+	r14->t0000.u0 = (word32) (word32) r8;
+	r14 = (struct Eq_n *) ((char *) &r14->t0000 + 8);
+	word32 * r0;
+	*r0 = (word32) r15;
+	r15 = 0x00 + -1;
+	r15.u1->ptr0000 = r14;
+	b0();
+	r14 = r8 + 0x00;
+	r8 = (word64) &r32.u1->ptr0000;
+	r32.u0 = (word32) r32 + 24;
+	r1 = r35 + 0x00;
+	ar.pfs = r34;
+	Eq_n r16;
+	r16.u1 = (char *) &r14->t0000 + 16;
+	r15.u1 = (char *) &r14->t0000 + 24;
+	b0 = r33;
+	r14->t0000.u1 = (struct Eq_n *) r16;
+	r14->t0000.u1 = (struct Eq_n *) r15;
+	r14->t0000.u1 = (struct Eq_n *) r32;
 }
 
-// 40000000000BB8C0: void array_flush()
-void array_flush()
+// 40000000000BB500: define array_slice
+define array_slice
 {
+	Eq_n r34;
+	union Eq_n * r8;
+	word32 * r32;
+	word64 r1;
+	<anonymous> * b7;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r40 = ar.pfs;
+	<anonymous> * r39 = b7;
+	word64 r41 = r1 + 0x00;
+	word32 * r36 = 0x00 + 0x00;
+	<anonymous> * b0;
+	b0();
+	word32 v13 = *r32;
+	Eq_n r15;
+	r15.u1 = (word64) v13;
+	Eq_n r14;
+	Eq_n r33;
+	r14.u1 = &r33.u1->t0000.u0;
+	union Eq_n * r37 = (union Eq_n *) ((char *) r8 + 24);
+	r1 = r41 + 0x00;
+	word64 r38 = &r8->u0;
+	Eq_n p06 = r34 == r33;
+	Eq_n p07 = r34 != r33;
+	r15.u1->u0 = (word32) (word32) r8;
+	Eq_n r20;
+	if (!p06)
+	{
+		do
+		{
+			r15.u0 = (word32) r14 + 8;
+			union Eq_n * r35 = (union Eq_n *) &r14.u1->t0000.u0;
+			r36 = (word32 *) ((char *) r36 + 1);
+			Eq_n r42;
+			r42.u1 = r35->u1;
+			r35 = (union Eq_n *) ((char *) r35 + 16);
+			Eq_n r43;
+			r43.u1 = r15.u1->u1;
+			b0();
+			r14.u1 = r37->u1;
+			Eq_n r17;
+			r17.u1 = (char *) r8 + 16;
+			Eq_n r19;
+			r19.u1 = (char *) r8 + 24;
+			r1 = r41 + 0x00;
+			r20.u1 = r8->u1;
+			r15.u0 = (word32) r14 + 24;
+			Eq_n r16;
+			r16.u1 = r15.u1->u1;
+			Eq_n r18;
+			r18.u0 = (word32) r16 + 16;
+			r16.u1->t0000.u1 = (struct Eq_n *) r19;
+			r8->u1 = (union Eq_n *) r15;
+			r8->u1 = (union Eq_n *) r18;
+			r14.u1->t0000.u1 = (struct Eq_n *) r17;
+			r14.u1 = r35->u1;
+			p07 = r14 == r34;
+			p06 = r14 != r34;
+		} while (p06);
+		r15 = r38 + 0x10;
+		r14 = r38 + 0x08;
+		r8 = r38 + 0x00;
+		ar.pfs = r40;
+		*r36 = (word32) r15;
+		r20.u1->u1 = (struct Eq_n *) r14;
+		b0 = r39;
+	}
+	else
+	{
+		r20 = 0x00 + 0x00;
+		r36 = 0x00 + 0x00;
+		ar.pfs = r40;
+		r15 = r38 + 0x10;
+		r14 = r38 + 0x08;
+		r8 = r38 + 0x00;
+		*r36 = (word32) r15;
+		r20.u1->u1 = (struct Eq_n *) r14;
+		b0 = r39;
+	}
 }
 
-// 40000000000BBA00: void array_shift()
-void array_shift()
+// 40000000000BB680: define array_copy
+define array_copy
 {
+	word64 r1;
+	word64 b5;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word64 r37 = b5;
+	word64 r39 = r1 + 0x00;
+	word64 r34 = r32 + 0x18;
+	if (p06)
+	{
+		word64 r36 = 0x00 + 0x00;
+	}
 }
 
-// 40000000000BBD00: void array_unshift_element()
-void array_unshift_element()
+// 40000000000BB800: define array_dispose_element
+define array_dispose_element
 {
+	word64 r1;
+	<anonymous> * b1;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	word64 * r14 = r32 + 0x08;
+	<anonymous> * r33 = b1;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	word64 r35 = r1 + 0x00;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		word64 r36 = *r14;
+		p06 = 0x00 == r36;
+		p07 = 0x00 != r36;
+		if (!p06)
+		{
+			b0();
+			r1 = r35 + 0x00;
+		}
+		r36 = r32 + 0x00;
+		b0();
+		r1 = r35 + 0x00;
+	}
+	ar.pfs = r34;
+	b0 = r33;
 }
 
-// 40000000000BBD40: void array_dispose()
-void array_dispose()
+// 40000000000BB8C0: define array_flush
+define array_flush
 {
+	word64 r1;
+	<anonymous> * b3;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r36 = ar.pfs;
+	struct Eq_n ** r34 = r32 + 0x18;
+	<anonymous> * r35 = b3;
+	Eq_n p07 = 0x00 == r32;
+	Eq_n p06 = 0x00 != r32;
+	word64 r37 = r1 + 0x00;
+	<anonymous> * b0;
+	if (!p07)
+	{
+		struct Eq_n * r14 = (struct Eq_n *) *r34;
+		struct Eq_n * r15 = (struct Eq_n *) ((char *) &r14->ptr0000 + 16);
+		struct Eq_n * r38 = r15->ptr0000;
+		p06 = r38 == r14;
+		p07 = r38 != r14;
+		if (!p06)
+		{
+			struct Eq_n * r33;
+			do
+			{
+				r14 = (struct Eq_n *) ((char *) &r38->ptr0000 + 16);
+				r33 = r14->ptr0000;
+				b0();
+				r14 = (struct Eq_n *) *r34;
+				r1 = r37 + 0x00;
+				r38 = (struct Eq_n *) &r33->ptr0000;
+				p07 = r33 == r14;
+				p06 = r33 != r14;
+			} while (p06);
+			r15 = (struct Eq_n *) ((char *) &r33->ptr0000 + 16);
+		}
+		Eq_n r16 = r1 + 7756;
+		struct Eq_n * r20 = (struct Eq_n *) ((char *) &r14->ptr0000 + 24);
+		r14->ptr0000 = r15;
+		struct Eq_n * r19 = r32 + 0x08;
+		word64 r18 = r32 + 0x10;
+		word64 r17 = *r16.u1;
+		r14->ptr0000 = r20;
+		r14 = 0x00 + -1;
+		union Eq_n * r0;
+		r0->u0 = (word32) (word32) r18;
+		p07 = r17 == r32;
+		p06 = r17 != r32;
+		r14->ptr0000 = r19;
+		if (p07)
+			r14 = r1 + 7764;
+		if (p07)
+			r0->u1 = (word64 *) r16;
+		word64 pr = 0x4000;
+	}
+	ar.pfs = r36;
+	b0 = r35;
 }
 
-// 40000000000BBE00: void array_insert()
-void array_insert()
+// 40000000000BBA00: define array_shift
+// Called from:
+//      array_unshift_element
+define array_shift
 {
+	int64 r60;
+	word64 b4;
+	word64 r33;
+	word64 r1;
+	word64 LC;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r37 = ar.pfs;
+	word32 * r18 = r32 + 0x10;
+	word64 r39 = LC;
+	word64 r14 = r1 + 7756;
+	Eq_n p07 = 0x00 == r32;
+	Eq_n p06 = 0x00 != r32;
+	int32 v14 = (word32) 0x00;
+	int32 v16 = (word32) r33;
+	Eq_n p09 = v14 < v16;
+	Eq_n p08 = v14 >= v16;
+	word64 r36 = b4;
+	word64 r38 = r1 + 0x00;
+	if (!p07)
+	{
+		word32 v24 = *r18;
+		word64 r19 = (word64) v24;
+		word32 v26 = (word32) 0x00;
+		word32 v27 = (word32) r19;
+		p06 = v26 == v27;
+		p07 = v26 != v27;
+		if (!p06)
+		{
+			word64 p12;
+			if (p12)
+			{
+				word64 r64;
+				r64 == r33;
+				Eq_n p11 = r64 != r33;
+			}
+			if (p12)
+			{
+				Eq_n p02 = r60 < 0x00;
+				Eq_n p60 = r60 >= 0x00;
+			}
+		}
+	}
+	word64 r8 = 0x00 + 0x00;
+	ar.pfs = r37;
+	LC = r39;
+	word64 b0 = r36;
 }
 
-// 40000000000BC1C0: void array_remove()
-void array_remove()
+// 40000000000BBD00: define array_unshift_element
+define array_unshift_element
 {
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r16 = ar.pfs;
+	word64 r33 = 0x00 + 1;
+	word64 r34 = 0x00 + 0x00;
+	word64 r2 = ar.pfs;
+	array_shift();
 }
 
-// 40000000000BC380: void array_reference()
-void array_reference()
+// 40000000000BBD40: define array_dispose
+define array_dispose
 {
+	word64 r1;
+	<anonymous> * b1;
+	word64 r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r34 = ar.pfs;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	<anonymous> * r33 = b1;
+	word64 r35 = r1 + 0x00;
+	word64 r36 = r32 + 0x00;
+	<anonymous> * b0;
+	if (!p06)
+	{
+		b0();
+		word64 * r14 = r32 + 0x18;
+		r1 = r35 + 0x00;
+		r36 = *r14;
+		b0();
+		r1 = r35 + 0x00;
+		r36 = r32 + 0x00;
+		b0();
+		r1 = r35 + 0x00;
+	}
+	ar.pfs = r34;
+	b0 = r33;
+}
+
+// 40000000000BBE00: define array_insert
+define array_insert
+{
+	word64 r34;
+	Eq_n r33;
+	word64 r1;
+	<anonymous> * b5;
+	Eq_n r32;
+	word64 ar.pfs;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word64 r38 = ar.pfs;
+	Eq_n p07 = 0x00 == r32;
+	Eq_n p06 = 0x00 != r32;
+	<anonymous> * r37 = b5;
+	word64 r39 = r1 + 0x00;
+	union Eq_n * r40 = (union Eq_n *) &r33.u1->t0000.u0;
+	<anonymous> * b0;
+	word64 r8;
+	if (!p07)
+	{
+		word64 r41 = r34 + 0x00;
+		b0();
+		Eq_n r14;
+		r14.u0 = (word32) r32 + 8;
+		Eq_n r16;
+		r16.u0 = (word32) r32 + 24;
+		r1 = r39 + 0x00;
+		r40 = r8 + 0x00;
+		Eq_n r15;
+		r15.u1 = r14.u1->t0000.u1;
+		p07 = r15 < r33;
+		p06 = r15 >= r33;
+		Eq_n r17;
+		Eq_n r20;
+		Eq_n r18;
+		Eq_n r19;
+		if (p07)
+		{
+			r15.u0 = (word32) r32 + 16;
+			r16.u1 = r16.u1->t0000.u1;
+			ar.pfs = r38;
+			r17 = r1 + 7756;
+			Eq_n r22 = r8 + 0x18;
+			r20 = r8 + 0x10;
+			Eq_n v26;
+			v26.u0 = r15.u1->t0000.u0;
+			r18.u1 = (word64) v26;
+			r32.u1->t0000.u1 = (struct Eq_n *) r17;
+			r17.u0 = (word32) r16 + 24;
+			r8 = 0x00 + 0x00;
+			b0 = r37;
+			r19.u0 = (word32) r18 + 1;
+			r18 = r1 + 7764;
+			r40->u1 = (struct Eq_n *) r18;
+			r18.u1 = r17.u1->t0000.u1;
+			Eq_n r21;
+			r21.u0 = (word32) r18 + 16;
+			r18.u1->t0000.u1 = (struct Eq_n *) r22;
+			r40->u1 = (struct Eq_n *) r17;
+			r40->u1 = (struct Eq_n *) r21;
+			r16.u1->t0000.u1 = (struct Eq_n *) r20;
+			r33.u1->t0000.u1 = (struct Eq_n *) r14;
+			r19.u1->t0000.u0 = (word32) (word32) r15;
+			return;
+		}
+		r15.u1 = r16.u1->t0000.u1;
+		r14.u0 = (word32) r15 + 16;
+		Eq_n r35;
+		r35.u1 = r14.u1->t0000.u1;
+		p06 = r35 == r15;
+		p07 = r35 != r15;
+		if (!p06)
+		{
+			r14.u1 = r35.u1->t0000.u1;
+			p06 = r33 == r14;
+			p07 = r33 != r14;
+			if (!p06)
+			{
+				p06 = r33 < r14;
+				p07 = r33 >= r14;
+				if (!p06)
+				{
+					do
+					{
+						r35.u0 = (word32) r35 + 16;
+						r35.u1 = r35.u1->t0000.u1;
+						p07 = r35 == r15;
+						p06 = r35 != r15;
+						if (p07)
+							goto l40000000000BC040;
+						r14.u1 = r35.u1->t0000.u1;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+						if (p07)
+							goto l40000000000BC080;
+						p07 = r33 < r14;
+						p06 = r33 >= r14;
+					} while (p06);
+				}
+				r15.u0 = (word32) r35 + 24;
+				r14.u0 = (word32) r32 + 16;
+				r19 = r1 + 7756;
+				r20.u1 = (char *) r40 + 24;
+				r18.u1 = (char *) r40 + 16;
+				r8 = 0x00 + 0x00;
+				Eq_n v32;
+				v32.u0 = r14.u1->t0000.u0;
+				r17.u1 = (word64) v32;
+				r32.u1->t0000.u1 = (struct Eq_n *) r19;
+				ar.pfs = r38;
+				r16.u1 = r15.u1->t0000.u1;
+				r16.u1->t0000.u1 = (struct Eq_n *) r20;
+				r19.u0 = (word32) r16 + 16;
+				b0 = r37;
+				r17.u0 = (word32) r17 + 1;
+				r40->u1 = (struct Eq_n *) r15;
+				r16 = r1 + 7764;
+				r40->u1 = (struct Eq_n *) r19;
+				r40->u1 = (struct Eq_n *) r16;
+				r35.u1->t0000.u1 = (struct Eq_n *) r18;
+				r17.u1->t0000.u0 = (word32) (word32) r14;
+				return;
+			}
+			else
+			{
+l40000000000BC080:
+				union Eq_n ** r36 = (union Eq_n **) ((word32) r35 + 8);
+				b0();
+				r1 = r39 + 0x00;
+				r40 = (union Eq_n *) *r36;
+				b0();
+				p06 = 0x00 == r34;
+				p07 = 0x00 != r34;
+				r1 = r39 + 0x00;
+				r40 = r34 + 0x00;
+				if (p06)
+					r8 = 0x00 + 0x00;
+				__break();
+				__break();
+				word64 p01;
+				if (p01)
+					__break();
+			}
+		}
+l40000000000BC040:
+		r14 = r1 + 7756;
+		r15.u1 = r14.u1->t0000.u1;
+		p07 = r15 == r32;
+		p06 = r15 != r32;
+		if (p07)
+		{
+			union Eq_n * r0;
+			r0->u1 = (struct Eq_n *) r14;
+			r14 = r1 + 7764;
+			r8 = 0x00 + -1;
+			ar.pfs = r38;
+			r0->u1 = (struct Eq_n *) r14;
+			b0 = r37;
+			return;
+		}
+	}
+	r8 = 0x00 + -1;
+	ar.pfs = r38;
+	b0 = r37;
+}
+
+// 40000000000BC1C0: define array_remove
+define array_remove
+{
+	word64 r1;
+	word64 r32;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	word32 * r16 = r32 + 0x10;
+	struct Eq_n * r14 = r32 + 0x18;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	struct Eq_n * r8;
+	if (!p06)
+	{
+		word32 v9 = *r16;
+		word64 r17 = (word64) v9;
+		word32 v11 = (word32) 0x00;
+		word32 v12 = (word32) r17;
+		p06 = v11 == v12;
+		p07 = v11 != v12;
+		if (!p06)
+		{
+			struct Eq_n * r15 = r14->ptr0000;
+			r14 = (struct Eq_n *) ((char *) &r15->ptr0000 + 16);
+			r8 = r14->ptr0000;
+			p06 = r8 == r15;
+			p07 = r8 != r15;
+			if (!p06)
+			{
+				r14 = r8->ptr0000;
+				struct Eq_n * r33;
+				p06 = r33 == r14;
+				p07 = r33 != r14;
+				if (!p06)
+				{
+					do
+					{
+						r8 = (struct Eq_n *) ((char *) &r8->ptr0000 + 16);
+						r8 = r8->ptr0000;
+						p07 = r8 == r15;
+						p06 = r8 != r15;
+						if (p07)
+							goto l40000000000BC340;
+						r14 = r8->ptr0000;
+						p07 = r33 == r14;
+						p06 = r33 != r14;
+					} while (p06);
+				}
+				r14 = (struct Eq_n *) ((char *) &r8->ptr0000 + 16);
+				r15 = (struct Eq_n *) ((char *) &r8->ptr0000 + 24);
+				struct Eq_n ** r18 = r32 + 0x08;
+				word64 * r19 = r1 + 7756;
+				r17 += ~0x00;
+				r14 = r14->ptr0000;
+				struct Eq_n * r22 = r15->ptr0000;
+				struct Eq_n * r23 = (struct Eq_n *) ((char *) &r14->ptr0000 + 24);
+				struct Eq_n * r21 = (struct Eq_n *) *r18;
+				word64 r20 = *r19;
+				r22->ptr0000 = r23;
+				p07 = r20 == r32;
+				p06 = r20 != r32;
+				Eq_n p09 = r33 == r21;
+				Eq_n p08 = r33 != r21;
+				r15 = r15->ptr0000;
+				if (p07)
+				{
+					word64 ** r0;
+					*r0 = r19;
+				}
+			}
+		}
+	}
+l40000000000BC340:
+	r8 = 0x00 + 0x00;
+}
+
+// 40000000000BC380: define array_reference
+define array_reference
+{
+	word64 r1;
+	ptr64 fp;
+	ptr64 r11 = fp;
+	Eq_n r14;
+	Eq_n r32;
+	r14.u0 = (word32) r32 + 16;
+	Eq_n p06 = 0x00 == r32;
+	Eq_n p07 = 0x00 != r32;
+	Eq_n r17 = r1 + 7764;
+	Eq_n r18 = r1 + 7756;
+	Eq_n r8;
+	if (!p06)
+	{
+		Eq_n v11;
+		v11.u0 = r14.u1->t0000.u0;
+		r14.u1 = (word64) v11;
+		word32 v12 = (word32) 0x00;
+		word32 v13 = (word32) r14;
+		p06 = v12 == v13;
+		p07 = v12 != v13;
+		r14.u0 = (word32) r32 + 8;
+		if (!p06)
+		{
+			r14.u1 = r14.u1->t0000.u1;
+			Eq_n r33;
+			p06 = r14 < r33;
+			p07 = r14 >= r33;
+			if (!p06)
+			{
+				r14.u1 = r17.u1->t0000.u1;
+				p06 = 0x00 == r14;
+				p07 = 0x00 != r14;
+				Eq_n r15;
+				if (!p06)
+				{
+					r15.u1 = r18.u1->t0000.u1;
+					p07 = r15 == r32;
+					p06 = r15 != r32;
+					if (p07)
+					{
+						r15.u1 = r14.u1->t0000.u1;
+						p06 = r33 < r15;
+						p07 = r33 >= r15;
+						if (p07)
+							r15.u0 = (word32) r32 + 24;
+					}
+				}
+				r14.u0 = (word32) r32 + 24;
+				Eq_n r16;
+				r16.u1 = r14.u1->t0000.u1;
+				r14.u0 = (word32) r16 + 16;
+				r14.u1 = r14.u1->t0000.u1;
+				p06 = r14 == r16;
+				p07 = r14 != r16;
+				if (!p06)
+				{
+					r15.u1 = r14.u1->t0000.u1;
+					p06 = r33 == r15;
+					p07 = r33 != r15;
+					if (!p06)
+					{
+						do
+						{
+							r14.u0 = (word32) r14 + 16;
+							r14.u1 = r14.u1->t0000.u1;
+							p07 = r14 == r16;
+							p06 = r14 != r16;
+							if (p07)
+								goto l40000000000BC4F0;
+							r15.u1 = r14.u1->t0000.u1;
+							p07 = r33 == r15;
+							p06 = r33 != r15;
+						} while (p06);
+					}
+					r15.u0 = (word32) r14 + 8;
+					r32.u1->t0000.u1 = (struct Eq_n *) r18;
+					r14.u1->t0000.u1 = (struct Eq_n *) r17;
+					r8.u1 = r15.u1->t0000.u1;
+					return;
+				}
+				else
+				{
+l40000000000BC4F0:
+					r8 = 0x00 + 0x00;
+					union Eq_n * r0;
+					r0->u1 = (struct Eq_n *) r18;
+					r0->u1 = (struct Eq_n *) r17;
+					return;
+				}
+			}
+		}
+	}
+	r8 = 0x00 + 0x00;
 }
 
