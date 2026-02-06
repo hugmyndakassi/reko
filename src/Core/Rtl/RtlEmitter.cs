@@ -383,10 +383,9 @@ namespace Reko.Core.Rtl
         }
 
         /// <inheritdoc/>
-        [Obsolete("RtlIf is going away soon: don't use it.", false)]
-        public RtlEmitter If(Expression test, RtlInstruction rtl)
+        public RtlEmitter If(Expression test, params RtlInstruction[] rtls)
         {
-            Instructions.Add(new RtlIf(test, rtl));
+            Instructions.Add(new RtlIf(test, rtls));
             return this;
         }
     }

@@ -260,9 +260,9 @@ namespace Reko.Scanning
             var rtl = i.Instructions[i.Instructions.Length - 1];
             for (;;)
             {
-                if (!(rtl is RtlIf rif))
+                if (rtl is not RtlIf rif)
                     break;
-                rtl = rif.Instruction;
+                rtl = rif.Instructions[^1];
             }
             if (rtl is RtlTransfer xfer)
             {

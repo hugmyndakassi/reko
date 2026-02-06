@@ -400,8 +400,10 @@ namespace Reko.Scanning
             var blockFollow = BlockFromAddress(ric.Address, fallthruAddress, proc, state);
 
             blockCur = blockInstr;
-            rtlIf.Instruction.Accept(this);
-
+            foreach (var rtl in rtlIf.Instructions)
+            {
+                rtl.Accept(this);
+            }
             var branchingBlock = scanner.FindContainingBlock(ric.Address)!;
             branch.Target = blockFollow;
             EnsureEdge(proc, branchingBlock, blockInstr);

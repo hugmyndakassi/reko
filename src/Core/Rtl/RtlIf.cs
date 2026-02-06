@@ -37,12 +37,14 @@ namespace Reko.Core.Rtl
         /// branch is not taken.
         /// </summary>
         /// <param name="condition">The condition of the <see cref="RtlIf"/> instruction.</param>
-        /// <param name="instr">The instruction that is condititonally executed if <paramref name="condition"/> is true.</param>
-        public RtlIf(Expression condition, RtlInstruction instr)
+        /// <param name="instrs">The instructions that are conditionally executed if <paramref name="condition"/> is true.</param>
+        public RtlIf(Expression condition, params RtlInstruction[] instrs)
         {
+            if (instrs.Length == 0)
+                throw new System.ArgumentException("At least one RTL instruction must be provided ", nameof(instrs));
             this.Condition = condition;
-            this.Instruction = instr;
-            this.Class = instr.Class | InstrClass.Conditional;
+            this.Instructions = instrs;
+            this.Class = instrs[^1].Class | InstrClass.Conditional;
         }
 
         /// <summary>
@@ -51,9 +53,9 @@ namespace Reko.Core.Rtl
         public Expression Condition { get; }
 
         /// <summary>
-        /// The conditionally executed RTL instruction.
+        /// The conditionally executed RTL instructions.
         /// </summary>
-        public RtlInstruction Instruction { get; }
+        public RtlInstruction[] Instructions { get; }
 
         /// <inheritdoc/>
         public override T Accept<T>(RtlInstructionVisitor<T> visitor)
@@ -71,7 +73,20 @@ namespace Reko.Core.Rtl
         protected override void WriteInner(TextWriter writer)
         {
             writer.Write("if ({0}) ", Condition);
-            Instruction.Write(writer);
+            if (Instructions.Length == 1)
+            {
+                Instructions[0].Write(writer);
+            }
+            else
+            {
+                writer.WriteLine("{ ");
+                foreach (var instr in Instructions)
+                {
+                    instr.Write(writer);
+                    writer.Write("; ");
+                }
+                writer.Write("}");
+            }
         }
     }
 }

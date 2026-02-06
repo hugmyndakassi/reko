@@ -137,7 +137,14 @@ namespace Reko.Core.Rtl
                 return false;
             if (matcher.Match(pIf.Condition, rtlIf.Condition, m))
                 return false;
-            return this.Match(pIf.Instruction, rtlIf.Instruction, m);
+            if (pIf.Instructions.Length != rtlIf.Instructions.Length)
+                return false;
+            for (int i = 0; i < pIf.Instructions.Length; ++i)
+            {
+                if (!this.Match(pIf.Instructions[i], rtlIf.Instructions[i], m))
+                    return false;
+            }
+            return true;
         }
 
         /// <inheritdoc/>

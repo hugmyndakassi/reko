@@ -655,7 +655,7 @@ namespace Reko.Scanning
             {
                 if (rtl is not RtlIf rif)
                     break;
-                rtl = rif.Instruction;
+                rtl = rif.Instructions[^1];
             }
             if (rtl is RtlTransfer xfer)
             {
