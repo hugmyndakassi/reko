@@ -28,7 +28,14 @@ public partial class IA64Rewriter
         var src1 = ReadOp(instr, 1);
         var src2 = ReadOp(instr, 2);
         WriteOp(instr, 0, m.And(src2, src1));
-    }   
+    }
+
+    private void RewriteAndcm(IA64Instruction instr)
+    {
+        var src1 = ReadOp(instr, 1);
+        var src2 = ReadOp(instr, 2);
+        WriteOp(instr, 0, m.And(src1, m.Comp(src2)));
+    }
 
     private void RewriteCmp(IA64Instruction instr, ConditionalOperator cT, ConditionalOperator cF)
     {
@@ -199,6 +206,14 @@ public partial class IA64Rewriter
         var tmp = binder.CreateTemporary(dt);
         m.Assign(tmp, m.Slice(src, dt));
         WriteOp(instr, 0, m.ExtendS(tmp, PrimitiveType.Int64));
+    }
+
+    private void RewriteXor(IA64Instruction instr)
+    {
+        var src1 = ReadOp(instr, 1);
+        var src2 = ReadOp(instr, 2);
+        // Swapping operands b/c src1 will be where immediates are provided.
+        WriteOp(instr, 0, m.Xor(src2, src1));
     }
 
     private void RewriteZxt(IA64Instruction instr, PrimitiveType dt)

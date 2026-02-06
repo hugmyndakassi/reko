@@ -45,14 +45,19 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
     private IA64Bundle bundle;
     private InstrClass iclass;
 
-    public IA64Rewriter(IA64Architecture arch, EndianImageReader rdr, ProcessorState state, IStorageBinder binder, IRewriterHost host)
+    public IA64Rewriter(
+        IA64Architecture arch,
+        EndianImageReader rdr,
+        ProcessorState state,
+        IStorageBinder binder,
+        IRewriterHost host)
     {
         this.arch = arch;
         this.rdr = rdr;
         this.state = state;
         this.binder = binder;
         this.host = host;
-        this.dasm =  new IA64Disassembler(arch, rdr).GetEnumerator();
+        this.dasm = new IA64Disassembler(arch, rdr).GetEnumerator();
         this.rtls = [];
         this.m = new RtlEmitter(rtls);
         this.bundle = default!;
@@ -71,11 +76,40 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
                     // Skip long immediate pseudo-instructions
                     continue;
                 }
+                MaybeEmitUnconditional(instr);
                 MaybeEmitPredicateBranch(instr);
                 Rewrite(instr);
                 yield return m.MakeCluster(instr.Address, instr.Length, iclass);
                 rtls.Clear();
             }
+        }
+    }
+
+    private void MaybeEmitUnconditional(IA64Instruction instr)
+    {
+        switch (instr.Mnemonic)
+        {
+        case Mnemonic.cmp4_eq_unc:
+        case Mnemonic.cmp4_lt_unc:
+        case Mnemonic.cmp4_ltu_unc:
+        case Mnemonic.cmp_eq_unc:
+        case Mnemonic.cmp_lt_unc:
+        case Mnemonic.cmp_ltu_unc:
+        case Mnemonic.fcmp_eq_unc:
+        case Mnemonic.fcmp_lt_unc:
+        case Mnemonic.fcmp_le_unc:
+        case Mnemonic.fcmp_unord_unc:
+        case Mnemonic.fpcmp_unord_unc:
+            var p1 = (FlagGroupStorage) instr.Operands[0];
+            var p2 = (FlagGroupStorage) instr.Operands[1];
+            m.Assign(binder.EnsureFlagGroup(p1), 0);
+            m.Assign(binder.EnsureFlagGroup(p2), 0);
+            break;
+        case Mnemonic.tbit_z_unc:
+        case Mnemonic.tnat_z_unc:
+        case Mnemonic.fclass_m_unc:
+            Debug.Assert(false);
+            break;
         }
     }
 
@@ -105,6 +139,7 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.adds: RewriteAdd(instr); break;
         case Mnemonic.alloc: RewriteAlloc(instr); break;
         case Mnemonic.and: RewriteAnd(instr); break;
+        case Mnemonic.andcm: RewriteAndcm(instr); break;
         case Mnemonic.br_ret: RewriteBr_ret(instr); break;
         case Mnemonic.br_call: RewriteBr_call(instr); break;
         case Mnemonic.br_cloop: RewriteBr_cloop(instr); break;
@@ -113,12 +148,18 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.break_f: RewriteBreak(instr); break;
         case Mnemonic.break_i: RewriteBreak(instr); break;
         case Mnemonic.break_m: RewriteBreak(instr); break;
-        case Mnemonic.cmp_eq: RewriteCmp(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
-        case Mnemonic.cmp_lt: RewriteCmp(instr, BinaryOperator.Lt, BinaryOperator.Ge); break;
-        case Mnemonic.cmp_ltu: RewriteCmp(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
-        case Mnemonic.cmp4_eq: RewriteCmp4(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
-        case Mnemonic.cmp4_lt: RewriteCmp4(instr, BinaryOperator.Lt, BinaryOperator.Ge); break;
-        case Mnemonic.cmp4_ltu: RewriteCmp4(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
+        case Mnemonic.cmp_eq:
+        case Mnemonic.cmp_eq_unc: RewriteCmp(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
+        case Mnemonic.cmp_lt:
+        case Mnemonic.cmp_lt_unc: RewriteCmp(instr, BinaryOperator.Lt, BinaryOperator.Ge); break;
+        case Mnemonic.cmp_ltu:
+        case Mnemonic.cmp_ltu_unc: RewriteCmp(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
+        case Mnemonic.cmp4_eq:
+        case Mnemonic.cmp4_eq_unc: RewriteCmp4(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
+        case Mnemonic.cmp4_lt:
+        case Mnemonic.cmp4_lt_unc: RewriteCmp4(instr, BinaryOperator.Lt, BinaryOperator.Ge); break;
+        case Mnemonic.cmp4_ltu:
+        case Mnemonic.cmp4_ltu_unc: RewriteCmp4(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
         case Mnemonic.extr: RewriteExtr(instr); break;
         case Mnemonic.extr_u: RewriteExtr_u(instr); break;
         case Mnemonic.ld1: RewriteLd(instr, PrimitiveType.Byte); break;
@@ -139,6 +180,7 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.mov_i: RewriteMov(instr); break;
         case Mnemonic.mov_m: RewriteMov(instr); break;
         case Mnemonic.movl: RewriteMov(instr); break;
+        case Mnemonic.nop: RewriteNop(instr); break;
         case Mnemonic.nop_b: RewriteNop(instr); break;
         case Mnemonic.nop_i: RewriteNop(instr); break;
         case Mnemonic.nop_m: RewriteNop(instr); break;
@@ -162,6 +204,7 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.sxt1: RewriteSxt(instr, PrimitiveType.Int8); break;
         case Mnemonic.sxt2: RewriteSxt(instr, PrimitiveType.Int16); break;
         case Mnemonic.sxt4: RewriteSxt(instr, PrimitiveType.Int32); break;
+        case Mnemonic.xor: RewriteXor(instr); break;
         case Mnemonic.zxt1: RewriteZxt(instr, PrimitiveType.Byte); break;
         case Mnemonic.zxt2: RewriteZxt(instr, PrimitiveType.Word16); break;
         case Mnemonic.zxt4: RewriteZxt(instr, PrimitiveType.Word32); break;

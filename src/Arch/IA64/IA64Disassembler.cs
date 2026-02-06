@@ -398,7 +398,7 @@ public partial class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     /// </summary>
     private static bool A3(ulong uInstr, IA64Disassembler dasm)
     {
-        var src1 = Constant.Word64(Bitfield.ReadFields(bf36_1_13_7, uInstr));
+        var src1 = Constant.Word64(Bitfield.ReadSignedFields(bf36_1_13_7, uInstr));
         var src2 = Registers.GpRegisters[bf20_7.Read(uInstr)];
         var dst = Registers.GpRegisters[bf6_7.Read(uInstr)];
         dasm.ops.Add(dst);
