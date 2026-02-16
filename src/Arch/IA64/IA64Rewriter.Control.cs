@@ -62,4 +62,19 @@ public partial class IA64Rewriter
         m.SideEffect(m.Fn(break_intrinsic));
     }
 
+    private void RewriteEpc(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(epc_intrinsic));
+    }
+
+    private void RewriteChk_a_clr(IA64Instruction instr)
+    {
+        var op = ReadOp(instr, 0);
+        m.Branch(m.Fn(chk_intrinsic, op), (Address) instr.Operands[1]);
+    }
+
+    private void RewriteFwb(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(fwb_intrinsic));
+    }
 }

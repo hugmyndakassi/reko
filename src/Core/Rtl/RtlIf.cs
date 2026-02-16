@@ -79,7 +79,7 @@ namespace Reko.Core.Rtl
             }
             else
             {
-                writer.WriteLine("{ ");
+                writer.Write("{ ");
                 foreach (var instr in Instructions)
                 {
                     instr.Write(writer);

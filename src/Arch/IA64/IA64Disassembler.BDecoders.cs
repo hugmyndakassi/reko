@@ -39,7 +39,7 @@ public partial class IA64Disassembler
             (0x08, Instr(Mnemonic.rfi, InstrClass.Return | InstrClass.Privileged, B8)),
             (0x0C, Instr(Mnemonic.bsw_0, B8)),
             (0x0D, Instr(Mnemonic.bsw_1, B8)),
-            (0x10, Instr(Mnemonic.epc, B8)),
+            (0x10, Instr(Mnemonic.epc, InstrClass.Linear | InstrClass.Privileged, B8)),
             (0x20, indirectBranch),
             (0x21, indirectReturn));
         var indirectCall = Instr(Mnemonic.br_call, InstrClass.Transfer | InstrClass.Call, B5);

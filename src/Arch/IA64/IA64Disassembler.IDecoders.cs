@@ -243,7 +243,7 @@ public partial class IA64Disassembler
             prReserved,
             prReserved,
 
-            Instr(Mnemonic.deposit, I15),
+            Instr(Mnemonic.dep, I15),
             shiftTestBit,
             prReserved,
             mmMpyShift,

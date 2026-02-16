@@ -27,7 +27,7 @@ using System.Text;
 
 namespace Reko.Arch.IA64;
 
-public class IA64Instruction : MachineInstruction
+public sealed class IA64Instruction : MachineInstruction
 {
     private static readonly Dictionary<Completer, string> completerRender = new()
     {

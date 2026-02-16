@@ -23,7 +23,6 @@ using Reko.Core.Expressions;
 using Reko.Core.Lib;
 using Reko.Core.Machine;
 using Reko.Core.Memory;
-using Reko.Core.Rtl;
 using Reko.Core.Services;
 using Reko.Core.Types;
 using System;
@@ -116,6 +115,11 @@ public partial class IA64Disassembler : DisassemblerBase<IA64Bundle, Mnemonic>
     public override IA64Bundle? DisassembleInstruction()
     {
         this.addr = rdr.Address;
+        if ((addr.Offset & 0x0f) != 0)
+        {
+            // IA-64 instructions must be 16-byte aligned.
+            _ = this; //$DEBUG
+        }
         if (!rdr.TryReadUInt64(out ulong uBundleLo) ||
             !rdr.TryReadUInt64(out ulong uBundleHi))
         {
