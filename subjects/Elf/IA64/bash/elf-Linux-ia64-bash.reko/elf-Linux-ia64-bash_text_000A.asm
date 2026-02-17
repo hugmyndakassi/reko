@@ -26,10 +26,14 @@ l40000000000BC520:
 
 l40000000000BC53C:
 	{ Invalid; Invalid; mov	pr,r32,0x0 }
-	{ (p56) cmp.lt.unc	p63,p11,r63,r37; zxt1	r6,r64; (p02) rfi }
-	{ nop; cmp.lt	p00,p00,r32,r0; zxt1	r4,r64 }
-	{ cmp.lt	p00,p17,r1,r0; Invalid; break.i	0x1000 }
-	{ (p55) nop; (p20) cmp.lt.unc	p34,p02,r1,r96; (p01) shladd	r4,r8,0x1,r64 }
+
+l40000000000BC546:
+	{ chk.a.nc	f0,3FFFFFFFFF0BCD46; nop; (p32) nop }
+
+l40000000000BC550:
+	{ adds	r14,0x18,r32; ld8	r16,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; adds	r14,0x10,r16; nop.i	0x0; }
+	{ ld8	r14,[r14]; nop.i	0x0; br.cond.sptk.few	40000000000BC450; }
 
 ;; array_to_word_list: 40000000000BC580
 array_to_word_list proc
@@ -182,22 +186,35 @@ l40000000000BCA40:
 l40000000000BCA8C:
 	{ (p07) nop; break.i	0x1000; break.i	0x1000 }
 
-l40000000000BCA92:
-	{ break.m	0x20; break.i	0x20; Invalid }
-	{ Invalid; (p17) break.i	0x42008; nop }
-	{ Invalid; (p32) mov	pr,0xC0720E8; (p32) deposit	r8,r64,r48,60,4; }
-	{ break.m	0x42000; cmp.lt	p32,p01,r0,r64; Invalid }
-	{ break.m	0x20; nop; Invalid }
-	{ (p16) nop; cmp.ltu	p02,p00,r64,r16; Invalid }
-	{ (p16) break.m	0x4200A; mov	pr,0xC000020; tbit.z.and	p02,p06,r48,0x20 }
-	{ (p32) break.m	0x42008; nop; Invalid; }
-	{ (p16) break.m	0x4200A; break.i	0x20; deposit	r32,r0,r32,63,2 }
-	{ (p01) invala; (p18) nop; Invalid }
-	{ Invalid; (p16) break.i	0x20309; Invalid; }
-	{ nop; (p36) cmp.lt.unc	p03,p01,r1,r92; (p62) break.i	0xA57FF }
-	{ srlz.d; (p48) nop; (p04) nop }
-	{ Invalid; (p32) break.m	0x42009; (p05) clrrrb; }
-	{ (p48) cmp.eq	p08,p00,r102,r8; (p20) nop; nop }
+l40000000000BCA90:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BCAA0:
+	{ nop.m	0x0; adds	r14,0x8,r33; nop.i	0x0; }
+	{ ld8	r34,[r14]; cmp.eq	p06,p07,0x0,r34; adds	r42,0x0,r34; }
+	{ (p06) adds	r8,0x0,r0; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BCB20; }
+
+l40000000000BCAC6:
+	{ chk.a.nc	r0,3FFFFFFFFF0BD2C6; nop; break.i	0x80000 }
+
+l40000000000BCAD0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r41; adds	r42,0x1,r8; br.call.sptk.many	b0,xmalloc; }
+	{ adds	r1,0x0,r41; nop.m	0x0; adds	r42,0x0,r8 }
+	{ adds	r43,0x0,r34; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ adds	r1,0x0,r41; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BCB20:
+	{ st8	[r36],r8,8; adds	r33,0x10,r33; adds	r35,0x1,r35; }
+	{ ld8	r33,[r33]; ld8	r14,[r37]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,r33,r14; (p06) br.cond.dptk.few	40000000000BCAA0 }
+
+l40000000000BCB50:
+	{ nop.m	0x0; sxt4	r35,r35; shladd	r35,r35,0x3,r0; }
+
+l40000000000BCB60:
+	{ add	r35,r38,r35; adds	r8,0x0,r38; mov.i	ar.pfs,r40; }
+	{ st8	[r0],r35; mov.spnt	b0,r39,40000000000BCB70; br.ret	b0 }
 
 l40000000000BCB80:
 	{ adds	r38,0x0,r0; nop.m	0x0; mov.i	ar.pfs,r40; }
@@ -233,105 +250,214 @@ l40000000000BCC80:
 
 l40000000000BCCC6:
 	{ Invalid; (p32) nop; break.i	0x80000; }
-	{ Invalid; (p18) nop; nop }
-	{ nop; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD805E6; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p20) chk.a.clr	r9,3FFFFFFFFF2BCD36; nop; (p32) nop.b	0x26043; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p20) chk.a.clr	r10,3FFFFFFFFF2BCD66; nop; (p32) nop.b	0x2600C; }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; (p20) nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; nop }
-	{ nop; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD806A6; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2BCDF6; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2BCE26; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f14,3FFFFFFFFF900886; Invalid; break.i	0x80000 }
-	{ (p07) add	r0,r35,r22; (p17) nop; break.i	0x80000 }
-	{ Invalid; Invalid; (p32) nop.b	0xE483 }
-	{ (p25) break.m	0x59180; (p25) nop; nop }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ nop; nop; (p32) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD807B6; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2BCF06; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2BCF36; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; mov	pr,0x4000; (p32) nop.b	0x23023 }
-	{ (p07) add	r0,r35,r22; (p17) mov	pr,r35,0x1004; break.b	0x80000 }
-	{ (p07) add	r0,r14,r22; (p07) nop; (p32) nop }
-	{ mf.a; nop; nop }
-	{ nop; mov	pr,0x430000F; break.i	0x80000 }
-	{ (p25) add	r0,r35,r22; (p25) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; mov.sptk	b0,r48,40000000000BD0D6; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r0,3FFFFFFFFF13CFF6; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2BD026; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2BD056; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ (p07) nop; (p25) nop; (p48) nop }
-	{ Invalid; mov	pr,0x4000; cmp.lt	p00,p00,r0,r32 }
-	{ (p07) addp4	r0,0xFFFFFFFFFFFFE023,r22; (p17) nop; cmp.lt	p00,p00,r0,r32; }
-	{ Invalid; cmp4.eq	p00,p00,r0,r1; (p01) nop; }
+
+l40000000000BCCCC:
+	{ (p08) nop; nop; nop }
+	{ cmpxchg4.acq	r8,[r66],r0; break.x	0x1C89A600501000 }
+
+l40000000000BCCE0:
+	{ cmp.eq	p18,p19,0x0,r38; nop.i	0x0; (p18) br.cond.dpnt.few	40000000000BD2D0; }
+
+l40000000000BCCF0:
+	{ ld1	r14,[r38]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000BD2D0 }
+
+l40000000000BCD10:
+	{ adds	r14,0x1,r38; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r41,9,r0; (p06) br.cond.dptk.few	40000000000BCDA0 }
+
+l40000000000BCD3C:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt.unc	p00,p16,r9,r64; (p01) rfi }
+
+l40000000000BCD40:
+	{ adds	r14,0x2,r38; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r41,10,r0; (p06) br.cond.dptk.few	40000000000BCDA0 }
+
+l40000000000BCD6C:
+	{ (p02) cmpxchg4.acq	r0,[r33],r0; zxt1	r64,r64; break.i	0x1000 }
+
+l40000000000BCD70:
+	{ adds	r50,0x0,r38; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ nop.m	0x0; adds	r1,0x0,r48; adds	r41,0x8,r8; }
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BCDA0:
+	{ cmp.eq	p16,p17,0x0,r37; nop.i	0x0; (p16) br.cond.dpnt.few	40000000000BD290; }
+
+l40000000000BCDB0:
+	{ ld1	r14,[r37]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000BD290 }
+
+l40000000000BCDD0:
+	{ adds	r14,0x1,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000BCE50 }
+
+l40000000000BCDFC:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt	p32,p16,r9,r64; Invalid }
+
+l40000000000BCE00:
+	{ adds	r14,0x2,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000BCE50 }
+
+l40000000000BCE2C:
+	{ Invalid; dep	r0,r32,r0,63,1; (p06) epc }
+
+l40000000000BCE30:
+	{ nop.m	0x0; adds	r50,0x0,r37; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r48; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BCE50:
+	{ add	r14,r41,r8,0x1; add	r14,r14,r35; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r14,r34; (p07) br.cond.dptk.few	40000000000BD1E0 }
+
+l40000000000BCE70:
+	{ nop.m	0x0; sxt4	r14,r35; adds	r35,0x1,r35 }
+	{ nop.m	0x0; adds	r51,0x0,r38; nop.b	0x0; }
+	{ add	r14,r36,r14; sxt4	r50,r35; add	r50,r36,r50 }
+	{ st1	[r42],r14; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ nop.m	0x0; adds	r1,0x0,r48; (p18) br.cond.dpnt.few	40000000000BD280 }
+
+l40000000000BCEC0:
+	{ ld1	r14,[r38]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000BD280 }
+
+l40000000000BCEE0:
+	{ adds	r14,0x1,r38; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000BCF60 }
+
+l40000000000BCF0C:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt.unc	p00,p16,r9,r64; Invalid }
+
+l40000000000BCF10:
+	{ adds	r14,0x2,r38; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000BCF60 }
+
+l40000000000BCF3C:
+	{ Invalid; dep	r0,r32,r0,63,1; (p06) epc }
+
+l40000000000BCF40:
+	{ nop.m	0x0; adds	r50,0x0,r38; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r48; nop.m	0x0; nop.i	0x0; }
+
+l40000000000BCF60:
+	{ nop.m	0x0; add	r35,r8,r35; nop.i	0x0; }
+	{ adds	r14,0x1,r35; sxt4	r15,r35; adds	r35,0x2,r35; }
+	{ nop.m	0x0; sxt4	r14,r14; add	r15,r36,r15; }
+	{ add	r14,r36,r14; st1	[r43],r15; nop.i	0x0; }
+	{ st1	[r44],r14; nop.i	0x0; (p16) br.cond.dpnt.few	40000000000BD090; }
+
+l40000000000BCFB0:
+	{ nop.m	0x0; sxt4	r50,r35; adds	r51,0x0,r37; }
+	{ add	r50,r36,r50; nop.i	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ ld1	r14,[r37]; nop.m	0x0; adds	r1,0x0,r48; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) adds	r8,0x0,r0; (p06) br.cond.dptk.few	40000000000BD080 }
+
+l40000000000BCFFC:
+	{ (p04) cmp.lt	p00,p11,r0,r33; (p17) cmp.lt	p32,p16,r9,r64; (p01) rfi }
+
+l40000000000BD000:
+	{ adds	r14,0x1,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000BD080 }
+
+l40000000000BD02C:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt	p32,p16,r9,r64; Invalid }
+
+l40000000000BD030:
+	{ adds	r14,0x2,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000BD080 }
+
+l40000000000BD05C:
+	{ Invalid; dep	r0,r32,r0,63,1; (p06) epc }
+
+l40000000000BD060:
+	{ nop.m	0x0; adds	r50,0x0,r37; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r48; nop.m	0x0; nop.i	0x0; }
+
+l40000000000BD080:
+	{ add	r35,r8,r35; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BD090:
+	{ adds	r39,0x10,r39; ld8	r14,[r40]; (p17) adds	r50,0x0,r37; }
+
+l40000000000BD0A0:
+	{ ld8	r15,[r39]; cmp.eq	p06,p07,r14,r15; nop.i	0x0; }
+	{ nop.m	0x0; sxt4	r14,r35; (p07) adds	r35,0x1,r35; }
+
+l40000000000BD0C0:
+	{ nop.m	0x0; (p07) add	r14,r36,r14; nop.i	0x0; }
+
+l40000000000BD0CC:
+	{ Invalid; Invalid; Invalid }
+
+l40000000000BD0D6:
 	{ nop; (p32) nop; break.i	0x80000 }
-	{ (p07) nop; nop; break.i	0x80000 }
-	{ (p19) fwb; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r39,3FFFFFFFFFCC01E6; nop; (p16) nop.b	0x23029 }
-	{ Invalid; (p07) nop; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ (p03) chk.a.clr	f37,3FFFFFFFFF900356; Invalid; break.b	0x80000 }
-	{ Invalid; (p25) nop; break.i	0x80000 }
-	{ (p25) break.m	0x59980; (p32) nop; (p16) nop.b	0x30000 }
-	{ Invalid; (p07) nop; break.i	0x80000 }
-	{ (p18) break.m	0x59280; nop; (p32) nop.b	0xE483 }
-	{ Invalid; (p03) nop; (p16) nop.b	0x25489 }
-	{ mf.a; nop; nop }
-	{ chk.a.nc	f0,3FFFFFFFFF0BD9A6; Invalid; nop }
+
+l40000000000BD0E0:
+	{ nop.m	0x0; ld8	r14,[r40]; (p17) adds	r1,0x0,r48 }
+
+l40000000000BD0F0:
+	{ nop.m	0x0; ld8	r39,[r39]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,r39,r14; (p06) br.cond.dptk.few	40000000000BCC80 }
+
+l40000000000BD110:
+	{ adds	r37,0x1,r35; adds	r15,0x8,r34; sxt4	r14,r35 }
+	{ nop.m	0x0; adds	r50,0x0,r36; nop.i	0x0; }
+	{ sub	r16,r37,r34; cmp4.lt	p07,p06,r37,r34; (p07) br.cond.dpnt.few	40000000000BD170; }
+
+l40000000000BD140:
+	{ nop.m	0x0; extr	r16,r16,3,29; shladd	r51,r16,0x3,r15; }
+	{ nop.m	0x0; sxt4	r51,r51; br.call.sptk.many	b0,xrealloc; }
+	{ adds	r1,0x0,r48; adds	r36,0x0,r8; sxt4	r14,r35; }
+
+l40000000000BD170:
+	{ nop.m	0x0; sxt4	r37,r37; nop.b	0x0 }
+	{ add	r14,r36,r14; addl	r15,41,r0; cmp4.eq	p06,p07,0x0,r33; }
+	{ add	r37,r36,r37; st1	[r15],r14; nop.i	0x0; }
+	{ st1	[r0],r37; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000BD2E0 }
 
 l40000000000BD1B0:
 	{ adds	r8,0x0,r36; mov	pr,r49,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r47; }
 	{ nop.m	0x0; mov.spnt	b0,r46,40000000000BD1C0; nop.i	0x0 }
 	{ adds	r12,0x20,r12; nop.m	0x0; br.ret	b0 }
-40000000000BD1E0 09 00 00 00 01 00 20 12 01 20 40 00 00 00 04 00 ...... .. @.....
-40000000000BD1F0 10 00 00 00 01 00 70 70 88 0C 61 03 F0 FF FF 4A ......pp..a....J
-40000000000BD200 11 90 01 48 00 21 30 03 88 2C 00 00 08 BC 02 50 ...H.!0..,.....P
-40000000000BD210 10 00 00 00 01 00 E0 00 8C 2C 00 00 00 00 00 20 .........,..... 
-40000000000BD220 09 20 01 10 00 21 30 0A 8C 00 42 20 00 80 01 84 . ...!0...B ....
-40000000000BD230 01 70 90 1C 00 20 20 03 8C 2C 00 60 06 30 01 84 .p...  ..,.`.0..
-40000000000BD240 08 00 00 00 01 00 20 23 C9 00 40 00 00 00 04 00 ...... #..@.....
-40000000000BD250 19 00 A8 1C 80 11 00 00 00 02 00 00 38 DF F5 58 ............8..X
-40000000000BD260 11 00 00 00 01 00 10 00 C0 00 C2 09 60 FC FF 4A ............`..J
-40000000000BD270 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
-40000000000BD280 11 00 00 00 01 00 80 00 00 00 42 00 E0 FC FF 48 ..........B....H
-40000000000BD290 0B 40 00 00 00 21 E0 48 21 02 40 00 00 00 04 00 .@...!.H!.@.....
-40000000000BD2A0 09 00 00 00 01 00 E0 70 8C 00 40 00 00 00 04 00 .......p..@.....
-40000000000BD2B0 10 00 00 00 01 00 60 70 88 0E 61 03 C0 FB FF 4A ......`p..a....J
-40000000000BD2C0 10 00 00 00 01 00 00 00 00 02 00 00 20 FF FF 48 ............ ..H
-40000000000BD2D0 10 00 00 00 01 00 90 42 00 00 48 00 D0 FA FF 48 .......B..H....H
+
+l40000000000BD1E0:
+	{ nop.m	0x0; shladd	r34,r34,0x1,r0; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p07,p06,r14,r34; (p06) br.cond.dptk.few	40000000000BD1E0 }
+
+l40000000000BD200:
+	{ adds	r50,0x0,r36; sxt4	r51,r34; br.call.sptk.many	b0,xrealloc; }
+	{ nop.m	0x0; sxt4	r14,r35; nop.b	0x0 }
+	{ adds	r36,0x0,r8; adds	r35,0x1,r35; adds	r1,0x0,r48; }
+	{ add	r14,r36,r14; sxt4	r50,r35; adds	r51,0x0,r38; }
+	{ nop.m	0x0; add	r50,r36,r50; nop.i	0x0 }
+	{ st1	[r42],r14; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ nop.m	0x0; adds	r1,0x0,r48; (p19) br.cond.dptk.few	40000000000BCEC0; }
+
+l40000000000BD270:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BD280:
+	{ nop.m	0x0; adds	r8,0x0,r0; br.cond.sptk.few	40000000000BCF60; }
+
+l40000000000BD290:
+	{ adds	r8,0x0,r0; add	r14,r41,r8,0x1; nop.i	0x0; }
+	{ nop.m	0x0; add	r14,r14,r35; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r14,r34; (p06) br.cond.dptk.few	40000000000BCE70 }
+
+l40000000000BD2C0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000BD1E0 }
+
+l40000000000BD2D0:
+	{ nop.m	0x0; addl	r41,8,r0; br.cond.sptk.few	40000000000BCDA0 }
 
 l40000000000BD2E0:
 	{ adds	r50,0x0,r36; nop.i	0x0; br.call.sptk.many	b0,sh_single_quote; }
@@ -382,40 +508,84 @@ l40000000000BD490:
 
 l40000000000BD4B6:
 	{ addp4	r0,0xFFFFFFFFFFFFE000,r1; (p21) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD806F6; nop; (p32) nop.b	0x26103 }
-	{ (p18) fwb; nop; break.b	0x80000 }
-	{ Invalid; nop; (p33) nop }
+
+l40000000000BD4C0:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r35; (p07) br.cond.dpnt.few	40000000000BD6A0 }
+
+l40000000000BD4D0:
+	{ adds	r14,0x8,r38; ld8	r37,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r37; nop.i	0x0; }
+	{ (p06) adds	r38,0x10,r38; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BD640; }
+
+l40000000000BD4F6:
 	{ chk.a.nc	r0,3FFFFFFFFF0BDCF6; nop; (p04) nop }
+
+l40000000000BD500:
+	{ (p17) adds	r48,0x0,r37; nop.i	0x0; (p17) br.call.dpnt.many	b0,quote_string; }
+
+l40000000000BD506:
 	{ nop; (p32) extr.u	r116,r127,19,46; (p20) nop }
+
+l40000000000BD510:
+	{ (p17) adds	r37,0x0,r8; nop.m	0x0; (p17) adds	r1,0x0,r46; }
+
+l40000000000BD516:
 	{ nop; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; (p20) nop; (p32) nop.b	0xE043 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r14,3FFFFFFFFF900F86; nop; break.i	0x80000 }
-	{ Invalid; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r14,3FFFFFFFFF9007A6; nop; nop.b	0x2700C }
-	{ (p24) break.m	0x59180; (p32) nop; break.b	0x80000 }
-	{ Invalid; (p19) nop; break.b	0x80000 }
-	{ (p24) break.m	0x59200; nop; (p16) nop }
-	{ Invalid; (p18) nop; nop }
-	{ break.m	0x4000; Invalid; (p48) nop }
-	{ chk.a.clr	r0,3FFFFFFFFF13D8B6; (p07) cmp4.eq.or	p01,p08,0x0,r0; (p33) nop.b	0x3 }
+
+l40000000000BD520:
+	{ adds	r48,0x0,r37; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ add	r14,r42,r8; adds	r1,0x0,r46; adds	r40,0x0,r8; }
+	{ adds	r14,0x2,r14; add	r14,r14,r36; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r14,r35; (p06) br.cond.dptk.few	40000000000BD5A0; }
+
+l40000000000BD560:
+	{ nop.m	0x0; shladd	r35,r35,0x1,r0; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p07,p06,r14,r35; (p06) br.cond.dptk.few	40000000000BD560 }
+
+l40000000000BD580:
+	{ adds	r48,0x0,r39; sxt4	r49,r35; br.call.sptk.many	b0,xrealloc; }
+	{ nop.m	0x0; adds	r1,0x0,r46; adds	r39,0x0,r8 }
+
+l40000000000BD5A0:
+	{ nop.m	0x0; sxt4	r48,r36; nop.b	0x0 }
+	{ adds	r49,0x0,r37; adds	r38,0x10,r38; add	r36,r36,r40; }
+	{ add	r48,r39,r48; nop.i	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ cmp.eq	p07,p06,0x0,r37; adds	r1,0x0,r46; (p06) addl	r14,1,r0; }
+
+l40000000000BD5E0:
+	{ (p07) adds	r14,0x0,r0; and	r14,r43,r14; nop.i	0x0; }
+
+l40000000000BD5E6:
 	{ Invalid; nop; break.i	0x80000 }
 	{ (p03) chk.a.clr	f0,3FFFFFFFFFD80ED6; mov	pr,0x430000D; (p32) nop }
-	{ (p24) add	r0,r36,r22; (p24) nop; (p32) nop }
-	{ (p24) chk.a.clr	r39,3FFFFFFFFF0BD916; nop; break.i	0x80000 }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p19) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r38,3FFFFFFFFFCC08E6; nop; nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p18) chk.a.nc	r0,3FFFFFFFFF0C88B6; nop; nop }
-	{ add	r0,r0,r1; (p63) nop; nop }
-	{ Invalid; (p34) nop; nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x2E000 }
-	{ Invalid; nop; nop.b	0x2500C }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; nop.b	0x2C }
+
+l40000000000BD600:
+	{ ld8	r14,[r38]; sxt4	r48,r36; adds	r49,0x0,r33; }
+	{ cmp.eq	p06,p07,r14,r41; add	r48,r39,r48; (p06) br.cond.dpnt.few	40000000000BD660; }
+
+l40000000000BD620:
+	{ nop.m	0x0; add	r36,r36,r42; br.call.sptk.many	b0,400000000001B180; }
+	{ adds	r1,0x0,r46; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BD640:
+	{ nop.m	0x0; ld8	r38,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,r38,r41; (p06) br.cond.sptk.few	40000000000BD4C0; }
+
+l40000000000BD660:
+	{ cmp.eq	p06,p07,0x0,r39; adds	r8,0x0,r39; mov.i	ar.pfs,r45 }
+	{ nop.m	0x0; sxt4	r36,r36; (p06) br.cond.dpnt.few	40000000000BD730; }
+
+l40000000000BD680:
+	{ add	r36,r39,r36; nop.m	0x0; mov	pr,r47,0xFFFFFFFFFFFFFFFE; }
+	{ st1	[r0],r36; mov.spnt	b0,r44,40000000000BD690; br.ret	b0; }
+
+l40000000000BD6A0:
+	{ addl	r48,64,r0; addl	r35,64,r0; br.call.sptk.many	b0,xmalloc; }
+	{ adds	r1,0x0,r46; adds	r39,0x0,r8; br.cond.sptk.few	40000000000BD4D0 }
+
+l40000000000BD6C0:
+	{ adds	r48,0x0,r37; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ nop.m	0x0; adds	r1,0x0,r46; br.cond.sptk.few	40000000000BD600 }
 
 l40000000000BD6E0:
 	{ addl	r48,1,r0; nop.i	0x0; br.call.sptk.many	b0,xmalloc; }
@@ -701,60 +871,96 @@ l40000000000BE120:
 l40000000000BE136:
 	{ chk.a.nc	r15,3FFFFFFFFF0D3546; nop; (p32) nop }
 
-l40000000000BE146:
-	{ Invalid; (p07) nop; Invalid }
-	{ Invalid; (p02) nop; (p32) nop; }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p19) nop; nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD81BD6; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD813E6; nop; nop.b	0xC20B }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x2A000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD41A66; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD812E6; nop; (p48) nop.b	0xC203 }
-	{ Invalid; (p07) nop; (p32) nop }
-	{ (p07) chk.a.clr	f0,3FFFFFFFFF13E496; nop; break.i	0x80000 }
-	{ Invalid; nop; br.call.spnt.few	b0,b0 }
-	{ break.m	0x4000; nop; (p16) nop }
-	{ break.m	0x4000; (p23) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; Invalid; nop }
-	{ break.m	0xAA029; break.i	0xAA0AB; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; (p16) nop }
+l40000000000BE140:
+	{ ld8	r14,[r14]; cmp.eq	p07,p06,r46,r14; adds	r15,0x10,r14 }
+	{ nop.b	0x0; (p07) br.cond.dpnt.few	40000000000BE170; br.cloop.sptk.few	40000000000BE320; }
+
+l40000000000BE15C:
+	{ (p14) cmp.lt	p00,p08,r0,r32; zxt1	r64,r64; break.b	0x1000 }
+
+l40000000000BE160:
+	{ adds	r46,0x0,r14; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BE170:
+	{ adds	r44,0x0,r32; and	r36,0x3,r36; br.call.sptk.many	b0,array_slice; }
+	{ adds	r1,0x0,r42; nop.m	0x0; adds	r38,0x0,r8 }
+	{ adds	r44,0x0,r8; cmp4.eq	p06,p07,0x0,r36; (p06) br.cond.dptk.few	40000000000BE350 }
+
+l40000000000BE1A0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,array_quote; }
+	{ adds	r1,0x0,r42; cmp4.eq	p07,p06,0x0,r35; (p06) br.cond.dptk.few	40000000000BE3C0 }
+
+l40000000000BE1C0:
+	{ adds	r44,0x10,r12; nop.i	0x0; br.call.sptk.many	b0,ifs_firstchar; }
+	{ adds	r1,0x0,r42; adds	r39,0x0,r8; br.call.sptk.many	b0,getifs; }
+	{ adds	r1,0x0,r42; cmp.eq	p06,p07,0x0,r8; (p06) br.cond.dpnt.few	40000000000BE210; }
+
+l40000000000BE1F0:
+	{ ld1	r14,[r8]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p06) br.cond.dptk.few	40000000000BE250 }
+
+l40000000000BE210:
+	{ adds	r15,0x10,r12; ld4	r14,[r15]; addl	r15,32,r0; }
+	{ cmp4.lt	p06,p07,0x1,r14; adds	r14,0x0,r39; (p07) br.cond.dpnt.few	40000000000BE430; }
+
+l40000000000BE230:
+	{ nop.m	0x0; st1	[r14],r1,1; nop.i	0x0; }
+	{ st1	[r0],r14; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BE250:
+	{ adds	r45,0x0,r39; nop.m	0x0; adds	r46,0x0,r0 }
+	{ adds	r44,0x0,r38; nop.m	0x0; br.call.sptk.many	b0,array_to_string; }
+	{ adds	r1,0x0,r42; nop.m	0x0; adds	r37,0x0,r8 }
+	{ adds	r44,0x0,r39; nop.m	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r42; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BE2A0:
+	{ nop.m	0x0; adds	r44,0x0,r38; br.call.sptk.many	b0,array_dispose; }
+	{ adds	r1,0x0,r42; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BE2C0:
+	{ adds	r8,0x0,r37; mov.i	ar.pfs,r41; mov.i	LC,r43; }
+	{ nop.m	0x0; mov.spnt	b0,r40,40000000000BE2D0; nop.i	0x0 }
+	{ adds	r12,0x10,r12; nop.m	0x0; br.ret	b0 }
 
 l40000000000BE2F0:
 	{ adds	r37,0x0,r0; adds	r8,0x0,r37; mov.i	ar.pfs,r41; }
 	{ nop.m	0x0; mov.i	LC,r43; mov.spnt	b0,r40,40000000000BE300 }
 	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
-40000000000BE320 0A 70 00 1E 18 10 60 70 B8 0E 70 E0 01 71 00 84 .p....`p..p..q..
-40000000000BE330 16 00 00 00 00 88 01 20 FF FF 25 A0 F0 FF FF 48 ....... ..%....H
-40000000000BE340 10 00 00 00 01 00 00 00 00 02 00 00 20 FE FF 48 ............ ..H
-40000000000BE350 11 00 00 00 01 00 00 00 00 02 00 00 B8 C7 FF 58 ...............X
-40000000000BE360 09 08 00 54 00 21 C0 02 98 00 42 C0 05 00 00 84 ...T.!....B.....
-40000000000BE370 09 00 00 00 01 00 D0 E2 F4 6D 4F 00 00 00 04 00 .........mO.....
-40000000000BE380 11 68 01 5A 18 10 00 00 00 02 00 00 88 F0 FF 58 .h.Z...........X
-40000000000BE390 08 08 00 54 00 21 00 00 00 02 00 A0 04 40 00 84 ...T.!.......@..
-40000000000BE3A0 19 60 01 4C 00 21 00 00 00 02 00 00 A8 D9 FF 58 .`.L.!.........X
-40000000000BE3B0 10 00 00 00 01 00 10 00 A8 00 42 00 10 FF FF 48 ..........B....H
-40000000000BE3C0 11 60 01 4C 00 21 00 00 00 02 00 00 C8 CB FF 58 .`.L.!.........X
-40000000000BE3D0 11 08 00 54 00 21 C0 02 00 00 42 00 B8 08 FD 58 ...T.!....B....X
-40000000000BE3E0 08 08 00 54 00 21 70 02 20 00 42 80 05 30 01 84 ...T.!p. .B..0..
-40000000000BE3F0 19 68 01 10 00 21 E0 02 00 00 42 00 18 F0 FF 58 .h...!....B....X
-40000000000BE400 08 08 00 54 00 21 00 00 00 02 00 A0 04 40 00 84 ...T.!.......@..
-40000000000BE410 19 60 01 4E 00 21 00 00 00 02 00 00 D8 C3 F5 58 .`.N.!.........X
-40000000000BE420 10 00 00 00 01 00 10 00 A8 00 42 00 80 FE FF 48 ..........B....H
-40000000000BE430 11 60 01 4E 00 21 D0 12 00 00 48 00 D8 A9 02 50 .`.N.!....H....P
-40000000000BE440 09 38 01 10 00 21 F0 00 01 00 48 20 00 50 01 84 .8...!....H .P..
-40000000000BE450 0B 70 00 4E 00 21 10 78 38 00 2B 00 00 00 04 00 .p.N.!.x8.+.....
-40000000000BE460 11 00 00 1C 80 11 00 00 00 02 00 00 F0 FD FF 48 ...............H
+
+l40000000000BE320:
+	{ ld8	r14,[r15]; cmp.eq	p06,p07,r14,r46; adds	r15,0x10,r14 }
+	{ nop.b	0x0; (p06) br.cond.dpnt.few	40000000000BE170; br.cloop.sptk.few	40000000000BE320 }
+
+l40000000000BE33C:
+	{ (p63) invala; break.i	0x1000; break.b	0x1000 }
+
+l40000000000BE340:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000BE160 }
+
+l40000000000BE350:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,array_quote_escapes; }
+	{ adds	r1,0x0,r42; adds	r44,0x0,r38; adds	r46,0x0,r0; }
+	{ nop.m	0x0; addl	r45,-9444,r1; nop.i	0x0; }
+	{ ld8	r45,[r45]; nop.i	0x0; br.call.sptk.many	b0,array_to_string; }
+	{ adds	r1,0x0,r42; nop.m	0x0; adds	r37,0x0,r8 }
+	{ adds	r44,0x0,r38; nop.m	0x0; br.call.sptk.many	b0,array_dispose; }
+	{ nop.m	0x0; adds	r1,0x0,r42; br.cond.sptk.few	40000000000BE2C0 }
+
+l40000000000BE3C0:
+	{ adds	r44,0x0,r38; nop.i	0x0; br.call.sptk.many	b0,array_remove_quoted_nulls; }
+	{ adds	r1,0x0,r42; adds	r44,0x0,r0; br.call.sptk.many	b0,ifs_firstchar; }
+	{ adds	r1,0x0,r42; adds	r39,0x0,r8; adds	r44,0x0,r38 }
+	{ adds	r45,0x0,r8; adds	r46,0x0,r0; br.call.sptk.many	b0,array_to_string; }
+	{ adds	r1,0x0,r42; nop.m	0x0; adds	r37,0x0,r8 }
+	{ adds	r44,0x0,r39; nop.m	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ nop.m	0x0; adds	r1,0x0,r42; br.cond.sptk.few	40000000000BE2A0 }
+
+l40000000000BE430:
+	{ adds	r44,0x0,r39; addl	r45,2,r0; br.call.sptk.many	b0,xrealloc; }
+	{ adds	r39,0x0,r8; addl	r15,32,r0; adds	r1,0x0,r42; }
+	{ adds	r14,0x0,r39; st1	[r14],r1,1; nop.i	0x0; }
+	{ st1	[r0],r14; nop.i	0x0; br.cond.sptk.few	40000000000BE250; }
 40000000000BE470 00 30 00 00 01 00 70 00 00 02 00 00 01 00 04 00 .0....p.........
 
 ;; fn40000000000BE480: 40000000000BE480
@@ -794,7 +1000,7 @@ l40000000000BE570:
 	{ adds	r44,0x0,r39; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
 	{ ld4	r15,[r37]; adds	r14,0x8,r38; adds	r16,0x10,r38 }
 	{ adds	r1,0x0,r42; adds	r44,0x0,r35; adds	r45,0x0,r36; }
-	{ and	r15,0xBA,r15; st8	[r8],r14; adds	r14,0x28,r38 }
+	{ and	r15,0xFFFFFFFFFFFFFFBA,r15; st8	[r8],r14; adds	r14,0x28,r38 }
 	{ adds	r43,0x0,r38; st8	[r0],r16; nop.i	0x0; }
 	{ st4	[r15],r14; nop.i	0x0; br.call.sptk.many	b0,make_variable_value; }
 	{ adds	r1,0x0,r42; nop.m	0x0; adds	r37,0x0,r8 }
@@ -856,7 +1062,7 @@ l40000000000BE800:
 	{ adds	r1,0x0,r42; adds	r44,0x0,r35; adds	r45,0x0,r36; }
 	{ st8	[r8],r14; st1	[r0],r8; adds	r14,0x28,r38 }
 	{ adds	r43,0x0,r38; ld4.c.clr	r15,[r37]; nop.i	0x0 }
-	{ st8	[r0],r16; and	r15,0xBA,r15; nop.i	0x0; }
+	{ st8	[r0],r16; and	r15,0xFFFFFFFFFFFFFFBA,r15; nop.i	0x0; }
 	{ st4	[r15],r14; nop.i	0x0; br.call.sptk.many	b0,make_variable_value; }
 	{ adds	r1,0x0,r42; nop.m	0x0; adds	r37,0x0,r8 }
 	{ adds	r43,0x0,r38; nop.m	0x0; br.call.sptk.many	b0,dispose_variable; }
@@ -906,12 +1112,12 @@ l40000000000BE9D0:
 l40000000000BEA1C:
 	{ cmp4.eq.or.andcm	p00,p43,r1,r0; (p17) mov	pr,r3,0x84C0; (p48) cmp.eq	p03,p08,r4,r100 }
 
-l40000000000BEA28:
-	{ (p02) nop; (p34) pshr4.u	r11,r4,r48; (p56) break.i	0x8C80 }
+l40000000000BEA26:
+	{ Invalid; (p07) nop; nop; }
 
-l40000000000BEA2E:
-	{ Invalid; break.m	0x119; (p04) cover }
-	{ Invalid; break.x	0x10802C0000210 }
+l40000000000BEA2C:
+	{ Invalid; Invalid; add	r0,r32,r0; }
+	{ cmp.lt	p00,p24,r33,r0; (p52) nop; zxt1	r2,r64 }
 
 ;; convert_var_to_assoc: 40000000000BEA40
 convert_var_to_assoc proc
@@ -957,12 +1163,12 @@ l40000000000BEB90:
 l40000000000BEBDC:
 	{ cmp4.eq.or.andcm	p00,p43,r1,r0; (p17) mov	pr,r3,0x84C0; (p48) cmp.eq	p03,p08,r4,r100 }
 
-l40000000000BEBE8:
-	{ (p02) nop; (p34) pshr4.u	r11,r4,r48; (p56) break.i	0x8C80 }
+l40000000000BEBE6:
+	{ Invalid; (p07) nop; nop; }
 
-l40000000000BEBEE:
-	{ Invalid; break.m	0x119; (p04) cover }
-	{ (p04) ld4.s	r0,[r32],134; break.x	0x107002C0000243 }
+l40000000000BEBEC:
+	{ Invalid; Invalid; add	r0,r32,r0; }
+	{ nop; (p05) cmp.lt.unc	p03,p02,r2,r96; zxt4	r33,r14 }
 
 ;; bind_array_variable: 40000000000BEC00
 bind_array_variable proc
@@ -1040,28 +1246,8 @@ l40000000000BEEBC:
 
 l40000000000BEEC0:
 	{ adds	r41,0x0,r33; nop.i	0x0; br.call.sptk.many	b0,err_readonly; }
-
-l40000000000BEEC2:
-	{ (p16) break.m	0x42008; addl	r32,0,r0; (p26) deposit	r89,r15,r43,63,2; }
-
-l40000000000BEEC6:
-	{ break.m	0x4000; (p32) nop; nop }
-
-l40000000000BEEC8:
-	{ (p16) nop; Invalid; Invalid }
-
-l40000000000BEECC:
-	{ (p42) nop; (p01) nop; zxt1	r0,r64 }
-
-l40000000000BEECE:
-	{ Invalid; Invalid; Invalid }
-
-l40000000000BEED2:
-	{ (p16) invala; cmp.eq	p10,p00,r64,r16; Invalid }
-
-l40000000000BEED8:
-	{ Invalid; (p40) break.i	0x1100A; nop }
-	{ nop; nop; }
+	{ adds	r8,0x0,r37; adds	r1,0x0,r40; mov.i	ar.pfs,r39; }
+	{ nop.m	0x0; mov.spnt	b0,r38,40000000000BEEE0; br.ret	b0; }
 
 l40000000000BEEF0:
 	{ adds	r33,0x0,r0; mov.spnt	b0,r38,40000000000BEEF0; mov.i	ar.pfs,r39; }
@@ -1156,27 +1342,39 @@ l40000000000BF1B6:
 l40000000000BF1BC:
 	{ nop; (p20) cmp.eq	p00,p16,r9,r64; mov	pr,r72,0xE440 }
 
-l40000000000BF1C8:
-	{ Invalid; break.x	0x42180000008 }
-	{ (p16) break.m	0x0; (p16) break.i	0x8000; Invalid }
-	{ Invalid; Invalid; Invalid }
-	{ (p04) rum	0x140840; czx1.l	r64,r4; (p32) break.i	0x1C838 }
-	{ Invalid; break.i	0x8430; Invalid }
-	{ Invalid; (p04) fcmp.eq.unc	p00,p56,f112,f112; (p32) clrrrb }
-	{ (p01) nop; mov	pr,0x5811070; (p60) break.i	0x80C0 }
-	{ Invalid; mov	pr,0x1809108; (p12) break.i	0x80C2 }
-	{ (p16) nop; (p05) break.i	0x10840; czx1.r	r8,r0 }
-	{ (p36) nop; (p63) nop; break.i	0x10802 }
-	{ Invalid; (p40) break.i	0x1000A; nop }
-	{ nop; (p12) nop; }
-	{ (p04) cmp.lt.unc	p00,p05,r16,r32; (p04) mov	pr,0xA00B840; (p16) nop }
-	{ (p01) break.m	0x406; Invalid; (p56) break.b	0x80C0 }
-	{ (p16) nop; (p63) mov	pr,0x180958F; (p12) break.i	0x80C2 }
-	{ (p16) nop; (p05) break.i	0x10840; czx1.r	r8,r0 }
-	{ (p36) nop; (p63) break.f	0x114AF; break.i	0x8 }
-	{ (p16) nop; (p63) break.i	0x848F; break.i	0x8 }
-	{ (p16) break.m	0x0; (p16) break.i	0x8000; break.i	0x8 }
-	{ (p16) break.m	0x0; (p16) cmp4.eq.or.andcm	p00,p20,r0,r2; mov	r1,ip }
+l40000000000BF1C6:
+	{ (p03) chk.a.clr	f0,3FFFFFFFFFD423D6; nop; break.b	0x80000 }
+
+l40000000000BF1D0:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BF1E0:
+	{ nop.m	0x0; ld8	r8,[r37]; adds	r15,0x8,r35 }
+	{ adds	r44,0x0,r36; adds	r42,0x0,r32; adds	r45,0x0,r0; }
+	{ cmp.eq	p06,p07,0x0,r8; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BF280; }
+
+l40000000000BF210:
+	{ nop.m	0x0; ld8	r15,[r15]; adds	r36,0x1,r36 }
+	{ ld8	r14,[r8],8; ld8	r1,[r8]; mov.spnt	b6,r14,40000000000BF220; }
+	{ ld8	r43,[r15]; nop.i	0x0; br.call.sptk.many	b0,b6; }
+	{ ld8	r35,[r35]; nop.m	0x0; adds	r1,0x0,r41; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r35; (p06) br.cond.dptk.few	40000000000BF1E0 }
+
+l40000000000BF260:
+	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r40; }
+	{ nop.m	0x0; mov.spnt	b0,r39,40000000000BF270; br.ret	b0 }
+
+l40000000000BF280:
+	{ adds	r14,0x8,r35; adds	r43,0x0,r36; adds	r42,0x0,r38 }
+	{ adds	r36,0x1,r36; ld8	r14,[r14]; nop.i	0x0; }
+	{ ld8	r44,[r14]; nop.i	0x0; br.call.sptk.many	b0,array_insert; }
+	{ ld8	r35,[r35]; nop.m	0x0; adds	r1,0x0,r41; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r35; (p06) br.cond.dptk.few	40000000000BF1E0 }
+
+l40000000000BF2D0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000BF260; }
+40000000000BF2E0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000BF2F0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; expand_compound_array_assignment: 40000000000BF300
 expand_compound_array_assignment proc
@@ -1197,65 +1395,114 @@ l40000000000BF370:
 
 l40000000000BF3BC:
 	{ Invalid; (p04) cmp.lt.unc	p34,p16,r8,r64; (p01) rfi }
-	{ cmp.eq	p00,p17,r1,r0; czx1.r	r64,r65; mov	pr,r32,0x0 }
-	{ (p02) nop; break.i	0x1000; (p07) rfi }
-	{ cmp.lt	p00,p17,r1,r0; czx1.r	r0,r65; mov	pr,r32,0x0 }
-	{ (p01) cmp.eq	p00,p11,r64,r33; Invalid; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; (p48) mov	pr,r67,0xE6EC; }
-	{ (p06) nop; nop; (p04) rfi }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE4C0 }
-	{ Invalid; zxt1	r64,r64; break.b	0x1000 }
-	{ (p38) nop; nop; deposit	r64,r13,r64,62,0 }
-	{ Invalid; break.x	0x10802600E01000 }
-	{ (p59) cmp.lt	p24,p08,r62,r44; (p16) flushrs; nop }
-	{ nop; zxt1	r96,r64; mov	pr,r32,0x0 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p26) nop; invala; break.b	0x1000 }
-	{ Invalid; zxt1	r64,r64; (p16) break.i	0x2A80D }
-	{ (p27) break.m	0x1541; break.i	0x1000; break.b	0xC002D }
-	{ shladdp4	r0,r1,0x2,r0; zxt1	r8,r64; add	r0,r32,r0 }
-	{ nop; (p23) invala.e	r15; zxt1	r0,r64 }
-	{ (p07) nop; cmp.lt.unc	p00,p16,r13,r64; mov	pr,r98,0xE400 }
-	{ (p57) nop; cmp.lt	p00,p00,r32,r0; (p01) rfi }
-	{ Invalid; Invalid; Invalid }
-	{ Invalid; (p07) nop; zxt1	r0,r64 }
-	{ (p13) nop; invala; break.i	0x1000 }
-	{ Invalid; Invalid; Invalid }
-	{ (p60) cmp.lt.unc	p18,p08,r0,r40; (p01) nop; cmp.eq.unc	p00,p16,r13,r64 }
-	{ cmpxchg2.acq.nt1	r8,[r66],r0; nop; }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r67,0xE680; }
-	{ (p12) cmp.lt	p00,p17,r64,r33; czx1.r	r79,r97; (p07) epc }
-	{ (p30) cmp.eq	p00,p17,r64,r33; czx1.r	r0,r97; break.b	0x1000 }
-	{ (p03) cmp.eq	p00,p17,r64,r33; czx1.r	r86,r97; br.cond	b0 }
-	{ Invalid; break.i	0x1000; break.i	0x1000 }
-	{ (p36) nop; cmp.eq.unc	p00,p16,r13,r64; nop }
-	{ (p26) cmp.lt	p00,p11,r0,r33; (p01) cmp.lt	p32,p08,r9,r0; zxt1	r75,r0 }
-	{ nop; cmp.lt	p00,p00,r32,r0; Invalid }
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xE480 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p22) nop; cmp.eq.unc	p00,p16,r13,r64; (p16) mov	pr,r66,0xD400 }
-	{ (p24) cmp.lt	p00,p03,r64,r33; Invalid; Invalid }
-	{ nop.m	0xA0E; cmp.eq	p00,p00,r32,r0; (p33) mov.i	CCV,0x43; }
-	{ (p15) cmp.eq	p14,p11,r44,r64; Invalid; (p01) rfi }
-	{ nop.m	0x80; cmp.eq	p00,p00,r32,r0; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r67,0x50C0 }
-	{ (p15) ldf8	f0,[r33]; (p18) cmp.lt	p41,p16,r9,r1; cmp.eq	p00,p28,r98,r65 }
-	{ Invalid; (p02) nop; (p18) deposit	r32,r9,r64,62,0; }
-	{ (p09) nop.m	0x8; break.b	0x1000; (p32) break.b	0x2A824 }
-	{ Invalid; mov	pr,r32,0x0; (p32) mov	pr,r80,0x48 }
+
+l40000000000BF3C0:
+	{ adds	r36,0x8,r35; ld8	r14,[r36]; nop.i	0x0; }
+	{ cmp.eq	p07,p06,0x0,r14; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000BF420; }
+
+l40000000000BF3E0:
+	{ nop.m	0x0; ld8	r56,[r14]; nop.i	0x0; }
+	{ cmp.eq	p06,p07,0x0,r56; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BF420; }
+
+l40000000000BF400:
+	{ ld1	r15,[r56]; nop.m	0x0; sxt1	r15,r15; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x5B,r15; (p07) br.cond.dpnt.few	40000000000BF4E0 }
+
+l40000000000BF420:
+	{ nop.m	0x0; ld8	r35,[r35]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r35; (p06) br.cond.dptk.few	40000000000BF3C0 }
+
+l40000000000BF440:
+	{ adds	r56,0x0,r38; nop.i	0x0; br.call.sptk.many	b0,expand_words_no_vars; }
+	{ nop.m	0x0; adds	r1,0x0,r54; adds	r34,0x0,r8 }
+
+l40000000000BF460:
+	{ adds	r56,0x0,r38; nop.i	0x0; br.call.sptk.many	b0,dispose_words; }
+	{ cmp.eq	p06,p07,r33,r39; nop.m	0x0; adds	r1,0x0,r54 }
+	{ adds	r56,0x0,r39; nop.m	0x0; (p06) br.cond.dpnt.few	40000000000BF4B0; }
+
+l40000000000BF490:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; nop.m	0x0; nop.i	0x0 }
+
+l40000000000BF4B0:
+	{ adds	r8,0x0,r34; mov.i	ar.pfs,r53; mov.i	LC,r55; }
+	{ nop.m	0x0; mov.spnt	b0,r52,40000000000BF4C0; nop.i	0x0 }
+	{ adds	r12,0x20,r12; nop.m	0x0; br.ret	b0; }
+
+l40000000000BF4E0:
+	{ addl	r57,61,r0; adds	r40,0x0,r0; br.call.sptk.many	b0,mbschr; }
+	{ adds	r1,0x0,r54; cmp.eq	p06,p07,0x0,r8; (p06) br.cond.dpnt.few	40000000000BF420; }
+
+l40000000000BF500:
+	{ nop.m	0x0; ld8	r14,[r36]; nop.i	0x0; }
+	{ ld8	r44,[r14]; st8	[r0],r42; nop.i	0x0; }
+	{ adds	r56,0x0,r44; adds	r37,0x0,r44; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r54; nop.m	0x0; add	r48,r44,r8 }
+	{ add	r56,r8,r8,0x1; nop.m	0x0; br.call.sptk.many	b0,xmalloc; }
+	{ ld1	r14,[r44]; adds	r1,0x0,r54; adds	r47,0x0,r8 }
+	{ adds	r34,0x0,r8; nop.m	0x0; sxt1	r14,r14; }
+
+l40000000000BF570:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p07) br.cond.dpnt.few	40000000000BF700; }
+
+l40000000000BF580:
+	{ cmp4.eq	p06,p07,0x3D,r14; adds	r56,0x0,r37; (p06) br.cond.dpnt.few	40000000000BF950; }
+
+l40000000000BF590:
+	{ cmp4.eq	p07,p06,0x0,r40; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BF600; }
+
+l40000000000BF5A0:
+	{ cmp4.eq	p07,p06,0x5B,r14; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000BF960; }
+
+l40000000000BF5B0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,glob_char_p; }
+	{ adds	r1,0x0,r54; cmp4.eq	p07,p06,0x0,r8; (p06) br.cond.dptk.few	40000000000BF900 }
+
+l40000000000BF5D0:
+	{ ld1	r14,[r37]; add	r14,r45,r14; nop.i	0x0; }
+	{ nop.m	0x0; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r14; (p07) br.cond.dptk.few	40000000000BF900; }
+
+l40000000000BF600:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B0C0; }
+	{ adds	r1,0x0,r54; cmp.ltu	p07,p06,0x1,r8; (p06) br.cond.dpnt.few	40000000000BF920 }
+
+l40000000000BF620:
+	{ ld1	r14,[r37]; addl	r8,1,r0; sxt1	r14,r14; }
+	{ nop.m	0x0; extr.u	r15,r14,5,3; and	r16,0x1F,r14; }
+	{ shladd	r15,r15,0x2,r41; ld4	r15,[r15]; nop.i	0x0; }
+	{ nop.m	0x0; shr.u	r15,r15,r16; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p07,p06,r15,0x0; (p07) br.cond.dpnt.few	40000000000BF840; }
+
+l40000000000BF670:
+	{ sub	r19,r37,r37,0x1; cmp.eq	p06,p07,0x0,r8; adds	r15,0x0,r37 }
+	{ adds	r16,0x0,r34; adds	r17,0x1,r37; add	r18,r19,r8; }
+	{ nop.m	0x0; mov.i	LC,r18; nop.i	0x0; }
+	{ nop.m	0x0; (p07) mov.i	LC,r18; (p06) mov.i	LC,0x0 }
+
+l40000000000BF6AC:
 	{ cmpxchg2.acq	r65,[r0],r10; zxt1	r0,r64; nop }
-	{ nop; (p32) nop; Invalid; }
-	{ Invalid; break.i	0x1000; (p02) nop; }
-	{ (p09) cmp.lt	p00,p03,r0,r32; (p01) nop; (p04) cmp.lt	p32,p16,r14,r64 }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r67,0xE680; }
-	{ (p52) cmp.lt.unc	p63,p09,r63,r37; Invalid; rfi }
-	{ nop; cmp.lt	p00,p00,r32,r0; Invalid }
-	{ Invalid; Invalid; break.i	0x1000 }
-	{ (p06) nop; cmp.lt	p00,p00,r32,r0; (p01) nop }
-	{ ldfp8	f54,f0,[r66]; (p04) cmp.eq.unc	p32,p08,r8,r6; czx1.r	r96,r65 }
-	{ invala; Invalid; mov	pr,r32,0x0 }
-	{ (p35) invala; break.i	0x1000; break.b	0x1000 }
-	{ (p39) cmp.lt.unc	p63,p09,r63,r36; (p01) cmp.eq	p08,p16,r3,r64; zxt4	r0,r0 }
+
+l40000000000BF6B0:
+	{ adds	r34,0x0,r16; nop.m	0x0; adds	r57,0x1,r15; }
+	{ st1	[r34],r1,1; nop.m	0x0; adds	r15,0x0,r57; }
+	{ nop.m	0x0; adds	r16,0x0,r34; br.cloop.sptk.few	40000000000BF7F0; }
+
+l40000000000BF6E0:
+	{ ld1	r14,[r57]; adds	r37,0x0,r57; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p06) br.cond.dptk.few	40000000000BF580 }
+
+l40000000000BF700:
+	{ ld8.a	r14,[r36]; st1	[r0],r34; nop.i	0x0; }
+	{ nop.m	0x0; ld8.c.clr	r14,[r36]; nop.i	0x0; }
+	{ ld8	r56,[r14]; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ nop.m	0x0; ld8	r14,[r36]; adds	r1,0x0,r54 }
+	{ ld8	r35,[r35]; cmp.eq	p07,p06,0x0,r35; nop.i	0x0; }
+	{ st8	[r47],r14; nop.i	0x0; (p06) br.cond.dptk.few	40000000000BF3C0 }
+
+l40000000000BF760:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000BF440 }
 
 l40000000000BF770:
 	{ adds	r14,0x20,r12; addl	r15,1,r0; adds	r56,0x0,r33; }
@@ -1268,48 +1515,78 @@ l40000000000BF7C0:
 	{ adds	r34,0x0,r0; adds	r8,0x0,r34; mov.i	ar.pfs,r53; }
 	{ nop.m	0x0; mov.i	LC,r55; mov.spnt	b0,r52,40000000000BF7D0 }
 	{ nop.m	0x0; adds	r12,0x20,r12; br.ret	b0 }
-40000000000BF7F0 09 70 04 22 00 14 20 02 40 00 42 20 17 78 00 84 .p.".. .@.B .x..
-40000000000BF800 01 00 00 00 01 00 E0 00 38 28 00 E0 01 C8 01 84 ........8(......
-40000000000BF810 09 00 00 00 01 00 10 70 88 00 2B 00 00 00 04 00 .......p..+.....
-40000000000BF820 10 00 00 00 01 00 00 01 88 00 42 A0 D0 FF FF 48 ..........B....H
-40000000000BF830 10 00 00 00 01 00 00 00 00 02 00 00 B0 FE FF 48 ...............H
-40000000000BF840 08 70 00 54 18 10 F0 80 30 00 42 00 07 00 00 84 .p.T....0.B.....
-40000000000BF850 09 C8 01 4A 00 21 A0 83 95 0A 40 60 07 50 01 84 ...J.!....@`.P..
-40000000000BF860 11 00 38 1E 98 11 00 00 00 02 00 00 48 B8 F5 58 ..8.........H..X
-40000000000BF870 09 70 08 10 00 21 20 81 30 00 42 20 00 B0 01 84 .p...! .0.B ....
-40000000000BF880 11 30 04 1C 07 35 00 00 00 02 00 03 D0 01 00 43 .0...5.........C
-40000000000BF890 09 70 00 24 18 10 00 00 00 02 00 00 11 00 00 90 .p.$............
-40000000000BF8A0 09 00 00 00 01 00 00 70 A8 30 23 00 00 00 04 00 .......p.0#.....
-40000000000BF8B0 02 70 00 4A 00 10 00 00 00 02 00 C0 01 70 50 00 .p.J.........pP.
-40000000000BF8C0 08 98 94 4A 04 20 60 00 20 0E 72 E0 01 28 01 84 ...J. `. .r..(..
-40000000000BF8D0 03 80 00 44 00 21 10 09 94 00 42 40 32 41 00 80 ...D.!....B@2A..
-40000000000BF8E0 03 00 00 00 01 00 00 90 04 55 80 03 20 09 AA 00 .........U.. ...
-40000000000BF8F0 10 00 00 00 01 80 01 00 04 15 00 00 C0 FD FF 48 ...............H
-40000000000BF900 11 08 AC 44 80 15 00 00 00 02 00 00 C8 B7 F5 58 ...D...........X
-40000000000BF910 10 08 00 6C 00 21 70 08 20 0C EA 03 10 FD FF 4A ...l.!p. ......J
-40000000000BF920 0B 70 04 4A 00 14 10 70 88 00 2B 00 00 00 04 00 .p.J...p..+.....
-40000000000BF930 09 00 00 00 01 00 E0 00 94 00 20 00 00 00 04 00 .......... .....
-40000000000BF940 10 00 00 00 01 00 E0 00 38 28 00 00 30 FC FF 48 ........8(..0..H
-40000000000BF950 10 00 00 00 01 00 80 0A 00 00 48 00 B0 FC FF 48 ..........H....H
-40000000000BF960 09 90 95 58 05 20 80 03 B0 00 42 40 07 00 00 84 ...X. ....B@....
-40000000000BF970 11 C8 01 64 00 21 30 03 C8 00 42 00 D8 87 FC 58 ...d.!0...B....X
-40000000000BF980 08 08 00 6C 00 21 A0 03 20 00 42 20 06 40 00 84 ...l.!.. .B .@..
-40000000000BF990 19 C0 01 4A 00 21 90 03 C8 00 42 00 78 9A 01 50 ...J.!....B.x..P
-40000000000BF9A0 08 08 AC 44 80 15 00 00 00 02 00 20 00 B0 01 84 ...D....... ....
-40000000000BF9B0 09 90 01 10 00 21 00 00 00 02 00 20 07 40 00 84 .....!..... .@..
-40000000000BF9C0 11 C0 01 44 00 21 00 00 00 02 00 00 C8 B7 F5 58 ...D.!.........X
-40000000000BF9D0 08 70 C4 66 05 20 00 00 00 02 00 20 06 88 59 00 .p.f. ..... ..Y.
-40000000000BF9E0 09 08 00 6C 00 21 00 00 00 02 00 00 07 90 01 84 ...l.!..........
-40000000000BF9F0 01 00 00 00 01 00 E0 00 38 2C 00 A0 54 8A 05 80 ........8,..T...
-40000000000BFA00 0B 10 89 1C 00 20 E0 00 88 00 42 40 24 10 01 84 ..... ....B@$...
-40000000000BFA10 09 00 00 00 01 00 10 58 39 00 2B 00 00 00 04 00 .......X9.+.....
-40000000000BFA20 11 00 B8 1C 80 11 00 00 00 02 00 00 C8 AD F5 58 ...............X
-40000000000BFA30 09 70 00 4A 00 10 00 00 00 02 00 20 00 B0 01 84 .p.J....... ....
-40000000000BFA40 10 00 00 00 01 00 E0 00 38 28 00 00 30 FB FF 48 ........8(..0..H
-40000000000BFA50 0B 30 00 10 07 F9 E1 00 94 00 20 00 00 00 04 00 .0........ .....
-40000000000BFA60 11 00 00 00 01 C0 E1 00 38 28 80 03 10 FC FF 49 ........8(.....I
-40000000000BFA70 09 70 00 4A 00 10 00 00 00 02 00 00 11 00 00 90 .p.J............
-40000000000BFA80 11 00 00 00 01 00 E0 00 38 28 00 00 40 FE FF 48 ........8(..@..H
+
+l40000000000BF7F0:
+	{ ld1	r14,[r17],1; adds	r34,0x0,r16; adds	r57,0x1,r15; }
+	{ nop.m	0x0; sxt1	r14,r14; adds	r15,0x0,r57; }
+	{ nop.m	0x0; st1	[r34],r1,1; nop.i	0x0; }
+	{ nop.m	0x0; adds	r16,0x0,r34; br.cloop.sptk.few	40000000000BF7F0 }
+
+l40000000000BF830:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000BF6E0 }
+
+l40000000000BF840:
+	{ ld8	r14,[r42]; adds	r15,0x10,r12; adds	r56,0x0,r0 }
+	{ adds	r57,0x0,r37; sub	r58,r48,r37; adds	r59,0x0,r42; }
+	{ st8	[r14],r15; nop.i	0x0; br.call.sptk.many	b0,400000000001B0A0; }
+	{ adds	r14,0x2,r8; adds	r18,0x10,r12; adds	r1,0x0,r54; }
+	{ cmp.ltu	p06,p07,0x1,r14; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000BFA50; }
+
+l40000000000BF890:
+	{ ld8	r14,[r18]; nop.m	0x0; addl	r8,1,r0; }
+	{ nop.m	0x0; st8	[r14],r42; nop.i	0x0; }
+	{ ld1	r14,[r37]; nop.i	0x0; sxt1	r14,r14 }
+
+l40000000000BF8C0:
+	{ sub	r19,r37,r37,0x1; cmp.eq	p06,p07,0x0,r8; adds	r15,0x0,r37 }
+	{ adds	r16,0x0,r34; adds	r17,0x1,r37; add	r18,r19,r8; }
+	{ nop.m	0x0; mov.i	LC,r18; (p07) mov.i	LC,r18; }
+
+l40000000000BF8F0:
+	{ nop.m	0x0; (p06) mov.i	LC,0x0; br.cond.sptk.few	40000000000BF6B0 }
+
+l40000000000BF8FC:
+	{ (p46) nop; Invalid; break.i	0x1000 }
+
+l40000000000BF900:
+	{ st1	[r34],r1,1; nop.i	0x0; br.call.sptk.many	b0,400000000001B0C0; }
+	{ adds	r1,0x0,r54; cmp.ltu	p07,p06,0x1,r8; (p07) br.cond.dptk.few	40000000000BF620 }
+
+l40000000000BF920:
+	{ ld1	r14,[r37],1; st1	[r34],r1,1; nop.i	0x0; }
+	{ nop.m	0x0; ld1	r14,[r37]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; br.cond.sptk.few	40000000000BF570 }
+
+l40000000000BF950:
+	{ nop.m	0x0; addl	r40,1,r0; br.cond.sptk.few	40000000000BF600 }
+
+l40000000000BF960:
+	{ sub	r50,r37,r44; adds	r56,0x0,r44; adds	r58,0x0,r0; }
+	{ adds	r57,0x0,r50; adds	r51,0x0,r50; br.call.sptk.many	b0,skipsubscript; }
+	{ adds	r1,0x0,r54; adds	r58,0x0,r8; adds	r49,0x0,r8 }
+	{ adds	r56,0x0,r37; adds	r57,0x0,r50; br.call.sptk.many	b0,substring; }
+	{ st1	[r34],r1,1; nop.m	0x0; adds	r1,0x0,r54 }
+	{ adds	r50,0x0,r8; nop.m	0x0; adds	r57,0x0,r8; }
+	{ adds	r56,0x0,r34; nop.i	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ sub	r14,r49,r51; nop.m	0x0; sxt4	r49,r49 }
+	{ adds	r1,0x0,r54; nop.m	0x0; adds	r56,0x0,r50; }
+	{ nop.m	0x0; sxt4	r14,r14; add	r37,r37,r49,0x1; }
+	{ add	r34,r34,r14; adds	r14,0x0,r34; adds	r34,0x2,r34; }
+	{ nop.m	0x0; st1	[r14],r1,1; nop.i	0x0; }
+	{ st1	[r46],r14; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ ld1	r14,[r37]; nop.m	0x0; adds	r1,0x0,r54; }
+	{ nop.m	0x0; sxt1	r14,r14; br.cond.sptk.few	40000000000BF570 }
+
+l40000000000BFA50:
+	{ cmp.eq	p06,p07,0x0,r8; (p07) ld1	r14,[r37]; nop.i	0x0; }
+
+l40000000000BFA5C:
+	{ Invalid; cmp4.eq.and	p00,p32,r32,r0; (p01) mov	pr,r3,0x80 }
+	{ (p32) cmp.lt.unc	p63,p09,r127,r36; Invalid; break.b	0x1000 }
+
+l40000000000BFA70:
+	{ ld1	r14,[r37]; nop.m	0x0; addl	r8,1,r0; }
+	{ nop.m	0x0; sxt1	r14,r14; br.cond.sptk.few	40000000000BF8C0; }
 40000000000BFA90 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000BFAA0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000BFAB0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
@@ -1336,14 +1613,16 @@ l40000000000BFB60:
 l40000000000BFB7C:
 	{ nop; (p05) nop; Invalid }
 
-l40000000000BFB88:
-	{ (p05) break.m	0x406; break.x	0x46880020080C2 }
+l40000000000BFB86:
+	{ (p20) fwb; nop; (p17) br.call.sptk.few	b2,b0; }
 
-l40000000000BFB8E:
-	{ Invalid; (p04) nop }
-	{ Invalid; Invalid; Invalid }
-	{ (p05) break.m	0x220; Invalid; Invalid }
-	{ (p04) nop; nop.x	0x7002C0030210 }
+l40000000000BFB8C:
+	{ nop; Invalid; break.i	0x1000 }
+
+l40000000000BFB96:
+	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ break.m	0x4000; nop; break.i	0x80000 }
+	{ Invalid; (p34) nop; Invalid }
 
 ;; print_assoc_assignment: 40000000000BFBC0
 print_assoc_assignment proc
@@ -1367,14 +1646,16 @@ l40000000000BFC60:
 l40000000000BFC7C:
 	{ nop; (p05) nop; Invalid }
 
-l40000000000BFC88:
-	{ (p05) break.m	0x406; break.x	0x46880020080C2 }
+l40000000000BFC86:
+	{ (p20) fwb; nop; (p17) br.call.sptk.few	b2,b0; }
 
-l40000000000BFC8E:
-	{ Invalid; (p04) nop }
-	{ Invalid; Invalid; Invalid }
-	{ (p05) break.m	0x220; Invalid; Invalid }
-	{ (p04) nop; nop.x	0x2C0020000 }
+l40000000000BFC8C:
+	{ nop; Invalid; break.i	0x1000 }
+
+l40000000000BFC96:
+	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ break.m	0x4000; nop; break.i	0x80000 }
+	{ Invalid; (p34) nop; Invalid }
 
 ;; valid_array_reference: 40000000000BFCC0
 valid_array_reference proc
@@ -1513,6 +1794,8 @@ l40000000000C01E0:
 	{ ld8	r38,[r32]; nop.i	0x0; br.call.sptk.many	b0,assoc_remove; }
 	{ adds	r1,0x0,r37; adds	r38,0x0,r34; br.call.sptk.many	b0,400000000001A7E0; }
 	{ nop.m	0x0; adds	r1,0x0,r37; adds	r8,0x0,r0 }
+
+l40000000000C0210:
 	{ nop.m	0x0; mov.i	ar.pfs,r36; nop.i	0x0; }
 	{ nop.m	0x0; mov.spnt	b0,r35,40000000000C0220; br.ret	b0; }
 
@@ -1529,17 +1812,10 @@ l40000000000C0260:
 l40000000000C0286:
 	{ chk.a.nc	r0,3FFFFFFFFF0C0A86; nop; (p32) nop }
 
-l40000000000C0296:
-	{ break.m	0x4000; (p32) nop; nop }
-
-l40000000000C02A2:
-	{ invala; (p16) add	r9,r64,r16; Invalid }
-
-l40000000000C02AE:
-	{ (p05) break.m	0x220; Invalid; Invalid }
-
-l40000000000C02B4:
-	{ rum	0x30000; (p14) break.i	0x108800; (p01) deposit	r8,r1,r38,63,0; }
+l40000000000C0290:
+	{ adds	r38,0x0,r8; nop.i	0x0; br.call.sptk.many	b0,array_dispose_element; }
+	{ adds	r8,0x0,r0; adds	r1,0x0,r37; mov.i	ar.pfs,r36; }
+	{ nop.m	0x0; mov.spnt	b0,r35,40000000000C02B0; br.ret	b0; }
 
 l40000000000C02C0:
 	{ ld8	r38,[r32]; nop.i	0x0; br.call.sptk.many	b0,unbind_variable; }
@@ -1583,14 +1859,32 @@ l40000000000C0450:
 l40000000000C0456:
 	{ chk.a.nc	f0,3FFFFFFFFF0C0C56; nop; (p32) nop }
 
-l40000000000C0466:
+l40000000000C0460:
+	{ adds	r42,0x0,r0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C0470:
+	{ nop.m	0x0; and	r14,0x40,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p09,p08,0x0,r14; (p08) br.cond.dptk.few	40000000000C08C0; }
+
+l40000000000C0490:
+	{ (p09) adds	r50,0x0,r0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C0496:
 	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p04) chk.s.m	r14,4000000000D84486; tbit.z.unc	p04,p33,r0,0x0; (p34) nop.b	0xC }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p04) nop; nop; nop }
-	{ chk.a.nc	f0,3FFFFFFFFF0C0CB6; nop; add	r0,r0,r32 }
-	{ Invalid; addp4	r0,0x0,r1; (p01) nop; }
+
+l40000000000C04A0:
+	{ nop.m	0x0; tbit.z	p09,p08,r34,0x0; (p09) br.cond.dptk.few	40000000000C0870 }
+
+l40000000000C04B0:
+	{ cmp.eq	p07,p06,0x0,r42; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000C0820; }
+
+l40000000000C04C0:
+	{ nop.m	0x0; (p06) adds	r14,0x8,r42; nop.i	0x0; }
+
+l40000000000C04CC:
+	{ padd2.uus	r0,r1,r0; Invalid; padd2	r0,r32,r0 }
+
+l40000000000C04D6:
 	{ chk.a.nc	r0,3FFFFFFFFF0C0CD6; (p18) nop; nop }
 
 l40000000000C04E0:
@@ -1620,12 +1914,19 @@ l40000000000C05A0:
 
 l40000000000C05A6:
 	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p03) nop; (p48) nop }
-	{ Invalid; (p18) cmp4.eq.or.andcm	p01,p02,0x24,r0; (p01) nop }
+
+l40000000000C05B0:
+	{ nop.m	0x0; adds	r50,0x0,r32; tbit.z	p06,p07,r14,0x4 }
+	{ adds	r51,0x0,r37; adds	r52,0x0,r39; adds	r36,0x1,r36; }
+	{ (p07) st8	[r0],r40; br.call.sptk.many	b0,fn40000000000BE480; nop.b	0x0; }
+
+l40000000000C05D6:
 	{ (p32) flushrs; nop; (p16) nop }
 	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p16) fwb; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD43816; Invalid; break.b	0x80000 }
+
+l40000000000C05F0:
+	{ nop.m	0x0; ld8	r33,[r33]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C0520; }
 
 l40000000000C0610:
 	{ nop.m	0x0; mov	pr,r49,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r47; }
@@ -1648,106 +1949,217 @@ l40000000000C06A0:
 l40000000000C06A6:
 	{ Invalid; (p25) mov	pr,r35,0x1000; br.cond.sptk.few	40000000000D06A6 }
 	{ (p26) nop; (p04) nop }
+
+l40000000000C06BC:
+	{ shladd	r0,r1,0x2,r0; zxt1	r0,r64; break.i	0x1000 }
+
+l40000000000C06C6:
 	{ break.m	0x4000; (p32) mov	pr,0x58FC7A8; break.i	0x80000 }
 	{ (p20) add	r0,r8,r22; nop; break.b	0x80000 }
 	{ Invalid; nop; (p48) nop }
 	{ add	r0,r0,r1; (p07) nop; break.i	0x80000 }
 	{ (p03) chk.a.clr	f93,3FFFFFFFFFD837F6; nop; break.b	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.nc	f12,3FFFFFFFFFAC4006; nop; (p48) nop }
-	{ break.m	0x4000; (p25) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ Invalid; nop; nop }
-	{ Invalid; (p26) nop; (p32) nop }
-	{ (p25) chk.a.clr	r0,3FFFFFFFFF1409A6; nop; break.b	0x80000 }
-	{ (p07) mov.m	EFLAG,0x8; nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD441D6; nop; break.i	0x80000 }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p16) nop }
-	{ break.m	0x4000; (p18) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD439F6; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; (p32) nop }
+
+l40000000000C0710:
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; (p07) br.cond.dptk.few	40000000000C0830 }
+
+l40000000000C0730:
+	{ adds	r51,0x0,r35; nop.m	0x0; adds	r50,0x0,r32 }
+	{ adds	r52,0x0,r34; nop.m	0x0; br.call.sptk.many	b0,make_variable_value; }
+	{ adds	r35,0x0,r8; ld8	r8,[r43]; adds	r1,0x0,r48 }
+	{ adds	r52,0x0,r36; adds	r50,0x0,r32; adds	r53,0x0,r0; }
+	{ cmp.eq	p06,p07,0x0,r8; adds	r51,0x0,r35; (p06) br.cond.dpnt.few	40000000000C0A70; }
+
+l40000000000C0780:
+	{ nop.m	0x0; ld8	r14,[r8],8; nop.i	0x0; }
+	{ ld8	r1,[r8]; mov.spnt	b6,r14,40000000000C0790; br.call.sptk.many	b0,b6; }
+	{ adds	r1,0x0,r48; cmp.eq	p06,p07,0x0,r35; (p06) br.cond.dpnt.few	40000000000C07D0 }
+
+l40000000000C07B0:
+	{ nop.m	0x0; adds	r50,0x0,r35; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r48; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C07D0:
+	{ ld8	r33,[r33]; nop.m	0x0; adds	r36,0x1,r36; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C0520 }
+
+l40000000000C07F0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C0610 }
 
 l40000000000C0800:
 	{ adds	r42,0x0,r0; nop.m	0x0; nop.i	0x0; }
 	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C0820:
 	{ nop.m	0x0; adds	r36,0x0,r0; br.cond.sptk.few	40000000000C04E0 }
-40000000000C0830 11 90 01 46 00 21 00 00 00 02 00 00 98 12 FB 58 ...F.!.........X
-40000000000C0840 09 08 01 42 18 10 00 00 00 02 00 20 00 80 01 84 ...B....... ....
-40000000000C0850 10 00 00 00 01 00 70 00 84 0C 72 03 D0 FC FF 4A ......p...r....J
-40000000000C0860 10 00 00 00 01 00 00 00 00 02 00 00 B0 FD FF 48 ...............H
-40000000000C0870 13 40 00 54 09 39 02 08 00 80 A1 03 E0 01 00 43 .@.T.9.........C
-40000000000C0880 11 30 00 64 07 39 00 00 00 02 00 03 A0 FF FF 4B .0.d.9.........K
-40000000000C0890 10 00 00 00 01 00 60 00 38 0E 73 03 90 FF FF 4A ......`.8.s....J
-40000000000C08A0 11 20 01 00 00 21 00 00 00 02 00 00 68 1B 00 50 . ...!......h..P
-40000000000C08B0 10 00 00 00 01 00 10 00 C0 00 42 00 30 FC FF 48 ..........B.0..H
-40000000000C08C0 09 00 00 00 01 00 F0 40 80 00 42 00 00 00 04 00 .......@..B.....
-40000000000C08D0 10 90 01 1E 18 10 00 00 00 02 00 00 D0 FB FF 48 ...............H
-40000000000C08E0 0B 68 8D 52 01 20 F0 00 B4 00 20 00 00 00 04 00 .h.R. .... .....
-40000000000C08F0 01 00 00 00 01 00 F0 00 3C 28 00 00 00 00 04 00 ........<(......
-40000000000C0900 11 30 F4 1E 87 39 00 00 00 02 00 03 60 00 00 43 .0...9......`..C
-40000000000C0910 10 00 00 00 01 00 70 58 3D 0C 73 03 00 FE FF 4A ......pX=.s....J
-40000000000C0920 0B 70 08 1C 00 21 E0 00 38 00 20 00 00 00 04 00 .p...!..8. .....
-40000000000C0930 01 00 00 00 01 00 E0 00 38 28 00 00 00 00 04 00 ........8(......
-40000000000C0940 11 00 00 00 01 00 60 E8 39 0E F3 03 D0 FD FF 4A ......`.9......J
-40000000000C0950 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
-40000000000C0960 11 90 05 46 00 21 70 08 20 0C F3 03 D0 FE FF 4B ...F.!p. ......K
-40000000000C0970 0B 70 00 64 00 10 00 00 00 02 00 C0 01 70 50 00 .p.d.........pP.
-40000000000C0980 02 38 A8 1C 86 39 00 00 00 02 00 E0 00 74 18 E7 .8...9.......t..
-40000000000C0990 19 00 00 00 01 00 E0 00 98 20 20 03 20 00 00 42 .........  . ..B
-40000000000C09A0 11 00 00 00 01 00 70 10 20 0C F3 03 00 02 00 43 ......p. ......C
-40000000000C09B0 00 00 00 00 01 00 60 20 38 0E 28 A0 26 48 01 84 ......` 8.(.&H..
-40000000000C09C0 19 00 00 00 01 00 00 00 00 02 80 03 70 02 00 43 ............p..C
-40000000000C09D0 00 00 00 00 01 00 60 60 38 0E 28 A0 36 AA 01 80 ......``8.(.6...
-40000000000C09E0 19 00 00 00 01 00 00 00 00 02 80 03 10 01 00 43 ...............C
-40000000000C09F0 10 00 00 00 01 00 70 58 3D 0C F3 03 C0 00 00 43 ......pX=......C
-40000000000C0A00 09 B0 01 44 00 21 00 00 00 02 00 00 00 00 04 00 ...D.!..........
-40000000000C0A10 08 00 00 00 01 00 20 03 80 00 42 C0 80 70 1C 50 ...... ...B..p.P
-40000000000C0A20 09 98 01 4A 00 21 40 03 9C 00 42 80 14 20 01 84 ...J.!@...B.. ..
-40000000000C0A30 F1 00 00 50 98 11 00 00 00 02 00 00 58 DA FF 58 ...P........X..X
-40000000000C0A40 10 00 00 00 01 00 10 00 C0 00 42 00 B0 FB FF 48 ..........B....H
-40000000000C0A50 11 90 01 54 00 21 40 02 00 00 42 00 78 AE FF 58 ...T.!@...B.x..X
-40000000000C0A60 10 00 00 00 01 00 10 00 C0 00 42 00 80 FA FF 48 ..........B....H
-40000000000C0A70 08 90 01 54 00 21 00 00 00 02 00 60 06 20 01 84 ...T.!.....`. ..
-40000000000C0A80 19 A0 01 46 00 21 00 00 00 02 00 00 88 B3 FF 58 ...F.!.........X
-40000000000C0A90 10 08 00 60 00 21 60 00 8C 0E F2 03 20 FD FF 4A ...`.!`..... ..J
-40000000000C0AA0 10 00 00 00 01 00 00 00 00 02 00 00 30 FD FF 48 ............0..H
-40000000000C0AB0 0B 78 00 6A 00 10 00 00 00 02 00 E0 01 78 50 00 .x.j.........xP.
-40000000000C0AC0 0B 38 F4 1E 86 F9 51 1B A4 00 C2 C3 06 60 01 84 .8....Q......`..
-40000000000C0AD0 F1 A8 8D 6A 00 20 00 00 00 02 80 03 E0 FA FF 4B ...j. .........K
-40000000000C0AE0 10 00 00 00 01 00 60 03 88 00 42 00 30 FF FF 48 ......`...B.0..H
-40000000000C0AF0 08 90 01 46 00 21 00 00 00 02 00 60 16 00 00 90 ...F.!.....`....
-40000000000C0B00 19 A0 01 10 00 21 00 00 00 02 00 00 08 89 01 50 .....!.........P
-40000000000C0B10 08 08 00 60 00 21 00 00 00 02 00 E0 04 40 00 84 ...`.!.......@..
-40000000000C0B20 19 30 00 10 07 39 00 00 00 02 00 03 10 FD FF 4B .0...9.........K
-40000000000C0B30 0B 70 00 10 00 10 00 00 00 02 00 C0 01 70 50 00 .p...........pP.
-40000000000C0B40 10 00 00 00 01 00 60 00 38 0E 73 03 F0 FC FF 4A ......`.8.s....J
-40000000000C0B50 08 00 00 00 01 00 F0 00 B4 00 20 A0 26 48 01 84 .......... .&H..
-40000000000C0B60 09 00 00 00 01 00 E0 00 98 20 20 00 00 00 04 00 .........  .....
-40000000000C0B70 01 00 00 00 01 00 F0 00 3C 28 00 A0 36 AA 01 80 ........<(..6...
-40000000000C0B80 10 00 00 00 01 00 70 58 3D 0C 73 03 80 FE FF 4A ......pX=.s....J
-40000000000C0B90 11 00 00 00 01 00 00 00 00 02 00 00 20 FF FF 48 ............ ..H
-40000000000C0BA0 00 00 00 00 01 00 60 60 38 0E 28 80 56 00 00 90 ......``8.(.V...
-40000000000C0BB0 0B 90 01 00 00 E1 31 23 F5 B7 4F 00 00 00 04 00 ......1#..O.....
-40000000000C0BC0 CB 98 B1 FA DB E7 31 03 CC 30 20 00 00 00 04 00 ......1..0 .....
-40000000000C0BD0 D1 98 01 66 18 10 00 00 00 02 00 00 98 9F F5 58 ...f...........X
-40000000000C0BE0 08 08 00 60 00 21 00 00 00 02 00 40 06 40 00 84 ...`.!.....@.@..
-40000000000C0BF0 19 98 01 46 00 21 00 00 00 02 00 00 58 01 FB 58 ...F.!......X..X
-40000000000C0C00 09 08 01 42 18 10 00 00 00 02 00 20 00 80 01 84 ...B....... ....
-40000000000C0C10 10 00 00 00 01 00 70 00 84 0C 72 03 10 F9 FF 4A ......p...r....J
-40000000000C0C20 10 00 00 00 01 00 00 00 00 02 00 00 F0 F9 FF 48 ...............H
-40000000000C0C30 11 98 01 10 00 21 00 00 00 02 00 00 98 F2 FF 58 .....!.........X
-40000000000C0C40 08 08 00 60 00 21 50 02 20 00 42 00 00 00 04 00 ...`.!P. .B.....
-40000000000C0C50 19 38 20 00 06 30 50 13 A4 00 C2 03 E0 FB FF 4B .8 ..0P........K
-40000000000C0C60 08 78 00 5A 00 10 40 02 20 00 42 A0 36 AA 01 80 .x.Z..@. .B.6...
-40000000000C0C70 0B 70 00 4C 10 10 00 00 00 02 00 E0 01 78 50 00 .p.L.........xP.
-40000000000C0C80 10 00 00 00 01 00 70 58 3D 0C 73 03 80 FD FF 4A ......pX=.s....J
-40000000000C0C90 11 00 00 00 01 00 00 00 00 02 00 00 20 FE FF 48 ............ ..H
+
+l40000000000C0830:
+	{ adds	r50,0x0,r35; nop.i	0x0; br.call.sptk.many	b0,err_badarraysub; }
+	{ ld8	r33,[r33]; nop.m	0x0; adds	r1,0x0,r48; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C0520 }
+
+l40000000000C0860:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C0610 }
+
+l40000000000C0870:
+	{ cmp.eq	p08,p09,0x0,r42; (p08) br.cond.dpnt.few	40000000000C0880; (p07) br.cond.dpnt.few	40000000000C0A50; }
+
+l40000000000C087C:
+	{ (p15) cmp.lt	p00,p17,r64,r33; czx1.r	r64,r65; mov	pr,r32,0x0 }
+
+l40000000000C0880:
+	{ cmp.eq	p06,p07,0x0,r50; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C0820; }
+
+l40000000000C0890:
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C0820 }
+
+l40000000000C08A0:
+	{ adds	r36,0x0,r0; nop.i	0x0; br.call.sptk.many	b0,assoc_flush; }
+	{ nop.m	0x0; adds	r1,0x0,r48; br.cond.sptk.few	40000000000C04E0 }
+
+l40000000000C08C0:
+	{ nop.m	0x0; adds	r15,0x8,r32; nop.i	0x0; }
+	{ ld8	r50,[r15]; nop.i	0x0; br.cond.sptk.few	40000000000C04A0 }
+
+l40000000000C08E0:
+	{ add	r45,r35,r41,0x1; ld1	r15,[r45]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; nop.i	0x0; }
+	{ cmp4.eq	p06,p07,0x3D,r15; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C0960; }
+
+l40000000000C0910:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2B,r15; (p06) br.cond.dptk.few	40000000000C0710 }
+
+l40000000000C0920:
+	{ adds	r14,0x2,r14; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x3D,r14; (p07) br.cond.dptk.few	40000000000C0710; }
+
+l40000000000C0950:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C0960:
+	{ adds	r50,0x1,r35; cmp4.eq	p07,p06,0x1,r8; (p07) br.cond.dpnt.few	40000000000C0830; }
+
+l40000000000C0970:
+	{ ld1	r14,[r50]; nop.m	0x0; sxt1	r14,r14; }
+	{ cmp4.eq	p07,p06,0x2A,r14; nop.i	0x0; cmp4.eq.or.andcm	p07,p06,0x40,r14 }
+	{ nop.m	0x0; ld4	r14,[r38]; (p06) br.cond.dptk.few	40000000000C09B0; }
+
+l40000000000C09A0:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2,r8; (p07) br.cond.dpnt.few	40000000000C0BA0; }
+
+l40000000000C09B0:
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x2; adds	r53,0x2,r41 }
+	{ nop.m	0x0; nop.m	0x0; (p07) br.cond.dpnt.few	40000000000C0C30; }
+
+l40000000000C09D0:
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; add	r53,r35,r53 }
+	{ nop.m	0x0; nop.m	0x0; (p07) br.cond.dpnt.few	40000000000C0AF0; }
+
+l40000000000C09F0:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2B,r15; (p07) br.cond.dpnt.few	40000000000C0AB0 }
+
+l40000000000C0A00:
+	{ adds	r54,0x0,r34; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C0A10:
+	{ nop.m	0x0; adds	r50,0x0,r32; tbit.z	p06,p07,r14,0x4 }
+	{ adds	r51,0x0,r37; adds	r52,0x0,r39; adds	r36,0x1,r36; }
+	{ (p07) st8	[r0],r40; nop.i	0x0; br.call.sptk.many	b0,fn40000000000BE480; }
+
+l40000000000C0A36:
+	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
+	{ Invalid; nop; (p32) nop.b	0x2A00C }
+
+l40000000000C0A50:
+	{ adds	r50,0x0,r42; adds	r36,0x0,r0; br.call.sptk.many	b0,array_flush; }
+	{ nop.m	0x0; adds	r1,0x0,r48; br.cond.sptk.few	40000000000C04E0 }
+
+l40000000000C0A70:
+	{ adds	r50,0x0,r42; nop.m	0x0; adds	r51,0x0,r36 }
+	{ adds	r52,0x0,r35; nop.m	0x0; br.call.sptk.many	b0,array_insert; }
+	{ adds	r1,0x0,r48; cmp.eq	p06,p07,0x0,r35; (p07) br.cond.dptk.few	40000000000C07B0 }
+
+l40000000000C0AA0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C07D0 }
+
+l40000000000C0AB0:
+	{ ld1	r15,[r53]; nop.m	0x0; sxt1	r15,r15; }
+	{ cmp4.eq	p07,p06,0x3D,r15; (p07) adds	r53,0x3,r41; (p07) adds	r54,0x0,r44; }
+
+l40000000000C0ACC:
+	{ Invalid; Invalid; Invalid }
+
+l40000000000C0AD0:
+	{ (p07) add	r53,r35,r53; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000C05B0; }
+
+l40000000000C0AD6:
+	{ chk.a.nc	f0,3FFFFFFFFF0C12D6; nop; break.i	0x80000 }
+
+l40000000000C0AE0:
+	{ nop.m	0x0; adds	r54,0x0,r34; br.cond.sptk.few	40000000000C0A10 }
+
+l40000000000C0AF0:
+	{ adds	r50,0x0,r35; nop.m	0x0; addl	r51,1,r0 }
+	{ adds	r52,0x0,r8; nop.m	0x0; br.call.sptk.many	b0,substring; }
+	{ adds	r1,0x0,r48; nop.m	0x0; adds	r39,0x0,r8 }
+	{ cmp.eq	p06,p07,0x0,r8; nop.m	0x0; (p06) br.cond.dpnt.few	40000000000C0830; }
+
+l40000000000C0B30:
+	{ ld1	r14,[r8]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C0830 }
+
+l40000000000C0B50:
+	{ nop.m	0x0; ld1	r15,[r45]; adds	r53,0x2,r41 }
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; add	r53,r35,r53; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2B,r15; (p06) br.cond.dptk.few	40000000000C0A00 }
+
+l40000000000C0B90:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C0AB0; }
+
+l40000000000C0BA0:
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; addl	r52,5,r0 }
+	{ adds	r50,0x0,r0; (p07) addl	r51,-4700,r1; nop.i	0x0; }
+
+l40000000000C0BBC:
+	{ nop; (p06) nop; Invalid }
+
+l40000000000C0BC6:
+	{ (p25) fwb; nop; (p49) br.call.sptk.few	b4,b0; }
+
+l40000000000C0BCC:
+	{ nop; Invalid; break.i	0x1000 }
+
+l40000000000C0BD6:
+	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ break.m	0x4000; (p25) nop; (p48) nop }
+	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ add	r0,r0,r1; nop; break.i	0x80000 }
+	{ (p03) chk.a.clr	r0,3FFFFFFFFFD43E26; nop; break.b	0x80000 }
+
+l40000000000C0C20:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C0610 }
+
+l40000000000C0C30:
+	{ adds	r51,0x0,r8; nop.i	0x0; br.call.sptk.many	b0,array_expand_index; }
+	{ adds	r1,0x0,r48; adds	r37,0x0,r8; nop.i	0x0 }
+	{ cmp.lt	p07,p06,r8,r0; adds	r53,0x2,r41; (p07) br.cond.dpnt.few	40000000000C0830; }
+
+l40000000000C0C60:
+	{ ld1	r15,[r45]; adds	r36,0x0,r8; add	r53,r35,r53 }
+	{ ld4	r14,[r38]; nop.m	0x0; sxt1	r15,r15; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2B,r15; (p06) br.cond.dptk.few	40000000000C0A00 }
+
+l40000000000C0C90:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C0AB0; }
 40000000000C0CA0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000C0CB0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; assign_array_var_from_string: 40000000000C0CC0
+;;   Called from:
+;;     40000000000C0DF6 (in assign_array_from_string)
 assign_array_var_from_string proc
 	{ alloc	r37,ar.pfs,0xA,0x0,0x7; cmp.eq	p07,p06,0x0,r33; mov	r36,b4 }
 	{ adds	r38,0x0,r1; adds	r39,0x0,r32; (p07) br.cond.dpnt.few	40000000000C0D50; }
@@ -1779,16 +2191,18 @@ l40000000000C0DB0:
 
 l40000000000C0DB6:
 	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ Invalid; nop; nop }
+	{ chk.a.nc	r35,3FFFFFFFFF1A0DE6; mov	pr,0x4300003; break.i	0x80000 }
 
-l40000000000C0DC2:
-	{ Invalid; break.i	0x720E2; Invalid }
-	{ ldfe	f2,[r16]; (p20) nop; break.i	0xA1800; }
-	{ add	r32,r0,r0; (p04) break.i	0x550; nop }
-	{ break.m	0xB000; fms.d.s0	f32,f0,f0,f0; (p61) break.i	0xA47FF }
-	{ add	r32,r0,r0; (p04) break.i	0x550; Invalid }
-	{ ldfe	f32,[r0]; (p20) nop; Invalid }
-	{ break.m	0x20; break.i	0x20; Invalid }
-	{ break.m	0x20; break.i	0x20; nop }
+l40000000000C0DE0:
+	{ nop.m	0x0; mov.i	ar.pfs,r36; nop.i	0x0; }
+	{ alloc	r2,ar.pfs,0x3,0x0,0x0; nop.i	0x0; br.cond.sptk.many	assign_array_var_from_string }
+
+l40000000000C0E00:
+	{ nop.m	0x0; mov.i	ar.pfs,r36; nop.i	0x0; }
+	{ nop.m	0x0; mov.spnt	b0,r35,40000000000C0E10; br.ret	b0; }
+40000000000C0E20 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000C0E30 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; array_variable_name: 40000000000C0E40
 array_variable_name proc
@@ -1817,23 +2231,12 @@ l40000000000C0F00:
 l40000000000C0F26:
 	{ (p03) chk.a.clr	r0,3FFFFFFFFFD44946; nop; nop }
 
-l40000000000C0F2C:
-	{ (p01) nop; Invalid; break.i	0x1000 }
+l40000000000C0F30:
+	{ st4	[r0],r34; nop.m	0x0; nop.i	0x0 }
 
-l40000000000C0F32:
-	{ (p32) break.m	0x23208; break.i	0x20; deposit	r32,r0,r32,63,2 }
-
-l40000000000C0F38:
-	{ (p16) break.m	0x0; Invalid; break.i	0x10800 }
-
-l40000000000C0F3E:
-	{ break.m	0x80120; (p04) nop }
-
-l40000000000C0F4E:
-	{ (p05) break.m	0x200; Invalid; Invalid }
-
-l40000000000C0F54:
-	{ rum	0x60000; (p14) break.i	0x108800; (p01) break.i	0x48; }
+l40000000000C0F40:
+	{ adds	r8,0x0,r0; nop.m	0x0; mov.i	ar.pfs,r39; }
+	{ nop.m	0x0; mov.spnt	b0,r38,40000000000C0F50; br.ret	b0 }
 
 l40000000000C0F60:
 	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r33; nop.i	0x0; }
@@ -1842,17 +2245,8 @@ l40000000000C0F60:
 l40000000000C0F76:
 	{ (p03) chk.a.clr	f0,3FFFFFFFFFD44196; nop; br.call.spnt.few	b0,b0 }
 
-l40000000000C0F7C:
-	{ (p62) invala; Invalid; break.b	0x1000 }
-
-l40000000000C0F82:
-	{ (p32) break.m	0x23208; add	r32,r0,r0; Invalid }
-
-l40000000000C0F88:
-	{ (p16) nop; (p63) break.i	0x1148F; (p12) break.i	0x8C02 }
-
-l40000000000C0F8E:
-	{ Invalid; Invalid; Invalid }
+l40000000000C0F80:
+	{ st4	[r0],r34; nop.i	0x0; br.cond.sptk.few	40000000000C0F40 }
 
 l40000000000C0F90:
 	{ st1	[r0],r35; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
@@ -1867,11 +2261,13 @@ l40000000000C0F90:
 l40000000000C1006:
 	{ (p03) chk.a.clr	f0,3FFFFFFFFFD44A26; (p18) cmp4.eq.or.andcm	p36,p00,r37,r5; (p01) nop }
 
-l40000000000C100C:
-	{ Invalid; nop }
-	{ nop; break.m	0x1000; break.i	0x1000 }
-	{ nop; break.i	0x1000; break.i	0x1000 }
-	{ cmp.eq	p00,p08,r1,r0; Invalid; (p01) cmp.lt	p28,p17,r99,r79 }
+l40000000000C1010:
+	{ (p07) st4	[r36],r34; nop.i	0x0; br.ret	b0; }
+
+l40000000000C1016:
+	{ break.m	0x4000; (p34) nop; break.i	0x80000 }
+40000000000C1020 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000C1030 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; assign_array_element: 40000000000C1040
 assign_array_element proc
@@ -2012,139 +2408,240 @@ l40000000000C1560:
 
 l40000000000C156C:
 	{ cmp.eq	p00,p17,r1,r0; (p01) cmp.lt.unc	p00,p16,r3,r64; (p08) mov	pr,r99,0xE580 }
+	{ (p09) cmp.lt	p00,p09,r0,r33; cmp.lt.unc	p32,p28,r104,r65; zxt1	r42,r64 }
 
-l40000000000C1578:
-	{ (p49) chk.a.nc	r81,40000000008C2338; nop; (p12) br.wexit.sptk.few	4000000000EC4E78 }
+l40000000000C1580:
+	{ cmp.eq	p06,p07,0x0,r35; adds	r14,0x28,r37; cmp.eq	p16,p17,0x0,r37; }
+	{ (p07) st4	[r0],r35; nop.i	0x0; (p16) br.cond.dpnt.few	40000000000C15C0; }
 
-l40000000000C157E:
-	{ Invalid; (p29) nop; (p01) nop }
-	{ Invalid; (p04) nop; }
-	{ (p24) ldfe	f104,[r60],2; Nyi; (p48) break.i	0x202 }
-	{ break.m	0x220; (p28) nop }
-	{ (p24) break.m	0x228; (p04) nop; (p29) mov	pr,0x6801940 }
-	{ (p24) break.m	0x108; (p04) nop; (p25) break.i	0x390 }
-	{ break.m	0x2E0; nop }
-	{ (p24) nop; (p33) break.i	0x101; (p04) break.i	0x0 }
-	{ nop; (p04) nop }
-	{ (p32) break.m	0x130; Invalid; (p32) break.i	0x101; }
-	{ nop; (p04) nop }
-	{ (p24) nop; Nyi; (p48) break.i	0x202 }
-	{ break.m	0x220; (p24) nop }
-	{ (p16) nop; (p29) nop; (p01) mov	pr,0x7801E10 }
-	{ (p24) break.m	0x28; (p04) nop; (p63) break.i	0x2D }
-	{ break.m	0x40; (p42) nop }
-	{ (p56) break.m	0x300; (p04) nop; Invalid }
-	{ Invalid; break.x	0x701080200100 }
-	{ break.m	0x20; break.x	0x700000800001 }
-	{ break.m	0x220; (p24) nop }
-	{ Invalid; Invalid; Invalid }
-	{ (p24) ldfe	f104,[r24],-254; Invalid; break.i	0x240 }
-	{ break.m	0x120; break.x	0x478E000800240 }
-	{ nop; break.x	0x8C8200000 }
-	{ break.m	0x0; (p25) nop }
-	{ (p32) break.m	0x330; (p04) break.i	0x0; Invalid; }
-	{ (p24) nop; (p29) nop; (p01) mov	pr,0x1001A10 }
-	{ (p24) break.m	0x128; Invalid; (p32) break.i	0x101 }
-	{ ldfe	f32,[r24],r4; break.x	0x1C83A01800 }
-	{ (p24) nop; Nyi; (p48) break.i	0x202 }
-	{ ldfe	f32,[r28],4; (p04) nop }
-	{ (p24) break.m	0x128; (p04) nop; (p01) break.i	0x101 }
-	{ break.m	0x200; (p28) nop }
-	{ (p16) break.m	0x228; (p04) break.i	0x0; (p04) nop }
-	{ break.m	0x10A; (p04) deposit	r0,r0,r20,63,1; tbit.z.and	p16,p00,r4,0x2 }
-	{ (p32) break.m	0x330; (p04) deposit	r0,r0,r24,63,0; (p28) chk.s.i	r55,40000000009C18AE; }
-	{ (p24) ldfe.a	f40,[r60]; break.i	0x210; (p04) nop }
-	{ (p32) ldfe	f112,[r56],-254; Invalid; break.i	0x100; }
-	{ break.m	0x20; break.x	0x700000800001 }
-	{ break.m	0x200; (p24) nop }
-	{ (p16) break.m	0x128; Invalid; (p49) break.i	0x202 }
-	{ break.m	0x200; (p28) nop }
-	{ (p24) nop.m	0x1E0228; (p01) break.i	0x210; (p04) nop }
-	{ (p07) ld1	r11,[r4],-254; (p01) break.f	0x210; (p04) br.cond.sptk.few	400000000010D82E }
-	{ (p32) nop; (p01) break.i	0x210; (p04) nop }
-	{ (p07) ld1	r11,[r4],-254; (p01) break.m	0x210; (p04) break.b	0x0 }
-	{ nop; (p63) nop }
-	{ (p05) break.m	0x0; Invalid; break.i	0x1C }
-	{ ldfe.a	f32,[r48]; (p04) nop }
-	{ (p04) break.m	0x220; (p04) nop }
-	{ Invalid; Invalid; Invalid }
-	{ (p32) cmpxchg1.acq	r48,[r28],r6; break.i	0x210; (p04) mov	pr,0x5001C00; }
-	{ (p24) break.m	0x128; (p04) nop; (p29) break.i	0x390 }
-	{ nop; break.x	0x8CC200000 }
-	{ break.m	0x200; (p04) nop }
-	{ Invalid; Invalid; Invalid }
-	{ break.m	0x228; (p04) break.i	0x0; (p04) nop }
-	{ Invalid; Invalid; Invalid }
-	{ (p32) break.m	0x330; (p04) deposit	r0,r0,r24,63,0; (p28) nop }
-	{ Invalid; Invalid; Invalid }
-	{ nop.m	0x60160; (p01) nop }
+l40000000000C1596:
+	{ nop; nop; (p48) nop }
+
+l40000000000C15A0:
+	{ ld8	r15,[r14]; and	r15,0x44,r15; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x40,r15; (p06) br.cond.dpnt.few	40000000000C19F0; }
+
+l40000000000C15C0:
+	{ nop.m	0x0; tbit.z	p06,p07,r34,0x2; (p06) br.cond.dpnt.few	40000000000C1890; }
+
+l40000000000C15D0:
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r36; nop.i	0x0 }
+	{ nop.b	0x0; (p07) br.cond.dpnt.few	40000000000C1890; (p16) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C15EC:
+	{ (p27) cmp4.eq.or.andcm	p00,p08,r64,r33; Invalid; break.i	0x1000 }
+
+l40000000000C15F0:
+	{ (p06) ld8	r39,[r36]; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C15F6:
+	{ break.m	0x4000; nop; (p32) nop }
+
+l40000000000C1600:
+	{ adds	r14,0x8,r37; nop.m	0x0; adds	r37,0x28,r37; }
+	{ nop.m	0x0; ld8	r38,[r14]; nop.i	0x0; }
+	{ cmp.eq	p06,p07,0x0,r38; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C1630:
+	{ ld8	r14,[r37]; and	r14,0x44,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r14; (p06) br.cond.dptk.few	40000000000C1970; }
+
+l40000000000C1650:
+	{ cmp.eq	p06,p07,0x0,r39; adds	r8,0x0,r38; (p07) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C1660:
+	{ nop.m	0x0; mov	pr,r44,0xFFFFFFFFFFFFFFFE; nop.i	0x0; }
+	{ nop.m	0x0; mov.i	ar.pfs,r42; mov.spnt	b0,r41,40000000000C1670 }
+	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
+
+l40000000000C1690:
+	{ adds	r14,0x1,r45; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x5D,r14; (p06) br.cond.dptk.few	40000000000C1580; }
+
+l40000000000C16C0:
+	{ cmp.eq	p06,p07,0x0,r35; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C1700; }
+
+l40000000000C16D0:
+	{ cmp4.eq	p06,p07,0x0,r15; (p06) addl	r15,2,r0; nop.i	0x0; }
+
+l40000000000C16DC:
+	{ nop; cmp4.eq.or.andcm	p00,p32,r32,r0; zxt4	r0,r0 }
+
+l40000000000C16EC:
+	{ nop; Invalid; break.i	0x1000 }
+	{ break.m	0x80; cmp.eq	p00,p00,r32,r0; cmp.lt.unc	p00,p10,r72,r1 }
+
+l40000000000C1700:
+	{ nop.m	0x0; tbit.z	p07,p06,r34,0x0; adds	r14,0x8,r37 }
+	{ nop.m	0x0; nop.m	0x0; (p07) br.cond.dpnt.few	40000000000C1C90; }
+
+l40000000000C1720:
+	{ cmp.eq	p06,p07,0x0,r37; adds	r37,0x28,r37; (p06) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C1730:
+	{ nop.m	0x0; ld8	r45,[r14]; nop.i	0x0; }
+	{ cmp.eq	p06,p07,0x0,r45; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C1750:
+	{ ld8	r14,[r37]; and	r14,0x44,r14; nop.i	0x0; }
+	{ cmp.eq	p07,p06,0x0,r14; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000C1C50; }
+
+l40000000000C1770:
+	{ nop.m	0x0; ld4	r14,[r37]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; (p06) br.cond.dptk.few	40000000000C1900 }
+
+l40000000000C1790:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,assoc_to_word_list; }
+	{ nop.m	0x0; adds	r37,0x0,r8; adds	r1,0x0,r43 }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r8; (p06) br.cond.dpnt.few	40000000000C1940; }
+
+l40000000000C17C0:
+	{ adds	r15,0x10,r12; nop.m	0x0; adds	r45,0x0,r37; }
+	{ ld8	r14,[r15]; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2A,r14; (p06) br.cond.dptk.few	40000000000C1820 }
+
+l40000000000C1800:
+	{ nop.m	0x0; and	r14,0x3,r33; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C1BE0 }
+
+l40000000000C1820:
+	{ adds	r46,0x0,r33; nop.i	0x0; br.call.sptk.many	b0,string_list_dollar_at; }
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r38,0x0,r8 }
+	{ adds	r45,0x0,r37; nop.m	0x0; br.call.sptk.many	b0,dispose_words; }
+	{ adds	r1,0x0,r43; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C1860:
+	{ adds	r8,0x0,r38; mov	pr,r44,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r42; }
+	{ nop.m	0x0; mov.spnt	b0,r41,40000000000C1870; nop.i	0x0 }
+	{ adds	r12,0x10,r12; nop.m	0x0; br.ret	b0; }
+
+l40000000000C1890:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,array_expand_index; }
+	{ cmp.lt	p07,p06,r8,r0; nop.m	0x0; adds	r1,0x0,r43 }
+	{ adds	r39,0x0,r8; nop.m	0x0; (p07) br.cond.dpnt.few	40000000000C1B50; }
+
+l40000000000C18C0:
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r36; nop.i	0x0; }
+	{ (p07) st8	[r39],r36; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C18D6:
+	{ break.m	0x4000; nop; break.i	0x80000 }
+
+l40000000000C18E0:
+	{ nop.m	0x0; nop.i	0x0; (p17) br.cond.dptk.few	40000000000C1600 }
+
+l40000000000C18F0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C1940 }
+
+l40000000000C1900:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,array_to_word_list; }
+	{ nop.m	0x0; adds	r1,0x0,r43; adds	r37,0x0,r8 }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r8; (p07) br.cond.dptk.few	40000000000C17C0; }
+
+l40000000000C1930:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C1940:
 	{ adds	r38,0x0,r0; adds	r8,0x0,r38; mov	pr,r44,0xFFFFFFFFFFFFFFFE; }
 	{ nop.m	0x0; mov.i	ar.pfs,r42; mov.spnt	b0,r41,40000000000C1950 }
 	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
-40000000000C1970 09 00 00 00 01 00 E0 00 94 20 20 00 00 00 04 00 .........  .....
-40000000000C1980 10 00 00 00 01 00 60 60 38 0E 28 03 80 01 00 42 ......``8.(....B
-40000000000C1990 11 70 01 50 00 21 D0 02 98 00 42 00 78 0D 00 50 .p.P.!....B.x..P
-40000000000C19A0 08 08 00 56 00 21 00 00 00 02 00 C0 04 40 00 84 ...V.!.......@..
-40000000000C19B0 19 68 01 50 00 21 00 00 00 02 00 00 38 8E F5 58 .h.P.!......8..X
-40000000000C19C0 09 40 00 4C 00 21 10 00 AC 00 42 E0 CF 82 7F 0B .@.L.!....B.....
-40000000000C19D0 02 00 00 00 01 00 00 50 01 55 00 00 90 0A 00 07 .......P.U......
-40000000000C19E0 18 00 00 00 01 00 C0 80 30 00 42 80 08 00 84 00 ........0.B.....
-40000000000C19F0 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
-40000000000C1A00 10 00 00 00 01 00 60 60 38 0E 28 03 00 FC FF 4A ......``8.(....J
-40000000000C1A10 01 00 00 00 01 00 10 01 B8 2C 00 C0 05 00 00 84 .........,......
-40000000000C1A20 09 00 00 00 01 00 00 69 45 00 40 00 00 00 04 00 .......iE.@.....
-40000000000C1A30 0B 80 FC 21 3F 23 00 00 40 00 23 00 02 61 00 84 ...!?#..@.#..a..
-40000000000C1A40 11 68 01 20 18 10 00 00 00 02 00 00 08 4F FE 58 .h. .........O.X
-40000000000C1A50 08 78 00 4C 10 10 00 81 30 00 42 20 00 58 01 84 .x.L....0.B .X..
-40000000000C1A60 02 30 00 10 07 39 80 02 20 00 42 E0 01 78 58 00 .0...9.. .B..xX.
-40000000000C1A70 0B 70 00 20 18 10 E0 70 3C 00 40 E0 D1 05 00 90 .p. ...p<.@.....
-40000000000C1A80 09 00 00 00 01 00 E0 F8 3B 7E 46 00 00 00 04 00 ........;~F.....
-40000000000C1A90 11 00 3C 1C 80 11 00 00 00 02 00 03 30 00 00 43 ..<.........0..C
-40000000000C1AA0 0B 70 00 10 00 10 00 00 00 02 00 C0 01 70 50 00 .p...........pP.
-40000000000C1AB0 10 00 00 00 01 00 70 00 38 0C 73 03 50 FB FF 4A ......p.8.s.P..J
-40000000000C1AC0 11 68 01 4A 18 10 60 02 00 00 42 00 08 00 FB 58 .h.J..`...B....X
-40000000000C1AD0 09 40 00 4C 00 21 10 00 AC 00 42 E0 CF 82 7F 0B .@.L.!....B.....
-40000000000C1AE0 02 00 00 00 01 00 00 50 01 55 00 00 90 0A 00 07 .......P.U......
-40000000000C1AF0 19 00 00 00 01 00 C0 80 30 00 42 80 08 00 84 00 ........0.B.....
-40000000000C1B00 11 68 01 4C 00 21 E0 02 9C 00 42 00 88 A8 FF 58 .h.L.!....B....X
-40000000000C1B10 09 30 01 10 00 21 00 00 00 02 00 20 00 58 01 84 .0...!..... .X..
-40000000000C1B20 03 40 00 4C 00 21 F0 67 C1 BF 05 00 A0 02 AA 00 .@.L.!.g........
-40000000000C1B30 00 00 00 00 01 00 00 48 05 80 03 00 00 00 04 00 .......H........
-40000000000C1B40 18 60 40 18 00 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
-40000000000C1B50 11 70 A0 4A 00 21 00 00 00 02 00 08 80 01 00 43 .p.J.!.........C
-40000000000C1B60 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
-40000000000C1B70 10 00 00 00 01 00 60 20 38 0E 28 03 50 FF FF 4A ......` 8.(.P..J
-40000000000C1B80 0B 70 20 4A 00 21 E0 00 38 30 20 00 00 00 04 00 .p J.!..80 .....
-40000000000C1B90 0B 70 20 1C 00 21 E0 00 38 30 20 00 00 00 04 00 .p ..!..80 .....
-40000000000C1BA0 09 00 00 00 01 00 70 42 38 02 40 00 00 00 04 00 ......pB8.@.....
-40000000000C1BB0 11 38 9C 00 06 30 00 00 00 02 80 03 10 FF FF 49 .8...0.........I
-40000000000C1BC0 09 00 00 00 01 00 60 00 90 0E 72 00 00 00 04 00 ......`...r.....
-40000000000C1BD0 F0 00 9C 48 98 11 00 00 00 02 00 00 10 FD FF 48 ...H...........H
-40000000000C1BE0 11 00 00 00 01 00 00 00 00 02 00 00 E8 D1 FC 58 ...............X
-40000000000C1BF0 08 08 00 56 00 21 00 00 00 02 00 E0 04 40 00 84 ...V.!.......@..
-40000000000C1C00 19 68 01 10 00 21 00 00 00 02 00 00 48 F0 FC 58 .h...!......H..X
-40000000000C1C10 08 08 00 56 00 21 00 00 00 02 00 C0 04 40 00 84 ...V.!.......@..
-40000000000C1C20 19 68 01 4E 00 21 00 00 00 02 00 00 C8 8B F5 58 .h.N.!.........X
-40000000000C1C30 11 08 00 56 00 21 D0 02 94 00 42 00 98 9F F8 58 ...V.!....B....X
-40000000000C1C40 10 00 00 00 01 00 10 00 AC 00 42 00 20 FC FF 48 ..........B. ..H
-40000000000C1C50 11 00 00 00 01 00 00 00 00 02 00 00 F8 0E F8 58 ...............X
-40000000000C1C60 08 08 00 56 00 21 00 00 00 02 00 A0 05 40 00 84 ...V.!.......@..
-40000000000C1C70 19 70 01 00 00 21 00 00 00 02 00 00 D8 0F F8 58 .p...!.........X
-40000000000C1C80 10 08 00 56 00 21 50 02 20 00 42 00 40 FB FF 48 ...V.!P. .B.@..H
-40000000000C1C90 11 68 01 40 00 21 60 02 00 00 42 00 38 FE FA 58 .h.@.!`...B.8..X
-40000000000C1CA0 09 40 00 4C 00 21 10 00 AC 00 42 E0 CF 82 7F 0B .@.L.!....B.....
-40000000000C1CB0 02 00 00 00 01 00 00 50 01 55 00 00 90 0A 00 07 .......P.U......
-40000000000C1CC0 19 00 00 00 01 00 C0 80 30 00 42 80 08 00 84 00 ........0.B.....
-40000000000C1CD0 09 80 40 18 00 21 D0 02 80 00 42 C0 04 00 00 84 ..@..!....B.....
-40000000000C1CE0 0B 70 00 20 18 10 E0 F8 3B 7E 46 00 00 00 04 00 .p. ....;~F.....
-40000000000C1CF0 11 00 00 1C 80 11 00 00 00 02 00 00 D8 FD FA 58 ...............X
-40000000000C1D00 09 78 40 18 00 21 80 00 98 00 42 20 00 58 01 84 .x@..!....B .X..
-40000000000C1D10 03 70 00 1E 18 10 F0 D8 02 00 48 C0 F1 77 FC 8C .p........H..w..
-40000000000C1D20 03 00 3C 1C 80 11 F0 67 C1 BF 05 00 A0 02 AA 00 ..<....g........
-40000000000C1D30 00 00 00 00 01 00 00 48 05 80 03 00 00 00 04 00 .......H........
-40000000000C1D40 19 60 40 18 00 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+
+l40000000000C1970:
+	{ nop.m	0x0; ld4	r14,[r37]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; (p06) br.cond.dptk.few	40000000000C1B00 }
+
+l40000000000C1990:
+	{ adds	r46,0x0,r40; adds	r45,0x0,r38; br.call.sptk.many	b0,assoc_reference; }
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r38,0x0,r8 }
+	{ adds	r45,0x0,r40; nop.m	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r8,0x0,r38; adds	r1,0x0,r43; mov	pr,r44,0xFFFFFFFFFFFFFFFE; }
+	{ nop.m	0x0; mov.i	ar.pfs,r42; mov.spnt	b0,r41,40000000000C19D0 }
+	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
+
+l40000000000C19F0:
+	{ nop.m	0x0; ld4	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x6; (p06) br.cond.dptk.few	40000000000C1600 }
+
+l40000000000C1A10:
+	{ nop.m	0x0; sxt4	r17,r46; adds	r46,0x0,r0; }
+	{ nop.m	0x0; add	r16,r45,r17; nop.i	0x0; }
+	{ adds	r16,0xFFFFFFFFFFFFFFFF,r16; st1	[r0],r16; adds	r16,0x10,r12; }
+	{ ld8	r45,[r16]; nop.i	0x0; br.call.sptk.many	b0,expand_assignment_string_to_string; }
+	{ ld4	r15,[r38]; adds	r16,0x10,r12; adds	r1,0x0,r43 }
+	{ cmp.eq	p06,p07,0x0,r8; adds	r40,0x0,r8; sxt4	r15,r15 }
+	{ ld8	r14,[r16]; add	r14,r14,r15; addl	r15,93,r0; }
+	{ nop.m	0x0; adds	r14,0xFFFFFFFFFFFFFFFF,r14; nop.i	0x0; }
+	{ st1	[r15],r14; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C1AC0; }
+
+l40000000000C1AA0:
+	{ ld1	r14,[r8]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p06) br.cond.dptk.few	40000000000C1600 }
+
+l40000000000C1AC0:
+	{ ld8	r45,[r37]; adds	r38,0x0,r0; br.call.sptk.many	b0,err_badarraysub; }
+	{ adds	r8,0x0,r38; adds	r1,0x0,r43; mov	pr,r44,0xFFFFFFFFFFFFFFFE; }
+	{ nop.m	0x0; mov.i	ar.pfs,r42; mov.spnt	b0,r41,40000000000C1AE0 }
+	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0; }
+
+l40000000000C1B00:
+	{ adds	r45,0x0,r38; adds	r46,0x0,r39; br.call.sptk.many	b0,array_reference; }
+	{ adds	r38,0x0,r8; nop.m	0x0; adds	r1,0x0,r43; }
+	{ adds	r8,0x0,r38; mov	pr,r44,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r42; }
+	{ nop.m	0x0; mov.spnt	b0,r41,40000000000C1B30; nop.i	0x0 }
+	{ adds	r12,0x10,r12; nop.m	0x0; br.ret	b0 }
+
+l40000000000C1B50:
+	{ adds	r14,0x28,r37; nop.i	0x0; (p16) br.cond.dpnt.few	40000000000C1CD0; }
+
+l40000000000C1B60:
+	{ nop.m	0x0; ld4	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p06,p07,r14,0x2; (p06) br.cond.dptk.few	40000000000C1AC0 }
+
+l40000000000C1B80:
+	{ adds	r14,0x8,r37; ld8	r14,[r14]; nop.i	0x0; }
+	{ adds	r14,0x8,r14; ld8	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; add	r39,r8,r14,0x1; nop.i	0x0; }
+	{ cmp.lt	p07,p06,r39,r0; nop.i	0x0; (p07) br.cond.spnt.few	40000000000C1AC0; }
+
+l40000000000C1BC0:
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r36; nop.i	0x0; }
+	{ (p07) st8	[r39],r36; nop.i	0x0; br.cond.sptk.few	40000000000C18E0 }
+
+l40000000000C1BD6:
+	{ break.m	0x4000; nop; break.i	0x80000 }
+
+l40000000000C1BE0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,string_list_dollar_star; }
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r39,0x0,r8 }
+	{ adds	r45,0x0,r8; nop.m	0x0; br.call.sptk.many	b0,quote_string; }
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r38,0x0,r8 }
+	{ adds	r45,0x0,r39; nop.m	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r43; adds	r45,0x0,r37; br.call.sptk.many	b0,dispose_words; }
+	{ nop.m	0x0; adds	r1,0x0,r43; br.cond.sptk.few	40000000000C1860 }
+
+l40000000000C1C50:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,make_word; }
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r45,0x0,r8 }
+	{ adds	r46,0x0,r0; nop.m	0x0; br.call.sptk.many	b0,make_word_list; }
+	{ adds	r1,0x0,r43; adds	r37,0x0,r8; br.cond.sptk.few	40000000000C17C0 }
+
+l40000000000C1C90:
+	{ adds	r45,0x0,r32; adds	r38,0x0,r0; br.call.sptk.many	b0,err_badarraysub; }
+	{ adds	r8,0x0,r38; adds	r1,0x0,r43; mov	pr,r44,0xFFFFFFFFFFFFFFFE; }
+	{ nop.m	0x0; mov.i	ar.pfs,r42; mov.spnt	b0,r41,40000000000C1CB0 }
+	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0; }
+
+l40000000000C1CD0:
+	{ adds	r16,0x10,r12; adds	r45,0x0,r32; adds	r38,0x0,r0; }
+	{ ld8	r14,[r16]; adds	r14,0xFFFFFFFFFFFFFFFF,r14; nop.i	0x0; }
+	{ st1	[r0],r14; nop.i	0x0; br.call.sptk.many	b0,err_badarraysub; }
+	{ adds	r15,0x10,r12; adds	r8,0x0,r38; adds	r1,0x0,r43; }
+	{ ld8	r14,[r15]; addl	r15,91,r0; adds	r14,0xFFFFFFFFFFFFFFFF,r14; }
+	{ st1	[r15],r14; mov	pr,r44,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r42; }
+	{ nop.m	0x0; mov.spnt	b0,r41,40000000000C1D30; nop.i	0x0 }
+	{ adds	r12,0x10,r12; nop.m	0x0; br.ret	b0; }
 40000000000C1D50 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000C1D60 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000C1D70 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
@@ -2279,16 +2776,20 @@ l40000000000C2200:
 
 l40000000000C2230:
 	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2240:
 	{ adds	r14,0x8,r34; nop.m	0x0; adds	r15,0x10,r34; }
 	{ nop.m	0x0; (p17) ld8	r43,[r15]; nop.i	0x0; }
 
 l40000000000C225C:
 	{ ldfps	f0,f1,[r0],8; Invalid; break.i	0x1000 }
-	{ (p41) nop; invala; nop }
-	{ shladdp4	r8,r0,0x2,r66; break.x	0x10802300A01000; }
-	{ (p14) cmpxchg2.acq	r1,[r44],r62; (p04) nop; nop }
-	{ invala; nop }
-	{ Invalid; (p20) cmp.lt	p00,p16,r9,r64; (p01) nop }
+
+l40000000000C2266:
+	{ break.m	0x4000; (p32) nop; (p16) nop }
+	{ add	r0,r0,r1; (p21) nop; nop }
+	{ break.m	0x4000; (p32) nop; (p32) nop }
+	{ Invalid; (p17) nop; break.b	0x80000 }
+	{ (p03) chk.a.clr	r0,3FFFFFFFFFD454C6; nop; nop.b	0x24029 }
 
 l40000000000C22B0:
 	{ adds	r36,0x1,r36; ld4	r14,[r38]; adds	r37,0x8,r37; }
@@ -2371,23 +2872,17 @@ l40000000000C2550:
 
 l40000000000C2566:
 	{ chk.a.nc	r0,3FFFFFFFFF0C2D66; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
 
-l40000000000C2582:
-	{ (p32) nop; addl	r2,262208,r0; Invalid }
+l40000000000C2570:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r38; adds	r39,0x1,r8; br.call.sptk.many	b0,xmalloc; }
+	{ adds	r1,0x0,r38; nop.m	0x0; adds	r39,0x0,r8 }
+	{ adds	r40,0x0,r34; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ adds	r1,0x0,r38; nop.m	0x0; nop.i	0x0 }
 
-l40000000000C2588:
-	{ (p01) addl	r64,-2055152,r0; Invalid; (p24) break.i	0x10802 }
-
-l40000000000C258E:
-	{ nop; (p01) break.i	0x210; (p04) deposit	r0,r0,r28,63,1 }
-
-l40000000000C259A:
-	{ Invalid; Invalid; (p02) mov	pr,0x1 }
-	{ setf.s	f0,r122; Invalid; (p02) mov	pr,0x1 }
-	{ sum	0x0; (p04) nop; Invalid }
-	{ Invalid; (p02) mov	pr,0x1; add	r0,r0,r36,0x1 }
-	{ Invalid; (p36) nop; (p15) mov	pr,0x1; }
+l40000000000C25C0:
+	{ st8	[r8],r35; mov.i	ar.pfs,r37; adds	r8,0x0,r0; }
+	{ nop.m	0x0; mov.spnt	b0,r36,40000000000C25D0; br.ret	b0 }
 
 l40000000000C25E0:
 	{ addl	r8,-1,r0; nop.m	0x0; mov.i	ar.pfs,r37; }
@@ -2449,26 +2944,39 @@ l40000000000C27E0:
 
 l40000000000C2806:
 	{ chk.a.nc	r0,3FFFFFFFFF0C3006; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
 
-l40000000000C281C:
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xC680 }
-	{ (p08) nop; break.i	0x1000; break.i	0x1000 }
-	{ cmp.lt	p00,p11,r1,r0; (p01) cmp.lt	p00,p08,r8,r6; zxt1	r35,r0 }
-	{ nop; nop; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p05) nop; break.i	0x1000; break.i	0x1000 }
-	{ nop; deposit	r0,r32,r0,63,0; zxt1	r36,r64 }
-	{ cmpxchg4.acq	r0,[r0],r1; Invalid; break.i	0x1000 }
-	{ (p29) cmpxchg2.acq	r28,[r44],r63; (p05) nop; nop }
-	{ cmp.lt	p08,p17,r0,r66; break.x	0x1C83AA00001000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p57) nop; invala; break.i	0x1000 }
-	{ nop; Invalid; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ Invalid; (p20) cmp.lt	p00,p16,r9,r64; Invalid }
-	{ (p04) invala; nop }
-	{ (p57) nop; zxt1	r0,r64; break.b	0x1000 }
+l40000000000C2810:
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C2920; }
+
+l40000000000C2830:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2840:
+	{ ld8	r14,[r32]; add	r14,r14,r37; nop.i	0x0; }
+	{ nop.m	0x0; ld8	r33,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p07) br.cond.dpnt.few	40000000000C2900; }
+
+l40000000000C2870:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2880:
+	{ nop.m	0x0; adds	r34,0x10,r33; nop.i	0x0; }
+	{ ld8	r42,[r34]; nop.i	0x0; br.call.sptk.many	b0,quote_string; }
+	{ ld8	r42,[r34]; adds	r1,0x0,r41; adds	r35,0x0,r8; }
+	{ cmp.eq	p06,p07,0x0,r42; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C28E0; }
+
+l40000000000C28C0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r41; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C28E0:
+	{ ld8	r33,[r33]; st8	[r35],r34; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C2880 }
+
+l40000000000C2900:
+	{ adds	r36,0x1,r36; ld4	r14,[r38]; adds	r37,0x8,r37; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r36,r14; (p06) br.cond.dptk.few	40000000000C2840 }
 
 l40000000000C2920:
 	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r40; }
@@ -2486,26 +2994,39 @@ l40000000000C2960:
 
 l40000000000C2986:
 	{ chk.a.nc	r0,3FFFFFFFFF0C3186; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
 
-l40000000000C299C:
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xC680 }
-	{ (p08) nop; break.i	0x1000; break.i	0x1000 }
-	{ cmp.lt	p00,p11,r1,r0; (p01) cmp.lt	p00,p08,r8,r6; zxt1	r35,r0 }
-	{ nop; nop; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p05) nop; break.i	0x1000; break.i	0x1000 }
-	{ nop; deposit	r0,r32,r0,63,0; zxt1	r36,r64 }
-	{ cmpxchg4.acq	r0,[r0],r1; Invalid; break.i	0x1000 }
-	{ (p59) cmpxchg2.acq	r26,[r44],r63; (p05) nop; nop }
-	{ cmp.lt	p08,p17,r0,r66; break.x	0x1C83AA00001000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p45) nop; invala; break.i	0x1000 }
-	{ nop; Invalid; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ Invalid; (p20) cmp.lt	p00,p16,r9,r64; Invalid }
-	{ (p04) invala; nop }
-	{ (p57) nop; zxt1	r0,r64; break.b	0x1000 }
+l40000000000C2990:
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C2AA0; }
+
+l40000000000C29B0:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C29C0:
+	{ ld8	r14,[r32]; add	r14,r14,r37; nop.i	0x0; }
+	{ nop.m	0x0; ld8	r33,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p07) br.cond.dpnt.few	40000000000C2A80; }
+
+l40000000000C29F0:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2A00:
+	{ nop.m	0x0; adds	r34,0x10,r33; nop.i	0x0; }
+	{ ld8	r42,[r34]; nop.i	0x0; br.call.sptk.many	b0,quote_escapes; }
+	{ ld8	r42,[r34]; adds	r1,0x0,r41; adds	r35,0x0,r8; }
+	{ cmp.eq	p06,p07,0x0,r42; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C2A60; }
+
+l40000000000C2A40:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r41; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2A60:
+	{ ld8	r33,[r33]; st8	[r35],r34; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C2A00 }
+
+l40000000000C2A80:
+	{ adds	r36,0x1,r36; ld4	r14,[r38]; adds	r37,0x8,r37; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r36,r14; (p06) br.cond.dptk.few	40000000000C29C0 }
 
 l40000000000C2AA0:
 	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r40; }
@@ -2523,26 +3044,39 @@ l40000000000C2AE0:
 
 l40000000000C2B06:
 	{ chk.a.nc	r0,3FFFFFFFFF0C3306; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
 
-l40000000000C2B1C:
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xC680 }
-	{ (p08) nop; break.i	0x1000; break.i	0x1000 }
-	{ cmp.lt	p00,p11,r1,r0; (p01) cmp.lt	p00,p08,r8,r6; zxt1	r35,r0 }
-	{ nop; nop; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p05) nop; break.i	0x1000; break.i	0x1000 }
-	{ nop; deposit	r0,r32,r0,63,0; zxt1	r36,r64 }
-	{ cmpxchg4.acq	r0,[r0],r1; Invalid; break.i	0x1000 }
-	{ (p03) cmpxchg2.acq	r29,[r44],r63; (p05) nop; nop }
-	{ cmp.lt	p08,p17,r0,r66; break.x	0x1C83AA00001000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p33) nop; invala; break.i	0x1000 }
-	{ nop; Invalid; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ Invalid; (p20) cmp.lt	p00,p16,r9,r64; Invalid }
-	{ (p04) invala; nop }
-	{ (p57) nop; zxt1	r0,r64; break.b	0x1000 }
+l40000000000C2B10:
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C2C20; }
+
+l40000000000C2B30:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2B40:
+	{ ld8	r14,[r32]; add	r14,r14,r37; nop.i	0x0; }
+	{ nop.m	0x0; ld8	r33,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p07) br.cond.dpnt.few	40000000000C2C00; }
+
+l40000000000C2B70:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2B80:
+	{ nop.m	0x0; adds	r34,0x10,r33; nop.i	0x0; }
+	{ ld8	r42,[r34]; nop.i	0x0; br.call.sptk.many	b0,dequote_string; }
+	{ ld8	r42,[r34]; adds	r1,0x0,r41; adds	r35,0x0,r8; }
+	{ cmp.eq	p06,p07,0x0,r42; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C2BE0; }
+
+l40000000000C2BC0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r41; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2BE0:
+	{ ld8	r33,[r33]; st8	[r35],r34; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C2B80 }
+
+l40000000000C2C00:
+	{ adds	r36,0x1,r36; ld4	r14,[r38]; adds	r37,0x8,r37; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r36,r14; (p06) br.cond.dptk.few	40000000000C2B40 }
 
 l40000000000C2C20:
 	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r40; }
@@ -2560,26 +3094,39 @@ l40000000000C2C60:
 
 l40000000000C2C86:
 	{ chk.a.nc	r0,3FFFFFFFFF0C3486; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
 
-l40000000000C2C9C:
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xC680 }
-	{ (p08) nop; break.i	0x1000; break.i	0x1000 }
-	{ cmp.lt	p00,p11,r1,r0; (p01) cmp.lt	p00,p08,r8,r6; zxt1	r35,r0 }
-	{ nop; nop; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p05) nop; break.i	0x1000; break.i	0x1000 }
-	{ nop; deposit	r0,r32,r0,63,0; zxt1	r36,r64 }
-	{ cmpxchg4.acq	r0,[r0],r1; Invalid; break.i	0x1000 }
-	{ (p17) cmpxchg2.acq	r27,[r44],r63; (p05) nop; nop }
-	{ cmp.lt	p08,p17,r0,r66; break.x	0x1C83AA00001000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p21) nop; invala; break.i	0x1000 }
-	{ nop; Invalid; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ Invalid; (p20) cmp.lt	p00,p16,r9,r64; Invalid }
-	{ (p04) invala; nop }
-	{ (p57) nop; zxt1	r0,r64; break.b	0x1000 }
+l40000000000C2C90:
+	{ nop.m	0x0; ld4	r14,[r38]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C2DA0; }
+
+l40000000000C2CB0:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2CC0:
+	{ ld8	r14,[r32]; add	r14,r14,r37; nop.i	0x0; }
+	{ nop.m	0x0; ld8	r33,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p07) br.cond.dpnt.few	40000000000C2D80; }
+
+l40000000000C2CF0:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2D00:
+	{ nop.m	0x0; adds	r34,0x10,r33; nop.i	0x0; }
+	{ ld8	r42,[r34]; nop.i	0x0; br.call.sptk.many	b0,dequote_escapes; }
+	{ ld8	r42,[r34]; adds	r1,0x0,r41; adds	r35,0x0,r8; }
+	{ cmp.eq	p06,p07,0x0,r42; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C2D60; }
+
+l40000000000C2D40:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r41; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2D60:
+	{ ld8	r33,[r33]; st8	[r35],r34; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C2D00 }
+
+l40000000000C2D80:
+	{ adds	r36,0x1,r36; ld4	r14,[r38]; adds	r37,0x8,r37; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r36,r14; (p06) br.cond.dptk.few	40000000000C2CC0 }
 
 l40000000000C2DA0:
 	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r40; }
@@ -2597,23 +3144,32 @@ l40000000000C2DE0:
 
 l40000000000C2E06:
 	{ chk.a.nc	r0,3FFFFFFFFF0C3606; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
 
-l40000000000C2E1C:
-	{ Invalid; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xC680 }
-	{ (p06) nop; break.i	0x1000; break.b	0x1000 }
-	{ cmp.lt	p00,p11,r1,r0; (p01) cmp.lt	p00,p08,r8,r6; zxt1	r3,r0 }
-	{ nop; nop; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p03) nop; break.i	0x1000; break.b	0x1000 }
-	{ nop; deposit	r0,r32,r0,63,0; zxt1	r36,r64 }
-	{ nop; Invalid; break.i	0x1000 }
-	{ (p19) nop; nop; (p04) nop }
-	{ nop; break.i	0x1000; Invalid }
-	{ invala; cmp.eq	p00,p00,r32,r0; mov	pr,r72,0xE440 }
-	{ (p62) ldfp8	f127,f63,[r37]; (p20) cmp.lt.unc	p32,p16,r8,r64; (p01) addp4	r32,r9,r4 }
-	{ (p04) invala; (p48) nop }
-	{ (p59) nop; zxt1	r0,r64; break.i	0x1000 }
+l40000000000C2E10:
+	{ nop.m	0x0; ld4	r14,[r37]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r14; (p07) br.cond.dpnt.few	40000000000C2EF0; }
+
+l40000000000C2E30:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2E40:
+	{ ld8	r14,[r32]; add	r14,r14,r36; nop.i	0x0; }
+	{ nop.m	0x0; ld8	r33,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p07) br.cond.dpnt.few	40000000000C2ED0; }
+
+l40000000000C2E70:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C2E80:
+	{ nop.m	0x0; adds	r34,0x10,r33; nop.i	0x0; }
+	{ ld8	r41,[r34]; nop.i	0x0; br.call.sptk.many	b0,remove_quoted_nulls; }
+	{ nop.m	0x0; ld8	r33,[r33]; adds	r1,0x0,r40 }
+	{ nop.m	0x0; st8	[r8],r34; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r33; (p06) br.cond.dptk.few	40000000000C2E80 }
+
+l40000000000C2ED0:
+	{ adds	r35,0x1,r35; ld4	r14,[r37]; adds	r36,0x8,r36; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r35,r14; (p06) br.cond.dptk.few	40000000000C2E40 }
 
 l40000000000C2EF0:
 	{ adds	r8,0x0,r32; nop.m	0x0; mov.i	ar.pfs,r39; }
@@ -2642,8 +3198,6 @@ l40000000000C2FB0:
 
 l40000000000C2FF0:
 	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
-
-l40000000000C3000:
 	{ ld8	r14,[r32]; add	r14,r14,r47; nop.i	0x0; }
 	{ nop.m	0x0; ld8	r39,[r14]; nop.i	0x0; }
 	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r39; (p06) br.cond.dpnt.few	40000000000C3500; }
@@ -2663,121 +3217,228 @@ l40000000000C3086:
 
 l40000000000C3090:
 	{ adds	r14,0x10,r39; ld8	r53,[r14]; nop.i	0x0; }
-
-l40000000000C3092:
-	{ (p50) chk.a.clr	r9,3FFFFFFFFF4CB492; (p32) break.i	0x20303; Invalid }
-
-l40000000000C3096:
-	{ (p26) fwb; nop; break.b	0x80000 }
-
-l40000000000C3098:
-	{ (p01) break.m	0x406; (p16) break.m	0x9000; nop }
-
-l40000000000C309C:
-	{ nop; cmp.lt	p00,p00,r32,r0; czx1.r	r32,r65 }
-
-l40000000000C309E:
-	{ break.m	0x120; break.x	0x300000800390 }
-
-l40000000000C30A2:
-	{ Invalid; (p16) break.i	0x720ED; nop }
-
-l40000000000C30A4:
-	{ nop; (p08) break.i	0x100007; break.i	0x94698; }
-
-l40000000000C30B0:
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r53; nop.i	0x0; }
 	{ (p06) adds	r37,0x0,r0; (p06) br.cond.dpnt.few	40000000000C30D0; br.call.sptk.many	b0,sh_double_quote; }
 
 l40000000000C30B6:
 	{ Invalid; (p32) nop; break.i	0x80000; }
-	{ Invalid; (p18) nop; nop }
-	{ nop; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD869D6; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p20) chk.a.clr	r9,3FFFFFFFFF2C3126; nop; (p32) nop.b	0x23043; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p20) chk.a.clr	r10,3FFFFFFFFF2C3156; nop; (p16) nop.b	0x2300D; }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; (p20) nop; break.b	0x80000 }
-	{ (p08) nop; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD86A86; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2C31D6; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2C3206; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop.b	0x33000 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f14,3FFFFFFFFF906C66; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x59300; (p19) nop; break.i	0x80000 }
-	{ Invalid; Invalid; (p32) nop }
-	{ (p26) add	r0,r38,r22; (p26) nop; br.call.spnt.many	b0,b2 }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ nop; nop; (p32) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD86B96; nop; (p32) nop }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2C32E6; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2C3316; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop.b	0x33000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; mov	pr,0x4000; (p32) nop }
-	{ (p07) break.m	0x59300; (p19) mov	pr,r38,0x1004; break.b	0x80000 }
-	{ (p07) add	r0,r14,r22; (p07) nop; (p32) nop }
-	{ mf.a; nop; nop }
-	{ nop; mov	pr,0x430000F; break.i	0x80000 }
-	{ (p26) break.m	0x59300; (p27) nop; (p16) nop.b	0x3548D }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; mov.sptk	b0,r51,40000000000C34B6; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r0,3FFFFFFFFF1433D6; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2C3406; nop; (p32) nop; }
-	{ (p07) fwb; Invalid; break.i	0x80000 }
-	{ (p07) break.m	0x50700; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r2,3FFFFFFFFF2C3436; nop; break.i	0x80000; }
-	{ Invalid; (p32) nop; (p16) nop.b	0x33000 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; mov	pr,0x4000; break.i	0x80000 }
-	{ (p07) break.m	0x59300; (p19) nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ (p07) fwb; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0C3CA6; nop; cmp.lt	p00,p00,r0,r32 }
-	{ Invalid; Invalid; Invalid }
+
+l40000000000C30BC:
+	{ (p40) nop; nop; Invalid }
+	{ cmpxchg4.acq	r8,[r66],r0; break.x	0x1C89A300501000 }
+
+l40000000000C30D0:
+	{ cmp.eq	p18,p19,0x0,r35; nop.i	0x0; (p18) br.cond.dpnt.few	40000000000C36B0; }
+
+l40000000000C30E0:
+	{ ld1	r14,[r35]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C36B0 }
+
+l40000000000C3100:
+	{ adds	r14,0x1,r35; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r41,9,r0; (p06) br.cond.dptk.few	40000000000C3180 }
+
+l40000000000C312C:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt.unc	p32,p16,r8,r64; Invalid }
+
+l40000000000C3130:
+	{ adds	r14,0x2,r35; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r41,10,r0; (p06) br.cond.dptk.few	40000000000C3180 }
+
+l40000000000C315C:
+	{ (p01) nop; zxt1	r96,r64; break.b	0x1000 }
+
+l40000000000C3160:
+	{ adds	r53,0x0,r35; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ nop.m	0x0; adds	r1,0x0,r51; adds	r41,0x8,r8 }
+
+l40000000000C3180:
+	{ nop.m	0x0; cmp.eq	p16,p17,0x0,r37; (p16) br.cond.dpnt.few	40000000000C36C0 }
+
+l40000000000C3190:
+	{ ld1	r14,[r37]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C36C0 }
+
+l40000000000C31B0:
+	{ adds	r14,0x1,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000C3230 }
+
+l40000000000C31DC:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt	p32,p16,r9,r64; Invalid }
+
+l40000000000C31E0:
+	{ adds	r14,0x2,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000C3230 }
+
+l40000000000C320C:
+	{ Invalid; nop; (p06) epc }
+
+l40000000000C3210:
+	{ nop.m	0x0; adds	r53,0x0,r37; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r51; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C3230:
+	{ add	r14,r41,r8,0x1; add	r14,r14,r38; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r14,r34; (p07) br.cond.dptk.few	40000000000C3600 }
+
+l40000000000C3250:
+	{ nop.m	0x0; sxt4	r14,r38; adds	r38,0x1,r38 }
+	{ nop.m	0x0; adds	r54,0x0,r35; nop.b	0x0; }
+	{ add	r14,r36,r14; sxt4	r53,r38; add	r53,r36,r53 }
+	{ st1	[r42],r14; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ nop.m	0x0; adds	r1,0x0,r51; (p18) br.cond.dpnt.few	40000000000C36A0 }
+
+l40000000000C32A0:
+	{ ld1	r14,[r35]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C36A0 }
+
+l40000000000C32C0:
+	{ adds	r14,0x1,r35; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000C3340 }
+
+l40000000000C32EC:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt.unc	p32,p16,r8,r64; Invalid }
+
+l40000000000C32F0:
+	{ adds	r14,0x2,r35; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000C3340 }
+
+l40000000000C331C:
+	{ Invalid; nop; (p06) epc }
+
+l40000000000C3320:
+	{ nop.m	0x0; adds	r53,0x0,r35; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r51; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C3340:
+	{ nop.m	0x0; add	r38,r8,r38; nop.i	0x0; }
+	{ adds	r14,0x1,r38; sxt4	r15,r38; adds	r38,0x2,r38; }
+	{ nop.m	0x0; sxt4	r14,r14; add	r15,r36,r15; }
+	{ add	r14,r36,r14; st1	[r43],r15; nop.i	0x0; }
+	{ st1	[r44],r14; nop.i	0x0; (p16) br.cond.dpnt.few	40000000000C3470; }
+
+l40000000000C3390:
+	{ nop.m	0x0; sxt4	r53,r38; adds	r54,0x0,r37; }
+	{ add	r53,r36,r53; nop.i	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ ld1	r14,[r37]; nop.m	0x0; adds	r1,0x0,r51; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) adds	r8,0x0,r0; (p06) br.cond.dptk.few	40000000000C3460 }
+
+l40000000000C33DC:
+	{ (p04) cmp.lt	p00,p11,r0,r33; (p17) cmp.lt	p32,p16,r9,r64; (p01) rfi }
+
+l40000000000C33E0:
+	{ adds	r14,0x1,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,1,r0; (p06) br.cond.dptk.few	40000000000C3460 }
+
+l40000000000C340C:
+	{ (p03) cmp.lt	p00,p11,r0,r33; (p33) cmp.lt	p32,p16,r9,r64; Invalid }
+
+l40000000000C3410:
+	{ adds	r14,0x2,r37; ld1	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; cmp4.eq	p06,p07,0x0,r14; }
+	{ nop.m	0x0; (p06) addl	r8,2,r0; (p06) br.cond.dptk.few	40000000000C3460 }
+
+l40000000000C343C:
+	{ Invalid; nop; (p06) epc }
+
+l40000000000C3440:
+	{ nop.m	0x0; adds	r53,0x0,r37; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r1,0x0,r51; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C3460:
+	{ add	r38,r8,r38; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C3470:
+	{ nop.m	0x0; sxt4	r14,r38; adds	r38,0x1,r38; }
+	{ nop.m	0x0; add	r14,r36,r14; nop.i	0x0; }
+	{ st1	[r45],r14; ld8	r14,[r40]; nop.i	0x0; }
+	{ cmp.eq	p06,p07,r35,r14; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C34D0; }
+
+l40000000000C34B0:
+	{ nop.m	0x0; (p19) adds	r53,0x0,r35; (p19) br.call.dptk.many	b0,400000000001A7E0; }
+
+l40000000000C34BC:
+	{ (p25) nop; invala; break.b	0x1000 }
+
+l40000000000C34C0:
+	{ (p19) adds	r1,0x0,r51; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C34C6:
 	{ break.m	0x4000; nop; (p20) nop }
+
+l40000000000C34D0:
+	{ (p17) adds	r53,0x0,r37; nop.i	0x0; (p17) br.call.dptk.many	b0,400000000001A7E0; }
+
+l40000000000C34D2:
+	{ (p16) break.m	0x42009; nop; (p38) nop; }
+
+l40000000000C34D6:
 	{ nop; (p32) nop; (p48) nop }
-	{ nop; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD46766; nop; (p32) nop.b	0x2E02B }
+
+l40000000000C34D8:
+	{ (p16) cmp.lt	p00,p24,0xFFFFFFFFFFFFFFA0,r4; (p21) mov	pr,0x38095AF; (p28) break.i	0x80C2 }
+
+l40000000000C34DC:
+	{ (p24) cmp.eq	p46,p09,r61,r45; (p04) nop; nop }
+
+l40000000000C34DE:
+	{ Invalid; Invalid; Invalid }
+
+l40000000000C34E2:
+	{ (p48) break.m	0x20309; sxt1	r32,r32; Invalid; }
+
+l40000000000C34E4:
+	{ break.m	0x100002; Invalid; (p08) break.b	0x84 }
+
+l40000000000C34E8:
+	{ (p16) ldfe	f0,[r20]; (p06) break.i	0x10840; czx1.r	r8,r0 }
+
+l40000000000C34EE:
+	{ (p32) break.m	0x210; (p04) nop; (p25) nop; }
+
+l40000000000C34F4:
+	{ nop; (p08) nop; Invalid; }
 
 l40000000000C3500:
 	{ adds	r46,0x1,r46; ld4	r14,[r48]; adds	r47,0x8,r47; }
-	{ nop.m	0x0; cmp4.lt	p06,p07,r46,r14; (p06) br.cond.dptk.few	40000000000C3000 }
+
+l40000000000C3504:
+	{ (p08) padd2	r4,r56,r0; mov	pr,0x7885E02; (p08) break.i	0x84 }
+
+l40000000000C3506:
+	{ Invalid; (p23) nop; break.i	0x80000 }
+
+l40000000000C3508:
+	{ (p06) cmp4.eq	p04,p05,r8,r112; (p05) break.i	0x10840; Invalid }
+
+l40000000000C350E:
+	{ (p32) break.m	0x210; (p04) nop; (p28) nop; }
+
+l40000000000C3514:
+	{ nop; (p04) nop; (p21) dep	r66,r0,r35,15,2; }
 
 l40000000000C3520:
 	{ adds	r35,0x1,r38; adds	r15,0x8,r34; sxt4	r14,r38 }
-	{ nop.m	0x0; adds	r53,0x0,r36; nop.i	0x0; }
-	{ sub	r54,r35,r34; cmp4.lt	p07,p06,r35,r34; (p07) br.cond.dpnt.few	40000000000C3580; }
 
-l40000000000C3550:
-	{ nop.m	0x0; extr	r54,r54,3,29; shladd	r54,r54,0x3,r15; }
-	{ nop.m	0x0; sxt4	r54,r54; br.call.sptk.many	b0,xrealloc; }
-	{ adds	r1,0x0,r51; adds	r36,0x0,r8; sxt4	r14,r38; }
-
-l40000000000C3580:
-	{ nop.m	0x0; sxt4	r35,r35; nop.b	0x0 }
-	{ add	r14,r36,r14; addl	r15,41,r0; cmp4.eq	p06,p07,0x0,r33; }
-	{ add	r35,r36,r35; st1	[r15],r14; nop.i	0x0; }
-	{ st1	[r0],r35; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000C3700 }
+l40000000000C3524:
+	{ Invalid; (p08) nop; break.i	0x48 }
+	{ Invalid; (p08) break.i	0x100004; dep	r8,r1,r54,45,4; }
+	{ nop; break.x	0x2001F080001A; }
+	{ cmp4.eq.or.andcm	p00,p24,r88,r25; (p36) addl	r2,1449688,r1; break.i	0x8C; }
+	{ nop; Invalid; (p32) nop; }
+	{ (p08) fwb; (p08) nop; break.i	0x80 }
+	{ nop; break.i	0x0; nop; }
+	{ nop.m	0x91E04; (p32) nop; (p12) dep	r79,r0,r35,37,5 }
+	{ nop; (p12) break.i	0x100002; dep	r0,r1,r0,39,1 }
+	{ (p12) break.m	0x100002; break.i	0x50038; (p06) dep	r26,r0,r8,31,1 }
 
 l40000000000C35C0:
 	{ adds	r8,0x0,r36; mov	pr,r52,0xFFFFFFFFFFFFFFFE; mov.i	ar.pfs,r50; }
@@ -2786,22 +3447,36 @@ l40000000000C35C0:
 l40000000000C35E0:
 	{ ld8	r53,[r40]; nop.i	0x0; br.call.sptk.many	b0,sh_double_quote; }
 	{ adds	r1,0x0,r51; adds	r35,0x0,r8; br.cond.sptk.few	40000000000C3090 }
-40000000000C3600 09 00 00 00 01 00 20 12 01 20 40 00 00 00 04 00 ...... .. @.....
-40000000000C3610 10 00 00 00 01 00 70 70 88 0C 61 03 F0 FF FF 4A ......pp..a....J
-40000000000C3620 11 A8 01 48 00 21 60 03 88 2C 00 00 E8 57 02 50 ...H.!`..,...W.P
-40000000000C3630 10 00 00 00 01 00 E0 00 98 2C 00 00 00 00 00 20 .........,..... 
-40000000000C3640 09 20 01 10 00 21 60 0A 98 00 42 20 00 98 01 84 . ...!`...B ....
-40000000000C3650 01 70 90 1C 00 20 50 03 98 2C 00 C0 06 18 01 84 .p... P..,......
-40000000000C3660 08 00 00 00 01 00 50 23 D5 00 40 00 00 00 04 00 ......P#..@.....
-40000000000C3670 19 00 A8 1C 80 11 00 00 00 02 00 00 18 7B F5 58 .............{.X
-40000000000C3680 11 00 00 00 01 00 10 00 CC 00 C2 09 20 FC FF 4A ............ ..J
-40000000000C3690 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
-40000000000C36A0 10 00 00 00 01 00 80 00 00 00 42 00 A0 FC FF 48 ..........B....H
-40000000000C36B0 11 48 21 00 00 24 00 01 94 22 F2 08 E0 FA FF 4A .H!..$...".....J
-40000000000C36C0 0B 40 00 00 00 21 E0 48 21 02 40 00 00 00 04 00 .@...!.H!.@.....
-40000000000C36D0 09 00 00 00 01 00 E0 70 98 00 40 00 00 00 04 00 .......p..@.....
-40000000000C36E0 10 00 00 00 01 00 60 70 88 0E 61 03 70 FB FF 4A ......`p..a.p..J
-40000000000C36F0 10 00 00 00 01 00 00 00 00 02 00 00 10 FF FF 48 ...............H
+
+l40000000000C3600:
+	{ nop.m	0x0; shladd	r34,r34,0x1,r0; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p07,p06,r14,r34; (p06) br.cond.dptk.few	40000000000C3600 }
+
+l40000000000C3620:
+	{ adds	r53,0x0,r36; sxt4	r54,r34; br.call.sptk.many	b0,xrealloc; }
+	{ nop.m	0x0; sxt4	r14,r38; nop.b	0x0 }
+	{ adds	r36,0x0,r8; adds	r38,0x1,r38; adds	r1,0x0,r51; }
+	{ add	r14,r36,r14; sxt4	r53,r38; adds	r54,0x0,r35; }
+	{ nop.m	0x0; add	r53,r36,r53; nop.i	0x0 }
+	{ st1	[r42],r14; nop.m	0x0; br.call.sptk.many	b0,400000000001B180; }
+	{ nop.m	0x0; adds	r1,0x0,r51; (p19) br.cond.dptk.few	40000000000C32A0; }
+
+l40000000000C3690:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C36A0:
+	{ nop.m	0x0; adds	r8,0x0,r0; br.cond.sptk.few	40000000000C3340 }
+
+l40000000000C36B0:
+	{ addl	r41,8,r0; cmp.eq	p16,p17,0x0,r37; (p17) br.cond.dptk.few	40000000000C3190; }
+
+l40000000000C36C0:
+	{ adds	r8,0x0,r0; add	r14,r41,r8,0x1; nop.i	0x0; }
+	{ nop.m	0x0; add	r14,r14,r38; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r14,r34; (p06) br.cond.dptk.few	40000000000C3250 }
+
+l40000000000C36F0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C3600 }
 
 l40000000000C3700:
 	{ adds	r53,0x0,r36; nop.i	0x0; br.call.sptk.many	b0,sh_single_quote; }
@@ -2853,33 +3528,62 @@ l40000000000C38B0:
 
 l40000000000C38DC:
 	{ Invalid; break.i	0x1000; Invalid }
-	{ (p08) invala; break.i	0x1000; (p32) break.i	0x2A828 }
-	{ cmp.lt	p00,p09,r0,r16; (p32) cmp.lt	p08,p24,r96,r1; (p04) cmp.lt.unc	p00,p16,r3,r64 }
-	{ Invalid; break.x	0x8000032820; }
-	{ nop.m	0x541; mov	pr,r32,0x0; (p32) break.i	0x2A828 }
+
+l40000000000C38E0:
+	{ nop.m	0x0; nop.i	0x0; br.cloop.sptk.few	40000000000C39E0; }
+
+l40000000000C38F0:
+	{ nop.m	0x0; mov.i	LC,r34; nop.b	0x0 }
+	{ cmp.lt	p06,p07,r34,r0; adds	r38,0x0,r14; adds	r46,0x0,r14; }
+	{ nop.m	0x0; mov	r34,LC; (p06) mov.i	LC,0x0; }
+
+l40000000000C3920:
+	{ nop.m	0x0; (p07) mov.i	LC,r34; nop.i	0x0; }
+
+l40000000000C392C:
 	{ Invalid; break.i	0x1000; nop }
 	{ (p08) nop; zxt1	r64,r64; break.i	0x1000 }
-	{ nop; cmp.lt	p00,p00,r32,r0; cmp.eq.unc	p32,p28,r104,r97 }
-	{ Invalid; (p05) nop; }
+
+l40000000000C3940:
+	{ adds	r37,0x0,r14; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C3950:
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r35; adds	r47,0x0,r36 }
+	{ st8	[r0],r38; (p06) addl	r45,64,r0; nop.i	0x0; }
+
+l40000000000C396C:
 	{ nop; zxt4	r10,r0; break.i	0x1000 }
-	{ (p20) cmp.lt	p31,p08,r63,r44; (p16) flushrs; nop.b	0x1000 }
-	{ nop; zxt1	r0,r64; nop }
-	{ Invalid; break.x	0x8CC264A001000; }
-	{ (p17) nop; (p01) nop; zxt1	r96,r64 }
-	{ (p21) nop.m	0x1540; break.i	0x1000; break.i	0x2A82B }
-	{ invala; break.i	0x1000; (p16) add	r42,r0,r112 }
-	{ nop; cmp.lt	p00,p00,r32,r0; Invalid }
-	{ invala; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xE480 }
-	{ (p55) nop; zxt1	r0,r64; break.b	0x1000 }
+
+l40000000000C3976:
+	{ break.m	0x4000; (p32) nop; (p32) nop }
+	{ add	r0,r0,r1; nop; nop }
+	{ add	r0,r0,r1; (p22) cmp4.eq.or.andcm	p00,p02,r39,r0; (p01) nop }
+
+l40000000000C39A6:
+	{ break.m	0x4000; (p32) nop; nop }
+	{ Invalid; mov	pr,0xAA02A; break.b	0x80000 }
+	{ break.m	0xAA0AC; nop; break.i	0x80000 }
+	{ Invalid; (p34) nop; break.i	0x80000 }
+
+l40000000000C39E0:
+	{ nop.m	0x0; ld8	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r14; (p07) br.cond.dptk.few	40000000000C38E0 }
 
 l40000000000C3A00:
 	{ adds	r40,0x0,r0; nop.m	0x0; mov.i	ar.pfs,r42; }
 	{ adds	r8,0x0,r40; nop.m	0x0; mov.i	LC,r44; }
 	{ nop.m	0x0; mov.spnt	b0,r41,40000000000C3A20; br.ret	b0 }
-40000000000C3A30 09 28 01 1C 18 10 00 00 00 02 00 C0 04 70 00 84 .(...........p..
-40000000000C3A40 08 00 00 00 01 00 60 00 94 0E 72 C0 01 28 01 84 ......`...r..(..
-40000000000C3A50 16 00 00 00 00 88 01 80 FF FF 25 A0 E0 FF FF 48 ..........%....H
-40000000000C3A60 11 00 00 00 01 00 00 00 00 02 00 00 E0 FE FF 48 ...............H
+
+l40000000000C3A30:
+	{ ld8	r37,[r14]; nop.m	0x0; adds	r38,0x0,r14; }
+	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r37; adds	r14,0x0,r37 }
+	{ nop.b	0x0; (p06) br.cond.dpnt.few	40000000000C3950; br.cloop.sptk.few	40000000000C3A30 }
+
+l40000000000C3A5C:
+	{ Invalid; break.i	0x1000; break.i	0x1000 }
+
+l40000000000C3A60:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C3940; }
 40000000000C3A70 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; assoc_keys_to_word_list: 40000000000C3A80
@@ -2927,16 +3631,33 @@ l40000000000C3BC0:
 
 l40000000000C3BC6:
 	{ Invalid; Invalid; Invalid }
+
+l40000000000C3BCC:
+	{ (p08) cmp.le.and	p10,p08,r0,r41; (p05) invala; nop }
+
+l40000000000C3BD0:
+	{ (p16) adds	r46,0x0,r36; nop.m	0x0; (p16) adds	r45,0x0,r8 }
+
+l40000000000C3BD6:
 	{ nop; (p22) nop; (p20) nop }
+
+l40000000000C3BE0:
+	{ (p16) adds	r1,0x0,r43; nop.m	0x0; (p16) br.call.dptk.many	b0,400000000001B180; }
+
+l40000000000C3BE6:
 	{ nop; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p18) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; (p16) nop.b	0x8009 }
-	{ (p22) chk.a.clr	r0,3FFFFFFFFF143E86; nop; break.b	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
+
+l40000000000C3BF0:
+	{ adds	r1,0x0,r43; nop.m	0x0; adds	r36,0x0,r8 }
+	{ adds	r45,0x0,r8; nop.m	0x0; br.call.sptk.many	b0,make_bare_word; }
+	{ adds	r46,0x0,r37; nop.m	0x0; adds	r1,0x0,r43 }
+	{ adds	r45,0x0,r8; nop.m	0x0; br.call.sptk.many	b0,make_word_list; }
+	{ cmp.eq	p06,p07,0x0,r36; adds	r1,0x0,r43; nop.i	0x0 }
+	{ adds	r37,0x0,r8; adds	r45,0x0,r36; (p06) br.cond.dpnt.few	40000000000C3C70; }
+
+l40000000000C3C50:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r43; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C3C70:
 	{ nop.m	0x0; ld8	r35,[r35]; nop.i	0x0; }
@@ -3506,6 +4227,8 @@ l40000000000C56A0:
 
 l40000000000C5700:
 	{ addl	r14,1,r0; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C5710:
 	{ nop.m	0x0; add	r15,r15,r14; nop.i	0x0; }
 	{ st4	[r15],r35; nop.i	0x0; br.cond.sptk.few	40000000000C5620 }
 
@@ -3577,6 +4300,8 @@ l40000000000C59C0:
 l40000000000C59E0:
 	{ addl	r40,1,r0; nop.i	0x0; br.call.sptk.many	b0,400000000001C3C0; }
 	{ adds	r1,0x0,r54; ld8	r16,[r8]; nop.i	0x0 }
+
+l40000000000C5A00:
 	{ ld1.a	r15,[r41]; nop.m	0x0; adds	r38,0x40,r12; }
 	{ st8	[r0],r38; ld1.c.clr	r15,[r41]; nop.i	0x0; }
 	{ nop.m	0x0; sxt1	r15,r15; shladd	r17,r15,0x1,r16; }
@@ -3614,23 +4339,11 @@ l40000000000C5B3C:
 l40000000000C5B40:
 	{ adds	r56,0x0,r45; nop.m	0x0; nop.i	0x0 }
 
-l40000000000C5B42:
-	{ (p16) break.m	0x4200B; break.i	0x20; Invalid; }
-
-l40000000000C5B48:
-	{ (p16) break.m	0x0; (p16) break.i	0x11000; break.i	0x8 }
-
-l40000000000C5B4E:
-	{ break.m	0x220; (p04) nop }
-
 l40000000000C5B50:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
-
-l40000000000C5B54:
-	{ break.m	0x100000; cmp4.gt.or.andcm	p00,p38,r0,r38; (p49) break.i	0x42; }
-	{ Invalid; (p08) mov	pr,0x4807004; (p08) break.i	0xCC; }
-	{ break.m	0x100000; cmp4.gt.or.andcm	p00,p38,r0,r30; (p49) nop; }
-	{ (p08) break.m	0x100004; break.i	0x100000; break.i	0x88 }
+	{ nop.m	0x0; adds	r1,0x0,r54; adds	r56,0x0,r41 }
+	{ nop.m	0x0; nop.m	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C5B90:
 	{ nop.m	0x0; adds	r56,0x0,r34; br.call.sptk.many	b0,400000000001A7E0; }
@@ -3658,6 +4371,8 @@ l40000000000C5C50:
 	{ adds	r1,0x0,r54; nop.m	0x0; adds	r39,0x0,r8 }
 	{ adds	r56,0x0,r8; nop.m	0x0; br.call.sptk.many	b0,brace_expand; }
 	{ nop.m	0x0; adds	r1,0x0,r54; adds	r35,0x0,r8 }
+
+l40000000000C5CE0:
 	{ adds	r56,0x0,r39; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
 	{ adds	r1,0x0,r54; nop.i	0x0; br.call.sptk.many	b0,400000000001B0C0; }
 	{ adds	r1,0x0,r54; cmp.ltu	p07,p06,0x1,r8; (p06) br.cond.dpnt.few	40000000000C5F80 }
@@ -3676,8 +4391,10 @@ l40000000000C5D80:
 
 l40000000000C5D86:
 	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; nop; (p48) nop }
+
+l40000000000C5D90:
+	{ nop.m	0x0; add	r38,r15,r38; nop.i	0x0; }
+	{ st4	[r38],r37; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C5DB0:
 	{ cmp4.eq	p07,p06,0x0,r43; addl	r59,44,r0; adds	r58,0x0,r37 }
@@ -3694,33 +4411,37 @@ l40000000000C5DD0:
 
 l40000000000C5E36:
 	{ chk.a.nc	r0,3FFFFFFFFF0C6636; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
 
-l40000000000C5E52:
-	{ break.m	0x42002; zxt1	r32,r0; (p32) cmp.lt	p13,p06,r64,r48; }
+l40000000000C5E40:
+	{ adds	r56,0x0,r35; nop.i	0x0; br.call.sptk.many	b0,strvec_len; }
+	{ adds	r42,0x0,r8; nop.m	0x0; adds	r1,0x0,r54 }
+	{ adds	r56,0x0,r38; nop.m	0x0; br.call.sptk.many	b0,strvec_len; }
+	{ add	r41,r42,r8; nop.m	0x0; adds	r40,0x0,r8 }
+	{ adds	r1,0x0,r54; nop.m	0x0; adds	r56,0x0,r35; }
+	{ adds	r57,0x1,r41; nop.i	0x0; br.call.sptk.many	b0,strvec_resize; }
+	{ adds	r17,0xFFFFFFFFFFFFFFFF,r40; adds	r16,0x8,r38; sxt4	r15,r42 }
+	{ cmp4.lt	p07,p06,0x0,r40; adds	r14,0x0,r38; adds	r1,0x0,r54; }
+	{ addp4	r17,r17,r0; shladd	r15,r15,0x3,r8; nop.i	0x0 }
+	{ adds	r35,0x0,r8; (p06) adds	r41,0x0,r42; (p06) br.cond.dpnt.few	40000000000C5F20; }
 
-l40000000000C5E62:
-	{ (p32) break.m	0x42009; cmp.ltu	p32,p00,r0,r0; (p07) deposit	r53,r0,r10,31,2; }
+l40000000000C5EDC:
+	{ (p02) nop; zxt1	r4,r4; break.b	0x1000 }
 
-l40000000000C5E68:
-	{ Invalid; (p26) extr.u	r0,r2,5,37; (p33) break.i	0x10000 }
-	{ (p16) rum	0x0; Invalid; (p24) break.i	0x10803 }
-	{ (p16) nop; (p04) mov	pr,r48,0xFFFFFFFFFFFF2080; (p36) break.i	0x10802 }
-	{ (p16) adds	r0,0xFFFFFFFFFFFFFC00,r0; (p26) nop; (p35) deposit	r122,r51,r4,59,0 }
-	{ (p04) cmpxchg1.acq	r64,[r112],r16; (p37) flushrs; (p32) nop }
-	{ (p04) cmp.lt.unc	p00,p00,r16,r16; Invalid; brp.sptk	40000000000C62B8 }
-	{ (p33) break.m	0x804; (p16) mov	pr,0x1819000; (p32) mov	pr,0x48D0800 }
-	{ Invalid; Invalid; break.i	0x10091 }
-	{ (p16) break.m	0x0; (p16) break.i	0x8000; break.i	0x8 }
-	{ (p16) break.m	0x0; (p16) break.i	0x9000; deposit	r8,r0,r0,59,0 }
-	{ (p01) break.m	0x506; Invalid; Invalid }
-	{ (p33) nop; (p63) break.m	0x14AF; nop }
-	{ (p37) cmp.lt	p05,p07,r0,r0; nop }
-	{ (p36) break.m	0x804; (p16) break.f	0x11000; (p36) break.i	0x8CC2; }
-	{ (p16) nop; Invalid; (p24) mov	pr,r16,0x6 }
-	{ (p04) nop; (p21) nop; (p24) break.b	0x10803 }
-	{ Invalid; Invalid; czx1.r	r3,r4 }
-	{ (p33) nop; (p63) mov	pr,0x300B4AF; (p20) mov	pr,0xB008082 }
+l40000000000C5EE0:
+	{ shladd	r17,r17,0x3,r16; nop.m	0x0; nop.i	0x0; }
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C5F00:
+	{ nop.m	0x0; ld8	r16,[r14],8; nop.i	0x0; }
+	{ st8	[r15],r8,8; cmp.eq	p07,p06,r17,r14; (p06) br.cond.dptk.few	40000000000C5F00 }
+
+l40000000000C5F20:
+	{ nop.m	0x0; sxt4	r41,r41; adds	r56,0x0,r38; }
+	{ nop.m	0x0; shladd	r41,r41,0x3,r35; nop.i	0x0; }
+	{ st8	[r0],r41; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; adds	r56,0x0,r39; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; nop.i	0x0; br.call.sptk.many	b0,400000000001B0C0; }
+	{ adds	r1,0x0,r54; cmp.ltu	p07,p06,0x1,r8; (p07) br.cond.dptk.few	40000000000C5D10 }
 
 l40000000000C5F80:
 	{ ld4	r38,[r37]; adds	r38,0x1,r38; nop.i	0x0; }
@@ -3765,7 +4486,7 @@ l40000000000C60D0:
 
 l40000000000C60F0:
 	{ cmp4.eq	p06,p07,r46,r40; nop.m	0x0; adds	r15,0x48,r12 }
-	{ sub	r43,0xFE,r43; nop.m	0x0; add	r14,r39,r44; }
+	{ sub	r43,0xFFFFFFFFFFFFFFFE,r43; nop.m	0x0; add	r14,r39,r44; }
 	{ cmp4.eq.or.andcm	p07,p06,0x0,r40; add	r14,r43,r14; (p07) br.cond.dpnt.few	40000000000C5B40; }
 
 l40000000000C6120:
@@ -3773,80 +4494,264 @@ l40000000000C6120:
 
 l40000000000C612C:
 	{ Invalid; Invalid; Invalid }
-	{ (p12) cmp.lt	p00,p17,r64,r33; (p04) cmp.eq.unc	p32,p08,r3,r6; (p16) mov	pr,r72,0xC6C0 }
-	{ (p03) nop; cmp.eq	p00,p00,r32,r0; Invalid }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; (p01) cmp.lt.unc	p32,p00,r3,r5 }
-	{ (p24) cmp4.eq.and	p15,p17,r7,r115; (p05) mov	pr,r8,0x84C0; (p53) mov	pr,r0,0x9000 }
+
+l40000000000C6130:
+	{ (p07) ld1	r42,[r41]; nop.m	0x0; (p07) br.cond.dpnt.few	40000000000C62B0; }
+
+l40000000000C6136:
+	{ chk.a.nc	f0,3FFFFFFFFF0C6936; nop; (p32) nop }
+
+l40000000000C6140:
+	{ ld8	r38,[r15]; cmp4.lt	p07,p06,0x1,r35; (p06) br.cond.dpnt.few	40000000000C61A0; }
+
+l40000000000C6150:
+	{ nop.m	0x0; ld1	r15,[r45]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; cmp4.eq	p06,p07,0x30,r15; }
+	{ (p06) adds	r46,0x0,r35; (p06) addl	r40,3,r0; (p06) br.cond.dpnt.few	40000000000C61B0; }
+
+l40000000000C6176:
+	{ (p20) chk.a.clr	r3,3FFFFFFFFF2C6176; nop; (p32) nop; }
+
+l40000000000C617C:
 	{ (p02) cmp.lt	p00,p17,r64,r33; czx1.r	r96,r97; mov	pr,r32,0x0 }
-	{ (p01) invala; cmp.eq	p00,p00,r32,r0; (p16) mov	pr,r67,0xE6D6 }
-	{ (p43) nop; cmp.lt	p00,p00,r32,r0; zxt1	r0,r64 }
-	{ Invalid; Invalid; Invalid }
-	{ (p04) cmp.eq	p00,p11,r64,r33; Invalid; Invalid }
-	{ cmp.eq	p15,p17,r20,r0; czx1.r	r108,r97; mov	pr,r32,0x0; }
-	{ (p03) cmp.lt	p00,p17,r64,r33; czx1.r	r64,r97; mov	pr,r32,0x0 }
-	{ (p03) invala; cmp.eq	p00,p00,r32,r0; (p16) mov	pr,r67,0xE6D6 }
-	{ (p02) cmp.eq	p00,p11,r0,r33; (p17) cmp.eq	p32,p16,r10,r64; (p01) rfi }
-	{ nop.m	0x80; cmp.eq	p00,p00,r32,r0; (p01) break.i	0x141E0 }
-	{ Invalid; cmp.eq	p00,p00,r32,r0; mov	pr,r67,0xE6D8 }
-	{ (p01) cmp.lt	p00,p11,r0,r33; (p32) mov	pr,r99,0xC296; (p53) cmp4.eq.and	p00,p18,r0,r0 }
+
+l40000000000C6180:
+	{ cmp4.eq	p06,p07,0x2,r35; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C61A0; }
+
+l40000000000C6190:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2D,r15; (p07) br.cond.dpnt.few	40000000000C66F0 }
+
+l40000000000C61A0:
+	{ nop.m	0x0; adds	r46,0x0,r0; addl	r40,1,r0; }
+
+l40000000000C61B0:
+	{ cmp4.lt	p07,p06,0x1,r14; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C6240; }
+
+l40000000000C61C0:
+	{ ld1	r15,[r41]; nop.m	0x0; sxt1	r15,r15; }
+	{ cmp4.eq	p07,p06,0x30,r15; nop.i	0x0; (p07) br.cond.dpnt.few	40000000000C6230; }
+
+l40000000000C61E0:
+	{ cmp4.eq	p06,p07,0x2,r14; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C6240; }
+
+l40000000000C61F0:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x2D,r15; (p06) br.cond.dptk.few	40000000000C6240 }
+
+l40000000000C6200:
+	{ adds	r15,0x1,r41; ld1	r15,[r15]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x30,r15; (p06) br.cond.dptk.few	40000000000C6240; }
+
+l40000000000C6230:
+	{ cmp4.lt	p06,p07,r46,r14; (p06) addl	r40,3,r0; (p06) adds	r46,0x0,r14; }
+
+l40000000000C623C:
 	{ cmp.lt	p14,p09,r0,r66; break.x	0x1843A35C001000; }
-	{ Invalid; zxt4	r0,r0; Invalid; }
-	{ Invalid; (p02) cmp.eq	p00,p48,0x0,r64; (p01) epc; }
+
+l40000000000C6240:
+	{ cmp4.lt	p06,p07,r46,r35; nop.m	0x0; cmp4.eq	p08,p09,0x3,r40; }
+	{ (p06) addl	r16,1,r0; nop.m	0x0; (p08) addl	r15,1,r0; }
+
+l40000000000C6256:
+	{ addl	r0,0,r1; (p07) cmp4.eq.and	p01,p08,0x0,r0; (p01) nop }
+
+l40000000000C6260:
+	{ (p07) adds	r16,0x0,r0; (p09) adds	r15,0x0,r0; and	r16,r16,r15; }
+
+l40000000000C6266:
+	{ Invalid; (p08) br.call.dpnt.few.clr	b0,b7; Invalid }
+
+l40000000000C626C:
 	{ (p08) cmp.lt	p15,p11,r12,r64; cmp4.eq.and	p00,p60,r100,r97; zxt1	r96,r64 }
+
+l40000000000C627C:
 	{ cmp.lt	p00,p11,r1,r0; (p32) mov	pr,r99,0xC296; zxt4	r0,r0 }
+
+l40000000000C628C:
 	{ Invalid; (p02) cmp.eq	p00,p16,r0,r64; zxt1	r100,r3 }
-	{ cmp.lt	p00,p10,r1,r0; mov	pr,r99,0xE6C0; (p53) cmp4.eq.and	p00,p50,r0,r0 }
+
+l40000000000C6296:
+	{ Invalid; nop; Invalid }
+	{ (p20) chk.a.clr	f3,3FFFFFFFFF2C62A6; (p23) nop; (p32) nop; }
+
+l40000000000C62AC:
 	{ cmp.lt	p14,p11,r0,r66; (p32) nop; }
-	{ Invalid; (p07) mov	pr,r3,0x8480; zxt1	r64,r1 }
+
+l40000000000C62B0:
+	{ sub	r14,r42,r38; cmp4.lt	p07,p06,r14,r0; nop.i	0x0; }
+	{ (p06) adds	r56,0x0,r14; (p07) sub	r56,r0,r14; nop.i	0x0; }
+
+l40000000000C62C6:
+	{ Invalid; nop; nop; }
+
+l40000000000C62CC:
 	{ Invalid; zxt1	r0,r64; break.i	0x1000 }
 	{ (p51) cmp.lt.unc	p19,p09,r1,r40; nop; nop }
 	{ cmp4.eq.and	p08,p17,r0,r66; (p22) nop }
+
+l40000000000C62F6:
+	{ (p24) chk.a.clr	r1,3FFFFFFFFF2C62F6; nop; break.b	0x80000; }
+
+l40000000000C62FC:
 	{ (p01) nop; cmp.lt	p00,p00,r32,r0; nop }
-	{ cmp4.eq.and	p00,p02,r1,r0; zxt4	r0,r0; cmp4.eq.and	p00,p32,r32,r0 }
-	{ cmp.lt	p00,p11,r0,r66; (p32) cmp4.ne.or.andcm	p10,p56,r105,r1; zxt1	r0,r64; }
+
+l40000000000C6300:
+	{ nop.m	0x0; cmp4.lt	p06,p07,0x0,r49; nop.i	0x0; }
+	{ (p06) addl	r14,1,r0; nop.i	0x0; (p07) adds	r14,0x0,r0 }
+
+l40000000000C6316:
+	{ chk.a.nc	f0,3FFFFFFFFF0C6B16; (p07) nop; (p32) nop }
+
+l40000000000C6320:
+	{ cmp.lt	p06,p07,r42,r38; (p07) adds	r15,0x0,r0; nop.i	0x0; }
+
+l40000000000C632C:
 	{ cmp4.eq.or.andcm	p00,p11,r1,r0; (p17) cmp.lt	p00,p18,r0,r0; zxt1	r99,r3 }
-	{ cmp.lt	p00,p11,r1,r0; nop; zxt1	r32,r1 }
+
+l40000000000C6336:
+	{ Invalid; nop; (p32) nop }
+	{ Invalid; nop; Invalid; }
+
+l40000000000C634C:
 	{ Invalid; nop; (p37) mov	pr,r12,0x525E }
+
+l40000000000C635C:
 	{ (p02) cmp.lt	p00,p03,r0,r33; (p32) shladdp4	r73,r106,0x1,r1; (p37) cmp4.eq.and	p47,p10,r12,r32 }
-	{ cmp4.eq.and	p00,p43,r0,r72; (p01) cmp.lt	p00,p16,r0,r64; (p33) epc; }
-	{ cmp.lt	p00,p11,r1,r0; nop; (p06) nop }
+
+l40000000000C6360:
+	{ cmp.lt	p06,p07,r38,r42; extr.u	r44,r49,31,1; (p06) addl	r14,1,r0; }
+
+l40000000000C6370:
+	{ (p07) adds	r14,0x0,r0; and	r14,r14,r44; nop.i	0x0; }
+
+l40000000000C6376:
+	{ Invalid; nop; (p32) nop }
+	{ (p24) chk.a.clr	f0,3FFFFFFFFF0C8E96; (p22) nop; (p48) nop; }
+
+l40000000000C638C:
 	{ ldf8	f0,[r66]; nop; }
-	{ (p02) nop; (p50) nop; }
-	{ nop; (p22) nop }
+
+l40000000000C6390:
+	{ addl	r43,7676,r1; cmp4.lt	p06,p07,0x0,r49; addl	r47,7684,r1 }
+	{ cmp4.eq	p17,p16,0x1,r40; cmp4.eq	p19,p18,0x3,r40; adds	r39,0x0,r0; }
+	{ nop.m	0x0; (p06) addl	r48,1,r0; sxt4	r49,r49 }
+
+l40000000000C63BC:
 	{ Invalid; Invalid; Invalid }
-	{ nop; mov	pr,r32,0x0; (p06) deposit	r0,r0,r64,62,0 }
+	{ nop; mov	pr,r32,0x0; (p06) dep	r0,r0,r64,62,1 }
+
+l40000000000C63DC:
 	{ Invalid; Invalid; Invalid }
-	{ invala; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xE680 }
-	{ (p01) invala.e	f0; Invalid; (p08) nop }
-	{ nop; zxt1	r64,r64; break.i	0x1000 }
-	{ nop; cmp.lt	p00,p00,r32,r0; Invalid }
-	{ invala; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0xE680 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
-	{ (p06) nop; invala; break.i	0x1000 }
-	{ nop; (p39) deposit	r0,r0,r0,24,2; (p07) nop }
+
+l40000000000C63E0:
+	{ nop.m	0x0; ld4.acq	r14,[r43]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C6420 }
+
+l40000000000C6400:
+	{ ld4.acq	r56,[r50]; br.call.sptk.many	b0,termsig_handler; nop.b	0x0; }
+	{ adds	r1,0x0,r54; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C6420:
+	{ nop.m	0x0; ld4.acq	r14,[r47]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C6460 }
+
+l40000000000C6440:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,throw_to_top_level; }
+	{ adds	r1,0x0,r54; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C6460:
+	{ addl	r56,2,r0; (p19) addl	r58,-8900,r1; (p19) addl	r57,1,r0 }
+
+l40000000000C646C:
 	{ nop; Invalid; (p07) nop; }
+
+l40000000000C6470:
+	{ (p19) adds	r59,0x0,r46; (p19) adds	r60,0x0,r38; (p17) br.cond.dpnt.few	40000000000C67D0; }
+
+l40000000000C6476:
+	{ (p30) nop; nop }
+
+l40000000000C647C:
 	{ (p27) nop; chk.s.i	r32,3FFFFFFFFF8C647C; zxt1	r0,r64 }
+
+l40000000000C6480:
+	{ nop.m	0x0; (p19) adds	r56,0x0,r40; nop.i	0x0 }
+
+l40000000000C648C:
 	{ Invalid; Invalid; chk.s.i	r32,3FFFFFFFFF8C648C }
-	{ (p52) invala; cmp.ge.or.andcm	p00,p32,r0,r0; (p01) break.b	0x164E0 }
-	{ cmp.ge.and	p00,p41,r0,r16; (p01) nop; cmp.lt.or.andcm	p00,p48,r0,r64 }
+
+l40000000000C6496:
+	{ nop; (p32) nop; cmp.lt	p00,p00,r0,r32 }
+
+l40000000000C64A0:
+	{ nop.m	0x0; sxt4	r15,r39; nop.b	0x0 }
+	{ (p19) ld8	r14,[r40]; (p19) adds	r1,0x0,r54; (p19) adds	r39,0x1,r39; }
+
+l40000000000C64B6:
 	{ Invalid; Invalid; Invalid }
+
+l40000000000C64BC:
+	{ Invalid; Invalid; Invalid }
+
+l40000000000C64C0:
+	{ nop.m	0x0; (p19) shladd	r15,r15,0x3,r35; nop.i	0x0; }
+
+l40000000000C64CC:
 	{ Invalid; break.i	0x1000; chk.s.i	r32,3FFFFFFFFF0C64CC }
 	{ (p63) invala; cmp.ge.or.andcm	p00,p00,r0,r0; (p01) break.b	0x164E0 }
-	{ Invalid; chk.s.i	r10,3FFFFFFFFF2F950C; (p32) nop }
+
+l40000000000C64E0:
+	{ nop.m	0x0; sxt4	r15,r39; nop.b	0x0 }
+	{ (p18) st8	[r8],r40; (p18) st1	[r38],r8; (p18) adds	r1,0x0,r54; }
+
+l40000000000C64F6:
+	{ nop; (p36) nop }
+
+l40000000000C64FC:
 	{ cmp.ge.and	p54,p09,r0,r66; (p01) cmp.ge.or.andcm	p00,p08,r0,r6; (p49) cmp.lt.or.andcm	p35,p16,r0,r4 }
+
+l40000000000C6500:
+	{ (p18) ld8	r14,[r40]; (p18) shladd	r15,r15,0x3,r35; (p18) adds	r39,0x1,r39; }
+
+l40000000000C6506:
 	{ Invalid; Invalid; Invalid }
+
+l40000000000C650C:
+	{ Invalid; Invalid; Invalid }
+
+l40000000000C6510:
+	{ (p18) adds	r14,0x1,r14; (p18) st1	[r0],r14; nop.i	0x0; }
+
+l40000000000C6516:
+	{ mf.a; nop }
+
+l40000000000C651C:
 	{ nop; cmp.ge.and	p00,p00,r0,r0; Invalid }
+
+l40000000000C652C:
 	{ nop; Invalid; break.i	0x1000 }
 	{ cmp.lt	p00,p11,r1,r0; zxt1	r41,r0; (p33) cmp.lt.unc	p09,p24,r42,r2 }
-	{ (p21) cmp.lt	p38,p03,0x7,r96; (p17) cmp.eq	p00,p18,r0,r0; cmp.lt	p00,p43,0x4C,r17 }
-	{ nop; cmp.lt	p00,p00,r32,r0; zxt1	r3,r3; }
-	{ invala.e	r0; Invalid; (p16) mov	pr,r0,0x4300 }
+
+l40000000000C6540:
+	{ add	r38,r38,r49; cmp.lt	p08,p09,r38,r42; cmp.lt	p06,p07,r42,r38; }
+	{ (p08) addl	r14,1,r0; tbit.z.or.andcm	p07,p06,r48,0x0; (p09) adds	r14,0x0,r0; }
+
+l40000000000C6556:
+	{ (p03) nop; (p07) nop; break.b	0x80000 }
+
+l40000000000C6560:
+	{ nop.m	0x0; and	r14,r14,r44; nop.i	0x0; }
+	{ cmp4.eq	p08,p09,0x0,r14; (p09) br.cond.dpnt.few	40000000000C6580; (p07) br.cond.dptk.few	40000000000C63E0 }
+
+l40000000000C657C:
 	{ (p51) nop.m	0x95FFF; cmp.lt	p00,p00,r32,r0; (p01) break.b	0x164E0 }
-	{ Invalid; Invalid; Invalid }
-	{ Invalid; Invalid; break.i	0x1000 }
-	{ (p18) nop; invala; zxt1	r32,r64 }
-	{ (p17) nop; cmp.eq.unc	p00,p16,r13,r64; nop }
-	{ (p46) nop; zxt1	r96,r64; (p07) epc }
+
+l40000000000C6580:
+	{ nop.m	0x0; sxt4	r14,r39; adds	r56,0x0,r45; }
+	{ nop.m	0x0; shladd	r14,r14,0x3,r35; nop.i	0x0; }
+	{ st8	[r0],r14; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; adds	r56,0x0,r41; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r54; cmp.eq	p07,p06,0x0,r35; (p07) br.cond.spnt.few	40000000000C5B90 }
 
 l40000000000C65D0:
 	{ adds	r57,0x0,r35; adds	r56,0x0,r36; br.call.sptk.many	b0,40000000000C46C0; }
@@ -3873,10 +4778,23 @@ l40000000000C66B0:
 
 l40000000000C66E0:
 	{ nop.m	0x0; adds	r46,0x0,r0; br.cond.sptk.few	40000000000C60F0 }
-40000000000C66F0 0B 78 04 5A 00 21 E0 02 3C 00 20 00 00 00 04 00 .x.Z.!..<. .....
-40000000000C6700 01 00 00 00 01 00 E0 02 B8 28 00 00 00 00 04 00 .........(......
-40000000000C6710 0B 30 C0 5C 87 B9 81 1A 00 00 48 C3 05 18 01 84 .0.\......H.....
-40000000000C6720 F0 40 05 00 00 E4 E1 02 00 00 42 00 90 FA FF 48 .@........B....H
+
+l40000000000C66F0:
+	{ adds	r15,0x1,r45; ld1	r46,[r15]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r46,r46; nop.i	0x0; }
+	{ cmp4.eq	p06,p07,0x30,r46; (p06) addl	r40,3,r0; (p06) adds	r46,0x0,r35; }
+
+l40000000000C671C:
+	{ Invalid; (p05) nop; }
+
+l40000000000C6720:
+	{ (p07) addl	r40,1,r0; (p07) adds	r46,0x0,r0; br.cond.sptk.few	40000000000C61B0 }
+
+l40000000000C6726:
+	{ Invalid; nop; nop; }
+
+l40000000000C672C:
+	{ Invalid; (p39) cmp.lt.unc	p32,p16,r9,r64; (p01) rfi }
 
 l40000000000C6730:
 	{ adds	r56,0x2,r39; ld1	r14,[r56]; nop.i	0x0; }
@@ -3893,10 +4811,12 @@ l40000000000C6760:
 
 l40000000000C67C0:
 	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C66E0 }
-40000000000C67D0 00 00 00 00 01 00 30 03 9C 2C 00 00 00 00 04 00 ......0..,......
-40000000000C67E0 19 C0 01 4C 00 21 70 0A 9C 00 42 00 E8 32 06 50 ...L.!p...B..2.P
-40000000000C67F0 09 98 CD 46 12 20 00 00 00 02 00 20 00 B0 01 84 ...F. ..... ....
-40000000000C6800 10 00 20 66 98 11 00 00 00 02 00 00 40 FD FF 48 .. f........@..H
+
+l40000000000C67D0:
+	{ nop.m	0x0; sxt4	r51,r39; nop.i	0x0 }
+	{ adds	r56,0x0,r38; adds	r39,0x1,r39; br.call.sptk.many	b0,itos; }
+	{ shladd	r51,r51,0x3,r35; nop.m	0x0; adds	r1,0x0,r54; }
+	{ st8	[r8],r51; nop.i	0x0; br.cond.sptk.few	40000000000C6540 }
 
 l40000000000C6810:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001C3C0; }
@@ -3909,11 +4829,16 @@ l40000000000C6810:
 l40000000000C686C:
 	{ (p13) cmp.lt.unc	p62,p11,r63,r37; zxt1	r32,r64; Invalid }
 
-l40000000000C6872:
-	{ Invalid; break.x	0x10001C080020 }
-	{ Invalid; chk.s.i	r5,4000000000CC6922; Invalid }
-	{ Invalid; break.i	0x42000; Invalid }
-	{ Invalid; cmp.lt	p00,p00,r0,r18; Invalid }
+l40000000000C6870:
+	{ adds	r14,0x1,r45; ld1	r40,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r40,r40; cmp4.eq	p07,p06,0x0,r40; }
+	{ nop.m	0x0; (p06) adds	r40,0x0,r0; nop.i	0x0; }
+
+l40000000000C689C:
+	{ invala; mov	pr,r32,0x0; zxt4	r0,r0 }
+
+l40000000000C68AC:
+	{ (p11) nop; cmp.lt	p00,p00,r32,r0; czx1.r	r0,r65 }
 
 l40000000000C68B0:
 	{ nop.m	0x0; cmp.eq	p06,p07,0x0,r8; nop.i	0x0; }
@@ -3925,17 +4850,9 @@ l40000000000C68C6:
 l40000000000C68CC:
 	{ (p50) cmp.eq.unc	p61,p11,r127,r36; (p01) cmp.eq.unc	p32,p08,r8,r4; (p17) epc }
 
-l40000000000C68D2:
-	{ (p48) nop; (p48) break.i	0x42003; Invalid }
-
-l40000000000C68D8:
-	{ (p01) break.m	0x840; (p16) nop; (p12) break.b	0x8C82 }
-
-l40000000000C68DE:
-	{ nop; (p04) nop }
-
-l40000000000C68EE:
-	{ Invalid; Invalid; Invalid }
+l40000000000C68D0:
+	{ ld4	r15,[r35]; adds	r15,0x1,r15; nop.i	0x0; }
+	{ st4	[r15],r35; nop.i	0x0; br.cond.sptk.few	40000000000C5620 }
 
 l40000000000C68F0:
 	{ cmp.eq	p06,p07,0x0,r8; nop.m	0x0; (p07) adds	r38,0x0,r8 }
@@ -3946,17 +4863,9 @@ l40000000000C6900:
 l40000000000C690C:
 	{ (p36) cmp.lt.unc	p62,p11,r127,r36; (p04) cmp.lt	p32,p08,r9,r4; (p20) epc }
 
-l40000000000C6912:
-	{ (p16) nop; (p32) break.i	0x42009; Invalid; }
-
-l40000000000C6918:
-	{ (p04) break.m	0x840; (p16) nop; (p21) break.b	0x8C82 }
-
-l40000000000C691E:
-	{ nop; (p04) nop }
-
-l40000000000C692E:
-	{ Invalid; Invalid; Invalid }
+l40000000000C6910:
+	{ ld4	r38,[r37]; adds	r38,0x1,r38; nop.i	0x0; }
+	{ st4	[r38],r37; nop.i	0x0; br.cond.sptk.few	40000000000C5DB0 }
 
 l40000000000C6930:
 	{ adds	r14,0x0,r0; adds	r39,0x0,r0; addl	r46,1,r0 }
@@ -4243,18 +5152,11 @@ l40000000000C79A0:
 
 l40000000000C79A6:
 	{ mf.a; (p07) nop; break.i	0x80000 }
-
-l40000000000C79B2:
-	{ cmp.eq	p32,p00,r0,r0; (p33) mov	pr,r100,0x6; Invalid }
-
-l40000000000C79BE:
-	{ (p05) cmp.ne.or.andcm	p18,p16,0xFFFFFFFFFFFFFF82,r60; (p59) nop; epc }
-
-l40000000000C79C4:
-	{ Invalid; Invalid; Invalid }
-	{ Invalid; (p12) nop; (p61) break.b	0x4C }
-	{ cmp.lt	p00,p56,r56,r0; break.i	0x100002; nop; }
-	{ (p12) break.m	0x100002; break.m	0x108800; (p01) nop }
+	{ mf.a; (p07) nop; (p48) nop }
+	{ mf.a; (p07) nop; (p48) nop }
+	{ mf.a; (p07) nop; break.i	0x80000 }
+	{ (p07) fwb; nop; nop }
+	{ break.m	0x4000; (p34) nop; (p32) nop }
 
 ;; bash_history_disable: 40000000000C7A00
 bash_history_disable proc
@@ -4365,28 +5267,36 @@ l40000000000C7E80:
 l40000000000C7E9C:
 	{ (p02) cmp.eq	p00,p09,r64,r33; (p01) mov.i	KR6,0x3; add	r0,r32,r0 }
 
-l40000000000C7EA2:
-	{ (p33) break.m	0x28303; nop; Invalid }
+l40000000000C7EA0:
+	{ ld8	r15,[r14],8; nop.m	0x0; adds	r36,0x1,r36; }
+	{ nop.m	0x0; cmp.eq	p07,p06,0x0,r15; (p06) br.cond.dptk.few	40000000000C7EA0 }
 
-l40000000000C7EA8:
-	{ Invalid; (p04) break.i	0x10840; czx1.r	r8,r0 }
-	{ (p33) nop; (p63) nop; (p19) break.b	0x119FA }
-	{ (p16) break.m	0x0; (p16) nop; Invalid }
-	{ (p01) break.m	0x406; (p16) break.m	0x9000; epc }
-	{ (p01) break.m	0x404; Invalid; (p17) break.b	0x10002 }
-	{ (p16) cmp.ge.and	p00,p24,r0,r0; czx1.l	r15,r2; (p32) break.i	0x1C838 }
-	{ (p16) ldfe	f0,[r16]; (p04) mov	pr,0x2019840; break.i	0x10802 }
-	{ Invalid; break.i	0x11430; break.i	0x8 }
-	{ (p16) nop; Invalid; (p12) mov	pr,0x10802 }
-	{ (p01) addl	r64,-2036720,r0; Invalid; (p12) break.i	0x10802 }
-	{ (p16) fwb; (p40) nop; (p55) break.i	0x13D77 }
-	{ (p16) nop; Invalid; (p56) mov	pr,0x20080C0 }
-	{ (p01) break.m	0x404; (p16) break.m	0x8000; nop }
-	{ (p33) nop.m	0xC21; (p04) break.i	0x17840; break.i	0x1E4000; }
-	{ nop; (p16) break.i	0x11008; break.i	0x8 }
-	{ (p16) nop; Invalid; Invalid }
-	{ (p04) fwb; (p40) break.f	0x1000A; break.i	0x100008 }
-	{ nop; break.x	0x48042010800; }
+l40000000000C7EC0:
+	{ adds	r32,0xFFFFFFFFFFFFFFFF,r36; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C7ED0:
+	{ addl	r14,-10068,r1; ld8	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; ld4	r36,[r14]; nop.i	0x0; }
+	{ add	r36,r32,r36; nop.i	0x0; br.call.sptk.many	b0,400000000001B140; }
+	{ cmp.eq	p06,p07,0x0,r8; nop.m	0x0; adds	r1,0x0,r35 }
+	{ adds	r36,0x0,r32; nop.m	0x0; (p06) br.cond.dpnt.few	40000000000C7FC0; }
+
+l40000000000C7F20:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,bash_delete_histent; }
+	{ adds	r1,0x0,r35; adds	r32,0x0,r8; br.call.sptk.many	b0,400000000001A700; }
+	{ adds	r1,0x0,r35; nop.m	0x0; mov.i	ar.pfs,r34; }
+	{ addl	r14,-10380,r1; nop.m	0x0; mov.spnt	b0,r33,40000000000C7F50; }
+	{ ld8	r14,[r14]; ld4	r36,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p07,p06,r36,r8; adds	r8,0x0,r32 }
+	{ nop.b	0x0; (p07) br.cond.dpnt.few	40000000000C7F90; br.ret	b0; }
+
+l40000000000C7F8C:
+	{ Invalid; break.m	0x1000; break.i	0x1000 }
+
+l40000000000C7F90:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001BBA0; }
+	{ adds	r8,0x0,r32; adds	r1,0x0,r35; mov.i	ar.pfs,r34; }
+	{ nop.m	0x0; mov.spnt	b0,r33,40000000000C7FB0; br.ret	b0 }
 
 l40000000000C7FC0:
 	{ adds	r32,0x0,r0; nop.m	0x0; mov.i	ar.pfs,r34; }
@@ -4535,6 +5445,7 @@ l40000000000C8510:
 ;; bash_add_history: 40000000000C85C0
 ;;   Called from:
 ;;     40000000000C92C6 (in maybe_add_history)
+;;     40000000000C9376 (in maybe_add_history)
 bash_add_history proc
 	{ alloc	r38,ar.pfs,0xF,0x0,0x8; addl	r14,6108,r1; mov	r37,b5 }
 	{ adds	r39,0x0,r1; ld4	r14,[r14]; nop.i	0x0; }
@@ -4680,6 +5591,8 @@ l40000000000C8B30:
 
 l40000000000C8B50:
 	{ nop.m	0x0; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C8B60:
 	{ ld8	r14,[r37]; adds	r46,0x0,r32; add	r14,r14,r34; }
 	{ adds	r15,0xC,r14; ld4	r15,[r15]; nop.i	0x0; }
 	{ nop.m	0x0; tbit.z	p06,p07,r15,0x0; (p07) br.cond.dpnt.few	40000000000C8CF0; }
@@ -4691,14 +5604,23 @@ l40000000000C8B90:
 l40000000000C8BA6:
 	{ Invalid; (p22) nop; cmp.lt	p00,p00,r0,r32 }
 	{ Invalid; nop; (p49) nop.b	0xB; }
+
+l40000000000C8BBC:
+	{ cmp4.eq.or.andcm	p00,p17,r1,r0; zxt1	r0,r64; break.i	0x1000 }
+
+l40000000000C8BC6:
 	{ break.m	0x4000; (p32) nop; (p32) nop }
 	{ Invalid; (p19) mov.sptk	b0,r8,40000000000C8CD6; (p32) nop.b	0x221C3 }
 	{ Invalid; (p07) nop; break.i	0x80000 }
 	{ (p07) fwb; nop; break.i	0x80000 }
 	{ (p03) chk.a.nc	f0,3FFFFFFFFFACC4E6; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r1,3FFFFFFFFFD8BE76; nop; break.b	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r35,3FFFFFFFFF90C516; nop; (p32) nop }
+
+l40000000000C8C10:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x1,r38; (p06) br.cond.dpnt.few	40000000000C8CC0 }
+
+l40000000000C8C20:
+	{ nop.m	0x0; ld4	r14,[r40]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.lt	p06,p07,r35,r14; (p06) br.cond.dptk.few	40000000000C8B60 }
 
 l40000000000C8C40:
 	{ ld4	r14,[r41]; nop.m	0x0; adds	r45,0x0,r32; }
@@ -4711,8 +5633,10 @@ l40000000000C8C70:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,bash_add_history; }
 	{ addl	r8,1,r0; adds	r1,0x0,r44; mov.i	ar.pfs,r43; }
 	{ nop.m	0x0; mov.spnt	b0,r42,40000000000C8C90; br.ret	b0; }
-40000000000C8CA0 11 68 01 48 00 21 00 00 00 02 00 00 48 1B F5 58 .h.H.!......H..X
-40000000000C8CB0 11 08 00 58 00 21 70 08 98 0C F3 03 70 FF FF 4A ...X.!p.....p..J
+
+l40000000000C8CA0:
+	{ adds	r45,0x0,r36; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
+	{ adds	r1,0x0,r44; cmp4.eq	p07,p06,0x1,r38; (p07) br.cond.dptk.few	40000000000C8C20; }
 
 l40000000000C8CC0:
 	{ adds	r8,0x0,r0; nop.m	0x0; nop.i	0x0 }
@@ -4736,12 +5660,16 @@ l40000000000C8D40:
 
 l40000000000C8D7C:
 	{ cmp4.eq.or.andcm	p00,p17,r1,r0; zxt1	r0,r64; break.i	0x1000 }
-	{ (p54) cmp.lt	p49,p09,r1,r40; (p01) nop; cmp.lt	p00,p16,r11,r64 }
-	{ cmp.lt	p08,p03,r0,r66; (p04) nop }
-	{ (p06) nop; cmp.lt	p00,p00,r32,r0; Invalid; }
-	{ invala; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0x5080 }
-	{ (p50) invala; break.i	0x1000; break.b	0x1000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
+
+l40000000000C8D86:
+	{ break.m	0x4000; (p32) nop; (p32) nop }
+	{ Invalid; (p19) mov.sptk	b0,r8,40000000000C8E96; (p32) nop.b	0x221C3 }
+	{ Invalid; (p07) nop; break.i	0x80000 }
+	{ (p07) fwb; nop; break.i	0x80000 }
+	{ (p03) chk.a.nc	r0,3FFFFFFFFFACC6A6; nop; break.i	0x80000 }
+
+l40000000000C8DD0:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C8CA0 }
 
 l40000000000C8DE0:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B7A0; }
@@ -4819,12 +5747,16 @@ l40000000000C9070:
 
 l40000000000C90DC:
 	{ cmp4.eq.or.andcm	p00,p17,r1,r0; zxt1	r0,r64; break.i	0x1000 }
-	{ (p27) cmp.lt	p49,p09,r1,r40; (p01) nop; cmp.lt	p00,p16,r11,r64 }
-	{ cmp.lt	p08,p03,r0,r66; (p04) nop }
-	{ (p06) nop; cmp.lt	p00,p00,r32,r0; Invalid; }
-	{ invala; cmp.lt	p00,p00,r32,r0; mov	pr,r99,0x5080 }
-	{ (p23) invala; break.i	0x1000; break.b	0x1000 }
-	{ Invalid; break.i	0x1000; break.b	0x1000 }
+
+l40000000000C90E6:
+	{ break.m	0x4000; (p32) nop; (p32) nop }
+	{ Invalid; (p19) mov.sptk	b0,r8,40000000000C91F6; (p32) nop.b	0x221C3 }
+	{ Invalid; (p07) nop; break.i	0x80000 }
+	{ (p07) fwb; nop; break.i	0x80000 }
+	{ (p03) chk.a.nc	r0,3FFFFFFFFFACCA06; nop; break.i	0x80000 }
+
+l40000000000C9130:
+	{ nop.m	0x0; nop.i	0x0; br.cond.sptk.few	40000000000C8CA0 }
 
 l40000000000C9140:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B7A0; }
@@ -4859,14 +5791,18 @@ l40000000000C9220:
 l40000000000C924C:
 	{ (p03) cmp.lt	p00,p11,r64,r33; Invalid; cmp.lt	p00,p00,r32,r0 }
 
-l40000000000C9252:
-	{ break.m	0x20008; mov	pr,r0,0x40; (p32) nop }
+l40000000000C9250:
+	{ ld1	r14,[r32]; nop.m	0x0; sxt1	r14,r14; }
+	{ cmp4.eq	p07,p06,0x20,r14; cmp4.eq	p08,p09,0x0,r14; (p08) br.cond.dpnt.few	40000000000C92A0; }
 
-l40000000000C9262:
-	{ Invalid; Invalid; Invalid }
-	{ nop; (p33) cmp.lt.unc	p03,p01,r113,r92; Invalid }
-	{ break.m	0x20; deposit	r32,r0,r0,58,0; Invalid }
-	{ break.m	0x20; break.i	0x20; break.i	0x80020 }
+l40000000000C9270:
+	{ nop.m	0x0; cmp4.eq.or.andcm	p07,p06,0x9,r14; (p06) br.cond.dpnt.few	40000000000C9350; }
+
+l40000000000C9280:
+	{ nop.m	0x0; nop.i	0x0; br.cloop.sptk.few	40000000000C9320; }
+
+l40000000000C9290:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C92A0:
 	{ nop.m	0x0; mov.spnt	b0,r33,40000000000C92A0; mov.i	ar.pfs,r34; }
@@ -4881,12 +5817,20 @@ l40000000000C92D0:
 l40000000000C9300:
 	{ nop.m	0x0; mov.i	ar.pfs,r34; mov.i	LC,r36; }
 	{ nop.m	0x0; mov.spnt	b0,r33,40000000000C9310; br.ret	b0 }
-40000000000C9320 0B 70 04 1E 00 14 00 00 00 02 00 C0 01 70 50 00 .p...........pP.
-40000000000C9330 11 30 80 1C 87 39 80 00 38 12 73 04 70 FF FF 4B .0...9..8.s.p..K
-40000000000C9340 11 00 00 00 01 00 60 48 38 8E 73 03 40 FF FF 4A ......`H8.s.@..J
-40000000000C9350 11 30 8C 1C 87 39 00 08 05 80 03 03 B0 FF FF 4B .0...9.........K
-40000000000C9360 03 00 00 00 01 00 00 10 01 55 00 00 40 0A AA 00 .........U..@...
-40000000000C9370 11 10 04 00 80 05 00 00 00 02 00 00 58 F2 FF 48 ............X..H
+
+l40000000000C9320:
+	{ ld1	r14,[r15],1; nop.m	0x0; sxt1	r14,r14; }
+	{ cmp4.eq	p06,p07,0x20,r14; cmp4.eq	p08,p09,0x0,r14; (p08) br.cond.dpnt.few	40000000000C92A0; }
+
+l40000000000C9340:
+	{ nop.m	0x0; cmp4.eq.or.andcm	p06,p07,0x9,r14; (p06) br.cond.dptk.few	40000000000C9280; }
+
+l40000000000C9350:
+	{ cmp4.eq	p06,p07,0x23,r14; mov.spnt	b0,r33,40000000000C9350; (p06) br.cond.dpnt.few	40000000000C9300; }
+
+l40000000000C9360:
+	{ nop.m	0x0; mov.i	ar.pfs,r34; mov.i	LC,r36; }
+	{ alloc	r2,ar.pfs,0x1,0x0,0x0; nop.i	0x0; br.cond.sptk.many	bash_add_history; }
 40000000000C9380 0D 00 00 00 01 00 00 00 00 00 00 00 00 00 04 00 ................
 40000000000C9390 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 40000000000C93A0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
@@ -4962,10 +5906,14 @@ l40000000000C95C0:
 l40000000000C95E0:
 	{ adds	r8,0x0,r35; mov.i	ar.pfs,r38; mov.spnt	b0,r37,40000000000C95E0 }
 	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
-40000000000C9600 0B 70 00 03 47 24 00 00 00 02 00 00 00 00 04 00 .p..G$..........
-40000000000C9610 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
-40000000000C9620 11 00 00 00 01 00 70 00 38 0C 73 03 60 FF FF 4B ......p.8.s.`..K
-40000000000C9630 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+
+l40000000000C9600:
+	{ addl	r14,9152,r1; nop.m	0x0; nop.i	0x0; }
+	{ nop.m	0x0; ld4	r14,[r14]; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p06) br.cond.dpnt.few	40000000000C9580; }
+
+l40000000000C9630:
+	{ nop.m	0x0; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C9640:
 	{ nop.m	0x0; adds	r14,0x10,r12; nop.i	0x0; }
@@ -5007,10 +5955,16 @@ l40000000000C9760:
 
 l40000000000C9776:
 	{ add	r0,r0,r1; (p07) cmp4.ltu	p00,p00,0x24,r16; (p33) nop }
+
+l40000000000C9786:
 	{ Invalid; (p07) nop; (p48) nop }
 	{ (p07) chk.a.clr	f16,3FFFFFFFFF149856; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8C8A6; nop; br.call.sptk.few	b2,b0 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
+
+l40000000000C97A0:
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r16; (p06) br.cond.dpnt.few	40000000000C9860; }
+
+l40000000000C97B0:
+	{ ld8	r40,[r14]; nop.m	0x0; nop.i	0x0 }
 
 l40000000000C97C0:
 	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001A7E0; }
@@ -5029,14 +5983,20 @@ l40000000000C9830:
 	{ nop.m	0x0; adds	r35,0x0,r0; nop.i	0x0; }
 	{ adds	r8,0x0,r35; mov.i	ar.pfs,r38; mov.spnt	b0,r37,40000000000C9840 }
 	{ nop.m	0x0; adds	r12,0x10,r12; br.ret	b0 }
-40000000000C9860 0B 70 30 FB B0 27 E0 00 38 30 20 00 00 00 04 00 .p0..'..80 .....
-40000000000C9870 0B 70 00 1C 10 10 60 00 38 0E 73 C0 01 61 00 84 .p....`.8.s..a..
-40000000000C9880 11 40 01 1C 18 10 00 00 00 02 80 03 40 FF FF 4A .@..........@..J
-40000000000C9890 0B 70 00 50 00 10 00 00 00 02 00 C0 01 70 50 00 .p.P.........pP.
-40000000000C98A0 10 00 00 00 01 00 60 00 38 0E 73 03 20 FF FF 4A ......`.8.s. ..J
-40000000000C98B0 11 00 00 00 01 00 00 00 00 02 00 00 D8 F8 FF 58 ...............X
-40000000000C98C0 09 70 40 18 00 21 00 00 00 02 00 20 00 38 01 84 .p@..!..... .8..
-40000000000C98D0 10 40 01 1C 18 10 00 00 00 02 00 00 F0 FE FF 48 .@.............H
+
+l40000000000C9860:
+	{ addl	r14,-10164,r1; ld8	r14,[r14]; nop.i	0x0; }
+	{ ld4	r14,[r14]; cmp4.eq	p06,p07,0x0,r14; adds	r14,0x10,r12; }
+	{ ld8	r40,[r14]; nop.i	0x0; (p07) br.cond.dptk.few	40000000000C97C0; }
+
+l40000000000C9890:
+	{ ld1	r14,[r40]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dptk.few	40000000000C97C0 }
+
+l40000000000C98B0:
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,maybe_add_history; }
+	{ adds	r14,0x10,r12; nop.m	0x0; adds	r1,0x0,r39; }
+	{ ld8	r40,[r14]; nop.i	0x0; br.cond.sptk.few	40000000000C97C0 }
 
 l40000000000C98E0:
 	{ addl	r14,22532,r1; nop.m	0x0; nop.i	0x0; }
@@ -5101,635 +6061,684 @@ last_history_line proc
 l40000000000C9B56:
 	{ break.m	0x4000; nop; add	r0,r0,r32 }
 	{ Invalid; (p34) break.i	0x84000; (p32) break.i	0x80001; }
-	{ (p03) break.m	0x4000; (p04) nop; (p48) nop }
-	{ Invalid; (p07) cmp4.eq.or	p36,p08,r1,r61; (p01) nop.b	0xF004 }
-	{ (p07) fwb; cmp4.eq	p00,p00,r0,r1; (p01) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D486; Invalid; nop }
-	{ add	r0,r0,r1; (p08) nop; nop }
-	{ Invalid; nop; nop }
-	{ Invalid; cmp4.eq	p00,p00,r0,r1; (p01) nop }
-	{ break.m	0x4000; (p34) nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
+
+l40000000000C9B6C:
+	{ cmp.lt	p00,p00,r33,r0; cmp.eq	p00,p00,r32,r0; break.i	0x1000 }
+40000000000C9B70 00 30 00 00 01 00 70 00 00 02 00 00 01 00 04 00 .0....p.........
+40000000000C9B80 09 78 B0 02 3D 24 70 00 84 0C 73 C0 41 0A F4 90 .x..=$p...s.A...
+40000000000C9B90 E9 80 00 1E 00 21 E0 00 38 30 20 00 00 00 04 00 .....!..80 .....
+40000000000C9BA0 F1 00 00 20 90 11 60 00 38 0E 72 03 50 00 00 43 ... ..`.8.r.P..C
+40000000000C9BB0 02 80 00 1E 10 10 00 00 00 02 00 20 02 80 58 00 ........... ..X.
+40000000000C9BC0 0B 80 04 20 00 21 E0 88 38 24 40 00 00 00 04 00 ... .!..8$@.....
+40000000000C9BD0 0B 40 00 1C 18 10 60 00 20 0E 72 00 00 00 04 00 .@....`. .r.....
+40000000000C9BE0 F1 00 40 1E 90 11 00 00 00 02 00 80 08 00 84 00 ..@.............
+40000000000C9BF0 11 00 00 00 01 00 80 00 00 00 42 80 08 00 84 00 ..........B.....
+40000000000C9C00 11 00 00 00 01 00 80 00 00 00 42 80 08 00 84 00 ..........B.....
+40000000000C9C10 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000C9C20 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000C9C30 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+
+l40000000000C9C40:
+	{ alloc	r35,ar.pfs,0x6,0x0,0x5; adds	r37,0x0,r32; mov	r34,b2 }
+	{ nop.m	0x0; adds	r36,0x0,r1; nop.i	0x0; }
+	{ nop.m	0x0; nop.i	0x0; br.call.sptk.many	b0,400000000001B6C0; }
+	{ adds	r37,0x1,r8; nop.m	0x0; adds	r1,0x0,r36; }
+	{ nop.m	0x0; sxt4	r37,r37; br.call.sptk.many	b0,xmalloc; }
+	{ adds	r1,0x0,r36; cmp.eq	p06,p07,0x0,r32; nop.i	0x0 }
+	{ adds	r16,0x0,r8; adds	r15,0x0,r32; (p06) br.cond.dpnt.few	40000000000C9EE0; }
+
+l40000000000C9CB0:
+	{ addl	r18,-18556,r1; ld1	r14,[r32]; nop.i	0x0; }
+	{ nop.m	0x0; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p06) br.cond.dpnt.few	40000000000C9EE0; }
+
+l40000000000C9CE0:
+	{ cmp4.eq	p07,p06,0x5C,r14; nop.m	0x0; cmp4.eq	p08,p09,0x0,r33 }
+	{ nop.b	0x0; (p07) br.cond.dpnt.few	40000000000C9DE0; (p09) br.cond.dptk.few	40000000000C9DB0; }
+
+l40000000000C9CFC:
+	{ (p06) cmp.eq	p00,p09,r0,r33; czx1.r	r72,r97; break.i	0x1000 }
+
+l40000000000C9D00:
+	{ cmp4.eq	p07,p06,0x22,r14; nop.m	0x0; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq.or.andcm	p07,p06,0x27,r14; (p06) br.cond.dptk.few	40000000000C9DC0; }
+
+l40000000000C9D20:
+	{ (p07) adds	r33,0x0,r14; nop.m	0x0; nop.i	0x0; }
+
+l40000000000C9D26:
 	{ break.m	0x4000; nop; break.i	0x80000 }
 	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ Invalid; (p17) nop; break.b	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; nop; break.i	0x80000 }
-	{ (p18) break.m	0x59280; (p32) nop; (p16) nop.b	0x24000 }
-	{ Invalid; nop; nop }
-	{ (p07) chk.a.clr	r0,3FFFFFFFFF149EA6; nop; (p32) nop }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8D5B6; nop; (p48) nop }
-	{ break.m	0x4000; (p04) nop; cmp.gt	p00,p00,r0,r0 }
-	{ nop; nop; (p48) nop; }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r39,3FFFFFFFFFDACDF6; cmp4.ltu	p11,p33,r0,r0; (p17) nop.b	0xE008 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CA556; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8CE56; nop; br.call.spnt.few	b0,b0 }
-	{ break.m	0x4000; mov	pr,0x4000; break.i	0x80000 }
-	{ break.m	0xAA023; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r33,3FFFFFFFFFD0D696; nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; nop; (p16) nop.b	0xF024 }
-	{ (p03) chk.a.clr	f39,3FFFFFFFFFD8CFF6; nop; nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CA5F6; Invalid; (p48) nop }
-	{ add	r0,r0,r1; (p07) nop; (p32) nop }
-	{ Invalid; (p07) nop; nop }
-	{ (p07) mf; mov	pr,0x4000; break.i	0x80000 }
-	{ (p07) break.m	0x50700; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8D726; mov	pr,0x4AFFFF0; break.i	0x80000 }
-	{ break.m	0xAA023; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; (p16) nop }
-	{ (p07) fwb; Invalid; break.b	0x80000 }
-	{ (p07) add	r0,r15,r20; (p09) nop; break.b	0x80000 }
-	{ (p09) fwb; nop; break.b	0x80000 }
-	{ (p03) chk.a.nc	r12,3FFFFFFFFFACCFD6; nop; (p48) br.call.sptk.few	b3,b0 }
-	{ Invalid; nop; break.b	0x80000 }
-	{ (p07) mf; nop; break.b	0x80000 }
-	{ (p07) break.m	0x50780; nop; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; nop; Invalid }
-	{ Invalid; mov	pr,0x2000000; (p32) nop }
-	{ (p22) break.m	0xC4000; (p23) nop; (p48) nop }
-	{ break.m	0x4000; (p18) nop; (p48) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D836; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ break.m	0x4000; (p18) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D066; nop; nop }
-	{ Invalid; (p18) nop; (p48) nop.b	0x9 }
-	{ Invalid; (p32) nop; (p32) br.call.sptk.few	b3,b0 }
-	{ Invalid; nop; (p48) nop }
-	{ chk.a.nc	f0,3FFFFFFFFF0CA7B6; nop; (p32) nop }
-	{ (p23) fwb; nop; break.b	0x80000 }
-	{ mf.a; (p03) nop; break.i	0x80000 }
-	{ Invalid; nop; break.b	0x80000 }
-	{ chk.a.nc	r0,3FFFFFFFFF0CA7F6; nop; break.i	0x80000 }
-	{ (p07) mov.m	EFLAG,0x21; nop; (p16) nop }
-	{ Invalid; Invalid; break.i	0x80000 }
-	{ (p07) add	r0,r35,r22; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8D8B6; nop; (p48) nop }
-	{ Invalid; (p18) nop; (p48) nop }
-	{ mf.a; nop; break.i	0x80000 }
-	{ (p23) mov.m	EFLAG,0x22; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D366; nop; break.b	0x80000 }
-	{ Invalid; (p07) nop; nop }
-	{ Invalid; (p04) nop; (p32) nop }
-	{ break.m	0x4000; (p08) nop; nop }
-	{ (p07) chk.a.nc	f0,3FFFFFFFFF0D5326; nop; (p48) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8D1C6; nop; (p32) nop.b	0x26103 }
-	{ Invalid; nop; (p48) nop }
-	{ (p08) chk.a.clr	r8,3FFFFFFFFF2CA0F6; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD4D1F6; nop; (p16) nop.b	0x10404 }
-	{ break.m	0x4000; (p08) nop; nop }
-	{ (p07) mov.m	EFLAG,0xF; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D226; nop; (p48) nop.b	0x1040A }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p23) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; mov	pr,0x4000; break.i	0x80000 }
-	{ break.m	0xAA02D; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; (p32) nop }
-	{ add	r0,r0,r1; (p07) nop; (p48) nop }
-	{ (p07) chk.a.clr	r15,3FFFFFFFFF0D3456; nop; (p32) br.call.sptk.few	b3,b0 }
-	{ Invalid; (p19) nop; br.call.spnt.many	b0,b3 }
-	{ (p23) mov.m	EFLAG,0x22; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D4E6; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ Invalid; (p32) nop; (p48) br.call.sptk.few.clr	b3,b2 }
-	{ add	r0,r0,r1; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4D526; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; (p18) nop; nop }
-	{ nop; nop; break.i	0x80000 }
-	{ (p17) chk.s.m	r34,40000000000CA506; (p18) nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	r36,3FFFFFFFFFCCD4B6; nop; (p48) nop.b	0x2900B }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; (p20) nop; (p48) br.call.sptk.few	b3,b0 }
-	{ mf.a; (p03) nop; break.i	0x80000 }
-	{ Invalid; nop; break.b	0x80000 }
-	{ chk.a.nc	f0,3FFFFFFFFF0CAB06; nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ add	r0,r0,r1; (p23) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8DC26; nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p23) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; (p32) nop }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8D486; nop; (p32) br.call.sptk.few.clr	b3,b2 }
-	{ (p23) fwb; nop; (p16) br.call.dptk.few.clr	b0,b6 }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8D456; nop; (p48) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ mf.a; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; break.b	0x80000 }
-	{ Invalid; nop; (p48) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; (p23) nop; (p32) br.call.sptk.few	b3,b0 }
-	{ mf.a; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ (p23) fwb; nop; break.b	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p23) fwb; nop; break.b	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ (p16) break.m	0xC4000; nop; (p16) nop }
-	{ Invalid; (p18) nop; (p16) br.call.sptk.few	b1,b0 }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; nop; break.b	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ (p16) break.m	0xC4000; nop; (p16) nop }
-	{ Invalid; (p18) nop; (p16) br.call.sptk.few	b1,b0 }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; nop; break.b	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ add	r0,r0,r1; (p17) nop; (p16) nop }
-	{ break.m	0x4000; (p19) nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p16) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p17) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; nop; break.b	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ Invalid; (p18) nop; (p48) nop }
-	{ add	r0,r0,r1; (p07) nop; (p32) nop }
-	{ add	r0,r0,r1; (p07) nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; (p48) nop }
-	{ (p04) chk.s.m	r14,4000000000D8EF06; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r32,3FFFFFFFFFDAD7F6; Invalid; (p32) br.call.sptk.few.clr	b3,b0 }
-	{ Invalid; (p07) nop; (p32) nop }
-	{ (p04) chk.s.m	r14,4000000000D8EF36; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r9,3FFFFFFFFFDAE026; nop; (p48) nop }
-	{ (p05) nop; nop; (p32) nop }
-	{ (p18) chk.a.clr	f34,3FFFFFFFFF2CA766; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD4D9A6; nop; nop.b	0x8022 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; nop }
-	{ break.m	0x4000; mov	pr,0x4000; break.i	0x80000 }
-	{ (p08) add	r0,r8,r22; (p08) nop; (p48) nop }
-	{ break.m	0x4000; (p08) nop; (p48) nop }
-	{ add	r0,r0,r1; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8E0D6; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8D916; nop; nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CB016; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CB026; Invalid; (p48) nop }
-	{ Invalid; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8D936; nop; nop }
-	{ Invalid; nop; nop.b	0xA }
-	{ (p21) chk.a.clr	r5,3FFFFFFFFF2CA866; nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p32) nop; break.i	0x80000 }
-	{ Invalid; (p04) nop; break.b	0x80000 }
-	{ break.m	0x4000; mov	pr,0x4000; break.i	0x80000 }
-	{ break.m	0xAA026; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f34,3FFFFFFFFFDAD9C6; nop; nop.b	0x9 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD4DB26; nop; br.call.spnt.few	b0,b2 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p03) nop; add	r0,r0,r0 }
-	{ nop; nop; break.i	0x80000; }
-	{ Invalid; nop; (p48) nop }
-	{ Invalid; (p04) mov	pr,r8,0x1002; break.b	0x80000 }
-	{ (p07) break.m	0x50780; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8DA56; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ Invalid; (p04) mov	pr,r8,0x1002; break.b	0x80000 }
-	{ (p07) break.m	0x50780; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8DA96; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8DC06; nop; (p16) nop }
-	{ Invalid; (p20) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p20) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; nop; break.b	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ add	r0,r0,r1; (p17) nop; (p16) nop }
-	{ break.m	0x4000; (p19) nop; break.i	0x80000 }
-	{ break.m	0x4000; Invalid; (p16) nop }
-	{ Invalid; (p07) nop; break.i	0x80000 }
-	{ Invalid; nop; (p16) nop }
-	{ (p19) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4E546; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ add	r0,r0,r1; (p16) nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r14,3FFFFFFFFF90DD46; nop; (p48) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFF98DC16; Invalid; break.b	0x80000 }
-	{ (p19) break.m	0x59380; nop; (p32) br.call.sptk.few	b3,b0 }
-	{ Invalid; (p07) nop; (p32) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f15,3FFFFFFFFFD0DC56; nop; break.b	0x80000 }
-	{ (p19) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD4DDF6; nop; nop.b	0x22 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8E456; nop; nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; Invalid }
-	{ Invalid; (p16) nop; (p48) nop }
-	{ (p07) fwb; nop; (p32) nop }
-	{ (p18) chk.a.clr	r0,3FFFFFFFFF14AD06; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; br.call.sptk.few	b1,b0 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ mf.a; nop; (p32) nop }
-	{ (p07) fwb; (p07) nop; break.b	0x80000 }
-	{ (p07) fwb; nop; nop }
-	{ break.m	0x4000; nop; nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; Invalid }
-	{ Invalid; (p16) nop; (p48) nop }
-	{ break.m	0x4000; (p18) nop; break.i	0x80000 }
-	{ (p07) fwb; nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ Invalid; mov	pr,0x2000000; (p16) nop }
-	{ (p19) break.m	0xC4000; (p21) nop; break.b	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; (p32) nop.b	0x8009 }
-	{ Invalid; (p21) nop; (p33) nop }
-	{ Invalid; (p32) nop; break.i	0x80000; }
-	{ Invalid; (p17) nop; (p32) nop.b	0x2200A }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p21) nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p21) nop; nop }
-	{ break.m	0x4000; (p07) nop; (p32) nop }
-	{ (p04) fwb; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CB626; nop; (p32) nop }
-	{ fwb; (p03) nop; break.b	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p17) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p21) break.m	0x59500; (p32) nop; (p16) nop }
-	{ Invalid; nop; (p48) nop.b	0x2200A }
-	{ Invalid; Invalid; break.i	0x80000 }
-	{ (p21) break.m	0x59280; (p21) nop; break.b	0x80000 }
-	{ Invalid; nop; (p48) nop.b	0x2B40A }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; nop }
-	{ Invalid; break.i	0xAA028; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; (p32) nop }
-	{ break.m	0x4000; (p21) nop; (p32) nop }
-	{ (p04) fwb; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CB7B6; nop; break.i	0x80000 }
-	{ (p07) mov.m	EFLAG,0x8; nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8E866; nop; (p32) nop }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8E8F6; nop; (p32) nop }
-	{ (p21) fwb; (p07) nop; break.i	0x80000 }
-	{ (p07) fwb; nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p17) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p48) nop }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p17) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p21) break.m	0x59500; (p32) nop; (p16) nop }
-	{ Invalid; nop; (p48) nop.b	0x2200A }
-	{ Invalid; Invalid; break.i	0x80000 }
-	{ (p21) break.m	0x59280; (p21) nop; break.b	0x80000 }
-	{ Invalid; nop; (p48) nop.b	0x2B40A }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; nop }
-	{ Invalid; break.i	0xAA028; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; nop; break.i	0x80000 }
-	{ (p17) fwb; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p17) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p21) break.m	0x59500; (p32) nop; (p16) nop }
-	{ Invalid; nop; (p48) nop.b	0x2200A }
-	{ Invalid; Invalid; break.i	0x80000 }
-	{ (p21) break.m	0x59280; (p21) nop; break.b	0x80000 }
-	{ Invalid; nop; (p48) nop.b	0x2B40A }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; nop }
-	{ Invalid; break.i	0xAA028; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p20) nop; (p16) nop.b	0x48B }
-	{ Invalid; (p32) nop; (p32) nop }
-	{ break.m	0x4000; (p04) nop; (p16) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CBB86; nop; break.i	0x80000 }
-	{ (p17) fwb; Invalid; break.i	0x80000 }
-	{ (p17) break.m	0x51100; (p03) nop; (p01) nop }
-	{ (p18) chk.a.clr	r36,3FFFFFFFFF2CB3B6; nop; nop; }
-	{ add	r0,r0,r1; (p18) cmp.eq.and	p36,p08,0x0,r0; (p33) nop }
-	{ (p18) chk.a.clr	f125,3FFFFFFFFF2CB3D6; (p18) nop; nop; }
-	{ add	r0,r0,r1; (p22) nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8EC86; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p22) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p22) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; (p03) nop; (p16) nop }
-	{ chk.a.nc	f0,3FFFFFFFFF0CBC86; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ Invalid; nop; (p32) nop }
-	{ (p07) mf; mov	pr,0x4000; break.b	0x80000 }
-	{ (p07) add	r0,r14,r20; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f15,3FFFFFFFFFD0E5B6; addl	r94,1052800,r0; (p49) nop.b	0x28 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ break.m	0x4000; (p22) nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p16) fwb; nop; nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CBD56; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8EE56; nop; (p32) nop }
-	{ add	r0,r0,r1; (p22) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ mf.a; Invalid; (p48) nop }
-	{ Invalid; (p08) nop; break.b	0x80000 }
-	{ (p08) fwb; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; (p04) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r34,3FFFFFFFFFD2EED6; mov	pr,0x4200004; break.i	0x80000 }
-	{ (p07) addl	r0,344081,r2; (p08) dep.z	r1,0x11,63,3; (p34) nop }
-	{ break.m	0x4000; tbit.z	p00,p00,r1,0x0; (p02) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; (p07) nop; (p48) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8E726; Invalid; break.b	0x80000 }
-	{ (p08) add	r0,r17,r22; (p08) nop; br.call.spnt.few	b0,b0 }
-	{ mf.a; nop; (p32) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8E776; nop; (p32) br.call.sptk.few	b3,b0 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r46,3FFFFFFFFFD8E796; nop; (p32) nop.b	0x21023 }
-	{ (p07) fwb; mov	pr,0x4000; break.i	0x80000 }
-	{ (p07) break.m	0x50700; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8EFC6; nop; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; nop; (p16) nop }
-	{ Invalid; (p32) nop; nop }
-	{ break.m	0x4000; (p17) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p22) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ Invalid; nop; nop.b	0x8009 }
-	{ (p22) chk.a.clr	f0,3FFFFFFFFF14B9A6; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) mov	pr,0x58F4FF3; break.i	0x80000 }
-	{ (p04) add	r0,r8,r22; mov.sptk	b0,r43,40000000000CB8A6; (p32) nop }
-	{ break.m	0x4000; (p07) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f47,3FFFFFFFFFD8EA26; nop; (p32) nop }
-	{ (p18) fwb; nop; break.b	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8F0E6; Invalid; break.i	0x80000 }
-	{ (p18) break.m	0x51280; (p07) mov	pr,r37,0x33A4; break.b	0x80000 }
-	{ (p07) break.m	0x40700; nop; (p48) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CC036; nop; (p32) nop }
-	{ (p07) fwb; mov	pr,0x4000; break.i	0x80000 }
-	{ (p19) break.m	0x51300; (p07) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f14,3FFFFFFFFFD0EAC6; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	f38,3FFFFFFFFFD0EAC6; addl	r51,1069184,r0; (p01) nop.b	0x22 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ break.m	0x4000; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p22) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; Invalid; nop }
-	{ break.m	0xAA02A; nop; break.i	0x80000 }
-	{ Invalid; (p34) nop; nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x2B000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD4F196; nop; (p32) nop }
-	{ break.m	0x4000; (p22) nop; break.i	0x80000 }
-	{ (p07) fwb; nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p48) nop }
-	{ add	r0,r0,r1; nop; (p32) nop }
-	{ (p07) fwb; mov	pr,0x4000; break.i	0x80000 }
-	{ (p07) break.m	0x50780; (p07) nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r15,3FFFFFFFFFD0F266; nop; nop }
-	{ add	r0,r0,r1; (p17) nop; (p16) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ mf.a; nop; (p32) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8EAC6; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; (p32) nop; break.b	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ chk.a.nc	f0,3FFFFFFFFF0CC226; addl	r119,987903,r3; (p49) nop }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; (p32) nop; break.b	0x80000 }
-	{ Invalid; nop; br.call.spnt.many	b0,b0 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ add	r0,r0,r1; Invalid; break.i	0x80000 }
-	{ (p19) add	r0,r38,r20; (p03) nop; add	r0,r0,r32 }
-	{ (p04) chk.a.clr	r1,3FFFFFFFFF2CBA96; nop; break.i	0x80000; }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; Invalid; nop }
-	{ chk.a.clr	r0,3FFFFFFFFF14BD76; (p04) nop; Invalid }
-	{ Invalid; nop; break.i	0x80000; }
-	{ Invalid; nop; nop.b	0x2400B }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r2,3FFFFFFFFF98EB96; mov	pr,0x4AFFFCD; (p16) nop.b	0x804B }
-	{ (p19) break.m	0x59300; (p22) nop; break.i	0x80000 }
-	{ (p22) break.m	0x59680; (p32) nop; (p32) nop.b	0x26109 }
-	{ Invalid; (p18) nop; (p16) br.call.spnt.few.clr	b0,b1 }
-	{ break.m	0x4000; (p07) nop; break.i	0x80000 }
-	{ mf.a; nop; (p32) nop }
-	{ (p18) fwb; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8F466; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; Invalid; nop }
-	{ chk.a.clr	r0,3FFFFFFFFF14BE66; (p04) nop; Invalid }
-	{ Invalid; nop; break.i	0x80000; }
-	{ Invalid; nop; (p32) nop }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8F4D6; nop; nop }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; break.i	0xAA02A; break.b	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x2B000 }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ mf.a; nop; nop }
-	{ Invalid; break.i	0xAA02A; break.i	0x80000 }
-	{ Invalid; nop; nop }
-	{ break.m	0x4000; (p34) nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p22) nop; break.i	0x80000 }
-	{ Invalid; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8F576; nop; nop }
-	{ Invalid; (p23) nop; nop.b	0x9 }
-	{ Invalid; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; break.b	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8F5B6; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x2B000 }
-	{ (p03) chk.a.clr	f0,3FFFFFFFFFD8F5E6; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p22) nop; nop }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; nop.b	0x2200B }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; nop; (p16) nop.b	0x2B000 }
-	{ (p22) chk.a.clr	r0,3FFFFFFFFF14BFF6; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; nop }
-	{ Invalid; nop; (p16) nop.b	0x6B }
-	{ Invalid; (p32) nop; (p48) nop }
-	{ add	r0,r0,r1; mov.sptk	b0,r43,40000000000CBF16; nop }
-	{ (p22) chk.a.clr	r0,3FFFFFFFFF14C046; (p07) nop; cmp.lt	p00,p00,r0,r32 }
-	{ Invalid; nop; (p48) cmp.eq.unc	p40,p03,r72,r67; }
-	{ sum	0x5FFFDC; (p32) mov	pr,0x58F4F88; break.i	0x80000; }
-	{ (p04) add	r0,r8,r22; mov.sptk	b0,r43,40000000000CBF56; (p32) nop }
-	{ break.m	0x4000; (p07) nop; (p16) nop }
-	{ add	r0,r0,r1; (p18) nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r47,3FFFFFFFFFD8F0D6; nop; break.b	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
-	{ add	r0,r0,r1; (p19) nop; (p16) nop }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8F8E6; nop; nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ (p04) fwb; nop; (p48) nop }
-	{ Invalid; (p08) chk.s.i	r15,400000000014BF16; cmp.lt	p00,p00,r0,r32 }
-	{ (p07) chk.a.nc	r0,3FFFFFFFFF0D7006; (p04) nop; Invalid; }
-	{ Invalid; cmp.eq	p00,p00,r0,r1; (p01) nop; }
-	{ break.m	0x4000; (p34) nop; nop }
-	{ Invalid; (p07) nop; (p32) nop }
-	{ (p07) fwb; nop; (p32) nop }
-	{ mf.a; nop; add	r0,r0,r0 }
-	{ Invalid; (p32) nop; (p16) nop; }
-	{ break.m	0x4000; nop; (p16) nop }
-	{ add	r0,r0,r1; (p17) nop; (p32) nop }
-	{ (p21) fwb; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CC7B6; nop; (p32) nop }
-	{ chk.a.nc	r0,3FFFFFFFFF0CC7C6; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ (p21) chk.a.clr	r0,3FFFFFFFFF14C216; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ Invalid; (p32) nop; (p16) nop.b	0x29000 }
-	{ Invalid; (p21) nop; (p32) nop }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p07) fwb; nop; break.i	0x80000 }
-	{ (p03) chk.a.clr	r0,3FFFFFFFFFD8F946; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p48) nop }
-	{ add	r0,r0,r1; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ add	r0,r0,r1; nop; nop }
-	{ break.m	0x4000; (p32) nop; (p32) nop }
-	{ Invalid; (p19) chk.s.i	r8,400000000014C0D6; break.b	0x80000 }
-	{ (p21) break.m	0x59500; (p19) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; (p18) nop; br.call.spnt.few	b0,b2 }
-	{ Invalid; (p21) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; nop; break.i	0x80000 }
-	{ Invalid; nop; br.call.spnt.few	b0,b0 }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ (p21) chk.a.clr	r0,3FFFFFFFFF14C386; nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ break.m	0x4000; nop; (p32) nop }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ mf.a; nop; (p48) nop }
-	{ Invalid; nop; (p32) nop }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; (p48) nop }
-	{ (p04) chk.a.clr	f0,3FFFFFFFFF14C1E6; (p07) cmp4.ne.or	p60,p08,r1,r60; (p01) nop; }
-	{ Invalid; (p07) chk.s.i	r1,40000000002EAB36; cmp.lt	p00,p00,r0,r32 }
-	{ (p07) chk.a.nc	r0,3FFFFFFFFF0D72F6; (p04) nop; Invalid; }
-	{ Invalid; cmp4.eq	p00,p00,r0,r1; (p01) nop; }
-	{ break.m	0x4000; (p34) nop; break.i	0x80000 }
-	{ break.m	0x4000; (p32) nop; (p16) nop }
-	{ Invalid; (p32) nop; (p16) nop }
-	{ break.m	0x4000; (p21) nop; (p48) nop }
-	{ break.m	0x4000; (p32) nop; break.i	0x80000 }
-	{ Invalid; nop; br.call.spnt.few	b0,b2 }
-	{ mf.a; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; break.i	0x80000 }
-	{ break.m	0x4000; nop; Invalid }
+
+l40000000000C9D40:
+	{ nop.m	0x0; adds	r15,0x1,r15; nop.i	0x0; }
+	{ cmp.eq	p06,p07,0x0,r15; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C9D80; }
+
+l40000000000C9D60:
+	{ ld1	r14,[r15]; nop.m	0x0; sxt1	r14,r14; }
+	{ nop.m	0x0; cmp4.eq	p07,p06,0x0,r14; (p06) br.cond.dptk.few	40000000000C9CE0 }
+
+l40000000000C9D80:
+	{ st1	[r0],r16; nop.m	0x0; nop.i	0x0 }
+
+l40000000000C9D90:
+	{ nop.m	0x0; mov.i	ar.pfs,r35; nop.i	0x0; }
+	{ nop.m	0x0; mov.spnt	b0,r34,40000000000C9DA0; br.ret	b0 }
+
+l40000000000C9DB0:
+	{ nop.m	0x0; cmp4.eq	p06,p07,r33,r14; (p06) br.cond.dpnt.few	40000000000C9DD0 }
+
+l40000000000C9DC0:
+	{ st1	[r16],r1,1; nop.i	0x0; br.cond.sptk.few	40000000000C9D40 }
+
+l40000000000C9DD0:
+	{ nop.m	0x0; adds	r33,0x0,r0; br.cond.sptk.few	40000000000C9D40; }
+
+l40000000000C9DE0:
+	{ adds	r17,0x1,r15; cmp4.eq	p07,p06,0x27,r33; (p07) br.cond.dpnt.few	40000000000C9EB0; }
+
+l40000000000C9DF0:
+	{ cmp4.eq	p06,p07,0x22,r33; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000C9E70; }
+
+l40000000000C9E00:
+	{ ld1	r15,[r17]; nop.i	0x0; sxt1	r15,r15; }
+
+l40000000000C9E10:
+	{ ld1.a	r14,[r17]; st1	[r15],r16; adds	r15,0x0,r17 }
+	{ adds	r16,0x1,r16; ld1.c.clr	r14,[r17]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r14,r14; nop.i	0x0; }
+	{ nop.m	0x0; cmp4.eq	p06,p07,0x0,r14; (p07) br.cond.dptk.few	40000000000C9D40 }
+
+l40000000000C9E50:
+	{ nop.m	0x0; mov.i	ar.pfs,r35; nop.i	0x0; }
+	{ nop.m	0x0; mov.spnt	b0,r34,40000000000C9E60; br.ret	b0 }
+
+l40000000000C9E70:
+	{ adds	r17,0x1,r15; ld1	r15,[r17]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; shladd	r19,r15,0x2,r18; }
+	{ nop.m	0x0; ld4	r19,[r19]; nop.i	0x0; }
+	{ nop.m	0x0; tbit.z	p07,p06,r19,0x6; (p06) br.cond.dptk.few	40000000000C9E10 }
+
+l40000000000C9EB0:
+	{ ld1.a	r15,[r17]; st1	[r16],r1,1; nop.i	0x0; }
+	{ nop.m	0x0; ld1.c.clr	r15,[r17]; nop.i	0x0; }
+	{ nop.m	0x0; sxt1	r15,r15; br.cond.sptk.few	40000000000C9E10 }
+
+l40000000000C9EE0:
+	{ nop.m	0x0; adds	r16,0x0,r8; nop.i	0x0; }
+	{ st1	[r0],r16; nop.i	0x0; br.cond.sptk.few	40000000000C9D90; }
+40000000000C9F00 18 68 41 1E 80 05 A0 42 80 00 42 00 00 00 00 20 .hA....B..B.... 
+40000000000C9F10 01 10 41 40 00 21 C0 02 00 62 00 C0 05 08 00 84 ..A@.!...b......
+40000000000C9F20 08 78 00 54 18 10 00 00 00 02 00 80 14 00 00 90 .x.T............
+40000000000C9F30 09 58 01 54 00 21 00 00 00 02 00 C0 01 10 01 84 .X.T.!..........
+40000000000C9F40 11 00 00 00 01 00 60 00 3C 0E 72 03 50 04 00 43 ......`.<.r.P..C
+40000000000C9F50 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000C9F60 09 78 20 1C 18 14 00 00 00 02 00 80 14 20 01 84 .x .......... ..
+40000000000C9F70 10 00 00 00 01 00 70 00 3C 0C 72 03 F0 FF FF 4A ......p.<.r....J
+40000000000C9F80 08 40 D1 03 2F 24 F0 0A 90 00 42 A0 04 50 01 84 .@../$....B..P..
+40000000000C9F90 19 38 01 00 00 21 30 0A 00 00 48 00 B8 61 06 50 .8...!0...H..a.P
+40000000000C9FA0 09 70 00 50 10 10 60 02 20 00 42 20 00 70 01 84 .p.P..`. .B .p..
+40000000000C9FB0 11 38 00 1C 86 39 00 00 00 02 80 03 10 03 00 43 .8...9.........C
+40000000000C9FC0 09 70 00 40 18 10 F0 02 A8 B0 20 00 00 00 04 00 .p.@...... .....
+40000000000C9FD0 08 00 00 00 01 00 00 70 98 30 23 C0 00 78 1D E4 .......p.0#..x..
+40000000000C9FE0 18 00 00 00 01 00 F0 62 02 80 02 00 00 00 00 20 .......b....... 
+40000000000C9FF0 11 00 00 00 01 00 00 00 00 02 00 03 20 03 00 43 ............ ..C
+40000000000CA000 09 00 00 00 01 00 E0 40 84 30 28 00 00 00 04 00 .......@.0(.....
+40000000000CA010 11 08 E0 43 19 16 60 70 04 80 03 00 68 00 80 10 ...C..`p....h...
+40000000000CA020 00 00 00 00 01 00 E0 00 8C 2C 00 20 00 70 01 84 .........,. .p..
+40000000000CA030 19 00 00 00 01 00 60 00 20 0E 73 03 80 01 00 42 ......`. .s....B
+40000000000CA040 08 78 00 4A 18 10 E0 70 98 24 40 A0 04 10 01 84 .x.J...p.$@.....
+40000000000CA050 0B 18 05 46 00 21 00 78 38 30 23 00 00 00 04 00 ...F.!.x80#.....
+40000000000CA060 09 00 00 00 01 00 F0 42 88 30 28 00 00 00 04 00 .......B.0(.....
+40000000000CA070 11 00 00 00 01 00 70 00 BC 0C 72 03 90 FF FF 4A ......p...r....J
+40000000000CA080 08 00 00 00 01 00 70 08 8C 0C 73 C0 01 18 59 00 ......p...s...Y.
+40000000000CA090 09 80 FC 4F 3F 23 40 82 A7 7E 46 20 01 38 21 E6 ...O?#@..~F .8!.
+40000000000CA0A0 09 70 38 4C 12 20 00 00 00 02 00 00 02 01 20 80 .p8L. ........ .
+40000000000CA0B0 11 00 00 1C 98 11 E0 00 9C 2C 80 03 80 02 00 43 .........,.....C
+40000000000CA0C0 09 78 00 50 10 10 00 00 00 02 00 C0 E1 00 48 80 .x.P..........H.
+40000000000CA0D0 11 00 00 00 01 00 70 00 3C 0C F3 03 80 01 00 42 ......p.<......B
+40000000000CA0E0 08 70 20 4C 00 21 60 10 8C 0E 73 00 00 00 04 00 .p L.!`...s.....
+40000000000CA0F0 19 78 40 4C 00 21 00 41 00 00 48 03 50 03 00 43 .x@L.!.A..H.P..C
+40000000000CA100 09 00 00 00 01 00 E0 00 38 30 20 00 00 00 04 00 ........80 .....
+40000000000CA110 11 00 00 00 01 00 70 00 38 0C F2 03 50 00 00 43 ......p.8...P..C
+40000000000CA120 09 88 80 20 00 20 00 00 00 02 00 00 F2 30 15 80 ... . .......0..
+40000000000CA130 0B 00 38 22 98 11 E0 40 3C 30 28 00 00 00 04 00 ..8"...@<0(.....
+40000000000CA140 10 00 00 00 01 00 70 00 38 0C 72 03 E0 FF FF 4A ......p.8.r....J
+40000000000CA150 09 58 81 20 00 20 00 00 00 02 00 00 00 00 04 00 .X. . ..........
+40000000000CA160 08 00 00 00 01 00 00 00 AC 30 23 E0 05 30 01 84 .........0#..0..
+40000000000CA170 19 00 00 00 01 00 00 00 00 02 00 00 78 06 F5 58 ............x..X
+40000000000CA180 08 08 00 5C 00 21 00 00 00 02 00 00 00 00 04 00 ...\.!..........
+40000000000CA190 01 00 00 00 01 00 00 68 01 55 00 00 00 00 04 00 .......h.U......
+40000000000CA1A0 10 00 00 00 01 00 00 60 05 80 03 80 08 00 84 00 .......`........
+40000000000CA1B0 09 70 00 50 10 10 00 00 00 02 00 E0 01 38 59 00 .p.P.........8Y.
+40000000000CA1C0 11 38 00 1C 86 39 F0 78 A4 24 40 03 50 00 00 43 .8...9.x.$@.P..C
+40000000000CA1D0 09 70 00 4A 18 10 50 02 88 00 42 E0 14 38 01 84 .p.J..P...B..8..
+40000000000CA1E0 0B 00 38 1E 98 11 F0 42 88 30 28 00 00 00 04 00 ..8....B.0(.....
+40000000000CA1F0 10 00 00 00 01 00 70 00 BC 0C 72 03 10 FE FF 4A ......p...r....J
+40000000000CA200 10 00 00 00 01 00 00 00 00 02 00 00 80 FE FF 48 ...............H
+40000000000CA210 11 78 01 4A 18 10 50 02 88 00 42 00 D8 05 F5 58 .x.J..P...B....X
+40000000000CA220 09 78 21 44 18 14 00 00 00 02 00 20 00 70 01 84 .x!D....... .p..
+40000000000CA230 10 00 00 00 01 00 70 00 BC 0C 72 03 D0 FD FF 4A ......p...r....J
+40000000000CA240 10 00 00 00 01 00 00 00 00 02 00 00 40 FE FF 48 ............@..H
+40000000000CA250 08 10 E1 1D 3F 23 00 00 00 02 00 80 E4 20 01 80 ....?#....... ..
+40000000000CA260 19 80 40 00 12 20 00 00 00 02 80 04 40 00 00 43 ..@.. ......@..C
+40000000000CA270 09 00 00 00 01 00 22 4A 89 00 40 84 44 82 14 80 ......"J..@.D...
+40000000000CA280 11 78 E1 45 19 16 00 00 00 02 00 00 68 05 F5 58 .x.E........h..X
+40000000000CA290 10 08 00 5C 00 21 70 20 89 0C 70 03 F0 FF FF 4A ...\.!p ..p....J
+40000000000CA2A0 11 78 01 52 00 21 00 00 00 02 00 00 48 05 F5 58 .x.R.!......H..X
+40000000000CA2B0 10 00 00 00 01 00 10 00 B8 00 42 00 30 FE FF 48 ..........B.0..H
+40000000000CA2C0 11 78 FD 49 3F 23 00 00 00 02 00 00 88 5E 06 50 .x.I?#.......^.P
+40000000000CA2D0 08 70 00 40 18 10 10 00 B8 00 42 20 05 40 00 84 .p.@......B .@..
+40000000000CA2E0 0A 78 01 54 58 10 00 70 98 30 23 C0 00 78 1D E4 .x.TX..p.0#..x..
+40000000000CA2F0 18 00 00 00 01 00 F0 EA 00 80 02 00 00 00 00 20 ............... 
+40000000000CA300 10 00 00 00 01 00 00 00 00 02 80 03 00 FD FF 4A ...............J
+40000000000CA310 09 00 00 00 01 00 E0 40 98 00 42 00 00 00 04 00 .......@..B.....
+40000000000CA320 08 00 00 1C 98 11 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA330 09 70 00 50 10 10 00 00 00 02 00 E0 05 48 01 84 .p.P.........H..
+40000000000CA340 10 00 00 00 01 00 60 00 38 0E 73 03 D0 00 00 42 ......`.8.s....B
+40000000000CA350 11 78 01 40 18 10 00 00 00 02 00 00 98 04 F5 58 .x.@...........X
+40000000000CA360 08 08 00 5C 00 21 00 00 80 30 23 E0 05 30 01 84 ...\.!...0#..0..
+40000000000CA370 19 00 00 00 01 00 00 00 00 02 00 00 78 04 F5 58 ............x..X
+40000000000CA380 11 00 00 00 01 00 10 00 B8 00 42 00 10 FE FF 48 ..........B....H
+40000000000CA390 0B 70 D0 03 2F 24 E0 00 38 20 20 00 00 00 04 00 .p../$..8  .....
+40000000000CA3A0 10 00 00 00 01 00 70 00 38 0C F3 03 F0 FD FF 4A ......p.8......J
+40000000000CA3B0 09 70 20 42 18 14 F0 02 80 30 20 00 00 00 04 00 .p B.....0 .....
+40000000000CA3C0 11 08 E0 43 19 16 60 70 04 80 03 00 68 00 80 10 ...C..`p....h...
+40000000000CA3D0 10 08 00 5C 00 21 70 00 20 0C 73 03 C0 FD FF 4A ...\.!p. .s....J
+40000000000CA3E0 11 78 01 40 18 10 00 00 00 02 00 00 08 04 F5 58 .x.@...........X
+40000000000CA3F0 09 08 00 5C 00 21 00 00 80 30 23 00 D0 02 AA 00 ...\.!...0#.....
+40000000000CA400 11 00 00 00 01 00 00 60 05 80 03 80 08 00 84 00 .......`........
+40000000000CA410 11 00 00 00 01 00 00 00 00 02 00 00 D8 03 F5 58 ...............X
+40000000000CA420 11 08 00 5C 00 21 F0 02 98 00 42 00 C8 03 F5 58 ...\.!....B....X
+40000000000CA430 10 00 00 00 01 00 10 00 B8 00 42 00 60 FD FF 48 ..........B.`..H
+40000000000CA440 11 78 01 40 18 10 00 00 00 02 00 00 A8 03 F5 58 .x.@...........X
+40000000000CA450 09 70 20 4C 00 21 10 00 B8 00 42 E0 05 30 01 84 .p L.!....B..0..
+40000000000CA460 0A 70 00 1C 18 10 00 70 80 30 23 00 00 00 04 00 .p.....p.0#.....
+40000000000CA470 19 00 00 54 98 11 00 00 00 02 00 00 78 03 F5 58 ...T........x..X
+40000000000CA480 09 08 00 5C 00 21 00 00 00 02 00 00 D0 02 AA 00 ...\.!..........
+40000000000CA490 10 00 00 00 01 00 00 60 05 80 03 80 08 00 84 00 .......`........
+40000000000CA4A0 09 00 00 00 01 00 F0 02 A8 30 20 00 00 00 04 00 .........0 .....
+40000000000CA4B0 10 00 00 00 01 00 60 00 BC 0E 72 00 40 FB FF 48 ......`...r.@..H
+40000000000CA4C0 09 00 00 00 01 00 F0 02 A8 30 20 00 00 00 04 00 .........0 .....
+40000000000CA4D0 11 00 00 00 01 00 60 00 BC 0E 72 00 30 FE FF 48 ......`...r.0..H
+40000000000CA4E0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA4F0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA500 10 10 19 08 80 05 10 02 00 62 00 00 00 00 00 20 .........b..... 
+40000000000CA510 09 28 B1 FA C4 27 30 02 04 00 42 80 04 00 01 84 .(...'0...B.....
+40000000000CA520 11 28 01 4A 18 10 00 00 00 02 00 00 E8 F9 FF 58 .(.J...........X
+40000000000CA530 09 40 00 00 00 21 10 00 8C 00 42 00 20 02 AA 00 .@...!....B. ...
+40000000000CA540 11 00 00 00 01 00 00 08 05 80 03 80 08 00 84 00 ................
+40000000000CA550 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA560 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA570 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA580 10 10 19 08 80 05 10 02 00 62 00 00 00 00 00 20 .........b..... 
+40000000000CA590 09 28 91 FA C3 27 30 02 04 00 42 80 04 00 01 84 .(...'0...B.....
+40000000000CA5A0 11 28 01 4A 18 10 00 00 00 02 00 00 68 F9 FF 58 .(.J........h..X
+40000000000CA5B0 09 40 00 00 00 21 10 00 8C 00 42 00 20 02 AA 00 .@...!....B. ...
+40000000000CA5C0 11 00 00 00 01 00 00 08 05 80 03 80 08 00 84 00 ................
+40000000000CA5D0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA5E0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA5F0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA600 08 20 21 0C 80 05 00 00 00 02 00 60 04 00 C4 00 . !........`....
+40000000000CA610 09 28 01 02 00 21 00 00 00 02 00 C0 04 00 01 84 .(...!..........
+40000000000CA620 11 38 01 00 00 21 00 00 00 02 00 00 A8 75 F7 58 .8...!.......u.X
+40000000000CA630 08 08 00 4A 00 21 00 00 00 02 00 20 04 40 00 84 ...J.!..... .@..
+40000000000CA640 19 30 01 10 00 21 00 00 00 02 00 00 C8 62 F7 58 .0...!.......b.X
+40000000000CA650 08 08 00 4A 00 21 00 00 00 02 00 40 04 40 00 84 ...J.!.....@.@..
+40000000000CA660 19 30 01 42 00 21 00 00 00 02 00 00 88 01 F5 58 .0.B.!.........X
+40000000000CA670 09 40 00 44 00 21 10 00 94 00 42 00 40 02 AA 00 .@.D.!....B.@...
+40000000000CA680 11 00 00 00 01 00 00 18 05 80 03 80 08 00 84 00 ................
+40000000000CA690 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA6A0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA6B0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA6C0 08 30 2D 10 80 05 80 00 84 00 42 A0 04 00 C4 00 .0-.......B.....
+40000000000CA6D0 09 38 01 02 00 21 00 00 00 02 00 E0 01 08 59 00 .8...!........Y.
+40000000000CA6E0 09 70 80 1E 00 20 00 00 00 02 00 E0 01 7A 04 80 .p... .......z..
+40000000000CA6F0 0B 70 00 1C 00 10 00 00 00 02 00 C0 01 70 50 00 .p...........pP.
+40000000000CA700 11 38 24 1C 86 39 80 00 38 12 73 04 D0 02 00 43 .8$..9..8.s....C
+40000000000CA710 11 00 00 00 01 00 70 00 39 8C 73 03 B0 02 00 43 ......p.9.s....C
+40000000000CA720 03 70 04 1E 00 14 80 08 20 00 42 C0 01 70 50 00 .p...... .B..pP.
+40000000000CA730 11 30 80 1C 87 39 80 00 38 12 73 04 B0 02 00 43 .0...9..8.s....C
+40000000000CA740 11 00 00 00 01 00 60 48 38 8E 73 03 E0 FF FF 4A ......`H8.s....J
+40000000000CA750 11 38 9C 1C 86 39 A0 00 88 16 73 05 90 01 00 42 .8...9....s....B
+40000000000CA760 11 30 88 1C 87 39 40 12 01 00 C8 03 90 02 00 43 .0...9@........C
+40000000000CA770 11 00 00 00 01 00 70 00 8C 0C F2 03 40 00 00 43 ......p.....@..C
+40000000000CA780 09 40 04 10 00 21 00 00 00 02 00 00 00 00 04 00 .@...!..........
+40000000000CA790 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA7A0 08 00 20 46 90 11 00 00 00 02 00 00 00 00 04 00 .. F............
+40000000000CA7B0 01 00 00 00 01 00 00 01 20 2C 00 20 02 00 00 84 ........ ,. ....
+40000000000CA7C0 09 78 80 20 00 20 00 00 00 02 00 00 02 82 04 80 .x. . ..........
+40000000000CA7D0 0B 78 00 1E 00 10 00 00 00 02 00 E0 01 78 50 00 .x...........xP.
+40000000000CA7E0 11 00 00 00 01 00 60 00 3C 0E 73 03 70 00 00 43 ......`.<.s.p..C
+40000000000CA7F0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA800 11 00 00 00 01 00 70 00 44 0C 73 03 40 01 00 42 ......p.D.s.@..B
+40000000000CA810 11 30 70 1F 87 39 00 00 00 02 00 03 70 01 00 43 .0p..9......p..C
+40000000000CA820 11 30 3C 48 87 38 00 00 00 02 00 03 A0 00 00 43 .0<H.8.........C
+40000000000CA830 03 78 04 20 00 14 80 08 20 00 42 E0 01 78 50 00 .x. .... .B..xP.
+40000000000CA840 11 00 00 00 01 00 70 00 3C 0C 73 03 C0 FF FF 4A ......p.<.s....J
+40000000000CA850 08 30 00 48 87 39 90 22 F6 89 4F 00 00 00 04 00 .0.H.9."..O.....
+40000000000CA860 19 40 01 00 00 21 A0 2A 00 00 48 03 60 00 00 43 .@...!.*..H.`..C
+40000000000CA870 11 48 01 52 18 10 00 00 00 02 00 00 F8 02 F5 58 .H.R...........X
+40000000000CA880 08 08 00 4E 00 21 80 02 20 00 42 00 00 00 04 00 ...N.!.. .B.....
+40000000000CA890 19 48 01 48 00 21 A0 02 80 00 42 00 F8 2C 02 50 .H.H.!....B..,.P
+40000000000CA8A0 09 00 00 00 01 00 10 00 9C 00 42 00 F1 E7 FF 9F ..........B.....
+40000000000CA8B0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CA8C0 01 00 00 00 01 00 00 30 01 55 00 00 00 00 04 00 .......0.U......
+40000000000CA8D0 10 00 00 00 01 00 00 28 05 80 03 80 08 00 84 00 .......(........
+40000000000CA8E0 11 00 00 00 01 00 70 10 39 8C F3 03 30 00 00 43 ......p.9...0..C
+40000000000CA8F0 11 20 01 00 00 21 70 00 8C 0C F2 03 C0 FE FF 4B . ...!p........K
+40000000000CA900 10 00 20 46 90 11 00 00 00 02 00 00 B0 FE FF 48 .. F...........H
+40000000000CA910 08 00 00 00 01 00 40 02 38 00 42 C0 00 18 1D E4 ......@.8.B.....
+40000000000CA920 16 00 00 00 00 88 01 48 FF FF 25 04 80 FE FF 4A .......H..%....J
+40000000000CA930 11 00 00 00 01 00 80 08 20 00 42 00 70 FE FF 48 ........ .B.p..H
+40000000000CA940 09 78 04 20 00 14 10 01 00 00 42 00 11 40 00 84 .x. ......B..@..
+40000000000CA950 01 00 00 00 01 00 F0 00 3C 28 00 00 00 00 04 00 ........<(......
+40000000000CA960 10 00 00 00 01 00 70 00 3C 0C 73 03 A0 FE FF 4A ......p.<.s....J
+40000000000CA970 10 00 00 00 01 00 00 00 00 02 00 00 E0 FE FF 48 ...............H
+40000000000CA980 09 78 04 20 00 14 10 09 00 00 48 00 11 40 00 84 .x. ......H..@..
+40000000000CA990 01 00 00 00 01 00 F0 00 3C 28 00 00 00 00 04 00 ........<(......
+40000000000CA9A0 10 00 00 00 01 00 70 00 3C 0C 73 03 60 FE FF 4A ......p.<.s.`..J
+40000000000CA9B0 10 00 00 00 01 00 00 00 00 02 00 00 A0 FE FF 48 ...............H
+40000000000CA9C0 11 00 00 00 01 00 80 00 84 00 42 00 90 FD FF 48 ..........B....H
+40000000000CA9D0 09 40 00 42 00 21 00 00 00 02 00 00 00 00 04 00 .@.B.!..........
+40000000000CA9E0 10 00 00 00 01 00 70 00 88 0C F3 03 10 FF FF 4A ......p........J
+40000000000CA9F0 09 48 F1 FA C4 27 A0 2A 00 00 48 00 05 00 00 84 .H...'.*..H.....
+40000000000CAA00 11 48 01 52 18 10 00 00 00 02 00 00 68 01 F5 58 .H.R........h..X
+40000000000CAA10 08 08 00 4E 00 21 00 00 00 02 00 00 05 40 00 84 ...N.!.......@..
+40000000000CAA20 19 48 01 40 00 21 00 00 00 02 00 00 68 2B 02 50 .H.@.!......h+.P
+40000000000CAA30 09 40 FC F9 FF 27 10 00 9C 00 42 00 60 02 AA 00 .@...'....B.`...
+40000000000CAA40 11 00 00 00 01 00 00 28 05 80 03 80 08 00 84 00 .......(........
+40000000000CAA50 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAA60 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAA70 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAA80 08 20 21 0C 80 05 00 00 00 02 00 60 04 00 C4 00 . !........`....
+40000000000CAA90 09 28 01 02 00 21 00 00 00 02 00 C0 04 00 01 84 .(...!..........
+40000000000CAAA0 11 00 00 00 01 00 00 00 00 02 00 00 28 0C F5 58 ............(..X
+40000000000CAAB0 03 08 00 4A 00 21 20 02 20 00 42 C0 41 E9 9F 9D ...J.! . .B.A...
+40000000000CAAC0 0B 00 00 00 01 00 E0 40 38 00 42 00 00 00 04 00 .......@8.B.....
+40000000000CAAD0 0B 08 01 1C 18 10 60 02 84 30 20 00 00 00 04 00 ......`..0 .....
+40000000000CAAE0 11 00 00 00 01 00 60 00 98 0E 72 03 C0 00 00 43 ......`...r....C
+40000000000CAAF0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAB00 09 70 20 42 00 21 00 00 00 02 00 20 04 09 01 84 .p B.!..... ....
+40000000000CAB10 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CAB20 11 00 00 00 01 00 70 70 88 0C 61 03 60 00 00 42 ......pp..a.`..B
+40000000000CAB30 11 38 89 1C 05 20 70 00 38 0C 63 03 50 00 00 43 .8... p.8.c.P..C
+40000000000CAB40 00 00 00 00 01 00 70 02 9C 2C 00 00 00 00 04 00 ......p..,......
+40000000000CAB50 0B 70 00 4C 00 10 70 02 9D 00 40 E0 01 70 50 00 .p.L..p...@..pP.
+40000000000CAB60 0B 70 00 4E 00 10 00 00 00 02 00 C0 01 70 50 00 .p.N.........pP.
+40000000000CAB70 10 00 00 00 01 00 70 78 38 0C F1 03 50 00 00 43 ......px8...P..C
+40000000000CAB80 09 00 00 00 01 00 60 02 84 30 20 00 00 00 04 00 ......`..0 .....
+40000000000CAB90 10 00 00 00 01 00 70 00 98 0C 72 03 70 FF FF 4A ......p...r.p..J
+40000000000CABA0 09 40 04 00 00 24 00 00 00 02 00 00 40 02 AA 00 .@...$......@...
+40000000000CABB0 11 00 00 00 01 00 00 18 05 80 03 80 08 00 84 00 ................
+40000000000CABC0 11 00 00 00 01 00 00 00 00 02 00 00 88 F9 F4 58 ...............X
+40000000000CABD0 10 08 00 4A 00 21 60 00 20 0E F3 03 B0 FF FF 4A ...J.!`. ......J
+40000000000CABE0 09 40 00 00 00 21 00 00 00 02 00 00 40 02 AA 00 .@...!......@...
+40000000000CABF0 11 00 00 00 01 00 00 18 05 80 03 80 08 00 84 00 ................
+40000000000CAC00 08 10 15 08 80 05 00 E2 06 7C 48 20 04 00 C4 00 .........|H ....
+40000000000CAC10 0B 18 01 02 00 21 E0 00 80 30 20 00 00 00 04 00 .....!...0 .....
+40000000000CAC20 11 30 00 1C 07 39 40 02 38 00 42 03 80 00 00 43 .0...9@.8.B....C
+40000000000CAC30 11 00 00 00 01 00 00 00 00 02 00 00 38 F8 F4 58 ............8..X
+40000000000CAC40 08 00 00 00 01 00 10 00 8C 00 42 00 00 00 04 00 ..........B.....
+40000000000CAC50 19 20 01 40 18 10 00 00 00 02 00 00 98 FB F4 58 . .@...........X
+40000000000CAC60 09 08 00 46 00 21 00 00 80 30 23 00 00 00 04 00 ...F.!...0#.....
+40000000000CAC70 0B 70 50 03 3E 24 F0 00 38 30 20 C0 C1 EE B7 9E .pP.>$..80 .....
+40000000000CAC80 09 00 00 00 01 00 E0 00 38 30 20 00 00 00 04 00 ........80 .....
+40000000000CAC90 08 00 3C 1C 98 11 00 00 00 02 00 00 00 00 04 00 ..<.............
+40000000000CACA0 09 40 00 00 00 21 00 00 00 02 00 00 20 02 AA 00 .@...!...... ...
+40000000000CACB0 11 00 00 00 01 00 00 08 05 80 03 80 08 00 84 00 ................
+40000000000CACC0 08 10 19 08 80 05 E0 A0 F5 59 4F 20 04 00 C4 00 .........YO ....
+40000000000CACD0 09 18 01 02 00 21 00 00 00 02 00 80 04 00 01 84 .....!..........
+40000000000CACE0 09 00 00 00 01 00 E0 00 38 30 20 00 00 00 04 00 ........80 .....
+40000000000CACF0 11 28 01 1C 18 10 00 00 00 02 00 00 D8 01 F5 58 .(.............X
+40000000000CAD00 09 08 00 46 00 21 00 00 00 02 00 00 20 02 AA 00 ...F.!...... ...
+40000000000CAD10 11 00 00 00 01 00 00 08 05 80 03 80 08 00 84 00 ................
+40000000000CAD20 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAD30 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CAD40 18 40 31 14 80 05 C0 80 33 7E 46 00 00 00 00 20 .@1.....3~F.... 
+40000000000CAD50 01 48 01 02 00 21 70 02 00 62 00 40 05 00 01 84 .H...!p..b.@....
+40000000000CAD60 11 00 00 00 01 00 00 00 00 02 00 00 68 09 F5 58 ............h..X
+40000000000CAD70 08 30 00 42 07 39 10 00 A4 00 42 00 00 00 04 00 .0.B.9....B.....
+40000000000CAD80 09 30 01 10 00 21 A0 02 84 00 42 60 05 00 00 84 .0...!....B`....
+40000000000CAD90 D3 10 01 00 00 A1 01 10 00 80 21 00 B8 EE FF 58 ..........!....X
+40000000000CADA0 09 00 00 00 01 00 10 00 A4 00 42 40 04 40 00 84 ..........B@.@..
+40000000000CADB0 11 50 01 44 00 21 00 00 00 02 00 00 18 09 F5 58 .P.D.!.........X
+40000000000CADC0 11 08 00 52 00 21 A0 0A 20 00 42 00 08 DF 01 50 ...R.!.. .B....P
+40000000000CADD0 08 08 00 52 00 21 00 00 00 02 00 40 05 40 00 84 ...R.!.....@.@..
+40000000000CADE0 19 58 01 44 00 21 00 00 00 02 00 00 A8 03 F5 58 .X.D.!.........X
+40000000000CADF0 09 08 00 52 00 21 E0 80 30 00 42 40 05 61 00 84 ...R.!..0.B@.a..
+40000000000CAE00 09 00 20 1C 98 11 00 00 00 02 00 C0 C1 EA C3 9E .. .............
+40000000000CAE10 0B 70 00 1C 18 10 80 00 38 30 20 00 00 00 04 00 .p......80 .....
+40000000000CAE20 11 30 00 10 07 39 00 00 00 02 00 03 70 01 00 43 .0...9......p..C
+40000000000CAE30 0A 70 20 10 18 14 10 00 20 30 20 C0 E0 08 00 07 .p ..... 0 .....
+40000000000CAE40 19 00 00 00 01 00 00 00 00 02 00 00 68 00 80 10 ............h...
+40000000000CAE50 08 08 00 52 00 21 00 00 00 02 00 00 00 00 04 00 ...R.!..........
+40000000000CAE60 11 50 01 44 00 21 00 00 00 02 00 00 68 08 F5 58 .P.D.!......h..X
+40000000000CAE70 08 58 01 00 00 21 40 02 20 00 42 00 00 00 04 00 .X...!@. .B.....
+40000000000CAE80 19 08 00 52 00 21 A0 02 84 00 42 00 48 6D F7 58 ...R.!....B.Hm.X
+40000000000CAE90 08 08 00 52 00 21 00 00 00 02 00 60 04 40 00 84 ...R.!.....`.@..
+40000000000CAEA0 19 50 01 10 00 21 00 00 00 02 00 00 28 08 F5 58 .P...!......(..X
+40000000000CAEB0 08 08 00 52 00 21 00 00 00 02 00 A0 04 40 00 84 ...R.!.......@..
+40000000000CAEC0 19 50 01 46 00 21 00 00 00 02 00 00 28 F9 F4 58 .P.F.!......(..X
+40000000000CAED0 09 50 09 48 00 21 60 32 95 0A 40 20 00 48 01 84 .P.H.!`2..@ .H..
+40000000000CAEE0 09 00 00 00 01 00 A0 52 99 02 40 00 00 00 04 00 .......R..@.....
+40000000000CAEF0 11 00 00 00 01 00 A0 02 A8 2C 00 00 D8 DD 01 50 .........,.....P
+40000000000CAF00 08 08 00 52 00 21 30 02 20 00 42 00 00 00 04 00 ...R.!0. .B.....
+40000000000CAF10 19 58 01 44 00 21 A0 02 20 00 42 00 78 02 F5 58 .X.D.!.. .B.x..X
+40000000000CAF20 00 00 00 00 01 00 B0 02 94 2C 00 40 05 20 59 00 .........,.@. Y.
+40000000000CAF30 19 00 00 00 01 00 10 00 A4 00 42 00 00 00 00 20 ..........B.... 
+40000000000CAF40 11 58 81 56 00 20 A0 1A A9 00 40 00 48 02 F5 58 .X.V. ....@.H..X
+40000000000CAF50 11 08 00 52 00 21 A0 02 88 00 42 00 98 F8 F4 58 ...R.!....B....X
+40000000000CAF60 09 40 00 46 00 21 10 00 A4 00 42 00 80 02 AA 00 .@.F.!....B.....
+40000000000CAF70 00 00 00 00 01 00 00 38 05 80 03 00 00 00 04 00 .......8........
+40000000000CAF80 19 60 40 18 00 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+40000000000CAF90 09 70 30 FA AD 27 00 00 00 02 00 40 05 61 00 84 .p0..'.....@.a..
+40000000000CAFA0 0B 70 00 1C 18 10 80 00 38 30 20 00 00 00 04 00 .p......80 .....
+40000000000CAFB0 11 30 00 10 07 39 00 00 00 02 00 03 40 00 00 43 .0...9......@..C
+40000000000CAFC0 09 00 00 00 01 00 E0 40 20 30 28 00 00 00 04 00 .......@ 0(.....
+40000000000CAFD0 11 08 00 10 18 10 60 70 04 80 03 00 68 00 80 10 ......`p....h...
+40000000000CAFE0 11 08 00 52 00 21 60 00 20 0E F3 03 E0 01 00 43 ...R.!`. ......C
+40000000000CAFF0 0B 70 30 FA B0 27 E0 00 38 30 20 00 00 00 04 00 .p0..'..80 .....
+40000000000CB000 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CB010 10 00 00 00 01 00 60 00 38 0E 73 03 50 FE FF 4A ......`.8.s.P..J
+40000000000CB020 0B 70 40 18 00 21 A0 02 38 30 20 C0 41 EB B7 9E .p@..!..80 .A...
+40000000000CB030 09 00 00 00 01 00 E0 00 38 30 20 00 00 00 04 00 ........80 .....
+40000000000CB040 11 58 01 1C 10 10 00 00 00 02 00 00 08 EC FF 58 .X.............X
+40000000000CB050 08 08 00 52 00 21 00 00 00 02 00 60 04 40 00 84 ...R.!.....`.@..
+40000000000CB060 19 50 01 44 00 21 00 00 00 02 00 00 88 F7 F4 58 .P.D.!.........X
+40000000000CB070 09 70 40 18 00 21 20 02 8C 00 42 20 00 48 01 84 .p@..! ...B .H..
+40000000000CB080 11 50 01 1C 18 10 00 00 00 02 00 00 68 F7 F4 58 .P..........h..X
+40000000000CB090 11 08 00 52 00 21 A0 02 88 00 42 00 38 06 F5 58 ...R.!....B.8..X
+40000000000CB0A0 08 58 01 00 00 21 40 02 20 00 42 00 00 00 04 00 .X...!@. .B.....
+40000000000CB0B0 19 08 00 52 00 21 A0 02 84 00 42 00 18 6B F7 58 ...R.!....B..k.X
+40000000000CB0C0 08 08 00 52 00 21 00 00 00 02 00 60 04 40 00 84 ...R.!.....`.@..
+40000000000CB0D0 19 50 01 10 00 21 00 00 00 02 00 00 F8 05 F5 58 .P...!.........X
+40000000000CB0E0 08 08 00 52 00 21 00 00 00 02 00 A0 04 40 00 84 ...R.!.......@..
+40000000000CB0F0 19 50 01 46 00 21 00 00 00 02 00 00 F8 F6 F4 58 .P.F.!.........X
+40000000000CB100 09 50 09 48 00 21 60 32 95 0A 40 20 00 48 01 84 .P.H.!`2..@ .H..
+40000000000CB110 09 00 00 00 01 00 A0 52 99 02 40 00 00 00 04 00 .......R..@.....
+40000000000CB120 11 00 00 00 01 00 A0 02 A8 2C 00 00 A8 DB 01 50 .........,.....P
+40000000000CB130 08 08 00 52 00 21 30 02 20 00 42 00 00 00 04 00 ...R.!0. .B.....
+40000000000CB140 19 58 01 44 00 21 A0 02 20 00 42 00 48 00 F5 58 .X.D.!.. .B.H..X
+40000000000CB150 00 00 00 00 01 00 B0 02 94 2C 00 40 05 20 59 00 .........,.@. Y.
+40000000000CB160 19 00 00 00 01 00 10 00 A4 00 42 00 00 00 00 20 ..........B.... 
+40000000000CB170 11 58 81 56 00 20 A0 1A A9 00 40 00 18 00 F5 58 .X.V. ....@....X
+40000000000CB180 11 08 00 52 00 21 A0 02 88 00 42 00 68 F6 F4 58 ...R.!....B.h..X
+40000000000CB190 09 40 00 46 00 21 10 00 A4 00 42 00 80 02 AA 00 .@.F.!....B.....
+40000000000CB1A0 00 00 00 00 01 00 00 38 05 80 03 00 00 00 04 00 .......8........
+40000000000CB1B0 19 60 40 18 00 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+40000000000CB1C0 11 50 01 44 00 21 00 00 00 02 00 00 28 F6 F4 58 .P.D.!......(..X
+40000000000CB1D0 09 70 40 18 00 21 00 00 00 02 00 20 00 48 01 84 .p@..!..... .H..
+40000000000CB1E0 09 00 00 00 01 00 20 02 38 30 20 00 00 00 04 00 ...... .80 .....
+40000000000CB1F0 11 50 01 44 00 21 00 00 00 02 00 00 D8 04 F5 58 .P.D.!.........X
+40000000000CB200 08 58 01 00 00 21 40 02 20 00 42 00 00 00 04 00 .X...!@. .B.....
+40000000000CB210 19 08 00 52 00 21 A0 02 84 00 42 00 B8 69 F7 58 ...R.!....B..i.X
+40000000000CB220 08 08 00 52 00 21 00 00 00 02 00 60 04 40 00 84 ...R.!.....`.@..
+40000000000CB230 19 50 01 10 00 21 00 00 00 02 00 00 98 04 F5 58 .P...!.........X
+40000000000CB240 08 08 00 52 00 21 00 00 00 02 00 A0 04 40 00 84 ...R.!.......@..
+40000000000CB250 19 50 01 46 00 21 00 00 00 02 00 00 98 F5 F4 58 .P.F.!.........X
+40000000000CB260 09 50 09 48 00 21 60 32 95 0A 40 20 00 48 01 84 .P.H.!`2..@ .H..
+40000000000CB270 09 00 00 00 01 00 A0 52 99 02 40 00 00 00 04 00 .......R..@.....
+40000000000CB280 11 00 00 00 01 00 A0 02 A8 2C 00 00 48 DA 01 50 .........,..H..P
+40000000000CB290 08 08 00 52 00 21 30 02 20 00 42 00 00 00 04 00 ...R.!0. .B.....
+40000000000CB2A0 19 58 01 44 00 21 A0 02 20 00 42 00 E8 FE F4 58 .X.D.!.. .B....X
+40000000000CB2B0 00 00 00 00 01 00 B0 02 94 2C 00 40 05 20 59 00 .........,.@. Y.
+40000000000CB2C0 19 00 00 00 01 00 10 00 A4 00 42 00 00 00 00 20 ..........B.... 
+40000000000CB2D0 11 58 81 56 00 20 A0 1A A9 00 40 00 B8 FE F4 58 .X.V. ....@....X
+40000000000CB2E0 11 08 00 52 00 21 A0 02 88 00 42 00 08 F5 F4 58 ...R.!....B....X
+40000000000CB2F0 09 40 00 46 00 21 10 00 A4 00 42 00 80 02 AA 00 .@.F.!....B.....
+40000000000CB300 00 00 00 00 01 00 00 38 05 80 03 00 00 00 04 00 .......8........
+40000000000CB310 19 60 40 18 00 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+40000000000CB320 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CB330 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CB340 18 50 3D 18 80 05 C0 80 33 7C 46 00 00 00 00 20 .P=.....3|F.... 
+40000000000CB350 09 08 01 40 18 10 B0 02 04 00 42 20 05 00 C4 00 ...@......B ....
+40000000000CB360 11 68 91 00 00 24 C0 02 84 00 42 00 68 C2 06 50 .h...$....B.h..P
+40000000000CB370 08 30 00 10 07 39 00 00 00 02 00 00 11 40 00 84 .0...9.......@..
+40000000000CB380 19 08 00 56 00 21 00 00 00 02 00 03 80 05 00 43 ...V.!.........C
+40000000000CB390 09 00 00 00 01 00 20 02 20 00 20 00 00 00 04 00 ...... . . .....
+40000000000CB3A0 03 00 00 00 01 00 20 02 88 28 00 C0 80 12 1D E6 ...... ..(......
+40000000000CB3B0 D1 20 A5 00 00 A4 51 22 01 00 48 03 30 00 00 43 . ....Q"..H.0..C
+40000000000CB3C0 09 30 EC 45 87 39 00 00 00 02 00 A0 44 02 00 90 .0.E.9......D...
+40000000000CB3D0 E2 10 01 00 00 A1 41 EA 03 00 C8 83 04 00 00 84 ......A.........
+40000000000CB3E0 08 60 05 00 00 24 00 00 00 02 00 A0 05 08 01 84 .`...$..........
+40000000000CB3F0 19 70 41 18 00 21 00 00 00 02 00 00 B8 0C F5 58 .pA..!.........X
+40000000000CB400 10 08 00 56 00 21 60 00 20 0E 73 03 20 05 00 42 ...V.!`. .s. ..B
+40000000000CB410 11 60 01 42 00 21 00 00 00 02 00 00 B8 02 F5 58 .`.B.!.........X
+40000000000CB420 11 08 00 56 00 21 C0 0A 20 00 42 00 A8 D8 01 50 ...V.!.. .B....P
+40000000000CB430 08 08 00 56 00 21 00 00 00 02 00 80 05 40 00 84 ...V.!.......@..
+40000000000CB440 19 68 01 42 00 21 00 00 00 02 00 00 48 FD F4 58 .h.B.!......H..X
+40000000000CB450 08 08 00 56 00 21 80 02 20 00 42 80 05 40 00 84 ...V.!.. .B..@..
+40000000000CB460 19 68 01 00 00 21 E0 02 00 10 48 00 68 A4 FD 58 .h...!....H.h..X
+40000000000CB470 08 30 01 10 00 21 00 00 00 02 00 E0 00 40 18 E4 .0...!.......@..
+40000000000CB480 19 08 00 56 00 21 00 00 00 02 80 03 C0 07 00 43 ...V.!.........C
+40000000000CB490 11 60 01 4C 00 21 00 00 00 02 00 00 B8 37 FC 58 .`.L.!.......7.X
+40000000000CB4A0 09 78 00 42 40 10 00 40 80 30 23 20 00 58 01 84 .x.B@..@.0# .X..
+40000000000CB4B0 09 70 00 10 00 10 F0 00 84 00 22 00 00 00 04 00 .p........".....
+40000000000CB4C0 01 00 00 00 01 00 E0 00 38 28 00 E0 01 78 50 00 ........8(...xP.
+40000000000CB4D0 11 00 00 00 01 00 70 78 38 0C F1 03 E0 05 00 43 ......px8......C
+40000000000CB4E0 C8 18 05 00 00 24 00 00 00 02 00 00 00 00 04 00 .....$..........
+40000000000CB4F0 09 38 51 FA B0 27 00 00 00 02 00 80 05 08 01 84 .8Q..'..........
+40000000000CB500 11 38 01 4E 18 10 00 00 00 02 00 00 E8 F2 F4 58 .8.N...........X
+40000000000CB510 11 08 00 56 00 21 C0 02 A0 00 42 00 D8 F2 F4 58 ...V.!....B....X
+40000000000CB520 11 08 00 56 00 21 C0 02 98 00 42 00 A8 06 F8 58 ...V.!....B....X
+40000000000CB530 08 00 00 00 01 00 E0 00 9C 30 20 20 00 58 01 84 .........0  .X..
+40000000000CB540 09 00 00 00 01 00 10 02 80 30 20 00 00 00 04 00 .........0 .....
+40000000000CB550 11 30 00 1C 07 39 00 00 00 02 00 03 20 01 00 43 .0...9...... ..C
+40000000000CB560 0B 70 00 1C 00 10 00 00 00 02 00 C0 01 70 50 00 .p...........pP.
+40000000000CB570 10 00 00 00 01 00 60 00 38 0E 73 03 00 01 00 42 ......`.8.s....B
+40000000000CB580 09 30 71 02 3D 24 00 00 00 02 00 A0 A5 01 00 90 .0q.=$..........
+40000000000CB590 11 60 01 4C 18 10 00 00 00 02 00 00 78 D8 01 50 .`.L........x..P
+40000000000CB5A0 08 08 00 56 00 21 00 40 98 30 23 C0 01 02 00 90 ...V.!.@.0#.....
+40000000000CB5B0 02 78 80 00 00 24 10 01 00 00 42 00 C2 0E BC 90 .x...$....B.....
+40000000000CB5C0 0B 00 00 00 01 00 00 01 40 30 20 00 00 00 04 00 ........@0 .....
+40000000000CB5D0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CB5E0 09 30 94 1C 87 38 00 00 00 02 00 00 41 72 24 E2 .0...8......Ar$.
+40000000000CB5F0 10 00 00 00 01 00 60 10 39 8E 71 03 40 00 00 42 ......`.9.q.@..B
+40000000000CB600 01 00 00 00 01 00 E0 00 44 2C 80 24 12 88 00 84 ........D,.$....
+40000000000CB610 29 71 20 1C 00 20 00 00 00 02 00 00 00 00 04 00 )q .. ..........
+40000000000CB620 28 01 3C 1C 80 11 00 00 00 02 00 00 00 00 04 00 (.<.............
+40000000000CB630 0B 70 04 20 00 14 00 00 00 02 00 C0 01 70 50 00 .p. .........pP.
+40000000000CB640 10 78 00 1C 00 21 70 00 38 0C 73 03 A0 FF FF 4A .x...!p.8.s....J
+40000000000CB650 03 00 00 00 01 00 10 01 44 2C 00 20 82 88 00 80 ........D,. ....
+40000000000CB660 08 00 00 22 80 11 00 40 9C 30 23 00 00 00 04 00 ..."...@.0#.....
+40000000000CB670 0B 70 00 03 39 24 00 00 00 02 00 00 00 00 04 00 .p..9$..........
+40000000000CB680 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CB690 10 00 00 00 01 00 70 00 38 0C 73 03 50 02 00 42 ......p.8.s.P..B
+40000000000CB6A0 0B 70 00 42 00 10 00 00 00 02 00 C0 01 70 50 00 .p.B.........pP.
+40000000000CB6B0 10 00 00 00 01 00 70 70 39 0C 73 03 40 00 00 42 ......pp9.s.@..B
+40000000000CB6C0 0B 70 04 42 00 21 E0 00 38 00 20 00 00 00 04 00 .p.B.!..8. .....
+40000000000CB6D0 01 00 00 00 01 00 E0 00 38 28 00 00 00 00 04 00 ........8(......
+40000000000CB6E0 10 00 00 00 01 00 60 00 38 0E 73 03 00 02 00 42 ......`.8.s....B
+40000000000CB6F0 09 00 00 00 01 00 C0 E2 F6 89 4F 00 00 00 04 00 ..........O.....
+40000000000CB700 11 60 01 58 18 10 00 00 00 02 00 00 C8 3B 02 50 .`.X.........;.P
+40000000000CB710 08 08 00 56 00 21 40 02 20 00 42 00 00 00 04 00 ...V.!@. .B.....
+40000000000CB720 19 68 01 10 00 21 C0 02 84 00 42 00 E8 55 F7 58 .h...!....B..U.X
+40000000000CB730 08 60 01 48 00 21 00 00 00 02 00 40 04 40 00 84 .`.H.!.....@.@..
+40000000000CB740 19 08 00 56 00 21 00 00 00 02 00 00 A8 F0 F4 58 ...V.!.........X
+40000000000CB750 08 08 00 56 00 21 00 00 00 02 00 80 05 10 01 84 ...V.!..........
+40000000000CB760 19 68 0D 00 00 24 00 00 00 02 00 00 E8 16 06 50 .h...$.........P
+40000000000CB770 08 38 00 10 06 39 10 00 AC 00 42 00 00 00 04 00 .8...9....B.....
+40000000000CB780 19 20 01 10 00 21 C0 02 88 00 C2 03 60 04 00 43 . ...!......`..C
+40000000000CB790 11 00 00 00 01 00 00 00 00 02 00 00 38 FF F4 58 ............8..X
+40000000000CB7A0 01 00 00 00 01 00 80 00 20 2C 00 20 00 58 01 84 ........ ,. .X..
+40000000000CB7B0 03 70 88 10 00 20 00 00 00 02 00 C0 F1 77 FC 8C .p... .......w..
+40000000000CB7C0 0B 28 01 1C 00 10 00 00 00 02 00 A0 04 28 51 00 .(...........(Q.
+40000000000CB7D0 10 00 00 00 01 00 70 78 95 0C F3 03 20 03 00 43 ......px.... ..C
+40000000000CB7E0 09 70 A0 03 3C 24 50 02 84 00 20 00 00 00 04 00 .p..<$P... .....
+40000000000CB7F0 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CB800 10 00 00 00 01 00 60 00 38 0E F3 03 70 02 00 42 ......`.8...p..B
+40000000000CB810 03 00 00 00 01 00 50 02 94 28 00 C0 21 2D FD 8C ......P..(..!-..
+40000000000CB820 01 00 00 00 01 00 E0 00 38 20 00 00 00 00 04 00 ........8 ......
+40000000000CB830 11 38 04 1C 86 35 00 00 00 02 00 03 70 00 00 43 .8...5......p..C
+40000000000CB840 09 30 01 48 00 10 E0 00 88 00 20 00 00 00 04 00 .0.H...... .....
+40000000000CB850 01 00 00 00 01 00 60 02 98 28 00 C0 01 70 50 00 ......`..(...pP.
+40000000000CB860 11 00 00 00 01 00 70 70 98 0C F1 03 F0 04 00 43 ......pp.......C
+40000000000CB870 11 00 00 00 01 00 70 30 95 0C F1 03 30 03 00 43 ......p0....0..C
+40000000000CB880 C9 40 04 00 00 24 00 00 00 02 00 00 00 00 04 00 .@...$..........
+40000000000CB890 08 18 8D 10 0E 20 00 00 00 02 00 00 00 00 04 00 ..... ..........
+40000000000CB8A0 11 60 01 42 00 21 00 00 00 02 00 00 48 EF F4 58 .`.B.!......H..X
+40000000000CB8B0 08 08 00 56 00 21 00 00 00 02 00 80 05 10 01 84 ...V.!..........
+40000000000CB8C0 19 00 90 40 98 11 00 00 00 02 00 00 28 EF F4 58 ...@........(..X
+40000000000CB8D0 08 08 00 56 00 21 00 00 00 02 00 00 00 00 04 00 ...V.!..........
+40000000000CB8E0 02 40 00 46 00 21 00 50 01 55 00 00 90 0A 00 07 .@.F.!.P.U......
+40000000000CB8F0 19 00 00 00 01 00 C0 80 30 02 42 80 08 00 84 00 ........0.B.....
+40000000000CB900 11 60 01 42 00 21 D0 02 03 00 48 00 C8 BC 06 50 .`.B.!....H....P
+40000000000CB910 11 08 00 56 00 21 60 00 20 0E F2 03 A0 03 00 42 ...V.!`. ......B
+40000000000CB920 09 70 D0 FA AD 27 00 00 00 02 00 80 05 08 01 84 .p...'..........
+40000000000CB930 09 00 00 00 01 00 E0 00 38 30 20 00 00 00 04 00 ........80 .....
+40000000000CB940 11 68 01 1C 10 10 00 00 00 02 00 00 08 E3 FF 58 .h.............X
+40000000000CB950 08 78 00 42 00 10 00 00 00 02 00 20 00 58 01 84 .x.B....... .X..
+40000000000CB960 09 10 01 10 00 21 E0 00 20 00 20 00 00 00 04 00 .....!.. . .....
+40000000000CB970 01 00 00 00 01 00 F0 00 3C 28 00 C0 01 70 50 00 ........<(...pP.
+40000000000CB980 10 00 00 00 01 00 60 78 38 0E 71 03 80 00 00 43 ......`x8.q....C
+40000000000CB990 08 60 01 42 00 21 00 00 00 02 00 60 14 00 00 90 .`.B.!.....`....
+40000000000CB9A0 19 08 01 44 00 21 00 00 00 02 00 00 48 EE F4 58 ...D.!......H..X
+40000000000CB9B0 09 08 00 56 00 21 00 10 81 30 23 00 00 00 04 00 ...V.!...0#.....
+40000000000CB9C0 0B 70 00 03 39 24 00 00 00 02 00 00 00 00 04 00 .p..9$..........
+40000000000CB9D0 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CB9E0 10 00 00 00 01 00 70 00 38 0C 73 03 00 FF FF 4A ......p.8.s....J
+40000000000CB9F0 10 00 00 00 01 00 00 00 00 02 00 00 B0 FC FF 48 ...............H
+40000000000CBA00 11 60 01 42 00 21 D0 02 88 00 42 00 48 EB F4 58 .`.B.!....B.H..X
+40000000000CBA10 08 00 00 00 01 00 60 00 20 0E 73 20 00 58 01 84 ......`. .s .X..
+40000000000CBA20 19 00 00 00 01 00 00 00 00 02 80 03 70 FF FF 4A ............p..J
+40000000000CBA30 C8 18 01 00 00 21 00 00 00 02 00 00 00 00 04 00 .....!..........
+40000000000CBA40 11 60 01 42 00 21 10 02 88 00 42 00 A8 ED F4 58 .`.B.!....B....X
+40000000000CBA50 08 00 00 00 01 00 10 00 AC 00 42 00 00 00 04 00 ..........B.....
+40000000000CBA60 18 00 88 40 98 11 00 00 00 02 00 00 60 FF FF 48 ...@........`..H
+40000000000CBA70 09 30 01 48 00 10 00 00 00 02 00 A0 04 28 51 00 .0.H.........(Q.
+40000000000CBA80 03 00 00 00 01 00 60 02 98 28 00 E0 60 2A 19 E2 ......`..(..`*..
+40000000000CBA90 10 00 00 00 01 80 81 08 00 00 48 03 00 FE FF 4A ..........H....J
+40000000000CBAA0 11 00 00 00 01 00 00 00 00 02 00 00 00 01 00 40 ...............@
+40000000000CBAB0 11 60 01 42 00 21 D0 02 20 00 42 00 98 EA F4 58 .`.B.!.. .B....X
+40000000000CBAC0 03 38 00 10 86 39 10 00 AC 00 42 03 11 00 00 90 .8...9....B.....
+40000000000CBAD0 09 00 00 00 01 C0 81 00 00 00 42 00 00 00 04 00 ..........B.....
+40000000000CBAE0 10 00 00 00 01 00 30 02 20 00 42 00 10 FA FF 48 ......0. .B....H
+40000000000CBAF0 11 60 01 48 00 21 00 00 00 02 00 00 D8 FB F4 58 .`.H.!.........X
+40000000000CBB00 08 00 00 00 01 00 60 02 20 00 42 20 00 58 01 84 ......`. .B .X..
+40000000000CBB10 19 00 00 00 01 00 70 10 20 0C 63 03 D0 FC FF 4A ......p. .c....J
+40000000000CBB20 01 68 09 10 00 21 60 02 98 2C 00 80 05 20 01 84 .h...!`..,... ..
+40000000000CBB30 11 00 00 00 01 00 D0 02 B4 2C 00 00 D8 D2 01 50 .........,.....P
+40000000000CBB40 09 30 21 4C 00 20 10 00 AC 00 42 80 04 40 00 84 .0!L. ....B..@..
+40000000000CBB50 09 08 94 4C 80 15 00 00 00 02 00 C0 81 0E F0 90 ...L............
+40000000000CBB60 09 00 00 00 01 00 00 00 98 00 23 00 00 00 04 00 ..........#.....
+40000000000CBB70 09 70 00 1C 10 10 50 02 84 00 20 00 00 00 04 00 .p....P... .....
+40000000000CBB80 10 00 00 00 01 00 60 00 38 0E 73 03 90 FC FF 4A ......`.8.s....J
+40000000000CBB90 10 00 00 00 01 00 00 00 00 02 00 00 E0 FE FF 48 ...............H
+40000000000CBBA0 11 60 01 42 00 21 D0 02 90 00 42 00 A8 E9 F4 58 .`.B.!....B....X
+40000000000CBBB0 03 38 00 10 86 39 10 00 AC 00 42 03 11 00 00 90 .8...9....B.....
+40000000000CBBC0 09 00 00 00 01 C0 81 00 00 00 42 00 00 00 04 00 ..........B.....
+40000000000CBBD0 10 00 00 00 01 00 30 1A 21 1C 40 00 D0 FC FF 48 ......0.!.@....H
+40000000000CBBE0 0B 70 C0 03 3C 24 E0 00 38 20 20 00 00 00 04 00 .p..<$..8  .....
+40000000000CBBF0 10 00 00 00 01 00 60 00 38 0E F3 03 C0 01 00 43 ......`.8......C
+40000000000CBC00 11 60 01 44 00 21 00 00 00 02 00 00 E8 EB F4 58 .`.D.!.........X
+40000000000CBC10 09 40 00 46 00 21 10 00 AC 00 42 00 A0 02 AA 00 .@.F.!....B.....
+40000000000CBC20 00 00 00 00 01 00 00 48 05 80 03 00 00 00 04 00 .......H........
+40000000000CBC30 19 60 40 18 01 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+40000000000CBC40 11 60 01 50 00 21 30 0A 00 00 48 00 A8 EB F4 58 .`.P.!0...H....X
+40000000000CBC50 11 08 00 56 00 21 C0 02 84 00 42 00 98 EB F4 58 ...V.!....B....X
+40000000000CBC60 11 08 00 56 00 21 C0 0A 00 00 48 00 68 D0 01 50 ...V.!....H.h..P
+40000000000CBC70 18 08 00 56 00 21 00 40 80 30 23 00 00 00 00 20 ...V.!.@.0#.... 
+40000000000CBC80 09 00 00 10 80 11 80 00 8C 00 42 00 A0 02 AA 00 ..........B.....
+40000000000CBC90 00 00 00 00 01 00 00 48 05 80 03 00 00 00 04 00 .......H........
+40000000000CBCA0 19 60 40 18 01 21 00 00 00 02 00 80 08 00 84 00 .`@..!..........
+40000000000CBCB0 11 60 01 42 00 21 00 00 00 02 00 00 18 FA F4 58 .`.B.!.........X
+40000000000CBCC0 09 08 00 56 00 21 C0 02 84 00 42 A0 05 40 00 84 ...V.!....B..@..
+40000000000CBCD0 09 00 00 00 01 00 E0 62 F6 89 4F 00 00 00 04 00 .......b..O.....
+40000000000CBCE0 11 70 01 5C 18 10 00 00 00 02 00 00 28 18 FC 58 .p.\........(..X
+40000000000CBCF0 10 08 00 56 00 21 60 00 20 0E F3 03 30 FC FF 4A ...V.!`. ...0..J
+40000000000CBD00 08 60 05 00 00 24 D0 02 84 00 42 C0 05 61 00 84 .`...$....B..a..
+40000000000CBD10 19 20 01 00 00 21 20 02 00 00 42 00 98 03 F5 58 . ...! ...B....X
+40000000000CBD20 08 00 00 00 01 00 50 02 03 00 48 20 00 58 01 84 ......P...H .X..
+40000000000CBD30 18 00 00 00 01 00 60 00 20 0E 73 03 F0 FB FF 4A ......`. .s....J
+40000000000CBD40 10 00 00 00 01 00 00 00 00 02 00 00 D0 F6 FF 48 ...............H
+40000000000CBD50 11 60 01 44 00 21 D0 02 90 00 42 00 F8 E7 F4 58 .`.D.!....B....X
+40000000000CBD60 10 08 00 56 00 21 60 00 20 0E F3 03 10 FB FF 4A ...V.!`. ......J
+40000000000CBD70 11 60 01 42 00 21 00 00 00 02 00 00 78 EA F4 58 .`.B.!......x..X
+40000000000CBD80 08 08 00 56 00 21 00 00 00 02 00 80 05 10 01 84 ...V.!..........
+40000000000CBD90 19 00 90 40 98 11 00 00 00 02 00 00 58 EA F4 58 ...@........X..X
+40000000000CBDA0 10 00 00 00 01 00 10 00 AC 00 42 00 40 FB FF 48 ..........B.@..H
+40000000000CBDB0 11 60 01 44 00 21 00 00 00 02 00 00 58 55 06 50 .`.D.!......XU.P
+40000000000CBDC0 08 30 00 10 07 39 50 02 20 00 42 00 00 00 04 00 .0...9P. .B.....
+40000000000CBDD0 19 08 00 56 00 21 C0 02 88 00 42 03 30 FE FF 4B ...V.!....B.0..K
+40000000000CBDE0 11 00 00 00 01 00 00 00 00 02 00 00 08 EA F4 58 ...............X
+40000000000CBDF0 08 60 01 4A 00 21 10 00 AC 00 42 00 00 00 04 00 .`.J.!....B.....
+40000000000CBE00 19 68 0D 00 00 24 20 02 94 00 42 00 48 10 06 50 .h...$ ...B.H..P
+40000000000CBE10 08 38 00 10 06 39 00 00 00 02 00 20 00 58 01 84 .8...9..... .X..
+40000000000CBE20 03 20 01 10 00 21 C0 02 88 00 42 C3 11 00 00 90 . ...!....B.....
+40000000000CBE30 09 00 00 00 01 C0 E1 00 00 00 42 00 00 00 04 00 ..........B.....
+40000000000CBE40 13 18 8D 1C 0E E0 01 E0 FE FF 24 00 88 F8 F4 58 ..........$....X
+40000000000CBE50 01 00 00 00 01 00 80 00 20 2C 00 20 00 58 01 84 ........ ,. .X..
+40000000000CBE60 03 70 88 10 00 20 00 00 00 02 00 C0 F1 77 FC 8C .p... .......w..
+40000000000CBE70 0B 28 01 1C 00 10 00 00 00 02 00 A0 04 28 51 00 .(...........(Q.
+40000000000CBE80 10 00 00 00 01 00 70 78 95 0C 73 03 60 F9 FF 4A ......px..s.`..J
+40000000000CBE90 11 00 00 00 01 00 00 00 00 02 00 00 60 FC FF 48 ............`..H
+40000000000CBEA0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CBEB0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CBEC0 08 40 31 14 80 05 00 00 00 02 00 E0 04 00 C4 00 .@1.............
+40000000000CBED0 19 48 01 02 00 21 60 00 84 0E 73 03 70 00 00 42 .H...!`...s.p..B
+40000000000CBEE0 09 80 F0 03 3C 24 E0 A0 04 7A 48 00 80 02 AA 00 ....<$...zH.....
+40000000000CBEF0 08 00 00 00 01 00 80 00 40 30 20 00 70 0A 00 07 ........@0 .p...
+40000000000CBF00 0B 78 00 1C 10 10 60 00 20 0E 72 00 12 78 00 84 .x....`. .r..x..
+40000000000CBF10 00 00 00 00 01 C0 F1 00 3C 2C 00 03 01 00 00 84 ........<,......
+40000000000CBF20 0B 00 40 1C 90 D1 81 78 20 24 40 00 00 00 04 00 ..@....x $@.....
+40000000000CBF30 F0 40 00 10 18 10 00 00 00 02 00 80 08 00 84 00 .@..............
+40000000000CBF40 09 20 F1 03 3C 24 E0 20 F6 61 4F E0 11 00 00 90 . ..<$. .aO.....
+40000000000CBF50 09 50 01 48 18 10 E0 00 38 30 20 00 00 00 04 00 .P.H....80 .....
+40000000000CBF60 0A 30 00 54 07 39 00 78 38 20 23 00 00 00 04 00 .0.T.9.x8 #.....
+40000000000CBF70 17 00 00 00 00 88 01 10 00 80 21 00 78 E8 F4 58 ..........!.x..X
+40000000000CBF80 09 08 00 52 00 21 00 00 00 02 00 00 00 00 04 00 ...R.!..........
+40000000000CBF90 09 28 11 02 3D 24 00 00 00 02 00 60 C4 08 F4 90 .(..=$.....`....
+40000000000CBFA0 09 10 01 46 18 10 A0 02 94 30 20 00 00 00 04 00 ...F.....0 .....
+40000000000CBFB0 11 30 88 54 07 38 00 00 00 02 00 03 40 00 00 43 .0.T.8......@..C
+40000000000CBFC0 11 30 00 54 07 39 00 00 00 02 00 03 30 00 00 43 .0.T.9......0..C
+40000000000CBFD0 11 00 00 00 01 00 00 00 00 02 00 00 18 E8 F4 58 ...............X
+40000000000CBFE0 08 08 00 52 00 21 00 00 00 02 00 00 00 00 04 00 ...R.!..........
+40000000000CBFF0 11 30 00 44 07 39 A0 02 88 00 42 03 30 00 00 43 .0.D.9....B.0..C
+40000000000CC000 11 00 00 00 01 00 00 00 00 02 00 00 E8 E7 F4 58 ...............X
+40000000000CC010 08 08 00 52 00 21 00 00 00 02 00 00 00 00 04 00 ...R.!..........
+40000000000CC020 11 50 01 40 00 21 B0 02 00 00 42 00 A8 5B F7 58 .P.@.!....B..[.X
+40000000000CC030 09 08 00 52 00 21 20 02 20 00 42 40 05 40 00 84 ...R.! . .B@.@..
+40000000000CC040 0B 70 50 FB B0 27 E0 00 38 30 20 00 00 00 04 00 .pP..'..80 .....
+40000000000CC050 09 00 00 00 01 00 E0 00 38 20 20 00 00 00 04 00 ........8  .....
+40000000000CC060 10 00 00 00 01 00 60 00 38 0E 73 03 D0 01 00 42 ......`.8.s....B
+40000000000CC070 11 00 00 00 01 00 00 00 00 02 00 00 58 F6 F4 58 ............X..X
+40000000000CC080 11 08 00 52 00 21 A0 0A 20 00 42 00 48 CC 01 50 ...R.!.. .B.H..P
+40000000000CC090 08 58 01 44 00 21 00 00 00 02 00 20 00 48 01 84 .X.D.!..... .H..
+40000000000CC0A0 19 50 01 10 00 21 00 00 00 02 00 00 E8 F0 F4 58 .P...!.........X
+40000000000CC0B0 08 50 01 44 00 21 00 00 00 02 00 20 00 48 01 84 .P.D.!..... .H..
+40000000000CC0C0 19 00 20 4A 98 11 00 00 00 02 00 00 08 F6 F4 58 .. J...........X
+40000000000CC0D0 09 50 09 10 00 21 10 00 A4 00 42 C0 04 40 00 84 .P...!....B..@..
+40000000000CC0E0 00 00 00 00 01 00 A0 02 A8 2C 00 C0 04 30 59 00 .........,...0Y.
+40000000000CC0F0 19 00 00 00 01 00 00 00 00 02 00 00 D8 CB 01 50 ...............P
+40000000000CC100 08 00 00 00 01 00 10 00 A4 00 42 A0 04 40 00 84 ..........B..@..
+40000000000CC110 09 00 20 46 98 11 A0 02 20 00 42 60 05 10 01 84 .. F.... .B`....
+40000000000CC120 11 00 00 00 01 00 00 00 00 02 00 00 68 F0 F4 58 ............h..X
+40000000000CC130 09 28 95 4C 00 20 E0 50 01 00 48 20 00 48 01 84 .(.L. .P..H .H..
+40000000000CC140 09 00 00 00 01 00 10 70 94 00 2B 00 00 00 04 00 .......p..+.....
+40000000000CC150 08 00 00 4A 80 11 00 00 00 02 00 00 00 00 04 00 ...J............
+40000000000CC160 11 30 80 44 07 38 A0 02 88 00 42 03 30 00 00 43 .0.D.8....B.0..C
+40000000000CC170 11 00 00 00 01 00 00 00 00 02 00 00 78 E6 F4 58 ............x..X
+40000000000CC180 08 08 00 52 00 21 00 00 00 02 00 00 00 00 04 00 ...R.!..........
+40000000000CC190 11 50 01 46 18 10 00 00 00 02 00 00 78 74 FE 58 .P.F........xt.X
+40000000000CC1A0 18 08 00 52 00 21 00 40 90 30 23 00 00 00 00 20 ...R.!.@.0#.... 
+40000000000CC1B0 09 78 00 00 00 21 00 09 00 00 48 00 80 02 AA 00 .x...!....H.....
+40000000000CC1C0 09 70 10 03 48 24 00 00 00 02 00 00 70 0A 00 07 .p..H$......p...
+40000000000CC1D0 09 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CC1E0 0B 38 38 10 06 F8 81 00 00 00 C2 C3 C1 0F F0 90 .88.............
+40000000000CC1F0 E9 00 00 1C 98 11 60 00 20 0E 72 C0 41 09 F4 90 ......`. .r.A...
+40000000000CC200 00 00 00 00 01 C0 F1 00 3C 2C 00 03 01 00 00 84 ........<,......
+40000000000CC210 0B 00 40 1C 90 D1 81 78 20 24 40 00 00 00 04 00 ..@....x $@.....
+40000000000CC220 F1 40 00 10 18 10 00 00 00 02 00 80 08 00 84 00 .@..............
+40000000000CC230 11 00 00 00 01 00 00 00 00 02 00 00 98 F4 F4 58 ...............X
+40000000000CC240 11 08 00 52 00 21 A0 0A 20 00 42 00 88 CA 01 50 ...R.!.. .B....P
+40000000000CC250 08 08 00 52 00 21 00 00 00 02 00 40 05 40 00 84 ...R.!.....@.@..
+40000000000CC260 19 58 01 44 00 21 00 00 00 02 00 00 28 EF F4 58 .X.D.!......(..X
+40000000000CC270 08 00 00 00 01 00 10 00 A4 00 42 00 00 00 04 00 ..........B.....
+40000000000CC280 19 00 20 4A 98 11 00 40 8C 30 23 00 E0 FE FF 48 .. J...@.0#....H
+40000000000CC290 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CC2A0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
+40000000000CC2B0 08 00 00 00 01 00 00 00 00 02 00 00 00 00 04 00 ................
 
 ;; command_word_completion_function: 40000000000CC2C0
 command_word_completion_function proc
@@ -5774,6 +6783,8 @@ l40000000000CC3D0:
 
 l40000000000CC420:
 	{ adds	r14,0x0,r0; nop.m	0x0; nop.i	0x0 }
+
+l40000000000CC430:
 	{ addl	r37,8092,r1; nop.m	0x0; addl	r42,8084,r1; }
 	{ ld8	r57,[r37]; st4	[r14],r42; nop.i	0x0; }
 	{ cmp.eq	p06,p07,0x0,r57; nop.i	0x0; (p06) br.cond.dpnt.few	40000000000CC480; }

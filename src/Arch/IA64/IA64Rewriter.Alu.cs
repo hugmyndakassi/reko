@@ -188,6 +188,21 @@ public partial class IA64Rewriter
         }
     }
 
+    private void RewriteCmpxchg(IA64Instruction instr, PrimitiveType dt, IntrinsicProcedure intrinsic)
+    {
+        var mem = ReadOp(instr, 1, dt);
+        var value = binder.CreateTemporary(dt);
+        m.Assign(value, m.MaybeSlice(ReadOp(instr, 2), dt));
+        var ptrDt = new Pointer(dt, 64);
+        WriteOp(instr, 0, MaybeExtendZ(
+            m.Fn(
+                intrinsic.MakeInstance(64, dt),
+                m.AddrOf(ptrDt, mem),
+                value,
+                binder.EnsureRegister(Registers.CCV)),
+            PrimitiveType.Word64));
+    }
+
     private void RewriteCzx(IA64Instruction instr, PrimitiveType dtElement, IntrinsicProcedure intrinsic)
     {
         var src = ReadOp(instr, 1);
@@ -196,21 +211,15 @@ public partial class IA64Rewriter
 
     private void RewriteDep(IA64Instruction instr)
     {
-        if (instr.Operands.Length == 5)
-        {
-            EmitUnitTest(instr);
-            var imm = ((Constant) instr.Operands[1]).ToInt32();
-            var src = ReadOp(instr, 2);
-            var pos = ((Constant) instr.Operands[3]).ToInt32();
-            var len = ((Constant) instr.Operands[4]).ToInt32();
-            var dt = PrimitiveType.Create(Domain.SignedInt, len);
-            var tmp = binder.CreateTemporary(dt);
-            WriteOp(instr, 0, m.Dpb(src, m.Const(dt, imm), pos));
-        }
-        else
-        {
-            EmitUnitTest(instr);
-        }
+        var src = ReadOp(instr, 1);
+        var op2 = ReadOp(instr, 2);
+        var pos = ((Constant) instr.Operands[3]).ToInt32();
+        var len = ((Constant) instr.Operands[4]).ToInt32();
+        var dt = PrimitiveType.Create(Domain.SignedInt, len);
+        var value = src is Constant c
+            ? m.Const(dt, c.ToInt64())
+            : (Expression) m.Slice(src, dt);
+        WriteOp(instr, 0, m.Dpb(op2, value, pos));
     }
 
     private void RewriteDep_z(IA64Instruction instr)
@@ -249,7 +258,6 @@ public partial class IA64Rewriter
         WriteOp(instr, 0, m.ExtendZ(tmp, PrimitiveType.Word64));
     }
 
-
     private void RewriteLd(IA64Instruction instr, PrimitiveType dt)
     {
         var src = ReadOp(instr, 1, dt);
@@ -272,6 +280,20 @@ public partial class IA64Rewriter
         if (instr.Operands.Length == 3)
         {
             var inc = ReadOp(instr, 2);
+            m.Assign(reg, m.IAdd(reg, inc));
+        }
+    }
+
+    private void RewriteLdfe(IA64Instruction instr)
+    {
+        var src = ReadOp(instr, 1, PrimitiveType.Word80);
+        src = MaybeExtendZ(src, PrimitiveType.Word80);
+        WriteOp(instr, 0, m.Convert(src, PrimitiveType.Real80, PrimitiveType.Real64));
+        if (instr.Operands.Length == 3)
+        {
+            var mem = (MemoryOperand) instr.Operands[1];
+            var inc = ReadOp(instr, 2);
+            var reg = binder.EnsureRegister(mem.Base);
             m.Assign(reg, m.IAdd(reg, inc));
         }
     }
@@ -377,22 +399,6 @@ public partial class IA64Rewriter
         var tmp = binder.CreateTemporary(dt);
         m.Assign(tmp, m.Slice(src, dt));
         WriteOp(instr, 0, m.ExtendS(tmp, PrimitiveType.Int64));
-    }
-
-    private void RewriteXor(IA64Instruction instr)
-    {
-        var src1 = ReadOp(instr, 1);
-        var src2 = ReadOp(instr, 2);
-        // Swapping operands b/c src1 will be where immediates are provided.
-        WriteOp(instr, 0, m.Xor(src2, src1));
-    }
-
-    private void RewriteZxt(IA64Instruction instr, PrimitiveType dt)
-    {
-        var src = ReadOp(instr, 1);
-        var tmp = binder.CreateTemporary(dt);
-        m.Assign(tmp, m.Slice(src, dt));
-        WriteOp(instr, 0, m.ExtendZ(tmp, PrimitiveType.Word64));
     }
 
     private void RewriteTbit(IA64Instruction instr, bool invert, BinaryOperator? connective = null)
@@ -501,4 +507,30 @@ public partial class IA64Rewriter
         }
     }
 
+    private void RewriteXma(IA64Instruction instr, BinaryOperator mul, int bitoffset)
+    {
+        var op1 = ReadOp(instr, 1);
+        var op2 = ReadOp(instr, 2);
+        var product = binder.CreateTemporary(PrimitiveType.Word128);
+        var op3 = ReadOp(instr, 3);
+        m.Assign(product, m.Bin(mul, product.DataType, op1, op2));
+        m.Assign(product, m.IAdd(product, m.ExtendZ(op3, product.DataType)));
+        WriteOp(instr, 0, m.Slice(product, op1.DataType, bitoffset));
+    }
+
+    private void RewriteXor(IA64Instruction instr)
+    {
+        var src1 = ReadOp(instr, 1);
+        var src2 = ReadOp(instr, 2);
+        // Swapping operands b/c src1 will be where immediates are provided.
+        WriteOp(instr, 0, m.Xor(src2, src1));
+    }
+
+    private void RewriteZxt(IA64Instruction instr, PrimitiveType dt)
+    {
+        var src = ReadOp(instr, 1);
+        var tmp = binder.CreateTemporary(dt);
+        m.Assign(tmp, m.Slice(src, dt));
+        WriteOp(instr, 0, m.ExtendZ(tmp, PrimitiveType.Word64));
+    }
 }

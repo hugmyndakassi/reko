@@ -200,8 +200,12 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.break_f: RewriteBreak(instr); break;
         case Mnemonic.break_i: RewriteBreak(instr); break;
         case Mnemonic.break_m: RewriteBreak(instr); break;
+        case Mnemonic.break_x: RewriteBreak(instr); break;
         case Mnemonic.chk_a_clr: RewriteChk_a_clr(instr); break;  //$REVIEW: very vague interpretation of spec.
-        case Mnemonic.chk_a_nc: RewriteChk_a_clr(instr); break;    
+        case Mnemonic.chk_a_nc: RewriteChk_a_clr(instr); break;
+        case Mnemonic.chk_s_m: RewriteChk_a_clr(instr); break;
+        case Mnemonic.clrrrb: RewriteClrrrb(instr, clrrrb_intrinsic); break;
+        case Mnemonic.clrrrb_pr: RewriteClrrrb(instr, clrrrb_pr_intrinsic); break;
         case Mnemonic.cmp_eq:
         case Mnemonic.cmp_eq_unc: RewriteCmp(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
         case Mnemonic.cmp_eq_and: RewriteCmp(instr, BinaryOperator.Eq, BinaryOperator.Ne, BinaryOperator.Cand, BinaryOperator.Cor); break;
@@ -223,6 +227,11 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.cmp_ltu:
         case Mnemonic.cmp_ltu_unc: RewriteCmp(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
         case Mnemonic.cmp_ltu_or_andcm: RewriteCmpCm(instr, BinaryOperator.Ult, BinaryOperator.Uge, BinaryOperator.Cor, BinaryOperator.Cand); break;
+        case Mnemonic.cmp_ne:
+        case Mnemonic.cmp_ne_unc: RewriteCmp(instr, BinaryOperator.Ne, BinaryOperator.Eq); break;
+        case Mnemonic.cmp_ne_and: RewriteCmp(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cand, BinaryOperator.Cor); break;
+        case Mnemonic.cmp_ne_or: RewriteCmp(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cor, BinaryOperator.Cand); break;
+        case Mnemonic.cmp_ne_or_andcm: RewriteCmpCm(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cor, BinaryOperator.Cand); break;
         case Mnemonic.cmp4_eq:
         case Mnemonic.cmp4_eq_unc: RewriteCmp4(instr, BinaryOperator.Eq, BinaryOperator.Ne); break;
         case Mnemonic.cmp4_eq_and: RewriteCmp4(instr, BinaryOperator.Eq, BinaryOperator.Ne, BinaryOperator.Cand, BinaryOperator.Cor); break;
@@ -250,10 +259,14 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.cmp4_ltu_unc: RewriteCmp4(instr, BinaryOperator.Ult, BinaryOperator.Uge); break;
         case Mnemonic.cmp4_ltu_or_andcm: RewriteCmp4Cm(instr, BinaryOperator.Ult, BinaryOperator.Uge, BinaryOperator.Cor, BinaryOperator.Cand); break;
         case Mnemonic.cmp4_ne:
-        case Mnemonic.cmp4_ne_unc: RewriteCmp(instr, BinaryOperator.Ne, BinaryOperator.Eq); break;
+        case Mnemonic.cmp4_ne_unc: RewriteCmp4(instr, BinaryOperator.Ne, BinaryOperator.Eq); break;
         case Mnemonic.cmp4_ne_and: RewriteCmp4(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cand, BinaryOperator.Cor); break;
         case Mnemonic.cmp4_ne_or: RewriteCmp4(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cor, BinaryOperator.Cand); break;
         case Mnemonic.cmp4_ne_or_andcm: RewriteCmp4Cm(instr, BinaryOperator.Ne, BinaryOperator.Eq, BinaryOperator.Cor, BinaryOperator.Cand); break;
+        case Mnemonic.cmpxchg1_acq: RewriteCmpxchg(instr, PrimitiveType.Byte, cmpxchg_acq_intrinsic); break;
+        case Mnemonic.cmpxchg2_acq: RewriteCmpxchg(instr, PrimitiveType.Word16, cmpxchg_acq_intrinsic); break;
+        case Mnemonic.cmpxchg4_acq: RewriteCmpxchg(instr, PrimitiveType.Word32, cmpxchg_acq_intrinsic); break;
+        case Mnemonic.cmpxchg8_acq: RewriteCmpxchg(instr, PrimitiveType.Word64, cmpxchg_acq_intrinsic); break;
         case Mnemonic.czx1_l: RewriteCzx(instr, PrimitiveType.Byte, czx_l_intrinsic); break;
         case Mnemonic.czx1_r: RewriteCzx(instr, PrimitiveType.Byte, czx_r_intrinsic); break;
         case Mnemonic.czx2_l: RewriteCzx(instr, PrimitiveType.Word16, czx_l_intrinsic); break;
@@ -267,6 +280,7 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.fselect: RewriteFselect(instr); break;
         case Mnemonic.fwb: RewriteFwb(instr); break;
         case Mnemonic.getf_sig: RewriteGetfSig(instr); break;
+        case Mnemonic.invala: RewriteInvala(instr); break;
         case Mnemonic.ld1: RewriteLd(instr, PrimitiveType.Byte); break;
         case Mnemonic.ld2: RewriteLd(instr, PrimitiveType.Word16); break;
         case Mnemonic.ld4: RewriteLd(instr, PrimitiveType.Word32); break;
@@ -284,6 +298,8 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.ld4_acq: RewriteLd_acq(instr, PrimitiveType.Word32); break;
         case Mnemonic.ld8_acq: RewriteLd_acq(instr, PrimitiveType.Word64); break;
         case Mnemonic.ldf_fill: RewriteLd(instr, PrimitiveType.Word64); break;
+        case Mnemonic.ldfe: RewriteLdfe(instr); break;
+        case Mnemonic.ldfs: RewriteLd(instr, PrimitiveType.Real32); break;
         case Mnemonic.ldfps: RewriteLdfps(instr); break;
         case Mnemonic.ldfps_c_nc: RewriteLdfps(instr); break;       //$REVIEW: is .c.nc correct?
         case Mnemonic.mix1_l: RewriteMix(instr, mix_l_intrinsic, PrimitiveType.Byte); break;
@@ -301,11 +317,17 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.nop_i: RewriteNop(instr); break;
         case Mnemonic.nop_m: RewriteNop(instr); break;
         case Mnemonic.or: RewriteOr(instr); break;
+        case Mnemonic.probe_r: RewriteProbe(instr, probe_r_intrinsic); break;
+        case Mnemonic.probe_w: RewriteProbe(instr, probe_w_intrinsic); break;
+        case Mnemonic.rfi: RewriteRfi(instr); break;
+        case Mnemonic.rum: RewriteRum(instr); break;
         case Mnemonic.setf_sig: RewriteSetf_sig(instr); break;
         case Mnemonic.shl: RewriteShift(instr, BinaryOperator.Shl); break;
         case Mnemonic.shr: RewriteShift(instr, BinaryOperator.Sar); break;
         case Mnemonic.shr_u: RewriteShift(instr, BinaryOperator.Shr); break;
         case Mnemonic.shladd: RewriteShladd(instr); break;
+        case Mnemonic.srlz_d: RewriteSerialize(instr, srlz_d_intrinsic); break;
+        case Mnemonic.srlz_i: RewriteSerialize(instr, srlz_i_intrinsic); break;
         case Mnemonic.st1: RewriteSt(instr, PrimitiveType.Byte); break;
         case Mnemonic.st2: RewriteSt(instr, PrimitiveType.Word16); break;
         case Mnemonic.st4: RewriteSt(instr, PrimitiveType.Word32); break;
@@ -341,6 +363,9 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case Mnemonic.tnat_z_and: RewriteTnat(instr, true, Operator.Cand); break;
         case Mnemonic.tnat_z_or: RewriteTnat(instr, true, Operator.Cand); break;
         case Mnemonic.tnat_z_or_andcm: RewriteTnatCm(instr, true, Operator.Cand); break;
+        case Mnemonic.xma_h: RewriteXma(instr, Operator.SMul, 64); break;
+        case Mnemonic.xma_hu: RewriteXma(instr, Operator.UMul, 64); break;
+        case Mnemonic.xma_l: RewriteXma(instr, Operator.IMul, 0); break;
         case Mnemonic.xor: RewriteXor(instr); break;
         case Mnemonic.zxt1: RewriteZxt(instr, PrimitiveType.Byte); break;
         case Mnemonic.zxt2: RewriteZxt(instr, PrimitiveType.Word16); break;
@@ -348,7 +373,6 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         }
         return true;
     }
-
 
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
     {
@@ -378,6 +402,10 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         case RegisterStorage reg:
             if (reg.Number == 0)
                 return Constant.Word64(0);
+            if (reg == Registers.FpRegisters[0])
+                return m.Word64(0);
+            if (reg == Registers.FpRegisters[1])
+                return m.Word64(fpOne);
             return binder.EnsureRegister(reg);
         case Constant c:
             return c;
@@ -466,14 +494,25 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         return src;
     }
 
+    private static readonly ulong fpOne = BitConverter.DoubleToUInt64Bits(1.0);
 
     private static readonly IntrinsicProcedure addp4_intrinsic = IntrinsicBuilder.Binary("__addp4", PrimitiveType.Word32);
 
     private static readonly IntrinsicProcedure break_intrinsic = IntrinsicBuilder.SideEffect("__break").Void();
 
     private static readonly IntrinsicProcedure chk_intrinsic = new IntrinsicBuilder("__speculation_check", true)
-            .Param(PrimitiveType.Word64)
-            .Returns(PrimitiveType.Bool);
+        .Param(PrimitiveType.Word64)
+        .Returns(PrimitiveType.Bool);
+    private static readonly IntrinsicProcedure clrrrb_intrinsic = IntrinsicBuilder.SideEffect("__clear_register_rename_base")
+        .Void();
+    private static readonly IntrinsicProcedure clrrrb_pr_intrinsic = IntrinsicBuilder.SideEffect("__clear_predicate_register_rename_base")
+        .Void();
+    private readonly static IntrinsicProcedure cmpxchg_acq_intrinsic = IntrinsicBuilder.SideEffect("__cmpxchg")
+        .GenericTypes("T")
+        .PtrParam("T")
+        .Param("T")
+        .Param(PrimitiveType.Word64)
+        .Returns("T");
     private static readonly IntrinsicProcedure czx_l_intrinsic = new IntrinsicBuilder("__count_zero_index_msb", false)
         .GenericTypes("T")
         .Param(PrimitiveType.Word64)
@@ -497,6 +536,9 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         .Param(PrimitiveType.Real64)
         .Returns(PrimitiveType.Int64);
 
+    private static readonly IntrinsicProcedure invala_intrinsic = IntrinsicBuilder.SideEffect("__invala")
+        .Void();
+
     private static readonly IntrinsicProcedure ld_acq_intrinsic = new IntrinsicBuilder("__ld_acquire", true)
         .GenericTypes("T")
         .PtrParam("T")
@@ -513,15 +555,34 @@ public partial class IA64Rewriter : IEnumerable<RtlInstructionCluster>
         .Param(PrimitiveType.Word64)
         .Returns(PrimitiveType.Word64);
 
-    private static readonly IntrinsicProcedure tnat_intrinsic = IntrinsicBuilder.Predicate("__is_nat", PrimitiveType.Word64);
+    private static readonly IntrinsicProcedure probe_r_intrinsic = IntrinsicBuilder.SideEffect("__probe_read")
+        .Param(PrimitiveType.Ptr64)
+        .Param(PrimitiveType.Word64)
+        .Returns(PrimitiveType.Word64);
+    private static readonly IntrinsicProcedure probe_w_intrinsic = IntrinsicBuilder.SideEffect("__probe_write")
+        .Param(PrimitiveType.Ptr64)
+        .Param(PrimitiveType.Word64)
+        .Returns(PrimitiveType.Word64);
+
+    private static readonly IntrinsicProcedure rfi_intrinsic = IntrinsicBuilder.SideEffect("__return_from_interrupt")
+        .Void();
+    private static readonly IntrinsicProcedure rum_intrinsic = IntrinsicBuilder.SideEffect("__reset_user_mask")
+        .Param(PrimitiveType.Word64)
+        .Void();
 
     private static readonly IntrinsicProcedure setf_sig_intrinsic = new IntrinsicBuilder("__setf_sig", false)
         .Param(PrimitiveType.UInt64)
         .Returns(PrimitiveType.Real64);
-
+    private static readonly IntrinsicProcedure srlz_d_intrinsic = IntrinsicBuilder.SideEffect("__serialize_data")
+        .Void();
+    private static readonly IntrinsicProcedure srlz_i_intrinsic = IntrinsicBuilder.SideEffect("__serialize_instructions")
+        .Void();
     private static readonly IntrinsicProcedure st_rel_intrinsic = new IntrinsicBuilder("__st_release", true)
         .GenericTypes("T")
         .PtrParam("T")
         .Param("T")
         .Void();
+
+    private static readonly IntrinsicProcedure tnat_intrinsic = IntrinsicBuilder.Predicate("__is_nat", PrimitiveType.Word64);
+
 }

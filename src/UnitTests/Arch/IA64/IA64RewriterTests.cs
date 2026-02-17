@@ -230,6 +230,17 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_break_x()
+    {
+        Given_HexString("04000B70100339240000000200000000");
+        AssertCode(     // { chk.a.nc	r96,3FFFFFFFFF439A6E; break.x	0x121C800000 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|T--|if (__speculation_check(r96)) branch FFFFFFFFFF51C020",
+            "2|L--|000000000010000C(4): 1 instructions",
+            "3|L--|__break()");
+    }
+
+    [Test]
     public void Ia64Rw_chk_a_clr()
     {
         Given_HexString("810A00004803500000420B7008440021");
@@ -257,6 +268,35 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_chk_s_m()
+    {
+        Given_HexString("000001005004142D0000E83105500838");
+        AssertCode(     // { chk.s.m	r0,4000000000495CE2; (p16) cmp.ltu.unc	p17,p00,r5,r0; (p35) nop }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|T--|if (__speculation_check(0<64>)) branch 0000000000500200",
+            "2|L--|0000000000100006(6): 3 instructions",
+            "3|L--|p17 = 0<64>",
+            "4|L--|p00 = 0<64>",
+            "5|L--|if (p16) p17 = r5 <u 0<64>",
+            "6|L--|000000000010000C(4): 1 instructions",
+            "7|L--|if (p35) nop");
+    }
+
+    [Test]
+    public void Ia64Rw_clrrrb()
+    {
+        Given_HexString("924A0020501414014200000004001100");
+        AssertCode(     // { (p20) ld4.a	r9,[r16],0; (p16) break.b	0x42011; clrrrb }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p20) { v4 = Mem0[r16:word32]; r9 = CONVERT(v4, word32, word64); r16 = r16 + 0<i64>; }",
+            "2|H--|0000000000100006(6): 1 instructions",
+            "3|L--|if (p16) __break()",
+            "4|L--|000000000010000C(4): 1 instructions",
+            "5|L--|__clear_register_rename_base()");
+    }
+
+
+    [Test]
     public void Ia64Rw_cmp_eq()
     {
         Given_HexString("003000400739200004650020C2EEE79F");
@@ -268,6 +308,21 @@ public class IA64RewriterTests : RewriterTestBase
             "4|L--|r2 = LC",
             "5|L--|000000000010000C(4): 1 instructions",
             "6|L--|r17 = r1 + -788<i64>");
+    }
+
+    [Test]
+    public void Ia64Rw_cmpxchg1_acq()
+    {
+        Given_HexString("400600420350011C101090028C0042E0");
+        AssertCode(     // { (p50) cmpxchg1.acq.nt1	r0,[r33],r0; (p05) nop; (p05) cmp.eq.unc	p32,p16,r8,r64 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|---|if (p50) { v4 = SLICE(0<64>, byte, 0); v6 = __cmpxchg<byte>(&Mem0[r33:byte], v4, CCV); <invalid>; }",
+            "2|L--|0000000000100006(6): 1 instructions",
+            "3|L--|if (p05) nop",
+            "4|L--|000000000010000C(4): 3 instructions",
+            "5|L--|p32 = 0<64>",
+            "6|L--|p16 = 0<64>",
+            "7|L--|if (p05) { p32 = r8 == r64; p16 = r8 != r64; }");
     }
 
     [Test]
@@ -389,11 +444,28 @@ public class IA64RewriterTests : RewriterTestBase
     {
         Given_HexString("1130021C473970023800C20330000043");
         AssertCode(     // { cmp.ne.or.andcm	p06,p07,0x0,r14; adds	r39,0x0,r14; (p07) br.cond.dpnt.few	4000000000091AA0; }
-            "0|L--|0000000000100000(6): 0 instructions",
-            "1|L--|0000000000100006(6): 1 instructions",
-            "2|L--|r39 = r14 + 0<64>",
-            "3|T--|000000000010000C(4): 1 instructions",
-            "4|---|if (p07) goto 0000000000100030");
+            "0|L--|0000000000100000(6): 2 instructions",
+            "1|L--|p06 = 0<64> != r14",
+            "2|L--|p07 = 0<64> == r14",
+            "3|L--|0000000000100006(6): 1 instructions",
+            "4|L--|r39 = r14 + 0<64>",
+            "5|T--|000000000010000C(4): 1 instructions",
+            "6|---|if (p07) goto 0000000000100030");
+    }
+
+
+    [Test]
+    public void Ia64Rw_cmp_ne_or_andcm2()
+    {
+        Given_HexString("11A8001E002160043C8EF20330010042");
+        AssertCode(     // { adds	r21,0x0,r15; cmp.ne.or.andcm	p06,p07,0x0,r15; (p07) br.cond.dptk.few	40000000001356C0; }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|r21 = r15 + 0<64>",
+            "2|L--|0000000000100006(6): 2 instructions",
+            "3|L--|p06 = 0<64> != r15",
+            "4|L--|p07 = 0<64> == r15",
+            "5|T--|000000000010000C(4): 1 instructions",
+            "6|---|if (p07) goto 0000000000100130");
     }
 
     [Test]
@@ -599,6 +671,19 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_dep()
+    {
+        Given_HexString("00020003E00100431100000001006040");
+        AssertCode(     // { (p16) chk.a.clr	f0,4000000000921E08; break.i	0x11430; dep	r8,r0,r0,62,9 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|T--|if (p16) if (__speculation_check(0<64>)) branch 0000000000900C00",
+            "2|H--|0000000000100006(6): 1 instructions",
+            "3|L--|__break()",
+            "4|L--|000000000010000C(4): 1 instructions",
+            "5|L--|r8 = SEQ(SLICE(0<i9>, word2, 0), SLICE(0<64>, word62, 0))");
+    }
+
+    [Test]
     public void Ia64Rw_dep_z()
     {
         Given_HexString("0300000001000081E0B0296014810080");
@@ -653,7 +738,6 @@ public class IA64RewriterTests : RewriterTestBase
             "5|L--|if (p28) __break()");
     }
 
-
     [Test]
     public void Ia64Rw_getf_sig()
     {
@@ -666,6 +750,18 @@ public class IA64RewriterTests : RewriterTestBase
             "4|L--|000000000010000C(4): 2 instructions",
             "5|L--|v5 = SLICE(r16, int49, 15)",
             "6|L--|r14 = CONVERT(v5, int49, int64)");
+    }
+
+    [Test]
+    public void Ia64Rw_invala()
+    {
+        Given_HexString("2000004310000000010060009D0EF303");
+        AssertCode(     // { (p01) invala; cmp.lt	p00,p00,r32,r0; mov	pr,r105,0xE6D0 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p01) __invala()",
+            "2|L--|0000000000100006(6): 0 instructions",
+            "3|L--|000000000010000C(4): 1 instructions",
+            "4|L--|pr = r105");
     }
 
     [Test]
@@ -785,7 +881,6 @@ public class IA64RewriterTests : RewriterTestBase
             "5|L--|r32 = r32 + 8<64>");
     }
 
-
     [Test]
     public void Ia64Rw_ld8_a()
     {
@@ -865,6 +960,19 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_ldfe()
+    {
+        Given_HexString("00028028009801841000000001007000");
+        AssertCode(     // { (p16) ldfe	f0,[r20]; (p06) break.i	0x10840; czx1.r	r8,r0 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p16) f0 = CONVERT(Mem0[r20:word80], real80, real64)",
+            "2|H--|0000000000100006(6): 1 instructions",
+            "3|L--|if (p06) __break()",
+            "4|L--|000000000010000C(4): 1 instructions",
+            "5|L--|r8 = __count_zero_index_lsb<byte>(0<64>)");
+    }
+
+    [Test]
     public void Ia64Rw_ldfps()
     {
         Given_HexString("00000400111839101220000000020000");
@@ -893,6 +1001,20 @@ public class IA64RewriterTests : RewriterTestBase
             "4|---|<invalid>",
             "5|H--|000000000010000C(4): 1 instructions",
             "6|L--|__break()");
+    }
+
+    [Test]
+    public void Ia64Rw_ldfs()
+    {
+        Given_HexString("18DCF9580808005600213002200042A0");
+        AssertCode(     // { (p32) nop; ldfs	f96,[r64]; Invalid }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p32) nop",
+            "2|L--|0000000000100006(6): 2 instructions",
+            "3|L--|v5 = Mem0[r64:real32]",
+            "4|L--|f96 = CONVERT(v5, real32, word64)",
+            "5|---|000000000010000C(4): 1 instructions",
+            "6|---|<invalid>");
     }
 
     [Test]
@@ -950,6 +1072,44 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_probe_r()
+    {
+        Given_HexString("380C7303B0FFFF4A0970880000240000");
+        AssertCode(     // { (p33) nop; (p63) probe.r	r47,r2,r41; (p01) break.b	0x12000 }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p33) nop",
+            "2|L--|0000000000100006(6): 1 instructions",
+            "3|L--|if (p63) r47 = __probe_read(r2, r41)",
+            "4|H--|000000000010000C(4): 1 instructions",
+            "5|L--|if (p01) __break()");
+    }
+
+    [Test]
+    public void Ia64Rw_rfi()
+    {
+        Given_HexString("90030043090000000100E00098602100");
+        AssertCode(     // { (p28) nop; cmp.lt	p00,p00,r32,r0; (p01) rfi }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p28) nop",
+            "2|L--|0000000000100006(6): 0 instructions",
+            "3|---|000000000010000C(4): 1 instructions",
+            "4|R--|if (p01) { __return_from_interrupt(); return (0,0); }");
+    }
+
+    [Test]
+    public void Ia64Rw_rum()
+    {
+        Given_HexString("01000008058003800800840009000000");
+        AssertCode(     // { rum	0x10000; (p14) break.i	0x108800; (p01) break.i	0x48; }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|__reset_user_mask(0x10000<64>)",
+            "2|H--|0000000000100006(6): 1 instructions",
+            "3|L--|if (p14) __break()",
+            "4|H--|000000000010000C(4): 1 instructions",
+            "5|L--|if (p01) __break()");
+    }
+
+    [Test]
     public void Ia64Rw_setf_sig()
     {
         Given_HexString("0B78002A1810707000C2310000000400");
@@ -1000,6 +1160,19 @@ public class IA64RewriterTests : RewriterTestBase
             "4|L--|nop",
             "5|L--|000000000010000C(4): 1 instructions",
             "6|L--|r15 = r15 >>u r14");
+    }
+
+    [Test]
+    public void Ia64Rw_srlz_d()
+    {
+        Given_HexString("005600213002200042A0250000901970");
+        AssertCode(     // { (p48) srlz.d; dep	r2,r64,r16,18,0; Invalid }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|if (p48) __serialize_data()",
+            "2|L--|0000000000100006(6): 1 instructions",
+            "3|L--|r2 = SEQ(SLICE(r16, word45, 19), SLICE(r64, 1, 0), SLICE(r16, word18, 0))",
+            "4|---|000000000010000C(4): 1 instructions",
+            "5|---|<invalid>");
     }
 
     [Test]
@@ -1227,6 +1400,19 @@ public class IA64RewriterTests : RewriterTestBase
     }
 
     [Test]
+    public void Ia64Rw_xma_l()
+    {
+        Given_HexString("0F00000001000000000280C300301CE8");
+        AssertCode(     // { nop.m	0x0; nop.m	0x0; (p07) xma.l	f6,f6,f7,f0; }
+            "0|L--|0000000000100000(6): 1 instructions",
+            "1|L--|nop",
+            "2|L--|0000000000100006(6): 1 instructions",
+            "3|L--|nop",
+            "4|L--|000000000010000C(4): 1 instructions",
+            "5|L--|if (p07) { v5 = f6 *128 f7; v5 = v5 + CONVERT(0<64>, word64, word128); f6 = SLICE(v5, word64, 0); }");
+    }
+
+    [Test]
     public void Ia64Rw_xor()
     {
         Given_HexString("092005422F2060C2056448A0021051E6");
@@ -1241,4 +1427,25 @@ public class IA64RewriterTests : RewriterTestBase
             "7|L--|p21 = v8 == v9",
             "8|L--|p20 = v8 != v9");
     }
+
+    // This file contains unit tests automatically generated by Reko decompiler.
+    // Please copy the contents of this file and report it on GitHub, using the 
+    // following URL: https://github.com/uxmal/reko/issues
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

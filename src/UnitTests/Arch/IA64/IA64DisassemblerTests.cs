@@ -335,4 +335,11 @@ public class IA64DisassemblerTests : DisassemblerTestBase<IA64Bundle>
     {
         AssertCode("{ nop.m\t0x0; cmp4.eq\tp31,p30,0x44,r15; tnat.z\tp26,p27,r36 }", "080000000100F0213E3C7340A3206D50");
     }
+
+    // Reko: a decoder for the instruction 00840900000001000088386023000000 at address 400000000001DE1E has not been implemented. (x_2a = 0)
+    [Test]
+    public void Ia64Dis_00840900000001000088386023000000()
+    {
+        AssertCode("@@@", "00840900000001000088386023000000");
+    }
 }

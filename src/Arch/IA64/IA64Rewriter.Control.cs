@@ -19,11 +19,6 @@
 #endregion
 
 using Reko.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reko.Arch.IA64;
 
@@ -43,6 +38,11 @@ public partial class IA64Rewriter
         m.BranchInMiddleOfInstruction(m.Eq0(lc), addrNext, InstrClass.ConditionalTransfer);
         m.Assign(lc, m.ISub(lc, 1));
         m.Goto(target);
+    }
+
+    private void RewriteClrrrb(IA64Instruction instr, IntrinsicProcedure intrinsic)
+    {
+        m.SideEffect(m.Fn(intrinsic));
     }
 
     private void RewriteBr_cond(IA64Instruction instr)
@@ -76,5 +76,33 @@ public partial class IA64Rewriter
     private void RewriteFwb(IA64Instruction instr)
     {
         m.SideEffect(m.Fn(fwb_intrinsic));
+    }
+
+    private void RewriteInvala(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(invala_intrinsic));
+    }
+
+    private void RewriteProbe(IA64Instruction instr, IntrinsicProcedure intrinsic)
+    {
+        var ea = ReadOp(instr, 1);
+        var perm = ReadOp(instr, 2);
+        WriteOp(instr, 0, m.Fn(intrinsic, ea, perm));
+    }
+
+    private void RewriteRfi(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(rfi_intrinsic));
+        m.Return(0, 0);
+    }
+
+    private void RewriteRum(IA64Instruction instr)
+    {
+        m.SideEffect(m.Fn(rum_intrinsic, ReadOp(instr, 0)));
+    }
+
+    private void RewriteSerialize(IA64Instruction instr, IntrinsicProcedure intrinsic)
+    {
+        m.SideEffect(m.Fn(intrinsic));
     }
 }
