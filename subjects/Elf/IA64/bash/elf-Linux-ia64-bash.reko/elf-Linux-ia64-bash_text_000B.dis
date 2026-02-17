@@ -1,3 +1,795 @@
+// fn40000000000CE980
+// Return size: 0
+define fn40000000000CE980
+fn40000000000CE980_entry:
+	r11 = fp
+	// succ:  l40000000000CE980
+l40000000000CE980:
+	r44 = ar.pfs
+	r12 = r12 + 0xFFFFFFFFFFFFFE00<64>
+	r43 = b3
+	r47 = r1 + -7548<i64>
+	r45 = r1 + 0<64>
+	r46 = r32 + 0<64>
+	r47 = Mem0[r47:word64]
+	r34 = r12 + 0x110<64>
+	call fn400000000001A660 (retsize: 0;)
+	r1 = r45 + 0<64>
+	r37 = r8 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l40000000000CE9D0
+	// succ:  l40000000000CE9CC_1 l40000000000CE9D0
+l40000000000CE9CC_1:
+	// succ:  l40000000000CEAE0 l40000000000CE9D0
+l40000000000CE9D0:
+	r38 = r1 + 8000<i64>
+	r41 = r1 + 8012<i64>
+	r40 = r1 + 8004<i64>
+	// succ:  l40000000000CE9E0
+l40000000000CE9E0:
+	r46 = r34 + 0<64>
+	r47 = 0<64> + 255<i64>
+	r48 = r37 + 0<64>
+	call fn400000000001A9A0 (retsize: 0;)
+	r1 = r45 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l40000000000CEA10
+	// succ:  l40000000000CEA0C_2 l40000000000CEA10
+l40000000000CEA0C_2:
+	// succ:  l40000000000CEAC0 l40000000000CEA10
+l40000000000CEA10:
+	v23 = Mem0[r34:byte]
+	r14 = CONVERT(v23, byte, word64)
+	r33 = 0<64> + 0<64>
+	v26 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v26, int8, int64)
+	v27 = SLICE(0<64>, word32, 0)
+	v28 = SLICE(r14, word32, 0)
+	p10 = v27 == v28
+	p11 = v27 != v28
+	r35 = r14 + 0<64>
+	r14 = r12 + 0x111<64>
+	branch !p10 l40000000000CEA40
+	// succ:  l40000000000CEA3C_3 l40000000000CEA40
+l40000000000CEA3C_3:
+	// succ:  l40000000000CE9E0 l40000000000CEA40
+l40000000000CEA40:
+	v32 = SLICE(0xD<64>, word32, 0)
+	v33 = SLICE(r35, word32, 0)
+	p06 = v32 == v33
+	p07 = v32 != v33
+	v34 = SLICE(0x20<64>, word32, 0)
+	v35 = SLICE(r35, word32, 0)
+	p08 = v34 == v35
+	p09 = v34 != v35
+	v38 = SLICE(0xA<64>, word32, 0)
+	v39 = SLICE(r35, word32, 0)
+	p06 = v38 == v39
+	p07 = v38 != v39
+	branch !p06 l40000000000CEA60
+	// succ:  l40000000000CEA5C_4 l40000000000CEA60
+l40000000000CEA5C_4:
+	// succ:  l40000000000CEA70 l40000000000CEA60
+l40000000000CEA60:
+	v40 = SLICE(9<64>, word32, 0)
+	v41 = SLICE(r35, word32, 0)
+	p08 = v40 == v41
+	p09 = v40 != v41
+	branch !p09 l40000000000CEA70
+	// succ:  l40000000000CEA6C_5 l40000000000CEA70
+l40000000000CEA6C_5:
+	// succ:  l40000000000CEB00 l40000000000CEA70
+l40000000000CEA70:
+	v42 = Mem0[r14:byte]
+	r35 = CONVERT(v42, byte, word64)
+	r14 = r14 + 1<i64>
+	r33 = r33 + 1<64>
+	v43 = SLICE(r35, int8, 0)
+	r35 = CONVERT(v43, int8, int64)
+	v44 = SLICE(0<64>, word32, 0)
+	v45 = SLICE(r35, word32, 0)
+	p10 = v44 == v45
+	p11 = v44 != v45
+	branch !p11 l40000000000CEA90
+	// succ:  l40000000000CEA8C_6 l40000000000CEA90
+l40000000000CEA8C_6:
+	// succ:  l40000000000CEA40 l40000000000CEA90
+l40000000000CEA90:
+	r46 = r34 + 0<64>
+	r47 = 0<64> + 255<i64>
+	r48 = r37 + 0<64>
+	call fn400000000001A9A0 (retsize: 0;)
+	r1 = r45 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p07 l40000000000CEAC0
+	// succ:  l40000000000CEABC_7 l40000000000CEAC0
+l40000000000CEABC_7:
+	// succ:  l40000000000CEA10 l40000000000CEAC0
+l40000000000CEAC0:
+	r46 = r37 + 0<64>
+	call fn400000000001BE40 (retsize: 0;)
+	r1 = r45 + 0<64>
+	// succ:  l40000000000CEAE0
+l40000000000CEAE0:
+	ar.pfs = r44
+	b0 = r43
+	r12 = r12 + 0x200<64>
+	return
+	// succ:  fn40000000000CE980_exit
+l40000000000CEB00:
+	v47 = SLICE(r33, int32, 0)
+	r39 = CONVERT(v47, int32, int64)
+	r47 = r1 + -7540<i64>
+	v49 = SLICE(0x23<64>, word32, 0)
+	v50 = SLICE(r35, word32, 0)
+	p10 = v49 == v50
+	p11 = v49 != v50
+	r48 = 0<64> + 9<i64>
+	branch !p10 l40000000000CEB20
+	// succ:  l40000000000CEB1C_1 l40000000000CEB20
+l40000000000CEB1C_1:
+	// succ:  l40000000000CE9E0 l40000000000CEB20
+l40000000000CEB20:
+	r36 = r39 + r34
+	r47 = Mem0[r47:word64]
+	r46 = r36 + 0<64>
+	call fn400000000001C020 (retsize: 0;)
+	r1 = r45 + 0<64>
+	v52 = SLICE(0<64>, word32, 0)
+	v53 = SLICE(r8, word32, 0)
+	p07 = v52 == v53
+	p06 = v52 != v53
+	branch !p06 l40000000000CEB50
+	// succ:  l40000000000CEB4C_2 l40000000000CEB50
+l40000000000CEB4C_2:
+	// succ:  l40000000000CECE0 l40000000000CEB50
+l40000000000CEB50:
+	r15 = r39 + 9<64>
+	r15 = r15 + r34
+	v55 = Mem0[r15:byte]
+	r14 = CONVERT(v55, byte, word64)
+	v56 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v56, int8, int64)
+	v57 = SLICE(0<64>, word32, 0)
+	v58 = SLICE(r14, word32, 0)
+	p06 = v57 == v58
+	p07 = v57 != v58
+	v59 = SLICE(0x20<64>, word32, 0)
+	v60 = SLICE(r14, word32, 0)
+	p08 = v59 == v60
+	p09 = v59 != v60
+	branch !p06 l40000000000CEB80
+	// succ:  l40000000000CEB7C_3 l40000000000CEB80
+l40000000000CEB7C_3:
+	// succ:  l40000000000CF150 l40000000000CEB80
+l40000000000CEB80:
+	v61 = SLICE(9<64>, word32, 0)
+	v62 = SLICE(r14, word32, 0)
+	p06 = v61 == v62
+	p07 = v61 != v62
+	p10 = 0<64>
+	p00 = 0<64>
+	branch !p08 l40000000000CEB8C
+	// succ:  l40000000000CEB86_4 l40000000000CEB8C
+l40000000000CEB86_4:
+	p10 = 0<64> == 0<64>
+	// succ:  l40000000000CEB8C
+l40000000000CEB8C:
+	p11 = 0<64>
+	p00 = 0<64>
+	branch !p09 l40000000000CEB90
+	// succ:  l40000000000CEB8C_5 l40000000000CEB90
+l40000000000CEB8C_5:
+	p11 = 0<64> == 0<64>
+	// succ:  l40000000000CEB90
+l40000000000CEB90:
+	v64 = SLICE(0<64>, word32, 0)
+	v65 = SLICE(0<64>, word32, 0)
+	p10 = !p06 || v64 == v65
+	p11 = !p06 && v64 != v65
+	branch !p11 l40000000000CEBA0
+	// succ:  l40000000000CEB9C_6 l40000000000CEBA0
+l40000000000CEB9C_6:
+	// succ:  l40000000000CF170 l40000000000CEBA0
+l40000000000CEBA0:
+	r15 = r15 + 1<64>
+	// succ:  l40000000000CEBB0
+l40000000000CEBB0:
+	r16 = r15 + 0<64>
+	v67 = Mem0[r15:byte]
+	r14 = CONVERT(v67, byte, word64)
+	r15 = r15 + 1<i64>
+	v68 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v68, int8, int64)
+	v69 = SLICE(0<64>, word32, 0)
+	v70 = SLICE(r14, word32, 0)
+	p10 = v69 == v70
+	p11 = v69 != v70
+	v71 = SLICE(9<64>, word32, 0)
+	v72 = SLICE(r14, word32, 0)
+	p06 = v71 == v72
+	p07 = v71 != v72
+	v73 = SLICE(0x20<64>, word32, 0)
+	v74 = SLICE(r14, word32, 0)
+	p08 = v73 == v74
+	p09 = v73 != v74
+	branch !p10 l40000000000CEBE0
+	// succ:  l40000000000CEBDC_7 l40000000000CEBE0
+l40000000000CEBDC_7:
+	// succ:  l40000000000CF130 l40000000000CEBE0
+l40000000000CEBE0:
+	p10 = 0<64>
+	p00 = 0<64>
+	branch !p06 l40000000000CEBE6
+	// succ:  l40000000000CEBE0_8 l40000000000CEBE6
+l40000000000CEBE0_8:
+	p10 = 0<64> == 0<64>
+	// succ:  l40000000000CEBE6
+l40000000000CEBE6:
+	p11 = 0<64>
+	p00 = 0<64>
+	branch !p07 l40000000000CEBF0
+	// succ:  l40000000000CEBEC_9 l40000000000CEBF0
+l40000000000CEBEC_9:
+	p11 = 0<64> == 0<64>
+	// succ:  l40000000000CEBF0
+l40000000000CEBF0:
+	v75 = SLICE(0<64>, word32, 0)
+	v76 = SLICE(0<64>, word32, 0)
+	p10 = !p08 || v75 == v76
+	p11 = !p08 && v75 != v76
+	branch !p10 l40000000000CEC00
+	// succ:  l40000000000CEBFC_10 l40000000000CEC00
+l40000000000CEBFC_10:
+	// succ:  l40000000000CEBB0 l40000000000CEC00
+l40000000000CEC00:
+	r46 = r16 + 0<64>
+	// succ:  l40000000000CEC10
+l40000000000CEC10:
+	v77 = SLICE(0xA<64>, word32, 0)
+	v78 = SLICE(r14, word32, 0)
+	p10 = v77 == v78
+	p11 = v77 != v78
+	r16 = r46 + 0<64>
+	v79 = SLICE(0xD<64>, word32, 0)
+	v80 = SLICE(r14, word32, 0)
+	p10 = v79 == v80
+	p11 = v79 != v80
+	branch !p10 l40000000000CEC30
+	// succ:  l40000000000CEC2C_11 l40000000000CEC30
+l40000000000CEC2C_11:
+	// succ:  l40000000000CEC90 l40000000000CEC30
+l40000000000CEC30:
+	v81 = SLICE(0<64>, word32, 0)
+	v82 = SLICE(0<64>, word32, 0)
+	p06 = !p08 || v81 == v82
+	p07 = !p08 && v81 != v82
+	branch !p06 l40000000000CEC40
+	// succ:  l40000000000CEC3C_12 l40000000000CEC40
+l40000000000CEC3C_12:
+	// succ:  l40000000000CF140 l40000000000CEC40
+l40000000000CEC40:
+	r17 = r46 + 1<64>
+	// succ:  l40000000000CEC50
+l40000000000CEC50:
+	r16 = r17 + 0<64>
+	v84 = Mem0[r17:byte]
+	r14 = CONVERT(v84, byte, word64)
+	r17 = r17 + 1<i64>
+	v85 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v85, int8, int64)
+	v86 = SLICE(0xD<64>, word32, 0)
+	v87 = SLICE(r14, word32, 0)
+	p06 = v86 == v87
+	p07 = v86 != v87
+	v88 = SLICE(9<64>, word32, 0)
+	v89 = SLICE(r14, word32, 0)
+	p09 = v88 == v89
+	p08 = v88 != v89
+	v90 = SLICE(0<64>, word32, 0)
+	v91 = SLICE(r14, word32, 0)
+	p11 = v90 == v91
+	p10 = v90 != v91
+	branch !p11 l40000000000CEC80
+	// succ:  l40000000000CEC7C_13 l40000000000CEC80
+l40000000000CEC7C_13:
+	// succ:  l40000000000CEC90 l40000000000CEC80
+l40000000000CEC80:
+	v92 = SLICE(0xA<64>, word32, 0)
+	v93 = SLICE(r14, word32, 0)
+	p06 = v92 == v93
+	p07 = v92 != v93
+	branch !p07 l40000000000CEC90
+	// succ:  l40000000000CEC8C_14 l40000000000CEC90
+l40000000000CEC8C_14:
+	// succ:  l40000000000CECB0 l40000000000CEC90
+l40000000000CEC90:
+	Mem0[r0:byte] = SLICE(r16, byte, 0)
+	call fn40000000000CE980 (retsize: 0;)
+	r1 = r45 + 0<64>
+	goto l40000000000CE9E0
+	// succ:  l40000000000CE9E0
+l40000000000CECB0:
+	v95 = SLICE(0x20<64>, word32, 0)
+	v96 = SLICE(r14, word32, 0)
+	p09 = v95 == v96
+	p08 = v95 != v96
+	branch !p08 l40000000000CECC0
+	// succ:  l40000000000CECBC_1 l40000000000CECC0
+l40000000000CECBC_1:
+	// succ:  l40000000000CEC50 l40000000000CECC0
+l40000000000CECC0:
+	Mem0[r0:byte] = SLICE(r16, byte, 0)
+	call fn40000000000CE980 (retsize: 0;)
+	r1 = r45 + 0<64>
+	goto l40000000000CE9E0
+	// succ:  l40000000000CE9E0
+l40000000000CECE0:
+	r14 = r35 + 0xFFFFFFFFFFFFFFD0<64>
+	v97 = SLICE(r14, byte, 0)
+	r14 = CONVERT(v97, byte, word64)
+	v98 = SLICE(9<64>, word32, 0)
+	v99 = SLICE(r14, word32, 0)
+	p07 = v98 <u v99
+	p06 = v98 >=u v99
+	v100 = Mem0[r36:byte]
+	r14 = CONVERT(v100, byte, word64)
+	v101 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v101, int8, int64)
+	branch !p07 l40000000000CED10
+	// succ:  l40000000000CED0C_1 l40000000000CED10
+l40000000000CED0C_1:
+	// succ:  l40000000000CEDC0 l40000000000CED10
+l40000000000CED10:
+	v102 = SLICE(0<64>, word32, 0)
+	v103 = SLICE(r14, word32, 0)
+	p07 = v102 == v103
+	p06 = v102 != v103
+	branch !p07 l40000000000CED20
+	// succ:  l40000000000CED1C_2 l40000000000CED20
+l40000000000CED1C_2:
+	// succ:  l40000000000CEDC0 l40000000000CED20
+l40000000000CED20:
+	v104 = SLICE(0xD<64>, word32, 0)
+	v105 = SLICE(r14, word32, 0)
+	p06 = v104 == v105
+	p07 = v104 != v105
+	v106 = SLICE(0xA<64>, word32, 0)
+	v107 = SLICE(r14, word32, 0)
+	p06 = v106 == v107
+	p07 = v106 != v107
+	branch !p06 l40000000000CED40
+	// succ:  l40000000000CED3C_3 l40000000000CED40
+l40000000000CED3C_3:
+	// succ:  l40000000000CEDC0 l40000000000CED40
+l40000000000CED40:
+	v108 = SLICE(0x20<64>, word32, 0)
+	v109 = SLICE(r14, word32, 0)
+	p06 = v108 == v109
+	p07 = v108 != v109
+	v110 = SLICE(9<64>, word32, 0)
+	v111 = SLICE(r14, word32, 0)
+	p06 = v110 == v111
+	p07 = v110 != v111
+	branch !p06 l40000000000CED60
+	// succ:  l40000000000CED5C_4 l40000000000CED60
+l40000000000CED5C_4:
+	// succ:  l40000000000CEDC0 l40000000000CED60
+l40000000000CED60:
+	r33 = r33 + 1<64>
+	v112 = SLICE(r33, int32, 0)
+	r14 = CONVERT(v112, int32, int64)
+	r14 = r14 + r34
+	v113 = Mem0[r14:byte]
+	r14 = CONVERT(v113, byte, word64)
+	v114 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v114, int8, int64)
+	v115 = SLICE(0xD<64>, word32, 0)
+	v116 = SLICE(r14, word32, 0)
+	p08 = v115 == v116
+	p09 = v115 != v116
+	v117 = SLICE(0x20<64>, word32, 0)
+	v118 = SLICE(r14, word32, 0)
+	p06 = v117 == v118
+	p07 = v117 != v118
+	v119 = SLICE(0<64>, word32, 0)
+	v120 = SLICE(r14, word32, 0)
+	p11 = v119 == v120
+	p10 = v119 != v120
+	branch !p11 l40000000000CEDA0
+	// succ:  l40000000000CED9C_5 l40000000000CEDA0
+l40000000000CED9C_5:
+	// succ:  l40000000000CEDC0 l40000000000CEDA0
+l40000000000CEDA0:
+	v121 = SLICE(0xA<64>, word32, 0)
+	v122 = SLICE(r14, word32, 0)
+	p08 = v121 == v122
+	p09 = v121 != v122
+	branch !p08 l40000000000CEDB0
+	// succ:  l40000000000CEDAC_6 l40000000000CEDB0
+l40000000000CEDAC_6:
+	// succ:  l40000000000CEDC0 l40000000000CEDB0
+l40000000000CEDB0:
+	v123 = SLICE(9<64>, word32, 0)
+	v124 = SLICE(r14, word32, 0)
+	p06 = v123 == v124
+	p07 = v123 != v124
+	branch !p07 l40000000000CEDC0
+	// succ:  l40000000000CEDBC_7 l40000000000CEDC0
+l40000000000CEDBC_7:
+	// succ:  l40000000000CED60 l40000000000CEDC0
+l40000000000CEDC0:
+	v125 = SLICE(0<64>, word32, 0)
+	v126 = SLICE(r14, word32, 0)
+	p06 = v125 == v126
+	p07 = v125 != v126
+	branch !p06 l40000000000CEDD0
+	// succ:  l40000000000CEDCC_8 l40000000000CEDD0
+l40000000000CEDCC_8:
+	// succ:  l40000000000CE9E0 l40000000000CEDD0
+l40000000000CEDD0:
+	// succ:  l40000000000CEDE0
+l40000000000CEDE0:
+	v127 = SLICE(0xD<64>, word32, 0)
+	v128 = SLICE(r14, word32, 0)
+	p06 = v127 == v128
+	p07 = v127 != v128
+	v129 = SLICE(0x20<64>, word32, 0)
+	v130 = SLICE(r14, word32, 0)
+	p08 = v129 == v130
+	p09 = v129 != v130
+	v131 = SLICE(0xA<64>, word32, 0)
+	v132 = SLICE(r14, word32, 0)
+	p06 = v131 == v132
+	p07 = v131 != v132
+	branch !p06 l40000000000CEE00
+	// succ:  l40000000000CEDFC_9 l40000000000CEE00
+l40000000000CEDFC_9:
+	// succ:  l40000000000CEE10 l40000000000CEE00
+l40000000000CEE00:
+	v133 = SLICE(9<64>, word32, 0)
+	v134 = SLICE(r14, word32, 0)
+	p08 = v133 == v134
+	p09 = v133 != v134
+	branch !p09 l40000000000CEE10
+	// succ:  l40000000000CEE0C_10 l40000000000CEE10
+l40000000000CEE0C_10:
+	// succ:  l40000000000CEE40 l40000000000CEE10
+l40000000000CEE10:
+	r33 = r33 + 1<64>
+	v135 = SLICE(r33, int32, 0)
+	r14 = CONVERT(v135, int32, int64)
+	r14 = r14 + r34
+	v136 = Mem0[r14:byte]
+	r14 = CONVERT(v136, byte, word64)
+	v137 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v137, int8, int64)
+	goto l40000000000CEDE0
+	// succ:  l40000000000CEDE0
+l40000000000CEE40:
+	v138 = SLICE(0<64>, word32, 0)
+	v139 = SLICE(r14, word32, 0)
+	p08 = v138 == v139
+	p09 = v138 != v139
+	r15 = r33 + 0<64>
+	v140 = SLICE(0<64>, word32, 0)
+	v141 = SLICE(r14, word32, 0)
+	p07 = v140 == v141
+	p06 = v140 != v141
+	v142 = SLICE(0x23<64>, word32, 0)
+	v143 = SLICE(r14, word32, 0)
+	p08 = v142 == v143
+	p09 = v142 != v143
+	branch !p08 l40000000000CEE5C
+	// succ:  l40000000000CEE56_1 l40000000000CEE5C
+l40000000000CEE56_1:
+	// succ:  l40000000000CE9E0 l40000000000CEE5C
+l40000000000CEE5C:
+	branch !p07 l40000000000CEE60
+	// succ:  l40000000000CEE5C_2 l40000000000CEE60
+l40000000000CEE5C_2:
+	// succ:  l40000000000CE9E0 l40000000000CEE60
+l40000000000CEE60:
+	r33 = r33 + 1<64>
+	v144 = SLICE(r33, int32, 0)
+	r35 = CONVERT(v144, int32, int64)
+	r14 = r35 + r34
+	v145 = Mem0[r14:byte]
+	r14 = CONVERT(v145, byte, word64)
+	v146 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v146, int8, int64)
+	v147 = SLICE(0xA<64>, word32, 0)
+	v148 = SLICE(r14, word32, 0)
+	p07 = v147 == v148
+	p06 = v147 != v148
+	v149 = SLICE(0x20<64>, word32, 0)
+	v150 = SLICE(r14, word32, 0)
+	p08 = v149 == v150
+	p09 = v149 != v150
+	v151 = SLICE(0<64>, word32, 0)
+	v152 = SLICE(r14, word32, 0)
+	p11 = v151 == v152
+	p10 = v151 != v152
+	branch !p11 l40000000000CEEA0
+	// succ:  l40000000000CEE9C_3 l40000000000CEEA0
+l40000000000CEE9C_3:
+	// succ:  l40000000000CEEC0 l40000000000CEEA0
+l40000000000CEEA0:
+	v153 = SLICE(0xD<64>, word32, 0)
+	v154 = SLICE(r14, word32, 0)
+	p07 = v153 == v154
+	p06 = v153 != v154
+	branch !p07 l40000000000CEEB0
+	// succ:  l40000000000CEEAC_4 l40000000000CEEB0
+l40000000000CEEAC_4:
+	// succ:  l40000000000CEEC0 l40000000000CEEB0
+l40000000000CEEB0:
+	v155 = SLICE(9<64>, word32, 0)
+	v156 = SLICE(r14, word32, 0)
+	p08 = v155 == v156
+	p09 = v155 != v156
+	branch !p09 l40000000000CEEC0
+	// succ:  l40000000000CEEBC_5 l40000000000CEEC0
+l40000000000CEEBC_5:
+	// succ:  l40000000000CEE60 l40000000000CEEC0
+l40000000000CEEC0:
+	r16 = r15 - r33
+	v157 = SLICE(r33, word32, 0)
+	v158 = SLICE(r15, word32, 0)
+	p06 = v157 == v158
+	p07 = v157 != v158
+	v159 = SLICE(r15, int32, 0)
+	r47 = CONVERT(v159, int32, int64)
+	r49 = 0<64> + 256<i64>
+	r46 = r12 + 0x10<64>
+	branch !p06 l40000000000CEEE0
+	// succ:  l40000000000CEEDC_6 l40000000000CEEE0
+l40000000000CEEDC_6:
+	// succ:  l40000000000CEDC0 l40000000000CEEE0
+l40000000000CEEE0:
+	v161 = SLICE(r16, int32, 0)
+	r36 = CONVERT(v161, int32, int64)
+	r47 = r47 + r34
+	r39 = r1 + 8004<i64>
+	r48 = r36 + 0<64>
+	call fn400000000001BA80 (retsize: 0;)
+	r17 = r12 + 0x10<64>
+	v162 = Mem0[r38:word32]
+	r14 = CONVERT(v162, word32, word64)
+	r1 = r45 + 0<64>
+	r46 = r12 + 0x10<64>
+	v163 = Mem0[r41:word32]
+	r15 = CONVERT(v163, word32, word64)
+	r16 = r36 + r17
+	r36 = r14 + 1<64>
+	v164 = SLICE(r14, int32, 0)
+	r14 = CONVERT(v164, int32, int64)
+	v165 = SLICE(r36, word32, 0)
+	v166 = SLICE(r15, word32, 0)
+	p07 = v165 < v166
+	p06 = v165 >= v166
+	Mem0[r0:byte] = SLICE(r16, byte, 0)
+	branch !p06 l40000000000CEF60
+	// succ:  l40000000000CEF5C_7 l40000000000CEF60
+l40000000000CEF5C_7:
+	// succ:  l40000000000CF010 l40000000000CEF60
+l40000000000CEF60:
+	branch !p07 l40000000000CEF66
+	// succ:  l40000000000CEF60_8 l40000000000CEF66
+l40000000000CEF60_8:
+	r8 = Mem0[r40:word64]
+	// succ:  l40000000000CEF66
+l40000000000CEF66:
+	r35 = r35 + r34
+	r42 = (r14 << 3<u32>) + r8
+	call fn400000000001B6C0 (retsize: 0;)
+	r1 = r45 + 0<64>
+	r46 = r8 + 1<64>
+	call xmalloc (retsize: 0;)
+	r1 = r45 + 0<64>
+	r46 = r8 + 0<64>
+	r47 = r12 + 0x10<64>
+	call fn400000000001B180 (retsize: 0;)
+	r14 = Mem0[r39:word64]
+	v168 = SLICE(r36, int32, 0)
+	r15 = CONVERT(v168, int32, int64)
+	Mem0[r8:word64] = r42
+	Mem0[r36:word32] = SLICE(r38, word32, 0)
+	r1 = r45 + 0<64>
+	r14 = (r15 << 3<u32>) + r14
+	Mem0[r0:word64] = r14
+	v169 = Mem0[r35:byte]
+	r14 = CONVERT(v169, byte, word64)
+	v170 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v170, int8, int64)
+	// succ:  l40000000000CEFF0
+l40000000000CEFF0:
+	v171 = SLICE(0<64>, word32, 0)
+	v172 = SLICE(r14, word32, 0)
+	p06 = v171 == v172
+	p07 = v171 != v172
+	branch !p07 l40000000000CF000
+	// succ:  l40000000000CEFFC_9 l40000000000CF000
+l40000000000CEFFC_9:
+	// succ:  l40000000000CEDE0 l40000000000CF000
+l40000000000CF000:
+	goto l40000000000CE9E0
+	// succ:  l40000000000CE9E0
+l40000000000CF010:
+	r14 = r15 + 0x20<64>
+	v173 = SLICE(r15, bool, 31)
+	r16 = CONVERT(v173, bool, word64)
+	r39 = r1 + 8004<i64>
+	r46 = Mem0[r40:word64]
+	r35 = r35 + r34
+	v174 = SLICE(r16, word5, 59)
+	r16 = CONVERT(v174, word5, word64)
+	r15 = r16 + r15
+	r15 = r15 & 0x1F<64>
+	r16 = r16 - r15
+	r14 = r16 - r14
+	r47 = r14 + 0<64>
+	Mem0[r14:word32] = SLICE(r41, word32, 0)
+	call strvec_resize (retsize: 0;)
+	r1 = r45 + 0<64>
+	r46 = r12 + 0x10<64>
+	Mem0[r8:word64] = r40
+	r14 = r1 + 8000<i64>
+	v175 = Mem0[r14:word32]
+	r14 = CONVERT(v175, word32, word64)
+	r36 = r14 + 1<64>
+	v176 = SLICE(r14, int32, 0)
+	r14 = CONVERT(v176, int32, int64)
+	r42 = (r14 << 3<u32>) + r8
+	call fn400000000001B6C0 (retsize: 0;)
+	r1 = r45 + 0<64>
+	r46 = r8 + 1<64>
+	call xmalloc (retsize: 0;)
+	r1 = r45 + 0<64>
+	r46 = r8 + 0<64>
+	r47 = r12 + 0x10<64>
+	call fn400000000001B180 (retsize: 0;)
+	r14 = Mem0[r39:word64]
+	v177 = SLICE(r36, int32, 0)
+	r15 = CONVERT(v177, int32, int64)
+	Mem0[r8:word64] = r42
+	Mem0[r36:word32] = SLICE(r38, word32, 0)
+	r1 = r45 + 0<64>
+	r14 = (r15 << 3<u32>) + r14
+	Mem0[r0:word64] = r14
+	v178 = Mem0[r35:byte]
+	r14 = CONVERT(v178, byte, word64)
+	v179 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v179, int8, int64)
+	goto l40000000000CEFF0
+	// succ:  l40000000000CEFF0
+l40000000000CF130:
+	r46 = r16 + 0<64>
+	// succ:  l40000000000CF140
+l40000000000CF140:
+	r16 = r46 + 0<64>
+	goto l40000000000CEC90
+	// succ:  l40000000000CEC90
+l40000000000CF150:
+	r46 = r15 + 0<64>
+	r16 = r46 + 0<64>
+	goto l40000000000CEC90
+	// succ:  l40000000000CEC90
+l40000000000CF170:
+	r46 = r15 + 0<64>
+	goto l40000000000CEC10
+	// succ:  l40000000000CEC10
+fn40000000000CE980_exit:
+
+
+// fn40000000000CF180
+// Return size: 0
+define fn40000000000CF180
+fn40000000000CF180_entry:
+	r11 = fp
+	// succ:  l40000000000CF180
+l40000000000CF180:
+	r33 = ar.pfs
+	r35 = r1 + -7524<i64>
+	r32 = b0
+	r34 = r1 + 0<64>
+	r35 = Mem0[r35:word64]
+	call get_string_value (retsize: 0;)
+	p07 = 0<64> == r8
+	p06 = 0<64> != r8
+	r1 = r34 + 0<64>
+	r35 = r8 + 0<64>
+	branch !p07 l40000000000CF1D0
+	// succ:  l40000000000CF1CC_1 l40000000000CF1D0
+l40000000000CF1CC_1:
+	// succ:  l40000000000CF230 l40000000000CF1D0
+l40000000000CF1D0:
+	call fn40000000000CE980 (retsize: 0;)
+	r1 = r34 + 0<64>
+	ar.pfs = r33
+	r15 = r1 + 8004<i64>
+	r14 = r1 + 7780<i64>
+	b0 = r32
+	r15 = Mem0[r15:word64]
+	p06 = 0<64> == r15
+	p07 = 0<64> != r15
+	branch !p07 l40000000000CF216
+	// succ:  l40000000000CF210_2 l40000000000CF216
+l40000000000CF210_2:
+	v16 = Mem0[r14:word32]
+	r15 = CONVERT(v16, word32, word64)
+	// succ:  l40000000000CF216
+l40000000000CF216:
+	branch !p07 l40000000000CF21C
+	// succ:  l40000000000CF216_3 l40000000000CF21C
+l40000000000CF216_3:
+	r15 = r15 + 1<64>
+	// succ:  l40000000000CF21C
+l40000000000CF21C:
+	branch !p07 l40000000000CF226
+	// succ:  l40000000000CF220_4 l40000000000CF226
+l40000000000CF220_4:
+	Mem0[r15:word32] = SLICE(r14, word32, 0)
+	// succ:  l40000000000CF226
+l40000000000CF226:
+	return
+	// succ:  fn40000000000CF180_exit
+l40000000000CF230:
+	r35 = r1 + -7516<i64>
+	r35 = Mem0[r35:word64]
+	call get_string_value (retsize: 0;)
+	r1 = r34 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l40000000000CF260
+	// succ:  l40000000000CF25C_1 l40000000000CF260
+l40000000000CF25C_1:
+	r8 = r1 + -7532<i64>
+	// succ:  l40000000000CF260
+l40000000000CF260:
+	branch !p06 l40000000000CF26C
+	// succ:  l40000000000CF266_2 l40000000000CF26C
+l40000000000CF266_2:
+	r8 = Mem0[r8:word64]
+	// succ:  l40000000000CF26C
+l40000000000CF26C:
+	r35 = r8 + 0<64>
+	call fn40000000000CE980 (retsize: 0;)
+	r1 = r34 + 0<64>
+	ar.pfs = r33
+	r15 = r1 + 8004<i64>
+	r14 = r1 + 7780<i64>
+	b0 = r32
+	r15 = Mem0[r15:word64]
+	p06 = 0<64> == r15
+	p07 = 0<64> != r15
+	branch !p07 l40000000000CF2B6
+	// succ:  l40000000000CF2B0_3 l40000000000CF2B6
+l40000000000CF2B0_3:
+	v17 = Mem0[r14:word32]
+	r15 = CONVERT(v17, word32, word64)
+	// succ:  l40000000000CF2B6
+l40000000000CF2B6:
+	branch !p07 l40000000000CF2BC
+	// succ:  l40000000000CF2B6_4 l40000000000CF2BC
+l40000000000CF2B6_4:
+	r15 = r15 + 1<64>
+	// succ:  l40000000000CF2BC
+l40000000000CF2BC:
+	branch !p07 l40000000000CF2C6
+	// succ:  l40000000000CF2C0_5 l40000000000CF2C6
+l40000000000CF2C0_5:
+	Mem0[r15:word32] = SLICE(r14, word32, 0)
+	// succ:  l40000000000CF2C6
+l40000000000CF2C6:
+	return
+	// succ:  fn40000000000CF180_exit
+fn40000000000CF180_exit:
+
+
 // posix_readline_initialize
 // Return size: 0
 define posix_readline_initialize
@@ -22,7 +814,7 @@ l40000000000D4F6C_1:
 	// succ:  l40000000000D4FA0 l40000000000D4F70
 l40000000000D4F70:
 	r38 = Mem0[r38:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r35 + 0<64>
 	ar.pfs = r34
 	b0 = r33
@@ -33,14 +825,14 @@ l40000000000D4FA0:
 	r37 = r1 + -7372<i64>
 	r36 = Mem0[r36:word64]
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A820 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = 0<64> + 9<i64>
 	r37 = r1 + -10524<i64>
 	r38 = r1 + -10060<i64>
 	r37 = Mem0[r37:word64]
 	r38 = Mem0[r38:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r35 + 0<64>
 	ar.pfs = r34
 	b0 = r33
@@ -72,7 +864,7 @@ l40000000000D5040:
 l40000000000D506C_1:
 	// succ:  l40000000000D5190 l40000000000D5070
 l40000000000D5070:
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r15 = 0<64> + 32<i64>
 	r14 = r8 + 0<64>
 	r1 = r34 + 0<64>
@@ -124,13 +916,13 @@ l40000000000D5070:
 	// succ:  reset_completer_word_break_chars_exit
 l40000000000D5190:
 	r35 = 0<64> + 15<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r34 + 0<64>
 	r35 = r8 + 0<64>
 	r37 = 0<64> + 15<i64>
 	r36 = r1 + -7364<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A8A0 (retsize: 0;)
 	r1 = r34 + 0<64>
 	ar.pfs = r33
 	r14 = r1 + -10460<i64>
@@ -245,7 +1037,7 @@ l40000000000D5310_11:
 l40000000000D5316:
 	r41 = r33 + 0<64>
 	r42 = 0<64> + 64<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001B680 (retsize: 0;)
 	branch !p17 l40000000000D5336
 	// succ:  l40000000000D5330_12 l40000000000D5336
 l40000000000D5330_12:
@@ -262,10 +1054,10 @@ l40000000000D5336:
 l40000000000D534C_13:
 	// succ:  l40000000000D5370 l40000000000D5350
 l40000000000D5350:
-	v34 = SLICE(0<64>, word32, 0)
-	v35 = SLICE(r32, word32, 0)
-	p07 = v34 == v35
-	p06 = v34 != v35
+	v33 = SLICE(0<64>, word32, 0)
+	v34 = SLICE(r32, word32, 0)
+	p07 = v33 == v34
+	p06 = v33 != v34
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
 	branch !p07 l40000000000D5370
@@ -281,12 +1073,12 @@ l40000000000D5370:
 	// succ:  enable_hostname_completion_exit
 l40000000000D5390:
 	r41 = r33 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	v36 = SLICE(r32, int32, 0)
 	r41 = CONVERT(v36, int32, int64)
 	r1 = r39 + 0<64>
 	r41 = r41 + r8
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	v37 = SLICE(0<64>, word32, 0)
 	v38 = SLICE(r36, word32, 0)
 	p06 = v37 == v38
@@ -353,7 +1145,7 @@ l40000000000D544C_6:
 l40000000000D5450:
 	Mem0[r0:byte] = SLICE(r16, byte, 0)
 	r41 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r39 + 0<64>
 	Mem0[r33:word64] = r34
 	// succ:  l40000000000D5480
@@ -371,13 +1163,13 @@ l40000000000D54AC_1:
 	// succ:  l40000000000D5590 l40000000000D54B0
 l40000000000D54B0:
 	r41 = 0<64> + 15<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r39 + 0<64>
 	r41 = r8 + 0<64>
 	r43 = 0<64> + 15<i64>
 	r42 = r1 + -7364<i64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A8A0 (retsize: 0;)
 	r1 = r39 + 0<64>
 	Mem0[r8:word64] = r34
 	pr = r40
@@ -393,17 +1185,17 @@ l40000000000D5520:
 	Mem0[r41:byte] = SLICE(r1, byte, 0)
 	r41 = r41 + 1<i64>
 	r42 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r39 + 0<64>
 	r41 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r39 + 0<64>
 	Mem0[r33:word64] = r34
 	goto l40000000000D5480
 	// succ:  l40000000000D5480
 l40000000000D5590:
 	r41 = 0<64> + 14<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r15 = 0<64> + 32<i64>
 	r14 = r8 + 0<64>
 	r1 = r39 + 0<64>
@@ -488,7 +1280,7 @@ l40000000000D5720:
 	r38 = r1 + -7340<i64>
 	r33 = r12 + 0x10<64>
 	r38 = Mem0[r38:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r16 = r1 + -10476<i64>
@@ -515,203 +1307,203 @@ l40000000000D5720:
 	r14 = Mem0[r14:word64]
 	r15 = Mem0[r15:word64]
 	Mem0[r15:word64] = r14
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7316<i64>
 	r39 = r1 + -6524<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7308<i64>
 	r39 = r1 + -6516<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7300<i64>
 	r39 = r1 + -6492<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7292<i64>
 	r39 = r1 + -6500<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7284<i64>
 	r39 = r1 + -6476<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7276<i64>
 	r39 = r1 + -6484<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7268<i64>
 	r39 = r1 + -6860<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7260<i64>
 	r39 = r1 + -6532<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7252<i64>
 	r39 = r1 + -10596<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7244<i64>
 	r39 = r1 + -8892<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7236<i64>
 	r39 = r1 + -6884<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7228<i64>
 	r39 = r1 + -6972<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7220<i64>
 	r39 = r1 + -9636<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7212<i64>
 	r39 = r1 + -6892<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7204<i64>
 	r39 = r1 + -6932<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7196<i64>
 	r39 = r1 + -6900<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7188<i64>
 	r39 = r1 + -6460<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7180<i64>
 	r39 = r1 + -6908<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7172<i64>
 	r39 = r1 + -6452<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7164<i64>
 	r39 = r1 + -6916<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7156<i64>
 	r39 = r1 + -6444<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7148<i64>
 	r39 = r1 + -6924<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7140<i64>
 	r39 = r1 + -6436<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7132<i64>
 	r39 = r1 + -6468<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7124<i64>
 	r39 = r1 + -6420<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7116<i64>
 	r39 = r1 + -6428<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7108<i64>
 	r39 = r1 + -6940<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r40 = 0<64> + -1<i64>
 	r38 = r1 + -7100<i64>
 	r39 = r1 + -6956<i64>
 	r38 = Mem0[r38:word64]
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B360 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 5<i64>
 	r14 = r1 + -10404<i64>
@@ -731,28 +1523,28 @@ l40000000000D5D80:
 	r34 = Mem0[r34:word64]
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 94<i64>
 	r39 = r1 + -6524<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 15<i64>
 	r39 = r1 + -8892<i64>
 	r40 = r1 + -10676<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 22<i64>
 	r39 = r1 + -6884<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = 0<64> + 10<i64>
 	r38 = r12 + 0x10<64>
@@ -762,7 +1554,7 @@ l40000000000D5D80:
 	r33 = r33 + 1<i64>
 	r39 = Mem0[r39:word64]
 	Mem0[r0:byte] = SLICE(r33, byte, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p07 = r8 == r34
 	p06 = r8 != r34
@@ -777,7 +1569,7 @@ l40000000000D5E80:
 	r40 = 0<64> + 0<64>
 	r39 = Mem0[r39:word64]
 	Mem0[r14:byte] = SLICE(r38, byte, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p07 = r8 == r34
 	p06 = r8 != r34
@@ -789,28 +1581,28 @@ l40000000000D5EC0:
 	r39 = r1 + -10148<i64>
 	r38 = 0<64> + 5<i64>
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001ABC0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 123<i64>
 	r39 = r1 + -9636<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 47<i64>
 	r39 = r1 + -6892<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 47<i64>
 	r39 = r1 + -6932<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = 0<64> + 126<i64>
 	r38 = r12 + 0x10<64>
@@ -819,7 +1611,7 @@ l40000000000D5EC0:
 	r39 = r1 + -10396<i64>
 	Mem0[r14:byte] = SLICE(r38, byte, 0)
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -842,70 +1634,70 @@ l40000000000D5FE0:
 	r38 = 0<64> + 126<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 64<i64>
 	r39 = r1 + -6908<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 64<i64>
 	r39 = r1 + -6452<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 36<i64>
 	r39 = r1 + -6916<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 36<i64>
 	r39 = r1 + -6444<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 33<i64>
 	r39 = r1 + -6924<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 33<i64>
 	r39 = r1 + -6436<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 103<i64>
 	r39 = r1 + -6468<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 42<i64>
 	r39 = r1 + -6420<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 103<i64>
 	r39 = r1 + -6428<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r12 + 0x10<64>
 	r14 = 0<64> + 9<i64>
@@ -914,7 +1706,7 @@ l40000000000D5FE0:
 	r39 = r1 + -10396<i64>
 	Mem0[r14:byte] = SLICE(r38, byte, 0)
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -1022,42 +1814,42 @@ l40000000000D62F6:
 	r14 = Mem0[r14:word64]
 	r15 = Mem0[r15:word64]
 	Mem0[r15:word64] = r14
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 118<i64>
 	r39 = r1 + -8812<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 64<i64>
 	r39 = r1 + -6980<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 92<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 42<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 61<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = r1 + -10628<i64>
 	r15 = r1 + -7092<i64>
@@ -1067,7 +1859,7 @@ l40000000000D62F6:
 	r14 = r1 + 6136<i64>
 	v32 = Mem0[r14:word32]
 	r38 = CONVERT(v32, word32, word64)
-	call b0 (retsize: 0;)
+	call enable_hostname_completion (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = r1 + -10220<i64>
 	r15 = r1 + -7596<i64>
@@ -1100,7 +1892,7 @@ l40000000000D6510:
 	// succ:  initialize_readline_exit
 l40000000000D6530:
 	r33 = r12 + 0x10<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BB00 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 5<i64>
 	r39 = r1 + -6508<i64>
@@ -1109,28 +1901,28 @@ l40000000000D6530:
 	r34 = Mem0[r34:word64]
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 94<i64>
 	r39 = r1 + -6524<i64>
 	r40 = r1 + -10396<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 15<i64>
 	r39 = r1 + -8892<i64>
 	r40 = r1 + -10676<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 22<i64>
 	r39 = r1 + -6884<i64>
 	r40 = r1 + -10132<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = 0<64> + 10<i64>
 	r38 = r12 + 0x10<64>
@@ -1140,7 +1932,7 @@ l40000000000D6530:
 	r33 = r33 + 1<i64>
 	r39 = Mem0[r39:word64]
 	Mem0[r0:byte] = SLICE(r33, byte, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p07 = r8 == r34
 	p06 = r8 != r34
@@ -1157,7 +1949,7 @@ l40000000000D6670:
 	r38 = 0<64> + 9<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 5<i64>
 	r14 = r1 + 7788<i64>
@@ -1249,42 +2041,42 @@ l40000000000D6766:
 	r14 = Mem0[r14:word64]
 	r15 = Mem0[r15:word64]
 	Mem0[r15:word64] = r14
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 118<i64>
 	r39 = r1 + -8812<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 64<i64>
 	r39 = r1 + -6980<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C120 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 92<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 42<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = 0<64> + 61<i64>
 	r39 = r1 + -6412<i64>
 	r40 = r1 + -10148<i64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B800 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = r1 + -10628<i64>
 	r15 = r1 + -7092<i64>
@@ -1294,7 +2086,7 @@ l40000000000D6766:
 	r14 = r1 + 6136<i64>
 	v36 = Mem0[r14:word32]
 	r38 = CONVERT(v36, word32, word64)
-	call b0 (retsize: 0;)
+	call enable_hostname_completion (retsize: 0;)
 	r1 = r37 + 0<64>
 	r14 = r1 + -10220<i64>
 	r15 = r1 + -7596<i64>
@@ -1326,7 +2118,7 @@ l40000000000D6980:
 	r38 = r12 + 0x10<64>
 	r39 = Mem0[r39:word64]
 	r40 = Mem0[r40:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C180 (retsize: 0;)
 	r1 = r37 + 0<64>
 	goto l40000000000D5FE0
 	// succ:  l40000000000D5FE0
@@ -1334,7 +2126,7 @@ l40000000000D69C0:
 	r39 = r1 + -10396<i64>
 	r38 = 0<64> + 13<i64>
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001ABC0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	goto l40000000000D5EC0
 	// succ:  l40000000000D5EC0
@@ -1342,7 +2134,7 @@ l40000000000D69F0:
 	r39 = r1 + -10396<i64>
 	r38 = 0<64> + 10<i64>
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001ABC0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r12 + 0x10<64>
 	r14 = 0<64> + 13<i64>
@@ -1350,7 +2142,7 @@ l40000000000D69F0:
 	r39 = r1 + -10396<i64>
 	Mem0[r14:byte] = SLICE(r38, byte, 0)
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AC40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p07 = r8 == r34
 	p06 = r8 != r34
@@ -1388,7 +2180,7 @@ l40000000000D6AC0:
 	r33 = ar.pfs
 	r32 = b0
 	r34 = r1 + 0<64>
-	call b0 (retsize: 0;)
+	call tilde_initialize (retsize: 0;)
 	r1 = r34 + 0<64>
 	ar.pfs = r33
 	r15 = r1 + -10644<i64>
@@ -1504,19 +2296,19 @@ l40000000000D6C00:
 l40000000000D6C3C_1:
 	// succ:  l40000000000D6C60 l40000000000D6C40
 l40000000000D6C40:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	// succ:  l40000000000D6C60
 l40000000000D6C60:
 	r37 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 0<64>
 	r38 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r36 + 0<64>
 	Mem0[r8:word64] = r33
 	ar.pfs = r35
@@ -1564,7 +2356,7 @@ l40000000000D6D80:
 	return
 	// succ:  get_hostname_list_exit
 l40000000000D6D90:
-	call b0 (retsize: 0;)
+	call fn40000000000CF180 (retsize: 0;)
 	r1 = r34 + 0<64>
 	ar.pfs = r33
 	r14 = r1 + 8004<i64>
@@ -1645,7 +2437,7 @@ l40000000000D6E80:
 	r40 = Mem0[r33:word64]
 	r33 = r32 + 0<64>
 	r32 = r32 + 8<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r38 + 0<64>
 	branch LC == 0<64> l40000000000D6EB0
 	// succ:  l40000000000D6EAC_8 l40000000000D6EB0
@@ -1756,7 +2548,7 @@ l40000000000D6FD0:
 	r44 = r32 + 0<64>
 	r45 = Mem0[r45:word64]
 	Mem0[r0:word32] = SLICE(r40, word32, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r39 = r8 + 8<64>
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r8
@@ -1793,79 +2585,79 @@ l40000000000D7060:
 l40000000000D707C_11:
 	// succ:  l40000000000D71A0 l40000000000D7080
 l40000000000D7080:
-	v44 = Mem0[r38:byte]
-	r15 = CONVERT(v44, byte, word64)
-	v46 = Mem0[r45:byte]
-	r14 = CONVERT(v46, byte, word64)
-	v47 = SLICE(r15, int8, 0)
-	r15 = CONVERT(v47, int8, int64)
-	v48 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v48, int8, int64)
-	v49 = SLICE(r15, word32, 0)
-	v50 = SLICE(r14, word32, 0)
-	p07 = v49 == v50
-	p06 = v49 != v50
+	v43 = Mem0[r38:byte]
+	r15 = CONVERT(v43, byte, word64)
+	v45 = Mem0[r45:byte]
+	r14 = CONVERT(v45, byte, word64)
+	v46 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v46, int8, int64)
+	v47 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v47, int8, int64)
+	v48 = SLICE(r15, word32, 0)
+	v49 = SLICE(r14, word32, 0)
+	p07 = v48 == v49
+	p06 = v48 != v49
 	branch !p06 l40000000000D70B0
 	// succ:  l40000000000D70AC_12 l40000000000D70B0
 l40000000000D70AC_12:
 	// succ:  l40000000000D71A0 l40000000000D70B0
 l40000000000D70B0:
 	r44 = r38 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A540 (retsize: 0;)
 	r1 = r43 + 0<64>
-	v51 = SLICE(0<64>, word32, 0)
-	v52 = SLICE(r8, word32, 0)
-	p07 = v51 == v52
-	p06 = v51 != v52
+	v50 = SLICE(0<64>, word32, 0)
+	v51 = SLICE(r8, word32, 0)
+	p07 = v50 == v51
+	p06 = v50 != v51
 	branch !p06 l40000000000D70D0
 	// succ:  l40000000000D70CC_13 l40000000000D70D0
 l40000000000D70CC_13:
 	// succ:  l40000000000D71A0 l40000000000D70D0
 l40000000000D70D0:
 	r44 = r38 + 0<64>
-	call b0 (retsize: 0;)
+	call absolute_pathname (retsize: 0;)
 	r1 = r43 + 0<64>
-	v53 = SLICE(0<64>, word32, 0)
-	v54 = SLICE(r8, word32, 0)
-	p07 = v53 == v54
-	p06 = v53 != v54
+	v52 = SLICE(0<64>, word32, 0)
+	v53 = SLICE(r8, word32, 0)
+	p07 = v52 == v53
+	p06 = v52 != v53
 	branch !p06 l40000000000D70F0
 	// succ:  l40000000000D70EC_14 l40000000000D70F0
 l40000000000D70EC_14:
 	// succ:  l40000000000D71A0 l40000000000D70F0
 l40000000000D70F0:
 	r44 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call absolute_program (retsize: 0;)
 	r1 = r43 + 0<64>
-	v55 = SLICE(0<64>, word32, 0)
-	v56 = SLICE(r8, word32, 0)
-	p07 = v55 == v56
-	p06 = v55 != v56
+	v54 = SLICE(0<64>, word32, 0)
+	v55 = SLICE(r8, word32, 0)
+	p07 = v54 == v55
+	p06 = v54 != v55
 	branch !p06 l40000000000D7110
 	// succ:  l40000000000D710C_15 l40000000000D7110
 l40000000000D710C_15:
 	// succ:  l40000000000D71A0 l40000000000D7110
 l40000000000D7110:
 	r44 = Mem0[r37:word64]
-	v57 = Mem0[r44:byte]
-	r14 = CONVERT(v57, byte, word64)
-	v58 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v58, int8, int64)
-	v59 = SLICE(0x7E<64>, word32, 0)
-	v60 = SLICE(r14, word32, 0)
-	p06 = v59 == v60
-	p07 = v59 != v60
+	v56 = Mem0[r44:byte]
+	r14 = CONVERT(v56, byte, word64)
+	v57 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v57, int8, int64)
+	v58 = SLICE(0x7E<64>, word32, 0)
+	v59 = SLICE(r14, word32, 0)
+	p06 = v58 == v59
+	p07 = v58 != v59
 	branch !p06 l40000000000D7140
 	// succ:  l40000000000D713C_16 l40000000000D7140
 l40000000000D713C_16:
 	// succ:  l40000000000D71A0 l40000000000D7140
 l40000000000D7140:
-	call b0 (retsize: 0;)
+	call fn40000000000CA600 (retsize: 0;)
 	r1 = r43 + 0<64>
-	v61 = SLICE(0<64>, word32, 0)
-	v62 = SLICE(r8, word32, 0)
-	p06 = v61 == v62
-	p07 = v61 != v62
+	v60 = SLICE(0<64>, word32, 0)
+	v61 = SLICE(r8, word32, 0)
+	p06 = v60 == v61
+	p07 = v60 != v61
 	branch !p06 l40000000000D7160
 	// succ:  l40000000000D715C_17 l40000000000D7160
 l40000000000D715C_17:
@@ -1888,23 +2680,23 @@ l40000000000D71A0:
 l40000000000D71C0:
 	r14 = r32 + 1<64>
 	r44 = r32 + 0<64>
-	v64 = SLICE(0x27<64>, word32, 0)
-	v65 = SLICE(r35, word32, 0)
-	p06 = v64 == v65
-	p07 = v64 != v65
+	v63 = SLICE(0x27<64>, word32, 0)
+	v64 = SLICE(r35, word32, 0)
+	p06 = v63 == v64
+	p07 = v63 != v64
 	branch !p06 l40000000000D71E0
 	// succ:  l40000000000D71DC_1 l40000000000D71E0
 l40000000000D71DC_1:
 	// succ:  l40000000000D7200 l40000000000D71E0
 l40000000000D71E0:
-	v66 = Mem0[r14:byte]
-	r14 = CONVERT(v66, byte, word64)
-	v67 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v67, int8, int64)
-	v68 = SLICE(0x28<64>, word32, 0)
-	v69 = SLICE(r14, word32, 0)
-	p07 = v68 == v69
-	p06 = v68 != v69
+	v65 = Mem0[r14:byte]
+	r14 = CONVERT(v65, byte, word64)
+	v66 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v66, int8, int64)
+	v67 = SLICE(0x28<64>, word32, 0)
+	v68 = SLICE(r14, word32, 0)
+	p07 = v67 == v68
+	p06 = v67 != v68
 	branch !p07 l40000000000D7200
 	// succ:  l40000000000D71FC_2 l40000000000D7200
 l40000000000D71FC_2:
@@ -1912,7 +2704,7 @@ l40000000000D71FC_2:
 l40000000000D7200:
 	r45 = r1 + -7004<i64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r37 = r8 + 0<64>
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r37
@@ -1922,14 +2714,14 @@ l40000000000D7200:
 l40000000000D723C_3:
 	// succ:  l40000000000D71A0 l40000000000D7240
 l40000000000D7240:
-	v70 = Mem0[r32:byte]
-	r14 = CONVERT(v70, byte, word64)
-	v71 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v71, int8, int64)
-	v72 = SLICE(0x7E<64>, word32, 0)
-	v73 = SLICE(r14, word32, 0)
-	p07 = v72 == v73
-	p06 = v72 != v73
+	v69 = Mem0[r32:byte]
+	r14 = CONVERT(v69, byte, word64)
+	v70 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v70, int8, int64)
+	v71 = SLICE(0x7E<64>, word32, 0)
+	v72 = SLICE(r14, word32, 0)
+	p07 = v71 == v72
+	p06 = v71 != v72
 	branch !p06 l40000000000D7260
 	// succ:  l40000000000D725C_4 l40000000000D7260
 l40000000000D725C_4:
@@ -1959,7 +2751,7 @@ l40000000000D7290:
 	// succ:  l40000000000D72C0
 l40000000000D72C0:
 	r44 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call glob_pattern_p (retsize: 0;)
 	r1 = r43 + 0<64>
 	v96 = SLICE(0<64>, word32, 0)
 	v97 = SLICE(r8, word32, 0)
@@ -1985,7 +2777,7 @@ l40000000000D7300:
 	r45 = r1 + -7028<i64>
 	r44 = r32 + 0<64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r14 = r8 + 8<64>
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r8
@@ -2019,7 +2811,7 @@ l40000000000D737C_3:
 l40000000000D7380:
 	r44 = r8 + 0<64>
 	r37 = 0<64> + 0<64>
-	call b0 (retsize: 0;)
+	call strvec_dispose (retsize: 0;)
 	r8 = r37 + 0<64>
 	r1 = r43 + 0<64>
 	ar.pfs = r42
@@ -2029,7 +2821,7 @@ l40000000000D7380:
 l40000000000D73B0:
 	r45 = r1 + -7020<i64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r37 = r8 + 0<64>
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r37
@@ -2044,7 +2836,7 @@ l40000000000D73F0:
 l40000000000D7400:
 	r44 = r32 + 0<64>
 	r45 = 0<64> + 47<i64>
-	call b0 (retsize: 0;)
+	call mbschr (retsize: 0;)
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -2056,7 +2848,7 @@ l40000000000D7420:
 	r45 = r1 + -10308<i64>
 	r44 = r32 + 0<64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r37 = r8 + 0<64>
 	r1 = r43 + 0<64>
 	p07 = 0<64> == r8
@@ -2075,7 +2867,7 @@ l40000000000D7480:
 	r45 = r1 + -7012<i64>
 	r44 = r32 + 0<64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r37 = r8 + 0<64>
 	r1 = r43 + 0<64>
 	p06 = 0<64> == r8
@@ -2092,7 +2884,7 @@ l40000000000D74C0:
 	// succ:  bash_default_completion_exit
 l40000000000D74E0:
 	r44 = Mem0[r8:word64]
-	call b0 (retsize: 0;)
+	call absolute_pathname (retsize: 0;)
 	r1 = r43 + 0<64>
 	v74 = SLICE(0<64>, word32, 0)
 	v75 = SLICE(r8, word32, 0)
@@ -2104,7 +2896,7 @@ l40000000000D74FC_1:
 	// succ:  l40000000000D7040 l40000000000D7500
 l40000000000D7500:
 	r44 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call absolute_program (retsize: 0;)
 	r1 = r43 + 0<64>
 	r38 = Mem0[r37:word64]
 	v76 = SLICE(0<64>, word32, 0)
@@ -2130,7 +2922,7 @@ l40000000000D7530:
 l40000000000D754C_3:
 	// succ:  l40000000000D7050 l40000000000D7550
 l40000000000D7550:
-	call b0 (retsize: 0;)
+	call fn40000000000CA600 (retsize: 0;)
 	r1 = r43 + 0<64>
 	v82 = SLICE(0<64>, word32, 0)
 	v83 = SLICE(r8, word32, 0)
@@ -2168,7 +2960,7 @@ l40000000000D75D0:
 	r14 = Mem0[r14:word64]
 	r15 = Mem0[r15:word64]
 	Mem0[r15:word64] = r14
-	call b0 (retsize: 0;)
+	call glob_pattern_p (retsize: 0;)
 	r1 = r43 + 0<64>
 	v87 = SLICE(0<64>, word32, 0)
 	v88 = SLICE(r8, word32, 0)
@@ -2219,34 +3011,34 @@ l40000000000D82B0:
 l40000000000D82CC_3:
 	// succ:  l40000000000D82F0 l40000000000D82D0
 l40000000000D82D0:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	// succ:  l40000000000D82F0
 l40000000000D82F0:
-	v20 = Mem0[r32:byte]
-	r14 = CONVERT(v20, byte, word64)
+	v19 = Mem0[r32:byte]
+	r14 = CONVERT(v19, byte, word64)
 	r15 = r1 + 8180<i64>
 	r45 = r32 + 0<64>
-	v23 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v23, int8, int64)
+	v22 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v22, int8, int64)
 	Mem0[r14:word32] = SLICE(r15, word32, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r46 = r32 + 0<64>
 	r1 = r44 + 0<64>
 	r45 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 0<64>
 	Mem0[r8:word64] = r34
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = 0<64> + 0<64>
 	r14 = r1 + 8184<i64>
 	Mem0[r8:word32] = SLICE(r14, word32, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001B880 (retsize: 0;)
 	r1 = r44 + 0<64>
 	// succ:  l40000000000D83A0
 l40000000000D83A0:
@@ -2254,7 +3046,7 @@ l40000000000D83A0:
 	r41 = r1 + 8172<i64>
 	// succ:  l40000000000D83B0
 l40000000000D83B0:
-	call b0 (retsize: 0;)
+	call fn400000000001ADA0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r34 = r8 + 0<64>
 	Mem0[r8:word64] = r39
@@ -2265,12 +3057,12 @@ l40000000000D83B0:
 l40000000000D83DC_1:
 	// succ:  l40000000000D85F0 l40000000000D83E0
 l40000000000D83E0:
-	v28 = Mem0[r40:word32]
-	r38 = CONVERT(v28, word32, word64)
-	v30 = SLICE(0<64>, word32, 0)
-	v31 = SLICE(r38, word32, 0)
-	p06 = v30 == v31
-	p07 = v30 != v31
+	v27 = Mem0[r40:word32]
+	r38 = CONVERT(v27, word32, word64)
+	v29 = SLICE(0<64>, word32, 0)
+	v30 = SLICE(r38, word32, 0)
+	p06 = v29 == v30
+	p07 = v29 != v30
 	branch !p06 l40000000000D8400
 	// succ:  l40000000000D83FC_2 l40000000000D8400
 l40000000000D83FC_2:
@@ -2278,26 +3070,26 @@ l40000000000D83FC_2:
 l40000000000D8400:
 	r37 = Mem0[r41:word64]
 	r46 = Mem0[r34:word64]
-	v33 = Mem0[r37:byte]
-	r36 = CONVERT(v33, byte, word64)
-	v35 = Mem0[r46:byte]
-	r14 = CONVERT(v35, byte, word64)
-	v36 = SLICE(r36, int8, 0)
-	r36 = CONVERT(v36, int8, int64)
-	v37 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v37, int8, int64)
-	v38 = SLICE(r14, word32, 0)
-	v39 = SLICE(r36, word32, 0)
-	p07 = v38 == v39
-	p06 = v38 != v39
+	v32 = Mem0[r37:byte]
+	r36 = CONVERT(v32, byte, word64)
+	v34 = Mem0[r46:byte]
+	r14 = CONVERT(v34, byte, word64)
+	v35 = SLICE(r36, int8, 0)
+	r36 = CONVERT(v35, int8, int64)
+	v36 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v36, int8, int64)
+	v37 = SLICE(r14, word32, 0)
+	v38 = SLICE(r36, word32, 0)
+	p07 = v37 == v38
+	p06 = v37 != v38
 	branch !p07 l40000000000D8440
 	// succ:  l40000000000D843C_3 l40000000000D8440
 l40000000000D843C_3:
 	// succ:  l40000000000D8570 l40000000000D8440
 l40000000000D8440:
 	r34 = r34 + 8<64>
-	v40 = SLICE(r38, int32, 0)
-	r38 = CONVERT(v40, int32, int64)
+	v39 = SLICE(r38, int32, 0)
+	r38 = CONVERT(v39, int32, int64)
 	r35 = Mem0[r34:word64]
 	r34 = Mem0[r35:word64]
 	r35 = r35 + 8<64>
@@ -2308,14 +3100,14 @@ l40000000000D8440:
 l40000000000D846C_4:
 	// succ:  l40000000000D83B0 l40000000000D8470
 l40000000000D8470:
-	v42 = Mem0[r34:byte]
-	r14 = CONVERT(v42, byte, word64)
-	v43 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v43, int8, int64)
-	v44 = SLICE(r14, word32, 0)
-	v45 = SLICE(r36, word32, 0)
-	p07 = v44 == v45
-	p06 = v44 != v45
+	v41 = Mem0[r34:byte]
+	r14 = CONVERT(v41, byte, word64)
+	v42 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v42, int8, int64)
+	v43 = SLICE(r14, word32, 0)
+	v44 = SLICE(r36, word32, 0)
+	p07 = v43 == v44
+	p06 = v43 != v44
 	branch !p07 l40000000000D8490
 	// succ:  l40000000000D848C_5 l40000000000D8490
 l40000000000D848C_5:
@@ -2332,14 +3124,14 @@ l40000000000D84A0:
 l40000000000D84BC_6:
 	// succ:  l40000000000D83B0 l40000000000D84C0
 l40000000000D84C0:
-	v46 = Mem0[r34:byte]
-	r14 = CONVERT(v46, byte, word64)
-	v47 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v47, int8, int64)
-	v48 = SLICE(r14, word32, 0)
-	v49 = SLICE(r36, word32, 0)
-	p07 = v48 == v49
-	p06 = v48 != v49
+	v45 = Mem0[r34:byte]
+	r14 = CONVERT(v45, byte, word64)
+	v46 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v46, int8, int64)
+	v47 = SLICE(r14, word32, 0)
+	v48 = SLICE(r36, word32, 0)
+	p07 = v47 == v48
+	p06 = v47 != v48
 	branch !p06 l40000000000D84E0
 	// succ:  l40000000000D84DC_7 l40000000000D84E0
 l40000000000D84DC_7:
@@ -2348,26 +3140,26 @@ l40000000000D84E0:
 	r46 = r34 + 0<64>
 	r45 = r37 + 0<64>
 	r47 = r38 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001C020 (retsize: 0;)
 	r1 = r44 + 0<64>
-	v51 = SLICE(0<64>, word32, 0)
-	v52 = SLICE(r8, word32, 0)
-	p06 = v51 == v52
-	p07 = v51 != v52
+	v50 = SLICE(0<64>, word32, 0)
+	v51 = SLICE(r8, word32, 0)
+	p06 = v50 == v51
+	p07 = v50 != v51
 	branch !p07 l40000000000D8510
 	// succ:  l40000000000D850C_8 l40000000000D8510
 l40000000000D850C_8:
 	// succ:  l40000000000D84A0 l40000000000D8510
 l40000000000D8510:
 	r45 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 0<64>
 	r46 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r44 + 0<64>
 	ar.pfs = r43
 	b0 = r42
@@ -2377,7 +3169,7 @@ l40000000000D8570:
 	r45 = r37 + 0<64>
 	v53 = SLICE(r38, int32, 0)
 	r47 = CONVERT(v53, int32, int64)
-	call b0 (retsize: 0;)
+	call fn400000000001C020 (retsize: 0;)
 	r1 = r44 + 0<64>
 	v54 = SLICE(0<64>, word32, 0)
 	v55 = SLICE(r8, word32, 0)
@@ -2389,36 +3181,36 @@ l40000000000D858C_1:
 	// succ:  l40000000000D8440 l40000000000D8590
 l40000000000D8590:
 	r45 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r14 = Mem0[r39:word64]
 	r1 = r44 + 0<64>
 	r45 = r8 + 0<64>
 	r46 = Mem0[r14:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r44 + 0<64>
 	ar.pfs = r43
 	b0 = r42
 	return
 	r45 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r44 + 0<64>
 	r45 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r14 = Mem0[r39:word64]
 	r1 = r44 + 0<64>
 	r45 = r8 + 0<64>
 	r46 = Mem0[r14:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r44 + 0<64>
 	ar.pfs = r43
 	b0 = r42
 	return
 	// succ:  bash_servicename_completion_function_exit bash_servicename_completion_function_exit
 l40000000000D85F0:
-	call b0 (retsize: 0;)
+	call fn400000000001C360 (retsize: 0;)
 	r8 = 0<64> + 0<64>
 	r1 = r44 + 0<64>
 	ar.pfs = r43
@@ -2463,27 +3255,27 @@ l40000000000D8670:
 l40000000000D868C_3:
 	// succ:  l40000000000D86B0 l40000000000D8690
 l40000000000D8690:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000D86B0
 l40000000000D86B0:
 	r41 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r42 = r32 + 0<64>
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	Mem0[r8:word64] = r34
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r14 = r1 + 8204<i64>
 	Mem0[r8:word32] = SLICE(r14, word32, 0)
-	call b0 (retsize: 0;)
+	call fn400000000001B960 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000D8740
 l40000000000D8740:
@@ -2491,7 +3283,7 @@ l40000000000D8740:
 	r37 = r1 + 8196<i64>
 	// succ:  l40000000000D8760
 l40000000000D8760:
-	call b0 (retsize: 0;)
+	call fn400000000001B9E0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	Mem0[r8:word64] = r35
 	r34 = r8 + 0<64>
@@ -2502,12 +3294,12 @@ l40000000000D8760:
 l40000000000D878C_1:
 	// succ:  l40000000000D8870 l40000000000D8790
 l40000000000D8790:
-	v25 = Mem0[r36:word32]
-	r43 = CONVERT(v25, word32, word64)
-	v27 = SLICE(0<64>, word32, 0)
-	v28 = SLICE(r43, word32, 0)
-	p06 = v27 == v28
-	p07 = v27 != v28
+	v24 = Mem0[r36:word32]
+	r43 = CONVERT(v24, word32, word64)
+	v26 = SLICE(0<64>, word32, 0)
+	v27 = SLICE(r43, word32, 0)
+	p06 = v26 == v27
+	p07 = v26 != v27
 	branch !p06 l40000000000D87B0
 	// succ:  l40000000000D87AC_2 l40000000000D87B0
 l40000000000D87AC_2:
@@ -2515,53 +3307,53 @@ l40000000000D87AC_2:
 l40000000000D87B0:
 	r41 = Mem0[r37:word64]
 	r42 = Mem0[r34:word64]
-	v29 = Mem0[r41:byte]
-	r15 = CONVERT(v29, byte, word64)
-	v31 = Mem0[r42:byte]
-	r14 = CONVERT(v31, byte, word64)
-	v32 = SLICE(r15, int8, 0)
-	r15 = CONVERT(v32, int8, int64)
-	v33 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v33, int8, int64)
-	v34 = SLICE(r15, word32, 0)
-	v35 = SLICE(r14, word32, 0)
-	p07 = v34 == v35
-	p06 = v34 != v35
+	v28 = Mem0[r41:byte]
+	r15 = CONVERT(v28, byte, word64)
+	v30 = Mem0[r42:byte]
+	r14 = CONVERT(v30, byte, word64)
+	v31 = SLICE(r15, int8, 0)
+	r15 = CONVERT(v31, int8, int64)
+	v32 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v32, int8, int64)
+	v33 = SLICE(r15, word32, 0)
+	v34 = SLICE(r14, word32, 0)
+	p07 = v33 == v34
+	p06 = v33 != v34
 	branch !p06 l40000000000D87F0
 	// succ:  l40000000000D87EC_3 l40000000000D87F0
 l40000000000D87EC_3:
 	// succ:  l40000000000D8760 l40000000000D87F0
 l40000000000D87F0:
-	v36 = SLICE(r43, int32, 0)
-	r43 = CONVERT(v36, int32, int64)
-	call b0 (retsize: 0;)
+	v35 = SLICE(r43, int32, 0)
+	r43 = CONVERT(v35, int32, int64)
+	call fn400000000001C020 (retsize: 0;)
 	r1 = r40 + 0<64>
-	v37 = SLICE(0<64>, word32, 0)
-	v38 = SLICE(r8, word32, 0)
-	p06 = v37 == v38
-	p07 = v37 != v38
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r8, word32, 0)
+	p06 = v36 == v37
+	p07 = v36 != v37
 	branch !p07 l40000000000D8810
 	// succ:  l40000000000D880C_4 l40000000000D8810
 l40000000000D880C_4:
 	// succ:  l40000000000D8760 l40000000000D8810
 l40000000000D8810:
 	r41 = Mem0[r34:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r14 = Mem0[r35:word64]
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = Mem0[r14:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	ar.pfs = r39
 	b0 = r38
 	return
 	// succ:  bash_groupname_completion_function_exit
 l40000000000D8870:
-	call b0 (retsize: 0;)
+	call fn400000000001A380 (retsize: 0;)
 	r8 = 0<64> + 0<64>
 	r1 = r40 + 0<64>
 	ar.pfs = r39
@@ -2673,18 +3465,18 @@ l40000000000D8940:
 l40000000000D897C_1:
 	// succ:  l40000000000D8BA0 l40000000000D8980
 l40000000000D8980:
-	call b0 (retsize: 0;)
+	call fn400000000001C100 (retsize: 0;)
 	r1 = r39 + 0<64>
 	r36 = r8 + 0<64>
 	r40 = r32 + 0<64>
 	r41 = 0<64> + 0<64>
 	r42 = 0<64> + 1<i64>
 	r43 = r12 + 0x10<64>
-	call b0 (retsize: 0;)
-	v23 = SLICE(r8, word32, 0)
-	v24 = SLICE(0<64>, word32, 0)
-	p07 = v23 < v24
-	p06 = v23 >= v24
+	call fn40000000000CA6C0 (retsize: 0;)
+	v22 = SLICE(r8, word32, 0)
+	v23 = SLICE(0<64>, word32, 0)
+	p07 = v22 < v23
+	p06 = v22 >= v23
 	r14 = r12 + 0x10<64>
 	r1 = r39 + 0<64>
 	r33 = r8 + 0<64>
@@ -2695,27 +3487,27 @@ l40000000000D89DC_2:
 	// succ:  l40000000000D8C20 l40000000000D89E0
 l40000000000D89E0:
 	r42 = r8 + 0<64>
-	v26 = Mem0[r14:word32]
-	r41 = CONVERT(v26, word32, word64)
-	call b0 (retsize: 0;)
-	v27 = SLICE(r33, int32, 0)
-	r15 = CONVERT(v27, int32, int64)
+	v25 = Mem0[r14:word32]
+	r41 = CONVERT(v25, word32, word64)
+	call substring (retsize: 0;)
+	v26 = SLICE(r33, int32, 0)
+	r15 = CONVERT(v26, int32, int64)
 	r1 = r39 + 0<64>
 	r35 = r8 + 0<64>
 	r14 = r15 + r32
 	r15 = r15 + r32
-	v30 = Mem0[r14:byte]
-	r14 = CONVERT(v30, byte, word64)
-	v31 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v31, int8, int64)
-	v32 = SLICE(0x3A<64>, word32, 0)
-	v33 = SLICE(r14, word32, 0)
-	p07 = v32 == v33
-	p06 = v32 != v33
-	v34 = SLICE(0<64>, word32, 0)
-	v35 = SLICE(r14, word32, 0)
-	p09 = v34 == v35
-	p08 = v34 != v35
+	v29 = Mem0[r14:byte]
+	r14 = CONVERT(v29, byte, word64)
+	v30 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v30, int8, int64)
+	v31 = SLICE(0x3A<64>, word32, 0)
+	v32 = SLICE(r14, word32, 0)
+	p07 = v31 == v32
+	p06 = v31 != v32
+	v33 = SLICE(0<64>, word32, 0)
+	v34 = SLICE(r14, word32, 0)
+	p09 = v33 == v34
+	p08 = v33 != v34
 	branch !p06 l40000000000D8A46
 	// succ:  l40000000000D8A40_3 l40000000000D8A46
 l40000000000D8A40_3:
@@ -2741,10 +3533,10 @@ l40000000000D8A56_6:
 	// succ:  l40000000000D8A5C
 l40000000000D8A5C:
 	r16 = r17 & r16
-	v40 = SLICE(0<64>, word32, 0)
-	v41 = SLICE(r16, word32, 0)
-	p06 = v40 == v41
-	p07 = v40 != v41
+	v39 = SLICE(0<64>, word32, 0)
+	v40 = SLICE(r16, word32, 0)
+	p06 = v39 == v40
+	p07 = v39 != v40
 	branch !p06 l40000000000D8A70
 	// succ:  l40000000000D8A6C_7 l40000000000D8A70
 l40000000000D8A6C_7:
@@ -2752,29 +3544,29 @@ l40000000000D8A6C_7:
 l40000000000D8A70:
 	// succ:  l40000000000D8A80
 l40000000000D8A80:
-	v42 = Mem0[r15:byte]
-	r14 = CONVERT(v42, byte, word64)
+	v41 = Mem0[r15:byte]
+	r14 = CONVERT(v41, byte, word64)
 	r15 = r15 + 1<i64>
 	r33 = r33 + 1<64>
-	v43 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v43, int8, int64)
-	v44 = SLICE(0<64>, word32, 0)
-	v45 = SLICE(r14, word32, 0)
-	p07 = v44 == v45
-	p06 = v44 != v45
-	v46 = SLICE(0x3A<64>, word32, 0)
-	v47 = SLICE(r14, word32, 0)
-	p07 = v46 == v47
-	p06 = v46 != v47
+	v42 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v42, int8, int64)
+	v43 = SLICE(0<64>, word32, 0)
+	v44 = SLICE(r14, word32, 0)
+	p07 = v43 == v44
+	p06 = v43 != v44
+	v45 = SLICE(0x3A<64>, word32, 0)
+	v46 = SLICE(r14, word32, 0)
+	p07 = v45 == v46
+	p06 = v45 != v46
 	branch !p06 l40000000000D8AB0
 	// succ:  l40000000000D8AAC_8 l40000000000D8AB0
 l40000000000D8AAC_8:
 	// succ:  l40000000000D8A80 l40000000000D8AB0
 l40000000000D8AB0:
-	v48 = SLICE(0x3A<64>, word32, 0)
-	v49 = SLICE(r14, word32, 0)
-	p06 = v48 == v49
-	p07 = v48 != v49
+	v47 = SLICE(0x3A<64>, word32, 0)
+	v48 = SLICE(r14, word32, 0)
+	p06 = v47 == v48
+	p07 = v47 != v48
 	r43 = r12 + 0x10<64>
 	r40 = r32 + 0<64>
 	r41 = r33 + 1<64>
@@ -2784,11 +3576,11 @@ l40000000000D8AB0:
 l40000000000D8ACC_9:
 	// succ:  l40000000000D8BD0 l40000000000D8AD0
 l40000000000D8AD0:
-	call b0 (retsize: 0;)
-	v50 = SLICE(r8, word32, 0)
-	v51 = SLICE(0<64>, word32, 0)
-	p06 = v50 < v51
-	p07 = v50 >= v51
+	call fn40000000000CA6C0 (retsize: 0;)
+	v49 = SLICE(r8, word32, 0)
+	v50 = SLICE(0<64>, word32, 0)
+	p06 = v49 < v50
+	p07 = v49 >= v50
 	r14 = r12 + 0x10<64>
 	r1 = r39 + 0<64>
 	r40 = r32 + 0<64>
@@ -2798,21 +3590,21 @@ l40000000000D8AD0:
 l40000000000D8AFC_10:
 	// succ:  l40000000000D8C20 l40000000000D8B00
 l40000000000D8B00:
-	v52 = Mem0[r14:word32]
-	r41 = CONVERT(v52, word32, word64)
-	call b0 (retsize: 0;)
+	v51 = Mem0[r14:word32]
+	r41 = CONVERT(v51, word32, word64)
+	call substring (retsize: 0;)
 	r1 = r39 + 0<64>
 	r41 = r35 + 0<64>
 	r43 = Mem0[r34:word64]
 	r42 = r8 + 0<64>
 	r40 = 0<64> + 2<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001ABA0 (retsize: 0;)
 	r1 = r39 + 0<64>
 	r40 = r35 + 0<64>
 	r42 = r36 + 0<64>
 	r41 = r1 + -6868<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C180 (retsize: 0;)
 	r8 = 0<64> + 0<64>
 	r1 = r39 + 0<64>
 	ar.pfs = r38
@@ -2821,7 +3613,7 @@ l40000000000D8B00:
 	return
 	// succ:  bind_keyseq_to_unix_command_exit
 l40000000000D8BA0:
-	call b0 (retsize: 0;)
+	call fn400000000001BC40 (retsize: 0;)
 	r1 = r39 + 0<64>
 	Mem0[r8:word64] = r34
 	goto l40000000000D8980
@@ -2831,11 +3623,11 @@ l40000000000D8BD0:
 	r42 = 0<64> + 5<i64>
 	r40 = 0<64> + 0<64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r1 = r39 + 0<64>
 	r40 = r8 + 0<64>
 	r41 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call builtin_error (retsize: 0;)
 	r1 = r39 + 0<64>
 	// succ:  l40000000000D8C20
 l40000000000D8C20:
@@ -2887,17 +3679,17 @@ l40000000000D8C90_3:
 	r39 = CONVERT(v19, word32, word64)
 	// succ:  l40000000000D8C96
 l40000000000D8C96:
-	call b0 (retsize: 0;)
+	call fn40000000000C9C40 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r34 = r8 + 0<64>
 	r38 = r8 + 0<64>
 	r39 = r1 + -10564<i64>
 	r39 = Mem0[r39:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A860 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r33 = r8 + 0<64>
 	r38 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	p06 = 0<64> == r33
 	p07 = 0<64> != r33
@@ -2915,7 +3707,7 @@ l40000000000D8D10:
 l40000000000D8D2C_5:
 	// succ:  l40000000000D8D50 l40000000000D8D30
 l40000000000D8D30:
-	call b0 (retsize: 0;)
+	call fn40000000000CA500 (retsize: 0;)
 	r1 = r37 + 0<64>
 	// succ:  l40000000000D8D50
 l40000000000D8D50:
@@ -2932,210 +3724,7 @@ bash_directory_completion_matches_exit:
 define bash_dequote_text
 bash_dequote_text_entry:
 	r11 = fp
-	goto l40000000000D8D80
 	// succ:  l40000000000D8D80
-l40000000000C9C40:
-	r35 = ar.pfs
-	r37 = r32 + 0<64>
-	r34 = b2
-	r36 = r1 + 0<64>
-	call b0 (retsize: 0;)
-	r37 = r8 + 1<64>
-	r1 = r36 + 0<64>
-	v26 = SLICE(r37, int32, 0)
-	r37 = CONVERT(v26, int32, int64)
-	call b0 (retsize: 0;)
-	r1 = r36 + 0<64>
-	p06 = 0<64> == r32
-	p07 = 0<64> != r32
-	r16 = r8 + 0<64>
-	r15 = r32 + 0<64>
-	branch !p06 l40000000000C9CB0
-	// succ:  l40000000000C9CAC_1 l40000000000C9CB0
-l40000000000C9CAC_1:
-	// succ:  l40000000000C9EE0 l40000000000C9CB0
-l40000000000C9CB0:
-	r18 = r1 + -18556<i64>
-	v29 = Mem0[r32:byte]
-	r14 = CONVERT(v29, byte, word64)
-	v30 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v30, int8, int64)
-	v31 = SLICE(0<64>, word32, 0)
-	v32 = SLICE(r14, word32, 0)
-	p06 = v31 == v32
-	p07 = v31 != v32
-	branch !p06 l40000000000C9CE0
-	// succ:  l40000000000C9CDC_2 l40000000000C9CE0
-l40000000000C9CDC_2:
-	// succ:  l40000000000C9EE0 l40000000000C9CE0
-l40000000000C9CE0:
-	v33 = SLICE(0x5C<64>, word32, 0)
-	v34 = SLICE(r14, word32, 0)
-	p07 = v33 == v34
-	p06 = v33 != v34
-	v35 = SLICE(0<64>, word32, 0)
-	v36 = SLICE(r33, word32, 0)
-	p08 = v35 == v36
-	p09 = v35 != v36
-	branch !p07 l40000000000C9CFC
-	// succ:  l40000000000C9CF6_3 l40000000000C9CFC
-l40000000000C9CF6_3:
-	// succ:  l40000000000C9DE0 l40000000000C9CFC
-l40000000000C9CFC:
-	branch !p09 l40000000000C9D00
-	// succ:  l40000000000C9CFC_4 l40000000000C9D00
-l40000000000C9CFC_4:
-	// succ:  l40000000000C9DB0 l40000000000C9D00
-l40000000000C9D00:
-	v39 = SLICE(0x22<64>, word32, 0)
-	v40 = SLICE(r14, word32, 0)
-	p07 = v39 == v40
-	p06 = v39 != v40
-	v41 = SLICE(0x27<64>, word32, 0)
-	v42 = SLICE(r14, word32, 0)
-	p07 = v41 == v42
-	p06 = v41 != v42
-	branch !p06 l40000000000C9D20
-	// succ:  l40000000000C9D1C_5 l40000000000C9D20
-l40000000000C9D1C_5:
-	// succ:  l40000000000C9DC0 l40000000000C9D20
-l40000000000C9D20:
-	branch !p07 l40000000000C9D26
-	// succ:  l40000000000C9D20_6 l40000000000C9D26
-l40000000000C9D20_6:
-	r33 = r14 + 0<64>
-	// succ:  l40000000000C9D26
-l40000000000C9D26:
-	// succ:  l40000000000C9D40
-l40000000000C9D40:
-	r15 = r15 + 1<64>
-	p06 = 0<64> == r15
-	p07 = 0<64> != r15
-	branch !p06 l40000000000C9D60
-	// succ:  l40000000000C9D5C_7 l40000000000C9D60
-l40000000000C9D5C_7:
-	// succ:  l40000000000C9D80 l40000000000C9D60
-l40000000000C9D60:
-	v43 = Mem0[r15:byte]
-	r14 = CONVERT(v43, byte, word64)
-	v44 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v44, int8, int64)
-	v45 = SLICE(0<64>, word32, 0)
-	v46 = SLICE(r14, word32, 0)
-	p07 = v45 == v46
-	p06 = v45 != v46
-	branch !p06 l40000000000C9D80
-	// succ:  l40000000000C9D7C_8 l40000000000C9D80
-l40000000000C9D7C_8:
-	// succ:  l40000000000C9CE0 l40000000000C9D80
-l40000000000C9D80:
-	Mem0[r0:byte] = SLICE(r16, byte, 0)
-	// succ:  l40000000000C9D90
-l40000000000C9D90:
-	ar.pfs = r35
-	b0 = r34
-	return
-	// succ:  bash_dequote_text_exit
-l40000000000C9DB0:
-	v48 = SLICE(r33, word32, 0)
-	v49 = SLICE(r14, word32, 0)
-	p06 = v48 == v49
-	p07 = v48 != v49
-	branch !p06 l40000000000C9DC0
-	// succ:  l40000000000C9DBC_1 l40000000000C9DC0
-l40000000000C9DBC_1:
-	// succ:  l40000000000C9DD0 l40000000000C9DC0
-l40000000000C9DC0:
-	Mem0[r16:byte] = SLICE(r1, byte, 0)
-	r16 = r16 + 1<i64>
-	goto 0x40000000000C9D40<p64>
-	Mem0[r16:byte] = SLICE(r1, byte, 0)
-	r16 = r16 + 1<i64>
-	goto l40000000000C9D40
-	// succ:  l40000000000C9D40
-l40000000000C9DD0:
-	r33 = 0<64> + 0<64>
-	goto l40000000000C9D40
-	// succ:  l40000000000C9D40
-l40000000000C9DE0:
-	r17 = r15 + 1<64>
-	v51 = SLICE(0x27<64>, word32, 0)
-	v52 = SLICE(r33, word32, 0)
-	p07 = v51 == v52
-	p06 = v51 != v52
-	branch !p07 l40000000000C9DF0
-	// succ:  l40000000000C9DEC_1 l40000000000C9DF0
-l40000000000C9DEC_1:
-	// succ:  l40000000000C9EB0 l40000000000C9DF0
-l40000000000C9DF0:
-	v53 = SLICE(0x22<64>, word32, 0)
-	v54 = SLICE(r33, word32, 0)
-	p06 = v53 == v54
-	p07 = v53 != v54
-	branch !p06 l40000000000C9E00
-	// succ:  l40000000000C9DFC_2 l40000000000C9E00
-l40000000000C9DFC_2:
-	// succ:  l40000000000C9E70 l40000000000C9E00
-l40000000000C9E00:
-	v55 = Mem0[r17:byte]
-	r15 = CONVERT(v55, byte, word64)
-	v56 = SLICE(r15, int8, 0)
-	r15 = CONVERT(v56, int8, int64)
-	// succ:  l40000000000C9E10
-l40000000000C9E10:
-	v57 = Mem0[r17:byte]
-	r14 = CONVERT(v57, byte, word64)
-	Mem0[r15:byte] = SLICE(r16, byte, 0)
-	r15 = r17 + 0<64>
-	r16 = r16 + 1<64>
-	v58 = Mem0[r17:byte]
-	r14 = CONVERT(v58, byte, word64)
-	v59 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v59, int8, int64)
-	v60 = SLICE(0<64>, word32, 0)
-	v61 = SLICE(r14, word32, 0)
-	p06 = v60 == v61
-	p07 = v60 != v61
-	branch !p07 l40000000000C9E50
-	// succ:  l40000000000C9E4C_3 l40000000000C9E50
-l40000000000C9E4C_3:
-	// succ:  l40000000000C9D40 l40000000000C9E50
-l40000000000C9E50:
-	ar.pfs = r35
-	b0 = r34
-	return
-	// succ:  bash_dequote_text_exit
-l40000000000C9E70:
-	r17 = r15 + 1<64>
-	v62 = Mem0[r17:byte]
-	r15 = CONVERT(v62, byte, word64)
-	v63 = SLICE(r15, int8, 0)
-	r15 = CONVERT(v63, int8, int64)
-	r19 = (r15 << 2<u32>) + r18
-	v65 = Mem0[r19:word32]
-	r19 = CONVERT(v65, word32, word64)
-	p07 = !__bit<word64,word32>(r19, 6<32>)
-	p06 = __bit<word64,word32>(r19, 6<32>)
-	branch !p06 l40000000000C9EB0
-	// succ:  l40000000000C9EAC_1 l40000000000C9EB0
-l40000000000C9EAC_1:
-	// succ:  l40000000000C9E10 l40000000000C9EB0
-l40000000000C9EB0:
-	v66 = Mem0[r17:byte]
-	r15 = CONVERT(v66, byte, word64)
-	Mem0[r16:byte] = SLICE(r1, byte, 0)
-	r16 = r16 + 1<i64>
-	v67 = Mem0[r17:byte]
-	r15 = CONVERT(v67, byte, word64)
-	v68 = SLICE(r15, int8, 0)
-	r15 = CONVERT(v68, int8, int64)
-	goto l40000000000C9E10
-	// succ:  l40000000000C9E10
-l40000000000C9EE0:
-	r16 = r8 + 0<64>
-	Mem0[r0:byte] = SLICE(r16, byte, 0)
-	goto l40000000000C9D90
-	// succ:  l40000000000C9D90
 l40000000000D8D80:
 	r16 = ar.pfs
 	v7 = Mem0[r32:byte]
@@ -3163,8 +3752,11 @@ l40000000000D8DB6_2:
 	// succ:  l40000000000D8DBC
 l40000000000D8DBC:
 	r2 = ar.pfs
-	goto l40000000000C9C40
-	// succ:  l40000000000C9C40
+	// succ:  l40000000000D8DC8_thunk_fn40000000000C9C40
+l40000000000D8DC8_thunk_fn40000000000C9C40:
+	call fn40000000000C9C40 (retsize: 0;)
+	return
+	// succ:  bash_dequote_text_exit
 bash_dequote_text_exit:
 
 
@@ -3365,7 +3957,7 @@ l40000000000D9070:
 l40000000000D9090:
 	r41 = r40 + 0<64>
 	r40 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A540 (retsize: 0;)
 	r1 = r38 + 0<64>
 	v37 = SLICE(0<64>, word32, 0)
 	v38 = SLICE(r8, word32, 0)
@@ -3387,7 +3979,7 @@ l40000000000D90B0:
 l40000000000D90E0:
 	r41 = r32 + 0<64>
 	r42 = 0<64> + 32<i64>
-	call b0 (retsize: 0;)
+	call strmatch (retsize: 0;)
 	r1 = r38 + 0<64>
 	v35 = SLICE(1<64>, word32, 0)
 	v36 = SLICE(r8, word32, 0)
@@ -3469,14 +4061,14 @@ l40000000000D91C0:
 l40000000000D91DC_4:
 	// succ:  l40000000000D91A0 l40000000000D91E0
 l40000000000D91E0:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 0<64>
 	r38 = Mem0[r33:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r36 + 0<64>
 	ar.pfs = r35
 	b0 = r34
@@ -3561,7 +4153,7 @@ l40000000000D9340:
 l40000000000D9360:
 	r41 = r40 + 0<64>
 	r40 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A540 (retsize: 0;)
 	r1 = r38 + 0<64>
 	v37 = SLICE(0<64>, word32, 0)
 	v38 = SLICE(r8, word32, 0)
@@ -3581,7 +4173,7 @@ l40000000000D9380:
 l40000000000D93A0:
 	r41 = r32 + 0<64>
 	r42 = 0<64> + 32<i64>
-	call b0 (retsize: 0;)
+	call strmatch (retsize: 0;)
 	r14 = r33 + 0xFFFFFFFFFFFFFFF0<64>
 	r1 = r38 + 0<64>
 	v35 = SLICE(1<64>, word32, 0)
@@ -3623,16 +4215,16 @@ l40000000000D9400:
 	r34 = CONVERT(v13, int32, int64)
 	v14 = SLICE(r39, int32, 0)
 	r39 = CONVERT(v14, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r35 = r8 + 0<64>
-	v18 = SLICE(r33, int32, 0)
-	r40 = CONVERT(v18, int32, int64)
+	v17 = SLICE(r33, int32, 0)
+	r40 = CONVERT(v17, int32, int64)
 	r1 = r38 + 0<64>
 	r41 = r34 + 0<64>
 	r39 = r8 + 0<64>
 	r40 = r40 + r32
 	r34 = r34 + r35
-	call b0 (retsize: 0;)
+	call fn400000000001B920 (retsize: 0;)
 	r8 = r35 + 0<64>
 	r1 = r38 + 0<64>
 	Mem0[r0:byte] = SLICE(r34, byte, 0)
@@ -3660,39 +4252,39 @@ l40000000000D94C0:
 	r50 = b2
 	r43 = 0<64> + 1<i64>
 	r37 = 0<64> + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r52 + 0<64>
 	r38 = r8 + 0<64>
 	r54 = r34 + 0<64>
 	r36 = 0<64> + 0<64>
-	call b0 (retsize: 0;)
-	v24 = SLICE(0<64>, word32, 0)
-	v25 = SLICE(r38, word32, 0)
-	p07 = v24 == v25
-	p06 = v24 != v25
-	v29 = SLICE(0<64>, word32, 0)
-	v30 = SLICE(r35, word32, 0)
-	p09 = v29 == v30
-	p08 = v29 != v30
+	call fn400000000001B6C0 (retsize: 0;)
+	v23 = SLICE(0<64>, word32, 0)
+	v24 = SLICE(r38, word32, 0)
+	p07 = v23 == v24
+	p06 = v23 != v24
+	v28 = SLICE(0<64>, word32, 0)
+	v29 = SLICE(r35, word32, 0)
+	p09 = v28 == v29
+	p08 = v28 != v29
 	r1 = r52 + 0<64>
 	r45 = r8 + 0<64>
 	r44 = (r8 << 1<u32>) + 0<64>
-	v35 = SLICE(0<64>, word32, 0)
-	v36 = SLICE(r38, word32, 0)
-	p16 = v35 == v36
-	p17 = v35 != v36
-	v39 = SLICE(0<64>, word32, 0)
-	v40 = SLICE(r8, word32, 0)
-	p18 = v39 == v40
-	p19 = v39 != v40
+	v34 = SLICE(0<64>, word32, 0)
+	v35 = SLICE(r38, word32, 0)
+	p16 = v34 == v35
+	p17 = v34 != v35
+	v38 = SLICE(0<64>, word32, 0)
+	v39 = SLICE(r8, word32, 0)
+	p18 = v38 == v39
+	p19 = v38 != v39
 	branch !p08 l40000000000D954C
 	// succ:  l40000000000D9546_1 l40000000000D954C
 l40000000000D9546_1:
 	r47 = 0<64> + 1<i64>
 	// succ:  l40000000000D954C
 l40000000000D954C:
-	v44 = SLICE(r38, int32, 0)
-	r49 = CONVERT(v44, int32, int64)
+	v43 = SLICE(r38, int32, 0)
+	r49 = CONVERT(v43, int32, int64)
 	branch !p06 l40000000000D9556
 	// succ:  l40000000000D9550_2 l40000000000D9556
 l40000000000D9550_2:
@@ -3711,22 +4303,22 @@ l40000000000D955C_4:
 	r46 = 0<64> + 1<i64>
 	// succ:  l40000000000D9560
 l40000000000D9560:
-	v47 = SLICE(r40, int32, 0)
-	r41 = CONVERT(v47, int32, int64)
+	v46 = SLICE(r40, int32, 0)
+	r41 = CONVERT(v46, int32, int64)
 	r39 = r36 + 1<64>
-	v50 = SLICE(0<64>, word32, 0)
-	v51 = SLICE(r43, word32, 0)
-	p08 = v50 == v51
-	p09 = v50 != v51
+	v49 = SLICE(0<64>, word32, 0)
+	v50 = SLICE(r43, word32, 0)
+	p08 = v49 == v50
+	p09 = v49 != v50
 	r41 = r41 + r32
-	v53 = Mem0[r41:byte]
-	r38 = CONVERT(v53, byte, word64)
-	v54 = SLICE(r38, int8, 0)
-	r38 = CONVERT(v54, int8, int64)
-	v55 = SLICE(0<64>, word32, 0)
-	v56 = SLICE(r38, word32, 0)
-	p07 = v55 == v56
-	p06 = v55 != v56
+	v52 = Mem0[r41:byte]
+	r38 = CONVERT(v52, byte, word64)
+	v53 = SLICE(r38, int8, 0)
+	r38 = CONVERT(v53, int8, int64)
+	v54 = SLICE(0<64>, word32, 0)
+	v55 = SLICE(r38, word32, 0)
+	p07 = v54 == v55
+	p06 = v54 != v55
 	branch !p07 l40000000000D95A0
 	// succ:  l40000000000D959C_5 l40000000000D95A0
 l40000000000D959C_5:
@@ -3742,14 +4334,14 @@ l40000000000D95B0:
 l40000000000D95BC_7:
 	// succ:  l40000000000D9720 l40000000000D95C0
 l40000000000D95C0:
-	v57 = Mem0[r33:byte]
-	r14 = CONVERT(v57, byte, word64)
-	v59 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v59, int8, int64)
-	v60 = SLICE(r14, word32, 0)
-	v61 = SLICE(r38, word32, 0)
-	p07 = v60 == v61
-	p06 = v60 != v61
+	v56 = Mem0[r33:byte]
+	r14 = CONVERT(v56, byte, word64)
+	v58 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v58, int8, int64)
+	v59 = SLICE(r14, word32, 0)
+	v60 = SLICE(r38, word32, 0)
+	p07 = v59 == v60
+	p06 = v59 != v60
 	branch !p07 l40000000000D95E0
 	// succ:  l40000000000D95DC_8 l40000000000D95E0
 l40000000000D95DC_8:
@@ -3759,50 +4351,50 @@ l40000000000D95E0:
 	r14 = r37 + 0x10<64>
 	r54 = r42 + 0<64>
 	r40 = r40 + 1<64>
-	v63 = SLICE(r39, word32, 0)
-	v64 = SLICE(r37, word32, 0)
-	p06 = v63 < v64
-	p07 = v63 >= v64
+	v62 = SLICE(r39, word32, 0)
+	v63 = SLICE(r37, word32, 0)
+	p06 = v62 < v63
+	p07 = v62 >= v63
 	branch !p06 l40000000000D9600
 	// succ:  l40000000000D95FC_9 l40000000000D9600
 l40000000000D95FC_9:
 	// succ:  l40000000000D9640 l40000000000D9600
 l40000000000D9600:
-	v65 = SLICE(r15, int28, 4)
-	r37 = CONVERT(v65, int28, int64)
+	v64 = SLICE(r15, int28, 4)
+	r37 = CONVERT(v64, int28, int64)
 	r37 = (r37 << 4<u32>) + r14
-	v66 = SLICE(r37, int32, 0)
-	r55 = CONVERT(v66, int32, int64)
-	call b0 (retsize: 0;)
-	v68 = Mem0[r41:byte]
-	r38 = CONVERT(v68, byte, word64)
+	v65 = SLICE(r37, int32, 0)
+	r55 = CONVERT(v65, int32, int64)
+	call xrealloc (retsize: 0;)
+	v67 = Mem0[r41:byte]
+	r38 = CONVERT(v67, byte, word64)
 	r1 = r52 + 0<64>
 	r42 = r8 + 0<64>
-	v69 = SLICE(r38, int8, 0)
-	r38 = CONVERT(v69, int8, int64)
+	v68 = SLICE(r38, int8, 0)
+	r38 = CONVERT(v68, int8, int64)
 	// succ:  l40000000000D9640
 l40000000000D9640:
-	v70 = SLICE(r36, int32, 0)
-	r14 = CONVERT(v70, int32, int64)
-	v71 = SLICE(r40, int32, 0)
-	r41 = CONVERT(v71, int32, int64)
+	v69 = SLICE(r36, int32, 0)
+	r14 = CONVERT(v69, int32, int64)
+	v70 = SLICE(r40, int32, 0)
+	r41 = CONVERT(v70, int32, int64)
 	r36 = r39 + 0<64>
-	v72 = SLICE(0<64>, word32, 0)
-	v73 = SLICE(r43, word32, 0)
-	p08 = v72 == v73
-	p09 = v72 != v73
+	v71 = SLICE(0<64>, word32, 0)
+	v72 = SLICE(r43, word32, 0)
+	p08 = v71 == v72
+	p09 = v71 != v72
 	r14 = r14 + r42
 	r41 = r41 + r32
 	r39 = r36 + 1<64>
 	Mem0[r38:byte] = SLICE(r14, byte, 0)
-	v74 = Mem0[r41:byte]
-	r38 = CONVERT(v74, byte, word64)
-	v75 = SLICE(r38, int8, 0)
-	r38 = CONVERT(v75, int8, int64)
-	v76 = SLICE(0<64>, word32, 0)
-	v77 = SLICE(r38, word32, 0)
-	p07 = v76 == v77
-	p06 = v76 != v77
+	v73 = Mem0[r41:byte]
+	r38 = CONVERT(v73, byte, word64)
+	v74 = SLICE(r38, int8, 0)
+	r38 = CONVERT(v74, int8, int64)
+	v75 = SLICE(0<64>, word32, 0)
+	v76 = SLICE(r38, word32, 0)
+	p07 = v75 == v76
+	p06 = v75 != v76
 	branch !p06 l40000000000D96A0
 	// succ:  l40000000000D969C_1 l40000000000D96A0
 l40000000000D969C_1:
@@ -3812,8 +4404,8 @@ l40000000000D96A0:
 	p07 = 0<64> != r42
 	r8 = r42 + 0<64>
 	ar.pfs = r51
-	v78 = SLICE(r36, int32, 0)
-	r36 = CONVERT(v78, int32, int64)
+	v77 = SLICE(r36, int32, 0)
+	r36 = CONVERT(v77, int32, int64)
 	branch !p06 l40000000000D96C0
 	// succ:  l40000000000D96BC_2 l40000000000D96C0
 l40000000000D96BC_2:
@@ -3829,7 +4421,7 @@ l40000000000D96E0:
 	r54 = r41 + 0<64>
 	r55 = r33 + 0<64>
 	r56 = r49 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001C020 (retsize: 0;)
 	r1 = r52 + 0<64>
 	v81 = SLICE(0<64>, word32, 0)
 	v82 = SLICE(r8, word32, 0)
@@ -3911,21 +4503,21 @@ l40000000000D97E0:
 	r54 = r42 + 0<64>
 	v97 = SLICE(r37, int32, 0)
 	r55 = CONVERT(v97, int32, int64)
-	call b0 (retsize: 0;)
+	call xrealloc (retsize: 0;)
 	r1 = r52 + 0<64>
 	r42 = r8 + 0<64>
 	goto l40000000000D9740
 	// succ:  l40000000000D9740
 l40000000000D9800:
 	r54 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r52 + 0<64>
 	r54 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r52 + 0<64>
 	r54 = r8 + 0<64>
 	r55 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r42 = r8 + 0<64>
 	r1 = r52 + 0<64>
 	pr = r53
@@ -4032,12 +4624,12 @@ l40000000000D9940:
 	p19 = v37 != v38
 	v41 = SLICE(r40, int32, 0)
 	r41 = CONVERT(v41, int32, int64)
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r36 = r8 + r36
 	r1 = r45 + 0<64>
-	v45 = SLICE(r36, int32, 0)
-	r47 = CONVERT(v45, int32, int64)
-	call b0 (retsize: 0;)
+	v44 = SLICE(r36, int32, 0)
+	r47 = CONVERT(v44, int32, int64)
+	call xmalloc (retsize: 0;)
 	p06 = 0<64> == r32
 	p07 = 0<64> != r32
 	r1 = r45 + 0<64>
@@ -4053,34 +4645,34 @@ l40000000000D9996:
 l40000000000D999C_10:
 	// succ:  l40000000000D9AA0 l40000000000D99A0
 l40000000000D99A0:
-	v48 = Mem0[r32:byte]
-	r14 = CONVERT(v48, byte, word64)
+	v47 = Mem0[r32:byte]
+	r14 = CONVERT(v47, byte, word64)
 	r37 = r8 + 0<64>
-	v49 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v49, int8, int64)
-	v50 = SLICE(0<64>, word32, 0)
-	v51 = SLICE(r14, word32, 0)
-	p06 = v50 == v51
-	p07 = v50 != v51
+	v48 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v48, int8, int64)
+	v49 = SLICE(0<64>, word32, 0)
+	v50 = SLICE(r14, word32, 0)
+	p06 = v49 == v50
+	p07 = v49 != v50
 	branch !p06 l40000000000D99C0
 	// succ:  l40000000000D99BC_11 l40000000000D99C0
 l40000000000D99BC_11:
 	// succ:  l40000000000D9AA0 l40000000000D99C0
 l40000000000D99C0:
-	v53 = SLICE(r33, word32, 0)
-	v54 = SLICE(r14, word32, 0)
-	p07 = v53 == v54
-	p06 = v53 != v54
+	v52 = SLICE(r33, word32, 0)
+	v53 = SLICE(r14, word32, 0)
+	p07 = v52 == v53
+	p06 = v52 != v53
 	r39 = r32 + 1<64>
 	branch !p07 l40000000000D99D0
 	// succ:  l40000000000D99CC_12 l40000000000D99D0
 l40000000000D99CC_12:
 	// succ:  l40000000000D9B20 l40000000000D99D0
 l40000000000D99D0:
-	v56 = SLICE(0x5C<64>, word32, 0)
-	v57 = SLICE(r14, word32, 0)
-	p07 = v56 == v57
-	p06 = v56 != v57
+	v55 = SLICE(0x5C<64>, word32, 0)
+	v56 = SLICE(r14, word32, 0)
+	p07 = v55 == v56
+	p06 = v55 != v56
 	branch !p07 l40000000000D99E0
 	// succ:  l40000000000D99DC_13 l40000000000D99E0
 l40000000000D99DC_13:
@@ -4088,37 +4680,37 @@ l40000000000D99DC_13:
 l40000000000D99E0:
 	r37 = r38 - r37
 	r14 = r37 + 2<64>
-	v58 = SLICE(r14, word32, 0)
-	v59 = SLICE(r36, word32, 0)
-	p06 = v58 < v59
-	p07 = v58 >= v59
+	v57 = SLICE(r14, word32, 0)
+	v58 = SLICE(r36, word32, 0)
+	p06 = v57 < v58
+	p07 = v57 >= v58
 	branch !p06 l40000000000D9A00
 	// succ:  l40000000000D99FC_14 l40000000000D9A00
 l40000000000D99FC_14:
 	// succ:  l40000000000D9A40 l40000000000D9A00
 l40000000000D9A00:
 	r36 = (r36 << 1<u32>) + 0<64>
-	v60 = SLICE(r14, word32, 0)
-	v61 = SLICE(r36, word32, 0)
-	p07 = v60 < v61
-	p06 = v60 >= v61
+	v59 = SLICE(r14, word32, 0)
+	v60 = SLICE(r36, word32, 0)
+	p07 = v59 < v60
+	p06 = v59 >= v60
 	branch !p06 l40000000000D9A20
 	// succ:  l40000000000D9A1C_15 l40000000000D9A20
 l40000000000D9A1C_15:
 	// succ:  l40000000000D9A00 l40000000000D9A20
 l40000000000D9A20:
 	r47 = r38 + 0<64>
-	v62 = SLICE(r36, int32, 0)
-	r48 = CONVERT(v62, int32, int64)
-	call b0 (retsize: 0;)
+	v61 = SLICE(r36, int32, 0)
+	r48 = CONVERT(v61, int32, int64)
+	call xrealloc (retsize: 0;)
 	r1 = r45 + 0<64>
 	r38 = r8 + 0<64>
 	// succ:  l40000000000D9A40
 l40000000000D9A40:
-	v69 = SLICE(r37, int32, 0)
-	r37 = CONVERT(v69, int32, int64)
-	v70 = Mem0[r32:byte]
-	r14 = CONVERT(v70, byte, word64)
+	v68 = SLICE(r37, int32, 0)
+	r37 = CONVERT(v68, int32, int64)
+	v69 = Mem0[r32:byte]
+	r14 = CONVERT(v69, byte, word64)
 	r32 = r39 + 0<64>
 	r37 = r37 + r38
 	Mem0[r37:byte] = SLICE(r1, byte, 0)
@@ -4132,14 +4724,14 @@ l40000000000D9A70:
 l40000000000D9A7C_1:
 	// succ:  l40000000000D9AA0 l40000000000D9A80
 l40000000000D9A80:
-	v71 = Mem0[r32:byte]
-	r14 = CONVERT(v71, byte, word64)
-	v72 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v72, int8, int64)
-	v73 = SLICE(0<64>, word32, 0)
-	v74 = SLICE(r14, word32, 0)
-	p07 = v73 == v74
-	p06 = v73 != v74
+	v70 = Mem0[r32:byte]
+	r14 = CONVERT(v70, byte, word64)
+	v71 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v71, int8, int64)
+	v72 = SLICE(0<64>, word32, 0)
+	v73 = SLICE(r14, word32, 0)
+	p07 = v72 == v73
+	p06 = v72 != v73
 	branch !p06 l40000000000D9AA0
 	// succ:  l40000000000D9A9C_2 l40000000000D9AA0
 l40000000000D9A9C_2:
@@ -4204,29 +4796,29 @@ l40000000000D9B3C_2:
 	// succ:  l40000000000D9BF0 l40000000000D9B40
 l40000000000D9B40:
 	r14 = r37 + r40
-	v64 = SLICE(r14, word32, 0)
-	v65 = SLICE(r36, word32, 0)
-	p06 = v64 < v65
-	p07 = v64 >= v65
+	v63 = SLICE(r14, word32, 0)
+	v64 = SLICE(r36, word32, 0)
+	p06 = v63 < v64
+	p07 = v63 >= v64
 	branch !p06 l40000000000D9B60
 	// succ:  l40000000000D9B5C_3 l40000000000D9B60
 l40000000000D9B5C_3:
 	// succ:  l40000000000D9BA0 l40000000000D9B60
 l40000000000D9B60:
 	r36 = (r36 << 1<u32>) + 0<64>
-	v66 = SLICE(r14, word32, 0)
-	v67 = SLICE(r36, word32, 0)
-	p07 = v66 < v67
-	p06 = v66 >= v67
+	v65 = SLICE(r14, word32, 0)
+	v66 = SLICE(r36, word32, 0)
+	p07 = v65 < v66
+	p06 = v65 >= v66
 	branch !p06 l40000000000D9B80
 	// succ:  l40000000000D9B7C_4 l40000000000D9B80
 l40000000000D9B7C_4:
 	// succ:  l40000000000D9B60 l40000000000D9B80
 l40000000000D9B80:
 	r47 = r38 + 0<64>
-	v68 = SLICE(r36, int32, 0)
-	r48 = CONVERT(v68, int32, int64)
-	call b0 (retsize: 0;)
+	v67 = SLICE(r36, int32, 0)
+	r48 = CONVERT(v67, int32, int64)
+	call xrealloc (retsize: 0;)
 	r1 = r45 + 0<64>
 	r38 = r8 + 0<64>
 	// succ:  l40000000000D9BA0
@@ -4236,7 +4828,7 @@ l40000000000D9BA0:
 	r48 = r34 + 0<64>
 	r47 = r37 + r38
 	r37 = r41 + r47
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r45 + 0<64>
 	// succ:  l40000000000D9BE0
 l40000000000D9BE0:
@@ -4245,7 +4837,7 @@ l40000000000D9BE0:
 	// succ:  l40000000000D9A70
 l40000000000D9BF0:
 	r47 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call glob_pattern_p (retsize: 0;)
 	v83 = SLICE(0<64>, word32, 0)
 	v84 = SLICE(r8, word32, 0)
 	p07 = v83 == v84
@@ -4258,7 +4850,7 @@ l40000000000D9BF0:
 l40000000000D9C1C_1:
 	// succ:  l40000000000D9C40 l40000000000D9C20
 l40000000000D9C20:
-	call b0 (retsize: 0;)
+	call fn400000000001B680 (retsize: 0;)
 	r1 = r45 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -4268,11 +4860,11 @@ l40000000000D9C3C_2:
 	// succ:  l40000000000D9B40 l40000000000D9C40
 l40000000000D9C40:
 	r47 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call quote_globbing_chars (retsize: 0;)
 	r1 = r45 + 0<64>
 	r39 = r8 + 0<64>
 	r47 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r14 = r8 + r37
 	r1 = r45 + 0<64>
 	r42 = r8 + 0<64>
@@ -4300,7 +4892,7 @@ l40000000000D9CC0:
 	r47 = r38 + 0<64>
 	v90 = SLICE(r36, int32, 0)
 	r48 = CONVERT(v90, int32, int64)
-	call b0 (retsize: 0;)
+	call xrealloc (retsize: 0;)
 	r1 = r45 + 0<64>
 	r38 = r8 + 0<64>
 	// succ:  l40000000000D9CE0
@@ -4314,16 +4906,16 @@ l40000000000D9CE0:
 	r37 = r37 + r38
 	r47 = r37 + 0<64>
 	r37 = r42 + r37
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r45 + 0<64>
 	r47 = r39 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r45 + 0<64>
 	goto l40000000000D9A70
 	// succ:  l40000000000D9A70
 l40000000000D9D40:
 	r47 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r45 + 0<64>
 	r40 = r8 + 0<64>
 	r36 = r8 + 0<64>
@@ -4441,13 +5033,152 @@ l40000000000D9E80:
 	r39 = r32 + 0<64>
 	v15 = SLICE(r34, int32, 0)
 	r40 = CONVERT(v15, int32, int64)
-	call b0 (retsize: 0;)
+	call fn400000000001A8A0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	ar.pfs = r36
 	b0 = r35
 	return
 	// succ:  xbcopy_exit
 xbcopy_exit:
+
+
+// fn40000000000D9F00
+// Return size: 0
+define fn40000000000D9F00
+fn40000000000D9F00_entry:
+	r11 = fp
+	// succ:  l40000000000D9F00
+l40000000000D9F00:
+	r41 = ar.pfs
+	r35 = r1 + 6148<i64>
+	r34 = r1 + -18556<i64>
+	r40 = b0
+	r42 = r1 + 0<64>
+	r33 = 0<64> + 0<64>
+	r32 = 0<64> + 0<64>
+	r38 = 0<64> + -8195<i64>
+	r39 = 0<64> + -8193<i64>
+	r37 = 0<64> + 8194<i64>
+	v17 = Mem0[r35:word32]
+	r14 = CONVERT(v17, word32, word64)
+	v19 = SLICE(0<64>, word32, 0)
+	v20 = SLICE(r14, word32, 0)
+	p06 = v19 < v20
+	p07 = v19 >= v20
+	branch !p07 l40000000000D9F60
+	// succ:  l40000000000D9F5C_1 l40000000000D9F60
+l40000000000D9F5C_1:
+	// succ:  l40000000000DA000 l40000000000D9F60
+l40000000000D9F60:
+	call fn400000000001C3C0 (retsize: 0;)
+	r1 = r42 + 0<64>
+	r36 = r8 + 0<64>
+	// succ:  l40000000000D9F80
+l40000000000D9F80:
+	r14 = Mem0[r36:word64]
+	v25 = SLICE(r32, int32, 0)
+	r15 = CONVERT(v25, int32, int64)
+	v27 = SLICE(0<64>, word32, 0)
+	v28 = SLICE(r32, word32, 0)
+	p08 = v27 == v28
+	p09 = v27 != v28
+	r14 = r33 + r14
+	r15 = (r15 << 2<u32>) + r34
+	v31 = Mem0[r14:word16]
+	r14 = CONVERT(v31, word16, word64)
+	p06 = !__bit<word64,word32>(r14, 0<32>)
+	p07 = __bit<word64,word32>(r14, 0<32>)
+	branch !p06 l40000000000D9FC0
+	// succ:  l40000000000D9FBC_2 l40000000000D9FC0
+l40000000000D9FBC_2:
+	// succ:  l40000000000DA020 l40000000000D9FC0
+l40000000000D9FC0:
+	v32 = Mem0[r15:word32]
+	r14 = CONVERT(v32, word32, word64)
+	r32 = r32 + 1<64>
+	r33 = r33 + 2<64>
+	r14 = r14 | r37
+	Mem0[r14:word32] = SLICE(r15, word32, 0)
+	v33 = Mem0[r35:word32]
+	r14 = CONVERT(v33, word32, word64)
+	v34 = SLICE(r32, word32, 0)
+	v35 = SLICE(r14, word32, 0)
+	p06 = v34 < v35
+	p07 = v34 >= v35
+	branch !p06 l40000000000DA000
+	// succ:  l40000000000D9FFC_3 l40000000000DA000
+l40000000000D9FFC_3:
+	// succ:  l40000000000D9F80 l40000000000DA000
+l40000000000DA000:
+	ar.pfs = r41
+	b0 = r40
+	return
+	// succ:  fn40000000000D9F00_exit
+l40000000000DA020:
+	branch !p09 l40000000000DA030
+	// succ:  l40000000000DA02C_1 l40000000000DA030
+l40000000000DA02C_1:
+	// succ:  l40000000000DA090 l40000000000DA030
+l40000000000DA030:
+	v36 = SLICE(r32, int32, 0)
+	r14 = CONVERT(v36, int32, int64)
+	r32 = r32 + 1<64>
+	r33 = r33 + 2<64>
+	r14 = (r14 << 2<u32>) + r34
+	v37 = Mem0[r14:word32]
+	r15 = CONVERT(v37, word32, word64)
+	r15 = r15 & r38
+	Mem0[r15:word32] = SLICE(r14, word32, 0)
+	v38 = Mem0[r35:word32]
+	r14 = CONVERT(v38, word32, word64)
+	v39 = SLICE(r32, word32, 0)
+	v40 = SLICE(r14, word32, 0)
+	p06 = v39 < v40
+	p07 = v39 >= v40
+	branch !p06 l40000000000DA080
+	// succ:  l40000000000DA07C_2 l40000000000DA080
+l40000000000DA07C_2:
+	// succ:  l40000000000D9F80 l40000000000DA080
+l40000000000DA080:
+	goto l40000000000DA000
+	// succ:  l40000000000DA000
+l40000000000DA090:
+	r43 = r1 + -4148<i64>
+	r44 = r32 + 0<64>
+	r43 = Mem0[r43:word64]
+	call mbschr (retsize: 0;)
+	v43 = SLICE(r32, int32, 0)
+	r14 = CONVERT(v43, int32, int64)
+	r1 = r42 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l40000000000DA0D0
+	// succ:  l40000000000DA0CC_1 l40000000000DA0D0
+l40000000000DA0CC_1:
+	// succ:  l40000000000DA030 l40000000000DA0D0
+l40000000000DA0D0:
+	r14 = (r14 << 2<u32>) + r34
+	r32 = r32 + 1<64>
+	r33 = r33 + 2<64>
+	v44 = Mem0[r14:word32]
+	r15 = CONVERT(v44, word32, word64)
+	r15 = r15 & r39
+	r15 = r15 | 2<64>
+	Mem0[r15:word32] = SLICE(r14, word32, 0)
+	v45 = Mem0[r35:word32]
+	r14 = CONVERT(v45, word32, word64)
+	v46 = SLICE(r32, word32, 0)
+	v47 = SLICE(r14, word32, 0)
+	p06 = v46 < v47
+	p07 = v46 >= v47
+	branch !p06 l40000000000DA120
+	// succ:  l40000000000DA11C_2 l40000000000DA120
+l40000000000DA11C_2:
+	// succ:  l40000000000D9F80 l40000000000DA120
+l40000000000DA120:
+	goto l40000000000DA000
+	// succ:  l40000000000DA000
+fn40000000000D9F00_exit:
 
 
 // set_default_locale
@@ -4464,7 +5195,7 @@ l40000000000DA140:
 	r32 = r1 + 8228<i64>
 	r37 = Mem0[r37:word64]
 	r36 = 0<64> + 6<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
 	r1 = r35 + 0<64>
@@ -4475,14 +5206,14 @@ l40000000000DA140:
 l40000000000DA18C_1:
 	// succ:  l40000000000DA1E0 l40000000000DA190
 l40000000000DA190:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r8 + 0<64>
 	r37 = Mem0[r32:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r35 + 0<64>
 	Mem0[r8:word64] = r32
 	// succ:  l40000000000DA1E0
@@ -4491,11 +5222,11 @@ l40000000000DA1E0:
 	r37 = r1 + -4124<i64>
 	r37 = Mem0[r37:word64]
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001C080 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r1 + -4132<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AE80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	ar.pfs = r34
 	b0 = r33
@@ -4516,7 +5247,7 @@ l40000000000DA240:
 	r36 = r1 + 0<64>
 	r34 = b2
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4527,7 +5258,7 @@ l40000000000DA27C_1:
 l40000000000DA280:
 	r37 = r1 + -4108<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4538,7 +5269,7 @@ l40000000000DA2AC_2:
 l40000000000DA2B0:
 	r37 = r1 + -4100<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4549,7 +5280,7 @@ l40000000000DA2DC_3:
 l40000000000DA2E0:
 	r37 = r1 + -4092<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4560,7 +5291,7 @@ l40000000000DA30C_4:
 l40000000000DA310:
 	r37 = r1 + -4084<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4571,7 +5302,7 @@ l40000000000DA33C_5:
 l40000000000DA340:
 	r37 = r1 + -4076<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -4581,14 +5312,14 @@ l40000000000DA340:
 l40000000000DA37C_6:
 	// succ:  l40000000000DA3A0 l40000000000DA380
 l40000000000DA380:
-	v16 = Mem0[r8:byte]
-	r14 = CONVERT(v16, byte, word64)
-	v18 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v18, int8, int64)
-	v19 = SLICE(0<64>, word32, 0)
-	v20 = SLICE(r14, word32, 0)
-	p06 = v19 == v20
-	p07 = v19 != v20
+	v15 = Mem0[r8:byte]
+	r14 = CONVERT(v15, byte, word64)
+	v17 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v17, int8, int64)
+	v18 = SLICE(0<64>, word32, 0)
+	v19 = SLICE(r14, word32, 0)
+	p06 = v18 == v19
+	p07 = v18 != v19
 	branch !p07 l40000000000DA3A0
 	// succ:  l40000000000DA39C_7 l40000000000DA3A0
 l40000000000DA39C_7:
@@ -4596,7 +5327,7 @@ l40000000000DA39C_7:
 l40000000000DA3A0:
 	r37 = r1 + -4068<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4606,15 +5337,15 @@ l40000000000DA3A0:
 l40000000000DA3DC_8:
 	// succ:  l40000000000DA4D0 l40000000000DA3E0
 l40000000000DA3E0:
-	v21 = Mem0[r8:byte]
-	r14 = CONVERT(v21, byte, word64)
+	v20 = Mem0[r8:byte]
+	r14 = CONVERT(v20, byte, word64)
 	r33 = r1 + 8252<i64>
-	v23 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v23, int8, int64)
-	v24 = SLICE(0<64>, word32, 0)
-	v25 = SLICE(r14, word32, 0)
-	p06 = v24 == v25
-	p07 = v24 != v25
+	v22 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v22, int8, int64)
+	v23 = SLICE(0<64>, word32, 0)
+	v24 = SLICE(r14, word32, 0)
+	p06 = v23 == v24
+	p07 = v23 != v24
 	branch !p06 l40000000000DA400
 	// succ:  l40000000000DA3FC_9 l40000000000DA400
 l40000000000DA3FC_9:
@@ -4628,19 +5359,19 @@ l40000000000DA400:
 l40000000000DA41C_10:
 	// succ:  l40000000000DA440 l40000000000DA420
 l40000000000DA420:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	// succ:  l40000000000DA440
 l40000000000DA440:
 	r37 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 0<64>
 	r38 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r36 + 0<64>
 	Mem0[r8:word64] = r33
 	r14 = r1 + 8244<i64>
@@ -4652,14 +5383,14 @@ l40000000000DA440:
 l40000000000DA4AC_1:
 	// succ:  l40000000000DA4D0 l40000000000DA4B0
 l40000000000DA4B0:
-	v47 = Mem0[r37:byte]
-	r14 = CONVERT(v47, byte, word64)
-	v48 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v48, int8, int64)
-	v49 = SLICE(0<64>, word32, 0)
-	v50 = SLICE(r14, word32, 0)
-	p06 = v49 == v50
-	p07 = v49 != v50
+	v46 = Mem0[r37:byte]
+	r14 = CONVERT(v46, byte, word64)
+	v47 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v47, int8, int64)
+	v48 = SLICE(0<64>, word32, 0)
+	v49 = SLICE(r14, word32, 0)
+	p06 = v48 == v49
+	p07 = v48 != v49
 	branch !p07 l40000000000DA4D0
 	// succ:  l40000000000DA4CC_2 l40000000000DA4D0
 l40000000000DA4CC_2:
@@ -4679,26 +5410,26 @@ l40000000000DA4F0:
 l40000000000DA50C_1:
 	// succ:  l40000000000DA530 l40000000000DA510
 l40000000000DA510:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	// succ:  l40000000000DA530
 l40000000000DA530:
 	r37 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r8 + 0<64>
 	r38 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r36 + 0<64>
 	Mem0[r8:word64] = r33
 	goto l40000000000DA3A0
 	// succ:  l40000000000DA3A0
 l40000000000DA590:
 	r38 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001C080 (retsize: 0;)
 	r1 = r36 + 0<64>
 	ar.pfs = r35
 	b0 = r34
@@ -4714,27 +5445,27 @@ l40000000000DA5C0:
 l40000000000DA5DC_1:
 	// succ:  l40000000000DA280 l40000000000DA5E0
 l40000000000DA5E0:
-	v27 = Mem0[r38:byte]
-	r14 = CONVERT(v27, byte, word64)
-	v28 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v28, int8, int64)
-	v29 = SLICE(0<64>, word32, 0)
-	v30 = SLICE(r14, word32, 0)
-	p06 = v29 == v30
-	p07 = v29 != v30
+	v26 = Mem0[r38:byte]
+	r14 = CONVERT(v26, byte, word64)
+	v27 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v27, int8, int64)
+	v28 = SLICE(0<64>, word32, 0)
+	v29 = SLICE(r14, word32, 0)
+	p06 = v28 == v29
+	p07 = v28 != v29
 	branch !p06 l40000000000DA600
 	// succ:  l40000000000DA5FC_2 l40000000000DA600
 l40000000000DA5FC_2:
 	// succ:  l40000000000DA280 l40000000000DA600
 l40000000000DA600:
 	r37 = 0<64> + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r36 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r1 + -4108<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4754,25 +5485,25 @@ l40000000000DA660:
 l40000000000DA67C_1:
 	// succ:  l40000000000DA2B0 l40000000000DA680
 l40000000000DA680:
-	v31 = Mem0[r38:byte]
-	r14 = CONVERT(v31, byte, word64)
-	v32 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v32, int8, int64)
-	v33 = SLICE(0<64>, word32, 0)
-	v34 = SLICE(r14, word32, 0)
-	p06 = v33 == v34
-	p07 = v33 != v34
+	v30 = Mem0[r38:byte]
+	r14 = CONVERT(v30, byte, word64)
+	v31 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v31, int8, int64)
+	v32 = SLICE(0<64>, word32, 0)
+	v33 = SLICE(r14, word32, 0)
+	p06 = v32 == v33
+	p07 = v32 != v33
 	branch !p06 l40000000000DA6A0
 	// succ:  l40000000000DA69C_2 l40000000000DA6A0
 l40000000000DA69C_2:
 	// succ:  l40000000000DA2B0 l40000000000DA6A0
 l40000000000DA6A0:
 	r37 = 0<64> + 3<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r1 + -4100<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4790,25 +5521,25 @@ l40000000000DA6E0:
 l40000000000DA6FC_4:
 	// succ:  l40000000000DA2E0 l40000000000DA700
 l40000000000DA700:
-	v35 = Mem0[r38:byte]
-	r14 = CONVERT(v35, byte, word64)
-	v36 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v36, int8, int64)
-	v37 = SLICE(0<64>, word32, 0)
-	v38 = SLICE(r14, word32, 0)
-	p06 = v37 == v38
-	p07 = v37 != v38
+	v34 = Mem0[r38:byte]
+	r14 = CONVERT(v34, byte, word64)
+	v35 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v35, int8, int64)
+	v36 = SLICE(0<64>, word32, 0)
+	v37 = SLICE(r14, word32, 0)
+	p06 = v36 == v37
+	p07 = v36 != v37
 	branch !p06 l40000000000DA720
 	// succ:  l40000000000DA71C_5 l40000000000DA720
 l40000000000DA71C_5:
 	// succ:  l40000000000DA2E0 l40000000000DA720
 l40000000000DA720:
 	r37 = 0<64> + 5<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r1 + -4092<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4826,25 +5557,25 @@ l40000000000DA760:
 l40000000000DA77C_7:
 	// succ:  l40000000000DA310 l40000000000DA780
 l40000000000DA780:
-	v39 = Mem0[r38:byte]
-	r14 = CONVERT(v39, byte, word64)
-	v40 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v40, int8, int64)
-	v41 = SLICE(0<64>, word32, 0)
-	v42 = SLICE(r14, word32, 0)
-	p06 = v41 == v42
-	p07 = v41 != v42
+	v38 = Mem0[r38:byte]
+	r14 = CONVERT(v38, byte, word64)
+	v39 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v39, int8, int64)
+	v40 = SLICE(0<64>, word32, 0)
+	v41 = SLICE(r14, word32, 0)
+	p06 = v40 == v41
+	p07 = v40 != v41
 	branch !p06 l40000000000DA7A0
 	// succ:  l40000000000DA79C_8 l40000000000DA7A0
 l40000000000DA79C_8:
 	// succ:  l40000000000DA310 l40000000000DA7A0
 l40000000000DA7A0:
 	r37 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r36 + 0<64>
 	r37 = r1 + -4084<i64>
 	r37 = Mem0[r37:word64]
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r36 + 0<64>
 	p07 = 0<64> == r8
 	p06 = 0<64> != r8
@@ -4862,21 +5593,21 @@ l40000000000DA7E0:
 l40000000000DA7FC_10:
 	// succ:  l40000000000DA340 l40000000000DA800
 l40000000000DA800:
-	v43 = Mem0[r38:byte]
-	r14 = CONVERT(v43, byte, word64)
-	v44 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v44, int8, int64)
-	v45 = SLICE(0<64>, word32, 0)
-	v46 = SLICE(r14, word32, 0)
-	p06 = v45 == v46
-	p07 = v45 != v46
+	v42 = Mem0[r38:byte]
+	r14 = CONVERT(v42, byte, word64)
+	v43 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v43, int8, int64)
+	v44 = SLICE(0<64>, word32, 0)
+	v45 = SLICE(r14, word32, 0)
+	p06 = v44 == v45
+	p07 = v44 != v45
 	branch !p06 l40000000000DA820
 	// succ:  l40000000000DA81C_11 l40000000000DA820
 l40000000000DA81C_11:
 	// succ:  l40000000000DA340 l40000000000DA820
 l40000000000DA820:
 	r37 = 0<64> + 2<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r36 + 0<64>
 	goto l40000000000DA340
 	// succ:  l40000000000DA340
@@ -4916,7 +5647,7 @@ l40000000000DA880:
 l40000000000DA89C_2:
 	// succ:  l40000000000DA930 l40000000000DA8A0
 l40000000000DA8A0:
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r35 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -4925,14 +5656,14 @@ l40000000000DA8A0:
 l40000000000DA8BC_3:
 	// succ:  l40000000000DA8E0 l40000000000DA8C0
 l40000000000DA8C0:
-	v21 = Mem0[r8:byte]
-	r14 = CONVERT(v21, byte, word64)
-	v22 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v22, int8, int64)
-	v23 = SLICE(0<64>, word32, 0)
-	v24 = SLICE(r14, word32, 0)
-	p07 = v23 == v24
-	p06 = v23 != v24
+	v20 = Mem0[r8:byte]
+	r14 = CONVERT(v20, byte, word64)
+	v21 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v21, int8, int64)
+	v22 = SLICE(0<64>, word32, 0)
+	v23 = SLICE(r14, word32, 0)
+	p07 = v22 == v23
+	p06 = v22 != v23
 	branch !p06 l40000000000DA8E0
 	// succ:  l40000000000DA8DC_4 l40000000000DA8E0
 l40000000000DA8DC_4:
@@ -4947,14 +5678,14 @@ l40000000000DA8E0:
 l40000000000DA8FC_5:
 	// succ:  l40000000000DA950 l40000000000DA900
 l40000000000DA900:
-	v25 = Mem0[r8:byte]
-	r14 = CONVERT(v25, byte, word64)
-	v26 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v26, int8, int64)
-	v27 = SLICE(0<64>, word32, 0)
-	v28 = SLICE(r14, word32, 0)
-	p06 = v27 == v28
-	p07 = v27 != v28
+	v24 = Mem0[r8:byte]
+	r14 = CONVERT(v24, byte, word64)
+	v25 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v25, int8, int64)
+	v26 = SLICE(0<64>, word32, 0)
+	v27 = SLICE(r14, word32, 0)
+	p06 = v26 == v27
+	p07 = v26 != v27
 	branch !p06 l40000000000DA920
 	// succ:  l40000000000DA91C_6 l40000000000DA920
 l40000000000DA91C_6:
@@ -5001,13 +5732,12 @@ l40000000000DA954:
 get_locale_var_exit:
 
 
-// set_lang
+// fn40000000000DA980
 // Return size: 0
-define set_lang
-set_lang_entry:
+define fn40000000000DA980
+fn40000000000DA980_entry:
 	r11 = fp
-	goto l40000000000DABC0
-	// succ:  l40000000000DABC0
+	// succ:  l40000000000DA980
 l40000000000DA980:
 	r34 = ar.pfs
 	r32 = r1 + 8260<i64>
@@ -5021,21 +5751,21 @@ l40000000000DA980:
 l40000000000DA9AC_1:
 	// succ:  l40000000000DAB70 l40000000000DA9B0
 l40000000000DA9B0:
-	v22 = Mem0[r37:byte]
-	r14 = CONVERT(v22, byte, word64)
-	v23 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v23, int8, int64)
-	v24 = SLICE(0<64>, word32, 0)
-	v25 = SLICE(r14, word32, 0)
-	p07 = v24 == v25
-	p06 = v24 != v25
+	v14 = Mem0[r37:byte]
+	r14 = CONVERT(v14, byte, word64)
+	v16 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v16, int8, int64)
+	v17 = SLICE(0<64>, word32, 0)
+	v18 = SLICE(r14, word32, 0)
+	p07 = v17 == v18
+	p06 = v17 != v18
 	branch !p07 l40000000000DA9D0
 	// succ:  l40000000000DA9CC_2 l40000000000DA9D0
 l40000000000DA9CC_2:
 	// succ:  l40000000000DAB70 l40000000000DA9D0
 l40000000000DA9D0:
 	r36 = 0<64> + 6<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -5052,45 +5782,45 @@ l40000000000DA9FC_4:
 	// succ:  l40000000000DAB50 l40000000000DAA00
 l40000000000DAA00:
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r35 + 0<64>
 	r37 = r8 + 0<64>
 	r36 = 0<64> + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r1 + -4108<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r35 + 0<64>
 	r37 = r8 + 0<64>
 	r36 = 0<64> + 3<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r1 + -4100<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r35 + 0<64>
 	r37 = r8 + 0<64>
 	r36 = 0<64> + 5<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r1 + -4092<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r35 + 0<64>
 	r37 = r8 + 0<64>
 	r36 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = r1 + -4084<i64>
 	r36 = Mem0[r36:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r35 + 0<64>
 	r36 = 0<64> + 2<i64>
 	r37 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r35 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r35 + 0<64>
 	r8 = 0<64> + 1<i64>
 	// succ:  l40000000000DAB50
@@ -5098,9 +5828,9 @@ l40000000000DAB50:
 	ar.pfs = r34
 	b0 = r33
 	return
-	// succ:  set_lang_exit
+	// succ:  fn40000000000DA980_exit
 l40000000000DAB70:
-	call b0 (retsize: 0;)
+	call maybe_make_export_env (retsize: 0;)
 	r37 = Mem0[r32:word64]
 	r1 = r35 + 0<64>
 	p07 = 0<64> == r37
@@ -5119,6 +5849,15 @@ l40000000000DABA0_2:
 l40000000000DABA6:
 	goto l40000000000DA9D0
 	// succ:  l40000000000DA9D0
+fn40000000000DA980_exit:
+
+
+// set_lang
+// Return size: 0
+define set_lang
+set_lang_entry:
+	r11 = fp
+	// succ:  l40000000000DABC0
 l40000000000DABC0:
 	r36 = ar.pfs
 	r34 = r1 + 8260<i64>
@@ -5132,7 +5871,7 @@ l40000000000DABC0:
 l40000000000DABFC_1:
 	// succ:  l40000000000DAC20 l40000000000DAC00
 l40000000000DAC00:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	// succ:  l40000000000DAC20
 l40000000000DAC20:
@@ -5144,14 +5883,14 @@ l40000000000DAC20:
 l40000000000DAC2C_1:
 	// succ:  l40000000000DAD00 l40000000000DAC30
 l40000000000DAC30:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r8 + 0<64>
 	r39 = r33 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r37 + 0<64>
 	Mem0[r8:word64] = r34
 	// succ:  l40000000000DAC80
@@ -5165,14 +5904,14 @@ l40000000000DAC80:
 l40000000000DAC9C_2:
 	// succ:  l40000000000DACC0 l40000000000DACA0
 l40000000000DACA0:
-	v26 = Mem0[r14:byte]
-	r14 = CONVERT(v26, byte, word64)
-	v27 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v27, int8, int64)
-	v28 = SLICE(0<64>, word32, 0)
-	v29 = SLICE(r14, word32, 0)
-	p07 = v28 == v29
-	p06 = v28 != v29
+	v20 = Mem0[r14:byte]
+	r14 = CONVERT(v20, byte, word64)
+	v21 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v21, int8, int64)
+	v22 = SLICE(0<64>, word32, 0)
+	v23 = SLICE(r14, word32, 0)
+	p07 = v22 == v23
+	p06 = v22 != v23
 	branch !p06 l40000000000DACC0
 	// succ:  l40000000000DACBC_3 l40000000000DACC0
 l40000000000DACBC_3:
@@ -5181,8 +5920,11 @@ l40000000000DACC0:
 	b0 = r35
 	ar.pfs = r36
 	r2 = ar.pfs
-	goto l40000000000DA980
-	// succ:  l40000000000DA980
+	// succ:  l40000000000DACDC_thunk_fn40000000000DA980
+l40000000000DACDC_thunk_fn40000000000DA980:
+	call fn40000000000DA980 (retsize: 0;)
+	return
+	// succ:  set_lang_exit
 l40000000000DACE0:
 	r8 = 0<64> + 0<64>
 	ar.pfs = r36
@@ -5191,7 +5933,7 @@ l40000000000DACE0:
 	// succ:  set_lang_exit
 l40000000000DAD00:
 	r38 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r37 + 0<64>
 	Mem0[r0:byte] = SLICE(r8, byte, 0)
 	Mem0[r8:word64] = r34
@@ -5210,75 +5952,75 @@ l40000000000DAD40:
 	r39 = ar.pfs
 	r40 = r1 + 0<64>
 	r38 = b6
-	call b0 (retsize: 0;)
-	v12 = Mem0[r32:byte]
-	r14 = CONVERT(v12, byte, word64)
+	call fn400000000001B840 (retsize: 0;)
+	v11 = Mem0[r32:byte]
+	r14 = CONVERT(v11, byte, word64)
 	Mem0[r0:word32] = SLICE(r8, word32, 0)
 	r1 = r40 + 0<64>
 	r34 = r8 + 0<64>
-	v17 = Mem0[r32:byte]
-	r14 = CONVERT(v17, byte, word64)
-	v18 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v18, int8, int64)
-	v19 = SLICE(0x54<64>, word32, 0)
-	v20 = SLICE(r14, word32, 0)
-	p07 = v19 == v20
-	p06 = v19 != v20
+	v16 = Mem0[r32:byte]
+	r14 = CONVERT(v16, byte, word64)
+	v17 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v17, int8, int64)
+	v18 = SLICE(0x54<64>, word32, 0)
+	v19 = SLICE(r14, word32, 0)
+	p07 = v18 == v19
+	p06 = v18 != v19
 	r14 = r32 + 3<64>
 	branch !p07 l40000000000DADA0
 	// succ:  l40000000000DAD9C_1 l40000000000DADA0
 l40000000000DAD9C_1:
 	// succ:  l40000000000DAE40 l40000000000DADA0
 l40000000000DADA0:
-	v23 = Mem0[r14:byte]
-	r14 = CONVERT(v23, byte, word64)
-	v24 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v24, int8, int64)
-	v25 = SLICE(0x41<64>, word32, 0)
-	v26 = SLICE(r14, word32, 0)
-	p07 = v25 == v26
-	p06 = v25 != v26
+	v22 = Mem0[r14:byte]
+	r14 = CONVERT(v22, byte, word64)
+	v23 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v23, int8, int64)
+	v24 = SLICE(0x41<64>, word32, 0)
+	v25 = SLICE(r14, word32, 0)
+	p07 = v24 == v25
+	p06 = v24 != v25
 	branch !p07 l40000000000DADC0
 	// succ:  l40000000000DADBC_2 l40000000000DADC0
 l40000000000DADBC_2:
 	// succ:  l40000000000DB070 l40000000000DADC0
 l40000000000DADC0:
-	v27 = SLICE(0x43<64>, word32, 0)
-	v28 = SLICE(r14, word32, 0)
-	p07 = v27 == v28
-	p06 = v27 != v28
+	v26 = SLICE(0x43<64>, word32, 0)
+	v27 = SLICE(r14, word32, 0)
+	p07 = v26 == v27
+	p06 = v26 != v27
 	branch !p07 l40000000000DADD0
 	// succ:  l40000000000DADCC_3 l40000000000DADD0
 l40000000000DADCC_3:
 	// succ:  l40000000000DB330 l40000000000DADD0
 l40000000000DADD0:
-	v29 = SLICE(0x4D<64>, word32, 0)
-	v30 = SLICE(r14, word32, 0)
-	p07 = v29 == v30
-	p06 = v29 != v30
+	v28 = SLICE(0x4D<64>, word32, 0)
+	v29 = SLICE(r14, word32, 0)
+	p07 = v28 == v29
+	p06 = v28 != v29
 	branch !p07 l40000000000DADE0
 	// succ:  l40000000000DADDC_4 l40000000000DADE0
 l40000000000DADDC_4:
 	// succ:  l40000000000DB1B0 l40000000000DADE0
 l40000000000DADE0:
-	v31 = SLICE(0x4E<64>, word32, 0)
-	v32 = SLICE(r14, word32, 0)
-	p07 = v31 == v32
-	p06 = v31 != v32
+	v30 = SLICE(0x4E<64>, word32, 0)
+	v31 = SLICE(r14, word32, 0)
+	p07 = v30 == v31
+	p06 = v30 != v31
 	branch !p06 l40000000000DADF0
 	// succ:  l40000000000DADEC_5 l40000000000DADF0
 l40000000000DADEC_5:
 	// succ:  l40000000000DB400 l40000000000DADF0
 l40000000000DADF0:
 	r14 = r32 + 4<64>
-	v33 = Mem0[r14:byte]
-	r14 = CONVERT(v33, byte, word64)
-	v34 = SLICE(r14, int8, 0)
-	r14 = CONVERT(v34, int8, int64)
-	v35 = SLICE(0x55<64>, word32, 0)
-	v36 = SLICE(r14, word32, 0)
-	p07 = v35 == v36
-	p06 = v35 != v36
+	v32 = Mem0[r14:byte]
+	r14 = CONVERT(v32, byte, word64)
+	v33 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v33, int8, int64)
+	v34 = SLICE(0x55<64>, word32, 0)
+	v35 = SLICE(r14, word32, 0)
+	p07 = v34 == v35
+	p06 = v34 != v35
 	branch !p07 l40000000000DAE20
 	// succ:  l40000000000DAE1C_6 l40000000000DAE20
 l40000000000DAE1C_6:
@@ -5314,7 +6056,7 @@ l40000000000DAE70:
 l40000000000DAE8C_2:
 	// succ:  l40000000000DAEB0 l40000000000DAE90
 l40000000000DAE90:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DAEB0
 l40000000000DAEB0:
@@ -5332,14 +6074,14 @@ l40000000000DAEC6:
 l40000000000DAECC_2:
 	// succ:  l40000000000DAF20 l40000000000DAED0
 l40000000000DAED0:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r33 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DAF20
 l40000000000DAF20:
@@ -5360,7 +6102,7 @@ l40000000000DAF40:
 l40000000000DAF5C_1:
 	// succ:  l40000000000DAF80 l40000000000DAF60
 l40000000000DAF60:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DAF80
 l40000000000DAF80:
@@ -5378,14 +6120,14 @@ l40000000000DAF96:
 l40000000000DAF9C_2:
 	// succ:  l40000000000DAFF0 l40000000000DAFA0
 l40000000000DAFA0:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r33 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DAFF0
 l40000000000DAFF0:
@@ -5414,7 +6156,7 @@ l40000000000DB03C_2:
 l40000000000DB040:
 	r42 = r8 + 0<64>
 	r35 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001C080 (retsize: 0;)
 	r8 = r35 + 0<64>
 	r1 = r40 + 0<64>
 	ar.pfs = r39
@@ -5431,7 +6173,7 @@ l40000000000DB070:
 l40000000000DB08C_1:
 	// succ:  l40000000000DB0B0 l40000000000DB090
 l40000000000DB090:
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DB0B0
 l40000000000DB0B0:
@@ -5443,14 +6185,14 @@ l40000000000DB0B0:
 l40000000000DB0BC_1:
 	// succ:  l40000000000DB4C0 l40000000000DB0C0
 l40000000000DB0C0:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 1<64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r33 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	v61 = Mem0[r8:byte]
 	r14 = CONVERT(v61, byte, word64)
 	Mem0[r8:word64] = r35
@@ -5469,7 +6211,7 @@ l40000000000DB0C0:
 l40000000000DB13C_2:
 	// succ:  l40000000000DB4F0 l40000000000DB140
 l40000000000DB140:
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	p09 = 0<64> == r8
 	p08 = 0<64> != r8
 	p06 = 0<64> == r8
@@ -5492,7 +6234,7 @@ l40000000000DB16C:
 l40000000000DB176_5:
 	// succ:  l40000000000DB520 l40000000000DB17C
 l40000000000DB17C:
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r40 + 0<64>
 	// succ:  l40000000000DB190
 l40000000000DB190:
@@ -5540,11 +6282,11 @@ l40000000000DB21C_3:
 l40000000000DB220:
 	r41 = r1 + -4100<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = 0<64> + 5<i64>
 	r42 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	// succ:  l40000000000DB280
@@ -5571,16 +6313,16 @@ l40000000000DB2B0:
 	r43 = 0<64> + 5<i64>
 	r41 = 0<64> + 0<64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r34 = r8 + 0<64>
 	r41 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r43 = r8 + 0<64>
 	r41 = r34 + 0<64>
 	r42 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call internal_warning (retsize: 0;)
 	r8 = r35 + 0<64>
 	r1 = r40 + 0<64>
 	ar.pfs = r39
@@ -5635,11 +6377,11 @@ l40000000000DB3AC_4:
 l40000000000DB3B0:
 	r41 = r1 + -4108<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = 0<64> + 3<i64>
 	r42 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	goto l40000000000DB280
@@ -5692,27 +6434,27 @@ l40000000000DB46C_4:
 l40000000000DB470:
 	r41 = r1 + -4084<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = 0<64> + 2<i64>
 	r42 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	goto l40000000000DB280
 	// succ:  l40000000000DB280
 l40000000000DB4C0:
 	r41 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	Mem0[r8:word64] = r35
 	Mem0[r0:byte] = SLICE(r8, byte, 0)
 	// succ:  l40000000000DB4F0
 l40000000000DB4F0:
-	call b0 (retsize: 0;)
+	call fn40000000000DA980 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r40 + 0<64>
 	goto l40000000000DB190
 	// succ:  l40000000000DB190
@@ -5732,13 +6474,13 @@ l40000000000DB540:
 	r43 = 0<64> + 5<i64>
 	r41 = 0<64> + 0<64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r36 + 0<64>
-	call b0 (retsize: 0;)
+	call internal_warning (retsize: 0;)
 	r1 = r40 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r40 + 0<64>
 	goto l40000000000DB190
 	// succ:  l40000000000DB190
@@ -5767,11 +6509,11 @@ l40000000000DB5DC_2:
 l40000000000DB5E0:
 	r41 = r1 + -4092<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = 0<64> + 1<i64>
 	r42 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	goto l40000000000DB280
@@ -5801,14 +6543,14 @@ l40000000000DB66C_2:
 l40000000000DB670:
 	r41 = r1 + -4116<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = 0<64> + 0<64>
 	r42 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001BC80 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r40 + 0<64>
 	goto l40000000000DB280
 	// succ:  l40000000000DB280
@@ -5818,22 +6560,22 @@ l40000000000DB6D0:
 	r41 = 0<64> + 0<64>
 	r35 = 0<64> + 0<64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r37 = r8 + 0<64>
 	r41 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	r36 = r8 + 0<64>
 	v69 = Mem0[r34:word32]
 	r41 = CONVERT(v69, word32, word64)
-	call b0 (retsize: 0;)
+	call fn400000000001B4A0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r44 = r8 + 0<64>
 	r41 = r37 + 0<64>
 	r42 = r32 + 0<64>
 	r43 = r36 + 0<64>
-	call b0 (retsize: 0;)
+	call internal_warning (retsize: 0;)
 	r8 = r35 + 0<64>
 	r1 = r40 + 0<64>
 	ar.pfs = r39
@@ -5845,19 +6587,19 @@ l40000000000DB780:
 	r43 = 0<64> + 5<i64>
 	r41 = 0<64> + 0<64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r37 = r8 + 0<64>
 	v74 = Mem0[r34:word32]
 	r41 = CONVERT(v74, word32, word64)
-	call b0 (retsize: 0;)
+	call fn400000000001B4A0 (retsize: 0;)
 	r1 = r40 + 0<64>
 	r41 = r37 + 0<64>
 	r42 = r36 + 0<64>
 	r43 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call internal_warning (retsize: 0;)
 	r1 = r40 + 0<64>
-	call b0 (retsize: 0;)
+	call fn40000000000D9F00 (retsize: 0;)
 	r1 = r40 + 0<64>
 	goto l40000000000DB190
 	// succ:  l40000000000DB190
@@ -5879,14 +6621,14 @@ l40000000000DB800:
 	r34 = Mem0[r34:word64]
 	r32 = Mem0[r32:word64]
 	r38 = r34 + 0<64>
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r34 + 0<64>
 	r39 = r8 + 0<64>
-	call b0 (retsize: 0;)
+	call set_locale_var (retsize: 0;)
 	r1 = r37 + 0<64>
 	r38 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call get_string_value (retsize: 0;)
 	r1 = r37 + 0<64>
 	r33 = r8 + 0<64>
 	b0 = r35
@@ -5955,7 +6697,7 @@ l40000000000DB930:
 l40000000000DB950:
 	r41 = r1 + -4100<i64>
 	r41 = Mem0[r41:word64]
-	call b0 (retsize: 0;)
+	call get_locale_var (retsize: 0;)
 	r1 = r40 + 0<64>
 	p06 = 0<64> == r8
 	p07 = 0<64> != r8
@@ -6020,12 +6762,12 @@ l40000000000DBA00:
 	r41 = r33 + 1<64>
 	v37 = SLICE(r41, int32, 0)
 	r41 = CONVERT(v37, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	p07 = 0<64> == r34
 	p06 = 0<64> != r34
@@ -6046,7 +6788,7 @@ l40000000000DBAA0:
 	r42 = r1 + -4012<i64>
 	r41 = r8 + 0<64>
 	r42 = Mem0[r42:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001A540 (retsize: 0;)
 	r1 = r40 + 0<64>
 	v44 = SLICE(0<64>, word32, 0)
 	v45 = SLICE(r8, word32, 0)
@@ -6062,12 +6804,12 @@ l40000000000DBAE0:
 	r41 = r33 + 1<64>
 	v39 = SLICE(r41, int32, 0)
 	r41 = CONVERT(v39, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	p06 = 0<64> == r34
 	p07 = 0<64> != r34
@@ -6082,7 +6824,7 @@ l40000000000DBB30:
 l40000000000DBB40:
 	r42 = r32 + 0<64>
 	r43 = 0<64> + 5<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001AB60 (retsize: 0;)
 	r41 = r8 + 0<64>
 	p06 = r8 == r32
 	p07 = r8 != r32
@@ -6093,18 +6835,18 @@ l40000000000DBB40:
 l40000000000DBB6C_1:
 	// succ:  l40000000000DBA00 l40000000000DBB70
 l40000000000DBB70:
-	call b0 (retsize: 0;)
+	call fn400000000001B6C0 (retsize: 0;)
 	r41 = r8 + 1<64>
 	r1 = r40 + 0<64>
 	r36 = r8 + 0<64>
 	v43 = SLICE(r41, int32, 0)
 	r41 = CONVERT(v43, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r37 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	p06 = 0<64> == r34
 	p07 = 0<64> != r34
 	r8 = r35 + 0<64>
@@ -6137,12 +6879,12 @@ l40000000000DBC20:
 	r41 = r33 + 1<64>
 	v50 = SLICE(r41, int32, 0)
 	r41 = CONVERT(v50, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r1 = r40 + 0<64>
 	r35 = r8 + 0<64>
 	r41 = r8 + 0<64>
 	r42 = r32 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001B180 (retsize: 0;)
 	r1 = r40 + 0<64>
 	p06 = 0<64> == r34
 	p07 = 0<64> != r34
@@ -6246,7 +6988,7 @@ l40000000000DBD40:
 	r38 = CONVERT(v40, int32, int64)
 	// succ:  l40000000000DBD50
 l40000000000DBD50:
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r15 = 0<64> + 34<i64>
 	r14 = r8 + 0<64>
 	r17 = r32 + 1<64>
@@ -6396,7 +7138,7 @@ l40000000000DBF10:
 	// succ:  l40000000000DBE00
 l40000000000DBF20:
 	r38 = 0<64> + 3<i64>
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r14 = r8 + 0<64>
 	r15 = 0<64> + 34<i64>
 	r1 = r36 + 0<64>
@@ -6431,7 +7173,7 @@ l40000000000DBF80:
 	r43 = LC
 	v17 = SLICE(r44, int32, 0)
 	r44 = CONVERT(v17, int32, int64)
-	call b0 (retsize: 0;)
+	call xmalloc (retsize: 0;)
 	r17 = r33 - r34
 	r15 = r8 + 0<64>
 	v21 = SLICE(r33, int32, 0)
@@ -6503,7 +7245,7 @@ l40000000000DC0B0:
 	r45 = r12 + 0x10<64>
 	r44 = r38 + 0<64>
 	Mem0[r0:word32] = SLICE(r45, word32, 0)
-	call b0 (retsize: 0;)
+	call mk_msgstr (retsize: 0;)
 	r15 = r12 + 0x10<64>
 	r1 = r42 + 0<64>
 	r37 = r8 + 0<64>
@@ -6537,7 +7279,7 @@ l40000000000DC110_6:
 	r39 = Mem0[r39:word64]
 	// succ:  l40000000000DC116
 l40000000000DC116:
-	call b0 (retsize: 0;)
+	call yy_input_name (retsize: 0;)
 	r1 = r42 + 0<64>
 	r47 = r35 + 0<64>
 	r46 = r8 + 0<64>
@@ -6546,10 +7288,10 @@ l40000000000DC116:
 	r44 = 0<64> + 1<i64>
 	r45 = r1 + -3996<i64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001BB80 (retsize: 0;)
 	r1 = r42 + 0<64>
 	r44 = r37 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	p06 = 0<64> == r36
 	p07 = 0<64> != r36
 	r1 = r42 + 0<64>
@@ -6603,7 +7345,7 @@ l40000000000DC210:
 	r44 = 0<64> + 1<i64>
 	r46 = r38 + 0<64>
 	r45 = Mem0[r45:word64]
-	call b0 (retsize: 0;)
+	call fn400000000001BB80 (retsize: 0;)
 	p06 = 0<64> == r36
 	p07 = 0<64> != r36
 	r1 = r42 + 0<64>
@@ -6619,11 +7361,11 @@ l40000000000DC250:
 	r44 = r38 + 0<64>
 	r45 = r33 + 0<64>
 	r46 = r37 + 0<64>
-	call b0 (retsize: 0;)
+	call localetrans (retsize: 0;)
 	r44 = r38 + 0<64>
 	r39 = r8 + 0<64>
 	r1 = r42 + 0<64>
-	call b0 (retsize: 0;)
+	call fn400000000001A7E0 (retsize: 0;)
 	p06 = 0<64> == r36
 	p07 = 0<64> != r36
 	r1 = r42 + 0<64>
@@ -6657,6 +7399,63 @@ l40000000000DC2F0:
 localeexpand_exit:
 
 
+// fn40000000000DC300
+// Return size: 0
+define fn40000000000DC300
+fn40000000000DC300_entry:
+	r11 = fp
+	// succ:  l40000000000DC300
+l40000000000DC300:
+	r35 = ar.pfs
+	r34 = b2
+	r36 = r1 + 0<64>
+	r38 = r33 + 0<64>
+	r37 = r32 + 0<64>
+	call extract_colon_unit (retsize: 0;)
+	r1 = r36 + 0<64>
+	p06 = 0<64> == r8
+	p07 = 0<64> != r8
+	branch !p06 l40000000000DC340
+	// succ:  l40000000000DC33C_1 l40000000000DC340
+l40000000000DC33C_1:
+	// succ:  l40000000000DC360 l40000000000DC340
+l40000000000DC340:
+	v17 = Mem0[r8:byte]
+	r14 = CONVERT(v17, byte, word64)
+	v19 = SLICE(r14, int8, 0)
+	r14 = CONVERT(v19, int8, int64)
+	v20 = SLICE(0<64>, word32, 0)
+	v21 = SLICE(r14, word32, 0)
+	p07 = v20 == v21
+	p06 = v20 != v21
+	branch !p07 l40000000000DC360
+	// succ:  l40000000000DC35C_2 l40000000000DC360
+l40000000000DC35C_2:
+	// succ:  l40000000000DC380 l40000000000DC360
+l40000000000DC360:
+	ar.pfs = r35
+	b0 = r34
+	return
+	// succ:  fn40000000000DC300_exit
+l40000000000DC380:
+	r37 = r8 + 0<64>
+	call fn400000000001A7E0 (retsize: 0;)
+	r1 = r36 + 0<64>
+	r37 = 0<64> + 2<i64>
+	call xmalloc (retsize: 0;)
+	r14 = r8 + 0<64>
+	r15 = 0<64> + 46<i64>
+	r1 = r36 + 0<64>
+	ar.pfs = r35
+	Mem0[r14:byte] = SLICE(r1, byte, 0)
+	r14 = r14 + 1<i64>
+	b0 = r34
+	Mem0[r0:byte] = SLICE(r14, byte, 0)
+	return
+	// succ:  fn40000000000DC300_exit
+fn40000000000DC300_exit:
+
+
 // file_status
 // Return size: 0
 define file_status
@@ -6672,11 +7471,11 @@ l40000000000DC400:
 	r39 = r12 + 0x10<64>
 	r37 = 0<64> + 1<i64>
 	r33 = 0<64> + 17<i64>
-	call b0 (retsize: 0;)
-	v18 = SLICE(r8, word32, 0)
-	v19 = SLICE(0<64>, word32, 0)
-	p06 = v18 < v19
-	p07 = v18 >= v19
+	call fn400000000001AFE0 (retsize: 0;)
+	v17 = SLICE(r8, word32, 0)
+	v18 = SLICE(0<64>, word32, 0)
+	p06 = v17 < v18
+	p07 = v17 >= v18
 	r14 = r12 + 0x28<64>
 	r1 = r36 + 0<64>
 	branch !p06 l40000000000DC446
@@ -6690,15 +7489,15 @@ l40000000000DC446:
 l40000000000DC44C_2:
 	// succ:  l40000000000DC480 l40000000000DC450
 l40000000000DC450:
-	v23 = Mem0[r14:word32]
-	r15 = CONVERT(v23, word32, word64)
+	v22 = Mem0[r14:word32]
+	r15 = CONVERT(v22, word32, word64)
 	r14 = 0<64> + 61440<i64>
 	r15 = r15 & r14
 	r14 = 0<64> + 16384<i64>
-	v25 = SLICE(r14, word32, 0)
-	v26 = SLICE(r15, word32, 0)
-	p06 = v25 == v26
-	p07 = v25 != v26
+	v24 = SLICE(r14, word32, 0)
+	v25 = SLICE(r15, word32, 0)
+	p06 = v24 == v25
+	p07 = v24 != v25
 	branch !p07 l40000000000DC480
 	// succ:  l40000000000DC47C_3 l40000000000DC480
 l40000000000DC47C_3:
@@ -6713,7 +7512,7 @@ l40000000000DC480:
 l40000000000DC4A0:
 	r37 = r32 + 0<64>
 	r38 = 0<64> + 1<i64>
-	call b0 (retsize: 0;)
+	call fn400000000001AB80 (retsize: 0;)
 	v27 = SLICE(0<64>, word32, 0)
 	v28 = SLICE(r8, word32, 0)
 	p06 = v27 == v28
@@ -6733,7 +7532,7 @@ l40000000000DC4D0_2:
 	r33 = 0<64> + 3<i64>
 	// succ:  l40000000000DC4D6
 l40000000000DC4D6:
-	call b0 (retsize: 0;)
+	call fn400000000001AB80 (retsize: 0;)
 	v29 = SLICE(0<64>, word32, 0)
 	v30 = SLICE(r8, word32, 0)
 	p07 = v29 == v30

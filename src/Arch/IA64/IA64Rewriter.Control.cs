@@ -26,7 +26,7 @@ public partial class IA64Rewriter
 {
     private void RewriteBr_call(IA64Instruction instr)
     {
-        var target = ReadOp(instr, 0);
+        var target = ReadOp(instr, 1);
         m.Call(target, 0);
     }
 
