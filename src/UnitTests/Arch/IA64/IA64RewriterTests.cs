@@ -146,7 +146,7 @@ public class IA64RewriterTests : RewriterTestBase
             "2|L--|0000000000100006(6): 1 instructions",
             "3|L--|nop",
             "4|T--|000000000010000C(4): 1 instructions",
-            "5|T--|call b0 (0)");
+            "5|T--|call 000000000011E6E0 (0)");
     }
 
     [Test]
@@ -1027,7 +1027,7 @@ public class IA64RewriterTests : RewriterTestBase
             "2|L--|0000000000100006(6): 1 instructions",
             "3|L--|r34 = __mix_l<word32>(r34, r14)",
             "4|T--|000000000010000C(4): 1 instructions",
-            "5|T--|call b0 (0)");
+            "5|T--|call 00000000000FEF60 (0)");
     }
 
     [Test]
@@ -1257,7 +1257,7 @@ public class IA64RewriterTests : RewriterTestBase
             "3|L--|0000000000100006(6): 1 instructions",
             "4|L--|nop",
             "5|T--|000000000010000C(4): 1 instructions",
-            "6|T--|call b0 (0)");
+            "6|T--|call 0000000000024680 (0)");
     }
 
     [Test]
@@ -1270,7 +1270,7 @@ public class IA64RewriterTests : RewriterTestBase
             "2|L--|0000000000100006(6): 1 instructions",
             "3|L--|nop",
             "4|T--|000000000010000C(4): 1 instructions",
-            "5|T--|call b0 (0)");
+            "5|T--|call 00000000000DBD20 (0)");
     }
 
     [Test]
@@ -1379,7 +1379,7 @@ public class IA64RewriterTests : RewriterTestBase
             "3|L--|p16 = !__is_nat(r33)",
             "4|L--|p17 = __is_nat(r33)",
             "5|T--|000000000010000C(4): 1 instructions",
-            "6|T--|call b0 (0)");
+            "6|T--|call 00000000000FFAC0 (0)");
     }
 
     [Test]
