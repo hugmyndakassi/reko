@@ -211,7 +211,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             {
                 addrAnchor = addr;
             }
-            SelectedAddress = addr;
+            this.addrSelected = addr;
             Invalidate();
             OnSelectionChanged();
         }
@@ -487,7 +487,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                     return;
                 trace.Verbose($"Setting SelectedAddress to {value}");
                 this.addrSelected = value;
-                addrAnchor = value;
+                this.addrAnchor = value;
                 var seg = GetSegmentFromAddress(value.Value);
                 if (seg is not null)
                 {

@@ -326,12 +326,13 @@ public class HexViewControl : Control, ILogicalScrollable
         get { return addrSelected; }
         set
         {
+            var segOld = GetSegmentFromAddress(addrSelected);
+            var segNew = GetSegmentFromAddress(value);
             if (!this.SetAndRaise(SelectedAddressProperty, ref addrSelected, value))
                 return;
-            var seg = GetSegmentFromAddress(value);
-            if (seg is not null)
+            if (segNew is not null && (segOld is null || segOld != segNew))
             {
-                ChangeMemoryArea(seg);
+                ChangeMemoryArea(segNew);
             }
             InvalidateVisual();
         }
@@ -606,7 +607,7 @@ public class HexViewControl : Control, ILogicalScrollable
         if (!mem.IsValidLinearAddress(linAddr))
             return;
         Address addr = segmentMap.MapLinearAddressToAddress(linAddr);
-        if (!IsVisibleAddress(SelectedAddress.Value))
+        if (!IsVisibleAddress(addr))
         {
             Address newTopAddress = addrTop.Value + offset;
             if (mem.IsValidAddress(newTopAddress))
@@ -777,8 +778,7 @@ public class HexViewControl : Control, ILogicalScrollable
 
     public override void Render(DrawingContext context)
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
+        Stopwatch sw = Stopwatch.StartNew();
         base.Render(context);
         if (mem is null || segmentMap is null || imageMap is null || arch is null ||
             MemoryArea is null || BytesWidth <= 0)
