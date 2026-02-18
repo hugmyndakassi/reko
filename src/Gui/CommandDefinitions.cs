@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 
 namespace Reko.Gui
 {
@@ -185,8 +186,8 @@ namespace Reko.Gui
             new CmdDefinition { id = CmdIds.ShowCallGraphNavigator, cmdSet = Reko, container = GroupIds.GrpProcedure, text = "Show Call _Graph Navigator" },
             new CmdDefinition { id = CmdIds.ProcedureDebugTrace, cmdSet = Reko, container = GroupIds.GrpProcedureListDebug, text = "_Debug procedure decompilation" },
 
-            new CmdDefinition { id = CmdIds.CollapseAllNodes, cmdSet = Reko, container = GroupIds.GrpBrowserToolbar, imageKey = "Collapse.ico", tip = "Collapse All" },
-            new CmdDefinition { id = CmdIds.EditSegments, cmdSet = Reko, container = GroupIds.GrpBrowserToolbar, imageKey = "CreateSegment.ico", tip = "Edit Segments..." },
+            new CmdDefinition { id = CmdIds.CollapseAllNodes, cmdSet = Reko, container = GroupIds.GrpBrowserToolbar, imageKey = "Collapse.ico", text = "", tip = "Collapse All" },
+            new CmdDefinition { id = CmdIds.EditSegments, cmdSet = Reko, container = GroupIds.GrpBrowserToolbar, imageKey = "CreateSegment.ico", text = "", tip = "Edit Segments..." },
 
             new CmdDefinition { id = CmdIds.LoadSymbols, cmdSet = Reko, container = GroupIds.GrpBrowser, text = "Load Symbols..." },
         };
@@ -285,6 +286,7 @@ namespace Reko.Gui
         public int priority;
     }
 
+    [DebuggerDisplay("{text} ({id} {imageKey})")]
     public class CmdDefinition
     {
         public CmdIds id;
