@@ -97,7 +97,7 @@ namespace Reko.UnitTests.Arch.X86.Assembler
                 {
                     var bmem = (ByteMemoryArea) segment.MemoryArea;
                     var formatter = new TextFormatter(fut.TextWriter);
-                    dumper.DumpData(program.Architecture, bmem, bmem.BaseAddress, bmem.Length, formatter);
+                    dumper.DumpData(program.Architecture, bmem, bmem.BaseAddress, bmem.Length, true, formatter);
                     fut.TextWriter.WriteLine();
                     dumper.DumpAssembler(program.Architecture, bmem, bmem.BaseAddress, bmem.Length, formatter);
                     if (program.ImportReferences.Count > 0)
@@ -141,7 +141,7 @@ hello	endp
 			{
 				var arch = new X86ArchitectureReal(sc, "x86-real-16", new Dictionary<string, object>());
 				var d = new Dumper(program);
-				d.DumpData(arch, segment.MemoryArea, segment.Address, segment.ContentSize, new TextFormatter(fut.TextWriter));
+				d.DumpData(arch, segment.MemoryArea, segment.Address, segment.ContentSize, true, new TextFormatter(fut.TextWriter));
 				fut.AssertFilesEqual();
 			}
 		}
@@ -252,7 +252,7 @@ foo		endp
 				Dumper dump = new Dumper(program);
                 var arch = program.Architecture;
                 var mem = program.SegmentMap.Segments.Values.First().MemoryArea;
-				dump.DumpData(arch, mem, mem.BaseAddress, mem.Length, new TextFormatter(fut.TextWriter));
+				dump.DumpData(arch, mem, mem.BaseAddress, mem.Length, true, new TextFormatter(fut.TextWriter));
 				fut.AssertFilesEqual();
 			}
 		}

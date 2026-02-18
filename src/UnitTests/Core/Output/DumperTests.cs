@@ -300,6 +300,7 @@ l00010004		db	0x04
             var item = new ImageMapItem(addr, 90);
             program.ImageMap.AddItem(item.Address, item);
             var dmp = new Dumper(program);
+            dmp.CondenseZeroLines = true;
             var sw = new StringWriter();
             dmp.Dump(new TextFormatter(sw));
 
@@ -484,6 +485,7 @@ fn00010020 proc
                 mem,
                 mem.BaseAddress + 2,
                 0x2C,
+                true,
                 new TextFormatter(sw));
 
             var sExp =
@@ -523,6 +525,7 @@ fn00010020 proc
                 mem,
                 mem.BaseAddress + 1,
                 0x0D,
+                true,
                 new TextFormatter(sw));
 
             var sExp =

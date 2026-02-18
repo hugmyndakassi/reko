@@ -46,6 +46,14 @@ namespace Reko.Core.Output
 		}
 
         /// <summary>
+        /// If true, consecutive
+        /// lines with the same zero bytes are condensed to a single line
+        /// with an ellipsis. Otherwise, zero-filled lines will be rendered
+        /// like any other lines.
+        /// </summary>
+        public bool CondenseZeroLines { get; set; }
+
+        /// <summary>
         /// If true, the disassembler will render instructions in a canonical form.
         /// If false, pseudoinstructions will be rendered where possible.
         /// </summary>
@@ -227,7 +235,7 @@ namespace Reko.Core.Output
         {
             if (!map.TryFindSegment(address, out var segment) || segment.MemoryArea is null)
                 return;
-            DumpData(arch, segment.MemoryArea, address, cUnits, formatter);
+            DumpData(arch, segment.MemoryArea, address, cUnits, CondenseZeroLines, formatter);
         }
 
         /// <summary>
@@ -237,12 +245,18 @@ namespace Reko.Core.Output
         /// <param name="mem">Memory area to render.</param>
         /// <param name="address">Starting address.</param>
         /// <param name="cUnits">Number of storage units to dump.</param>
+        /// <param name="condenseZeroLines">If true, consecutive
+        /// lines with the same zero bytes are condensed to a single line
+        /// with an ellipsis. Otherwise, zero-filled lines will be rendered
+        /// like any other lines.
+        /// </param>
         /// <param name="formatter">Output sink.</param>
         public void DumpData(
             IProcessorArchitecture arch,
             MemoryArea mem,
             Address address,
             long cUnits,
+            bool condenseZeroLines,
             Formatter formatter)
         {
             long offset = address - mem.BaseAddress;
@@ -250,7 +264,7 @@ namespace Reko.Core.Output
                 return;
 			var rdr = arch.CreateImageReader(mem, address, cUnits);
             var memfmt = mem.Formatter;
-            var output = new TextMemoryFormatterOutput(formatter);
+            var output = new TextMemoryFormatterOutput(formatter, condenseZeroLines);
 
             //try
             {

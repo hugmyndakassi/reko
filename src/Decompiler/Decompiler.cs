@@ -217,6 +217,7 @@ namespace Reko
                     ShowAddresses = program.User.ShowAddressesInDisassembly,
                     ShowCodeBytes = program.User.ShowBytesInDisassembly,
                     RenderInstructionsCanonically = program.User.RenderInstructionsCanonically,
+                    CondenseZeroLines = true,
                 };
                 dump.Dump(segmentItems, wr);
             } 

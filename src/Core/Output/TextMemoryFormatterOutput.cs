@@ -33,15 +33,23 @@ namespace Reko.Core.Output
         private readonly StringBuilder sb = new StringBuilder(0x12);
         private readonly StringBuilder sbHex = new StringBuilder();
         private Constant[]? prevLine = null;
-        private bool showEllipsis = true;
+        private bool showEllipsis;
+        private bool condenseZeroLines;
 
         /// <summary>
         /// Constructs an instance of <see cref="TextMemoryFormatterOutput"/>.
         /// </summary>
         /// <param name="formatter">Output sink.</param>
-        public TextMemoryFormatterOutput(Formatter formatter)
+        /// <param name="condenseZeroLines">If true, consecutive
+        /// lines with the same zero bytes are condensed to a single line
+        /// with an ellipsis. Otherwise, zero-filled lines will be rendered
+        /// like any other lines.
+        /// </param>
+        public TextMemoryFormatterOutput(Formatter formatter, bool condenseZeroLines)
         {
             this.stm = formatter;
+            this.condenseZeroLines = condenseZeroLines;
+            this.showEllipsis = true;
         }
 
         /// <inheritdoc/>
@@ -86,20 +94,20 @@ namespace Reko.Core.Output
         /// <inheritdoc/>
         public void EndLine(Constant[] chunks)
         {
-            if (!HaveSameZeroBytes(prevLine, chunks))
-            {
-                stm.Write(sbHex.ToString());
-                stm.Write(' ');
-                stm.WriteLine(sb.ToString());
-                showEllipsis = true;
-            }
-            else
+            if (condenseZeroLines && HaveSameZeroBytes(prevLine, chunks))
             {
                 if (showEllipsis)
                 {
                     stm.WriteLine("; ...");
                     showEllipsis = false;
                 }
+            }
+            else
+            {
+                stm.Write(sbHex.ToString());
+                stm.Write(' ');
+                stm.WriteLine(sb.ToString());
+                showEllipsis = true;
             }
             prevLine = chunks;
             sbHex.Clear();

@@ -4283,7 +4283,7 @@ string filename, data;
             var memfmt = mem.Formatter;
             var sw = new StringWriter();
             var stm = new TextFormatter(sw);
-            var output = new TextMemoryFormatterOutput(stm);
+            var output = new TextMemoryFormatterOutput(stm, true);
 
             memfmt.RenderMemory(rdr, System.Text.Encoding.ASCII, output);
 
