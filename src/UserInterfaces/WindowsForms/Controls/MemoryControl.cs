@@ -52,6 +52,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
     public class MemoryControl : Control
     {
         public event EventHandler<SelectionChangedEventArgs> SelectionChanged;
+
         private static readonly TraceSwitch trace = new TraceSwitch(nameof(MemoryControl), "Memory control UI");
         private static readonly TraceSwitch tracePaint = new TraceSwitch(nameof(MemoryControlPainter), "Memory control painting operations");
 
@@ -70,6 +71,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
         private Address? addrAnchor;
         private Address addrMin;
         private ulong memSize;
+        private Timer autoscrollTimer;
 
         private int cRows;              // total number of rows.
         private int yTopRow;            // index of topmost visible row
@@ -77,7 +79,6 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
         private Size cellSize;          // size of cell in pixels.
         private Point ptDown;            // point at which mouse was clicked.
         private VScrollBar vscroller;
-
         private bool isMouseClicked;
         private bool isDragging;
         private bool isTextSideSelected;
@@ -95,6 +96,10 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             wordSize = 1;
             cbRow = 16;
             encoding = Encoding.ASCII;
+            autoscrollTimer = new Timer();
+            autoscrollTimer.Interval = 100;
+            autoscrollTimer.Tick += autoscrollTimer_Tick;
+            autoscrollTimer.Stop();
         }
 
         protected override void Dispose(bool disposing)
@@ -281,6 +286,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             isDragging = true;
             Capture = true;
             AffectSelection(e);
+            autoscrollTimer.Start();
             base.OnMouseMove(e);
         }
 
@@ -290,6 +296,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             {
                 Capture = false;
             }
+            autoscrollTimer.Stop();
             isMouseClicked = false;
             if (mem is not null)
             {
@@ -590,6 +597,61 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             }
         }
 
+        private void autoscrollTimer_Tick(object sender, EventArgs e)
+        {
+            if (!Capture)
+            {
+                autoscrollTimer.Stop();
+                return;
+            }
+            var pt = PointToClient(Cursor.Position);
+            if (HoveringAbove(pt))
+            {
+                this.DoScroll(-cbRow, pt, 2);
+            }
+            else if (HoveringBelow(pt))
+            {
+                this.DoScroll(cbRow, pt, this.Height - 2);
+            }
+        }
+
+        private void DoScroll(long offset, Point ptCursor, int y)
+        {
+            Address newTopAddress = TopAddress.Value + offset;
+            if (!mem.IsValidAddress(newTopAddress))
+                return;     // Reached an extreme; done scrolling
+            // Bound the X coordinate to the client area, with a
+            // // 2 pixel safety margin.
+            var x = Bound(2, ptCursor.X, this.Width - 2);
+            using (Graphics g = this.CreateGraphics())
+            {
+                var (addrClicked, textSide) = mcp.PaintWindow(g, cellSize, new Point(x, y), false);
+                if (addrClicked is null)
+                    return;
+                this.addrSelected = addrClicked;
+            }
+            TopAddress = newTopAddress;
+        }
+
+        private static int Bound(int min, int val, int max)
+        {
+            if (val < min)
+                return min;
+            if (val > max)
+                return max;
+            return val;
+        }
+
+        private bool HoveringAbove(Point pt)
+        {
+            return pt.Y < 0;
+        }
+
+        private bool HoveringBelow(Point pt)
+        {
+            return pt.Y >= Height;
+        }
+
         [SupportedOSPlatform("windows")]
         public class MemoryControlPainter
         {
@@ -865,9 +927,9 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
                         {
                             var pts = new Point[]
                             {
-                            rc.Location,
-                            rc.Location,
-                            rc.Location,
+                                rc.Location,
+                                rc.Location,
+                                rc.Location,
                             };
                             pts[1].Offset(4, 0);
                             pts[2].Offset(0, 4);
