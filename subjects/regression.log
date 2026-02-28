@@ -484,11 +484,7 @@ Relocations
                                                             Rewriting procedures. [Done]
 finish: error: An error occurred while renaming variables.
     The given key 'l004028A8' was not present in the dictionary.
-       at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
-   at Reko.Analysis.SsaLivenessAnalysis.LiveOutAtBlock(Block block, SsaIdentifier sid) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 214
-   at Reko.Analysis.SsaLivenessAnalysis.BuildInterferenceGraph(SsaIdentifierCollection ssaIds) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 114
-   at Reko.Analysis.SsaLivenessAnalysis..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 76
-   at Reko.Analysis.LiveCopyInserter..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 50
+       at Reko.Analysis.SsaLivenessAnalysis.BuildInterferenceGraph(SsaIdentifierCollection ssaIds) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 114
    at Reko.Analysis.WebBuilder.Worker.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\WebBuilder.cs:line 119
                                                             Building expressions. [Done]
                                                             Gathering primitive datatypes from instructions. [Done]
@@ -891,7 +887,7 @@ safe_read: error: An error occurred while rewriting procedure to high-level lang
    at Reko.Structure.CompoundConditionCoalescer.MaybeCoalesce(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 100
    at Reko.Structure.CompoundConditionCoalescer.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 66
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
-   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 722
+   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
                                                             Rewriting procedures to high-level language. [Done]
 00017540: warning: Expected sizes of arrays to have been determined by now
 0002B411: warning: Expected sizes of arrays to have been determined by now
@@ -1452,7 +1448,7 @@ fn00000000: error: An error occurred while rewriting procedure to high-level lan
    at Reko.Structure.StructureAnalysis.ReduceCyclic(Region n) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 1079
    at Reko.Structure.StructureAnalysis.Execute() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 174
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 91
-   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 722
+   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
                                                             Rewriting procedures to high-level language. [Done]
 00003CA8: warning: Expected sizes of arrays to have been determined by now
 000100B8: warning: Expected sizes of arrays to have been determined by now
@@ -2040,7 +2036,7 @@ fn0001B2AC: error: An error occurred while rewriting procedure to high-level lan
    at Reko.Structure.CompoundConditionCoalescer.MaybeCoalesce(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 100
    at Reko.Structure.CompoundConditionCoalescer.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 66
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
-   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 722
+   at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
 fn0001B2CC: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
                                                             Rewriting procedures to high-level language. [Done]
 00000083: warning: Expected sizes of arrays to have been determined by now
@@ -2137,11 +2133,11 @@ Error: An error occurred while writing assembly language output.
    at Reko.Core.Memory.ByteMemoryArea.CreateBeReader(Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\ByteMemoryArea.cs:line 108
    at Reko.Core.EndianServices.BeServices.CreateImageReader(MemoryArea mem, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\EndianServices.cs:line 417
    at Reko.Core.ProcessorArchitecture.CreateImageReader(MemoryArea mem, Address addr, Int64 cbUnits) in c:\dev\uxmal\reko\master\src\Core\IProcessorArchitecture.cs:line 776
-   at Reko.Core.Output.Dumper.DumpData(IProcessorArchitecture arch, MemoryArea mem, Address address, Int64 cUnits, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 251
-   at Reko.Core.Output.Dumper.DumpData(SegmentMap map, IProcessorArchitecture arch, Address address, Int64 cUnits, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 230
-   at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 149
-   at Reko.Core.Output.Dumper.Dump(Dictionary`2 segmentItems, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 93
-   at Reko.Decompiler.DumpAssembler(Program program, Dictionary`2 segmentItems, Formatter wr) in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 221
+   at Reko.Core.Output.Dumper.DumpData(IProcessorArchitecture arch, MemoryArea mem, Address address, Int64 cUnits, Boolean condenseZeroLines, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 265
+   at Reko.Core.Output.Dumper.DumpData(SegmentMap map, IProcessorArchitecture arch, Address address, Int64 cUnits, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 238
+   at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 157
+   at Reko.Core.Output.Dumper.Dump(Dictionary`2 segmentItems, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 101
+   at Reko.Decompiler.DumpAssembler(Program program, Dictionary`2 segmentItems, Formatter wr) in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 222
                                                             Rewriting procedures. [Done]
                                                             Building expressions. [Done]
                                                             Gathering primitive datatypes from instructions. [Done]
@@ -3111,4 +3107,4 @@ l0011DD0D: warning: Non-integral switch expression
                                                             Rewriting expressions. [Done]
                                                             Rewriting procedures to high-level language. [Done]
 
-Decompiled 100 binaries in 71.69 seconds.
+Decompiled 100 binaries in 53.18 seconds.

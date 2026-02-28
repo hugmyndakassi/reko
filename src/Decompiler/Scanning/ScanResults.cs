@@ -46,9 +46,8 @@ namespace Reko.Scanning
         public ScanResults()
         {
             this.TransferTargets = new HashSet<Address>();
-            this.DirectlyCalledAddresses = new Dictionary<Address, int>();
-            this.Instructions = new Dictionary<Address, RtlInstructionCluster>();
-            this.FlatInstructions = new Dictionary<ulong, ScanResults.Instr>();
+            this.DirectlyCalledAddresses = [];
+            this.FlatInstructions = [];
             this.FlatEdges = new List<Link>();
             this.IndirectCalls = new HashSet<Address>();
             this.IndirectJumps = new HashSet<Address>();
@@ -57,11 +56,6 @@ namespace Reko.Scanning
             this.WatchedAddresses = new HashSet<Address>();
         }
 
-        /// <summary>
-        /// All the discovered machine instructions, rewritten into RTL
-        /// instruction clusters.
-        /// </summary>
-        public Dictionary<Address, RtlInstructionCluster> Instructions { get; set; }
 
         /// <summary>
         /// Interprocedural control flow graph, consisting of all
@@ -103,10 +97,11 @@ namespace Reko.Scanning
         public List<RtlProcedure> Procedures { get; set; }
 
         /// <summary>
-        /// All the instructions in the program, addressed by their
-        /// linear address.
+        /// All the instructions in the program, grouped 
+        /// by the <see cref="IProcessorArchitecture"/> used to disassemble
+        /// them, and then addressed by their linear address.
         /// </summary>
-        public Dictionary<ulong, Instr> FlatInstructions { get; set; }
+        public Dictionary<IProcessorArchitecture, Dictionary<Address, Instr>> FlatInstructions { get; set; }
 
         /// <summary>
         /// All the edges in the interprocedural control flow graph,
@@ -205,11 +200,6 @@ namespace Reko.Scanning
         /// </summary>
         public class Instr
         {
-            /// <summary>
-            /// Processor architecture of the instruction.
-            /// </summary>
-            public IProcessorArchitecture Architecture { get; set; }
-
             /// <summary>
             /// Address of the instruction.
             /// </summary>

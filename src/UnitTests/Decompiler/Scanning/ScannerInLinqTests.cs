@@ -52,6 +52,17 @@ namespace Reko.UnitTests.Decompiler.Scanning
         private ServiceContainer sc;
         private Mock<IRewriterHost> host;
         private FakeDecompilerEventListener eventListener;
+        private IProcessorArchitecture arch
+        {
+            get { return vArch; }
+            set
+            {
+                if (value is null) throw new ArgumentNullException();
+                vArch = value;
+            }
+        }
+        private IProcessorArchitecture vArch;
+
 
         [SetUp]
         public void Setup()
@@ -60,11 +71,12 @@ namespace Reko.UnitTests.Decompiler.Scanning
             this.host = new Mock<IRewriterHost>();
             this.sr = new ScanResults
             {
-                FlatInstructions = new Dictionary<ulong, ScanResults.Instr>(),
+                FlatInstructions = [],
                 FlatEdges = new List<ScanResults.Link>(),
                 KnownProcedures = new HashSet<Address>(),
                 DirectlyCalledAddresses = new Dictionary<Address, int>()
             };
+            this.arch = new FakeArchitecture();
             this.eventListener = new FakeDecompilerEventListener();
         }
 
@@ -74,7 +86,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 Address.Ptr32(0x10000),
                 bytes);
             this.rd = image.Relocations;
-            var arch = new X86ArchitectureFlat32(sc, "x86-protected-32", new Dictionary<string, object>());
+            this.arch = new X86ArchitectureFlat32(sc, "x86-protected-32", new Dictionary<string, object>());
             CreateProgram(image, arch);
         }
 
@@ -166,12 +178,23 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = InstrClass.Linear
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster,
             });
             Link(addr, next);
+        }
+
+        private Dictionary<Address, ScanResults.Instr> EnsureArch(
+            ScanResults sr, IProcessorArchitecture arch)
+        {
+            if (!sr.FlatInstructions.TryGetValue(arch, out var instrs))
+            {
+                instrs = [];
+                sr.FlatInstructions.Add(arch, instrs);
+            }
+            return instrs;
         }
 
         private void Call(int uAddr, int len, int next, int uAddrDst)
@@ -186,7 +209,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = iclass,
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster,
@@ -206,7 +229,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = InstrClass.ConditionalTransfer,
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster
@@ -229,7 +252,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = iclass,
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster
@@ -246,7 +269,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = InstrClass.Invalid
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster,
@@ -260,7 +283,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = InstrClass.Transfer
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster,
@@ -274,7 +297,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 Class = InstrClass.Linear | InstrClass.Padding
             };
-            sr.FlatInstructions.Add(addr.ToLinear(), new ScanResults.Instr
+            EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
                 block_id = addr,
                 rtl = cluster,

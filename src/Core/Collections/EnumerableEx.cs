@@ -30,7 +30,7 @@ namespace Reko.Core.Collections
     public static class EnumerableEx
     {
         /// <summary>
-        /// Creates a <see cref="SortedList{TKey, TSource}"/> from an <see cref="IEnumerable{TSource}"/>
+        /// Creates a <see cref="SortedDictionary{TKey, TSource}"/> from an <see cref="IEnumerable{TSource}"/>
         /// </summary>
         /// <typeparam name="TSource">Type of the input sequence</typeparam>
         /// <typeparam name="TKey">Key type.</typeparam>
@@ -38,8 +38,32 @@ namespace Reko.Core.Collections
         /// <param name="keySelector">Function to select the <typeparamref name="TKey"/> from
         /// a <typeparamref name="TSource"/> element.
         /// </param>
-        /// <returns>A <see cref="SortedList{TKey, TSource}"/>.
+        /// <returns>A <see cref="SortedDictionary{TKey, TSource}"/>.
         /// </returns>
+        public static SortedDictionary<TKey, TSource> ToSortedDictionary<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector)
+            where TKey : notnull
+        {
+            var dict = new SortedDictionary<TKey, TSource>();
+            foreach (TSource item in source)
+            {
+                dict.Add(keySelector(item), item);
+            }
+            return dict;
+        }
+        
+        /// <summary>
+                 /// Creates a <see cref="SortedList{TKey, TSource}"/> from an <see cref="IEnumerable{TSource}"/>
+                 /// </summary>
+                 /// <typeparam name="TSource">Type of the input sequence</typeparam>
+                 /// <typeparam name="TKey">Key type.</typeparam>
+                 /// <param name="source">Input sequence.</param>
+                 /// <param name="keySelector">Function to select the <typeparamref name="TKey"/> from
+                 /// a <typeparamref name="TSource"/> element.
+                 /// </param>
+                 /// <returns>A <see cref="SortedList{TKey, TSource}"/>.
+                 /// </returns>
         public static SortedList<TKey, TSource> ToSortedList<TSource, TKey>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector)

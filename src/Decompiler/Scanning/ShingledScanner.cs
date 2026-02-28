@@ -308,9 +308,13 @@ namespace Reko.Scanning
 
         private void AddInstruction(IProcessorArchitecture arch, RtlInstructionCluster i)
         {
-            sr.FlatInstructions.Add(i.Address.ToLinear(), new ScanResults.Instr
+            if (!sr.FlatInstructions.TryGetValue(arch, out var instrs))
             {
-                Architecture = arch,
+                instrs = [];
+                sr.FlatInstructions.Add(arch, instrs);
+            }
+            instrs.Add(i.Address, new ScanResults.Instr
+            {
                 block_id = i.Address,
                 rtl = i,
                 pred = 0,
@@ -324,53 +328,6 @@ namespace Reko.Scanning
             if (from == Bad)
                 return;
             sr.FlatEdges.Add(new ScanResults.Link(to, from));
-        }
-
-        /// <summary>
-        /// Removes blocks that fall off the end of the segment
-        /// or into data.
-        /// </summary>
-        /// <returns>Addresses of dead instructions that should no longer be
-        /// reachable.</returns>
-        public HashSet<Address> RemoveBadInstructionsFromGraph()
-        {
-            // Use only for debugging the bad paths.
-            //var d = Dijkstra<Address>.ShortestPath(G, bad, (u, v) => 1.0);
-            //Action<Address> DumpPath = (addr) =>
-            //{
-            //    Debug.Print("Path from {0}", addr);
-            //    var path = d.GetPath(addr);
-            //    path.Reverse();
-            //    foreach (var a in path)
-            //    {
-            //        Debug.Print("  {0}", a);
-            //    }
-            //};
-            //DumpPath(Address.SegPtr(0x0800, 0));
-
-
-            // Find all places that are reachable from "bad" addresses.
-            // By transitivity, they must also be be bad.
-            var deadNodes = new HashSet<Address>();
-            //foreach (var a in new DfsIterator<Address>(G).PreOrder(Bad))
-            //{
-            //    if (a != Bad)
-            //    {
-            //        deadNodes.Add(a);
-            //    }
-            //}
-
-            var oldinstrs = sr.Instructions;
-            sr.Instructions = oldinstrs
-                .Where(o => !deadNodes.Contains(o.Key))
-                .ToDictionary(o => o.Key, o => o.Value);
-
-            var oldDirectCalls = sr.DirectlyCalledAddresses;
-            sr.DirectlyCalledAddresses = oldDirectCalls
-                .Where(o => !deadNodes.Contains(o.Key))
-                .ToDictionary(o => o.Key, o => o.Value);
-
-            return deadNodes;
         }
 
         /// <summary>
@@ -436,24 +393,25 @@ namespace Reko.Scanning
         /// successors > 1 or the predecessors > 1, we create a new node.
         /// </summary>
         /// <param name="graph">Graph of instruction addresses.</param>
+        /// <param name="instrs">Instructions to organize into blocks.
+        /// </param>
         /// <returns></returns>
-        public IcfgBuilder BuildBlocks(DiGraph<Address> graph)
+        public IcfgBuilder BuildBlocks(DiGraph<Address> graph,
+            Dictionary<Address, ScanResults.Instr> instrs)
         {
             // Remember, the graph is backwards!
             var allBlocks = new DiGraph<RtlBlock>();
             var edges = new List<(RtlBlock, Address)>();
             var mpBlocks = new Dictionary<Address, RtlBlock>();
-            var wl = sr.Instructions.Keys.ToSortedSet();
-
+            var wl = instrs.Values.ToSortedDictionary(ins => ins.Address);
             while (wl.Count > 0)
             {
-                var addr = wl.First();
+                var (addr, instr) = wl.First();
                 wl.Remove(addr);
 
-                var instr = sr.Instructions[addr];
                 var label = program.NamingPolicy.BlockName(addr);
                 var block = RtlBlock.CreateEmpty(program.Architecture, addr, label);
-                block.Instructions.Add(instr);
+                block.Instructions.Add(instr.rtl);
                 allBlocks.AddNode(block);
                 mpBlocks.Add(addr, block);
                 bool endBlockNow = false;
@@ -465,12 +423,12 @@ namespace Reko.Scanning
                     var addrInstrEnd = instr.Address + instr.Length;
                     if ((instr.Class & DT) != 0)
                     {
-                        if (MayFallThrough(instr))
+                        if (MayFallThrough(instr.rtl))
                         {
                             addFallthroughEdge = (instr.Class & DT) == T;
                             addFallthroughEdgeDeferred = (instr.Class & DT) == DT;
                         }
-                        var addrDst = DestinationAddress(instr);
+                        var addrDst = DestinationAddress(instr.rtl);
                         if (addrDst is not null && (instr.Class & InstrClass.Call) == 0)
                         {
                             edges.Add((block, addrDst.Value));
@@ -511,7 +469,7 @@ namespace Reko.Scanning
                     }
 
                     if (endBlockNow || 
-                        !wl.Contains(addrInstrEnd) ||
+                        !wl.ContainsKey(addrInstrEnd) ||
                         !graph.Nodes.Contains(addrInstrEnd) ||
                         graph.Successors(addrInstrEnd).Count != 1)
                     {
@@ -534,8 +492,8 @@ namespace Reko.Scanning
                     }
 
                     wl.Remove(addrInstrEnd);
-                    instr = sr.Instructions[addrInstrEnd];
-                    block.Instructions.Add(instr);
+                    instr = instrs[addrInstrEnd];
+                    block.Instructions.Add(instr.rtl);
                     endBlockNow = terminateDeferred;
                 }
             }

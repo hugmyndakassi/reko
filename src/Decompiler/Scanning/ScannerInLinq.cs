@@ -27,6 +27,7 @@ using Reko.Core.Memory;
 using Reko.Core.Rtl;
 using Reko.Core.Services;
 using Reko.Core.Types;
+using Reko.Loading;
 using Reko.Services;
 using System;
 using System.Collections.Generic;
@@ -132,10 +133,13 @@ namespace Reko.Scanning
 
         private Dictionary<Address, RtlBlock> ProcessIndirectTransfers(ScanResults sr, Dictionary<Address, RtlBlock> the_blocks)
         {
-            foreach (var ind in sr.IndirectJumps)
+            foreach (var instrs in sr.FlatInstructions.Values)
             {
-                var instr = sr.FlatInstructions[ind.ToLinear()];
-                var block = the_blocks[instr.block_id];
+                foreach (var ind in sr.IndirectJumps)
+                {
+                    var instr = instrs[ind];
+                    var block = the_blocks[instr.block_id];
+                }
             }
             return the_blocks;
         }
@@ -352,13 +356,28 @@ namespace Reko.Scanning
             ScanResults sr,
             StorageBinder binder)
         {
+            Dictionary<Address, RtlBlock> result = [];
+            foreach (var (arch, instrs) in sr.FlatInstructions)
+            {
+                BuildBasicBlocks(sr, arch, instrs, binder, result);
+            }
+            return result;
+        }
+
+        private static Dictionary<Address, RtlBlock> BuildBasicBlocks(
+            ScanResults sr,
+            IProcessorArchitecture arch,
+            Dictionary<Address, Instr> instrs, 
+            StorageBinder binder,
+            Dictionary<Address, RtlBlock> result)
+        {
             // Count and save the # of successors for each instruction.
             foreach (var cSucc in
                     from link in sr.FlatEdges
                     group link by link.From into g
                     select new { addr = g.Key, Count = g.Count() })
             {
-                if (sr.FlatInstructions.TryGetValue(cSucc.addr.ToLinear(), out var instr))
+                if (instrs.TryGetValue(cSucc.addr, out var instr))
                     instr.succ = cSucc.Count;
             }
             // Count and save the # of predecessors for each instruction.
@@ -367,18 +386,18 @@ namespace Reko.Scanning
                     group link by link.To into g
                     select new { addr = g.Key, Count = g.Count() })
             {
-                if (sr.FlatInstructions.TryGetValue(cPred.addr.ToLinear(), out var instr))
+                if (instrs.TryGetValue(cPred.addr, out var instr))
                     instr.pred = cPred.Count;
             }
 
             var the_excluded_edges = new HashSet<Link>();
-            foreach (var instr in sr.FlatInstructions.Values)
+            foreach (var instr in instrs.Values)
             {
                 // All blocks longer than 2 instructions must start with a linear instruction.
                 if ((instr.Class & InstrClass.Linear) == 0)
                     continue;
                 // Find the instruction that is located directly after instr.
-                if (!sr.FlatInstructions.TryGetValue(instr.Address.ToLinear() + (uint) instr.Length, out Instr? succ))
+                if (!instrs.TryGetValue(instr.Address + (uint) instr.Length, out Instr? succ))
                     continue;
                 // If the first instruction was padding the next one must also be padding, 
                 // otherwise we start a new block.
@@ -405,25 +424,29 @@ namespace Reko.Scanning
             }
 
             // Build the blocks by grouping the instructions.
-            var the_blocks =
-                (from i in sr.FlatInstructions.Values
+            foreach (var block in (from i in instrs.Values
                  group i by i.block_id into g
-                 select MakeBlock(sr, g, binder))
-                .ToDictionary(b => b.Address);
+                 select MakeBlock(sr, arch, instrs, g, binder)))
+            {
+                result[block.Address] = block;
+            }
 
             // Exclude the now useless edges.
             sr.FlatEdges = 
                 (from link in sr.FlatEdges
-                join f in sr.FlatInstructions.Values on link.From equals f.Address
+                join f in instrs.Values on link.From equals f.Address
                 where !the_excluded_edges.Contains(link)
                 select new Link(f.block_id, link.To))
                 .Distinct()
                 .ToList();
-            return the_blocks;
+            
+            return result;
         }
 
         private static RtlBlock MakeBlock(
-            ScanResults sr, 
+            ScanResults sr,
+            IProcessorArchitecture arch,
+            Dictionary<Address, Instr> instrsByArch,
             IGrouping<Address, Instr> g,
             StorageBinder binder)
         {
@@ -432,11 +455,11 @@ namespace Reko.Scanning
                 .ToList();
             var id = NamingPolicy.Instance.BlockName(g.Key);
             var instrLast = instrs[^1];
-            var length = instrLast.Address.ToLinear() + (uint)instrLast.Length - g.Key.ToLinear();
+            var length = instrLast.Address + (uint)instrLast.Length - g.Key;
             var addrFallThrough = instrLast.Address + instrLast.Length;
             if (instrLast.Class.HasFlag(InstrClass.Delay))
             {
-                if (!sr.FlatInstructions.TryGetValue(addrFallThrough.ToLinear(), out var instrDelayed))
+                if (!instrsByArch.TryGetValue(addrFallThrough, out var instrDelayed))
                 {
                     trace.Warn("Fell through to an instruction that does not exist: {0}", addrFallThrough);
                     instrLast.Class = InstrClass.Invalid;
@@ -459,7 +482,7 @@ namespace Reko.Scanning
             }
 
             return RtlBlock.Create(
-                g.First().Architecture,
+                arch,
                 g.Key,
                 id,
                 (int) length,
@@ -475,10 +498,22 @@ namespace Reko.Scanning
         /// <returns>A (hopefully smaller) set of blocks.</returns>
         public static Dictionary<Address, RtlBlock> RemoveInvalidBlocks(ScanResults sr, Dictionary<Address, RtlBlock> blocks)
         {
+            foreach (var instrs in sr.FlatInstructions.Values)
+            {
+                blocks = RemoveInvalidBlocks(sr, instrs, blocks);
+            }
+            return blocks;
+        }
+
+        private static Dictionary<Address, RtlBlock> RemoveInvalidBlocks(
+            ScanResults sr, 
+            Dictionary<Address, Instr> instrs,
+            Dictionary<Address, RtlBlock> blocks)
+        { 
             // Find transitive closure of bad instructions 
 
             var bad_blocks = new HashSet<Address>(
-                (from i in sr.FlatInstructions.Values
+                (from i in instrs.Values
                  where i.Class == InstrClass.Invalid
                  select i.block_id));
             var new_bad = bad_blocks;
@@ -562,7 +597,7 @@ namespace Reko.Scanning
             var map = new Dictionary<Address, RtlBlock>();
             var rtlBlocks =
                 from b in blocks.Values
-                join i in sr.FlatInstructions.Values on b.Address equals i.block_id into instrs
+                join i in sr.FlatInstructions.Values.SelectMany(ins => ins.Values) on b.Address equals i.block_id into instrs
                 orderby b.Address
                 select RtlBlock.CreatePartial(
                     null!,
@@ -589,7 +624,7 @@ namespace Reko.Scanning
         {
             Debug.WriteLine(
                 string.Join("\r\n",
-                    from instr in sr.FlatInstructions.Values
+                    from instr in sr.FlatInstructions.Values.SelectMany(ins => ins.Values)
                     join e in sr.FlatEdges on instr.Address equals e.From into es
                     from e in new[] { string.Join(", ", es.Select(ee => string.Format("{0:X8}", ee.To))) }
                     orderby instr.Address
@@ -619,19 +654,19 @@ namespace Reko.Scanning
                string.Join(Environment.NewLine,
                from b in blocks.Values
                join i in (
-                    from ii in sr.FlatInstructions.Values
+                    from ii in sr.FlatInstructions.Values.SelectMany(ins => ins.Values)
                     group ii by ii.block_id into g
-                    select new { block_id = g.Key, max = g.Max(iii => iii.Address.ToLinear() + (uint) iii.Length ) })
+                    select new { block_id = g.Key, max = g.Max(iii => iii.Address + (uint) iii.Length ) })
                     on b.Address equals i.block_id
-               join l in sr.FlatInstructions.Values on b.Address equals l.Address
+               join l in sr.FlatInstructions.Values.SelectMany(ins => ins.Values) on b.Address equals l.Address
                join e in sr.FlatEdges on b.Address equals e.From into es
                from e in new[] { string.Join(", ", es.Select(ee => string.Format("{0:X8}", ee.To))) }
                orderby b.Address
                select string.Format(
                    "{0:X8}-{1:X8} ({2}): {3}{4}",
                        b.Address,
-                       b.Address + (i.max - b.Address.ToLinear()),
-                       i.max - b.Address.ToLinear(),
+                       b.Address + (i.max - b.Address),
+                       i.max - b.Address,
                        RenderType(b.Instructions.Last().Class),
                        e)));
 
@@ -670,9 +705,9 @@ namespace Reko.Scanning
                 string.Join(Environment.NewLine,
                 from b in blocks.Values
                 join i in (
-                     from ii in sr.FlatInstructions.Values
+                     from ii in sr.FlatInstructions.Values.SelectMany(ins => ins.Values)
                      group ii by ii.block_id into g
-                     select new { block_id = g.Key, max = g.Max(iii => iii.Address.ToLinear()  + (uint) iii.Length) })
+                     select new { block_id = g.Key, max = g.Max(iii => iii.Address  + (uint) iii.Length) })
                      on b.Address equals i.block_id
                 join e in edges on b.Address equals e.From into es
                 from e in new[] { string.Join(", ", es.Select(ee => string.Format("{0:X8}", ee.To))) }
@@ -680,9 +715,9 @@ namespace Reko.Scanning
                 select string.Format(
                     "{0:X8}-{1:X8} {2} ({3}): {4}",
                         b.Address,
-                        b.Address + (i.max  - b.Address.ToLinear()),
+                        b.Address + (i.max  - b.Address),
                         bad_blocks.Contains(b.Address) ? "*" : " ",
-                        i.max - b.Address.ToLinear(),
+                        i.max - b.Address,
                         e)));
         }
 

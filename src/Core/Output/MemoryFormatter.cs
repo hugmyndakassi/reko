@@ -21,6 +21,7 @@
 using Reko.Core.Expressions;
 using Reko.Core.Memory;
 using Reko.Core.Types;
+using System.Diagnostics;
 using System.Text;
 
 namespace Reko.Core.Output
@@ -136,6 +137,7 @@ namespace Reko.Core.Output
                 moreData = rdr.TryRead(dtChunk, out var c);
                 if (moreData)
                 {
+                    Debug.Assert(c != null); 
                     DoRenderUnit(addr, c, output);
                     chunksRead[iChunk++] = c;
                 }

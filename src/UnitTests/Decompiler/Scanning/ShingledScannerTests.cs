@@ -189,8 +189,8 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var frame = program.Architecture.CreateFrame();
             this.sr = new ScanResults
             {
-                Instructions = new Dictionary<Address, RtlInstructionCluster>(),
-                KnownProcedures = new HashSet<Address>(),
+                FlatInstructions = { { program.Architecture, [] } },
+                KnownProcedures = []
             };
             this.sh = new ShingledScanner(program, host.Object, frame, sr, dev.Object);
         }
@@ -326,15 +326,6 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 scseg);
         }
 
-        private void AssertValidInstructions(byte[] expected, Address addrBase)
-        {
-            var actual =
-                Enumerable.Range(0, expected.Length)
-                .Select(n => (byte) (sr.Instructions.ContainsKey(addrBase + n) ? 1 : 0))
-                .ToArray();
-            Assert.AreEqual(expected, actual);
-        }
-
         private RtlInstructionCluster Lin(uint addr, int length)
         {
             var instr = new RtlInstructionCluster(
@@ -347,7 +338,12 @@ namespace Reko.UnitTests.Decompiler.Scanning
 
         private void AddInstr(RtlInstructionCluster instr, params uint[] succs)
         {
-            this.sr.Instructions.Add(instr.Address, instr);
+            this.sr.FlatInstructions[program.Architecture].Add(
+                instr.Address,
+                new ScanResults.Instr
+                {
+                    rtl = instr
+                });
             foreach (var succ in succs)
             {
                 var addrSucc = Address.Ptr32(succ);
@@ -366,7 +362,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             AddInstr(Lin(0x1000, 2), 0x1002);
             AddInstr(Lin(0x1002, 3));
 
-            var icb = sh.BuildBlocks(graph);
+            var icb = sh.BuildBlocks(graph, sr.FlatInstructions.Values.First());
 
             var sExp =
                 "00001000 - 00001005" + nl;
@@ -384,7 +380,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             AddInstr(Lin(0x1003, 2));
             AddInstr(Lin(0x1004, 2));
 
-            var icb = sh.BuildBlocks(graph);
+            var icb = sh.BuildBlocks(graph, sr.FlatInstructions.Values.First());
 
             var sExp =
                 "00001000 - 00001006" + nl +
@@ -402,7 +398,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             AddInstr(Lin(0x1002, 3), 0x1005);
             AddInstr(Lin(0x1005, 2));
 
-            var icb = sh.BuildBlocks(graph);
+            var icb = sh.BuildBlocks(graph, sr.FlatInstructions.Values.First());
 
             var sExp =
                 "00001000 - 00001005" + nl +
