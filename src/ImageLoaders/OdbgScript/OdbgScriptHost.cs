@@ -256,8 +256,8 @@ namespace Reko.ImageLoaders.OdbgScript
             if (!SegmentMap.TryFindSegment(addr, out ImageSegment? segment))
                 throw new AccessViolationException();
             var rdr = program.Architecture.CreateImageReader(segment.MemoryArea, addr);
-            var dasm = (X86Disassembler)program.Architecture.CreateDisassembler(rdr);
-            return dasm.DisassembleInstruction();
+            var dasm = program.Architecture.CreateDisassembler(rdr);
+            return dasm.First();
         }
 
         public virtual uint TE_GetCurrentThreadId()

@@ -1165,7 +1165,7 @@ namespace Reko.ImageLoaders.OdbgScript
                         if (segment.MemoryArea is ByteMemoryArea bmem &&
                             bmem.TryReadBytes(ea, buffer.Length, buffer))
                         {
-                            buffer[buffer.Length - 1] = 0;
+                            buffer[buffer.Length^1] = 0;
                             value = Encoding.UTF8.GetString(buffer);
                             return true;
                         }
