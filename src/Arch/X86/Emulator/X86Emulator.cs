@@ -226,6 +226,7 @@ namespace Reko.Arch.X86.Emulator
             case Mnemonic.dec: Dec(instr.Operands[0]); return;
             case Mnemonic.hlt: Stop(); return;
             case Mnemonic.inc: Inc(instr.Operands[0]); return;
+            case Mnemonic.@int: Int(instr.Operands[0]); return;
             case Mnemonic.ja: if ((Flags & (Cmask | Zmask)) == 0) Jump(instr.Operands[0]); return;
             case Mnemonic.jbe: if ((Flags & (Cmask | Zmask)) != 0) Jump(instr.Operands[0]); return;
             case Mnemonic.jc: if ((Flags & Cmask) != 0) Jump(instr.Operands[0]); return;
@@ -673,6 +674,11 @@ namespace Reko.Arch.X86.Emulator
                 (gnu == 0 ? Zmask : 0u) |   // Zero
                 ((gnu & mask.hibit) != 0 ? Smask : 0u) |    // Sign
                 ov;                          //$BUG:
+        }
+
+        private void Int(MachineOperand op)
+        {
+            this.envEmulator.EmulateSystemCall(this, op);
         }
 
         public void Loop(MachineOperand op)
