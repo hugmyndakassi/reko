@@ -101,7 +101,7 @@ namespace Reko.Core.Emulation
         /// is a CALL or a REP[NZ] the call will be taken and the REP will be 
         /// carried out before resuming.
         /// </summary>
-        public void StepOver(Action callback)
+        public void OnStepOver(Action callback)
         {
             var instr = CurrentInstruction;
             stepOverAddress = instr.Address.ToLinear() + (uint)instr.Length;
@@ -117,7 +117,7 @@ namespace Reko.Core.Emulation
         /// instruction is emulated.
         /// </summary>
         /// <param name="callback"></param>
-        public void StepInto(Action callback)
+        public void OnStepInto(Action callback)
         {
             stepInto = true;
             stepAction = callback;

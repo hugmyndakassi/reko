@@ -75,17 +75,16 @@ public interface IProcessorEmulator
     void Stop();
 
     /// <summary>
-    /// Asks the emulator to execute a single instruction, then perform a callback.
+    /// Registers a callback to be invoked after the emulator executes a single instruction.
     /// </summary>
     /// <param name="callback">Callback to invoke.</param>
-    void StepInto(Action callback);
+    void OnStepInto(Action callback);
 
     /// <summary>
-    /// Asks the emulator to execute until the instruction pointer reaches the next
-    /// instruction. 
+    /// Registers a callback to be invoked after the emulator reaches the instruction pointer.
     /// </summary>
     /// <param name="callback">Callback to invoke.</param>
-    void StepOver(Action callback);
+    void OnStepOver(Action callback);
 
     /// <summary>
     /// Sets a breakpoint that will be invoked when the instruction pointer 

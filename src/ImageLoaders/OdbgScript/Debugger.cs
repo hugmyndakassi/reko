@@ -126,12 +126,12 @@ namespace Reko.ImageLoaders.OdbgScript
 
         public void StepInto(Action StepIntoCallback)
         {
-            emu.StepInto(StepIntoCallback);
+            emu.OnStepInto(StepIntoCallback);
         }
 
         public void StepOver(Action StepOverCallback)
         {
-            emu.StepOver(StepOverCallback);
+            emu.OnStepOver(StepOverCallback);
         }
 
         internal void DebugLoop()
