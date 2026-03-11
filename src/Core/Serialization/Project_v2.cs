@@ -21,22 +21,21 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Reko.Core.Serialization
-{
+namespace Reko.Core.Serialization;
+
 #pragma warning disable CS1591
 
-    public class Script_v2
-    {
-        [XmlAttribute("enabled")]
-        public bool Enabled;
+public class Script_v2
+{
+    [XmlAttribute("enabled")]
+    public bool Enabled;
 
-        [XmlAttribute]
-        public string? Interpreter;
+    [XmlAttribute("interpreter")]
+    public string? Interpreter;
 
-        [XmlAttribute("arch")]
-        public string? ArchitectureId;
+    [XmlAttribute("arch")]
+    public string? ArchitectureId;
 
-        [XmlText]
-        public string? Script;
-    }
+    [XmlText]
+    public string? Script;
 }

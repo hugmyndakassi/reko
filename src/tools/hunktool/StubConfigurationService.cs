@@ -31,6 +31,11 @@ namespace Reko.Tools.HunkTool
 {
     public class StubConfigurationService : IConfigurationService
     {
+        public IScriptInterpreter CreateScriptInterpreter(string label, Reko.Core.Program program, IProcessorArchitecture arch)
+        {
+            throw new NotImplementedException();
+        }
+
         public IProcessorArchitecture GetArchitecture(string archLabel)
         {
             return GetArchitecture(archLabel, new Dictionary<string, object>());
@@ -96,6 +101,11 @@ namespace Reko.Tools.HunkTool
         }
 
         public ICollection<RawFileDefinition> GetRawFiles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<ScriptInterpreterDefinition> GetScriptInterpreters()
         {
             throw new NotImplementedException();
         }

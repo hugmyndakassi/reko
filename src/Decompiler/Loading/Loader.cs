@@ -43,6 +43,7 @@ namespace Reko.Loading
     public class Loader : ILoader
     {
         private readonly IConfigurationService cfgSvc;
+        private readonly IEventListener listener;
         private readonly UnpackingService unpackerSvc;
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace Reko.Loading
         {
             this.Services = services;
             this.cfgSvc = services.RequireService<IConfigurationService>();
+            this.listener = services.RequireService<IEventListener>();
             this.unpackerSvc = new UnpackingService(services);
             this.unpackerSvc.LoadSignatureFiles();
             Services.RequireService<IServiceContainer>().AddService(typeof(IUnpackerService), unpackerSvc);
@@ -142,7 +144,7 @@ namespace Reko.Loading
         {
             byte[] image = LoadFileBytes(imageLocation.FilesystemPath);
 
-            var projectLoader = new ProjectLoader(this.Services, this, imageLocation, Services.RequireService<IEventListener>());
+            var projectLoader = new ProjectLoader(this.Services, this, imageLocation, this.listener);
             projectLoader.ProgramLoaded += (s, e) => { RunScriptOnProgramImage(e, e.User.OnLoadedScript); };
             var project = projectLoader.LoadProject(image);
             if (project is not null)
@@ -390,7 +392,7 @@ namespace Reko.Loading
                 : cfgSvc.GetRawFile(DefaultToFormat);
             if (rawFile is null)
             {
-                this.Services.RequireService<IEventListener>().Warn(
+                listener.Warn(
                     new NullCodeLocation(imageLocation.FilesystemPath),
                     "The format of the file is unknown.");
                 return null;
@@ -683,18 +685,23 @@ namespace Reko.Loading
                 return;
             var eventListener = Services.RequireService<IEventListener>();
             eventListener.Progress?.ShowStatus("Running post-load script.");
-            IScriptInterpreter interpreter;
+            var label = !string.IsNullOrEmpty(script.Interpreter)
+                ? script.Interpreter
+                : "ollyDbg";
+            IScriptInterpreter? interpreter;
             try
             {
-                //$TODO: should be in the config file, yeah.
-                var svc = Services.RequireService<IPluginLoaderService>();
-                var type = svc.GetType("Reko.ImageLoaders.OdbgScript.OllyLangInterpreter,Reko.ImageLoaders.OdbgScript");
                 var arch = GetArchForDebuggerScript(program, script);
-                interpreter = (IScriptInterpreter) Activator.CreateInstance(type, Services, program, arch)!;
+                interpreter = cfgSvc.CreateScriptInterpreter(label, program, arch);
+                if (interpreter is null)
+                {
+                    eventListener.Error($"Unable to load {label} script interpreter.");
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                eventListener.Error(ex, "Unable to load OllyLang script interpreter.");
+                eventListener.Error(ex, $"Unable to load {label} script interpreter.");
                 return;
             }
 

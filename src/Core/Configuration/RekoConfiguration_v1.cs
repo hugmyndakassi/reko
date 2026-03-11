@@ -59,6 +59,10 @@ namespace Reko.Core.Configuration
         [XmlArrayItem("SignatureFile")]
         public SignatureFile_v1[]? SignatureFiles;
 
+        [XmlArray("ScriptInterpreters")]
+        [XmlArrayItem("Interpreter")]
+        public ScriptInterpreter_v1[]? ScriptInterpreters;
+
         [XmlArray("Environments")]
         [XmlArrayItem("Environment")]
         public Environment_v1[]? Environments;
@@ -286,6 +290,19 @@ namespace Reko.Core.Configuration
 
         [XmlAttribute("Type")]
         public string? TypeName;
+    }
+
+    [Serializable]
+    public class ScriptInterpreter_v1
+    {
+        [XmlAttribute("Label")]
+        public string? Label;
+
+        [XmlAttribute("Type")]
+        public string? TypeName;
+
+        [XmlAttribute("Description")]
+        public string? Description;
     }
 
     public partial class RekoUiPreferences

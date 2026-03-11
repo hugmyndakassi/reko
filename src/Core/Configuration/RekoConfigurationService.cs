@@ -60,6 +60,21 @@ namespace Reko.Core.Configuration
         ICollection<SignatureFileDefinition> GetSignatureFiles();
 
         /// <summary>
+        /// Gets a list of available script interpreters.
+        /// </summary>
+        ICollection<ScriptInterpreterDefinition> GetScriptInterpreters();
+
+        /// <summary>
+        /// Creates a reference to a new script interpreter, given its label.
+        /// </summary>
+        /// <param name="interpreterLabel">Label used to identify the interpreter.</param>
+        /// <param name="program"><see cref="Program"/> instance on which to run the interpreter.</param>
+        /// <param name="arch">Optional <see cref="IProcessorArchitecture"/> to use in the script interpreter.</param>
+        /// <returns>An instance of a class implementing <see cref="IScriptInterpreter"/>.
+        /// </returns>
+        IScriptInterpreter CreateScriptInterpreter(string interpreterLabel, Program program, IProcessorArchitecture? arch);
+
+        /// <summary>
         /// Gets a list of known raw file formats.
         /// </summary>
         ICollection<RawFileDefinition> GetRawFiles();
@@ -178,6 +193,7 @@ namespace Reko.Core.Configuration
         private readonly List<ArchitectureDefinition> architectures;
         private readonly List<PlatformDefinition> opEnvs;
         private readonly List<SymbolSourceDefinition> symSources;
+        private readonly List<ScriptInterpreterDefinition> scriptInterpreters;
         private readonly List<RawFileDefinition> rawFiles;
         private readonly UiPreferencesConfiguration uiPreferences;
         private bool pluginsLoaded;
@@ -201,6 +217,7 @@ namespace Reko.Core.Configuration
             this.architectures = LoadCollection(config.Architectures, LoadArchitecture);
             this.opEnvs = LoadCollection(config.Environments, LoadEnvironment);
             this.symSources = LoadCollection(config.SymbolSources, LoadSymbolSource);
+            this.scriptInterpreters = LoadCollection(config.ScriptInterpreters, LoadScriptInterpreter);
             this.rawFiles = LoadCollection(config.RawFiles, LoadRawFile);
             this.uiPreferences = new UiPreferencesConfiguration();
             this.uiPreferences.Styles = LoadCollection(config.UiPreferences?.Styles, LoadUiStyle);
@@ -315,6 +332,16 @@ namespace Reko.Core.Configuration
                 Name = sSymSrc.Name,
                 Extension = sSymSrc.Extension,
                 TypeName = sSymSrc.Type,
+            };
+        }
+
+        private ScriptInterpreterDefinition LoadScriptInterpreter(ScriptInterpreter_v1 sScript)
+        {
+            return new ScriptInterpreterDefinition
+            {
+                Description = sScript.Description,
+                TypeName = sScript.TypeName,
+                Label = sScript.Label,
             };
         }
 
@@ -525,6 +552,13 @@ namespace Reko.Core.Configuration
         }
 
         /// <inheritdoc/>
+        public virtual ICollection<ScriptInterpreterDefinition> GetScriptInterpreters()
+        {
+            EnsurePlugins();
+            return scriptInterpreters;
+        }
+
+        /// <inheritdoc/>
         public virtual ICollection<SignatureFileDefinition> GetSignatureFiles()
         {
             return sigFiles;
@@ -559,6 +593,20 @@ namespace Reko.Core.Configuration
         public IProcessorArchitecture? GetArchitecture(string archLabel)
         {
             return GetArchitecture(archLabel, new Dictionary<string, object>());
+        }
+
+
+        /// <inheritdoc/>
+        public IScriptInterpreter? CreateScriptInterpreter(string label, Program program, IProcessorArchitecture? arch)
+        {
+            var desc = this.scriptInterpreters.FirstOrDefault(s => s.Label == label);
+            if (desc is null)
+                return null;
+            if (string.IsNullOrWhiteSpace(desc.TypeName))
+                return null;
+            var type = pluginSvc.GetType(desc.TypeName);
+            var interpreter = (IScriptInterpreter) Activator.CreateInstance(type, services, program, arch)!;
+            return interpreter;
         }
 
         /// <inheritdoc/>

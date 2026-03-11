@@ -36,6 +36,11 @@ namespace Reko.UnitTests.Mocks
             this.services = services;
         }
 
+        public IScriptInterpreter CreateScriptInterpreter(string label, Program program, IProcessorArchitecture arch)
+        {
+            return null;
+        }
+
         public ICollection<LoaderDefinition> GetImageLoaders()
         {
             return imageLoaders;
@@ -70,6 +75,11 @@ namespace Reko.UnitTests.Mocks
         public ICollection<SignatureFileDefinition> GetSignatureFiles()
         {
             return Array.Empty<SignatureFileDefinition>();
+        }
+
+        public ICollection<ScriptInterpreterDefinition> GetScriptInterpreters()
+        {
+            return Array.Empty<ScriptInterpreterDefinition>();
         }
 
         public string GetInstallationRelativePath(params string[] pathComponents)

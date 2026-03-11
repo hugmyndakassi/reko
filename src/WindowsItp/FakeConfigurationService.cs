@@ -29,6 +29,11 @@ namespace Reko.WindowsItp
 {
     public class FakeConfigurationService : IConfigurationService
     {
+        public IScriptInterpreter CreateScriptInterpreter(string label, Reko.Core.Program program, IProcessorArchitecture arch)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<ArchitectureDefinition> GetArchitectures()
         {
             throw new NotImplementedException();
@@ -45,6 +50,11 @@ namespace Reko.WindowsItp
         }
 
         public ICollection<RawFileDefinition> GetRawFiles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<ScriptInterpreterDefinition> GetScriptInterpreters()
         {
             throw new NotImplementedException();
         }
