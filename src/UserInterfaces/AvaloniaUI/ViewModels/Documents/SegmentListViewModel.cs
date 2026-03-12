@@ -41,7 +41,7 @@ namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
         public SegmentListViewModel(Program program)
         {
             this.program = program;
-            this.Segments = new ObservableCollection<SegmentListItemViewModel>(program.SegmentMap.Segments.Values
+            this.Segments = new ObservableCollection<SegmentListItemViewModel>(program.Memory.SegmentMap.Segments.Values
                 .Select(SegmentListItemViewModel.FromImageSegment));
         }
 

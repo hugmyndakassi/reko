@@ -48,13 +48,10 @@ namespace Reko.Environments.RT11
                 throw new BadImageFormatException("The file doesn't appear to be in LDA format.");
 
             var platform = Platform.Load(Services, "RT-11", sPlatformOverride, arch);
-            var program = new Program
-            {
-                Architecture = arch,
-                Platform = platform,
-                Memory = new ByteProgramMemory(segmentMap),
-                SegmentMap = segmentMap,
-            };
+            var program = new Program(
+                new ByteProgramMemory(segmentMap),
+                arch,
+                platform);
             var addrEntry = Address.Ptr16(uAddrStart);
             program.EntryPoints[addrEntry] = ImageSymbol.Procedure(program.Architecture, addrEntry);
             return program;

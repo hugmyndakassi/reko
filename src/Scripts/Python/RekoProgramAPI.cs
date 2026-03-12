@@ -44,7 +44,7 @@ namespace Reko.Scripts.Python
 
         public Address Address(ulong linearAddress)
         {
-            return program.SegmentMap.MapLinearAddressToAddress(linearAddress);
+            return program.Memory.SegmentMap.MapLinearAddressToAddress(linearAddress);
         }
 
         public Address Address(string sAddr)

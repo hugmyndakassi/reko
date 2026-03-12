@@ -74,12 +74,7 @@ namespace Reko.Environments.Trs80
             //                
             //},
             //BuildSymbols(program));
-            var program = new Program
-            {
-                Architecture = arch,
-                Platform = platform,
-                SegmentMap = segmentMap
-            };
+            var program = new Program(new ByteProgramMemory(segmentMap), arch, platform);
             program.ImageSymbols.Add(addrLoad, ImageSymbol.Procedure(program.Architecture, addrLoad));
             return program;
         }

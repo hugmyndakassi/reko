@@ -54,7 +54,7 @@ namespace Reko.ImageLoaders.LLVM
             throw new NotSupportedException();
         }
 
-        public override IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator)
         {
             throw new NotImplementedException();
         }

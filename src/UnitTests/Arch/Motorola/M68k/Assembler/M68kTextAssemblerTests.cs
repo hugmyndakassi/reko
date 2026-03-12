@@ -71,7 +71,7 @@ namespace Reko.UnitTests.Arch.Motorola.M68k.Assembler
                 dumper.ShowCodeBytes = true;
                 var mem = (ByteMemoryArea) program.SegmentMap.Segments.Values.First().MemoryArea;
                 var formatter = new TextFormatter(fut.TextWriter);
-                dumper.DumpData(program.SegmentMap, program.Architecture, mem.BaseAddress, mem.Bytes.Length, formatter);
+                dumper.DumpData(program.Memory.SegmentMap, program.Architecture, mem.BaseAddress, mem.Bytes.Length, formatter);
                 fut.TextWriter.WriteLine();
                 dumper.DumpAssembler(program.Architecture, mem, mem.BaseAddress, mem.Length, formatter);
                 if (program.ImportReferences.Count > 0)

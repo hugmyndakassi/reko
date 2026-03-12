@@ -284,7 +284,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
         protected virtual void OnProgramChanged()
         {
             //$TODO: what do do with non-byte-addressable memory areas?
-            this.bmem = Program?.SegmentMap.Segments.Values[0].MemoryArea as ByteMemoryArea;
+            this.bmem = Program?.Memory.SegmentMap.Segments.Values[0].MemoryArea as ByteMemoryArea;
             UpdateScrollbar();
             this.Invalidate();
         }

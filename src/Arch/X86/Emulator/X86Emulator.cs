@@ -25,6 +25,7 @@ using Reko.Core.Expressions;
 using Reko.Core.Lib;
 using Reko.Core.Loading;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using Reko.Core.Types;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace Reko.Arch.X86.Emulator
             };
 
         protected readonly IntelArchitecture arch;
-        protected readonly SegmentMap map;
+        protected readonly ByteProgramMemory memory;
         protected readonly IPlatformEmulator envEmulator;
         protected IEnumerator<X86Instruction> dasm;
         private readonly RegisterStorage ipReg;
@@ -82,14 +83,14 @@ namespace Reko.Arch.X86.Emulator
 
         public X86Emulator(
             IntelArchitecture arch,
-            SegmentMap segmentMap,
+            ByteProgramMemory memory,
             IPlatformEmulator envEmulator,
             RegisterStorage ipReg,
             RegisterStorage cxReg)
-            : base(segmentMap)
+            : base(memory.SegmentMap)
         {
             this.arch = arch;
-            map = segmentMap;
+            this.memory = memory;
             this.ipReg = ipReg;
             this.cxReg = cxReg;
             Registers = new ulong[56];
@@ -118,9 +119,8 @@ namespace Reko.Arch.X86.Emulator
             set
             {
                 UpdateIp(value);
-                if (!map.TryFindSegment(ip, out ImageSegment? segment))
+                if (!memory.TryCreateLeReader(ip, out var rdr))
                     throw new AccessViolationException();
-                var rdr = arch.CreateImageReader(segment.MemoryArea, value);
                 dasm = arch.CreateDisassemblerImpl(rdr).GetEnumerator();
             }
         }

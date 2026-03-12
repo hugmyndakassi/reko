@@ -105,8 +105,8 @@ namespace Reko.ImageLoaders.OdbgScript
         public OllyLangInterpreter(IServiceProvider services, Program program, IProcessorArchitecture arch)
             : this(services, arch)
         {
-            var envEmu = program.Platform.CreateEmulator(program.SegmentMap, program.ImportReferences);
-            this.emu = arch.CreateEmulator(program.SegmentMap, envEmu);
+            var envEmu = program.Platform.CreateEmulator(program.Memory, program.ImportReferences);
+            this.emu = arch.CreateEmulator(program.Memory, envEmu);
             this.Host = new OdbgScriptHost(services, null, program);
             this.Debugger = new Debugger(arch, emu);
             emu.BeforeStart += delegate

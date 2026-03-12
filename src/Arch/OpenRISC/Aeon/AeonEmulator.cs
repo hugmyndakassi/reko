@@ -24,6 +24,7 @@ using Reko.Core.Emulation;
 using Reko.Core.Expressions;
 using Reko.Core.Loading;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,18 +40,18 @@ namespace Reko.Arch.OpenRISC.Aeon
         };
 
         private readonly AeonArchitecture arch;
-        private readonly SegmentMap segmentMap;
+        private readonly ByteProgramMemory memory;
         private readonly IPlatformEmulator envEmulator;
         private readonly uint[] gpregBank;
         private IEnumerator<AeonInstruction> dasm;
         private uint uInstrPtr;
 
 
-        public AeonEmulator(AeonArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
-            : base(segmentMap)
+        public AeonEmulator(AeonArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
+            : base(memory.SegmentMap)
         {
             this.arch = arch;
-            this.segmentMap = segmentMap;
+            this.memory = memory;
             this.envEmulator = envEmulator;
             this.gpregBank = new uint[32];
             this.dasm = default!;
@@ -62,9 +63,8 @@ namespace Reko.Arch.OpenRISC.Aeon
             set
             {
                 this.uInstrPtr = value.ToUInt32();
-                if (!segmentMap.TryFindSegment(value, out ImageSegment? segment))
+                if (!memory.TryCreateBeReader(value, out var rdr))
                     throw new AccessViolationException();
-                var rdr = arch.CreateImageReader(segment.MemoryArea, value);
                 dasm = new AeonDisassembler(arch, rdr).GetEnumerator();
             }
         }

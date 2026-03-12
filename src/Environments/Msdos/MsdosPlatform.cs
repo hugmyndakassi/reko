@@ -76,7 +76,7 @@ namespace Reko.Environments.Msdos
             return implicitRegs.Contains(reg);
         }
 
-        public override IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public override IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
             return new MsdosEmulator();
         }

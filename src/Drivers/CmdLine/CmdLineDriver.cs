@@ -365,7 +365,7 @@ namespace Reko.CmdLine
             using (TextReader rdr = new StreamReader(filename))
             {
                 var program = asm.Assemble(addrBase, filename, rdr);
-                var seg = program.SegmentMap.Segments.Values.First();
+                var seg = program.Memory.SegmentMap.Segments.Values.First();
                 var binPath = Path.ChangeExtension(filename, ".bin");
                 File.WriteAllBytes(binPath, ((ByteMemoryArea) seg.MemoryArea).Bytes);
             }

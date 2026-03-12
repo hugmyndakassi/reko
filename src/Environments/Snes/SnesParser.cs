@@ -1,6 +1,7 @@
 using Reko.Arch.Mos6502;
 using Reko.Core;
 using Reko.Core.Loading;
+using Reko.Core.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -211,12 +212,9 @@ namespace Reko.Environments.Snes
                 props["checksum_complement"] = String.Format("{0:X4}", data[header + 44] + (data[header + 45] << 8));
 
                 var arch = new Mos65816Architecture(Services, "m65816", new Dictionary<string, object>());
-                return new Program
-                {
-                    Platform = Platform.Load(Services, "snes", sPlatformOverride, arch),
-                    Architecture = arch,
-                    SegmentMap = new SegmentMap(Address.Ptr32(0x8000))
-                };
+                var memory = new ByteProgramMemory(new SegmentMap(Address.Ptr32(0x8000)));
+                var platform = Platform.Load(Services, "snes", sPlatformOverride, arch);
+                return new Program(memory, arch, platform);
             }
         }
 

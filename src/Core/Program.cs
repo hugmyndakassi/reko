@@ -601,7 +601,7 @@ namespace Reko.Core
         /// <returns>A new <see cref="ImageWriter"/> instance.</returns>
         public ImageWriter CreateImageWriter(IProcessorArchitecture arch, Address addr)
         {
-            if (!SegmentMap.TryFindSegment(addr, out var segment))
+            if (!Memory.SegmentMap.TryFindSegment(addr, out var segment))
                 throw new ArgumentException(string.Format("The address {0} is invalid.", addr));
             return arch.CreateImageWriter(segment.MemoryArea, addr);
         }
@@ -616,10 +616,9 @@ namespace Reko.Core
         /// </returns>
         public IEnumerable<MachineInstruction> CreateDisassembler(IProcessorArchitecture arch, Address addr)
         {
-            if (!SegmentMap.TryFindSegment(addr, out var segment))
-                throw new ArgumentException(string.Format("The address {0} is invalid.", addr));
-            return arch.CreateDisassembler(
-                arch.CreateImageReader(segment.MemoryArea, addr));
+            if (!arch.Endianness.TryCreateImageReader(this.Memory, addr, out var rdr))
+                throw new ArgumentException($"The address {addr} is invalid.");
+            return arch.CreateDisassembler(rdr);
         }
 
         /// <summary>
@@ -641,19 +640,6 @@ namespace Reko.Core
         IReadOnlyCallGraph IReadOnlyProgram.CallGraph => this.CallGraph;
         IReadOnlyDictionary<Identifier, LinearInductionVariable> IReadOnlyProgram.InductionVariables => this.InductionVariables;
         IReadOnlySegmentMap IReadOnlyProgram.SegmentMap => this.SegmentMap;
-
-
-        /// <summary>
-        /// Determines whether an <see cref="Address"/> refers to read-only memory.
-        /// </summary>
-        /// <param name="addr">Address to check.</param>
-        /// <returns>True if the address is in read-only memory; otherwise false.</returns>
-        public bool IsPtrToReadonlySection(Address addr)
-        {
-            if (!this.SegmentMap.TryFindSegment(addr, out ImageSegment? seg))
-                return false;
-            return (seg.Access & AccessMode.ReadWrite) == AccessMode.Read;
-        }
 
         /// <summary>
         /// Attempt to interpret an <see cref="Expression"/> as an address.

@@ -443,7 +443,7 @@ fn00010020 proc
             var dmp = new Dumper(program);
             var sw = new StringWriter();
             dmp.DumpData(
-                program.SegmentMap,
+                program.Memory.SegmentMap,
                 program.Architecture,
                 program.ImageMap.BaseAddress + 1,
                 14,

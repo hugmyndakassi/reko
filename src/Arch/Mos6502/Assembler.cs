@@ -72,6 +72,7 @@ namespace Reko.Arch.Mos6502
             var program = new Program
             {
                 SegmentMap = map,
+                Memory = new ByteProgramMemory(map),
                 ImageMap = map.CreateImageMap(),
                 Architecture = arch,
             };

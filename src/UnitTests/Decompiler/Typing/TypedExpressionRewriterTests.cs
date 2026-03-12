@@ -1174,7 +1174,7 @@ test_exit:
             var pb = new ProgramBuilder();
             pb.Add("fn", m =>
             {
-                m.MStore(Address.Ptr32(0x001028),
+                m.MStore(Address.Ptr32(0x002028),
                     m.Convert(
                         m.Mem(PrimitiveType.Real64, Address.Ptr32(0x001020)),
                         PrimitiveType.Real64,
@@ -1182,6 +1182,8 @@ test_exit:
                 m.Return();
             });
             var program = pb.BuildProgram();
+            var memData = new ByteMemoryArea(Address.Ptr32(0x002000), new byte[0x100]);
+            program.SegmentMap.AddSegment(memData, ".data", AccessMode.ReadWrite);
             RunTest(program, "Typing/" + nameof(TerAddress) + ".txt");
         }
 

@@ -51,9 +51,9 @@ namespace Reko.Environments.C64
             get { return ""; }
         }
 
-        public override IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public override IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
-            return new C64Emulator(segmentMap, importReferences);
+            return new C64Emulator(memory, importReferences);
         }
 
         public override SegmentMap? CreateAbsoluteMemoryMap()

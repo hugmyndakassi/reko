@@ -58,9 +58,9 @@ namespace Reko.Arch.Mos6502
             return new Disassembler(this, (LeImageReader)imageReader);
         }
 
-        public override IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator)
         {
-            return new Mos6502Emulator(this, segmentMap, envEmulator);
+            return new Mos6502Emulator(this, (ByteProgramMemory)memory, envEmulator);
         }
 
         public override IEqualityComparer<MachineInstruction> CreateInstructionComparer(Normalize norm)

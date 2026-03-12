@@ -175,9 +175,9 @@ namespace Reko.Arch.PowerPC
             return new LongConstantFuser(dasm);
         }
 
-        public override IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator)
         {
-            return new PowerPcEmulator(this, segmentMap, envEmulator);
+            return new PowerPcEmulator(this, (ByteProgramMemory) memory, envEmulator);
         }
 
         public override IEqualityComparer<MachineInstruction> CreateInstructionComparer(Normalize norm)

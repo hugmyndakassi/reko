@@ -89,8 +89,10 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 It.IsNotNull<IMemory>(),
                 It.IsAny<Address>(),
                 out It.Ref<EndianImageReader>.IsAny))
-                .Callback(new CreateReaderDelegate((IMemory m, Address a, out EndianImageReader r) =>
-                    m.TryCreateLeReader(a, out r)))
+                .Callback(new CreateReaderDelegate((IMemory m, Address a, out EndianImageReader r) => {
+                    m.TryCreateLeReader(a, out var rdr);
+                    r = rdr;
+                }))
                 .Returns(true);
             var state = new FakeProcessorState(arch.Object);
         

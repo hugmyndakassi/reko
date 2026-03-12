@@ -48,7 +48,7 @@ namespace Reko.ImageLoaders.OdbgScript
             this.services = services;
             this.loader = loader;
             this.program = program;
-			this.SegmentMap = program.SegmentMap;
+			this.SegmentMap = program.Memory.SegmentMap;
             this.heap = null!;
         }
 
@@ -160,7 +160,7 @@ namespace Reko.ImageLoaders.OdbgScript
 
         public virtual bool TE_GetMemoryInfo(Address addr, [MaybeNullWhen(false)] out MEMORY_BASIC_INFORMATION MemInfo)
         {
-            SegmentMap map = program.SegmentMap;
+            SegmentMap map = program.Memory.SegmentMap;
             if (map.TryFindSegment(addr, out ImageSegment? segment))
             {
                 MemInfo = new MEMORY_BASIC_INFORMATION

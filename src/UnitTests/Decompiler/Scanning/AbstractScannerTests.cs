@@ -58,6 +58,16 @@ namespace Reko.UnitTests.Decompiler.Scanning
         {
             this.arch = new Mock<IProcessorArchitecture>();
             this.platform = new Mock<IPlatform>();
+            var segmentMap = new SegmentMap(
+                new ImageSegment(
+                    ".text",
+                    new ByteMemoryArea(Address.Ptr32(0x1000), new byte[textSize]),
+                    AccessMode.ReadExecute),
+                new ImageSegment(
+                    ".data",
+                    new ByteMemoryArea(Address.Ptr32(0x3000), new byte[4096]),
+                    AccessMode.ReadWrite));
+            var memory = new ByteProgramMemory(segmentMap);
 
             arch.Setup(a => a.Name).Returns("FakeCpu");
             arch.Setup(a => a.InstructionBitSize).Returns(instrBitSize);
@@ -82,19 +92,10 @@ namespace Reko.UnitTests.Decompiler.Scanning
 
             platform.Setup(p => p.Architecture).Returns(arch.Object);
 
-            var segmentMap = new SegmentMap(
-                new ImageSegment(
-                    ".text",
-                    new ByteMemoryArea(Address.Ptr32(0x1000), new byte[textSize]),
-                    AccessMode.ReadExecute),
-                new ImageSegment(
-                    ".data",
-                    new ByteMemoryArea(Address.Ptr32(0x3000), new byte[4096]),
-                    AccessMode.ReadWrite));
 
             this.program = new Program
             {
-                Memory = new ByteProgramMemory(segmentMap),
+                Memory = memory,
                 SegmentMap = segmentMap,
                 Architecture = arch.Object,
                 Platform = platform.Object,

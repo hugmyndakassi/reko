@@ -112,7 +112,7 @@ public class VisualizerViewModel : Tool
         if (proc is null || program is null) // || proc.EntryAddress == this.Address)
             return;
         Debug.Assert(program is not null);
-        if (!program.SegmentMap.TryFindSegment(proc.EntryAddress, out var segment))
+        if (!program.Memory.SegmentMap.TryFindSegment(proc.EntryAddress, out var segment))
             return;
         if (segment.MemoryArea is not ByteMemoryArea bmem)
             return;
@@ -126,7 +126,7 @@ public class VisualizerViewModel : Tool
         this.Program = this.selAddrSvc.SelectedProgram;
         if (addrRange is null || Program is null) // || addrRange.Address == this.Address)
             return;
-        if (!Program.SegmentMap.TryFindSegment(addrRange.Address, out var segment))
+        if (!Program.Memory.SegmentMap.TryFindSegment(addrRange.Address, out var segment))
             return;
         if (segment.MemoryArea is not ByteMemoryArea bmem)
             return;
@@ -144,7 +144,7 @@ public class VisualizerViewModel : Tool
            .FirstOrDefault();
         if (ar is null)
             return;
-        if (!Program.SegmentMap.TryFindSegment(ar.Begin, out var seg))
+        if (!Program.Memory.SegmentMap.TryFindSegment(ar.Begin, out var seg))
         {
             return;
         }

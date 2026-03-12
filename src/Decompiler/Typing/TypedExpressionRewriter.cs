@@ -222,6 +222,9 @@ namespace Reko.Typing
         /// <inheritdoc />
         public override Expression VisitApplication(Application appl)
         {
+            var z = appl.Procedure.ToString();
+            if (z is not null && z.Contains("rintf"))
+                _ = this;
             return base.VisitApplication(appl);
         }
 

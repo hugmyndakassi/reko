@@ -94,7 +94,8 @@ namespace Reko.Arch.X86.Assembler
         public X86Assembler(Program program, Address addrStart)
         {
             this.arch = (IntelArchitecture) program.Architecture;
-            this.addrBase = program.SegmentMap.BaseAddress;
+            var segmentMap = program.Memory.SegmentMap;
+            this.addrBase = segmentMap.BaseAddress;
             this.entryPoints = program.EntryPoints.Values.ToList();
             this.defaultWordSize = arch.WordWidth;
             this.textEncoding = Encoding.GetEncoding("ISO_8859-1");
@@ -103,10 +104,10 @@ namespace Reko.Arch.X86.Assembler
             mpNameToSegment = new Dictionary<string, AssembledSegment>();
             symbolSegments = new Dictionary<Symbol, AssembledSegment>();
             this.SegmentOverride = RegisterStorage.None;
-            segments = program.SegmentMap.Segments.Values
+            segments = segmentMap.Segments.Values
                 .Select(seg => new AssembledSegment(new Emitter(seg.MemoryArea), new Symbol(seg.Name)))
                 .ToList();
-            if (!program.SegmentMap.TryFindSegment(addrStart, out var segmentToMutate))
+            if (!segmentMap.TryFindSegment(addrStart, out var segmentToMutate))
                 throw new InvalidOperationException($"Address {addrStart} is not a valid location in the program.");
             var offset = addrStart - segmentToMutate.MemoryArea.BaseAddress;
             var asmSeg = this.segments.Single(seg => seg.Symbol!.Name == segmentToMutate.Name);

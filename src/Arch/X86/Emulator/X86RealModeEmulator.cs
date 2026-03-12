@@ -22,6 +22,7 @@ using Reko.Core;
 using Reko.Core.Emulation;
 using Reko.Core.Lib;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using Reko.Core.Types;
 using System;
 using System.Diagnostics;
@@ -32,8 +33,8 @@ namespace Reko.Arch.X86.Emulator
 {
     public class X86RealModeEmulator : X86Emulator
     {
-        public X86RealModeEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
-            : base(arch, segmentMap, envEmulator, X86.Registers.ip, X86.Registers.cx)
+        public X86RealModeEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
+            : base(arch, memory, envEmulator, X86.Registers.ip, X86.Registers.cx)
         {
         }
 

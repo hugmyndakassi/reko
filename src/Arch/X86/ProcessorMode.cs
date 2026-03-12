@@ -80,7 +80,7 @@ namespace Reko.Arch.X86
 
         public abstract X86Disassembler CreateDisassembler(IServiceProvider services, Decoder[] rootDecoders, EndianImageReader rdr, Dictionary<string, object> options);
 
-        public abstract IProcessorEmulator CreateEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator);
+        public abstract IProcessorEmulator CreateEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator);
 
         public abstract IEnumerable<Address> CreateInstructionScanner(SegmentMap map, EndianImageReader rdr, IEnumerable<Address> knownAddresses, PointerScannerFlags flags);
 
@@ -212,9 +212,9 @@ namespace Reko.Arch.X86
             return dasm;
         }
 
-        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
         {
-            return new X86RealModeEmulator(arch, segmentMap, envEmulator);
+            return new X86RealModeEmulator(arch, memory, envEmulator);
         }
 
         public override OperandRewriter CreateOperandRewriter(IntelArchitecture arch, ExpressionEmitter m, IStorageBinder binder, IRewriterHost host, X86State state)
@@ -258,7 +258,7 @@ namespace Reko.Arch.X86
             return new X86Disassembler(services, rootDecoders, this, rdr, PrimitiveType.Word16, PrimitiveType.Word16);
         }
 
-        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
         {
             throw new NotImplementedException();
         }
@@ -377,9 +377,9 @@ namespace Reko.Arch.X86
             return new X86Disassembler(services, rootDecoders, this, rdr, PrimitiveType.Word32, PrimitiveType.Word32);
         }
 
-        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
         {
-            return new X86Protected32Emulator(arch, segmentMap, envEmulator);
+            return new X86Protected32Emulator(arch, memory, envEmulator);
         }
 
         public override OperandRewriter CreateOperandRewriter(IntelArchitecture arch, ExpressionEmitter m, IStorageBinder binder, IRewriterHost host, X86State state)
@@ -457,7 +457,7 @@ namespace Reko.Arch.X86
             return new X86Disassembler(services, rootDecoders, this, rdr, PrimitiveType.Word32, PrimitiveType.Word64);
         }
 
-        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
         {
             throw new NotImplementedException();
         }

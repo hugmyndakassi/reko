@@ -183,8 +183,8 @@ namespace Reko.WindowsItp
             var addr = peLdr.PreferredBaseAddress;
             var program = peLdr.LoadProgram(addr, null);
             peLdr.Relocate(program, addr);
-            var win32 = new Win32Emulator(program.SegmentMap, program.Platform, program.ImportReferences);
-            var emu = program.Architecture.CreateEmulator(program.SegmentMap, win32);
+            var win32 = new Win32Emulator(program.Memory, program.Platform, program.ImportReferences);
+            var emu = program.Architecture.CreateEmulator(program.Memory, win32);
             emu.InstructionPointer = program.EntryPoints.Values.First().Address;
             emu.ExceptionRaised += delegate { throw new Exception(); };
             emu.WriteRegister(Registers.esp, (uint)peLdr.PreferredBaseAddress.ToLinear() + 0x0FFC);

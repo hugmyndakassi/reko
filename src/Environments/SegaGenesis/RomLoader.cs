@@ -70,7 +70,7 @@ namespace Reko.Environments.SegaGenesis
         {
             // Get the Reset address from offset $0004 of the interrupt vector.
             var addrReset = Address.Ptr32(ByteMemoryArea.ReadBeUInt32(RawImage, 4));
-            if (program.SegmentMap.IsValidAddress(addrReset))
+            if (program.Memory.IsValidAddress(addrReset))
             {
                 var sym = ImageSymbol.Procedure(program.Architecture, addrReset, "Reset", state: program.Architecture.CreateProcessorState());
                 program.ImageSymbols.Add(sym.Address, sym);

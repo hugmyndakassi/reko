@@ -142,7 +142,7 @@ namespace Reko.UserInterfaces.WindowsForms.Controls
             }
             else
             {
-                if (!program.SegmentMap.TryFindSegment(topAddress.Value, out ImageSegment segment))
+                if (!program.Memory.SegmentMap.TryFindSegment(topAddress.Value, out ImageSegment segment))
                 {
                     Model = new EmptyEditorModel();
                 }

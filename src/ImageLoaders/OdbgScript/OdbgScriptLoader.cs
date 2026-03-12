@@ -68,14 +68,14 @@ namespace Reko.ImageLoaders.OdbgScript
             // the packed entry point.
             var origLdr = this.originalImageLoader;
             var program = origLdr.LoadProgram(origLdr.PreferredBaseAddress, sPlatformOverride);
-            this.ImageMap = program.SegmentMap;
+            this.ImageMap = program.Memory.SegmentMap;
             this.Architecture = program.Architecture;
             var ep = program.EntryPoints.Values.First();
 
             program.ImageSymbols.Clear();
             program.EntryPoints.Clear();
-            var envEmu = program.Platform.CreateEmulator(program.SegmentMap, program.ImportReferences);
-            var emu = program.Architecture.CreateEmulator(program.SegmentMap, envEmu);
+            var envEmu = program.Platform.CreateEmulator(program.Memory, program.ImportReferences);
+            var emu = program.Architecture.CreateEmulator(program.Memory, envEmu);
             this.debugger = new Debugger(program.Architecture, emu);
             this.scriptInterpreter = new OllyLangInterpreter(Services, program.Architecture);
             this.scriptInterpreter.Host = new OdbgScriptHost(Services, this, program);

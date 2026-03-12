@@ -89,9 +89,9 @@ namespace Reko.Core.Memory
         /// Creates a big-endian reader, positioned at the given address.
         /// </summary>
         /// <param name="addr">Address from which the created reader starts reading.</param>
-        /// <returns>A big-endian <see cref="EndianImageReader"/>.
+        /// <returns>A big-endian <see cref="BeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateBeReader(Address addr)
+        public override BeImageReader CreateBeReader(Address addr)
         {
             return new BeImageReader(this, addr);
         }
@@ -101,9 +101,9 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="addr">Address from which the created reader starts reading.</param>
         /// <param name="cUnits">Maximum number of bytes to read.</param>
-        /// <returns>A big-endian <see cref="EndianImageReader"/>.
+        /// <returns>A big-endian <see cref="BeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateBeReader(Address addr, long cUnits)
+        public override BeImageReader CreateBeReader(Address addr, long cUnits)
         {
             return new BeImageReader(this, addr, cUnits);
         }
@@ -112,9 +112,9 @@ namespace Reko.Core.Memory
         /// Creates a big-endian reader, positioned at the given offset.
         /// </summary>
         /// <param name="offset">Offset from which the created reader starts reading.</param>
-        /// <returns>A big-endian <see cref="EndianImageReader"/>.
+        /// <returns>A big-endian <see cref="BeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateBeReader(long offset)
+        public override BeImageReader CreateBeReader(long offset)
         {
             return new BeImageReader(this, offset);
         }
@@ -124,9 +124,9 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="offsetBegin">Offset from which the created reader starts reading.</param>
         /// <param name="offsetEnd">Offset at which the created reader stops reading.</param>
-        /// <returns>A big-endian <see cref="EndianImageReader"/>.
+        /// <returns>A big-endian <see cref="BeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateBeReader(long offsetBegin, long offsetEnd)
+        public override BeImageReader CreateBeReader(long offsetBegin, long offsetEnd)
         {
             return new BeImageReader(this, offsetBegin, offsetEnd);
         }
@@ -155,10 +155,10 @@ namespace Reko.Core.Memory
         /// Creates a little-endian reader, positioned at the given address.
         /// </summary>
         /// <param name="addr">Address from which the created reader starts reading.</param>
-        /// <returns>A little-endian <see cref="EndianImageReader"/>.
+        /// <returns>A little-endian <see cref="LeImageReader"/>.
         /// </returns>
 
-        public override EndianImageReader CreateLeReader(Address addr)
+        public override LeImageReader CreateLeReader(Address addr)
         {
             return new LeImageReader(this, addr);
         }
@@ -168,9 +168,9 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="addr">Address from which the created reader starts reading.</param>
         /// <param name="cUnits">Maximum number of bytes to read.</param>
-        /// <returns>A little-endian <see cref="EndianImageReader"/>.
+        /// <returns>A little-endian <see cref="LeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateLeReader(Address addr, long cUnits)
+        public override LeImageReader CreateLeReader(Address addr, long cUnits)
         {
             return new LeImageReader(this, addr, cUnits);
         }
@@ -181,7 +181,7 @@ namespace Reko.Core.Memory
         /// <param name="offset">Offset from which the created reader starts reading.</param>
         /// <returns>A little-endian <see cref="EndianImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateLeReader(long offset)
+        public override LeImageReader CreateLeReader(long offset)
         {
             return new LeImageReader(this, offset);
         }
@@ -191,9 +191,9 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="offsetBegin">Offset from which the created reader starts reading.</param>
         /// <param name="offsetEnd">Offset at which the created reader stops reading.</param>
-        /// <returns>A little-endian <see cref="EndianImageReader"/>.
+        /// <returns>A little-endian <see cref="LeImageReader"/>.
         /// </returns>
-        public override EndianImageReader CreateLeReader(long offsetBegin, long offsetEnd)
+        public override LeImageReader CreateLeReader(long offsetBegin, long offsetEnd)
         {
             return new LeImageReader(this, offsetBegin, offsetEnd);
         }

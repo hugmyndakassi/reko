@@ -25,6 +25,7 @@ using Reko.Core.Expressions;
 using Reko.Core.Lib;
 using Reko.Core.Loading;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,17 +38,17 @@ namespace Reko.Arch.PowerPC
         private static readonly TraceSwitch trace = new TraceSwitch(nameof(PowerPcEmulator), "Trace execution of PowerPC Emulator") { Level = TraceLevel.Verbose };
 
         private readonly PowerPcArchitecture arch;
-        private readonly SegmentMap map;
+        private readonly ByteProgramMemory memory;
         private readonly IPlatformEmulator envEmulator;
         private ulong uInstrPointer;    //$REVIEW: is this exposed as a PPC special register?
         private IEnumerator<PowerPcInstruction> dasm;
         private readonly ulong[] registerFile;
 
-        public PowerPcEmulator(PowerPcArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
-            : base(segmentMap)
+        public PowerPcEmulator(PowerPcArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
+            : base(memory.SegmentMap)
         {
             this.arch = arch;
-            this.map = segmentMap;
+            this.memory = memory;
             this.envEmulator = envEmulator;
             this.registerFile = new ulong[32];
             this.dasm = null!;
@@ -65,9 +66,8 @@ namespace Reko.Arch.PowerPC
             set
             {
                 this.uInstrPointer = value.ToLinear();
-                if (!map.TryFindSegment(value, out ImageSegment? segment))
+                if (!arch.TryCreateImageReader(this.memory, value, out var rdr))
                     throw new AccessViolationException();
-                var rdr = arch.CreateImageReader(segment.MemoryArea, value);
                 dasm = arch.CreateDisassemblerImpl(rdr).GetEnumerator();
             }
         }

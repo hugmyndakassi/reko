@@ -71,9 +71,9 @@ namespace Reko.UnitTests.Arch.X86.Emulator
 
             Given_Platform();
 
-            var win32 = new Win32Emulator(program.SegmentMap, platform, importReferences);
+            var win32 = new Win32Emulator(program.Memory, platform, importReferences);
 
-            emu = (X86Emulator) arch.CreateEmulator(program.SegmentMap, win32);
+            emu = (X86Emulator) arch.CreateEmulator(program.Memory, win32);
             emu.InstructionPointer = program.ImageMap.BaseAddress;
             emu.WriteRegister(Registers.esp, (uint) program.ImageMap.BaseAddress.ToLinear() + 0x0FFC);
             emu.ExceptionRaised += delegate { throw new Exception(); };
@@ -93,9 +93,9 @@ namespace Reko.UnitTests.Arch.X86.Emulator
 
             Given_Platform();
 
-            var msdos = platform.CreateEmulator(program.SegmentMap, importReferences);
+            var msdos = platform.CreateEmulator(program.Memory, importReferences);
 
-            emu = (X86Emulator) arch.CreateEmulator(program.SegmentMap, msdos);
+            emu = (X86Emulator) arch.CreateEmulator(program.Memory, msdos);
             emu.InstructionPointer = Address.SegPtr(0x800, 0);
             emu.WriteRegister(Registers.cs, 0x0800);
             emu.WriteRegister(Registers.ds, 0x0800);
@@ -112,7 +112,7 @@ namespace Reko.UnitTests.Arch.X86.Emulator
             mockPlatform.Setup(p => p.LookupProcedureByName(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(new ExternalProcedure("", new FunctionType()));
             mockPlatform.Setup(p => p.CreateEmulator(
-                It.IsAny<SegmentMap>(),
+                It.IsAny<IMemory>(),
                 It.IsAny<Dictionary<Address, ImportReference>>()))
                 .Returns(emu.Object);
             platform = mockPlatform.Object;

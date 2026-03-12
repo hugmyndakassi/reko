@@ -325,7 +325,7 @@ namespace Reko.Typing
 
                 var dt = ptr.Pointee.ResolveAs<DataType>()!;
                 var charType = MaybeCharType(dt);
-                if (charType is not null && program.IsPtrToReadonlySection(addr.Value))
+                if (charType is not null && !program.Memory.IsWriteable(addr.Value))
                 {
                     PromoteToCString(c, charType);
                     if (!program.TryCreateImageReader(program.Architecture, addr.Value, out var rdr))
@@ -334,7 +334,7 @@ namespace Reko.Typing
                 }
                 if (Dereferenced &&
                     TryReadReal(addr.Value, dt, out var cReal) &&
-                    program.IsPtrToReadonlySection(addr.Value))
+                    !program.Memory.IsWriteable(addr.Value))
                 {
                     return cReal;
                 }

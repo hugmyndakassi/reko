@@ -65,7 +65,7 @@ namespace Reko.UnitTests.Arch.Mos6502
 
             var envEmu = new DefaultPlatformEmulator();
 
-            emu = (Mos6502Emulator) arch.CreateEmulator(program.SegmentMap, envEmu);
+            emu = (Mos6502Emulator) arch.CreateEmulator(program.Memory, envEmu);
             emu.InstructionPointer = program.ImageMap.BaseAddress;
             emu.WriteRegister(Registers.s, 0xFF);
             emu.ExceptionRaised += (sender, e) => { throw e.Exception; };
@@ -84,7 +84,7 @@ namespace Reko.UnitTests.Arch.Mos6502
 
             var envEmu = new DefaultPlatformEmulator();
 
-            emu = (Mos6502Emulator) arch.CreateEmulator(program.SegmentMap, envEmu);
+            emu = (Mos6502Emulator) arch.CreateEmulator(program.Memory, envEmu);
             emu.InstructionPointer = addrBase;
             emu.WriteRegister(Registers.s, 0xFF);
             emu.ExceptionRaised += (sender, e) => { throw e.Exception; };

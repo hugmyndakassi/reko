@@ -53,11 +53,12 @@ namespace Reko.UnitTests.Arch
             var mem = new ByteMemoryArea(addrBase, bytes);
             var seg = new ImageSegment("code", mem, AccessMode.ReadWriteExecute);
             var segmap = new SegmentMap(mem.BaseAddress, seg);
-            var program = new Program(new ByteProgramMemory(segmap), arch, new DefaultPlatform(new ServiceContainer(), arch));
+            var memory = new ByteProgramMemory(segmap);
+            var program = new Program(memory, arch, new DefaultPlatform(new ServiceContainer(), arch));
 
             var envEmu = new DefaultPlatformEmulator();
 
-            Emulator = arch.CreateEmulator(segmap, envEmu);
+            Emulator = arch.CreateEmulator(memory, envEmu);
             Emulator.InstructionPointer = program.ImageMap.BaseAddress;
             Emulator.ExceptionRaised += (sender, e) => { throw e.Exception; };
         }

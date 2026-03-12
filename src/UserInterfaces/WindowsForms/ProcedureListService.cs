@@ -129,7 +129,7 @@ namespace Reko.Gui
 
         private static string[] CreateListItemTexts(ProgramProcedure item)
         {
-            var segName = item.Program.SegmentMap.TryFindSegment(item.Procedure.EntryAddress, out var seg)
+            var segName = item.Program.Memory.SegmentMap.TryFindSegment(item.Procedure.EntryAddress, out var seg)
                 ? seg.Name
                 : "???";
             var name = ProcedureListViewModel.GenerateDecoratedName(item.Program, item.Procedure);

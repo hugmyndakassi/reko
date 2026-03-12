@@ -367,12 +367,12 @@ namespace Reko.Core
         /// <summary>
         /// Creates a processor emulator for this architecture.
         /// </summary>
-        /// <param name="segmentMap">The memory image containing the program 
+        /// <param name="memory">The memory image containing the program 
         /// image and initial data.
         /// </param>
         /// <param name="envEmulator">Simulated operating system.</param>
         /// <returns>The emulator ready to run.</returns>
-        IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator);
+        IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator);
 
         /// <summary>
         /// Provide an architecture-defined <see cref="ICallingConvention"/>.
@@ -809,11 +809,11 @@ namespace Reko.Core
         public abstract IEnumerable<RtlInstructionCluster> CreateRewriter(EndianImageReader rdr, ProcessorState state, IStorageBinder binder, IRewriterHost host);
 
         /// <inheritdoc/>
-        /// <inheritdoc/>
-        public virtual IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public virtual IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator)
         {
             throw new NotImplementedException("Emulation has not been implemented for this processor architecture yet.");
         }
+
 
         /// <inheritdoc/>
         /// <remarks>

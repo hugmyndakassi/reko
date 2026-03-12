@@ -37,7 +37,7 @@ namespace Reko.WindowsItp
                         new ServiceContainer(), 
                         "ppc-be-32",
                         new Dictionary<string, object>()),
-                    SegmentMap = segmentMap
+                    Memory = new ByteProgramMemory(segmentMap)
                 },
                 null,
                 seg);

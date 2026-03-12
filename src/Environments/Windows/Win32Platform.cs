@@ -113,9 +113,9 @@ namespace Reko.Environments.Windows
             return parser;
         }
 
-        public override IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public override IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
-            return new Win32Emulator(segmentMap, this, importReferences);
+            return new Win32Emulator(memory, this, importReferences);
         }
 
         public override bool IsImplicitArgumentRegister(RegisterStorage reg)

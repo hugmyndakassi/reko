@@ -94,9 +94,9 @@ namespace Reko.Arch.X86
             return mode.CreateDisassembler(this.Services, EnsureRootDecoders(), imageReader, Options);
         }
 
-        public override IProcessorEmulator CreateEmulator(SegmentMap segmentMap, IPlatformEmulator envEmulator)
+        public override IProcessorEmulator CreateEmulator(IMemory memory, IPlatformEmulator envEmulator)
         {
-            return mode.CreateEmulator(this, segmentMap, envEmulator);
+            return mode.CreateEmulator(this, (ByteProgramMemory) memory, envEmulator);
         }
 
         public override T? CreateExtension<T>() where T : class

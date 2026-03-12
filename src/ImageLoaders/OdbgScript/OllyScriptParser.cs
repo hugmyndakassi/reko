@@ -188,7 +188,7 @@ namespace Reko.ImageLoaders.OdbgScript
             var exps = new List<Expression>();
             var exp = Expression();
             if (exp is null)
-                return Array.Empty<Expression>();
+                return [];
             exps.Add(exp);
             while (PeekAndDiscard(TokenType.Comma))
             {
@@ -804,7 +804,7 @@ namespace Reko.ImageLoaders.OdbgScript
             }
 
             // For tokens that may span multiple lines.
-            private Token MakeToken(TokenType type, int lineNumber, object? value = null)
+            private static Token MakeToken(TokenType type, int lineNumber, object? value = null)
             {
                 var tok = new Token(type, lineNumber, value);
                 return tok;
@@ -825,7 +825,7 @@ namespace Reko.ImageLoaders.OdbgScript
                 return tok;
             }
 
-            private Token Error(int lineNumber, string message)
+            private static Token Error(int lineNumber, string message)
             {
                 var tok = new Token(TokenType.Error, lineNumber, message);
                 return tok;

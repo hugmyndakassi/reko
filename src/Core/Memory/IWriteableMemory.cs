@@ -58,7 +58,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteBeUInt16(Address address, ushort value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteBeUInt16(Address address, ushort value);
 
         /// <summary>
         /// Write a 32-bit value in big-endian order to the memory at address
@@ -66,7 +67,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteBeUInt32(Address address, uint value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteBeUInt32(Address address, uint value);
 
         /// <summary>
         /// Write a 64-bit value in big-endian order to the memory at address
@@ -74,7 +76,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteBeUInt64(Address address, ulong value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteBeUInt64(Address address, ulong value);
 
         /// <summary>
         /// Write a 16-bit value in little-endian order to the memory at address
@@ -82,7 +85,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteLeUInt16(Address address, ushort value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteLeUInt16(Address address, ushort value);
 
         /// <summary>
         /// Write a 32-bit value in little-endian order to the memory at address
@@ -90,7 +94,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteLeUInt32(Address address, uint value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteLeUInt32(Address address, uint value);
 
         /// <summary>
         /// Write a 64-bit value in little-endian order to the memory at address
@@ -98,7 +103,8 @@ namespace Reko.Core.Memory
         /// </summary>
         /// <param name="address">Virtual address to write to.</param>
         /// <param name="value">Value to write.</param>
-        void WriteLeUInt64(Address address, ulong value);
+        /// <returns>True if the write succeeded; false otherwise.</returns>
+        bool WriteLeUInt64(Address address, ulong value);
 
         /// <summary>
         /// Write an octet-sized value to memory.

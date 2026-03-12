@@ -172,11 +172,11 @@ namespace Reko.Core
         /// <summary>
         /// Creates a platform emulator for this platform.
         /// </summary>
-        /// <param name="segmentMap">Loaded program image.</param>
+        /// <param name="memory">Loaded memory image.</param>
         /// <param name="importReferences">Imported procedures.</param>
         /// <returns>The created platform emulator.
         /// </returns>
-        IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences);
+        IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences);
 
         /// <summary>
         /// Creates an empty SegmentMap based on the absolute memory map. It is 
@@ -690,7 +690,7 @@ namespace Reko.Core
         }
 
         /// <inheritdoc/>
-        public virtual IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public virtual IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
             throw new NotImplementedException("Emulation has not been implemented for this platform yet.");
         }

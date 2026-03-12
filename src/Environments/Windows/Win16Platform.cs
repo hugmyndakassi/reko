@@ -59,7 +59,7 @@ namespace Reko.Environments.Windows
             return parser;
         }
 
-        public override IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public override IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
             // https://devblogs.microsoft.com/oldnewthing/20071203-00/?p=24323
 /*

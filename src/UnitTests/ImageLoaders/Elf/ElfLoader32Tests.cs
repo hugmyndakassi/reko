@@ -132,7 +132,10 @@ namespace Reko.UnitTests.ImageLoaders.Elf
                 mem.BaseAddress,
                 out It.Ref<EndianImageReader>.IsAny))
                 .Callback(new CreateReaderDelegate((IMemory m, Address a, out EndianImageReader r) =>
-                    m.TryCreateBeReader(a, out r)))
+                {
+                    m.TryCreateBeReader(a, out var rdr);
+                    r = rdr;
+                }))
                 .Returns(true);
         }
 

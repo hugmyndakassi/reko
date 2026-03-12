@@ -101,6 +101,11 @@ namespace Reko.ImageLoaders.LLVM
             return parser;
         }
 
+        public IPlatformEmulator CreateEmulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
+        {
+            throw new NotImplementedException();
+        }
+
         public IPlatformEmulator CreateEmulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
         {
             throw new NotImplementedException();

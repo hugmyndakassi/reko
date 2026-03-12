@@ -225,58 +225,57 @@ namespace Reko.Core.Memory
         }
 
         /// <inheritdoc/>
-        public void WriteBeUInt16(Address addr, ushort value)
+        public bool WriteBeUInt16(Address addr, ushort value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
+                return false;
             segment.MemoryArea.WriteBeUInt16(addr - segment.MemoryArea.BaseAddress, value);
+            return true;
         }
 
         /// <inheritdoc/>
-        public void WriteBeUInt32(Address addr, uint value)
+        public bool WriteBeUInt32(Address addr, uint value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
-            segment.MemoryArea.WriteBeUInt32(addr - segment.MemoryArea.BaseAddress, value); 
+                return false;
+            segment.MemoryArea.WriteBeUInt32(addr - segment.MemoryArea.BaseAddress, value);
+            return true;
         }
 
         /// <inheritdoc/>
-        public void WriteBeUInt64(Address addr, ulong value)
+        public bool WriteBeUInt64(Address addr, ulong value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
+                return false;
             segment.MemoryArea.WriteBeUInt64(addr - segment.MemoryArea.BaseAddress, value);
+            return true;
         }
 
         /// <inheritdoc/>
-        public void WriteLeUInt16(Address addr, ushort value)
+        public bool WriteLeUInt16(Address addr, ushort value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
+                return false;
             segment.MemoryArea.WriteLeUInt16(addr - segment.MemoryArea.BaseAddress, value);
+            return true;
         }
 
         /// <inheritdoc/>
-        public void WriteLeUInt32(Address addr, uint value)
+        public bool WriteLeUInt32(Address addr, uint value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
+                return false;
             segment.MemoryArea.WriteLeUInt32(addr - segment.MemoryArea.BaseAddress, value);
+            return true;
         }
 
         /// <inheritdoc/>
-        public void WriteLeUInt64(Address addr, ulong value)
+        public bool WriteLeUInt64(Address addr, ulong value)
         {
             if (!this.SegmentMap.TryFindSegment(addr, out var segment))
-                return;
+                return false;
             segment.MemoryArea.WriteLeUInt64(addr - segment.MemoryArea.BaseAddress, value);
-        }
-
-        private ImageSegment RequireSegment(Address addr)
-        {
-            if (!SegmentMap.TryFindSegment(addr, out var segment))
-                throw new ArgumentException($"The address {addr} is invalid.");
-            return segment;
+            return true;
         }
     }
 }

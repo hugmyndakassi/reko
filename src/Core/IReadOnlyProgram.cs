@@ -126,14 +126,6 @@ namespace Reko.Core
         bool TryCreateImageReader(IProcessorArchitecture arch, Address addr, [MaybeNullWhen(false)] out EndianImageReader rdr);
 
         /// <summary>
-        /// Determines whether an <see cref="Address"/> refers to read-only memory.
-        /// </summary>
-        /// <param name="addr">Address to check.</param>
-        /// <returns>True if the given address specifies a location in read-only
-        /// memory, otherwise false;</returns>
-        public bool IsPtrToReadonlySection(Address addr);
-
-        /// <summary>
         /// Attempt to use <paramref name="expr"/> as an <see cref="Address"/>, possibly
         /// converting <see cref="Constant"/>s to addresses as necessary.
         /// </summary>

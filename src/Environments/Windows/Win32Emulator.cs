@@ -44,12 +44,12 @@ namespace Reko.Environments.Windows
     {
         private Dictionary<string, Module> modules;
         private TWord uPseudoFn;
-        private SegmentMap map;
+        private ByteProgramMemory memory;
         private IPlatform platform;
 
-        public Win32Emulator(SegmentMap map, IPlatform platform, Dictionary<Address, ImportReference> importReferences)
+        public Win32Emulator(IMemory memory, IPlatform platform, Dictionary<Address, ImportReference> importReferences)
         {
-            this.map = map;
+            this.memory = (ByteProgramMemory) memory;
             this.platform = platform;
             this.uPseudoFn = 0xDEAD0000u;   // unlikely to be a real pointer to a function
             this.InterceptedCalls = new Dictionary<Address, ExternalProcedure>();
@@ -177,7 +177,7 @@ namespace Reko.Environments.Windows
             Debug.Print("VirtualProtect({0:X8},{1:X8},{2:X8},{3:X8})", uAddress, dwSize, newProtect, pOldProtect);
             //$TODO: to make this work we have to keep a mapping (page -> permissions)
             // For now, return the protection of the segment.
-            if (!this.map.TryFindSegment(Address.Ptr32(uAddress), out var seg))
+            if (!this.memory.SegmentMap.TryFindSegment(Address.Ptr32(uAddress), out var seg))
             {
                 //$BUG seg is null here. How is this expected to work?
                 var prot = MapProtectionToWin32(seg!.Access);
@@ -240,9 +240,9 @@ namespace Reko.Environments.Windows
             // per memory fetch. TryFindSegment needs an overload
             // that accepts ulongs / linear addresses.
             var addr = Address.Ptr32(ea);
-            if (!map.TryFindSegment(addr, out ImageSegment? segment))
-                throw new AccessViolationException();
-            return ((ByteMemoryArea)segment.MemoryArea).ReadLeUInt32(addr);
+            return memory.TryReadLeUInt32(addr, out var u)
+                ? u
+                : throw new AccessViolationException();
         }
 
         private void WriteLeUInt32(uint ea, uint value)
@@ -251,9 +251,8 @@ namespace Reko.Environments.Windows
             // per memory fetch. TryFindSegment needs an overload
             // that accepts ulongs / linear addresses.
             var addr = Address.Ptr32(ea);
-            if (!map.TryFindSegment(addr, out ImageSegment? segment))
+            if (!memory.WriteLeUInt32(addr, value))
                 throw new AccessViolationException();
-            segment.MemoryArea.WriteLeUInt32(addr, value);
         }
 
         private void WriteLeUInt32(Address ea, uint value)
@@ -261,17 +260,14 @@ namespace Reko.Environments.Windows
             //$PERF: wow this is inefficient; an allocation
             // per memory fetch. TryFindSegment needs an overload
             // that accepts ulongs / linear addresses.
-            if (!map.TryFindSegment(ea, out ImageSegment? segment))
-                throw new AccessViolationException();
-            segment.MemoryArea.WriteLeUInt32(ea, value);
+            memory.WriteLeUInt32(ea, value);
         }
 
         private string ReadMbString(TWord pstrLibName)
         {
             var addr = Address.Ptr32(pstrLibName);
-            if (!map.TryFindSegment(addr, out ImageSegment? segment))
-                throw new AccessViolationException();
-            var rdr = segment.MemoryArea.CreateLeReader(addr);
+            if (!memory.TryCreateLeReader(addr, out var rdr))
+                return "";
             var ab = new List<byte>();
             for (;;)
             {
@@ -286,7 +282,7 @@ namespace Reko.Environments.Windows
         public ImageSegment InitializeStack(IProcessorEmulator emu, ProcessorState state)
         {
             var stack = new ByteMemoryArea(Address.Ptr32(0x7FE00000), new byte[1024 * 1024]);
-            var stackSeg = this.map.AddSegment(stack, "stack", AccessMode.ReadWrite);
+            var stackSeg = this.memory.SegmentMap.AddSegment(stack, "stack", AccessMode.ReadWrite);
             emu.WriteRegister(Registers.esp, (uint) stack.BaseAddress.ToLinear() +  (uint)(stack.Length - this.platform.Architecture.PointerType.Size));
             return stackSeg;
         }
@@ -295,7 +291,7 @@ namespace Reko.Environments.Windows
         {
             if (stackSeg is not null)
             {
-                this.map.Segments.Remove(stackSeg.Address);
+                this.memory.SegmentMap.Segments.Remove(stackSeg.Address);
             }
         }
 

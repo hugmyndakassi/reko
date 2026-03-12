@@ -388,7 +388,7 @@ foo		endp
 				Dumper dump = new Dumper(program);
                 var bmem = (ByteMemoryArea) program.SegmentMap.Segments.Values.First().MemoryArea;
                 var formatter = new TextFormatter(fut.TextWriter);
-				dump.DumpData(program.SegmentMap, program.Architecture, bmem.BaseAddress, bmem.Bytes.Length, formatter);
+				dump.DumpData(program.Memory.SegmentMap, program.Architecture, bmem.BaseAddress, bmem.Bytes.Length, formatter);
 				fut.TextWriter.WriteLine();
 				dump.ShowAddresses = true;
 				dump.ShowCodeBytes = true;

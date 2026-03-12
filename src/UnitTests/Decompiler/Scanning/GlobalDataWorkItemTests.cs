@@ -52,7 +52,10 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 It.IsAny<Address>(),
                 out It.Ref<EndianImageReader>.IsAny))
                 .Callback(new CreateReaderDelegate((IMemory m, Address a, out EndianImageReader r) =>
-                m.TryCreateLeReader(a, out r)))
+                {
+                    m.TryCreateLeReader(a, out var rdr);
+                    r = rdr;
+                }))
                 .Returns(true);
 
             platform.Setup(p => p.Architecture).Returns(arch.Object);

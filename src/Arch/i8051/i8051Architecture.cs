@@ -206,7 +206,8 @@ namespace Reko.Arch.i8051
         {
             const byte LCall_Opcode = 0x12;
 
-            foreach (var seg in program.SegmentMap.Segments.Values)
+            SegmentMap segmentMap = program.Memory.SegmentMap;
+            foreach (var seg in segmentMap.Segments.Values)
             {
                 var rdr = seg.MemoryArea.CreateBeReader(0);
                 while (rdr.TryReadByte(out byte b))
@@ -217,7 +218,7 @@ namespace Reko.Arch.i8051
                     if (!rdr.TryReadBeUInt16(out ushort uAddrSwitchSubroutine))
                         break;
                     var addrSwitchSubroutine = Address.Ptr16(uAddrSwitchSubroutine);
-                    if (!program.SegmentMap.TryFindSegment(addrSwitchSubroutine, out var segment))
+                    if (!segmentMap.TryFindSegment(addrSwitchSubroutine, out var segment))
                         continue;
                     var bmem = (ByteMemoryArea) segment.MemoryArea;
                     var offset = (int) (addrSwitchSubroutine - bmem.BaseAddress);

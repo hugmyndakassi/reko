@@ -203,7 +203,7 @@ namespace Reko.ImageLoaders.TekHex
             mems.Clear();
             sections.Clear();
             symbols.Clear();
-            entryPoints.Clear();
+            this.entryPoints.Clear();
             using var lines = new StreamReader(new MemoryStream(RawImage));
             for (; ; )
             {
@@ -216,14 +216,9 @@ namespace Reko.ImageLoaders.TekHex
                 ParseLine(lline, arch);
             }
             var segmentMap = MakeSegmentMap(arch);
-            var program = new Program
-            {
-                Memory = new ByteProgramMemory(segmentMap),
-                SegmentMap = segmentMap,
-                Architecture = arch,
-                Platform = platform,
-                EntryPoints = entryPoints.ToSortedList(e => e.Address!)
-            };
+            var memory = new ByteProgramMemory(segmentMap);
+            var entryPoints = this.entryPoints.ToSortedList(e => e.Address!);
+            var program = new Program(memory, arch, platform, [], entryPoints);
 
             MakeSymbols(program.Architecture, program);
 

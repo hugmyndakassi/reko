@@ -189,7 +189,7 @@ namespace Reko.Environments.BbcMicro
                 new ByteMemoryArea(LoadAddress, image),
                 AccessMode.ReadWriteExecute);
             var imageLocation = dfs.ImageLocation.AppendFragment(Name);
-            var mem = new ProgramMemory(new SegmentMap(segment));
+            var mem = new ByteProgramMemory(new SegmentMap(segment));
             var arch = new Mos6502Architecture(services, "m6502", new());
             var program = new Program(
                 mem,

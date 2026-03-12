@@ -21,6 +21,7 @@
 using Reko.Core;
 using Reko.Core.Emulation;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using Reko.Core.Types;
 using System;
 
@@ -28,8 +29,8 @@ namespace Reko.Arch.X86.Emulator
 {
     public class X86Protected32Emulator : X86Emulator
     {
-        public X86Protected32Emulator(IntelArchitecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
-            : base(arch, segmentMap, envEmulator, X86.Registers.eip, X86.Registers.ecx)
+        public X86Protected32Emulator(IntelArchitecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
+            : base(arch, memory, envEmulator, X86.Registers.eip, X86.Registers.ecx)
         {
         }
 

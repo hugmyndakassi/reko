@@ -53,7 +53,7 @@ namespace Reko.UnitTests.Arch.Motorola.M68k.Assembler
             builder(asm);
             dasm = M68kDisassembler.Create68020(
                 arch.Services,
-                asm.GetImage().SegmentMap.Segments.Values.First().MemoryArea.CreateBeReader(asm.BaseAddress));
+                asm.GetImage().Memory.SegmentMap.Segments.Values.First().MemoryArea.CreateBeReader(asm.BaseAddress));
         }
 
         private void Expect(string expectedInstr)

@@ -45,7 +45,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
 
         private void Attach(SegmentListView segmentListview)
         {
-            var segViews = program.SegmentMap.Segments.Values
+            var segViews = program.Memory.SegmentMap.Segments.Values
                 .Select(MakeSegmentItemView)
                 .ToArray();
             segmentListview.Segments.Items.AddRange(segViews);

@@ -1086,7 +1086,7 @@ l0000000000400E2D: warning: Non-integral switch expression
 0000288D: warning: Expected sizes of arrays to have been determined by now
 00003EAC: warning: Expected sizes of arrays to have been determined by now
 
-=== Hunk-m68k\BENCHLNG
+*** Hunk-m68k\BENCHLNG
                                                             Finding procedure candidates [Done]
                                                             Building procedures [Done]
                                                             Rewriting procedures. [Done]
@@ -1097,8 +1097,18 @@ l0000000000400E2D: warning: Non-integral switch expression
                                                             Rewriting procedures to high-level language. [Done]
 000028C5: warning: Expected sizes of arrays to have been determined by now
 00003E5C: warning: Expected sizes of arrays to have been determined by now
-000028C5: warning: Expected sizes of arrays to have been determined by now
-00003E5C: warning: Expected sizes of arrays to have been determined by now
+Error: An error occurred during decompilation.
+    The requested operation cannot be performed on a file with a user-mapped section open. : 'c:\dev\uxmal\reko\master\subjects\Hunk-m68k\BENCHLNG.reko\BENCHLNG.h'
+       at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   at Reko.Core.Services.FileSystemService.CreateFileStream(String filename, FileMode mode, FileAccess access) in c:\dev\uxmal\reko\master\src\Core\Services\IFileSystemService.cs:line 226
+   at Reko.Services.DecompiledFileService.CreateTextWriter(String filename) in c:\dev\uxmal\reko\master\src\Decompiler\Services\IDecompiledFileService.cs:line 167
+   at Reko.Services.DecompiledFileService.WriteDeclarations(Program program, Action`2 writer) in c:\dev\uxmal\reko\master\src\Decompiler\Services\IDecompiledFileService.cs:line 207
+   at Reko.Decompiler.WriteDecompilerProducts() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 749
+   at Reko.CmdLine.CmdLineDriver.Decompile(Dictionary`2 pArgs) in c:\dev\uxmal\reko\master\src\Drivers\CmdLine\CmdLineDriver.cs:line 246
 
 === Hunk-m68k\BENCHMUL
                                                             Finding procedure candidates [Done]
@@ -2135,7 +2145,7 @@ Error: An error occurred while writing assembly language output.
    at Reko.Core.Memory.BeImageReader..ctor(ByteMemoryArea image, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\EndianImageReader.cs:line 642
    at Reko.Core.Memory.ByteMemoryArea.CreateBeReader(Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\ByteMemoryArea.cs:line 108
    at Reko.Core.EndianServices.BeServices.CreateImageReader(MemoryArea mem, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\EndianServices.cs:line 417
-   at Reko.Core.ProcessorArchitecture.CreateImageReader(MemoryArea mem, Address addr, Int64 cbUnits) in c:\dev\uxmal\reko\master\src\Core\IProcessorArchitecture.cs:line 775
+   at Reko.Core.ProcessorArchitecture.CreateImageReader(MemoryArea mem, Address addr, Int64 cbUnits) in c:\dev\uxmal\reko\master\src\Core\IProcessorArchitecture.cs:line 776
    at Reko.Core.Output.Dumper.DumpData(IProcessorArchitecture arch, MemoryArea mem, Address address, Int64 cUnits, Boolean condenseZeroLines, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 265
    at Reko.Core.Output.Dumper.DumpData(SegmentMap map, IProcessorArchitecture arch, Address address, Int64 cUnits, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 238
    at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 157
@@ -3110,4 +3120,4 @@ l0011DD0D: warning: Non-integral switch expression
                                                             Rewriting expressions. [Done]
                                                             Rewriting procedures to high-level language. [Done]
 
-Decompiled 100 binaries in 65.04 seconds.
+Decompiled 100 binaries in 69.01 seconds.

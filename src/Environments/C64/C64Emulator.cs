@@ -22,6 +22,7 @@ using Reko.Core;
 using Reko.Core.Emulation;
 using Reko.Core.Loading;
 using Reko.Core.Machine;
+using Reko.Core.Memory;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,14 +31,14 @@ namespace Reko.Environments.C64
 {
     public class C64Emulator : IPlatformEmulator
     {
-        private SegmentMap segmentMap;
+        private IMemory memory;
         private Dictionary<Address, ImportReference> importReferences;
 
-        public C64Emulator(SegmentMap segmentMap, Dictionary<Address, ImportReference> importReferences)
+        public C64Emulator(IMemory memory, Dictionary<Address, ImportReference> importReferences)
         {
-            this.segmentMap = segmentMap;
+            this.memory = memory;
             this.importReferences = importReferences;
-            this.InterceptedCalls = new Dictionary<Address, ExternalProcedure>();
+            this.InterceptedCalls = [];
         }
 
         public Dictionary<Address, ExternalProcedure> InterceptedCalls { get; }

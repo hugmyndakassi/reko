@@ -50,16 +50,16 @@ namespace Reko.Arch.Mos6502
         };
 
         private readonly Mos6502Architecture arch;
-        private readonly SegmentMap map;
+        private readonly ByteProgramMemory memory;
         private readonly IPlatformEmulator envEmulator;
         private readonly ushort[] regs;
         private IEnumerator<Instruction>? dasm;
 
-        public Mos6502Emulator(Mos6502Architecture arch, SegmentMap segmentMap, IPlatformEmulator envEmulator)
-            : base(segmentMap)
+        public Mos6502Emulator(Mos6502Architecture arch, ByteProgramMemory memory, IPlatformEmulator envEmulator)
+            : base(memory.SegmentMap)
         {
             this.arch = arch;
-            this.map = segmentMap;
+            this.memory = memory;
             this.envEmulator = envEmulator;
             this.regs = new ushort[12];
             this.regs[Registers.s.Number] = 0xFD;
@@ -106,9 +106,8 @@ namespace Reko.Arch.Mos6502
             if (dasm is null)
             {
                 var uAddr = InstructionPointer;
-                if (!map.TryFindSegment(uAddr, out ImageSegment? segment))
+                if (!memory.TryCreateLeReader(uAddr, out var rdr))
                     throw new AccessViolationException();
-                var rdr = arch.CreateImageReader(segment.MemoryArea, uAddr);
                 dasm = new Disassembler(arch, rdr).GetEnumerator();
             }
             if (dasm.MoveNext())
@@ -128,9 +127,8 @@ namespace Reko.Arch.Mos6502
             this.regs[reg.Number] = v;
             if (reg == Registers.pc)
             {
-                if (!map.TryFindSegment(value, out ImageSegment? segment))
+                if (!memory.TryCreateLeReader(Address.Ptr16(v), out var rdr))
                     throw new AccessViolationException();
-                var rdr = arch.CreateImageReader(segment.MemoryArea, Address.Ptr16(v));
                 dasm = new Disassembler(arch, rdr).GetEnumerator();
             }
             return v;

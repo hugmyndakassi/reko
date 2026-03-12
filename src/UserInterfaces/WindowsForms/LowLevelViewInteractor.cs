@@ -216,7 +216,7 @@ namespace Reko.UserInterfaces.WindowsForms
             control.MemoryView.SegmentMap = program.SegmentMap;
             control.MemoryView.Architecture = program.Architecture;
             control.DisassemblyView.Program = program;
-            var seg = this.program.SegmentMap.Segments.Values.FirstOrDefault();
+            var seg = this.program.Memory.SegmentMap.Segments.Values.FirstOrDefault();
             if (seg is null)
                 return;
             PopulateArchitectures();
@@ -569,7 +569,7 @@ namespace Reko.UserInterfaces.WindowsForms
                         var re = Core.Dfa.Automaton.CreateFromPattern(dlg.Patterns.Text);
                         var hits =
                             //$BUG: wrong result
-                            program.SegmentMap.Segments.Values
+                            program.Memory.SegmentMap.Segments.Values
                             .SelectMany(s => GetMatches(s, re))
                             .Select(offset => new AddressSearchHit(
                                 program,
@@ -708,7 +708,7 @@ namespace Reko.UserInterfaces.WindowsForms
             this.Control.MemoryView.SelectedAddress = addr;
             this.Control.MemoryView.TopAddress = addr;
 
-            if (program.SegmentMap.TryFindSegment(addr.Value, out ImageSegment seg))
+            if (program.Memory.SegmentMap.TryFindSegment(addr.Value, out ImageSegment seg))
             {
                 this.Control.DisassemblyView.Model = new DisassemblyTextModel(factory, program, viewModel.SelectedArchitecture, seg);
                 this.Control.DisassemblyView.SelectedObject = addr;
