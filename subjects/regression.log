@@ -484,7 +484,8 @@ Relocations
                                                             Rewriting procedures. [Done]
 finish: error: An error occurred while renaming variables.
     The given key 'l004028A8' was not present in the dictionary.
-       at Reko.Analysis.SsaLivenessAnalysis.LiveOutAtBlock(Block block, SsaIdentifier sid) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 214
+       at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at Reko.Analysis.SsaLivenessAnalysis.LiveOutAtBlock(Block block, SsaIdentifier sid) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 214
    at Reko.Analysis.SsaLivenessAnalysis.BuildInterferenceGraph(SsaIdentifierCollection ssaIds) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 114
    at Reko.Analysis.SsaLivenessAnalysis..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 76
    at Reko.Analysis.LiveCopyInserter..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 50
@@ -1086,7 +1087,7 @@ l0000000000400E2D: warning: Non-integral switch expression
 0000288D: warning: Expected sizes of arrays to have been determined by now
 00003EAC: warning: Expected sizes of arrays to have been determined by now
 
-*** Hunk-m68k\BENCHLNG
+=== Hunk-m68k\BENCHLNG
                                                             Finding procedure candidates [Done]
                                                             Building procedures [Done]
                                                             Rewriting procedures. [Done]
@@ -1097,18 +1098,8 @@ l0000000000400E2D: warning: Non-integral switch expression
                                                             Rewriting procedures to high-level language. [Done]
 000028C5: warning: Expected sizes of arrays to have been determined by now
 00003E5C: warning: Expected sizes of arrays to have been determined by now
-Error: An error occurred during decompilation.
-    The requested operation cannot be performed on a file with a user-mapped section open. : 'c:\dev\uxmal\reko\master\subjects\Hunk-m68k\BENCHLNG.reko\BENCHLNG.h'
-       at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
-   at Reko.Core.Services.FileSystemService.CreateFileStream(String filename, FileMode mode, FileAccess access) in c:\dev\uxmal\reko\master\src\Core\Services\IFileSystemService.cs:line 226
-   at Reko.Services.DecompiledFileService.CreateTextWriter(String filename) in c:\dev\uxmal\reko\master\src\Decompiler\Services\IDecompiledFileService.cs:line 167
-   at Reko.Services.DecompiledFileService.WriteDeclarations(Program program, Action`2 writer) in c:\dev\uxmal\reko\master\src\Decompiler\Services\IDecompiledFileService.cs:line 207
-   at Reko.Decompiler.WriteDecompilerProducts() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 749
-   at Reko.CmdLine.CmdLineDriver.Decompile(Dictionary`2 pArgs) in c:\dev\uxmal\reko\master\src\Drivers\CmdLine\CmdLineDriver.cs:line 246
+000028C5: warning: Expected sizes of arrays to have been determined by now
+00003E5C: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\BENCHMUL
                                                             Finding procedure candidates [Done]
@@ -3120,4 +3111,4 @@ l0011DD0D: warning: Non-integral switch expression
                                                             Rewriting expressions. [Done]
                                                             Rewriting procedures to high-level language. [Done]
 
-Decompiled 100 binaries in 69.01 seconds.
+Decompiled 100 binaries in 50.75 seconds.

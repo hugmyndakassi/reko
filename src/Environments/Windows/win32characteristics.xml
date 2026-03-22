@@ -20,6 +20,11 @@
       <terminates>true</terminates>
     </characteristics>
   </entry>
+  <entry name="RaiseException">
+    <characteristics>
+      <terminates>true</terminates>
+    </characteristics>
+  </entry>
   <entry name="sprintf">
     <characteristics>
       <varargs>Reko.Environments.Windows.MsPrintfFormatParser,Reko.Environments.Windows</varargs>
