@@ -5,6 +5,16 @@
       <terminates>true</terminates>
     </characteristics>
   </entry>
+  <entry name="err">
+    <characteristics>
+      <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+    </characteristics>
+  </entry>
+  <entry name="errx">
+    <characteristics>
+      <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+    </characteristics>
+  </entry>
   <entry name="exit">
     <characteristics>
       <terminates>true</terminates>
@@ -55,7 +65,27 @@
       <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
     </characteristics>
   </entry>
+  <entry name="snprintf">
+    <characteristics>
+      <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+    </characteristics>
+  </entry>
   <entry name="__snprintf_chk">
+    <characteristics>
+      <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+    </characteristics>
+  </entry>
+    <entry name="syslog">
+        <characteristics>
+            <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+        </characteristics>
+    </entry>
+  <entry name="warn">
+    <characteristics>
+      <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
+    </characteristics>
+  </entry>
+  <entry name="warnx">
     <characteristics>
       <varargs>Reko.Libraries.Libc.PrintfFormatParser,Reko.Libraries.Libc</varargs>
     </characteristics>

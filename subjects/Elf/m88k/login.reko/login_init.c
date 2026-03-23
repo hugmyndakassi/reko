@@ -4,15 +4,15 @@
 
 #include "login.h"
 
-// 00002558: Sequence word64 fn00002558()
+// 00002558: Register word32 fn00002558()
 // Called from:
 //      fn00002570
-word64 fn00002558()
+word32 fn00002558()
 {
 	fn00002810();
 	<anonymous> ** r31_n = (<anonymous> **) <invalid>;
 	(*r31_n)();
-	word64 r24_r25_n;
-	return r24_r25_n;
+	word32 r24_n;
+	return r24_n;
 }
 

@@ -20,12 +20,12 @@ Eq_n g_t0018;
 <unknown> g_t1A90;
 word32 g_a2684[];
 <anonymous> g_t30C8; // 00000000000030C8
+int32 g_t318E(int32 rdi); // 000000000000318E
 void g_t319B(int32 rdi); // 000000000000319B
 <anonymous> g_t36BE; // 00000000000036BE
 <anonymous> g_t37EC; // 00000000000037EC
 <anonymous> g_t3BF3; // 0000000000003BF3
 struct Eq_n g_t5340;
-struct _acl g_t5410;
 <unknown> g_t5411;
 void g_v5770; // 0000000000005770
 <anonymous> * __imp___DefaultRuneLocale; // 0000000000006028
@@ -109,12 +109,12 @@ void g_v5770; // 0000000000005770
 <anonymous> * __imp__write; // 00000000000062A8
 word32 g_dw62B0; // 00000000000062B0
 int32 g_dw62D8; // 00000000000062D8
-Eq_n g_t6528;
-Eq_n g_t6530;
-Eq_n g_t6538;
-Eq_n g_t6540;
+char * g_ptr6528; // 0000000000006528
+char * g_ptr6530; // 0000000000006530
+char * g_ptr6538; // 0000000000006538
+char * g_ptr6540; // 0000000000006540
 Eq_n g_t6548;
-Eq_n g_t6550;
+char * g_ptr6550; // 0000000000006550
 word32 g_dw6558; // 0000000000006558
 word32 g_dw655C; // 000000000000655C
 word32 g_dw6560; // 0000000000006560

@@ -4,12 +4,13 @@
 
 #include "login.h"
 
-// 00002570: void fn00002570(Sequence word64 r14_r15, Sequence word64 r16_r17, Sequence word64 r18_r19, Register (ptr32 Eq_n) r5, Register word32 r20, Stack ui32 dwArg00, Stack char bArg04)
-void fn00002570(word64 r14_r15, word64 r16_r17, word64 r18_r19, void (* r5)(void * r2), word32 r20, ui32 dwArg00, char bArg04)
+// 00002570: void fn00002570(Register (ptr32 Eq_n) r5, Register (ptr32 char) r6, Register (ptr32 char) r7, Register (ptr32 char) r8, Stack ui32 dwArg00, Stack char bArg04)
+void fn00002570(union Eq_n * r5, char * r6, char * r7, char * r8, ui32 dwArg00, char bArg04)
 {
 	ptr32 r4_n = &bArg04 + dwArg00 * 0x04;
 	environ = r4_n + 0x04;
 	struct Eq_n * r25_n = (struct Eq_n *) bArg04;
+	union Eq_n * r5_n;
 	if (r25_n != null)
 	{
 		struct Eq_n * r2_n = fn000026A0(r25_n, 0x2F);
@@ -23,30 +24,41 @@ void fn00002570(word64 r14_r15, word64 r16_r17, word64 r18_r19, void (* r5)(void
 			__progname = r2_n;
 			__progname = r2_n + 1;
 		}
+		r5_n = (union Eq_n *) 0x00060000;
 		byte * r9_n = (byte *) &g_t66D88;
-		if (__progname->b0000 != 0 && __bit<word32,byte>(cond(0x00066D88 - 421511), 0x00))
+		if (__progname->b0000 != 0)
 		{
-			ui32 r13_n;
-			do
+			if (__bit<word32,byte>(cond(0x00066D88 - 421511), 0x00))
 			{
-				struct Eq_n * r13_n = __progname;
-				word32 r12_n = (word32) r13_n->b0000;
-				__progname = r13_n + 1;
-				*r9_n = (byte) r12_n;
-				++r9_n;
-				if (r13_n[1] == 0)
-					break;
-				r13_n = cond(r9_n - 421511);
-			} while (__bit<word32,byte>(r13_n, 0x1F));
+				r6 = (char *) 0x00060000;
+				ui32 r13_n;
+				do
+				{
+					struct Eq_n * r13_n = __progname;
+					word32 r12_n = (word32) r13_n->b0000;
+					__progname = r13_n + 1;
+					*r9_n = (byte) r12_n;
+					++r9_n;
+					if (r13_n[1] == 0)
+						break;
+					r13_n = cond(r9_n - 421511);
+				} while (__bit<word32,byte>(r13_n, 0x1F));
+			}
+			else
+				r6 = (char *) 0x00060000;
 		}
 		*r9_n = 0x00;
 		__progname = &g_t66D88;
+		r8 = (char *) 0x00020000;
+		r7 = (char *) 0x00020000;
 	}
+	else
+		r5_n = r5;
 	if (r5 != null)
 		fn00002710(r5);
 	else if (false)
 		fn00000000();
-	exit(fn000028D0(r14_r15, r16_r17, r18_r19, SEQ(r20, dwArg00), SEQ(&bArg04, r5), fn00002558(), &bArg04));
+	exit(fn000028D0(&bArg04, fn00002558(), r5_n, r6, r7, r8));
 }
 
 // 000026A0: Register (ptr32 Eq_n) fn000026A0(Register (ptr32 Eq_n) r2, Register ui32 r3)
@@ -77,7 +89,7 @@ void fn000026F0()
 // Called from:
 //      fn00002570
 //      fn00002810
-void fn00002710(void (* r2)(void * r2))
+void fn00002710(union Eq_n * r2)
 {
 	__cxa_atexit(r2, null, null);
 }
@@ -128,10 +140,10 @@ void fn00002810()
 	fn00002710(&g_t4BD0);
 }
 
-// 000028D0: Register word32 fn000028D0(Sequence word64 r14_r15, Sequence word64 r16_r17, Sequence word64 r18_r19, Sequence word64 r20_r21, Sequence word64 r22_r23, Sequence word64 r24_r25, Register (ptr32 char) r3)
+// 000028D0: Register word32 fn000028D0(Register (ptr32 char) r3, Register (ptr32 char) r4, Register (ptr32 Eq_n) r5, Register (ptr32 char) r6, Register (ptr32 char) r7, Register (ptr32 char) r8)
 // Called from:
 //      fn00002570
-word32 fn000028D0(word64 r14_r15, word64 r16_r17, word64 r18_r19, word64 r20_r21, word64 r22_r23, word64 r24_r25, char * r3)
+word32 fn000028D0(char * r3, char * r4, union Eq_n * r5, char * r6, char * r7, char * r8)
 {
 	word32 r22_n;
 	struct Eq_n * r21_n;
@@ -155,37 +167,28 @@ word32 fn000028D0(word64 r14_r15, word64 r16_r17, word64 r18_r19, word64 r20_r21
 	ui32 r23_n;
 	struct Eq_n * r17_n;
 	int32 r24_n;
-	char * r17_n;
-	word32 r17_n;
-	ptr32 %continuation;
-	openlog(86916, 0x04, 0x20, r14_r15, r16_r17, r18_r19, r20_r21, r22_r23, r24_r25, %continuation, __guard_local);
-	int32 r2_n = gethostname(r17_n, 0x0100);
-	struct Eq_n * r30_n;
-	r30_n->dw0014 = 0x00;
-	r30_n->dw0010 = 0x00;
-	r30_n->dw000C = 0x00;
-	r30_n->dw0018 = 0x00;
-	r30_n->dw0028 = 0x00;
-	r30_n->dw002C = 0x0A;
-	if (r2_n < 0x00)
+	openlog("login", 0x04, 0x20);
+	char bLoc0548;
+	if (gethostname(&bLoc0548, (size_t) 0x0100) < 0x00)
 	{
-		syslog(0x03, 0x00010000, 85868);
-		word32 r17_n;
-		strlcpy(r17_n, 0x00010000, 85900, 0x0100);
+		syslog(0x03, "couldn't get local hostname: %m", r4);
+		strlcpy(&bLoc0548, 0x00010000, 85900, 0x0100);
 		ptr32 fp;
 		return fn00003FC8(0x00010000, (struct Eq_n *) 0x00020000, (struct Eq_n *) 0x00060000, (struct Eq_n *) 0x00060000, 0x00060000, (struct Eq_n *) 0x00060000, fp + 0x20);
 	}
-	struct Eq_n * r2_n = strchr(r17_n, '.');
+	struct Eq_n * r2_n = strchr(&bLoc0548, '.');
 	if (r2_n != null && r2_n->b0001 != 0)
 		strchr(&r2_n->b0001, '.') != null;
 	word32 r2_n = auth_open();
 	struct Eq_n * r20_n;
+	char * r3_n;
 	if (r2_n == 0x00)
 	{
 		r20_n->dw601C = r2_n;
-		syslog(0x03, 0x00010000, 0x00014F34);
+		syslog(0x03, "auth_open: %m", r4);
+		r3_n = (char *) "unable to initialize BSD authentication";
 l00003B90:
-		err(0x01);
+		err(0x01, r3_n, 0x00);
 	}
 	r20_n->dw601C = r2_n;
 	auth_setoption(86916, 0x00014F98);
@@ -213,7 +216,7 @@ l00003B90:
 				word32 r30_n;
 				fn00004780(0x01, out r20_n, out r22_n, out r23_n, out r24_n, out r30_n);
 			}
-			syslog(0x03, 0x00015020, r2_n);
+			syslog(0x03, "invalid flag %c", (char) r4);
 			if (r16_n != 0x00)
 			{
 				warnc(0x01, 86156);
@@ -235,7 +238,7 @@ l00003B90:
 		{
 			if (r30_n->ptr000C != null)
 			{
-				warnx(0x00014FB4);
+				warnx("duplicate -L option");
 				word32 r20_n;
 				word32 r22_n;
 				word32 r23_n;
@@ -270,7 +273,7 @@ l00003B90:
 		{
 			if (r30_n->ptr0010 != null)
 			{
-				warnx(0x00010000, 85984);
+				warnx("duplicate -R option");
 				word32 r20_n;
 				word32 r22_n;
 				word32 r23_n;
@@ -296,7 +299,7 @@ l00003B90:
 			if (r2_n == null)
 			{
 				r30_n->ptr0018 = r2_n;
-				warn();
+				warn(r2_n, 0x00);
 				word32 r20_n;
 				word32 r22_n;
 				word32 r23_n;
@@ -349,7 +352,8 @@ l00002B38:
 			++r11_n;
 		}
 		*r11_n = 0x00;
-		warn(0x00014F10, execv("/usr/bin/su", &r30_n->dw0858), 0x00010000, 0x00014F20, &r30_n->dw0858, 0x00014F10);
+		execv("/usr/bin/su", &r30_n->dw0858);
+		warn("unable to exec %s", r3);
 		_exit(0x01);
 	}
 	char * r2_n = ttyname();
@@ -374,7 +378,7 @@ l00002D58:
 			struct Eq_n * r30_n;
 			if (getrlimit(0x04, (char *) &r30_n->ptr0008 + 96) < 0x00)
 			{
-				syslog(0x03, 86188);
+				syslog(0x03, "couldn't get core dump size: %m", r4);
 				r30_n->t0068.u1 = (word64) 0x8000000000000000<64>;
 				r30_n->t0070.u1 = (word64) 0x8000000000000000<64>;
 			}
@@ -382,7 +386,7 @@ l00002D58:
 			r30_n->qw0060 = 0x00;
 			if (setrlimit(0x04, &r30_n->qw0058) < 0x00)
 			{
-				syslog(0x03, 0x000150CC);
+				syslog(0x03, "couldn't set core dump size to 0: %m", r4);
 				struct Eq_n * r30_n;
 				r30_n->t0068.u1 = (word64) 0x8000000000000000<64>;
 				r30_n->t0070.u1 = (word64) 0x8000000000000000<64>;
@@ -398,7 +402,7 @@ l00002D58:
 				if (r2_n == null)
 				{
 					g_ptr26018 = r2_n;
-					warnx(0x00010000, 0x00014EE8);
+					warnx("Failure to retrieve default class");
 					word32 r20_n;
 					word32 r22_n;
 					word32 r23_n;
@@ -422,8 +426,8 @@ l00002D58:
 						char * r24_n;
 						if (__bit<word32,byte>(cond((word32) *r24_n - 0x2F), 0x00))
 						{
-							syslog(0x03, 0x00015128, r24_n);
-							warnx(0x00010000, 0x00015144);
+							syslog(0x03, "Invalid classify script: %s", r4);
+							warnx("Classification failure");
 							word32 r20_n;
 							word32 r22_n;
 							word32 r23_n;
@@ -504,8 +508,8 @@ l00002D58:
 						struct Eq_n * r25_n;
 						if (auth_setitem(g_dw2601C, 0x03, g_ptr26024) < 0x00 || strdup(r25_n->ptr6024) == null)
 						{
-							syslog(0x03, 0x00010000, 0x00015190);
-							warn(0x00);
+							syslog(0x03, "%m", r4);
+							warn(null, 0x00);
 							word32 r20_n;
 							word32 r22_n;
 							word32 r23_n;
@@ -553,8 +557,8 @@ l00003118:
 							struct Eq_n * r20_n;
 							if (auth_setpwd(r20_n->dw601C) < 0x00)
 							{
-								syslog(0x03, 0x00015190);
-								warn(0x00);
+								syslog(0x03, "%m", r4);
+								warn(null, 0x00);
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -640,8 +644,8 @@ l00003D24:
 								word32 r24_n;
 								if (auth_setoption(r20_n->dw601C, 0x0001517C, r24_n) < 0x00)
 								{
-									syslog(0x03, 0x00010000, 0x00015190);
-									warn(0x00);
+									syslog(0x03, "%m", r4);
+									warn(null, 0x00);
 									word32 r20_n;
 									word32 r22_n;
 									word32 r23_n;
@@ -656,8 +660,8 @@ l00003D24:
 							char * r2_n = login_getcapstr(r17_n->dw6018, 0x00010000, 0x00014ED0, r23_n->ptr6ED0->dw0024);
 							if (*r2_n != 0 && !__bit<word32,byte>(cond((uint32) strlen(r2_n) - 0x03FF), 0x0F))
 							{
-								syslog(0x03, 85680, r2_n);
-								warnx(0x00010000, 0x00014EC8);
+								syslog(0x03, "shell path too long: %s", r4);
+								warnx("invalid shell");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -672,6 +676,7 @@ l00003D24:
 								if (r2_n == null)
 								{
 									environ = r2_n;
+									r3_n = (char *) "calloc";
 									goto l00003B90;
 								}
 								environ = r2_n;
@@ -700,12 +705,9 @@ l00003D24:
 								*r25_n = 0x00;
 							}
 							struct Eq_n * r23_n;
-							struct Eq_n * r23_n;
-							struct Eq_n * r23_n;
-							word32 r30_n;
-							if (setenv(85048, r23_n->ptr6ED0->dw0020, 0x01) == ~0x00 || setenv(0x00010000, 0x00014C54, (r23_n->ptr6ED0)->dw0024, 0x01) == ~0x00)
+							if (setenv("HOME", r23_n->ptr6ED0->ptr0020, 0x01) == ~0x00 || setenv("SHELL", (r23_n->ptr6ED0)->ptr0024, 0x01) == ~0x00)
 							{
-								warn(0x00010000, 0x00014C40);
+								warn("unable to setenv()");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r24_n;
@@ -713,23 +715,21 @@ l00003D24:
 							}
 							if (g_b66E90 == 0)
 								strlcpy(0x00066E90, fn000046E0(g_ptr66ED8), 0x40);
-							char * r16_n = r30_n + 0x0228;
-							struct Eq_n * r23_n;
-							struct Eq_n * r23_n;
-							word32 r16_n;
-							struct Eq_n * r23_n;
-							if (setenv(r16_n, snprintf(r16_n, (size_t) 266, "%s/%s", 0x00), 0x00010000, 0x00014C70, 266, 0x00066E90, 0x00010000, 0x00014C5C, 0x00, 0x00010000, 0x00014C64, *r23_n->ptr6ED0) == ~0x00 || (setenv(0x00010000, 85112, *r23_n->ptr6ED0, 0x01) == ~0x00 || (setenv(0x00010000, 0x00014E78, *r23_n->ptr6ED0, 0x01) == ~0x00 || setenv(0x00010000, 0x00014E80, r16_n, 0x01) == ~0x00)))
+							char * r16_n = (char *) (&r30_n->dw0020 + 0x0082);
+							snprintf(r16_n, (size_t) 266, "%s/%s", r5, r6);
+							if (setenv("TERM", &g_b66E90, 0x00) == ~0x00 || (setenv("LOGNAME", (r23_n->ptr6ED0)->ptr0000, 0x01) == ~0x00 || (setenv("USER", (r23_n->ptr6ED0)->ptr0000, 0x01) == ~0x00 || setenv("MAIL", r16_n, 0x01) == ~0x00)))
 							{
-								warn(0x00010000, 0x00014C40);
+								warn("unable to setenv()");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r24_n;
 								word32 r30_n;
 								fn00004780(0x01, out r20_n, out r22_n, out r23_n, out r24_n, out r30_n);
 							}
-							if (g_ptr66E88 != null && setenv(0x00014C80, 0x01) == ~0x00)
+							char * r3_n = g_ptr66E88;
+							if (r3_n != null && setenv("REMOTEHOST", r3_n, 0x01) == ~0x00)
 							{
-								warn(0x00010000, 0x00014C40);
+								warn("unable to setenv()");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -737,9 +737,10 @@ l00003D24:
 								word32 r30_n;
 								fn00004780(0x01, out r20_n, out r22_n, out r23_n, out r24_n, out r30_n);
 							}
-							if (g_ptr26028 != null && setenv(0x00014C8C, 0x01) == ~0x00)
+							char * r3_n = g_ptr26028;
+							if (r3_n != null && setenv("REMOTEUSER", r3_n, 0x01) == ~0x00)
 							{
-								warn(0x00014C40);
+								warn("unable to setenv()");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -750,7 +751,7 @@ l00003D24:
 							struct Eq_n * r17_n;
 							if (setusercontext(r17_n->dw6018, r23_n->ptr6ED0->dw0008, 0x04) != 0x00)
 							{
-								warn(85144);
+								warn("unable to set user context");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -868,11 +869,11 @@ l000035D4:
 							if (r19_n != 0x00 && r30_n->dw001C == 0x00)
 							{
 								if (g_ptr66E88 == null)
-									syslog(0x05, 0x00010000, 85528, g_ptr26024, g_ptr66ED8);
+									syslog(0x05, "ROOT LOGIN (%s) ON %s", r4, r5);
 								else
 								{
 									word32 r6_n = r15_n->dw6028;
-									syslog(0x05, 0x00010000, 85228, g_ptr66E88);
+									syslog(0x05, "ROOT LOGIN (%s) ON %s FROM %s%s%s", r4, r5, r6, r7, r8);
 								}
 							}
 							word32 r21_n;
@@ -912,12 +913,12 @@ l000035D4:
 							strlcpy(&r30_n->b0450 + 1, 0x0401);
 							struct Eq_n * r30_n;
 							if ((__bcnd(r30_n->dw0068) || (r30_n->dw006C != 0x00 || (__bcnd(r30_n->dw0070) || r30_n->dw0074 != 0x00))) && setrlimit(0x04, &r30_n->dw0068) < 0x00)
-								syslog(0x03, 0x00014D10);
+								syslog(0x03, "couldn't reset core dump size: %m", r4);
 							if (r30_n->dw0024 != 0x00)
 								puts("WARNING: Your password has expired.  You must change your password, now!");
 							if (setusercontext(0xFB) < 0x00)
 							{
-								warn(85144);
+								warn("unable to set user context");
 								word32 r20_n;
 								word32 r22_n;
 								word32 r23_n;
@@ -928,9 +929,10 @@ l000035D4:
 							word32 r18_n;
 							if (r18_n != 0x00)
 							{
+								printf("No home directory %s!\n", r3);
+								puts("Logging in with home = \"/\".");
 								ui32 r14_n;
-								struct Eq_n * r23_n;
-								setenv(0x00014D80, printf("No home directory %s!\n", r3), 0x00010000, 0x00014DD0, puts("Logging in with home = \"/\"."), r14_n | 19512, r23_n->ptr6ED0->dw0020, 0x00010000, 85484, 0x01);
+								setenv(r14_n | 19512, "/", 0x01);
 							}
 							struct Eq_n * r20_n;
 							struct Eq_n * r17_n;
@@ -960,8 +962,7 @@ l000035D4:
 								word32 r22_n;
 								word32 r30_n;
 								execlp(r22_n, r30_n + 0x0450, 0x00);
-								word32 r22_n;
-								err(0x01, 0x00010000, 86772, r22_n);
+								err(0x01, "%s", r4);
 							}
 						}
 						r17_n->dw6018 = r2_n;
@@ -977,15 +978,13 @@ l00003214:
 						}
 						if (r19_n != 0x00 && fn000040D0(out r30_n) == 0x00)
 						{
-							word32 r18_n;
-							warnx(86484, r18_n);
-							word32 r18_n;
+							warnx("%s login refused on this terminal.", r3);
 							if (g_ptr66E88 == null)
-								syslog(0x05, 0x00010000, 0x00014C14, r18_n, g_ptr66ED8);
+								syslog(0x05, "LOGIN %s REFUSED ON TTY %s", r4, r5);
 							else
 							{
 								char * r5_n = g_ptr26028;
-								syslog(0x05, 0x00010000, 0x00014BEC, r18_n, g_ptr66E88, g_ptr66ED8);
+								syslog(0x05, "LOGIN %s REFUSED FROM %s%s%s ON TTY %s", r4, r5, r6, r7, r8);
 							}
 						}
 						char * r25_n;
@@ -1032,7 +1031,7 @@ l00003238:
 	}
 	else
 		r30_n->ptr0008 = r2_n;
-	snprintf((char *) &r30_n->ptr0008 + 0x0430, (size_t) 0x13, "%s??", 0x00);
+	snprintf((char *) &r30_n->ptr0008 + 0x0430, (size_t) 0x13, "%s??", r5);
 	r30_n->ptr0008 = (char *) &r30_n->ptr0008 + 0x0430;
 	goto l00002D58;
 }
@@ -1272,7 +1271,6 @@ word32 fn000042E0(word32 r2, Eq_n r3, char * r4)
 //      fn00004780
 word32 fn00004520(word32 & r3Out, word32 & r4Out, word32 & r5Out)
 {
-	struct Eq_n * r21_n;
 	word32 dwLoc18;
 	memcpy(&dwLoc18, &g_v15340, (size_t) 0x10);
 	word32 r5_n = g_dw66E8C;
@@ -1290,26 +1288,16 @@ word32 fn00004520(word32 & r3Out, word32 & r4Out, word32 & r5Out)
 	else if (g_ptr66E88 == null)
 	{
 		ui32 r13_n = cond(r5_n - 0x01);
-		syslog_r(0x05, &dwLoc18, 0x00010000, 86776, g_ptr66ED8);
-		struct Eq_n * r25_n;
-		!__bit<word32,byte>(cond(r25_n->dw6E8C - 0x01), 0x00);
-		word32 r24_n;
-		struct Eq_n * r23_n;
-		word32 r22_n;
-		syslog_r(0x55, r24_n, 0x00010000, 0x00015314, r23_n->dw6ED8, r22_n);
+		syslog_r(0x05, &dwLoc18, "%d LOGIN FAILURE%s ON %s", 0x00);
+		syslog_r(0x55, &dwLoc18, "%d LOGIN FAILURE%s ON %s, %s", 0x00);
 	}
 	else
 	{
 		ui32 r13_n = cond(r5_n - 0x01);
 		char * r7_n = g_ptr26028;
-		syslog_r(0x05, &dwLoc18, 0x00010000, 86708, g_ptr66E88);
-		struct Eq_n * r25_n;
-		!__bit<word32,byte>(cond(r25_n->dw6E8C - 0x01), 0x00);
-		word32 r7_n = r21_n->dw6028;
-		word32 r24_n;
-		struct Eq_n * r23_n;
-		word32 r22_n;
-		syslog_r(0x55, r24_n, 0x00010000, 0x000152D4, r23_n->dw6E88, r22_n);
+		syslog_r(0x05, &dwLoc18, "%d LOGIN FAILURE%s FROM %s%s%s", 0x00);
+		char * r7_n = g_ptr26028;
+		syslog_r(0x55, &dwLoc18, "%d LOGIN FAILURE%s FROM %s%s%s, %s", 0x00);
 	}
 }
 
@@ -1352,14 +1340,14 @@ void fn00004740()
 	exit(r25_n);
 }
 
-// 00004780: Register word32 fn00004780(Register int32 r2, Register out (ptr32 Eq_n) r20Out, Register out (ptr32 (arr (ptr32 Eq_n))) r22Out, Register out word32 r23Out, Register out word32 r24Out, Register out (ptr32 Eq_n) r30Out)
+// 00004780: Register word32 fn00004780(Register int32 r2, Register out (ptr32 Eq_n) r20Out, Register out (ptr32 (arr (ptr32 Eq_n))) r22Out, Register out (ptr32 Eq_n) r23Out, Register out word32 r24Out, Register out (ptr32 Eq_n) r30Out)
 // Called from:
 //      fn000028D0
-word32 fn00004780(int32 r2, struct Eq_n & r20Out, struct Eq_n * (& r22Out, word32 & r23Out, word32 & r24Out, struct Eq_n & r30Out)
+word32 fn00004780(int32 r2, struct Eq_n & r20Out, struct Eq_n * (& r22Out, struct Eq_n & r23Out, word32 & r24Out, struct Eq_n & r30Out)
 {
 	struct Eq_n * r30_n;
 	word32 r24_n;
-	word32 r23_n;
+	struct Eq_n * r23_n;
 	struct Eq_n * (* r22_n)[];
 	struct Eq_n * r20_n;
 	char * r5_n;

@@ -182,6 +182,10 @@ namespace Reko.Libraries.Libc
                 return program.TypeFactory.CreatePointer(
                     size == PrintfSize.Long ? PrimitiveType.WChar : PrimitiveType.Char,
                     this.pointerSize);
+            case 'm':       // GCC extension: print error message string. Treated as %d.
+                bitSize = this.wordSize;
+                domain = Domain.Integer;
+                break;
             default:
                 var el = this.services.RequireService<IEventListener>();
                 el.Warn(

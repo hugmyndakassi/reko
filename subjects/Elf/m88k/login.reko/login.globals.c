@@ -4,5 +4,5 @@
 
 #include "login.h"
 
-Eq_n g_t20000;
-Eq_n g_t60000;
+char g_b20000; // 00020000
+char g_b60000; // 00060000

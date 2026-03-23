@@ -71,7 +71,7 @@ l00000000000006F7:
 	__cxa_finalize(Mem10[0x0000000000201040<p64>:word64])
 l0000000000000703:
 	deregister_tm_clones()
-	Mem23[0x0000000000201048<p64>:byte] = 1<8>
+	Mem21[0x0000000000201048<p64>:byte] = 1<8>
 	return
 l0000000000000718:
 	return
@@ -98,30 +98,30 @@ word64 _mm_malloc(word64 rdi, word64 rsi)
 //      main
 // MayUse:  rdi:[0..63] rsi:[0..63]
 // LiveOut: rax:[0..63]-main
-// Trashed: SCZOP rax rdi Top
-// Preserved: rbp rcx rdi rdx rsi rsp
+// Trashed: SCZOP rax rcx rdi rdx rsi Top
+// Preserved: rbp rsp
 _mm_malloc_entry:
 l000000000000072A:
-	qwLoc28_56 = rsi
+	qwLoc28_47 = rsi
 	branch rsi != 1<64> l000000000000074F
 l0000000000000741:
-	rax_44 = malloc(rdi)
+	rax_34 = malloc(rdi)
 	goto l000000000000078B
 l000000000000074F:
 	branch rsi == 2<64> l000000000000075D
 l0000000000000756:
 	branch rsi != 4<64> l0000000000000765
 l000000000000075D:
-	qwLoc28_56 = 8<64>
+	qwLoc28_47 = 8<64>
 l0000000000000765:
-	branch SLICE(posix_memalign(qwLoc28_56, fp - 16<i64>, rdi, qwLoc28_56), word32, 0) != 0<32> l0000000000000786
+	branch posix_memalign(&ptrLoc10, qwLoc28_47, rdi) != 0<32> l0000000000000786
 l0000000000000780:
-	rax_44 = qwLoc10
+	rax_34 = Mem22[&ptrLoc10:word64]
 	goto l000000000000078B
 l0000000000000786:
-	rax_44 = 0<u64>
+	rax_34 = 0<u64>
 l000000000000078B:
-	return rax_44
+	return rax_34
 _mm_malloc_exit:
 
 
@@ -173,64 +173,64 @@ void main()
 main_entry:
 l0000000000000898:
 	rax_16 = _mm_malloc(0x2000<64>, 0x20<u64>)
-	rax_30 = _mm_malloc(0x2000<64>, 0x20<u64>)
-	rax_44 = _mm_malloc(0x2000<64>, 0x20<u64>)
-	qwLoc10_211 = 0<64>
+	rax_33 = _mm_malloc(0x2000<64>, 0x20<u64>)
+	rax_50 = _mm_malloc(0x2000<64>, 0x20<u64>)
+	qwLoc10_220 = 0<64>
 	goto l000000000000093F
 l00000000000008FD:
-	rcx_61 = qwLoc10_211 * 8<64> + rax_16
-	eax_69 = SLICE(qwLoc10_211, word32, 0) (alias)
-	branch qwLoc10_211 < 0<64> l0000000000000921
+	rcx_70 = qwLoc10_220 * 8<64> + rax_16
+	eax_78 = SLICE(qwLoc10_220, word32, 0) (alias)
+	branch qwLoc10_220 < 0<64> l0000000000000921
 l000000000000091A:
-	xmm0 = SEQ(SLICE(xmm0, word64, 64), CONVERT(qwLoc10_211, word64, real64))
+	xmm0 = SEQ(SLICE(xmm0, word64, 64), CONVERT(qwLoc10_220, word64, real64))
 	goto l0000000000000936
 l0000000000000921:
-	v27_76 = CONVERT(qwLoc10_211 >>u 1<64> | CONVERT(eax_69 & 1<32>, word32, uint64), word64, real64)
-	xmm0 = SEQ(0<64>, v27_76 + v27_76)
+	v27_85 = CONVERT(qwLoc10_220 >>u 1<64> | CONVERT(eax_78 & 1<32>, word32, uint64), word64, real64)
+	xmm0 = SEQ(0<64>, v27_85 + v27_85)
 l0000000000000936:
-	Mem85[rcx_61:real64] = SLICE(xmm0, real64, 0)
-	qwLoc10_211 = qwLoc10_211 + 1<64>
+	Mem94[rcx_70:real64] = SLICE(xmm0, real64, 0)
+	qwLoc10_220 = qwLoc10_220 + 1<64>
 l000000000000093F:
-	branch qwLoc10_211 <u 0x400<64> l00000000000008FD
+	branch qwLoc10_220 <u 0x400<64> l00000000000008FD
 l0000000000000949:
-	qwLoc18_217 = 0<64>
+	qwLoc18_226 = 0<64>
 	goto l0000000000000998
 l0000000000000953:
-	eax_108 = SLICE(qwLoc18_217, word32, 0) + 1<32> (alias)
-	rcx_101 = qwLoc18_217 * 8<64> + rax_30
-	branch qwLoc18_217 < 0xFFFFFFFFFFFFFFFF<64> l000000000000097A
+	eax_117 = SLICE(qwLoc18_226, word32, 0) + 1<32> (alias)
+	rcx_110 = qwLoc18_226 * 8<64> + rax_33
+	branch qwLoc18_226 < 0xFFFFFFFFFFFFFFFF<64> l000000000000097A
 l0000000000000973:
-	xmm0 = SEQ(SLICE(xmm0, word64, 64), CONVERT(qwLoc18_217 + 1<64>, word64, real64))
+	xmm0 = SEQ(SLICE(xmm0, word64, 64), CONVERT(qwLoc18_226 + 1<64>, word64, real64))
 	goto l000000000000098F
 l000000000000097A:
-	v22_115 = CONVERT(qwLoc18_217 + 1<64> >>u 1<64> | CONVERT(eax_108 & 1<32>, word32, uint64), word64, real64)
-	xmm0 = SEQ(0<64>, v22_115 + v22_115)
+	v22_124 = CONVERT(qwLoc18_226 + 1<64> >>u 1<64> | CONVERT(eax_117 & 1<32>, word32, uint64), word64, real64)
+	xmm0 = SEQ(0<64>, v22_124 + v22_124)
 l000000000000098F:
-	Mem124[rcx_101:real64] = SLICE(xmm0, real64, 0)
-	qwLoc18_217 = qwLoc18_217 + 1<64>
+	Mem133[rcx_110:real64] = SLICE(xmm0, real64, 0)
+	qwLoc18_226 = qwLoc18_226 + 1<64>
 l0000000000000998:
-	branch qwLoc18_217 <u 0x400<64> l0000000000000953
+	branch qwLoc18_226 <u 0x400<64> l0000000000000953
 l00000000000009A2:
-	qwLoc20_223 = 0<64>
+	qwLoc20_232 = 0<64>
 	goto l00000000000009CC
 l00000000000009AC:
-	Mem140[rax_44 + qwLoc20_223 * 8<64>:real64] = 0.0
-	qwLoc20_223 = qwLoc20_223 + 1<64>
+	Mem149[rax_50 + qwLoc20_232 * 8<64>:real64] = 0.0
+	qwLoc20_232 = qwLoc20_232 + 1<64>
 l00000000000009CC:
-	branch qwLoc20_223 <u 0x400<64> l00000000000009AC
+	branch qwLoc20_232 <u 0x400<64> l00000000000009AC
 l00000000000009D6:
-	vec_add(0x400<64>, rax_44, rax_16, rax_30)
-	qwLoc28_232 = 0<64>
+	vec_add(0x400<64>, rax_50, rax_16, rax_33)
+	qwLoc28_241 = 0<64>
 	goto l0000000000000A2D
 l00000000000009F8:
-	printf("%g\n", Mem161[rax_44 + qwLoc28_232 * 8<64>:word64])
-	qwLoc28_232 = qwLoc28_232 + 1<64>
+	printf("%g\n", Mem170[rax_50 + qwLoc28_241 * 8<64>:word64])
+	qwLoc28_241 = qwLoc28_241 + 1<64>
 l0000000000000A2D:
-	branch qwLoc28_232 <u 0x400<64> l00000000000009F8
+	branch qwLoc28_241 <u 0x400<64> l00000000000009F8
 l0000000000000A37:
 	_mm_free(rax_16)
-	_mm_free(rax_30)
-	_mm_free(rax_44)
+	_mm_free(rax_33)
+	_mm_free(rax_50)
 	return
 main_exit:
 

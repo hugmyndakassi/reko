@@ -19,7 +19,7 @@ void strcpy(word32 r28, word32 ra)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse:  r28:[0..31] ra:[0..31]
 // LiveOut:
-// Trashed: r1 r15 r2 r24 r25 r28 r3
+// Trashed: r1 r15 r2 r24 r25 r28 r3 r4
 // Preserved: sp
 strcpy_entry:
 l00400290:
@@ -187,7 +187,7 @@ void strerror(word32 r28, word32 ra)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse:  r28:[0..31] ra:[0..31]
 // LiveOut:
-// Trashed: r1 r15 r2 r24 r25 r28 r3
+// Trashed: r1 r15 r2 r24 r25 r28 r3 r4
 // Preserved: sp
 strerror_entry:
 l004002D0:
@@ -403,7 +403,7 @@ void vsnprintf(word32 r28, word32 ra)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse:  r28:[0..31] ra:[0..31]
 // LiveOut:
-// Trashed: r1 r15 r2 r24 r25 r28 r3
+// Trashed: r1 r15 r2 r24 r25 r28 r3 r4
 // Preserved: sp
 vsnprintf_entry:
 l00400350:
@@ -715,7 +715,7 @@ void read(word32 r28, word32 ra)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse:  r28:[0..31] ra:[0..31]
 // LiveOut:
-// Trashed: r1 r15 r2 r24 r25 r28 r3
+// Trashed: r1 r15 r2 r24 r25 r28 r3 r4
 // Preserved: sp
 read_entry:
 l00400450:
@@ -1149,7 +1149,7 @@ void free(word32 r28, word32 ra)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse:  r28:[0..31] ra:[0..31]
 // LiveOut:
-// Trashed: r1 r15 r2 r24 r25 r28 r3
+// Trashed: r1 r15 r2 r24 r25 r28 r3 r4
 // Preserved: sp
 free_entry:
 l00400600:
@@ -1171,8 +1171,8 @@ void __do_global_dtors_aux()
 //      free
 // MayUse: 
 // LiveOut:
-// Trashed: r1 r2 r25 r28 r3
-// Preserved: r4 ra sp
+// Trashed: r1 r2 r25 r28 r3 r4
+// Preserved: ra sp
 __do_global_dtors_aux_entry:
 l00400620:
 	branch Mem8[Mem8[0x10000878<32>:word32] + 8<i32>:word32] != 0<32> l0040064C_ds_t
@@ -1232,8 +1232,8 @@ void frame_dummy()
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // MayUse: 
 // LiveOut:
-// Trashed: r25 r28
-// Preserved: r4 r5 ra sp
+// Trashed: r25 r28 r4 r5
+// Preserved: ra sp
 frame_dummy_entry:
 l0040072C:
 	branch __register_frame_info == 0<32> l0040074C_ds_t
@@ -1346,11 +1346,8 @@ l00400D6C:
 	slist_add(r2_325, server_new(Mem330[0x10000A40<32>:word32] + 13<i32>, Mem330[Mem330[0x10000A40<32>:word32] + 300<i32>:word32], Mem330[Mem330[0x10000A40<32>:word32] + 1364<i32>:word32], 0<32>, ra))
 	slist_add(r2_325, server_new(Mem364[0x10000A40<32>:word32] + 13<i32>, Mem364[Mem364[0x10000A40<32>:word32] + 452<i32>:word32], Mem364[Mem364[0x10000A40<32>:word32] + 1364<i32>:word32], 1<i32>, ra))
 	bzero(fp + -328<i32>, SLICE(16<i32>, size_t, 0))
-	r7_414 = <invalid>
-	r6_412 = <invalid>
-	r5_410 = <invalid>
-	r4_409 = <invalid>
-	inet_addr(r4_409, Mem420[0x10000A40<32>:word32] + 469<i32>, r5_410, r6_412, r7_414, 2<16>, Mem417[Mem417[0x10000A40<32>:word32] + 758<i32>:uint16])
+	inet_addr(Mem420[0x10000A40<32>:word32] + 469<i32>)
+	r5_1005 = <invalid>
 	dwLoc0150_1279 = Mem432[r2_325 + 8<i32>:word32]
 l00400EA4:
 	r28_1010 = 0x10008860<32>
@@ -1704,9 +1701,7 @@ word32 client_prepare_connect(word32 r4, word32 ra, word32 & r6Out, word32 & r7O
 client_prepare_connect_entry:
 l00402028:
 	getsockopt(Mem24[r4:word32], 0<32>, 80<i32>, r4 + 6040<i32>, fp + -24<i32>, 0x10008860<32>, 16<i32>)
-	inet_ntoa(Mem24[r4 + 6044<i32>:word32])
-	inet_ntoa(Mem24[r4 + 6044<i32>:word32])
-	r2_76 = snprintf(fp + -280<i32>, SLICE(256<i32>, size_t, 0), 0x00409F94<p32>, 0<32>)
+	r2_76 = snprintf(fp + -280<i32>, SLICE(256<i32>, size_t, 0), "CONNECT %s:%d HTTP/1.1\r\nHost: %s:%d\r\n\r\n", inet_ntoa(Mem24[r4 + 6044<i32>:word32]), CONVERT(Mem24[r4 + 6042<i32>:uint16], uint16, word32), inet_ntoa(Mem24[r4 + 6044<i32>:word32]), CONVERT(Mem64[r4 + 6042<i32>:uint16], uint16, word32))
 	dwLoc18_124 = r2_76
 	branch r2_76 < 256<i32> l00402158
 l0040214C:
@@ -1987,11 +1982,7 @@ void client_read_request(word32 r4)
 client_read_request_entry:
 l00402E44:
 	Mem28[r4 + 6092<i32>:word32] = time(0<32>)
-	r7_24 = <invalid>
-	r6_23 = <invalid>
-	r5_22 = <invalid>
-	r4_19 = <invalid>
-	Mem47[r4 + 2008<i32>:word32] = recv(0<32>, r4_19, Mem28[r4:word32], r5_22, r4 + 8<i32>, r6_23, 1744<i32>, r7_24, 16384<i32>, 0x10008860<32>)
+	Mem47[r4 + 2008<i32>:word32] = recv(Mem28[r4:word32], r4 + 8<i32>, SLICE(1744<i32>, size_t, 0), 16384<i32>)
 	return
 client_read_request_exit:
 
@@ -2014,7 +2005,9 @@ l00402EF8:
 l00402F60:
 	goto l00403068
 l00402F68:
-	r2_42 = send(Mem29[r4 + 4<i32>:word32], Mem29[r4 + 4016<i32>:word32], r4, Mem29[r4 + 4012<i32>:word32], 0<32>)
+	r2_42 = CONVERT(send(Mem29[r4 + 4<i32>:word32], Mem29[r4 + 4016<i32>:word32], SLICE(Mem29[r4 + 4012<i32>:word32], size_t, 0), 0<32>), uint0, uint32)
+	r5_118 = <invalid>
+	r25_110 = <invalid>
 	branch r2_42 != Mem48[r4 + 4012<i32>:word32] l00402FDC
 l00402FB4:
 	Mem82[r4 + 4012<i32>:word32] = 0<32>
@@ -2074,8 +2067,8 @@ void client_copy_reply(word32 r4)
 //      client_parse_reply
 // MayUse:  r4:[0..31]
 // LiveOut:
-// Trashed: r2 r25 r28 r3
-// Preserved: r30 r4 r5 r6 r7 ra sp
+// Trashed: r2 r25 r28 r3 r4 r5 r6 r7
+// Preserved: r30 ra sp
 client_copy_reply_entry:
 l004031DC:
 	branch Mem15[r4 + 6028<i32>:word32] > 0<32> l00403220
@@ -2083,11 +2076,7 @@ l00403218:
 	goto l00403304
 l00403220:
 	Mem30[r4 + 6096<i32>:word32] = time(0<32>)
-	r7_26 = <invalid>
-	r5_25 = <invalid>
-	r6_24 = <invalid>
-	r4_21 = <invalid>
-	r2_41 = send(0<32>, r4_21, Mem30[r4:word32], r5_25, Mem30[r4 + 6024<i32>:word32], r6_24, r4, Mem30[r4 + 6028<i32>:word32], r7_26, 0<32>)
+	r2_41 = CONVERT(send(Mem30[r4:word32], Mem30[r4 + 6024<i32>:word32], SLICE(Mem30[r4 + 6028<i32>:word32], size_t, 0), 0<32>), uint0, uint32)
 	branch r2_41 != Mem47[r4 + 6028<i32>:word32] l004032BC
 l00403294:
 	Mem66[r4 + 6024<i32>:word32] = r4 + 4024<i32>
@@ -2574,14 +2563,22 @@ word32 request_parse_line(word32 r4, word32 r5, word32 ra)
 // Preserved: r30 ra sp
 request_parse_line_entry:
 l00404378:
-	get_method(r4, out r5_23)
+	// Failed to bind call argument.
+	// Please report this issue at https://github.com/uxmal/reko
+	stackArg4 = <invalid>
+	r2_24 = get_method(r4, r5, stackArg4, out r5_23)
 	branch is_a_method(r4) != 0<32> l004043E8
 l004043E0:
 	r2_56 = 0<32>
 	goto l00404444
 l004043E8:
-	get_uri(r4 + 276<i32>)
-	get_version(r4 + 788<i32>)
+	// Failed to bind call argument.
+	// Please report this issue at https://github.com/uxmal/reko
+	// Failed to bind call argument.
+	// Please report this issue at https://github.com/uxmal/reko
+	stackArg4 = <invalid>
+	stackArg4 = <invalid>
+	get_version(r4 + 788<i32>, get_uri(r4 + 276<i32>, r2_24, stackArg4), stackArg4)
 	r2_56 = 1<i32>
 l00404444:
 	return r2_56
@@ -2641,15 +2638,15 @@ l004046F8:
 l00404738:
 	branch strncasecmp(r4 + 276<i32>, 0x0040A3FC<p32>, 7<i32>) != 0<32> l004047D4
 l00404774:
-	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), 0x0040A404<p32>, 0<32>)
+	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), "%s %s %s\r\n", r4, r4 + 276<i32>, r4 + 788<i32>)
 	goto l004048C8
 l004047D4:
 	branch Mem15[r4 + 276<i32>:int8] != 47<i8> l0040485C
 l004047EC:
-	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), 0x0040A410<p32>, 0<32>)
+	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), "%s http://%s%s %s\r\n", r4, r4 + 20<i32>, r4 + 276<i32>, r4 + 788<i32>)
 	goto l004048C8
 l0040485C:
-	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), 0x0040A424<p32>, 0<32>)
+	snprintf(r4 + 532<i32>, SLICE(256<i32>, size_t, 0), "%s http://%s/%s %s\r\n", r4, r4 + 20<i32>, r4 + 276<i32>, r4 + 788<i32>)
 l004048C8:
 	return
 request_make_url_exit:
@@ -2710,49 +2707,53 @@ l00404B18:
 request_add_lines_exit:
 
 
-word32 get_method(word32 r4, word32 & r5Out)
+word32 get_method(word32 r4, word32 r5, char * ptrArg04, word32 & r5Out)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // Called from:
 //      request_parse_line
-// MayUse:  r4:[0..31]
+// MayUse:  r4:[0..31] r5:[0..31] Stack +0004:[0..31]
 // LiveOut: r2:[0..31]-request_parse_line r5:[0..31]-request_parse_line
 // Trashed: r2 r25 r28 r4 r5 r6
 // Preserved: r30 ra sp
 get_method_entry:
 l00404B34:
-	strncpy(r4, strsep(fp + 4<i32>, 0x00410000<p32>, 0x0040A464<p32>, 0x10008860<32>), 256<i32>)
+	Mem17[&ptrArg04:word32] = r5
+	strncpy(r4, strsep(&ptrArg04, 0x0040A464<p32>), 256<i32>)
 	r5_36 = <invalid>
+	r2_40 = Mem29[&ptrArg04:word32]
 	r5Out = r5_36
-	return r5
+	return r2_40
 get_method_exit:
 
 
-word32 get_uri(word32 r4)
+word32 get_uri(word32 r4, word32 r5, char * ptrArg04)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // Called from:
 //      request_parse_line
-// MayUse:  r4:[0..31]
+// MayUse:  r4:[0..31] r5:[0..31] Stack +0004:[0..31]
 // LiveOut: r2:[0..31]-request_parse_line
 // Trashed: r2 r25 r28 r4 r5 r6
 // Preserved: r30 ra sp
 get_uri_entry:
 l00404BC8:
-	strncpy(r4, strsep(fp + 4<i32>, 0x00410000<p32>, 0x0040A464<p32>, 0x10008860<32>), 256<i32>)
-	return r5
+	Mem17[&ptrArg04:word32] = r5
+	strncpy(r4, strsep(&ptrArg04, 0x0040A464<p32>), 256<i32>)
+	return Mem29[&ptrArg04:word32]
 get_uri_exit:
 
 
-void get_version(word32 r4)
+void get_version(word32 r4, word32 r5, char * ptrArg04)
 // stackDelta: 0; fpuStackDelta: 0; fpuMaxParam: -1
 // Called from:
 //      request_parse_line
-// MayUse:  r4:[0..31]
+// MayUse:  r4:[0..31] r5:[0..31] Stack +0004:[0..31]
 // LiveOut:
 // Trashed: r2 r25 r28 r4 r5 r6
 // Preserved: r30 ra sp
 get_version_entry:
 l00404C5C:
-	strncpy(r4, strsep(fp + 4<i32>, 0x00410000<p32>, 0x0040A468<p32>, 0x10008860<32>), 256<i32>)
+	Mem17[&ptrArg04:word32] = r5
+	strncpy(r4, strsep(&ptrArg04, 0x0040A468<p32>), 256<i32>)
 	return
 get_version_exit:
 
@@ -3260,10 +3261,10 @@ print_log_entry:
 l00406610:
 	branch Mem22[Mem22[0x100008F4<32>:word32]:word32] < r4 l004066D4
 l00406664:
-	r2_40 = vsnprintf(fp + -1048<i32>, 1023<i32>, r5, fp + 8<i32>, fp + 8<i32>)
+	r2_40 = vsnprintf(&bLoc0418, SLICE(1023<i32>, size_t, 0), r5, fp + 8<i32>)
 	call 0x0040697C<p32> (retsize: 0;)
-		uses: Mem:Mem43,r2:fp + -1048<i32>,r25:0x0040697C<p32>,r4:Mem43[Mem43[0x10000A20<32>:word32]:word32],r5:r4,r6:r2_40,r7:fp + -1048<i32>,Stack +0018:fp + 8<i32>,Stack +0420:r2_40
-		defs: r25:r25_52,r4:r4_56,r5:r5_53,r6:r6_54,r7:r7_55
+		uses: Mem:Mem43,r2:&bLoc0418,r25:0x0040697C<p32>,r3:r3_58,r4:Mem43[Mem43[0x10000A20<32>:word32]:word32],r5:r4,r6:r2_40,r7:&bLoc0418,Stack +0018:fp + 8<i32>,Stack +0020:bLoc0418,Stack +0420:r2_40
+		defs: r25:r25_52,r3:r3_58,r4:r4_56,r5:r5_53,r6:r6_54,r7:r7_55
 l004066D4:
 	r5Out = r5
 	r6Out = r6
@@ -3320,11 +3321,7 @@ l004068AC:
 l004068CC:
 	strcpy(fp + -272<i32>, Mem12[Mem12[0x100008A0<32>:word32]:word32])
 	strcat(fp + -272<i32>, 0x0040A744<p32>)
-	r5_38 = <invalid>
-	r4_35 = <invalid>
-	r5_48 = <invalid>
-	r4_45 = <invalid>
-	rename(fp + -272<i32>, r4_35, fp + -272<i32>, r4_45, Mem12[Mem12[0x100008A0<32>:word32]:word32], r5_38, 0x00410000<p32>, 0x0040A744<p32>, r5_48, fp + -272<i32>)
+	rename(Mem12[Mem12[0x100008A0<32>:word32]:word32], fp + -272<i32>)
 l00406944:
 	open_log(0x0040A740<p32>, ra)
 	return
@@ -3400,11 +3397,7 @@ l00406C7C:
 	bzero(r2_29 + 8<i32>, SLICE(16<i32>, size_t, 0))
 	Mem63[r2_29 + 8<i32>:word16] = 2<16>
 	Mem66[r2_29 + 10<i32>:word16] = wArg06_110
-	r7_57 = <invalid>
-	r6_56 = <invalid>
-	r5_55 = <invalid>
-	r4_54 = <invalid>
-	Mem79[r2_29 + 12<i32>:word32] = inet_addr(r4_54, r4, r5_55, r6_56, r7_57)
+	Mem79[r2_29 + 12<i32>:word32] = inet_addr(r4)
 	r2_114 = r2_29
 l00406D38:
 	return r2_114

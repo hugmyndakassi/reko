@@ -1530,11 +1530,13 @@ l0000000000017768:
 					a2->qw0010 = fn00000000000163B0(gp, &qwLoc0178);
 					a2->qw00B8 = fn00000000000173D4(&qwLoc0178, s2_n);
 					a2->qw0018 = fn0000000000018118(gp, &qwLoc0178, s5_n);
+					int64 s2_n;
 					if (s2_n == (char *) 0x0080)
 					{
 						char * a5_n = a2->ptr0020;
 						a2->ptr00A8 = a5_n;
 						a2->ptr00B0 = a5_n;
+						s2_n = 0;
 						goto l0000000000017728;
 					}
 					a2->ptr00A8 = __strdup(&bLoc0168);
@@ -1547,30 +1549,37 @@ l0000000000017768:
 					if (inet_ntop(0x0A, &qwLoc0178, &bLoc0168, 0x00FA) != null)
 					{
 						a2->ptr00B0 = __strdup(&bLoc0168);
-						if (0x80 - (word32) s2_n == 0x80)
-							goto l0000000000017740;
-l0000000000017740:
-						snprintf(&a2->qw0038 + 5, (size_t) 64, "%s", 0x00);
-						if (a3 << 0x31 < 0x00)
-							gp = fn0000000000017D10(ra, gp, s1, &qwLoc0198, &a2->qw0038 + 1, &a2->qw0038 + 2, &a2->qw0038 + 3, &a2->qw0038 + 4, a3, &qwLoc0188, out s0_n, out s3_n, out s4_n, out s6_n);
-						if ((s6_n & 1) == 0x00)
+						s2_n = (int64) (0x80 - (word32) s2_n);
+						char * a3_n;
+						if (s2_n == 0x0080)
 						{
+							a3_n = (char *) "";
+l0000000000017740:
+							snprintf(&a2->qw0038 + 5, (size_t) 64, "%s", a3_n);
+							if (a3 << 0x31 < 0x00)
+								gp = fn0000000000017D10(ra, gp, s1, &qwLoc0198, &a2->qw0038 + 1, &a2->qw0038 + 2, &a2->qw0038 + 3, &a2->qw0038 + 4, a3, &qwLoc0188, out s0_n, out s3_n, out s4_n, out s6_n);
+							if ((s6_n & 1) == 0x00)
+							{
 l0000000000017760:
-							a0_n = null;
+								a0_n = null;
+								goto l0000000000017774;
+							}
+							word64 a0_n = fn00000000000168E4(gp, (char *) 0x0A, &qwLoc0198);
+							s0_n->qw0038 = a0_n;
+							if (a0_n != 0x00)
+								goto l0000000000017760;
+							if (gp->dwFFFFF814 == 0)
+							{
+								__sprintf_chk(s3_n, 1, (size_t) 0x00FA, "ipcalc: cannot find hostname for %s", s4_n);
+								herror(s3_n);
+							}
+l0000000000017770:
+							a0_n = (char *) -1;
 							goto l0000000000017774;
 						}
-						word64 a0_n = fn00000000000168E4(gp, (char *) 0x0A, &qwLoc0198);
-						s0_n->qw0038 = a0_n;
-						if (a0_n != 0x00)
-							goto l0000000000017760;
-						if (gp->dwFFFFF814 == 0)
-						{
-							__sprintf_chk(s3_n, 1, (size_t) 0x00FA, "ipcalc: cannot find hostname for %s", s4_n);
-							herror(s3_n);
-						}
-l0000000000017770:
-						a0_n = (char *) -1;
-						goto l0000000000017774;
+l0000000000017728:
+						a3_n = (s2_n << 0x20 >> 0x1D)->ptr10480;
+						goto l0000000000017740;
 					}
 				}
 				goto l0000000000017768;

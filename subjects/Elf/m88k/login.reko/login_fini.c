@@ -4,4 +4,7 @@
 
 #include "login.h"
 
-Eq_n g_t4BD0 = ??/* Unexpected function type (fn void ((ptr32 void))) */ ; // 00004BD0
+Eq_n g_t4BD0 = // 00004BD0
+	{
+		'g'
+	};

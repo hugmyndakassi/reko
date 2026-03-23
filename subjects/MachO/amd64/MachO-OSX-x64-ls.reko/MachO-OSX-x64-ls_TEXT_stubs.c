@@ -49,12 +49,12 @@ void __tolower()
 	__tolower();
 }
 
-// 0000000100004DCC: void acl_free()
+// 0000000100004DCC: void acl_free(Register Eq_n rdi)
 // Called from:
 //      fn0000000100003AA8
-void acl_free()
+void acl_free(Eq_n rdi)
 {
-	acl_free();
+	acl_free(rdi);
 }
 
 // 0000000100004DD2: Register int32 acl_get_entry(Register (ptr64 Eq_n) rdx, Register word32 esi, Register Eq_n rdi)
@@ -98,12 +98,13 @@ void acl_get_perm_np()
 	acl_get_perm_np();
 }
 
-// 0000000100004DF0: void acl_get_permset()
+// 0000000100004DF0: Register int32 acl_get_permset(Register (ptr64 Eq_n) rsi, Register word32 edi)
 // Called from:
 //      fn0000000100003AA8
-void acl_get_permset()
+int32 acl_get_permset(acl_permset_t * rsi, word32 edi)
 {
-	acl_get_permset();
+	word64 rdi;
+	return acl_get_permset((acl_entry_t) rdi, rsi);
 }
 
 // 0000000100004DF6: void acl_get_qualifier()
@@ -141,14 +142,14 @@ void compat_mode()
 	compat_mode();
 }
 
-// 0000000100004E0E: void err()
+// 0000000100004E0E: void err(Register (ptr64 char) rsi, Register uint64 rdi)
 // Called from:
 //      fn0000000100001B4A
 //      fn00000001000023B0
 //      fn0000000100003AA8
-void err()
+void err(char * rsi, uint64 rdi)
 {
-	err();
+	err((int32) rdi, rsi, 0x00);
 }
 
 // 0000000100004E14: void exit(Register word32 edi)
@@ -339,18 +340,20 @@ int32 isatty(word32 edi)
 	return isatty((int32) rdi);
 }
 
-// 0000000100004E98: void kill()
-void kill()
+// 0000000100004E98: void kill(Register word32 esi, Register word32 edi)
+void kill(word32 esi, word32 edi)
 {
-	kill();
+	word64 rdi;
+	word64 rsi;
+	kill((pid_t) rdi, (int32) rsi);
 }
 
-// 0000000100004E9E: void listxattr()
+// 0000000100004E9E: Register Eq_n listxattr(Register Eq_n rdx, Register Eq_n rsi, Register (ptr64 char) rdi)
 // Called from:
 //      fn0000000100003AA8
-void listxattr()
+Eq_n listxattr(Eq_n rdx, Eq_n rsi, char * rdi)
 {
-	listxattr();
+	return listxattr(rdi, rsi, rdx);
 }
 
 // 0000000100004EA4: Register (ptr64 Eq_n) localtime(Register word32 edi)
@@ -455,12 +458,13 @@ void realloc(Eq_n rsi, void * rdi)
 	realloc(rdi, rsi);
 }
 
-// 0000000100004EE6: void setenv()
+// 0000000100004EE6: void setenv(Register word32 edx, Register Eq_n rsi, Register (ptr64 char) rdi)
 // Called from:
 //      fn00000001000026A0
-void setenv()
+void setenv(word32 edx, Eq_n rsi, char * rdi)
 {
-	setenv();
+	word64 rdx;
+	setenv(rdi, rsi, (int32) rdx);
 }
 
 // 0000000100004EEC: void setlocale(Register Eq_n rsi, Register word32 edi)
@@ -490,12 +494,12 @@ int32 snprintf(char * rdx, Eq_n rsi, char * rdi)
 	return snprintf(rdi, rsi, rdx, 0x00);
 }
 
-// 0000000100004EFE: void sscanf()
+// 0000000100004EFE: Register int32 sscanf(Register (ptr64 char) rsi, Register Eq_n rdi)
 // Called from:
 //      fn0000000100001B4A
-void sscanf()
+int32 sscanf(char * rsi, Eq_n rdi)
 {
-	sscanf();
+	return sscanf(rdi, rsi, 0x00);
 }
 
 // 0000000100004F04: void strcoll(Register (ptr64 char) rsi, Register (ptr64 char) rdi)
@@ -550,36 +554,39 @@ Eq_n strlen(Eq_n rdi)
 	return strlen(rdi);
 }
 
-// 0000000100004F28: void strmode()
+// 0000000100004F28: void strmode(Register (ptr64 char) rsi, Register word32 edi)
 // Called from:
 //      fn0000000100003AA8
-void strmode()
+void strmode(char * rsi, word32 edi)
 {
-	strmode();
+	word64 rdi;
+	strmode((mode_t) rdi, rsi);
 }
 
-// 0000000100004F2E: void tgetent()
+// 0000000100004F2E: Register int32 tgetent(Register Eq_n rsi, Register (ptr64 char) rdi)
 // Called from:
 //      fn00000001000026A0
-void tgetent()
+int32 tgetent(Eq_n rsi, char * rdi)
 {
-	tgetent();
+	return tgetent(rdi, rsi);
 }
 
-// 0000000100004F34: void tgetstr()
+// 0000000100004F34: Register (ptr64 char) tgetstr(Register (ptr64 (ptr64 char)) rsi, Register (ptr64 char) rdi)
 // Called from:
 //      fn00000001000026A0
-void tgetstr()
+char * tgetstr(char ** rsi, char * rdi)
 {
-	tgetstr();
+	return tgetstr(rdi, rsi);
 }
 
-// 0000000100004F3A: void tgoto()
+// 0000000100004F3A: Register (ptr64 char) tgoto(Register word32 edx, Register word32 esi, Register (ptr64 char) rdi)
 // Called from:
 //      fn00000001000033F4
-void tgoto()
+char * tgoto(word32 edx, word32 esi, char * rdi)
 {
-	tgoto();
+	word64 rsi;
+	word64 rdx;
+	return tgoto(rdi, (int32) rsi, (int32) rdx);
 }
 
 // 0000000100004F40: Register Eq_n time(Register (ptr64 Eq_n) rdi)
@@ -590,14 +597,15 @@ Eq_n time(time_t * rdi)
 	return time(rdi);
 }
 
-// 0000000100004F46: void tputs()
+// 0000000100004F46: void tputs(Register (ptr64 Eq_n) rdx, Register word32 esi, Register (ptr64 char) rdi)
 // Called from:
 //      fn00000001000033F4
 //      fn00000001000035A9
 //      fn0000000100003AA8
-void tputs()
+void tputs(int32 (* rdx)(int32 rdi), word32 esi, char * rdi)
 {
-	tputs();
+	word64 rsi;
+	tputs(rdi, (int32) rsi, rdx);
 }
 
 // 0000000100004F4C: void user_from_uid()
@@ -608,19 +616,19 @@ void user_from_uid()
 	user_from_uid();
 }
 
-// 0000000100004F52: void warn()
-void warn()
+// 0000000100004F52: void warn(Register (ptr64 char) rdi)
+void warn(char * rdi)
 {
-	warn();
+	warn(rdi, 0x00);
 }
 
-// 0000000100004F58: void warnx()
+// 0000000100004F58: void warnx(Register (ptr64 char) rdi)
 // Called from:
 //      fn0000000100001B4A
 //      fn00000001000023B0
-void warnx()
+void warnx(char * rdi)
 {
-	warnx();
+	warnx(rdi, 0x00);
 }
 
 // 0000000100004F5E: Register int32 wcwidth(Register word16 di)

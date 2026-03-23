@@ -4,4 +4,4 @@
 
 #include "test.h"
 
-word32 g_dw10AEC = 68332; // 00010AEC
+void * g_ptr10AEC = &g_v10AEC; // 00010AEC

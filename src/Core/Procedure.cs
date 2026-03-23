@@ -57,7 +57,7 @@ namespace Reko.Core
             //$REVIEW consider removing Body completely and use
             // AbsynProcedure instead.
             this.Body = null;
-            this.blocks = new List<Block>();
+            this.blocks = [];
             this.ControlGraph = new BlockGraph(blocks);
 			this.Frame = frame;
 			this.Signature = new FunctionType();

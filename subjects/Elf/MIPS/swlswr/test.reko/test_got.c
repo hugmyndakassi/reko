@@ -11,7 +11,7 @@ Eq_n g_t10AA4 = // 00010AA4
 	{
 		68228
 	};
-word32 * g_ptr10AAC = &g_dw10AEC; // 00010AAC
+void ** g_ptr10AAC = &g_ptr10AEC; // 00010AAC
 int32 g_dw10AB0 = 68204; // 00010AB0
 ptr32 g_ptr10AB4 = 0x00; // 00010AB4
 <anonymous> * _init_GOT = _init; // 00010AB8

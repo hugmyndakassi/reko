@@ -586,7 +586,7 @@ void handle_stop(word32 r4, word32 ra)
 	word32 r6_n;
 	word32 r7_n;
 	word32 r25_n;
-	print_log(3, &g_t409DD4, out r5_n, out r6_n, out r7_n, out r25_n);
+	print_log(3, "%s(%d):got signal %d: stopping...", out r5_n, out r6_n, out r7_n, out r25_n);
 	*g_ptr100008C0 = 1;
 }
 
@@ -597,7 +597,7 @@ void handle_log_rotate(word32 r4, word32 ra)
 	word32 r6_n;
 	word32 r7_n;
 	word32 r25_n;
-	print_log(3, &g_t409E04, out r5_n, out r6_n, out r7_n, out r25_n);
+	print_log(3, "%s(%d):got signal %d: Rotating log file...", out r5_n, out r6_n, out r7_n, out r25_n);
 	log_rotate(ra);
 }
 
@@ -640,7 +640,7 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 	word32 r6_n;
 	word32 r7_n;
 	word32 r25_n;
-	print_log(3, &g_t409E50, out r5_n, out r6_n, out r7_n, out r25_n);
+	print_log(3, "%s (%s) redirecting %s:%d|%d to %s:%d\nlogging to %s (%d)[%dkbytes] max %d connections/server", out r5_n, out r6_n, out r7_n, out r25_n);
 	struct Eq_n * r2_n = clist_new(ra, out r4_n, out r5_n);
 	if (r2_n != null)
 	{
@@ -651,14 +651,10 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 			slist_add(r2_n, server_new((char *) &g_ptr10000A40->a0004->t0004 + 5, g_ptr10000A40->dw01C4, g_ptr10000A40->dw0554, 1, ra));
 			struct Eq_n * fp;
 			bzero((char *) fp - 328, (size_t) 16);
-			struct Eq_n * r7_n = (struct Eq_n *) <invalid>;
-			struct Eq_n * r6_n = (struct Eq_n *) <invalid>;
+			inet_addr((char *) &g_ptr10000A40->dw01C4 + 0x0011);
 			struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-			struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-			inet_addr(r4_n, (char *) &g_ptr10000A40->dw01C4 + 0x0011, r5_n, r6_n, r7_n, 0x02, g_ptr10000A40->w02F6);
 			struct Eq_n * dwLoc0150_n = r2_n->ptr0008;
 			struct Eq_n * r28_n;
-			struct Eq_n * r5_n;
 			while (true)
 			{
 				r28_n = (struct Eq_n *) 0x10008860;
@@ -707,7 +703,7 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 					{
 						if (dwLoc0160_n < (dwLoc0158_n->t0000).u0)
 							dwLoc0160_n.u0 = dwLoc0158_n->t0000.u0;
-						if (dwLoc0158_n->dw0FAC == 0x00)
+						if (dwLoc0158_n->t0FAC.u0 == 0x00)
 						{
 							Eq_n r2_n;
 							r2_n.u0 = dwLoc0158_n->t0000.u0;
@@ -750,7 +746,7 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 					word32 r6_n;
 					word32 r7_n;
 					word32 r25_n;
-					print_log(0x00, &g_t409EB0, out r5_n, out r6_n, out r7_n, out r25_n);
+					print_log(0x00, "Error on select:%d - %s\n", out r5_n, out r6_n, out r7_n, out r25_n);
 					exit(-1);
 					struct Eq_n * r5_n;
 					r5_n = r5_n;
@@ -773,7 +769,7 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 								word32 r6_n;
 								word32 r7_n;
 								word32 r25_n;
-								print_log(1, &g_t409ECC, out r5_n, out r6_n, out r7_n, out r25_n);
+								print_log(1, "%s(%d):Unable to accept more connections.", out r5_n, out r6_n, out r7_n, out r25_n);
 								r5_n = client_destroy(r2_n, ra);
 								r28_n = (struct Eq_n *) 0x10008860;
 							}
@@ -840,7 +836,7 @@ void main(int32 r4, char * r5[], word32 r16, word32 ra)
 					}
 					if (dwLoc0158_n != null)
 					{
-						if ((dwLoc0158_n->t0004.u0 >= 0x00 || (dwLoc0158_n->t0000).u0 >= 0x00) && (((dwLoc0158_n->t0004).u0 >= 0x00 || ((dwLoc0158_n->t0000).u0 < 0x00 || dwLoc0158_n->dw178C > 0x00)) && ((dwLoc0158_n->t0000).u0 >= 0x00 || ((dwLoc0158_n->t0004).u0 < 0x00 || dwLoc0158_n->dw0FAC > 0x00))))
+						if ((dwLoc0158_n->t0004.u0 >= 0x00 || (dwLoc0158_n->t0000).u0 >= 0x00) && (((dwLoc0158_n->t0004).u0 >= 0x00 || ((dwLoc0158_n->t0000).u0 < 0x00 || dwLoc0158_n->dw178C > 0x00)) && ((dwLoc0158_n->t0000).u0 >= 0x00 || ((dwLoc0158_n->t0004).u0 < 0x00 || (dwLoc0158_n->t0FAC).u0 > 0x00))))
 						{
 							r28_n->ptrFFFF8038();
 							r28_n = (struct Eq_n *) 0x10008860;
@@ -883,14 +879,14 @@ void client_new(struct Eq_n * r4, struct Eq_n * r5, int32 r6, int32 r7, word32 r
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(0x00, &g_t409F00, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(0x00, "Unable to allocate memory for client", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else
 	{
 		bzero(&r2_n->w1798, (size_t) 16);
 		r2_n->w1798 = 0x02;
 		r2_n->w179A = r4->w0002;
-		r2_n->dw179C = r4->dw0004;
+		r2_n->t179C = r4->t0004;
 		ptr32 fp;
 		r2_n->t0000.u0 = (int32) accept(r6, &r2_n->w1798, fp + -32);
 		r2_n->w17A8 = 0x02;
@@ -904,20 +900,20 @@ void client_new(struct Eq_n * r4, struct Eq_n * r5, int32 r6, int32 r7, word32 r
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(1, &g_t409F28, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(1, "%s(%d):Unable to open server for client %d", out r5_n, out r6_n, out r7_n, out r25_n);
 			close(r2_n->t0000.u0);
 			free(r2_n);
 		}
 		else
 		{
-			inet_ntoa(r2_n->dw179C);
+			inet_ntoa(r2_n->t179C);
 			word32 r5_n;
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(3, &g_t409F60, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(3, "%s(%d):Connection from %s accepted -> in=%d, out=%d", out r5_n, out r6_n, out r7_n, out r25_n);
 			r2_n->dw07D8 = 0x00;
-			r2_n->dw0FAC = 0x00;
+			r2_n->t0FAC.u0 = 0x00;
 			r2_n->dw178C = 0x00;
 			r2_n->ptr0FB0 = (void *) (&r2_n->dw07D8 + 1);
 			r2_n->ptr1788 = (char *) &r2_n->ptr0FB4 + 4;
@@ -957,9 +953,7 @@ word32 client_prepare_connect(struct Eq_n * r4, word32 ra, word32 & r6Out, word3
 {
 	ptr32 fp;
 	getsockopt(r4->t0000.u0, 0x00, 80, &r4->w1798, fp + -24, 0x10008860, 16);
-	inet_ntoa(r4->dw179C);
-	inet_ntoa(r4->dw179C);
-	Eq_n r2_n = snprintf(fp + -0x0118, (size_t) 0x0100, "CONNECT %s:%d HTTP/1.1\r\nHost: %s:%d\r\n\r\n", 0x00);
+	Eq_n r2_n = snprintf(fp + -0x0118, (size_t) 0x0100, "CONNECT %s:%d HTTP/1.1\r\nHost: %s:%d\r\n\r\n", inet_ntoa(r4->t179C), (word32) r4->w179A, inet_ntoa(r4->t179C), (word32) r4->w179A);
 	Eq_n dwLoc18_n = r2_n;
 	if (r2_n >= 0x0100)
 		dwLoc18_n.u0 = 0x0100;
@@ -1010,7 +1004,7 @@ void client_parse_request(struct Eq_n * r4, word32 ra)
 							word32 r6_n;
 							word32 r7_n;
 							word32 r25_n;
-							print_log(4, &g_t40A008, out r5_n, out r6_n, out r7_n, out r25_n);
+							print_log(4, "%s(%d):Found old request", out r5_n, out r6_n, out r7_n, out r25_n);
 							struct Eq_n * r2_n = r4->ptr0FB4;
 							dwLoc20_n = r2_n;
 							if (request_parse_line(r2_n, fp + -0x0810, ra) == 0x00)
@@ -1019,7 +1013,7 @@ void client_parse_request(struct Eq_n * r4, word32 ra)
 								word32 r6_n;
 								word32 r7_n;
 								word32 r25_n;
-								print_log(4, &g_t40A03C, out r5_n, out r6_n, out r7_n, out r25_n);
+								print_log(4, "%s(%d):Unable to find method. Destroying old request", out r5_n, out r6_n, out r7_n, out r25_n);
 								request_destroy(r2_n);
 								dwLoc20_n = null;
 							}
@@ -1035,7 +1029,7 @@ void client_parse_request(struct Eq_n * r4, word32 ra)
 							word32 r6_n;
 							word32 r7_n;
 							word32 r25_n;
-							print_log(3, &g_t40A074, out r5_n, out r6_n, out r7_n, out r25_n);
+							print_log(3, "%s(%d):Request does not start with a request line send as-is:%s", out r5_n, out r6_n, out r7_n, out r25_n);
 							word32 r5_n;
 							word32 r6_n;
 							word32 r7_n;
@@ -1090,7 +1084,7 @@ void client_parse_request(struct Eq_n * r4, word32 ra)
 				word32 r6_n;
 				word32 r7_n;
 				word32 r25_n;
-				print_log(2, &g_t40A0B4, out r5_n, out r6_n, out r7_n, out r25_n);
+				print_log(2, "%s(%d):Request not RFC compliant missing host:", out r5_n, out r6_n, out r7_n, out r25_n);
 				r4->dw1794 = 0x00;
 				return;
 			}
@@ -1102,7 +1096,7 @@ void client_parse_request(struct Eq_n * r4, word32 ra)
 					word32 r6_n;
 					word32 r7_n;
 					word32 r25_n;
-					print_log(2, &g_t409FC4, out r5_n, out r6_n, out r7_n, out r25_n);
+					print_log(2, "%s(%d):Request not ready", out r5_n, out r6_n, out r7_n, out r25_n);
 				}
 				else
 				{
@@ -1143,13 +1137,13 @@ void * add_to_request(struct Eq_n * r4, void * r5, void * r6, Eq_n r7, word32 ra
 	if (r5 == null)
 	{
 		word32 r25_n;
-		print_log(1, &g_t40A0E4, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):Unable to add data to undefined buffer.", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = null;
 	}
 	else if (r6 != null && r7 > 0x00)
 	{
-		r4->dw0FAC = (word32) r7.u0 + r4->dw0FAC;
-		if (r4->dw0FAC < 2000)
+		r4->t0FAC.u0 = (word32) r7.u0 + (r4->t0FAC).u0;
+		if (r4->t0FAC.u0 < 2000)
 		{
 			memcpy(r5, r6, (size_t) r7);
 			r7_n = (struct Eq_n *) <invalid>;
@@ -1160,15 +1154,15 @@ void * add_to_request(struct Eq_n * r4, void * r5, void * r6, Eq_n r7, word32 ra
 		else
 		{
 			word32 r25_n;
-			print_log(1, &g_t40A148, out r5_n, out r6_n, out r7_n, out r25_n);
-			r4->dw0FAC = 0x00;
+			print_log(1, "%s(%d):Buffer owerflow. Cancel this action.", out r5_n, out r6_n, out r7_n, out r25_n);
+			r4->t0FAC.u0 = 0x00;
 			r2_n = null;
 		}
 	}
 	else
 	{
 		word32 r25_n;
-		print_log(2, &g_t40A124, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Not adding empty data set.", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = r5;
 	}
 	r5Out = r5_n;
@@ -1213,11 +1207,7 @@ int8 * get_a_line(byte * r4, int8 * r5, int32 * r6)
 void client_read_request(struct Eq_n * r4)
 {
 	r4->t17CC = time(null);
-	struct Eq_n * r7_n = (struct Eq_n *) <invalid>;
-	struct Eq_n * r6_n = (struct Eq_n *) <invalid>;
-	struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-	struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-	r4->dw07D8 = recv(0x00, r4_n, r4->dw0000, r5_n, &r4->dw0000 + 2, r6_n, 1744, r7_n, 0x00004000, 0x10008860);
+	r4->dw07D8 = recv(r4->dw0000, &r4->dw0000 + 2, (size_t) 1744, 0x00004000);
 }
 
 // 00402EF8: Register (ptr32 Eq_n) client_send_request(Register (ptr32 Eq_n) r4, Register word32 ra, Register out (ptr32 Eq_n) r25Out)
@@ -1229,21 +1219,24 @@ struct Eq_n * client_send_request(struct Eq_n * r4, word32 ra, struct Eq_n & r25
 	r4->t17CC = time(null);
 	struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
 	struct Eq_n * r25_n = (struct Eq_n *) <invalid>;
-	if (r4->dw0FAC > 0x00)
+	if (r4->t0FAC.u0 > 0x00)
 	{
-		int32 r2_n = send(r4->t0004.u0, r4->ptr0FB0, r4, r4->dw0FAC, 0x00);
-		if (r2_n == r4->dw0FAC)
+		Eq_n r2_n;
+		r2_n.u1 = (uint32) send(r4->t0004.u0, r4->ptr0FB0, (size_t) r4->t0FAC.u0, 0x00);
+		r5_n = (struct Eq_n *) <invalid>;
+		r25_n = (struct Eq_n *) <invalid>;
+		if (r2_n == (r4->t0FAC).u0)
 		{
-			r4->dw0FAC = 0x00;
+			r4->t0FAC.u0 = 0x00;
 			r4->ptr0FB0 = (void *) (&r4->dw07D8 + 1);
 		}
 		else
 		{
-			r4->ptr0FB0 = (void *) ((char *) r4->ptr0FB0 + r2_n);
-			r4->dw0FAC -= r2_n;
+			r4->ptr0FB0 += r2_n;
+			r4->t0FAC.u0 = (int32) (r4->t0FAC.u0 - r2_n);
 			word32 r6_n;
 			word32 r7_n;
-			print_log(4, &g_t40A174, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(4, "%s(%d):Partial sent:%d bytes", out r5_n, out r6_n, out r7_n, out r25_n);
 		}
 	}
 	r25Out = r25_n;
@@ -1261,7 +1254,7 @@ void client_read_reply(struct Eq_n * r4)
 // 00403140: void client_parse_reply(Register (ptr32 Eq_n) r4, Register word32 ra)
 void client_parse_reply(struct Eq_n * r4, word32 ra)
 {
-	if (r4->dw178C > 0x00 && client_check_reply_http(r4) == 0x00)
+	if (r4->t178C.u0 > 0x00 && client_check_reply_http(r4) == 0x00)
 		client_copy_reply(r4);
 }
 
@@ -1270,23 +1263,20 @@ void client_parse_reply(struct Eq_n * r4, word32 ra)
 //      client_parse_reply
 void client_copy_reply(struct Eq_n * r4)
 {
-	if (r4->dw178C > 0x00)
+	if (r4->t178C.u0 > 0x00)
 	{
 		r4->t17D0 = time(null);
-		struct Eq_n * r7_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r6_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-		int32 r2_n = send(0x00, r4_n, r4->dw0000, r5_n, r4->ptr1788, r6_n, r4, r4->dw178C, r7_n, 0x00);
-		if (r2_n == r4->dw178C)
+		Eq_n r2_n;
+		r2_n.u1 = (uint32) send(r4->dw0000, r4->ptr1788, (size_t) r4->t178C.u0, 0x00);
+		if (r2_n == (r4->t178C).u0)
 		{
 			r4->ptr1788 = (struct Eq_n *) (&r4->dw0000 + 0x03EE);
-			r4->dw178C = 0x00;
+			r4->t178C.u0 = 0x00;
 		}
 		else
 		{
 			r4->ptr1788 += r2_n;
-			r4->dw178C -= r2_n;
+			r4->t178C.u0 = (int32) (r4->t178C.u0 - r2_n);
 		}
 	}
 }
@@ -1297,11 +1287,12 @@ void client_copy_reply(struct Eq_n * r4)
 word32 client_check_reply_http(struct Eq_n * r4)
 {
 	struct Eq_n * dwLoc18_n = r4->ptr1788;
-	int32 dwLoc14_n = r4->dw178C;
+	Eq_n dwLoc14_n;
+	dwLoc14_n.u0 = r4->t178C.u0;
 	while (dwLoc14_n > 0x00 && ((dwLoc18_n->t0000).u1 == 0x0A || (dwLoc18_n->t0000).u1 == 0x0D))
 	{
 		++dwLoc18_n;
-		dwLoc14_n += -1;
+		dwLoc14_n = (word32) dwLoc14_n.u0 - 1;
 	}
 	int32 r2_n;
 	if (dwLoc14_n >= 5 && strncasecmp(dwLoc18_n, "HTTP", 4) == 0x00)
@@ -1313,31 +1304,31 @@ word32 client_check_reply_http(struct Eq_n * r4)
 			if (dwLoc14_n <= 0x00)
 			{
 				r4->ptr1788 = (struct Eq_n *) (&r4->dw0000 + 0x03EE);
-				r4->dw178C = 0x00;
+				r4->t178C.u0 = 0x00;
 				r2_n = 1;
 				return r2_n;
 			}
 			while (dwLoc14_n > 0x00 && ((dwLoc18_n->t0000).u1 != 0x0A && (dwLoc18_n->t0000).u1 != 0x0D))
 			{
-				dwLoc14_n += -1;
+				dwLoc14_n = (word32) dwLoc14_n.u0 - 1;
 				++dwLoc18_n;
 			}
 			if (dwLoc14_n < 2 || (dwLoc18_n->t0000).u1 != 0x0A && (dwLoc18_n->t0000).u1 != 0x0D || dwLoc18_n[1] != 0x0A && dwLoc18_n[1] != 0x0D)
 				continue;
 			dwLoc18_n = (struct Eq_n *) (dwLoc18_n + 1);
-			dwLoc14_n += -2;
+			dwLoc14_n = (word32) dwLoc14_n.u0 - 2;
 			dwLoc18_n = (struct Eq_n *) &dwLoc18_n->b0001;
 		} while (dwLoc14_n < 2 || dwLoc18_n->b0001 != 0x0A && dwLoc18_n->b0001 != 0x0D || dwLoc18_n->b0002 != 0x0A && dwLoc18_n->b0002 != 0x0D);
 		if (dwLoc14_n > 0x02)
 		{
 			r4->ptr1788 = (struct Eq_n *) (&dwLoc18_n->b0002 + 1);
-			r4->dw178C = dwLoc14_n + -2;
+			r4->t178C.u0 = (word32) dwLoc14_n.u0 - 2;
 			r2_n = 0x00;
 		}
 		else
 		{
 			r4->ptr1788 = (struct Eq_n *) (&r4->dw0000 + 0x03EE);
-			r4->dw178C = 0x00;
+			r4->t178C.u0 = 0x00;
 			r2_n = 1;
 		}
 	}
@@ -1392,7 +1383,7 @@ void client_check_activ(struct Eq_n * r4, Eq_n r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(3, &g_t40A1B0, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(3, "%s(%d):Client %d/%d had no input for %d seconds", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	if (*g_ptr1000090C < dwArg04_n - r4->t17D0)
 	{
@@ -1400,7 +1391,7 @@ void client_check_activ(struct Eq_n * r4, Eq_n r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(3, &g_t40A1F4, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(3, "%s(%d):Client %d/%d got no reply for %d seconds", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 }
 
@@ -1419,7 +1410,7 @@ int32 open_destination(struct sockaddr * r4, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A224, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):Error opening destination socket:%d - %s", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = -1;
 	}
 	else if (connect(r2_n, r4, 16) < 0x00)
@@ -1430,7 +1421,7 @@ int32 open_destination(struct sockaddr * r4, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A268, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):Error opening destination:%d - %s", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = -1;
 	}
 	else
@@ -1452,7 +1443,7 @@ struct Eq_n * clist_new(word32 ra, struct Eq_n & r4Out, struct Eq_n & r5Out)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		r4_n = print_log(0x00, &g_t40A2A0, out r5_n, out r6_n, out r7_n, out r25_n);
+		r4_n = print_log(0x00, "Unable to allocate memory for client list", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = null;
 	}
 	else
@@ -1570,7 +1561,7 @@ struct Eq_n * request_new(ptr32 r4, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(0x00, &g_t40A308, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(0x00, "Unable to allocate memory for request", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = null;
 	}
 	else
@@ -1598,14 +1589,22 @@ struct Eq_n * request_new(ptr32 r4, word32 ra)
 int32 request_parse_line(struct Eq_n * r4, ptr32 r5, word32 ra)
 {
 	word32 r5_n;
-	get_method(r4, out r5_n);
+	// Failed to bind call argument.
+	// Please report this issue at https://github.com/uxmal/reko
+	char * stackArg4 = (char *) <invalid>;
+	word32 r2_n = get_method(r4, r5, stackArg4, out r5_n);
 	int32 r2_n;
 	if (is_a_method(r4) == 0x00)
 		r2_n = 0x00;
 	else
 	{
-		get_uri(&r4->b0114);
-		get_version(&r4->b0314);
+		// Failed to bind call argument.
+		// Please report this issue at https://github.com/uxmal/reko
+		// Failed to bind call argument.
+		// Please report this issue at https://github.com/uxmal/reko
+		char * stackArg4 = (char *) <invalid>;
+		char * stackArg4 = (char *) <invalid>;
+		get_version(&r4->b0314, get_uri(&r4->b0114, r2_n, stackArg4), stackArg4);
 		r2_n = 1;
 	}
 	return r2_n;
@@ -1623,7 +1622,7 @@ void request_save_line(struct Eq_n * r4, void * r5, word32 r6, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A398, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Not adding lines to empty request", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else if (r4->dw0558 >= 63)
 	{
@@ -1631,7 +1630,7 @@ void request_save_line(struct Eq_n * r4, void * r5, word32 r6, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A344, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):line buffer exeeded: %d", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else
 	{
@@ -1643,7 +1642,7 @@ void request_save_line(struct Eq_n * r4, void * r5, word32 r6, word32 ra)
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(2, &g_t40A364, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(2, "%s(%d):Not enough memory to allocate line buffer", out r5_n, out r6_n, out r7_n, out r25_n);
 			r4->dw0558 += -1;
 		}
 		else
@@ -1665,14 +1664,14 @@ void request_make_url(struct Eq_n * r4, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A3C4, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Parsing non existing request", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else if (strncasecmp(&r4->b0114, "http://", 7) == 0x00)
-		snprintf(&r4->b0214, (size_t) 0x0100, "%s %s %s\r\n", 0x00);
+		snprintf(&r4->b0214, (size_t) 0x0100, "%s %s %s\r\n", r4, &r4->b0114, &r4->b0314);
 	else if (r4->b0114 == 47)
-		snprintf(&r4->b0214, (size_t) 0x0100, "%s http://%s%s %s\r\n", 0x00);
+		snprintf(&r4->b0214, (size_t) 0x0100, "%s http://%s%s %s\r\n", r4, &r4->b0014, &r4->b0114, &r4->b0314);
 	else
-		snprintf(&r4->b0214, (size_t) 0x0100, "%s http://%s/%s %s\r\n", 0x00);
+		snprintf(&r4->b0214, (size_t) 0x0100, "%s http://%s/%s %s\r\n", r4, &r4->b0014, &r4->b0114, &r4->b0314);
 }
 
 // 004048DC: Register (ptr32 void) request_add_lines(Register (ptr32 Eq_n) r4, Register (ptr32 Eq_n) r5, Register (ptr32 void) r6)
@@ -1687,9 +1686,9 @@ void * request_add_lines(struct Eq_n * r4, struct Eq_n * r5, void * r6)
 	{
 		if (r4->a0004[dwLoc18_n * 0x04 + 1040] != 0x00)
 		{
-			if ((word32) r4->a0004[dwLoc18_n + 0x0510] + r5->dw0FAC < 2000)
+			if ((word32) r4->a0004[dwLoc18_n + 0x0510] + (r5->t0FAC).u0 < 2000)
 			{
-				r5->dw0FAC += (word32) r4->a0004[dwLoc18_n + 0x0510];
+				r5->t0FAC.u0 = (int32) (r5->t0FAC.u0 + (word32) (r4->a0004)[dwLoc18_n + 0x0510]);
 				word32 r2_n = (word32) r4->a0004[dwLoc18_n + 0x0510];
 				r28_n->ptrFFFF81E8();
 				r28_n = (struct Eq_n *) 0x10008860;
@@ -1713,37 +1712,36 @@ void * request_add_lines(struct Eq_n * r4, struct Eq_n * r5, void * r6)
 	return dwArg08_n;
 }
 
-// 00404B34: Register word32 get_method(Register (ptr32 Eq_n) r4, Register out (ptr32 Eq_n) r5Out)
+// 00404B34: Register word32 get_method(Register (ptr32 Eq_n) r4, Register ptr32 r5, Stack (ptr32 char) ptrArg04, Register out (ptr32 Eq_n) r5Out)
 // Called from:
 //      request_parse_line
-word32 get_method(struct Eq_n * r4, struct Eq_n & r5Out)
+word32 get_method(struct Eq_n * r4, ptr32 r5, char * ptrArg04, struct Eq_n & r5Out)
 {
-	ptr32 fp;
-	strncpy(r4, strsep(fp + 4, (<unknown>*) 0x00410000, &g_t40A464, 0x10008860), 0x0100);
+	ptrArg04 = r5;
+	strncpy(r4, strsep(&ptrArg04, " "), 0x0100);
 	struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
+	word32 r2_n = ptrArg04;
 	r5Out = r5_n;
-	word32 r5;
-	return r5;
+	return r2_n;
 }
 
-// 00404BC8: Register word32 get_uri(Register (ptr32 char) r4)
+// 00404BC8: Register word32 get_uri(Register (ptr32 char) r4, Register word32 r5, Stack (ptr32 char) ptrArg04)
 // Called from:
 //      request_parse_line
-word32 get_uri(char * r4)
+word32 get_uri(char * r4, word32 r5, char * ptrArg04)
 {
-	ptr32 fp;
-	strncpy(r4, strsep(fp + 4, (<unknown>*) 0x00410000, &g_t40A464, 0x10008860), 0x0100);
-	word32 r5;
-	return r5;
+	ptrArg04 = r5;
+	strncpy(r4, strsep(&ptrArg04, " "), 0x0100);
+	return ptrArg04;
 }
 
-// 00404C5C: void get_version(Register (ptr32 char) r4)
+// 00404C5C: void get_version(Register (ptr32 char) r4, Register word32 r5, Stack (ptr32 char) ptrArg04)
 // Called from:
 //      request_parse_line
-void get_version(char * r4)
+void get_version(char * r4, word32 r5, char * ptrArg04)
 {
-	ptr32 fp;
-	strncpy(r4, strsep(fp + 4, (<unknown>*) 0x00410000, &g_b40A468, 0x10008860), 0x0100);
+	ptrArg04 = r5;
+	strncpy(r4, strsep(&ptrArg04, " \n\r"), 0x0100);
 }
 
 // 00404CF0: void request_get_host(Register (ptr32 Eq_n) r4, Register (ptr32 char) r5, Register word32 ra)
@@ -1757,7 +1755,7 @@ void request_get_host(struct Eq_n * r4, char * r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A4F0, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Parsing not existing request or host", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else
 	{
@@ -1781,7 +1779,7 @@ void request_get_host(struct Eq_n * r4, char * r5, word32 ra)
 					word32 r6_n;
 					word32 r7_n;
 					word32 r25_n;
-					print_log(2, &g_t40A4D0, out r5_n, out r6_n, out r7_n, out r25_n);
+					print_log(2, "%s(%d):Host line too long:%d", out r5_n, out r6_n, out r7_n, out r25_n);
 				}
 			}
 			else
@@ -1790,7 +1788,7 @@ void request_get_host(struct Eq_n * r4, char * r5, word32 ra)
 				word32 r6_n;
 				word32 r7_n;
 				word32 r25_n;
-				print_log(2, &g_t40A4AC, out r5_n, out r6_n, out r7_n, out r25_n);
+				print_log(2, "%s(%d):Could not find end of host", out r5_n, out r6_n, out r7_n, out r25_n);
 			}
 		}
 		else
@@ -1799,7 +1797,7 @@ void request_get_host(struct Eq_n * r4, char * r5, word32 ra)
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(2, &g_t40A470, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(2, "%s(%d):No separator found in host line", out r5_n, out r6_n, out r7_n, out r25_n);
 		}
 	}
 }
@@ -1815,7 +1813,7 @@ void request_get_content_length(struct Eq_n * r4, char * r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A538, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Parsing non existing request or host", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else
 	{
@@ -1839,7 +1837,7 @@ void request_get_content_length(struct Eq_n * r4, char * r5, word32 ra)
 					word32 r6_n;
 					word32 r7_n;
 					word32 r25_n;
-					print_log(2, &g_t40A4D0, out r5_n, out r6_n, out r7_n, out r25_n);
+					print_log(2, "%s(%d):Host line too long:%d", out r5_n, out r6_n, out r7_n, out r25_n);
 				}
 			}
 			else
@@ -1848,7 +1846,7 @@ void request_get_content_length(struct Eq_n * r4, char * r5, word32 ra)
 				word32 r6_n;
 				word32 r7_n;
 				word32 r25_n;
-				print_log(2, &g_t40A4AC, out r5_n, out r6_n, out r7_n, out r25_n);
+				print_log(2, "%s(%d):Could not find end of host", out r5_n, out r6_n, out r7_n, out r25_n);
 			}
 		}
 		else
@@ -1857,7 +1855,7 @@ void request_get_content_length(struct Eq_n * r4, char * r5, word32 ra)
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(2, &g_t40A564, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(2, "%s(%d):No separtor found in host line", out r5_n, out r6_n, out r7_n, out r25_n);
 		}
 	}
 }
@@ -1910,7 +1908,7 @@ void properties_parse_int(char * r4, word32 r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(2, &g_t40A590, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(2, "%s(%d):Bad number \"%s\"", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 }
 
@@ -1934,7 +1932,7 @@ void properties_load(char * r4, char * r5, word32 ra)
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(1, &g_t40A5EC, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(1, "%s(%d):Out of memory.", out r5_n, out r6_n, out r7_n, out r25_n);
 			return;
 		}
 		strcpy(r2_n, r4);
@@ -1957,7 +1955,7 @@ void properties_load(char * r4, char * r5, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A618, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):properties file \"%s\" not found", out r5_n, out r6_n, out r7_n, out r25_n);
 	}
 	else
 	{
@@ -1985,7 +1983,7 @@ void properties_load(char * r4, char * r5, word32 ra)
 					word32 r6_n;
 					word32 r7_n;
 					word32 r25_n;
-					print_log(2, &g_t40A648, out r5_n, out r6_n, out r7_n, out r25_n);
+					print_log(2, "%s(%d):No equal sign in \"%s\", ignored", out r5_n, out r6_n, out r7_n, out r25_n);
 				}
 				else
 				{
@@ -2026,7 +2024,7 @@ void properties_load(char * r4, char * r5, word32 ra)
 						word32 r6_n;
 						word32 r7_n;
 						word32 r25_n;
-						print_log(1, &g_t40A5C4, out r5_n, out r6_n, out r7_n, out r25_n);
+						print_log(1, "%s(%d):Unknown option:%s", out r5_n, out r6_n, out r7_n, out r25_n);
 					}
 				}
 			}
@@ -2166,7 +2164,7 @@ struct Eq_n * properties_print_usage(Eq_n r4)
 	return r5_n;
 }
 
-// 00406610: Register int32 print_log(Register int32 r4, Register ptr32 r5, Register out ptr32 r5Out, Register out word32 r6Out, Register out word32 r7Out, Register out word32 r25Out)
+// 00406610: Register int32 print_log(Register int32 r4, Register (ptr32 char) r5, Register out (ptr32 char) r5Out, Register out word32 r6Out, Register out word32 r7Out, Register out word32 r25Out)
 // Called from:
 //      handle_stop
 //      handle_log_rotate
@@ -2191,13 +2189,14 @@ struct Eq_n * properties_print_usage(Eq_n r4)
 //      server_destroy
 //      slist_new
 //      slist_delete
-int32 print_log(int32 r4, ptr32 r5, ptr32 & r5Out, word32 & r6Out, word32 & r7Out, word32 & r25Out)
+int32 print_log(int32 r4, char * r5, char & r5Out, word32 & r6Out, word32 & r7Out, word32 & r25Out)
 {
 	ptr32 fp;
+	char bLoc0418;
 	word32 r25_n = 0x00406610;
 	if (*g_ptr100008F4 >= r4)
 	{
-		word32 r2_n = vsnprintf(fp + -0x0418, 0x03FF, r5, fp + 8, fp + 8);
+		int32 r2_n = vsnprintf(&bLoc0418, (size_t) 0x03FF, r5, fp + 8);
 		g_t40697C();
 	}
 	r5Out = r5;
@@ -2225,7 +2224,7 @@ void open_log(char * r4, word32 ra)
 			word32 r6_n;
 			word32 r7_n;
 			word32 r25_n;
-			print_log(0x00, &g_t40A704, out r5_n, out r6_n, out r7_n, out r25_n);
+			print_log(0x00, "Unable to open log file: %s. Falling back to stderr\n", out r5_n, out r6_n, out r7_n, out r25_n);
 		}
 	}
 	else
@@ -2247,11 +2246,7 @@ void log_rotate(word32 ra)
 		ptr32 fp;
 		strcpy(fp + -272, *g_ptr100008A0);
 		strcat(fp + -272, ".old");
-		struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-		rename(fp + -272, r4_n, fp + -272, r4_n, *g_ptr100008A0, r5_n, (<unknown>*) 0x00410000, g_str40A744, r5_n, fp + -272);
+		rename(*g_ptr100008A0, fp + -272);
 	}
 	open_log("w", ra);
 }
@@ -2288,10 +2283,10 @@ void log_string(FILE * r4, ui32 r5, char * r7, word32 ra)
 	}
 }
 
-// 00406BF0: Register (ptr32 Eq_n) server_new(Register word32 r4, Register word32 r5, Register word32 r6, Register int32 r7, Register word32 ra)
+// 00406BF0: Register (ptr32 Eq_n) server_new(Register (ptr32 char) r4, Register word32 r5, Register word32 r6, Register int32 r7, Register word32 ra)
 // Called from:
 //      main
-struct Eq_n * server_new(word32 r4, word32 r5, word32 r6, int32 r7, word32 ra)
+struct Eq_n * server_new(char * r4, word32 r5, word32 r6, int32 r7, word32 ra)
 {
 	uint16 wArg06_n = (uint16) r5;
 	struct Eq_n * r2_n = malloc((size_t) 36);
@@ -2302,7 +2297,7 @@ struct Eq_n * server_new(word32 r4, word32 r5, word32 r6, int32 r7, word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(0x00, &g_t40A770, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(0x00, "%s(%d):Unalbe to allocate memory for server", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = null;
 	}
 	else
@@ -2315,11 +2310,7 @@ struct Eq_n * server_new(word32 r4, word32 r5, word32 r6, int32 r7, word32 ra)
 		bzero(&r2_n->w0008, (size_t) 16);
 		r2_n->w0008 = 0x02;
 		r2_n->w000A = wArg06_n;
-		struct Eq_n * r7_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r6_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r5_n = (struct Eq_n *) <invalid>;
-		struct Eq_n * r4_n = (struct Eq_n *) <invalid>;
-		r2_n->dw000C = inet_addr(r4_n, r4, r5_n, r6_n, r7_n);
+		r2_n->t000C.u0 = (word32) inet_addr(r4);
 		r2_n = r2_n;
 	}
 	return r2_n;
@@ -2340,7 +2331,7 @@ int32 server_open(struct Eq_n * r4, word32 ra, word32 & r5Out)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A79C, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):Error opening server socket:%d - %s", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = 0x00;
 	}
 	else if (bind(r2_n, &r4->dw0004 + 1, 16) < 0x00)
@@ -2350,7 +2341,7 @@ int32 server_open(struct Eq_n * r4, word32 ra, word32 & r5Out)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A7D4, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s:(%d):Error opening server:%d - %s", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = 0x00;
 	}
 	else if (listen(r2_n, r4->dw0004) < 0x00)
@@ -2360,7 +2351,7 @@ int32 server_open(struct Eq_n * r4, word32 ra, word32 & r5Out)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(1, &g_t40A7FC, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(1, "%s(%d):Error listen: %d - %s", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = 0x00;
 	}
 	else
@@ -2394,7 +2385,7 @@ void server_destroy(struct Eq_n * r4, word32 ra)
 	word32 r6_n;
 	word32 r7_n;
 	word32 r25_n;
-	print_log(4, &g_t40A81C, out r5_n, out r6_n, out r7_n, out r25_n);
+	print_log(4, "%s(%d):Destroying server %d", out r5_n, out r6_n, out r7_n, out r25_n);
 	server_close(r4);
 	free(r4);
 }
@@ -2412,7 +2403,7 @@ struct Eq_n * slist_new(word32 ra)
 		word32 r6_n;
 		word32 r7_n;
 		word32 r25_n;
-		print_log(0x00, &g_t40A850, out r5_n, out r6_n, out r7_n, out r25_n);
+		print_log(0x00, "Unable to allocate memory for server list", out r5_n, out r6_n, out r7_n, out r25_n);
 		r2_n = null;
 	}
 	else
@@ -2477,7 +2468,7 @@ void slist_delete(struct Eq_n * r4, struct Eq_n * r5, word32 ra)
 	word32 r6_n;
 	word32 r7_n;
 	word32 r25_n;
-	print_log(2, &g_t40A87C, out r5_n, out r6_n, out r7_n, out r25_n);
+	print_log(2, "%s(%d):Destroying server:%p", out r5_n, out r6_n, out r7_n, out r25_n);
 	server_destroy(r5, ra);
 }
 

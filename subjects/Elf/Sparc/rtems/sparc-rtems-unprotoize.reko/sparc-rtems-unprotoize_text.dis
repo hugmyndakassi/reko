@@ -84,7 +84,7 @@ l000115A0_ds_f:
 l000115A0_ds_t:
 	goto l000115B0
 l000115A4:
-	__deregister_frame_info(Mem120[l7_55 + 0xC<32>:word32], 0xC<32>)
+	__deregister_frame_info(Mem120[l7_55 + 0xC<32>:word32])
 l000115B0:
 	Mem130[Mem120[l7_55 + 8<32>:word32]:word32] = 1<32>
 l000115C4:
@@ -121,7 +121,7 @@ l000115FC_ds_f:
 l000115FC_ds_t:
 	goto l00011618
 l00011600:
-	__register_frame_info(Mem35[l7_55 + 0xC<32>:word32], 0xC<32>, Mem35[l7_55 + 0x10<32>:word32], 0<32>, 0x10<32>)
+	__register_frame_info(Mem35[l7_55 + 0xC<32>:word32], Mem35[l7_55 + 0x10<32>:word32])
 l00011618:
 	return
 frame_dummy_exit:

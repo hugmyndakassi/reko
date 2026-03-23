@@ -54,7 +54,7 @@ void __do_global_dtors_aux()
 	{
 		if (__cxa_finalize != 0x00)
 		{
-			word32 * r2_n = g_ptr10AAC;
+			void ** r2_n = g_ptr10AAC;
 			__cxa_finalize(*r2_n);
 		}
 		Eq_n r2_n;

@@ -41,7 +41,7 @@ void __do_global_dtors_aux()
 	if (g_b201048 != 0x00)
 		return;
 	if (__cxa_finalize != 0x00)
-		__cxa_finalize(g_qw201040);
+		__cxa_finalize(g_ptr201040);
 	deregister_tm_clones();
 	g_b201048 = 0x01;
 }
@@ -52,12 +52,12 @@ void frame_dummy()
 	register_tm_clones();
 }
 
-// 000000000000072A: Register (ptr64 void) _mm_malloc(Register Eq_n rdi, Register uint64 rsi)
+// 000000000000072A: Register (ptr64 void) _mm_malloc(Register Eq_n rdi, Register Eq_n rsi)
 // Called from:
 //      main
-void * _mm_malloc(Eq_n rdi, uint64 rsi)
+void * _mm_malloc(Eq_n rdi, Eq_n rsi)
 {
-	uint64 qwLoc28_n = rsi;
+	Eq_n qwLoc28_n = rsi;
 	void * rax_n;
 	if (rsi == 0x01)
 		rax_n = malloc(rdi);
@@ -65,12 +65,9 @@ void * _mm_malloc(Eq_n rdi, uint64 rsi)
 	{
 		if (rsi == 0x02 || rsi == 0x04)
 			qwLoc28_n = 0x08;
-		ptr64 fp;
-		if ((word32) posix_memalign(qwLoc28_n, fp - 16, rdi, qwLoc28_n) == 0x00)
-		{
-			void * qwLoc10;
-			rax_n = qwLoc10;
-		}
+		void * ptrLoc10;
+		if (posix_memalign(&ptrLoc10, qwLoc28_n, rdi) == 0x00)
+			rax_n = ptrLoc10;
 		else
 			rax_n = null;
 	}

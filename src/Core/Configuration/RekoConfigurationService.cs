@@ -72,13 +72,13 @@ namespace Reko.Core.Configuration
         /// <param name="arch">Optional <see cref="IProcessorArchitecture"/> to use in the script interpreter.</param>
         /// <returns>An instance of a class implementing <see cref="IScriptInterpreter"/>.
         /// </returns>
-        IScriptInterpreter CreateScriptInterpreter(string interpreterLabel, Program program, IProcessorArchitecture? arch);
+        IScriptInterpreter? CreateScriptInterpreter(string interpreterLabel, Program program, IProcessorArchitecture? arch);
 
         /// <summary>
         /// Gets a list of known raw file formats.
         /// </summary>
         ICollection<RawFileDefinition> GetRawFiles();
-
+            
         /// <summary>
         /// Given an platform or environment name, gets its corresponding platform definition.
         /// </summary>
