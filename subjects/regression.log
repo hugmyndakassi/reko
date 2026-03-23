@@ -1,10 +1,10 @@
 === a.out\VAX\telnet
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00000E9F: warning: Expected sizes of arrays to have been determined by now
 00002168: warning: Expected sizes of arrays to have been determined by now
 0000227C: warning: Expected sizes of arrays to have been determined by now
@@ -26,32 +26,32 @@
 0000000000001104: warning: Unable to resolve imported reference _ITM_registerTMCloneTable.
 000000000000112E: warning: Unable to resolve imported reference __cxa_finalize.
 0000000000001070: warning: Unable to resolve imported reference __cxa_finalize.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000003DD8: warning: Expected sizes of arrays to have been determined by now
 0000000000003DD8: warning: Expected sizes of arrays to have been determined by now
 
 *** Archives\TarRaw\hello
 Warning: Checksum error in line 1.
 Warning: Checksum error in line 1.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === COFF\ns32k\tar
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00011BF9: warning: Expected sizes of arrays to have been determined by now
 00011C44: warning: Expected sizes of arrays to have been determined by now
 00011C48: warning: Expected sizes of arrays to have been determined by now
@@ -64,39 +64,39 @@ Warning: Checksum error in line 1.
 00014D74: warning: Expected sizes of arrays to have been determined by now
 
 === CPM-80\6502sim
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0A1E: warning: Expected sizes of arrays to have been determined by now
 006D: warning: Expected sizes of arrays to have been determined by now
 0A1E: warning: Expected sizes of arrays to have been determined by now
 006D: warning: Expected sizes of arrays to have been determined by now
 
 === CPM-80\CB80
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 020A: warning: Call target address 172D is invalid.
 0224: warning: Call target address 177D is invalid.
 0105: warning: Call target address 1729 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn08EC: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn08FD: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === CPM-80\unarcz13
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0A33: warning: Expected sizes of arrays to have been determined by now
 1300: warning: Expected sizes of arrays to have been determined by now
 1608: warning: Expected sizes of arrays to have been determined by now
@@ -105,14 +105,14 @@ fn08FD: warning: Structure analysis stopped making progress, quitting. Please re
 1608: warning: Expected sizes of arrays to have been determined by now
 
 === Elf\ARM\angr-685\RTOSDemo
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000A284: warning: Expected sizes of arrays to have been determined by now
 0000A2A4: warning: Expected sizes of arrays to have been determined by now
 0000A554: warning: Expected sizes of arrays to have been determined by now
@@ -124,17 +124,17 @@ fn08FD: warning: Structure analysis stopped making progress, quitting. Please re
 
 === Elf\ARM\switch\switch
 00008420: warning: Call target address 00000000 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l000084F0_1: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Elf\ARM64\arm64_elf\subject
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 0000000000000E90: warning: Unable to resolve imported reference wcslen.
 0000000000000F10: warning: Unable to resolve imported reference warn.
 0000000000000F40: warning: Unable to resolve imported reference warnx.
@@ -142,26 +142,26 @@ l000084F0_1: warning: Non-integral switch expression
 0000000000000F80: warning: Unable to resolve imported reference err.
 0000000000000FB0: warning: Unable to resolve imported reference fgetws.
 0000000000000DF0: warning: Unable to resolve imported reference __cxa_finalize.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Elf\AVR32\ls
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn00008FF2: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 l00009F1C: warning: Non-integral switch expression
 fn0000ACB0: error: Removing edge (l0000AD24, l0000B67C) caused loss of some code blocks
 fn0000ACB0: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 000065AC: warning: Expected sizes of arrays to have been determined by now
 000099B4: warning: Expected sizes of arrays to have been determined by now
 0000C2E0: warning: Expected sizes of arrays to have been determined by now
@@ -203,8 +203,8 @@ fn0000ACB0: warning: Structure analysis stopped making progress, quitting. Pleas
 40000000000EBB56: warning: Call target address 3FFFFFFFFFDAEDB6 is invalid.
 40000000000EBB76: warning: Call target address 3FFFFFFFFFDAF456 is invalid.
 4000000000095AE2: warning: Call target address 4000000000495CE2 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 
 === Elf\m88k\login
 00002864: warning: Call target address 00000000 is invalid.
@@ -358,12 +358,12 @@ fn0000ACB0: warning: Structure analysis stopped making progress, quitting. Pleas
 000366EC: warning: Unable to resolve imported reference syslog.
 000369EC: warning: Unable to resolve imported reference warnc.
 00002684: warning: Call target address 00000000 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00056BF8: warning: Expected sizes of arrays to have been determined by now
 00056BF8: warning: Expected sizes of arrays to have been determined by now
 
@@ -392,12 +392,12 @@ fn0000ACB0: warning: Structure analysis stopped making progress, quitting. Pleas
 004069E0: warning: Unable to resolve imported reference gmtime.
 00406D0C: warning: Unable to resolve imported reference inet_addr.
 00406F18: warning: Unable to resolve imported reference listen.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 10000028: warning: Expected sizes of arrays to have been determined by now
 100007E0: warning: Expected sizes of arrays to have been determined by now
 10000810: warning: Expected sizes of arrays to have been determined by now
@@ -411,22 +411,22 @@ fn0000ACB0: warning: Structure analysis stopped making progress, quitting. Pleas
 00000728: warning: Unable to resolve imported reference __cxa_finalize.
 00000728: warning: Unable to resolve imported reference __cxa_finalize.
 00000734: warning: Unable to resolve imported reference __cxa_finalize.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Elf\Msp430\a
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0224: warning: Expected sizes of arrays to have been determined by now
 0226: warning: Expected sizes of arrays to have been determined by now
 0224: warning: Expected sizes of arrays to have been determined by now
@@ -468,20 +468,20 @@ Base address: 08048000
 Dependencies
 
 Relocations
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Elf\nanoMips\ping\ping
 004008F8: warning: Call target address 00000000 is invalid.
 00400912: warning: Call target address 00000000 is invalid.
 004008DC: warning: Call target address 00000000 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
 finish: error: An error occurred while renaming variables.
     The given key 'l004028A8' was not present in the dictionary.
        at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
@@ -490,17 +490,17 @@ finish: error: An error occurred while renaming variables.
    at Reko.Analysis.SsaLivenessAnalysis..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 76
    at Reko.Analysis.LiveCopyInserter..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 50
    at Reko.Analysis.WebBuilder.Worker.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\WebBuilder.cs:line 119
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l00401628: warning: Non-integral switch expression
 l00401614: warning: Non-integral switch expression
 l0040478C: warning: Non-integral switch expression
 l00408E46: warning: Non-integral switch expression
 l00408E12: warning: Non-integral switch expression
 l0040D5B8: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 00412060: warning: Expected sizes of arrays to have been determined by now
 00412340: warning: Expected sizes of arrays to have been determined by now
 00412368: warning: Expected sizes of arrays to have been determined by now
@@ -529,23 +529,23 @@ l0040D5B8: warning: Non-integral switch expression
 00452340: warning: Expected sizes of arrays to have been determined by now
 
 === Elf\PPC64\animals\animals
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Elf\RiscV\ipcalc\ipcalc
 0000000000015000: warning: Unable to resolve imported reference __vasprintf_chk.
 0000000000015000: warning: Unable to resolve imported reference __vasprintf_chk.
 0000000000015FBC: warning: Call target address 0000000000000000 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
 Warning: Recursion too deep in PtrPrimitiveReplacer
 Warning: Recursion too deep in PtrPrimitiveReplacer
 Warning: Recursion too deep in PtrPrimitiveReplacer
@@ -863,27 +863,27 @@ Warning: Recursion too deep in PtrPrimitiveReplacer
 Warning: Recursion too deep in PtrPrimitiveReplacer
 Warning: Recursion too deep in PtrPrimitiveReplacer
 Warning: Type transformer has looped 51 times, quitting prematurely.
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Elf\Sparc\from_boomerang\subject
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Elf\Sparc\rtems\sparc-rtems-unprotoize
 00011610: warning: Unable to resolve imported reference __register_frame_info.
 000115A8: warning: Unable to resolve imported reference __deregister_frame_info.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 safe_read: error: An error occurred while rewriting procedure to high-level language.
     Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
        at System.Collections.Generic.List`1.get_Item(Int32 index)
@@ -892,7 +892,7 @@ safe_read: error: An error occurred while rewriting procedure to high-level lang
    at Reko.Structure.CompoundConditionCoalescer.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 66
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
    at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 00017540: warning: Expected sizes of arrays to have been determined by now
 0002B411: warning: Expected sizes of arrays to have been determined by now
 00017540: warning: Expected sizes of arrays to have been determined by now
@@ -900,26 +900,26 @@ safe_read: error: An error occurred while rewriting procedure to high-level lang
 
 === Elf\superH\netbsd-ls\ls
 0040426A: warning: Call target address 605D4F22 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00402D6C: warning: Expected sizes of arrays to have been determined by now
 00402D6C: warning: Expected sizes of arrays to have been determined by now
 
 === Elf\x86-64\ais3_crackme\ais3_crackme
 0000000000400440: warning: Unable to resolve imported reference __gmon_start__.
 000000000040050D: warning: Call target address 0000000000000000 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000600DF8: warning: Expected sizes of arrays to have been determined by now
 0000000000601020: warning: Expected sizes of arrays to have been determined by now
 0000000000600DF8: warning: Expected sizes of arrays to have been determined by now
@@ -929,14 +929,14 @@ safe_read: error: An error occurred while rewriting procedure to high-level lang
 000000000040216C: warning: Unable to resolve imported reference __gmon_start__.
 0000000000402178: warning: Unable to resolve imported reference __gmon_start__.
 00000000004025B0: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000412C00: warning: Expected sizes of arrays to have been determined by now
 0000000000412C60: warning: Expected sizes of arrays to have been determined by now
 0000000000412D00: warning: Expected sizes of arrays to have been determined by now
@@ -1007,41 +1007,41 @@ safe_read: error: An error occurred while rewriting procedure to high-level lang
 0000000000400CA0: warning: Unable to resolve imported reference png_create_info_struct.
 0000000000400CB0: warning: Unable to resolve imported reference png_get_PLTE.
 0000000000400CC0: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l0000000000400E2D: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000601E00: warning: Expected sizes of arrays to have been determined by now
 0000000000601E00: warning: Expected sizes of arrays to have been determined by now
 
 === Elf\x86-64\retpoline\retpoline_stripped
 000000000040042C: warning: Unable to resolve imported reference __gmon_start__.
 000000000040042D: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 000000000040042C: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Elf\x86-64\retpoline\retpoline
 000000000040042C: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000600E10: warning: Expected sizes of arrays to have been determined by now
 0000000000600E10: warning: Expected sizes of arrays to have been determined by now
 
@@ -1054,136 +1054,136 @@ l0000000000400E2D: warning: Non-integral switch expression
 0000000000000610: warning: Unable to resolve imported reference __cxa_finalize.
 0000000000000600: warning: Unable to resolve imported reference posix_memalign.
 0000000000000610: warning: Unable to resolve imported reference __cxa_finalize.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000200DE8: warning: Expected sizes of arrays to have been determined by now
 0000000000200DE8: warning: Expected sizes of arrays to have been determined by now
 
 === Elf\zSeries\fib\example
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Hunk-m68k\BENCHFN
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000288D: warning: Expected sizes of arrays to have been determined by now
 00003EAC: warning: Expected sizes of arrays to have been determined by now
 0000288D: warning: Expected sizes of arrays to have been determined by now
 00003EAC: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\BENCHLNG
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 000028C5: warning: Expected sizes of arrays to have been determined by now
 00003E5C: warning: Expected sizes of arrays to have been determined by now
 000028C5: warning: Expected sizes of arrays to have been determined by now
 00003E5C: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\BENCHMUL
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00002B15: warning: Expected sizes of arrays to have been determined by now
 00004134: warning: Expected sizes of arrays to have been determined by now
 00002B15: warning: Expected sizes of arrays to have been determined by now
 00004134: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\BYTEOPS
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00002BC4: warning: Expected sizes of arrays to have been determined by now
 00002BC4: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\FIBO
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 000028B1: warning: Expected sizes of arrays to have been determined by now
 00003ED0: warning: Expected sizes of arrays to have been determined by now
 000028B1: warning: Expected sizes of arrays to have been determined by now
 00003ED0: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\MATRIXMU
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Hunk-m68k\MAX
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00002BED: warning: Expected sizes of arrays to have been determined by now
 00003DCC: warning: Expected sizes of arrays to have been determined by now
 00002BED: warning: Expected sizes of arrays to have been determined by now
 00003DCC: warning: Expected sizes of arrays to have been determined by now
 
 === Hunk-m68k\STRLEN
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Hunk-m68k\TESTLONG
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00002815: warning: Expected sizes of arrays to have been determined by now
 00003DAC: warning: Expected sizes of arrays to have been determined by now
 00002815: warning: Expected sizes of arrays to have been determined by now
@@ -1192,28 +1192,28 @@ l0000000000400E2D: warning: Non-integral switch expression
 === i8051\rtl8188efw
 0797: warning: Call target address 4EF3 is invalid.
 07A7: warning: Call target address 4AC0 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === i8051\reko-825\ledwith8051
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === MachO\amd64\const
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** MachO\amd64\MachO-OSX-x64-ls
 000000010000488F: warning: Unable to resolve imported reference __stderrp.
@@ -1339,8 +1339,8 @@ l0000000000400E2D: warning: Non-integral switch expression
 00000001000047F5: warning: Unable to resolve imported reference _DefaultRuneLocale.
 0000000100004D01: warning: Unable to resolve imported reference _DefaultRuneLocale.
 0000000100004D02: warning: Unable to resolve imported reference _DefaultRuneLocale.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 0000000100004F46: warning: Unable to resolve imported reference tputs.
 0000000100004F3A: warning: Unable to resolve imported reference tgoto.
 0000000100004F46: warning: Unable to resolve imported reference tputs.
@@ -1381,70 +1381,70 @@ l0000000000400E2D: warning: Non-integral switch expression
 0000000100004EB6: warning: Unable to resolve imported reference mbr_uuid_to_string.
 0000000100004505: warning: Unable to resolve imported reference __stderrp.
 0000000100004DD8: warning: Unable to resolve imported reference acl_get_flag_np.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn0000000100003AA8: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Microchip\C18\PIC18\PIC18Legacy
 00013A: error: PIC Hardware stack underflow.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Microchip\C18\PIC18Extd\PIC18EggExtd
 00013A: error: PIC Hardware stack underflow.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === MZ-x86\BENCHFN
 Borland v2 detected
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l0800_113C: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === MZ-x86\reko-864\dsbug
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** OpenRISC\sunxi\blob
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 0000B278: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
 0000AF44: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
 0000B348: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
 0000BC60: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
 0000B978: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
 00008C58: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn00000000: error: An error occurred while rewriting procedure to high-level language.
     Value cannot be null. (Parameter 'condition')
        at Reko.Core.Absyn.AbsynLoop..ctor(Expression condition, List`1 body) in c:\dev\uxmal\reko\master\src\Core\Absyn\AbsynLoop.cs:line 40
@@ -1453,7 +1453,7 @@ fn00000000: error: An error occurred while rewriting procedure to high-level lan
    at Reko.Structure.StructureAnalysis.Execute() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 174
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 91
    at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 00003CA8: warning: Expected sizes of arrays to have been determined by now
 000100B8: warning: Expected sizes of arrays to have been determined by now
 00012490: warning: Expected sizes of arrays to have been determined by now
@@ -1481,14 +1481,14 @@ fn00000000: error: An error occurred while rewriting procedure to high-level lan
 
 === PDP-11\lunar
 0896: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 013E: warning: Expected sizes of arrays to have been determined by now
 168C: warning: Expected sizes of arrays to have been determined by now
 1696: warning: Expected sizes of arrays to have been determined by now
@@ -1509,15 +1509,15 @@ fn00000000: error: An error occurred while rewriting procedure to high-level lan
 35D2: warning: Expected sizes of arrays to have been determined by now
 
 === PDP-11\space
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 46BE: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 46C4: warning: Expected sizes of arrays to have been determined by now
 47E2: warning: Expected sizes of arrays to have been determined by now
 541C: warning: Expected sizes of arrays to have been determined by now
@@ -1526,14 +1526,14 @@ fn00000000: error: An error occurred while rewriting procedure to high-level lan
 541C: warning: Expected sizes of arrays to have been determined by now
 
 === PDP-11\spcinv
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 02CC: warning: Expected sizes of arrays to have been determined by now
 0DC4: warning: Expected sizes of arrays to have been determined by now
 0DE0: warning: Expected sizes of arrays to have been determined by now
@@ -1594,15 +1594,15 @@ Error: Unable to load metadata file wsock32.xml.
    at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
 hello_m68k.exe: warning: Win32 M68k main procedure finder not supported.
 Marking segment at 00001000 as executable because it contains known procedure entry points.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l00001750: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 000017B4: warning: Expected sizes of arrays to have been determined by now
 000017C0: warning: Expected sizes of arrays to have been determined by now
 000017B4: warning: Expected sizes of arrays to have been determined by now
@@ -1624,34 +1624,34 @@ Error: Unable to load metadata file windows32.xml.
    at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
 0001179C: warning: Unable to resolve imported reference COREDLL.dll!Ordinal_2696.
 000114B8: warning: Call target address 00000000 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\PPC\hello_ppc
 hello_ppc.exe: warning: Win32 PowerPC main procedure finder not supported.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86-64\array\reko_array
 reko_array.dll: warning: Win32 X86-64 main procedure finder not implemented yet.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86-64\varargs_test\varargs_test
 varargs_test.exe: warning: Win32 X86-64 main procedure finder not implemented yet.
@@ -1699,26 +1699,26 @@ PE Debug type 14 not supported yet.
 0000000140001E64: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_register_onexit_function.
 0000000140001E6A: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_crt_atexit.
 0000000140001E70: warning: Unable to resolve imported reference api-ms-win-crt-runtime-l1-1-0.dll!terminate.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\demo_upx\Demo
 Signature of 'UPX -> www.upx.sourceforge.net' detected.
 Using loader for 'UPX -> www.upx.sourceforge.net'.
 OEP found!
 The File was dumped successfully, fix IAT with ImportREC
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\ExeDll\Executable
 Signature of 'Microsoft Visual C++ 8' detected.
@@ -1746,20 +1746,20 @@ PE Debug type 14 not supported yet.
 00401C30: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_crt_atexit.
 00401C36: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_controlfp_s.
 00401C3C: warning: Unable to resolve imported reference api-ms-win-crt-runtime-l1-1-0.dll!terminate.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 00401C24: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_initialize_onexit_table.
 00401C24: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_initialize_onexit_table.
 00401C30: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_crt_atexit.
 00401C2A: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_register_onexit_function.
 0040193E: warning: Call target address 00000000 is invalid.
 00401C36: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_controlfp_s.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\import-ordinals\import-ordinals
 Signature of 'Microsoft Visual C++ 8' detected.
@@ -1781,12 +1781,12 @@ PE Debug type 14 not supported yet.
 00401019: warning: Unable to guess parameters of api-ms-win-crt-stdio-l1-1-0.dll!__acrt_iob_func.
 00401034: warning: Unable to guess parameters of api-ms-win-crt-stdio-l1-1-0.dll!__stdio_common_vfprintf.
 00401BFE: warning: Unable to guess parameters of api-ms-win-crt-runtime-l1-1-0.dll!_cexit.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\IncorrectUserSignature\IncorrectUserSignature
 Signature of 'Microsoft Visual C++ 8' detected.
@@ -1803,33 +1803,33 @@ Signature of 'Microsoft Visual C++ 8' detected.
 00401360: warning: User procedure 'nested_structs_test13' has been marked 'no decompile' but its signature has not been specified.
 00401380: warning: User procedure 'gbl_nested_structs_test14' has been marked 'no decompile' but its signature has not been specified.
 0040165F: warning: User procedure 'Win32CrtStartup' has been marked 'no decompile' but its signature has not been specified.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\LocalStackVariables\LocalStackVariables
 Signature of 'Microsoft Visual C++ 8' detected.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\pySample\pySample
 100013D8: warning: Call target address 00000000 is invalid.
 10001205: warning: Unable to guess parameters of MSVCR80.dll!_adjust_fdiv.
 1000142C: warning: Call target address 00000000 is invalid.
 10001458: warning: Call target address 00000000 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\pySample\shingledPySample
 100013D8: warning: Call target address 00000000 is invalid.
@@ -1845,18 +1845,18 @@ Signature of 'Microsoft Visual C++ 8' detected.
 10001904: warning: Unable to guess parameters of MSVCR80.dll!_unlock.
 10001910: warning: Unable to guess parameters of MSVCR80.dll!_lock.
 10001916: warning: Unable to guess parameters of MSVCR80.dll!_except_handler4_common.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 10001910: warning: Unable to guess parameters of MSVCR80.dll!_lock.
 10001636: warning: Unable to guess parameters of MSVCR80.dll!_encode_pointer.
 10001904: warning: Unable to guess parameters of MSVCR80.dll!_unlock.
 10001698: warning: Call target address 00000000 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\RussianText\RussianText
 Signature of 'Borland C++ for Win32 1999' detected.
@@ -1882,51 +1882,51 @@ Signature of 'Borland C++ for Win32 1999' detected.
 004012D8: warning: Unable to guess parameters of CC3260.DLL!__setargv.
 004012DE: warning: Unable to guess parameters of CC3260.DLL!__startup.
 004012E4: warning: Unable to guess parameters of CC3260.DLL!__wargv_default_expand.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 0040128A: warning: Unable to guess parameters of CC3260.DLL!___CRTL_TLS_GetValue.
 0040127E: warning: Unable to guess parameters of CC3260.DLL!___CRTL_TLS_ExitThread.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\SmallBinaries\strcpyChain
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\SmallBinaries\strcpyEcxChain
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\UserDefinedSignatures\UserDefinedSignatures
 Signature of 'Microsoft Visual C++ 8' detected.
 004014DF: warning: User procedure 'Win32CrtStartup' has been marked 'no decompile' but its signature has not been specified.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === PE\x86\VCExeSample\VCExeSample
 Signature of 'Microsoft Visual C++ 8' detected.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Raw\1750A\fft
 Warning: Checksum error in line 1.
@@ -1945,92 +1945,92 @@ Warning: Checksum error in line 5.
 Warning: Checksum error in line 6.
 Warning: Checksum error in line 7.
 Warning: Checksum error in line 8.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 8060: warning: Expected sizes of arrays to have been determined by now
 8060: warning: Expected sizes of arrays to have been determined by now
 
 *** Raw\1750A\hello
 Warning: Checksum error in line 1.
 Warning: Checksum error in line 1.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\1750A\trigtst
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\C166\st10F168\Rmm68jx
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\CR16\CompactRISC
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\H8\Tar\tar
 00009E26: warning: Call target address 00000054 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\M16C\ThrottleControl
 000C0D13: warning: Call target address 000764EB is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\Maxq\MAX79356-CPU1
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** Raw\MicroBlaze\MicroBlaze
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 0000CDB8: warning: Unable to determine size of call or jump table; there may be more than 2 entries.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn0001B1D0: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn0001B1F8: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn0001B2AC: error: An error occurred while rewriting procedure to high-level language.
@@ -2042,7 +2042,7 @@ fn0001B2AC: error: An error occurred while rewriting procedure to high-level lan
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
    at Reko.Decompiler.StructureProgram() in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 723
 fn0001B2CC: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 00000083: warning: Expected sizes of arrays to have been determined by now
 0000FFFF: warning: Expected sizes of arrays to have been determined by now
 000171BC: warning: Expected sizes of arrays to have been determined by now
@@ -2093,22 +2093,22 @@ fn0001B2CC: warning: Structure analysis stopped making progress, quitting. Pleas
 === Raw\Padauk\adctest_pfs173
 0051: warning: Call target address 0BED is invalid.
 0053: warning: Call target address 0BEE is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === Raw\TriCore\bootloader
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00000004: warning: Expected sizes of arrays to have been determined by now
 00000004: warning: Expected sizes of arrays to have been determined by now
 
@@ -2117,14 +2117,14 @@ fn0001B2CC: warning: Structure analysis stopped making progress, quitting. Pleas
 00000000004003E4: warning: Unable to resolve imported reference __gmon_start__.
 00000000004003F0: warning: Unable to resolve imported reference __gmon_start__.
 0000000000400430: warning: Unable to resolve imported reference __gmon_start__.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000000600E10: warning: Expected sizes of arrays to have been determined by now
 0000000000600E10: warning: Expected sizes of arrays to have been determined by now
 
@@ -2142,12 +2142,12 @@ Error: An error occurred while writing assembly language output.
    at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 157
    at Reko.Core.Output.Dumper.Dump(Dictionary`2 segmentItems, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 101
    at Reko.Decompiler.DumpAssembler(Program program, Dictionary`2 segmentItems, Formatter wr) in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 222
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === regressions\reko-351\a
 800000A6: warning: Call target address 00000000 is invalid.
@@ -2155,29 +2155,29 @@ Error: An error occurred while writing assembly language output.
 8000017A: warning: Call target address 00000000 is invalid.
 8000019A: warning: Call target address 00000000 is invalid.
 800000DC: warning: Call target address 00000000 is invalid.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 80002714: warning: Expected sizes of arrays to have been determined by now
 80002714: warning: Expected sizes of arrays to have been determined by now
 
 === regressions\reko-367\code
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 *** regressions\reko-90\PP
 Borland C v3 runtime detected
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 1483:0D6F: warning: Call target address 1483:8A82 is invalid.
 1483:0DFC: warning: Call target address 1483:E62A is invalid.
 1483:0E06: warning: Procedure fn1483_0D3F previously had a return address of 4 bytes on the stack, but now seems to have a return address of 2 bytes on the stack.
@@ -2187,7 +2187,7 @@ Borland C v3 runtime detected
 1483:0CA6: warning: Call target address 1483:FD4E is invalid.
 1483:0CD2: warning: Call target address 1483:4FE0 is invalid.
 1483:0CA6: warning: Call target address 1483:FD4E is invalid.
-                                                            Rewriting procedures. [Done]
+Rewriting procedures. [Done]
 fn0800_8F97: error: An internal error occurred while building the expressions of fn0800_8F97
     Dominator graph calculation timed out.
        at Reko.Core.Graphs.DominatorGraph`1.Intersect(Dictionary`2 postdoms, T b1, T b2) in c:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 255
@@ -2227,17 +2227,17 @@ fn0800_C177: error: An error occurred while renaming variables.
    at Reko.Analysis.LiveCopyInserter.Transform(Statement stm, PhiAssignment phi) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 175
    at Reko.Analysis.LiveCopyInserter.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 160
    at Reko.Analysis.WebBuilder.Worker.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\WebBuilder.cs:line 119
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
 l0800_8FD8: warning: Phi functions will be ignored by type analysis. This may be caused by a failure in a previous stage of the decompilation.
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l0800_031A: warning: Non-integral switch expression
 l0800_0663: warning: Non-integral switch expression
 l0800_0EE8: warning: Non-integral switch expression
 l0800_11D8: warning: Non-integral switch expression
 l0800_98F7: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 0800:4F14: warning: Expected sizes of arrays to have been determined by now
 0800:4F1C: warning: Expected sizes of arrays to have been determined by now
 0800:4F24: warning: Expected sizes of arrays to have been determined by now
@@ -2260,86 +2260,86 @@ l0800_98F7: warning: Non-integral switch expression
 0800:BE2D: warning: Expected sizes of arrays to have been determined by now
 
 === regressions\snowman-51\switch
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === regressions\snowman-74\int16
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === regressions\snowman-82\flags
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === regressions\snowman-83\flags3
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === scripting\Exceptions
 IronPython 3.4.2
 Evaluating c:\dev\uxmal\reko\master\subjects\scripting\exceptions.py
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === scripting\pyFuncNames
 IronPython 3.4.2
 Evaluating c:\dev\uxmal\reko\master\subjects\scripting\py_func_names.py
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === scripting\segmented
 IronPython 3.4.2
 Evaluating c:\dev\uxmal\reko\master\subjects\scripting\segmented.py
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === TLCS\90\TLCS-90
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === TLCS\900\ngp_iq\NGP_IQ
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 00200363: warning: Expected sizes of arrays to have been determined by now
 00200492: warning: Expected sizes of arrays to have been determined by now
 002004B5: warning: Expected sizes of arrays to have been determined by now
@@ -2756,8 +2756,8 @@ Evaluating c:\dev\uxmal\reko\master\subjects\scripting\segmented.py
 00011A1F: error: Instruction acbf	@-081E(r0),+0000(r5),r1,00017BC3 too complex to rewrite.
 000145BC: error: Instruction acbf	#2.5,@(pc)+,+05EB(r5),000149BF too complex to rewrite.
 00015E51: error: Instruction acbf	#7.0,@D0060D57,+0088(r6),0001670B too complex to rewrite.
-                                                            Finding procedure candidates [Done]
-                                                            Building procedures [Done]
+Finding procedure candidates [Done]
+Building procedures [Done]
 00008FF2: warning: Call target address 00000066 is invalid.
 0000909E: warning: Call target address 00000066 is invalid.
 000090C0: warning: Call target address 00000066 is invalid.
@@ -2845,15 +2845,15 @@ Evaluating c:\dev\uxmal\reko\master\subjects\scripting\segmented.py
 0000E793: warning: Call target address 0000001A is invalid.
 0000C35C: warning: Call target address 40009A48 is invalid.
 0000A9E4: warning: Call target address 40009A48 is invalid.
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 fn00008EC2: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn00009746: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn000125CA: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 00007C24: warning: Expected sizes of arrays to have been determined by now
 00008394: warning: Expected sizes of arrays to have been determined by now
 00009B26: warning: Expected sizes of arrays to have been determined by now
@@ -2965,7 +2965,7 @@ fn000125CA: warning: Structure analysis stopped making progress, quitting. Pleas
 *** fn index 605 00117835 br	0x3: unreachable break
 *** fn index 609 00117E04 br	0x3: unreachable break
 *** fn index 779 0011DDAD br	0x3: unreachable break
-                                                            Rewriting procedures. [Done]
+Rewriting procedures. [Done]
 fn000ECBDB: error: An internal error occurred while building the expressions of fn000ECBDB
     Argument size mismatch between real64 and word32.
        at Reko.Core.Expressions.Conversion..ctor(Expression exp, DataType dtFrom, DataType dtTo) in c:\dev\uxmal\reko\master\src\Core\Expressions\Conversion.cs:line 51
@@ -2986,11 +2986,11 @@ fn000F4A65: error: An internal error occurred while building the expressions of 
    at Reko.Analysis.Coalescer.Worker.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 250
    at Reko.Analysis.Coalescer.Transform(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 71
    at Reko.Analysis.DataFlowAnalysis.BuildExpressionTrees(IReadOnlyCollection`1 ssts) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\DataFlowAnalysis.cs:line 280
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
 l000ECC80: warning: Phi functions will be ignored by type analysis. This may be caused by a failure in a previous stage of the decompilation.
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
 l000D7BAC: warning: Non-integral switch expression
 l000D7FBC: warning: Non-integral switch expression
 l000DCF8B: warning: Non-integral switch expression
@@ -2999,7 +2999,7 @@ l000F1DEA: warning: Non-integral switch expression
 fn00116E5E: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 fn001179EC: warning: Structure analysis stopped making progress, quitting. Please report this issue at https://github.com/uxmal/reko
 l0011DD0D: warning: Non-integral switch expression
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures to high-level language. [Done]
 0000000C: warning: Expected sizes of arrays to have been determined by now
 00000018: warning: Expected sizes of arrays to have been determined by now
 00000024: warning: Expected sizes of arrays to have been determined by now
@@ -3088,27 +3088,27 @@ l0011DD0D: warning: Non-integral switch expression
 00001910: warning: Expected sizes of arrays to have been determined by now
 
 === wasm\life
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === wasm\nbody
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
 === wasm\sample
-                                                            Rewriting procedures. [Done]
-                                                            Building expressions. [Done]
-                                                            Gathering primitive datatypes from instructions. [Done]
-                                                            Collecting data types. [Done]
-                                                            Rewriting expressions. [Done]
-                                                            Rewriting procedures to high-level language. [Done]
+Rewriting procedures. [Done]
+Building expressions. [Done]
+Gathering primitive datatypes from instructions. [Done]
+Collecting data types. [Done]
+Rewriting expressions. [Done]
+Rewriting procedures to high-level language. [Done]
 
-Decompiled 100 binaries in 50.75 seconds.
+Decompiled 100 binaries in 54.26 seconds.
