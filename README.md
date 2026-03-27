@@ -57,13 +57,13 @@ below.
 ## Installing Reko
 
 The following prerequisite software must be installed on your machine first:
-* .NET 6.0 (https://www.microsoft.com/net/download/dotnet-framework-runtime)
+* .NET 8.0 (https://www.microsoft.com/net/download/dotnet-framework-runtime)
 
 Download an appropriate installer and run it on the target machine.
 
 After installation, you can proceed by either downloading binaries directly
-from the integration build server, or by building Reko from sources (see `Hacking` 
-below).
+from the integration build server, or by building Reko from sources
+(see `Hacking` below).
 
 ## Documentation
 
@@ -83,7 +83,7 @@ spare time, so adjust your response-time expectations accordingly.
 
 To build reko, start by cloning https://github.com/uxmal/reko. You
 can use an IDE or the command line to build the solution file
-`Reko-decompiler.sln`. Reko requires the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+`Reko-decompiler.sln`. Reko requires the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 to compile. If you are an IDE user, use a recent version of Visual Studio 2022.
 If you wish to build using the command line, use the command
 
