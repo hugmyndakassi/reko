@@ -18,25 +18,16 @@
  */
 #endregion
 
-using Dock.Model.ReactiveUI.Controls;
-using System.Collections.Generic;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
-namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
+namespace Reko.UserInterfaces.AvaloniaUI.Views.Documents;
+
+public partial class PlatformPropertiesDocumentView : UserControl
 {
-    //$TODO: this is a placeholder class for development use only. It will
-    // be removed in the future.
-    public class DocumentViewModel : Document
+    public PlatformPropertiesDocumentView()
     {
-        public DocumentViewModel()
-        {
-            this.Procedures = new VirtualList<ProcedureViewModel>(
-                i => new ProcedureViewModel(i),
-                1000);
-        }
-
-        public string? Content { get; set; }
-
-        public IList<ProcedureViewModel> Procedures { get; set; }
-
+        InitializeComponent();
     }
 }

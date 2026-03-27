@@ -47,7 +47,7 @@ namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
             this.configSvc = services.RequireService<IConfigurationService>();
             if (this.configSvc is null)
             {
-                Architectures = Array.Empty<ListOption>();
+                Architectures = [];
             }
             else
             {

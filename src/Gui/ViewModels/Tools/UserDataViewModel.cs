@@ -18,25 +18,31 @@
  */
 #endregion
 
-using Dock.Model.ReactiveUI.Controls;
+using Reko.Core;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
+namespace Reko.Gui.ViewModels.Tools;
+
+public class UserDataViewModel : Components.ReactingObject
 {
-    //$TODO: this is a placeholder class for development use only. It will
-    // be removed in the future.
-    public class DocumentViewModel : Document
+    private readonly UserData userData;
+    public UserDataViewModel(UserData userData)
     {
-        public DocumentViewModel()
-        {
-            this.Procedures = new VirtualList<ProcedureViewModel>(
-                i => new ProcedureViewModel(i),
-                1000);
-        }
-
-        public string? Content { get; set; }
-
-        public IList<ProcedureViewModel> Procedures { get; set; }
-
+        this.userData = userData;
     }
+
+    public string? Platform
+    {
+        get => platform;
+        set
+        {
+            userData.Environment = value;
+            this.RaiseAndSetIfChanged(ref platform, value);
+        }
+    }
+    private string? platform;
 }

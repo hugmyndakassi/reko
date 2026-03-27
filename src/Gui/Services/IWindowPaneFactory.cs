@@ -19,19 +19,14 @@
 #endregion
 
 using Reko.Core;
-using Reko.Core.Loading;
 using Reko.Gui.ViewModels;
 using Reko.Gui.ViewModels.Documents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reko.Gui.ViewModels.Tools;
 
 namespace Reko.Gui.Services
 {
     /// <summary>
-    /// This interface abstracts the creation of dialog windows between
+    /// This interface abstracts the creation of dialog and document windows between
     /// different GUI environments.
     /// </summary>
     public interface IWindowPaneFactory
@@ -41,5 +36,6 @@ namespace Reko.Gui.Services
         IWindowPane CreateSegmentListPane(Program program);
         IWindowPane CreateStructureEditorPane(Program program);
         ILowLevelViewInteractor CreateLowLevelViewPane(Program program);
+        IWindowPane CreatePlatformPropertiesPane(UserDataViewModel userData);
     }
 }

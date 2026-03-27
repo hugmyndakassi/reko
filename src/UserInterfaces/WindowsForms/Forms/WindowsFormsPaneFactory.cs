@@ -19,11 +19,14 @@
 #endregion
 
 using Reko.Core;
+using Reko.Core.Configuration;
 using Reko.Core.Loading;
+using Reko.Core.Services;
 using Reko.Gui.Services;
 using Reko.Gui.TextViewing;
 using Reko.Gui.ViewModels;
 using Reko.Gui.ViewModels.Documents;
+using Reko.Gui.ViewModels.Tools;
 using Reko.UserInterfaces.WindowsForms.Forms;
 using System;
 using System.Collections.Generic;
@@ -50,6 +53,17 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
             return new BaseAddressFinderView()
             {
                 ViewModel = vm,
+            };
+        }
+
+        public IWindowPane CreatePlatformPropertiesPane(UserDataViewModel userData)
+        {
+            var configSvc = services.RequireService<IConfigurationService>();
+            var vm = new PlatformPropertiesViewModel(userData, configSvc);
+            return new PlatformPropertiesView()
+            {
+                ViewModel = vm,
+                Dock = System.Windows.Forms.DockStyle.Fill
             };
         }
 

@@ -25,10 +25,6 @@ using Reko.Gui.Services;
 using Reko.Gui.ViewModels;
 using Reko.Gui.ViewModels.Documents;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
 {

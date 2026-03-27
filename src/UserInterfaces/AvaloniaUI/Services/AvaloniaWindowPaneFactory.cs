@@ -19,11 +19,14 @@
 #endregion
 
 using Reko.Core;
+using Reko.Core.Configuration;
 using Reko.Core.Loading;
+using Reko.Core.Services;
 using Reko.Gui.Services;
 using Reko.Gui.TextViewing;
 using Reko.Gui.ViewModels;
 using Reko.Gui.ViewModels.Documents;
+using Reko.Gui.ViewModels.Tools;
 using Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents;
 using System;
 using System.Collections.Generic;
@@ -53,6 +56,13 @@ namespace Reko.UserInterfaces.AvaloniaUI.Services
         public IWindowPane CreateHexDisassemblerPane()
         {
             return new HexDisassemblerViewModel(services);
+        }
+
+        public IWindowPane CreatePlatformPropertiesPane(UserDataViewModel userData)
+        {
+            var configSvc = services.RequireService<IConfigurationService>();
+            var vm = new PlatformPropertiesViewModel(userData, configSvc);
+            return new PlatformPropertiesDocumentViewModel(vm);
         }
 
         public IWindowPane CreateSegmentListPane(Program program)

@@ -21,6 +21,7 @@
 using Reko.Core;
 using Reko.Core.Services;
 using Reko.Gui.Services;
+using Reko.Gui.ViewModels.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -38,6 +39,8 @@ namespace Reko.Gui.Design
         {
             base.Initialize(obj);
             program = (Program) obj;
+            this.UserData = new UserDataViewModel(program.User);
+
             var archesDes = new TreeNodeCollectionDesigner(
                 "Architectures",
                 "",
@@ -63,6 +66,8 @@ namespace Reko.Gui.Design
             }
             SetTreeNodeProperties(program);
         }
+
+        public UserDataViewModel? UserData { get; private set; }
 
         private IEnumerable ArchitectureCollection(Program program)
         {

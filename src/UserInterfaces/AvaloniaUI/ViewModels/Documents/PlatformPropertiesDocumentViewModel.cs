@@ -19,24 +19,35 @@
 #endregion
 
 using Dock.Model.ReactiveUI.Controls;
-using System.Collections.Generic;
+using Reko.Gui.ViewModels;
+using Reko.Gui.ViewModels.Documents;
+using System;
 
-namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents
+namespace Reko.UserInterfaces.AvaloniaUI.ViewModels.Documents;
+
+public class PlatformPropertiesDocumentViewModel : Document, IWindowPane
 {
-    //$TODO: this is a placeholder class for development use only. It will
-    // be removed in the future.
-    public class DocumentViewModel : Document
+    public PlatformPropertiesDocumentViewModel(PlatformPropertiesViewModel vm)
     {
-        public DocumentViewModel()
-        {
-            this.Procedures = new VirtualList<ProcedureViewModel>(
-                i => new ProcedureViewModel(i),
-                1000);
-        }
+        this.ViewModel = vm;
+    }
 
-        public string? Content { get; set; }
+    public PlatformPropertiesViewModel ViewModel { get; }
 
-        public IList<ProcedureViewModel> Procedures { get; set; }
+    public IWindowFrame? Frame { get; set; }
 
+    public void Close()
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CreateControl()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetSite(IServiceProvider services)
+    {
+        throw new NotImplementedException();
     }
 }
