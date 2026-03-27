@@ -367,9 +367,9 @@ public class LongAddRewriter : IAnalysis<SsaState>
                 if (listener.IsCanceled())
                     return;
                 var loInstr = MatchAddSub(block.Statements[i]);
-                if (loInstr is not null)
+                if (loInstr?.Dst is Identifier idLoDst)
                 {
-                    var cond = FindConditionOf(stmtsOrig, i, loInstr.Dst!);
+                    var cond = FindConditionOf(stmtsOrig, i, idLoDst);
                     if (cond is null)
                         continue;
 
@@ -391,8 +391,6 @@ public class LongAddRewriter : IAnalysis<SsaState>
                     Changed = true;
                 }
 
-                var stm = block.Statements[i];
-
                 loInstr = MatchOr(block.Statements[i]);
                 if (loInstr is not null)
                 {
@@ -409,14 +407,16 @@ public class LongAddRewriter : IAnalysis<SsaState>
 
         private Candidate? FindNegationHighPart(Block block, List<Statement> stmtsOrig, int i, Candidate loInstr)
         {
-            var cond = FindConditionOf(stmtsOrig, i, loInstr.Dst!) ??
+            if (loInstr.Dst is not Identifier idLoDst)
+                return null;
+            var cond = FindConditionOf(stmtsOrig, i, idLoDst) ??
                        FindConditionOfNeg(loInstr.Left);
             if (cond is not null)
             {
                 var hiInstr = FindUsingNegation(cond.FlagGroup);
                 return hiInstr;
             }
-            var hiNegsub = FindUsingNegSub(stmtsOrig, loInstr.Dst);
+            var hiNegsub = FindUsingNegSub(stmtsOrig, idLoDst);
             if (hiNegsub is not null)
             {
                 return hiNegsub;
@@ -584,39 +584,24 @@ public class LongAddRewriter : IAnalysis<SsaState>
 
         /// <summary>
         /// Finds the subsequent statement in this block that defines a condition code based on the
-        /// result in expression <paramref name="exp"/>.
+        /// result in identifier <paramref name="idLo"/>.
         /// </summary>
         /// <param name="stms">List of <see cref="Statement"/>s to search.</param>
         /// <param name="iStm">Start index of the search.</param>
-        /// <param name="exp"></param>
+        /// <param name="idLo">The identifier </param>
         /// <returns></returns>
-        public CondMatch? FindConditionOf(List<Statement> stms, int iStm, Expression exp)
+        public CondMatch? FindConditionOf(List<Statement> stms, int iStm, Identifier idLo)
         {
-            if (exp is Identifier idLo)
+            foreach (var use in ssa.Identifiers[idLo].Uses)
             {
-                foreach (var use in ssa.Identifiers[idLo].Uses)
-                {
-                    var m = condm.Match(use.Instruction);
-                    if (!m.Success)
-                        continue;
-                    var grf = (Identifier) m.CapturedExpression("grf")!;
-                    //var condExp = m.CapturedExpression("exp");
-                    if (grf.Storage is FlagGroupStorage) // && exp == condExp)
-                    {
-                        return new CondMatch(grf, exp, use, 0);
-                    }
-                }
-            }
-            for (int i = iStm + 1; i < stms.Count; ++i)
-            {
-                var m = condm.Match(stms[i].Instruction);
+                var m = condm.Match(use.Instruction);
                 if (!m.Success)
                     continue;
                 var grf = (Identifier) m.CapturedExpression("grf")!;
-                var condExp = m.CapturedExpression("exp");
-                if (grf.Storage is FlagGroupStorage && exp == condExp)
+                //var condExp = m.CapturedExpression("exp");
+                if (grf.Storage is FlagGroupStorage) // && exp == condExp)
                 {
-                    return new CondMatch(grf, exp, null!, i);
+                    return new CondMatch(grf, idLo, use, 0);
                 }
             }
             return null;

@@ -117,7 +117,7 @@ namespace Reko.Core.Types
 	{
         private const int BinarySearchLimit = 0;
 
-        private readonly List<StructureField> innerList = new List<StructureField>();
+        private readonly List<StructureField> innerList = [];
 
         /// <summary>
         /// Gets the field at position <paramref name="i"/> in the collection, <em>not</em>
