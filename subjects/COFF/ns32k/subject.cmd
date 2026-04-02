@@ -1,1 +1,1 @@
-reko decompile tar
+reko.exe decompile tar

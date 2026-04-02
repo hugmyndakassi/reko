@@ -87,38 +87,37 @@ namespace Reko.CmdLine
 
         public void Execute(string[] args)
         {
-            var pArgs = ProcessArguments(Console.Out, args);
-            if (pArgs is null)
+            var options = ProcessArguments(Console.Out, args);
+            if (options is null)
                 return;
 
-            if (pArgs.TryGetValue("--locale", out var localeName)){
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo((string)localeName);
+            if (!string.IsNullOrEmpty(options.LocaleName)) { 
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(options.LocaleName);
             }
 
-            if (pArgs.TryGetValue("--default-to", out var defaultTo))
+            if (!string.IsNullOrEmpty(options.DefaultTo))
             {
-                ldr.DefaultToFormat = (string)defaultTo;
+                ldr.DefaultToFormat = options.DefaultTo;
             }
 
-            StartTimer(pArgs);
+            StartTimer(options);
 
-            if (pArgs.ContainsKey("assemble"))
+            switch (options.MajorCommand)
             {
-                Assemble(pArgs);
+            case MajorCommand.Assemble:
+                Assemble(options);
+                return;
+            case MajorCommand.Dump:
+                Dump(options);
                 return;
             }
-            if (pArgs.ContainsKey("dump"))
+            if (OverridesRequested(options))
             {
-                Dump(pArgs);
-                return;
+                DecompileRawImage(options);
             }
-            if (OverridesRequested(pArgs))
+            else if (options.Filenames.Count > 0)
             {
-                DecompileRawImage(pArgs);
-            }
-            else if (pArgs.ContainsKey("filename"))
-            {
-                Decompile(pArgs);
+                Decompile(options, args);
             }
             else
             {
@@ -126,11 +125,11 @@ namespace Reko.CmdLine
             }
         }
 
-        private void StartTimer(Dictionary<string, object> pArgs)
+        private void StartTimer(CmdLineOptions options)
         {
-            if (pArgs.TryGetValue("time-limit", out object? oLimit))
+            if (options.TimeLimit > 0)
             {
-                int msecLimit = 1000 * (int)oLimit;
+                int msecLimit = 1000 * options.TimeLimit;
                 this.timer = new Timer(TimeLimitExpired, null, msecLimit, Timeout.Infinite);
             }
         }
@@ -140,18 +139,18 @@ namespace Reko.CmdLine
             this.listener.CancelDecompilation("User-specified time limit has expired.");
         }
 
-        public static bool OverridesRequested(Dictionary<string,object> pArgs)
+        public static bool OverridesRequested(CmdLineOptions options)
         {
-            if (pArgs.ContainsKey("--arch") ||
-                pArgs.ContainsKey("--env") ||
-                pArgs.ContainsKey("--base") ||
-                pArgs.ContainsKey("--entry") ||
-                pArgs.ContainsKey("--loader"))
+            if (!string.IsNullOrEmpty(options.Architecture) ||
+                !string.IsNullOrEmpty(options.Environment) ||
+                !string.IsNullOrEmpty(options.Base) ||
+                !string.IsNullOrEmpty(options.Entry) ||
+                !string.IsNullOrEmpty(options.Loader))
             {
                 // User must supply these arguments for a meaningful
                 // decompilation.
-                if (pArgs.ContainsKey("--arch") &&
-                    (pArgs.ContainsKey("filename") || pArgs.ContainsKey("--data")))
+                if (!string.IsNullOrEmpty(options.Architecture) &&
+                    (options.Filenames.Count > 0 || !string.IsNullOrEmpty(options.Data)))
                 {
                     return true;
                 }
@@ -166,17 +165,20 @@ namespace Reko.CmdLine
             }
         }
 
-        private void Decompile(Dictionary<string, object> pArgs)
+        private void Decompile(CmdLineOptions options, string[] args)
         {
-            pArgs.TryGetValue("--loader", out object? imgLoader);
-            pArgs.TryGetValue("--env", out object? environmentName);
-            var addrLoad = ParseAddress(pArgs, "--base");
+            if (options.Filenames.Count <= 0)
+            {
+                listener.Error("You must provide a file name.");
+                return;
+            }
+            var addrLoad = ParseAddress(options.Base);
             try
             {
-                var fileName = (string) pArgs["filename"];
+                var fileName = options.Filenames[0];
                 var filePath = Path.GetFullPath(fileName);
                 var imageLocation = ImageLocation.FromUri(filePath);
-                var loadedImage = ldr.Load(imageLocation, (string?) imgLoader, (string?)environmentName,  addrLoad);
+                var loadedImage = ldr.Load(imageLocation, options.Loader, options.Environment, addrLoad);
                 Project project;
                 switch (loadedImage)
                 {
@@ -194,51 +196,47 @@ namespace Reko.CmdLine
                 dcSvc.Decompiler = decompiler;
 
                 var program = decompiler.Project.Programs[0];
-                program.User.ExtractResources = ShouldExtractResources(program, pArgs);
+                program.User.ExtractResources = ShouldExtractResources(program, options);
 
-                if (pArgs.TryGetValue("heuristics", out var oHeur))
+                if (options.Heuristics.Count > 0)
                 {
-                    decompiler.Project.Programs[0].User.Heuristics = ((string[]) oHeur).ToSortedSet();
+                    decompiler.Project.Programs[0].User.Heuristics = options.Heuristics.ToSortedSet();
                 }
-                if (pArgs.TryGetValue("metadata", out var oMetadata))
+                if (!string.IsNullOrEmpty(options.Metadata))
                 {
                     decompiler.Project.MetadataFiles.Add(new MetadataFile
                     {
-                        Location = ImageLocation.FromUri((string) oMetadata)
+                        Location = ImageLocation.FromUri(options.Metadata)
                     });
                 }
-                if (pArgs.ContainsKey("dasm-address"))
+                if (options.DasmAddress)
                 {
                     decompiler.Project.Programs[0].User.ShowAddressesInDisassembly = true;
                 }
-                if (pArgs.ContainsKey("dasm-base-instrs"))
+                if (options.DasmAddress)
                 {
                     decompiler.Project.Programs[0].User.RenderInstructionsCanonically = true;
                 }
-                if (pArgs.ContainsKey("dasm-bytes"))
+                if (options.DasmBytes)
                 {
                     decompiler.Project.Programs[0].User.ShowBytesInDisassembly = true;
                 }
-                if (pArgs.TryGetValue("aggressive-branch-removal", out object? oAggressiveBranchRemoval))
+                if (options.AggressiveBranchRemoval)
                 {
-                    // Backwards compatibility hack.
-                    if (oAggressiveBranchRemoval is bool flag && flag)
-                    {
-                        decompiler.Project.Programs[0].User.Heuristics.Add("aggressive-branch-removal");
-                    }
+                    decompiler.Project.Programs[0].User.Heuristics.Add("aggressive-branch-removal");
                 }
-                if (pArgs.TryGetValue("debug-types", out var oProcRange))
+                if (options.DebugTypes.Item1 <= options.DebugTypes.Item2)
                 {
-                    decompiler.Project.Programs[0].DebugProcedureRange = ((int, int)) oProcRange;
+                    decompiler.Project.Programs[0].DebugProcedureRange = options.DebugTypes;
                 }
-                if (pArgs.TryGetValue("debug-trace-proc", out object? oTraceProcs))
+                if (options.DebugTraceProc.Count > 0)
                 {
-                    decompiler.Project.Programs[0].User.DebugTraceProcedures =
-                        (HashSet<string>) oTraceProcs;
+                    decompiler.Project.Programs[0].User.DebugTraceProcedures 
+                        = options.DebugTraceProc.ToHashSet();
                 }
                 decompiler.ExtractResources();
                 decompiler.ScanPrograms();
-                if ((string)pArgs["majorCommand"] != "disassemble")
+                if (options.MajorCommand == MajorCommand.Decompile)
                 {
                     decompiler.AnalyzeDataFlow();
                     decompiler.ReconstructTypes();
@@ -252,22 +250,25 @@ namespace Reko.CmdLine
             }
         }
 
-        private void Dump(Dictionary<string, object> pArgs)
+        private void Dump(CmdLineOptions options)
         {
-            pArgs.TryGetValue("--loader", out object? imgLoader);
-            pArgs.TryGetValue("--env", out object? environmentName);
-            var addrLoad = ParseAddress(pArgs, "--base");
+            if (options.Filenames.Count < 1)
+            {
+                listener.Error("You must provide a file name.");
+                return;
+            }
+            var addrLoad = ParseAddress(options.Base);
             try
             {
-                var fileName = (string) pArgs["filename"];
+                var fileName = options.Filenames[0];
                 var filePath = Path.GetFullPath(fileName);
                 var imageLocation = ImageLocation.FromUri(filePath);
                 var bytes = ldr.LoadImageBytes(imageLocation);
                 var loadedImage = ldr.ParseBinaryImage(
                     imageLocation,
                     bytes,
-                    (string?) imgLoader,
-                    (string?) environmentName,
+                    options.Loader,
+                    options.Environment,
                     null,
                     addrLoad);
                 Project project;
@@ -288,28 +289,20 @@ namespace Reko.CmdLine
 
                 var program = decompiler.Project.Programs[0];
 
-                if (pArgs.TryGetValue("metadata", out var oMetadata))
+                if (!string.IsNullOrEmpty(options.Metadata))
                 {
                     decompiler.Project.MetadataFiles.Add(new MetadataFile
                     {
-                        Location = ImageLocation.FromUri((string) oMetadata)
+                        Location = ImageLocation.FromUri(options.Metadata)
                     });
                 }
-                if (pArgs.ContainsKey("dasm-address"))
-                {
-                    decompiler.Project.Programs[0].User.ShowAddressesInDisassembly = true;
-                }
-                if (pArgs.ContainsKey("dasm-base-instrs"))
-                {
-                    decompiler.Project.Programs[0].User.RenderInstructionsCanonically = true;
-                }
-                if (pArgs.ContainsKey("dasm-bytes"))
-                {
-                    decompiler.Project.Programs[0].User.ShowBytesInDisassembly = true;
-                }
+                decompiler.Project.Programs[0].User.ShowAddressesInDisassembly |= options.DasmAddress;
+                decompiler.Project.Programs[0].User.RenderInstructionsCanonically |= options.DasmBaseInstrs;
+                decompiler.Project.Programs[0].User.ShowBytesInDisassembly |= options.DasmBytes;
+                
                 decompiler.ExtractResources();
                 decompiler.ScanPrograms();
-                if ((string) pArgs["majorCommand"] != "disassemble")
+                if (options.MajorCommand == MajorCommand.Decompile)
                 {
                     decompiler.AnalyzeDataFlow();
                     decompiler.ReconstructTypes();
@@ -323,27 +316,25 @@ namespace Reko.CmdLine
             }
         }
 
-        private void Assemble(Dictionary<string, object> pArgs)
+        private void Assemble(CmdLineOptions options)
         {
-            if (!pArgs.TryGetValue("filename", out var oFilename))
+            if (options.Filenames.Count < 1)
             {
                 listener.Error("You must provide a file name.");
                 return;
             }
-            var filename = (string) oFilename;
-            if (!pArgs.TryGetValue("--arch", out var oArch) ||
-                oArch is not string)
+            var filename = options.Filenames[0];
+            if (string.IsNullOrEmpty(options.Architecture))
             {
                 listener.Error("You must specify a processor architecture.");
                 return;
             }
-            string sArch = (string) oArch;
+            string sArch = options.Architecture;
 
             string? syntax = null;
-            if (pArgs.TryGetValue("--syntax", out var oSyntax) &&
-                oSyntax is string sSyntax)
+            if (!string.IsNullOrEmpty(options.Syntax))
             {
-                syntax = sSyntax;
+                syntax = options.Syntax;
             }
             var arch = config.GetArchitecture(sArch);
             if (arch is null)
@@ -352,12 +343,11 @@ namespace Reko.CmdLine
                 return;
             }
             Address addrBase = Address.Ptr64(0);
-            if (pArgs.TryGetValue("--base", out var oAddrBase) &&
-                oAddrBase is string sAddrBase)
+            if (!string.IsNullOrEmpty(options.Base))
             {
-                if (!arch.TryParseAddress(sAddrBase, out addrBase))
+                if (!arch.TryParseAddress(options.Base, out addrBase))
                 {
-                    listener.Error($"'{sAddrBase} couldn't be recognized as an address.");
+                    listener.Error($"'{options.Base} couldn't be recognized as an address.");
                     return;
                 }
             }
@@ -374,19 +364,19 @@ namespace Reko.CmdLine
         /// <summary>
         /// Determine whether a command line directive overrides the extract resources flag in the userdata.
         /// </summary>
-        private static bool ShouldExtractResources(Program program, Dictionary<string, object> pArgs)
+        private static bool ShouldExtractResources(Program program, CmdLineOptions options)
         {
-            if (!pArgs.TryGetValue("extract-resources", out var oExtractResources))
+            if (string.IsNullOrEmpty(options.ExtractResources))
                 return program.User.ExtractResources;
-            var sExtractResources = (string) oExtractResources;
+            var sExtractResources = options.ExtractResources;
             return sExtractResources != "no" && sExtractResources != "false";
         }
 
-        private static Address? ParseAddress(Dictionary<string, object> pArgs, string key)
+        private static Address? ParseAddress(string? sAddress)
         {
-            if (pArgs.TryGetValue(key, out var osAddr) &&
-                osAddr is string sAddr && 
-                ulong.TryParse(sAddr, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ulong uAddr))
+            if (sAddress is null)
+                return null;
+            if (ulong.TryParse(sAddress, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ulong uAddr))
             {
                 return Address.Ptr64(uAddr);
             }
@@ -396,80 +386,65 @@ namespace Reko.CmdLine
             }
         }
 
-        private void DecompileRawImage(Dictionary<string, object> pArgs)
+        private void DecompileRawImage(CmdLineOptions options)
         {
             try
             {
-                var arch = config.GetArchitecture((string) pArgs["--arch"]);
+                if (string.IsNullOrEmpty(options.Architecture))
+                    throw new ApplicationException("You must specify a processor architecture with the --arch option.");
+                var arch = config.GetArchitecture(options.Architecture);
                 if (arch is null)
-                    throw new ApplicationException(string.Format("Unknown architecture {0}", pArgs["--arch"]));
+                    throw new ApplicationException($"Unknown architecture {options.Architecture}.");
                 Dictionary<string, object> archOptions;
-                if (pArgs.TryGetValue("--arch-options", out var oArchOptions))
+                if (options.ArchOptions.Count > 0)
                 {
-                    archOptions = (Dictionary<string, object>) oArchOptions;
-                    arch.LoadUserOptions(archOptions);
+                    arch.LoadUserOptions(options.ArchOptions);
+                    archOptions = options.ArchOptions;
                 }
                 else
                 {
                     archOptions = new Dictionary<string,object>(StringComparer.OrdinalIgnoreCase);
                 }
-                pArgs.TryGetValue("--env", out object? sEnv);
+                string sAddrBase = options.Base ?? "0";
+                if (!arch.TryParseAddress(sAddrBase, out Address addrBase))
+                    throw new ApplicationException($"'{sAddrBase}' doesn't appear to be a valid address.");
 
-                if (!pArgs.TryGetValue("--base", out var oAddrBase))
-                    oAddrBase = "0";
-                if (!arch.TryParseAddress(oAddrBase.ToString(), out Address addrBase))
-                    throw new ApplicationException($"'{oAddrBase}' doesn't appear to be a valid address.");
+                string sAddrEntry = options.Entry ?? sAddrBase;
+                if (!arch.TryParseAddress(sAddrEntry.ToString(), out _))
+                    throw new ApplicationException($"'{sAddrEntry}' doesn't appear to be a valid address.");
 
-                if (!pArgs.TryGetValue("--entry", out object? oAddrEntry))
-                    oAddrEntry = oAddrBase;
-                else if (!arch.TryParseAddress(oAddrEntry.ToString(), out _))
-                    throw new ApplicationException($"'{oAddrEntry}' doesn't appear to be a valid address.");
-
-                pArgs.TryGetValue("--loader", out object? sLoader);
                 var loadDetails = new LoadDetails
                 {
-                    Location = pArgs.ContainsKey("filename")
-                        ? ImageLocation.FromUri((string) pArgs["filename"])
+                    Location = options.Filenames.Count > 0
+                        ? ImageLocation.FromUri(options.Filenames[0])
                         : null,
-                    LoaderName = (string?) sLoader,
-                    ArchitectureName = (string) pArgs["--arch"],
+                    LoaderName = options.Loader,
+                    ArchitectureName = options.Architecture,
                     ArchitectureOptions = archOptions,
-                    PlatformName = (string?) sEnv,
-                    LoadAddress = oAddrBase.ToString(),
-                    EntryPoint = new EntryPointDefinition { Address = (string) oAddrEntry }
+                    PlatformName = options.Environment,
+                    LoadAddress = sAddrBase,
+                    EntryPoint = new EntryPointDefinition { Address = sAddrEntry }
                 };
-                var program = LoadProgram(pArgs, loadDetails);
+                var program = LoadProgram(options, loadDetails);
                 var project = Project.FromSingleProgram(program);
                 var decompiler = new Decompiler(project, services);
                 dcSvc.Decompiler = decompiler;
 
-                var state = CreateInitialState(arch, program.SegmentMap, pArgs);
-                if (pArgs.TryGetValue("heuristics", out object? oHeur))
+                var state = CreateInitialState(arch, program.SegmentMap, options);
+                if (options.Heuristics.Count > 0)
                 {
-                    program.User.Heuristics = ((string[]) oHeur).ToSortedSet();
+                    program.User.Heuristics = options.Heuristics.ToSortedSet();
                 }
-                if (pArgs.ContainsKey("dasm-address"))
-                {
-                    program.User.ShowAddressesInDisassembly = true;
-                }
-                if (pArgs.ContainsKey("dasm-base-instrs"))
-                {
-                    program.User.RenderInstructionsCanonically = true;
-                }
-                if (pArgs.ContainsKey("dasm-bytes"))
-                {
-                    program.User.ShowBytesInDisassembly = true;
-                }
+                program.User.ShowAddressesInDisassembly |= options.DasmAddress;
+                program.User.RenderInstructionsCanonically |= options.DasmBaseInstrs;
+                program.User.ShowBytesInDisassembly |= options.DasmBytes;
 
-                if (pArgs.TryGetValue("aggressive-branch-removal", out object? oAggressiveBranchRemoval))
+                if (options.AggressiveBranchRemoval)
                 {
-                    if (oAggressiveBranchRemoval is bool flag && flag)
-                    {
-                        program.User.Heuristics.Add("aggressive-branch-removal");
-                    }
+                    program.User.Heuristics.Add("aggressive-branch-removal");
                 }
                 decompiler.ScanPrograms();
-                if ((string) pArgs["majorCommand"] != "disassemble")
+                if (options.MajorCommand == MajorCommand.Decompile)
                 {
                     decompiler.AnalyzeDataFlow();
                     decompiler.ReconstructTypes();
@@ -483,13 +458,13 @@ namespace Reko.CmdLine
             }
         }
 
-        private Program LoadProgram(Dictionary<string, object> pArgs, LoadDetails loadDetails)
+        private Program LoadProgram(CmdLineOptions options, LoadDetails loadDetails)
         {
             listener.Progress.ShowStatus("Loading raw bytes.");
             Program program;
-            if (pArgs.ContainsKey("--data"))
+            if (!string.IsNullOrEmpty(options.Data))
             {
-                var hexBytes = (string) pArgs["--data"];
+                var hexBytes = options.Data;
                 var image = BytePattern.FromHexBytes(hexBytes);
                 program = ldr.LoadRawImage(image, loadDetails);
             }
@@ -502,13 +477,12 @@ namespace Reko.CmdLine
             return program;
         }
 
-        private static ProcessorState CreateInitialState(IProcessorArchitecture arch, SegmentMap map, Dictionary<string, object> args)
+        private static ProcessorState CreateInitialState(IProcessorArchitecture arch, SegmentMap map, CmdLineOptions args)
         {
             var state = arch.CreateProcessorState();
-            if (!args.ContainsKey("--reg"))
+            if (args.Regs.Count <= 0)
                 return state;
-            var regs = (List<string>)args["--reg"];
-            foreach (var regValue in regs.Where(r => !string.IsNullOrEmpty(r)))
+            foreach (var regValue in args.Regs.Where(r => !string.IsNullOrEmpty(r)))
             {
                 var rr = regValue.Split(':');
                 if (rr is null || rr.Length != 2)
@@ -521,37 +495,36 @@ namespace Reko.CmdLine
             return state;
         }
 
-        private Dictionary<string,object>? ProcessArguments(TextWriter w, string[] args)
+        private CmdLineOptions? ProcessArguments(TextWriter w, string[] args)
         {
             if (args.Length == 0)
             {
                 Usage(w);
                 return null;
             }
-            Dictionary<string, object> parsedArgs = new();
 
             // Eat major commands. The default major command is
             // "decompile".
-            parsedArgs["majorCommand"] = "decompile";
+            CmdLineOptions parsedArgs = new(MajorCommand.Decompile);
             int i = 0;
             switch (args[0])
             {
             case "asm":
             case "assemble":
-                parsedArgs["majorCommand"] = "assemble";
+                parsedArgs.MajorCommand = MajorCommand.Assemble;
                 ++i;
                 break;
             case "decompile":
-                parsedArgs["majorCommand"] = "decompile";
+                parsedArgs.MajorCommand = MajorCommand.Decompile;
                 ++i;
                 break;
             case "dasm":
             case "disassemble":
-                parsedArgs["majorCommand"] = "disassemble";
+                parsedArgs.MajorCommand = MajorCommand.Disassemble;
                 ++i;
                 break;
             case "dump":
-                parsedArgs["majorCommand"] = "dump";
+                parsedArgs.MajorCommand = MajorCommand.Dump;
                 ++i;
                 break;
             }
@@ -563,7 +536,7 @@ namespace Reko.CmdLine
                 if (string.IsNullOrEmpty(args[i]))
                     continue;
                 var arg = args[i];
-                if (arg.StartsWith("-h") || arg.StartsWith("--help"))
+                if (arg == "-?" || arg.StartsWith("-h") || arg.StartsWith("--help"))
                 {
                     Usage(w);
                     return null;
@@ -580,12 +553,12 @@ namespace Reko.CmdLine
                 else if (args[i] == "--locale")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--locale"] = args[++i];
+                        parsedArgs.LocaleName = args[++i];
                 }
                 else if (args[i] == "--arch")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--arch"] = args[++i];
+                        parsedArgs.Architecture = args[++i];
                 }
                 else if (args[i] == "--arch-option")
                 {
@@ -595,50 +568,40 @@ namespace Reko.CmdLine
                 else if (args[i] == "--env")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--env"] = args[++i];
+                        parsedArgs.Environment = args[++i];
                 }
                 else if (args[i] == "--base")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--base"] = args[++i];
+                        parsedArgs.Base = args[++i];
                 }
                 else if (args[i] == "--entry")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--entry"] = args[++i];
+                        parsedArgs.Entry = args[++i];
                 }
                 else if (args[i] == "--default-to")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--default-to"] = args[++i];
+                        parsedArgs.DefaultTo = args[++i];
                 }
                 else if (args[i] == "-l" || args[i] == "--loader")
                 {
                     if (i < args.Length - 1)
-                        parsedArgs["--loader"] = args[++i];
+                        parsedArgs.Loader = args[++i];
                 }
                 else if (args[i] == "--reg" || args[i] == "-r")
                 {
                     if (i < args.Length - 1)
                     {
-                        List<string> regs;
-                        if (!parsedArgs.TryGetValue("--reg", out object? oRegs))
-                        {
-                            regs = [];
-                            parsedArgs["--reg"] = regs;
-                        }
-                        else
-                        {
-                            regs = (List<string>)oRegs;
-                        }
-                        regs.Add(args[++i]);
+                        parsedArgs.Regs.Add(args[++i]);
                     }
                 }
                 else if (args[i] == "--heuristic")
                 {
                     if (i < args.Length - 1 && !string.IsNullOrEmpty(args[i + 1]))
                     {
-                        parsedArgs["heuristics"] = args[i + 1].Split(',');
+                        parsedArgs.Heuristics.AddRange(args[i + 1].Split(','));
                         ++i;
                     }
                 }
@@ -649,7 +612,7 @@ namespace Reko.CmdLine
                         w.WriteLine("error: expected metadata file name.");
                     }
                     ++i;
-                    parsedArgs["metadata"] = args[i];
+                    parsedArgs.Metadata = args[i];
                 }
                 else if (args[i] == "--time-limit")
                 {
@@ -658,7 +621,7 @@ namespace Reko.CmdLine
                         w.WriteLine("error: time-limit option expects a numerical argument.");
                         return null;
                     }
-                    parsedArgs["time-limit"] = timeLimit;
+                    parsedArgs.TimeLimit = timeLimit;
                     ++i;
                 }
                 else if (args[i] == "--data")
@@ -669,45 +632,47 @@ namespace Reko.CmdLine
                         return null;
                     }
                     ++i;
-                    parsedArgs["--data"] = args[i];
+                    parsedArgs.Data = args[i];
                 }
                 else if (args[i] == "--dasm-address")
                 {
-                    parsedArgs["dasm-address"] = true;
+                    parsedArgs.DasmAddress = true;
                 }
                 else if (args[i] == "--dasm-bytes")
                 {
-                    parsedArgs["dasm-bytes"] = true;
+                    parsedArgs.DasmBytes = true;
                 }
                 else if (args[i] == "--dasm-base-instrs")
                 {
-                    parsedArgs["dasm-base-instrs"] = true;
+                    parsedArgs.DasmBaseInstrs = true;
                 }
                 else if (args[i] == "--scan-only")
                 {
                     //$TODO: deprecate this command
-                    parsedArgs["majorCommand"] = "disassemble";
+                    w.WriteLine("error: --scan-only parameter is deprecated. Use 'reko disassemble' instead.");
+                    Usage(w);
+                    return null;
                 }
                 else if (args[i] == "--extract-resources")
                 {
                     if (i < args.Length - 1)
                     {
-                        parsedArgs["extract-resources"] = args[++i];
+                        parsedArgs.ExtractResources = args[++i];
                     }
                     else
                     {
-                        parsedArgs["extract-resources"] = "yes";
+                        parsedArgs.ExtractResources = "yes";
                     }
                 }
                 else if (args[i] == "--aggressive-branch-removal")
                 {
-                    parsedArgs["aggressive-branch-removal"] = true;
+                    parsedArgs.AggressiveBranchRemoval = true;
                 }
                 else if (args[i] == "--debug-types")
                 {
                     if (i < args.Length - 1)
                     {
-                        parsedArgs["debug-types"] = ParseIntRange(args[++i]);
+                        parsedArgs.DebugTypes = ParseIntRange(args[++i]);
                     }
                 }
                 else if (args[i] == "--debug-trace-proc")
@@ -715,7 +680,14 @@ namespace Reko.CmdLine
                     if (i < args.Length - 1)
                     {
                         ++i;
-                        parsedArgs["debug-trace-proc"] = new HashSet<string>(args[i].Split(','));
+                        parsedArgs.DebugTraceProc.AddRange(args[i].Split(',').Distinct());
+                    }
+                }
+                else if (args[i] == "--syntax")
+                {
+                    if (i < args.Length - 1)
+                    {
+                        parsedArgs.Syntax = args[++i];
                     }
                 }
                 else if (arg.StartsWith("-"))
@@ -725,7 +697,7 @@ namespace Reko.CmdLine
                 }
                 else
                 {
-                    parsedArgs["filename"] = args[i];
+                    parsedArgs.Filenames.Add(args[i]);
                 }
             }
             return parsedArgs;
@@ -761,21 +733,10 @@ namespace Reko.CmdLine
         /// and its value.</param>
         /// <param name="parsedArgs">The dictionary of values parsed so far.
         /// </param>
-        private static void ParseArchitectureOption(string nameValue, Dictionary<string, object> parsedArgs)
+        private static void ParseArchitectureOption(string nameValue, CmdLineOptions parsedArgs)
         {
-            Dictionary<string, object> archOptions;
-            if (parsedArgs.TryGetValue("--arch-options", out object? oArchOptions))
-            {
-                archOptions = (Dictionary<string, object>)oArchOptions;
-            }
-            else
-            {
-                archOptions = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-                parsedArgs["--arch-options"] = archOptions;
-            }
             var name_value = nameValue.Split('=');
-            archOptions[name_value[0]] =
-                string.Join("=", name_value.Skip(1));
+            parsedArgs.ArchOptions[name_value[0]] = string.Join("=", name_value.Skip(1));
         }
 
         private static void ShowVersion(TextWriter w)

@@ -1,1 +1,1 @@
-reko decompile telnet
+reko.exe decompile telnet
