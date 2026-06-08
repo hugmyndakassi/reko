@@ -356,7 +356,7 @@ namespace Reko.Arch.Arc
         private Expression Adc(Expression a, Expression b)
         {
             var C = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.Status32, (ulong) FlagM.CF));
-            return m.IAdd(m.IAdd(a, b), C);
+            return m.IAddC(a, b, C);
         }
 
         private Expression Add1(Expression a, Expression b)
@@ -377,7 +377,7 @@ namespace Reko.Arch.Arc
         private Expression Sbc(Expression a, Expression b)
         {
             var C = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.Status32, (ulong) FlagM.CF));
-            return m.ISub(m.ISub(a, b), C);
+            return m.ISubC(a, b, C);
         }
 
         private Expression Sub1(Expression a, Expression b)

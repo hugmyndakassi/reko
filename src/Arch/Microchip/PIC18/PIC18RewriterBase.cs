@@ -368,7 +368,7 @@ namespace Reko.Arch.MicrochipPIC.PIC18
         {
             var (indMode, memPtr) = GetBinaryPtrs(out Expression memExpr, out Expression dst);
             var carry = FlagGroup(FlagM.C);
-            ArithAssignIndirect(dst, m.IAdd(m.IAdd(Wreg, memExpr), carry), indMode, memPtr);
+            ArithAssignIndirect(dst, m.IAddC(Wreg, memExpr, carry), indMode, memPtr);
         }
 
         private void RewriteANDLW()

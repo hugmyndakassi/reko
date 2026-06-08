@@ -298,7 +298,7 @@ namespace Reko.Arch.MicroBlaze
                 {
                     var a = binder.EnsureRegister(regA);
                     var b = binder.EnsureRegister(regB);
-                    src = m.IAdd(m.IAdd(a, b), cy);
+                    src = m.IAddC(a, b, cy);
                 }
             }
             m.Assign(dst, src);

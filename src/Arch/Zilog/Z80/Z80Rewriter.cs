@@ -157,7 +157,7 @@ namespace Reko.Arch.Zilog.Z80
         {
             var dst = RewriteOp(dasm.Current.Operands[0]);
             var src = RewriteOp(dasm.Current.Operands[1]);
-            m.Assign(dst, m.IAdd(m.IAdd(dst, src), FlagGroup(Registers.C)));
+            m.Assign(dst, m.IAddC(dst, src, FlagGroup(Registers.C)));
             AssignCond(Registers.SZPC, dst);
         }
 
@@ -273,7 +273,7 @@ namespace Reko.Arch.Zilog.Z80
         {
             var dst = RewriteOp(dasm.Current.Operands[0]);
             var src = RewriteOp(dasm.Current.Operands[1]);
-            m.Assign(dst, m.ISub(m.ISub(dst, src), FlagGroup(Registers.C)));
+            m.Assign(dst, m.ISubC(dst, src, FlagGroup(Registers.C)));
             AssignCond(Registers.SZPC, dst);
         }
 

@@ -362,7 +362,7 @@ namespace Reko.Arch.OpenRISC.Aeon
 
         private Expression Addc(Expression a, Expression b)
         {
-            return m.IAdd(m.IAdd(a, b), binder.EnsureFlagGroup(Registers.CY));
+            return m.IAddC(a, b, binder.EnsureFlagGroup(Registers.CY));
         }
 
         private Expression Addc(Expression a, long b)

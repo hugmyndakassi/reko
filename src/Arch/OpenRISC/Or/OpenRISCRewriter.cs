@@ -259,7 +259,7 @@ namespace Reko.Arch.OpenRISC.Or
             var src1 = Reg0(instrCur.Operands[1]);
             var src2 = Reg0(instrCur.Operands[2]);
             var c = binder.EnsureFlagGroup(Registers.C);
-            m.Assign(dst, m.IAdd(m.IAdd(src1, src2), c));
+            m.Assign(dst, m.IAddC(src1, src2, c));
             CV(dst);
         }
 
@@ -285,7 +285,7 @@ namespace Reko.Arch.OpenRISC.Or
             var src = Reg0(instrCur.Operands[1]);
             var imm = Imm(instrCur.Operands[2]);
             var c = binder.EnsureFlagGroup(Registers.C);
-            m.Assign(dst, m.IAdd(m.IAdd(src, imm), c));
+            m.Assign(dst, m.IAddC(src, imm, c));
             CV(dst);
         }
 

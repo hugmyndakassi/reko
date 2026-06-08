@@ -142,7 +142,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
         {
             GetSrcAndDst(out var srcmem, out var dstmem);
             var carry = FlagGroup(FlagM.C);
-            m.Assign(dstmem, m.IAdd(m.IAdd(Wreg, srcmem), carry));
+            m.Assign(dstmem, m.IAddC(Wreg, srcmem, carry));
             SetStatusFlags(dstmem);
         }
 
@@ -313,7 +313,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
         {
             GetSrcAndDst(out var srcmem, out var dstmem);
             var borrow = m.Not(FlagGroup(FlagM.C));
-            m.Assign(dstmem, m.ISub(m.ISub(srcmem, Wreg), borrow));
+            m.Assign(dstmem, m.ISubC(srcmem, Wreg, borrow));
             SetStatusFlags(dstmem);
         }
 

@@ -407,7 +407,7 @@ namespace Reko.Arch.Avr.Avr32
         {
             var left = RewriteOp(1);
             var right = RewriteOp(2);
-            var src = m.IAdd(m.IAdd(left, right), binder.EnsureFlagGroup(C));
+            var src = m.IAddC(left, right, binder.EnsureFlagGroup(C));
             var dst = RewriteOpDst(0, src);
             EmitCc(VNZC, dst);
         }
@@ -1168,7 +1168,7 @@ namespace Reko.Arch.Avr.Avr32
         {
             var left = RewriteOp(1);
             var right = RewriteOp(2);
-            var src = m.ISub(m.ISub(left, right), binder.EnsureFlagGroup(C));
+            var src = m.ISubC(left, right, binder.EnsureFlagGroup(C));
             var dst = RewriteOpDst(0, src);
             EmitCc(VNZC, dst);
         }

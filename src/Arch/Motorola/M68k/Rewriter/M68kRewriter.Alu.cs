@@ -814,7 +814,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             var src = orw.RewriteSrc(instr.Operands[0], instr.Address);
             orw.DataWidth = PrimitiveType.Byte;
             var dst = orw.RewriteDst(instr.Operands[1], instr.Address, src, (s, d) =>
-                    m.IAdd(m.IAdd(d, s), x));
+                    m.IAddC(d, s, x));
             if (dst is null)
             {
                 EmitInvalid();
@@ -832,7 +832,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             var src = orw.RewriteSrc(instr.Operands[0], instr.Address);
             orw.DataWidth = PrimitiveType.Byte;
             var dst = orw.RewriteDst(instr.Operands[1], instr.Address, src, (d, s) =>
-                    m.ISub(m.ISub(d, s), x));
+                    m.ISubC(d, s, x));
             if (dst is null)
             {
                 EmitInvalid();
