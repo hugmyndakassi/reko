@@ -579,14 +579,14 @@ void ArmRewriter::RewriteB(bool link)
 	}
 	if (link)
 	{
-		rtlClass = (InstrClass)((int)InstrClass::Transfer | (int)InstrClass::Call);
+		rtlClass = (InstrClass)((int)InstrClass::Call);
 		if (instr->detail->arm.cc == ARM_CC_AL)
 		{
 			m.Call(dst, 0);
 		}
 		else
 		{
-			rtlClass = InstrClass::ConditionalTransfer;
+			rtlClass = InstrClass::CondJump;
 			ConditionalSkip(true);
 			m.Call(dst, 0);
 		}
@@ -595,15 +595,15 @@ void ArmRewriter::RewriteB(bool link)
 	{
 		if (instr->detail->arm.cc == ARM_CC_AL)
 		{
-			rtlClass = InstrClass::Transfer;
+			rtlClass = InstrClass::Jump;
 			m.Goto(dst);
 		}
 		else
 		{
-			rtlClass = InstrClass::ConditionalTransfer;
+			rtlClass = InstrClass::CondJump;
 			if (dstIsAddress)
 			{
-				m.Branch(TestCond(instr->detail->arm.cc), dst, InstrClass::ConditionalTransfer);
+				m.Branch(TestCond(instr->detail->arm.cc), dst, InstrClass::CondJump);
 			}
 			else
 			{
@@ -616,11 +616,11 @@ void ArmRewriter::RewriteB(bool link)
 
 void ArmRewriter::RewriteCbnz(HExpr(*ctor)(INativeRtlEmitter & m, HExpr e))
 {
-	rtlClass = InstrClass::ConditionalTransfer;
+	rtlClass = InstrClass::CondJump;
 	auto cond = Operand(Dst(), BaseType::Word32, true);
 	m.Branch(ctor(m, Operand(Dst())),
 		m.Ptr32((uint32_t)Src1().imm),
-		InstrClass::ConditionalTransfer);
+		InstrClass::CondJump);
 }
 
 // If a conditional ARM instruction is encountered, generate an IL
@@ -644,7 +644,7 @@ void ArmRewriter::ConditionalSkip(bool force)
 	m.BranchInMiddleOfInstruction(
 		TestCond(Invert(cc)),
 		m.Ptr32(static_cast<uint32_t>(instr->address) + 4),
-		InstrClass::ConditionalTransfer);
+		InstrClass::CondJump);
 }
 
 HExpr ArmRewriter::EffectiveAddress(const arm_op_mem & mem)

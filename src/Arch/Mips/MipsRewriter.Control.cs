@@ -256,7 +256,7 @@ namespace Reko.Arch.Mips
             var reg = (RegisterStorage)((Identifier)dst).Storage;
             if (reg == arch.LinkRegister)
             {
-                m.Return(0, 0, iclass);
+                m.Return(0, 0, (iclass & ~InstrClass.Jump) | InstrClass.Return);
             }
 			else
             {

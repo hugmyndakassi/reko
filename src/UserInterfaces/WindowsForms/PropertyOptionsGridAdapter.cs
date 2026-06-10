@@ -232,11 +232,13 @@ namespace Reko.UserInterfaces.WindowsForms
 
             public override object? EditValue(ITypeDescriptorContext? context, System.IServiceProvider provider, object? value)
             {
+                if (context is null)
+                    return null;
                 var svc = provider.RequireService<IWindowsFormsEditorService>();
                 var pd = DictionaryPropertyDescriptor.GetFromContext(context);
                 var pluginSvc = provider.RequireService<IPluginLoaderService>();
 
-                if (pd.Option.TypeName is null)
+                if (pd is null || pd.Option.TypeName is null)
                     return value;
                 var dlgType = pluginSvc.GetType(pd.Option.TypeName);
                 if (dlgType is null)

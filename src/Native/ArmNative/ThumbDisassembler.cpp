@@ -90,17 +90,17 @@ InstrClass ThumbDisassembler::InstructionClassFromId(unsigned int armInstrID)
 	switch (armInstrID)
 	{
 	case ARM_INS_INVALID: return InstrClass::Invalid;
-	case ARM_INS_BKPT: return InstrClass::Transfer;
-	case ARM_INS_BL: return InstrClass::Transfer | InstrClass::Call;
-	case ARM_INS_BLX: return InstrClass::Transfer | InstrClass::Call;
-	case ARM_INS_BX: return InstrClass::Transfer;
-	case ARM_INS_BXJ: return InstrClass::Transfer;
-	case ARM_INS_B: return InstrClass::Transfer;
-	case ARM_INS_HLT: return InstrClass::Transfer;
-	case ARM_INS_SVC: return InstrClass::Transfer;
-	case ARM_INS_TEQ: return InstrClass::Transfer;
-	case ARM_INS_TRAP: return InstrClass::Transfer;
-	case ARM_INS_YIELD: return InstrClass::Transfer;
+	case ARM_INS_BKPT: return InstrClass::Jump;
+	case ARM_INS_BL: return InstrClass::Call;
+	case ARM_INS_BLX: return InstrClass::Call;
+	case ARM_INS_BX: return InstrClass::Jump;
+	case ARM_INS_BXJ: return InstrClass::Jump;
+	case ARM_INS_B: return InstrClass::Jump;
+	case ARM_INS_HLT: return InstrClass::Jump;
+	case ARM_INS_SVC: return InstrClass::Jump;
+	case ARM_INS_TEQ: return InstrClass::Jump;
+	case ARM_INS_TRAP: return InstrClass::Jump;
+	case ARM_INS_YIELD: return InstrClass::Jump;
 	}
 	return InstrClass::Linear;
 }

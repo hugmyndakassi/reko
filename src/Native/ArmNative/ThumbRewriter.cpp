@@ -102,7 +102,7 @@ void ThumbRewriter::ConditionalSkip(bool force)
 		m.BranchInMiddleOfInstruction(
 			TestCond(cc),
 			m.Ptr32(static_cast<uint32_t>(instr->address) + instr->size),
-			InstrClass::ConditionalTransfer);
+			InstrClass::CondJump);
 	}
 }
 

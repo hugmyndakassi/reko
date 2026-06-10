@@ -53,7 +53,7 @@ namespace Reko.UserInterfaces.WindowsForms
             set { ddl.SelectedItem= value; }
         }
 
-        public object SelectedValue
+        public object? SelectedValue
         {
             get { throw new NotSupportedException(); }
             set { throw new NotSupportedException(); }

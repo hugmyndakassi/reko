@@ -246,7 +246,7 @@ void ArmRewriter::RewriteLdr(BaseType dtDst, BaseType dtSrc)
 	}
 	if (isJump)
 	{
-		rtlClass = InstrClass::Transfer;
+		rtlClass = InstrClass::Jump;
 		m.Goto(src);
 	}
 	else
@@ -362,8 +362,8 @@ void ArmRewriter::RewriteLdm(HExpr dst, int skip, int offset, BinOpEmitter op, b
 	if (pcRestored)
 	{
 		rtlClass = instr->detail->arm.cc == ARM_CC_AL
-			? InstrClass::Transfer
-			: InstrClass::ConditionalTransfer;
+			? InstrClass::Jump
+			: InstrClass::CondJump;
 		m.Return(0, 0);
 	}
 }
@@ -406,7 +406,7 @@ void ArmRewriter::RewriteMov()
 {
 	if (Dst().type == ARM_OP_REG && Dst().reg == ARM_REG_PC)
 	{
-		rtlClass = InstrClass::Transfer;
+		rtlClass = InstrClass::Jump;
 		if (Src1().type == ARM_OP_REG && Src1().reg == ARM_REG_LR)
 		{
 			m.Return(0, 0);
@@ -415,7 +415,7 @@ void ArmRewriter::RewriteMov()
 		{
 			m.Goto(Operand(Src1()));
 		}
-		m.FinishCluster(InstrClass::Transfer, address, instr->size);
+		m.FinishCluster(InstrClass::Jump, address, instr->size);
 		return;
 	}
 	auto opDst = Operand(Dst(), BaseType::Word32, true);
