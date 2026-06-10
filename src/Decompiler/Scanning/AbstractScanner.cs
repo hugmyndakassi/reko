@@ -619,11 +619,11 @@ namespace Reko.Scanning
                     return "Zer";
                 if ((t & InstrClass.Padding) != 0)
                     return "Pad";
-                if ((t & InstrClass.Call) != 0)
+                if (t.IsCall())
                     return "Cal";
-                if ((t & InstrClass.ConditionalTransfer) == InstrClass.ConditionalTransfer)
+                if ((t & InstrClass.CondJump) == InstrClass.CondJump)
                     return "Bra";
-                if ((t & InstrClass.Transfer) != 0)
+                if (t.IsTransfer())
                     return "End";
                 if ((t & InstrClass.Terminates) != 0)
                     return "Trm";

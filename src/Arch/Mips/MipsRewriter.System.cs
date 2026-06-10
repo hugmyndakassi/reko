@@ -85,7 +85,7 @@ namespace Reko.Arch.Mips
                 m.BranchInMiddleOfInstruction(
                         op(op1, op2).Invert(),
                         instr.Address + instr.Length,
-                        InstrClass.ConditionalTransfer);
+                        InstrClass.CondJump);
             }
             Expression trap;
             if (instr.Operands.Length == 3)
@@ -104,11 +104,11 @@ namespace Reko.Arch.Mips
             var op1 = RewriteOperand(instr.Operands[0]);
             var op2 = RewriteOperand(instr.Operands[1]);
 
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             m.Branch(
                         op(op1, op2).Invert(),
                         instr.Address + instr.Length,
-                        InstrClass.ConditionalTransfer);
+                        InstrClass.CondJump);
             m.SideEffect(m.Fn(CommonOps.Syscall_0));
         }
 

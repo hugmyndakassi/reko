@@ -62,7 +62,7 @@ namespace Reko.Arch.RiscV
             m.Branch(
                 fn(opLeft, opRight),
                 (Address) instr.Operands[2],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteClzw(IntrinsicProcedure op)
@@ -82,7 +82,7 @@ namespace Reko.Arch.RiscV
             m.Branch(
                 fn(op, zero),
                 (Address)instr.Operands[1],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteCompressedJ()
@@ -168,14 +168,14 @@ namespace Reko.Arch.RiscV
         {
             var continuation = (RegisterStorage)instr.Operands[0];
             var dst = RewriteOp(1);
-            iclass = InstrClass.Transfer;
             if (continuation.Number == 0)
             {
+                iclass = InstrClass.Jump;
                 m.Goto(dst);
             }
             else
             {
-                iclass |= InstrClass.Call;
+                iclass = InstrClass.Call;
                 m.Call(dst, 0);
             }
         }
@@ -186,7 +186,7 @@ namespace Reko.Arch.RiscV
             var rDst = (RegisterStorage)instr.Operands[1];
             var dst = RewriteOp(1);
             var off = RewriteOp(2);
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             if (!off.IsZero)
             {
                 dst = m.IAdd(dst, off);
@@ -195,6 +195,7 @@ namespace Reko.Arch.RiscV
             {
                 if (rDst.Number == 1 && off.IsZero)
                 {
+                    iclass = InstrClass.Return;
                     m.Return(0, 0);
                 }
                 else
@@ -204,7 +205,7 @@ namespace Reko.Arch.RiscV
             }
             else if (continuation.Number == 1)     // 'r1'
             {
-                iclass |= InstrClass.Call;
+                iclass = InstrClass.Call;
                 m.Call(dst, 0);
             } 
             else 

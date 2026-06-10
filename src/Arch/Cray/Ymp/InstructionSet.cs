@@ -96,63 +96,63 @@ namespace Reko.Arch.Cray.Ymp
                 invalid);
 
             var opc_005 = Select((6, 3), Is0, "  005x",
-                    Instr(Mnemonic.j, InstrClass.Transfer, Bjk),
+                    Instr(Mnemonic.j, InstrClass.Jump, Bjk),
                     invalid);
 
             var opc_006 = C90(
                 Select((0, 8), Is0, "  006 0",
-                    Instr(Mnemonic.j, InstrClass.Transfer, Jnm),
+                    Instr(Mnemonic.j, InstrClass.Jump, Jnm),
                     Mask(5, 1, " 0 006 4",
-                        Instr(Mnemonic.jts, InstrClass.Transfer, Ijk, Jnm),
-                        Instr(Mnemonic.jts, InstrClass.Transfer, Ak, Jnm))),
+                        Instr(Mnemonic.jts, InstrClass.Jump, Ijk, Jnm),
+                        Instr(Mnemonic.jts, InstrClass.Jump, Ak, Jnm))),
                 Mask(8, 1, "  006",
-                    Instr(Mnemonic.j, InstrClass.Transfer, Jijkm),
+                    Instr(Mnemonic.j, InstrClass.Jump, Jijkm),
                     invalid));
 
             var opc_007 = C90(Select((0, 9), Is0, "  007",
-                    Instr(Mnemonic.r, InstrClass.Call | InstrClass.Transfer, Jnm),
+                    Instr(Mnemonic.r, InstrClass.Call, Jnm),
                     invalid),
-                Instr(Mnemonic.r, InstrClass.Call | InstrClass.Transfer, Jijkm));
+                Instr(Mnemonic.r, InstrClass.Call, Jijkm));
 
             var opc_010 = C90(Select((0, 9), Is0, "  010",
-                    Instr(Mnemonic.jaz, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jaz, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jaz, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jaz, InstrClass.CondJump, Jijkm));
 
             var opc_011 = C90(Select((0, 9), Is0, "  011",
-                    Instr(Mnemonic.jan, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jan, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jan, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jan, InstrClass.CondJump, Jijkm));
 
             var opc_012 = C90(Select((0, 9), Is0, "  012",
-                    Instr(Mnemonic.jap, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jap, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jap, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jap, InstrClass.CondJump, Jijkm));
 
             var opc_013 = C90(Select((0, 9), Is0, "  013",
-                    Instr(Mnemonic.jam, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jam, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jam, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jam, InstrClass.CondJump, Jijkm));
 
             var opc_014 = C90(Select((0, 9), Is0, "  014",
-                    Instr(Mnemonic.jsz, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jsz, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jsz, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jsz, InstrClass.CondJump, Jijkm));
 
             var opc_015 = C90(Select((0, 9), Is0, "  015",
-                    Instr(Mnemonic.jsn, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jsn, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jsn, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jsn, InstrClass.CondJump, Jijkm));
 
             var opc_016 = C90(Select((0, 9), Is0, "  016",
-                    Instr(Mnemonic.jsp, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jsp, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jsp, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jsp, InstrClass.CondJump, Jijkm));
 
             var opc_017 = C90(Select((0, 9), Is0, "  017",
-                    Instr(Mnemonic.jsm, InstrClass.ConditionalTransfer, Jnm),
+                    Instr(Mnemonic.jsm, InstrClass.CondJump, Jnm),
                     invalid),
-                Instr(Mnemonic.jsm, InstrClass.ConditionalTransfer, Jijkm));
+                Instr(Mnemonic.jsm, InstrClass.CondJump, Jijkm));
 
             var opc_026 = Sparse(0, 3, "  026", Nyi("026"),
                 (0, Instr(Mnemonic._popcnt, Ai, Sj)));

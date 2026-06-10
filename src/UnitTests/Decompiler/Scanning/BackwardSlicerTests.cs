@@ -226,7 +226,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var cz = Cc("CZ");
 
             var b = Given_Block(0x100);
-            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULE, cz), Address.Ptr32(0x200), InstrClass.ConditionalTransfer); });
+            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULE, cz), Address.Ptr32(0x200), InstrClass.CondJump); });
 
             var b2 = Given_Block(0x200);
             Given_Instrs(b2, m => { m.Assign(r1, m.Shl(r2, 2)); });
@@ -254,7 +254,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
 
             var b = Given_Block(0x100);
             Given_Instrs(b, m => { m.Assign(cz, m.Cond(cz.DataType, m.ISub(r2, 4))); });
-            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULE, cz), Address.Ptr32(0x200), InstrClass.ConditionalTransfer); });
+            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULE, cz), Address.Ptr32(0x200), InstrClass.CondJump); });
 
             var b2 = Given_Block(0x200);
             Given_Instrs(b2, m => { m.Assign(r1, m.Shl(r2, 2)); });
@@ -323,7 +323,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             });
             Given_Instrs(b, m =>
             {
-                m.Branch(m.Test(ConditionCode.UGT, SCZO), Address.Ptr16(0x120), InstrClass.ConditionalTransfer);
+                m.Branch(m.Test(ConditionCode.UGT, SCZO), Address.Ptr16(0x120), InstrClass.CondJump);
             });
 
             var b2 = Given_Block(0x200);
@@ -385,12 +385,12 @@ namespace Reko.UnitTests.Decompiler.Scanning
             Given_Instrs(b, m => { m.Assign(ecx, m.Shr(ecx, 2)); m.Assign(SCZO, m.Cond(SCZO.DataType, ecx)); });
             Given_Instrs(b, m => { m.Assign(edx, m.And(edx, 3)); m.Assign(SZO, m.Cond(SZO.DataType, edx)); m.Assign(C, m.False()); });
             Given_Instrs(b, m => { m.Assign(SCZO, m.Cond(SCZO.DataType, m.ISub(ecx, 8))); });
-            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULT, C), Address.Ptr32(0x2000), InstrClass.ConditionalTransfer); });
+            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.ULT, C), Address.Ptr32(0x2000), InstrClass.CondJump); });
 
             var b2 = Given_Block(0x1008);
             Given_Instrs(b2, m =>
             {
-                m.BranchInMiddleOfInstruction(m.Eq0(ecx), Address.Ptr32(0x1010), InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq0(ecx), Address.Ptr32(0x1010), InstrClass.CondJump);
                 m.Assign(tmp, m.Mem32(esi));
                 m.Assign(m.Mem32(edi), tmp);
                 m.Assign(esi, m.IAdd(esi, 4));
@@ -443,7 +443,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
 
             var b = Given_Block(0x0C00, 0x0100);
             Given_Instrs(b, m => { m.Assign(SCZO, m.Cond(SCZO.DataType, m.ISub(bx, 15))); });
-            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.UGT, C), Address.SegPtr(0xC00, 0x200), InstrClass.ConditionalTransfer); });
+            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.UGT, C), Address.SegPtr(0xC00, 0x200), InstrClass.CondJump); });
 
             var b2 = Given_Block(0x0C00, 0x0108);
             Given_Instrs(b2, m => { m.Assign(bx, m.IAdd(bx, bx)); m.Assign(SCZO, m.Cond(SCZO.DataType, bx)); });
@@ -479,7 +479,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
 
             var b = Given_Block(0x001000000);
             Given_Instrs(b, m => { m.Assign(SCZO, m.Cond(SCZO.DataType, m.ISub(eax, 3))); });
-            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.UGT, C), Address.Ptr32(0x00100010), InstrClass.ConditionalTransfer); });
+            Given_Instrs(b, m => { m.Branch(m.Test(ConditionCode.UGT, C), Address.Ptr32(0x00100010), InstrClass.CondJump); });
 
             var b2 = Given_Block(0x001000008);
             Given_Instrs(b2, m => { m.Assign(edx, m.Xor(edx, edx)); m.Assign(SZO, m.Cond(SZO.DataType, edx)); m.Assign(C, m.False()); });
@@ -579,7 +579,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             });
             Given_Instrs(b, m =>
             {
-                m.Branch(m.Test(ConditionCode.UGT, CZ), Address.Ptr32(0x00100040), InstrClass.ConditionalTransfer);
+                m.Branch(m.Test(ConditionCode.UGT, CZ), Address.Ptr32(0x00100040), InstrClass.CondJump);
             });
 
             var b2 = Given_Block(0x00100008);
@@ -665,7 +665,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             });
             Given_Instrs(b, m =>
             {
-                m.Branch(m.Test(ConditionCode.UGT, CZ), Address.Ptr32(0x00100040), InstrClass.ConditionalTransfer);
+                m.Branch(m.Test(ConditionCode.UGT, CZ), Address.Ptr32(0x00100040), InstrClass.CondJump);
             });
 
             var b2 = Given_Block(0x00100008);
@@ -747,7 +747,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             {
                 m.Assign(v80, m.ISub(r1, 0x28));
                 m.Assign(CVZN, m.Cond(CVZN.DataType, v80));
-                m.Branch(m.Test(ConditionCode.GT, VZN), Address.Ptr16(0x1020), InstrClass.ConditionalTransfer);
+                m.Branch(m.Test(ConditionCode.GT, VZN), Address.Ptr16(0x1020), InstrClass.CondJump);
             });
 
             var b2 = Given_Block(0x1010);
@@ -762,7 +762,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
                     m.IAdd(
                         m.Word32(0x001066A2),
                         m.Convert(m.Slice(r1, PrimitiveType.Int16), PrimitiveType.Int16, PrimitiveType.Int32)),
-                    InstrClass.Transfer);
+                    InstrClass.JumpInd);
             });
 
             //m.Label("default_case");
@@ -799,7 +799,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
                 m.Assign(v3, m.ISub(m.Slice(d0, PrimitiveType.Word16), m.Word16(0x20)));
                 m.Assign(d0, m.Dpb(d0, v3, 0));
                 m.Assign(CVZN, m.Cond(CVZN.DataType, v3));
-                m.Branch(m.Test(ConditionCode.UGE, C), Address.Ptr32(0xA900), InstrClass.ConditionalTransfer);
+                m.Branch(m.Test(ConditionCode.UGE, C), Address.Ptr32(0xA900), InstrClass.CondJump);
             });
 
             var bRet = Given_Block(0xA870);

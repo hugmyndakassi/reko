@@ -106,14 +106,13 @@ namespace Reko.Arch.MicrochipPIC.PIC18
             m.Assign(Fsr2, m.IAdd(Fsr2, k.ImmediateValue));
             var src = PopFromHWStackAccess();
             m.Assign(tos, src);
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Return;
             m.Return(0, 0);
         }
 
         private void RewriteCALLW()
         {
-
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
 
             var pclat = binder.EnsureRegister(PIC18Registers.PCLAT);
             var target = m.Fn(callw_intrinsic, Wreg, pclat);

@@ -3026,25 +3026,25 @@ namespace Reko.Arch.Arm.AArch64
                 Extract);
 
             var UncondBranchImm = Mask(31, 1,
-                Instr(Mnemonic.b, InstrClass.Transfer, J(0,26)),
-                Instr(Mnemonic.bl, InstrClass.Transfer | InstrClass.Call, J(0,26)));
+                Instr(Mnemonic.b, InstrClass.Jump, J(0,26)),
+                Instr(Mnemonic.bl, InstrClass.Call, J(0,26)));
 
             var UncondBranchReg = Select((16,5), n => n != 0x1F,
                 invalid,
                 Mask(21, 4, "  UncondBranchReg",
                     Sparse(10, 6, "  0000",
                         invalid,
-                        (0, Select((0, 5), n => n == 0, Instr(Mnemonic.br, InstrClass.Transfer, X_5), invalid)),
+                        (0, Select((0, 5), n => n == 0, Instr(Mnemonic.br, InstrClass.Jump, X_5), invalid)),
                         (2, Select((0, 5), Is31, Nyi("BRAA,BRAAZ... Key A"), invalid)),
                         (3, Select((0, 5), Is31, Nyi("BRAA,BRAAZ... Key B"), invalid))),
                     Sparse(10, 6, "  0001",
                         invalid,
-                        (0, Select((0, 5), IsZero, Instr(Mnemonic.blr, InstrClass.Transfer | InstrClass.Call, X_5), invalid)),
+                        (0, Select((0, 5), IsZero, Instr(Mnemonic.blr, InstrClass.Call, X_5), invalid)),
                         (2, Select((0, 5), Is31, Nyi("BlRAA,BlRAAZ... Key A"), invalid)),
                         (3, Select((0, 5), Is31, Nyi("BlRAA,BlRAAZ... Key B"), invalid))),
                     Sparse(10, 6, "  0010",
                         invalid,
-                        (0, Select((0, 5), IsZero, Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, X_5), invalid)),
+                        (0, Select((0, 5), IsZero, Instr(Mnemonic.ret, InstrClass.Return, X_5), invalid)),
                         (2, Select((0, 5), Is31, Nyi("RETAA,RETAAZ... Key A"), invalid)),
                         (3, Select((0, 5), Is31, Nyi("RETAA,RETAAZ... Key B"), invalid))),
                     invalid,
@@ -3052,7 +3052,7 @@ namespace Reko.Arch.Arm.AArch64
                     Select((5,5), Is31,
                         Sparse(10, 6, "  0100",
                             invalid,
-                            (0, Select((0, 5), IsZero, Instr(Mnemonic.eret, InstrClass.Transfer | InstrClass.Return), invalid)),
+                            (0, Select((0, 5), IsZero, Instr(Mnemonic.eret, InstrClass.Return), invalid)),
                             (2, Select((0, 5), Is31, Nyi("ERETAA,RETAAZ... Key A"), invalid)),
                             (3, Select((0, 5), Is31, Nyi("ERETAA,RETAAZ... Key B"), invalid))),
                         invalid),
@@ -3073,22 +3073,22 @@ namespace Reko.Arch.Arm.AArch64
 
             var CompareBranchImm = Mask(31, 1, 
                 Mask(24, 1,
-                    Instr(Mnemonic.cbz,  InstrClass.ConditionalTransfer, W_0,J(5,19)),
-                    Instr(Mnemonic.cbnz, InstrClass.ConditionalTransfer, W_0,J(5,19))),
+                    Instr(Mnemonic.cbz,  InstrClass.CondJump, W_0,J(5,19)),
+                    Instr(Mnemonic.cbnz, InstrClass.CondJump, W_0,J(5,19))),
                 Mask(24, 1,
-                    Instr(Mnemonic.cbz,  InstrClass.ConditionalTransfer, X_0,J(5,19)),
-                    Instr(Mnemonic.cbnz, InstrClass.ConditionalTransfer, X_0,J(5,19))));
+                    Instr(Mnemonic.cbz,  InstrClass.CondJump, X_0,J(5,19)),
+                    Instr(Mnemonic.cbnz, InstrClass.CondJump, X_0,J(5,19))));
 
             var TestBranchImm = Mask(24, 1,
                 Mask(31, 1,
-                    Instr(Mnemonic.tbz,  InstrClass.ConditionalTransfer, W_0,I(19,5,w32),J(5,14)),
-                    Instr(Mnemonic.tbnz, InstrClass.ConditionalTransfer, W_0,I(19,5,w32),J(5,14))),
+                    Instr(Mnemonic.tbz,  InstrClass.CondJump, W_0,I(19,5,w32),J(5,14)),
+                    Instr(Mnemonic.tbnz, InstrClass.CondJump, W_0,I(19,5,w32),J(5,14))),
                 Mask(31, 1,
-                    Instr(Mnemonic.tbz,  InstrClass.ConditionalTransfer, W_0,I(19,5,w32),J(5,14)),
-                    Instr(Mnemonic.tbnz, InstrClass.ConditionalTransfer, W_0,I(19,5,w32),J(5,14))));
+                    Instr(Mnemonic.tbz,  InstrClass.CondJump, W_0,I(19,5,w32),J(5,14)),
+                    Instr(Mnemonic.tbnz, InstrClass.CondJump, W_0,I(19,5,w32),J(5,14))));
 
             var CondBranchImm = Mask(Bf((24,1),(4,1)),
-                Instr(Mnemonic.b, InstrClass.ConditionalTransfer, C_0_4,J(5,19)),
+                Instr(Mnemonic.b, InstrClass.CondJump, C_0_4,J(5,19)),
                 invalid,
                 invalid,
                 invalid);

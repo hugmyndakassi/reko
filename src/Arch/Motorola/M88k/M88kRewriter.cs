@@ -800,7 +800,7 @@ internal class M88kRewriter : IEnumerable<RtlInstructionCluster>
         {
             predicate = m.Not(predicate);
         }
-        m.BranchInMiddleOfInstruction(predicate, instr.NextAddress, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(predicate, instr.NextAddress, InstrClass.CondJump);
         m.SideEffect(m.Fn(trap_intrinsic, Op(instr, 2)));
     }
 
@@ -808,7 +808,7 @@ internal class M88kRewriter : IEnumerable<RtlInstructionCluster>
     {
         var src1 = Op(instr, 0);
         var src2 = Op(instr, 1);
-        m.BranchInMiddleOfInstruction(m.Ule(src1, src2), instr.NextAddress, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Ule(src1, src2), instr.NextAddress, InstrClass.CondJump);
         m.SideEffect(m.Fn(tbnd_intrinsic));
     }
 
@@ -831,11 +831,11 @@ internal class M88kRewriter : IEnumerable<RtlInstructionCluster>
                 e = InvalidConstant.Create(PrimitiveType.Bool);
                 break;
             };
-            m.BranchInMiddleOfInstruction(e, instr.NextAddress, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(e, instr.NextAddress, InstrClass.CondJump);
         }
         else
         {
-            m.BranchInMiddleOfInstruction(m.Fn(bcnd_intrinsic, reg), instr.NextAddress, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Fn(bcnd_intrinsic, reg), instr.NextAddress, InstrClass.CondJump);
         }
         m.SideEffect(m.Fn(trap_intrinsic, Op(instr, 2)));
     }

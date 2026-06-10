@@ -2004,7 +2004,7 @@ namespace Reko.UnitTests.Arch.PowerPC
         public void PPCrw_rfi()
         {
             AssertCode(0x4C000024, //  rfi
-                "0|R--|00100000(4): 2 instructions",
+                "0|S--|00100000(4): 2 instructions",
                 "1|L--|__write_msr<word32>(srr1)",
                 "2|T--|goto srr0");
         }

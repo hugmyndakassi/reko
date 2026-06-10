@@ -95,7 +95,7 @@ namespace Reko.Arch.X86
                 d[0x2C] = Instr(Mnemonic.ror4, Eb);
 
                 // 0F FF ib: break to emulator
-                d[0xFF] = Instr(Mnemonic.brkem, InstrClass.Transfer | InstrClass.Call, Ib);
+                d[0xFF] = Instr(Mnemonic.brkem, InstrClass.Call, Ib);
             }
         }
     }

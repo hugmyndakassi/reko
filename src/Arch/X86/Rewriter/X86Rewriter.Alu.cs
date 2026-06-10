@@ -439,7 +439,7 @@ namespace Reko.Arch.X86.Rewriter
             m.BranchInMiddleOfInstruction(
                 test,
                 instrCur.Address + instrCur.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             var opSrc = SrcOp(src);
             var opDst = SrcOp(dst);
             m.Assign(opDst, opSrc);
@@ -1314,7 +1314,7 @@ namespace Reko.Arch.X86.Rewriter
             if (instrCur.RepPrefix != 0)
             {
                 regCX = orw.AluRegister(Registers.rcx, instrCur.AddressWidth);
-                m.BranchInMiddleOfInstruction(m.Eq0(regCX), instrCur.Address + instrCur.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq0(regCX), instrCur.Address + instrCur.Length, InstrClass.CondJump);
             }
 
             bool incSi = false;
@@ -1400,7 +1400,7 @@ namespace Reko.Arch.X86.Rewriter
                     var cc = (instrCur.RepPrefix == 2)
                         ? ConditionCode.NE
                         : ConditionCode.EQ;
-                    m.Branch(m.Test(cc, binder.EnsureFlagGroup(arch.Registers.Z)).Invert(), topOfLoop, InstrClass.ConditionalTransfer);
+                    m.Branch(m.Test(cc, binder.EnsureFlagGroup(arch.Registers.Z)).Invert(), topOfLoop, InstrClass.CondJump);
                     break;
                 }
             default:

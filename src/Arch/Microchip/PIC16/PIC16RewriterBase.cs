@@ -249,7 +249,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_BTFSC()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             GetSrc(out var srcMem);
             var mask = GetBitMask(instrCurr.Operands[1], false);
             var res = m.And(srcMem, mask);
@@ -258,7 +258,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_BTFSS()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             GetSrc(out var srcMem);
             var mask = GetBitMask(instrCurr.Operands[1], false);
             var res = m.And(srcMem, mask);
@@ -267,7 +267,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_CALL()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var target = instrCurr.Operands[0] as PICOperandProgMemoryAddress ?? throw new InvalidOperationException($"Invalid program address operand: {instrCurr.Operands[0]}");
             Address retaddr = instrCurr.Address + instrCurr.Length;
             var dst = PushToHWStackAccess();
@@ -315,7 +315,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_DECFSZ()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             GetSrcAndDst(out var srcMem, out var dstMem);
             m.Assign(dstMem, m.ISub(srcMem, m.Byte(1)));
             m.Branch(m.Eq0(dstMem), SkipToAddr(), iclass);
@@ -323,7 +323,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_GOTO()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var target = instrCurr.Operands[0] as PICOperandProgMemoryAddress ?? throw new InvalidOperationException($"Invalid program address operand: {instrCurr.Operands[0]}");
             m.Goto(target.CodeTarget);
         }
@@ -337,7 +337,7 @@ namespace Reko.Arch.MicrochipPIC.PIC16
 
         private void Rewrite_INCFSZ()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             GetSrcAndDst(out var srcMem, out var dstMem);
             m.Assign(dstMem, m.IAdd(srcMem, m.Byte(1)));
             m.Branch(m.Eq0(dstMem), SkipToAddr(), iclass);

@@ -429,9 +429,9 @@ namespace Reko.Arch.MN103
                     invalid,
                     invalid,
 
-                    Instr(Mnemonic.rets, InstrClass.Transfer|InstrClass.Return),
-                    Instr(Mnemonic.rti, InstrClass.Transfer|InstrClass.Return),
-                    Instr(Mnemonic.trap, InstrClass.Transfer|InstrClass.Call),
+                    Instr(Mnemonic.rets, InstrClass.Return),
+                    Instr(Mnemonic.rti, InstrClass.Return),
+                    Instr(Mnemonic.trap, InstrClass.Call),
                     invalid));
             var f1decoders = Mask(4, 4, "  F1",
                 Instr(Mnemonic.sub, dm, dn),
@@ -1287,23 +1287,23 @@ namespace Reko.Arch.MN103
                 cmp_imm8_an,
 
                 // 0xC0
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, d8_pc),
+                Instr(Mnemonic.blt, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bge, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.ble, InstrClass.CondJump, d8_pc),
 
-                Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, d8_pc),
+                Instr(Mnemonic.bcs, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bhi, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bcc, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bls, InstrClass.CondJump, d8_pc),
 
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, d8_pc),
-                Instr(Mnemonic.bra, InstrClass.Transfer, d8_pc),
+                Instr(Mnemonic.beq, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bne, InstrClass.CondJump, d8_pc),
+                Instr(Mnemonic.bra, InstrClass.Jump, d8_pc),
                 Instr(Mnemonic.nop, InstrClass.Linear | InstrClass.Padding),
 
-                Instr(Mnemonic.jmp, InstrClass.Transfer, d16_pc),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, d16_pc, regs, imm8),
+                Instr(Mnemonic.jmp, InstrClass.Jump, d16_pc),
+                Instr(Mnemonic.call, InstrClass.Call, d16_pc, regs, imm8),
                 Instr(Mnemonic.movm, indsp, regs),
                 Instr(Mnemonic.movm, regs, indsp),
 
@@ -1323,10 +1323,10 @@ namespace Reko.Arch.MN103
                 Instr(Mnemonic.lra),
                 Instr(Mnemonic.setlb),
 
-                Instr(Mnemonic.jmp, InstrClass.Transfer, d32_pc),
-                Instr(Mnemonic.call, InstrClass.Transfer | InstrClass.Call, d32_pc, regs, imm8),
-                Instr(Mnemonic.retf, InstrClass.Transfer | InstrClass.Return, regs, imm8),
-                Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, regs, imm8),
+                Instr(Mnemonic.jmp, InstrClass.Jump, d32_pc),
+                Instr(Mnemonic.call, InstrClass.Call, d32_pc, regs, imm8),
+                Instr(Mnemonic.retf, InstrClass.Return, regs, imm8),
+                Instr(Mnemonic.ret, InstrClass.Return, regs, imm8),
 
                 // 0xE0
                 add_dm_dn,

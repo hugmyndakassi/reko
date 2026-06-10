@@ -93,21 +93,21 @@ namespace Reko.Arch.Telink
         private static readonly RegisterStorage[] reg3encodings = Registers.GpRegisters.Take(8).ToArray();
         private static readonly (Mnemonic, InstrClass)[] branches = new (Mnemonic, InstrClass)[16]
         {
-            (Mnemonic.tjeq, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjne, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjcs, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjcc, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjmi, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjpl, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjvs, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjvc, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjhi, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjls, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjge, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjlt, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjgt, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjle, InstrClass.ConditionalTransfer),
-            (Mnemonic.tjal, InstrClass.Transfer),
+            (Mnemonic.tjeq, InstrClass.CondJump),
+            (Mnemonic.tjne, InstrClass.CondJump),
+            (Mnemonic.tjcs, InstrClass.CondJump),
+            (Mnemonic.tjcc, InstrClass.CondJump),
+            (Mnemonic.tjmi, InstrClass.CondJump),
+            (Mnemonic.tjpl, InstrClass.CondJump),
+            (Mnemonic.tjvs, InstrClass.CondJump),
+            (Mnemonic.tjvc, InstrClass.CondJump),
+            (Mnemonic.tjhi, InstrClass.CondJump),
+            (Mnemonic.tjls, InstrClass.CondJump),
+            (Mnemonic.tjge, InstrClass.CondJump),
+            (Mnemonic.tjlt, InstrClass.CondJump),
+            (Mnemonic.tjgt, InstrClass.CondJump),
+            (Mnemonic.tjle, InstrClass.CondJump),
+            (Mnemonic.tjal, InstrClass.Jump),
             (Mnemonic.Invalid, InstrClass.Invalid)
         };
 

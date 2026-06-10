@@ -181,22 +181,22 @@ namespace Reko.Arch.Angstrem
                 Instr(Mnemonic.nop, InstrClass.Linear | InstrClass.Padding | InstrClass.Zero),
                 Instr(Mnemonic.wait, InstrClass.Linear| InstrClass.Privileged),
                 Instr(Mnemonic.reset, InstrClass.Linear | InstrClass.Privileged),
-                Instr(Mnemonic.ijmp, InstrClass.Transfer),
+                Instr(Mnemonic.ijmp, InstrClass.Jump),
 
                 Instr(Mnemonic.tof),
                 Instr(Mnemonic.tdc),
                 Instr(Mnemonic.sksp),
-                Instr(Mnemonic.ijsr, InstrClass.Transfer| InstrClass.Call),
+                Instr(Mnemonic.ijsr, InstrClass.Call),
 
                 Instr(Mnemonic.stop, InstrClass.Linear| InstrClass.Privileged),
                 Nyi("01001"),
                 Nyi("01010"),
                 Nyi("01011"),
 
-                Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return),
-                Instr(Mnemonic.rti, InstrClass.Transfer | InstrClass.Return),
-                Instr(Mnemonic.rts0, InstrClass.Transfer|InstrClass.Return),
-                Instr(Mnemonic.rts1, InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.rts, InstrClass.Return),
+                Instr(Mnemonic.rti, InstrClass.Return),
+                Instr(Mnemonic.rts0, InstrClass.Return),
+                Instr(Mnemonic.rts1, InstrClass.Return),
 
                 push,
                 push,
@@ -282,17 +282,17 @@ namespace Reko.Arch.Angstrem
                 Instr(Mnemonic.movl, R0, I5L8),
                 Instr(Mnemonic.cmpl, R0, I5L8),
                 Mask(12, 1, "  100",
-                    Instr(Mnemonic.jmp, InstrClass.Transfer, A10),
-                    Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, A10)),
+                    Instr(Mnemonic.jmp, InstrClass.Jump, A10),
+                    Instr(Mnemonic.jsr, InstrClass.Call, A10)),
                 Mask(12, 1, "  101",
-                    Instr(Mnemonic.jz, InstrClass.ConditionalTransfer, A10),
-                    Instr(Mnemonic.jnz, InstrClass.ConditionalTransfer, A10)),
+                    Instr(Mnemonic.jz, InstrClass.CondJump, A10),
+                    Instr(Mnemonic.jnz, InstrClass.CondJump, A10)),
                 Mask(12, 1, "  110",
-                    Instr(Mnemonic.jns, InstrClass.ConditionalTransfer, A10),
-                    Instr(Mnemonic.js, InstrClass.ConditionalTransfer, A10)),
+                    Instr(Mnemonic.jns, InstrClass.CondJump, A10),
+                    Instr(Mnemonic.js, InstrClass.CondJump, A10)),
                 Mask(12, 1, "  111",
-                    Instr(Mnemonic.jnc, InstrClass.ConditionalTransfer, A10),
-                    Instr(Mnemonic.jc, InstrClass.ConditionalTransfer, A10)));
+                    Instr(Mnemonic.jnc, InstrClass.CondJump, A10),
+                    Instr(Mnemonic.jc, InstrClass.CondJump, A10)));
         }
     }
 }

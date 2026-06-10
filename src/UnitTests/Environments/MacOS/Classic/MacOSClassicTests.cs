@@ -52,7 +52,7 @@ namespace Reko.UnitTests.Environments.MacOS.Classic
             w.WriteBeUInt32(uAddrDirect);
 
             var m = new RtlEmitter(null);
-            var instr = new RtlCall(m.IAdd(a5, jumpTableOffset), 4, InstrClass.Call);
+            var instr = new RtlCall(m.IAdd(a5, jumpTableOffset), 4, InstrClass.CallInd);
             var addr =  macOS.ResolveIndirectCall(instr);
 
             Assert.AreEqual(uAddrDirect, addr.Value.ToUInt32());

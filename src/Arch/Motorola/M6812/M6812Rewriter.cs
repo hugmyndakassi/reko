@@ -451,7 +451,7 @@ namespace Reko.Arch.Motorola.M6812
             m.Branch(
                 m.Test(cc, binder.EnsureFlagGroup(grf)),
                 addr,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBclr()
@@ -691,7 +691,7 @@ namespace Reko.Arch.Motorola.M6812
         {
             var reg = RewriteOp(instr.Operands[0]);
             m.Assign(reg, m.IAdd(reg, 1));
-            m.Branch(cmp(reg), (Address)instr.Operands[1], InstrClass.ConditionalTransfer);
+            m.Branch(cmp(reg), (Address)instr.Operands[1], InstrClass.CondJump);
         }
 
         private void RewriteIncDec(Func<Expression, Expression, Expression> fn)

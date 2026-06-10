@@ -359,7 +359,7 @@ namespace Reko.UnitTests.Arch.Arm
         public void ArmDasm_ldm_read_pc()
         {
             Disassemble32(0xE89B800F);
-            Expect_Code("ldm\tfp,{r0-r3,pc}", InstrClass.Transfer);
+            Expect_Code("ldm\tfp,{r0-r3,pc}", InstrClass.JumpInd);
         }
 
         [Test]
@@ -444,7 +444,7 @@ namespace Reko.UnitTests.Arch.Arm
         public void ArmDasm_ldrls_pc()
         {
             Disassemble32(0x979FF103);
-            Expect_Code("ldrls\tpc,[pc,r3,lsl #2]", InstrClass.ConditionalTransfer | InstrClass.Indirect);   // 
+            Expect_Code("ldrls\tpc,[pc,r3,lsl #2]", InstrClass.CondJump | InstrClass.Indirect);   // 
         }
 
         [Test]

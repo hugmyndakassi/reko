@@ -42,7 +42,7 @@ namespace Reko.Core.Rtl
         public RtlMicroGoto(int indexTarget)
         {
             this.Target = indexTarget;
-            this.Class = InstrClass.Transfer;
+            this.Class = InstrClass.Jump;
         }
 
 
@@ -56,7 +56,7 @@ namespace Reko.Core.Rtl
         {
             this.Condition = condition;
             this.Target = indexTarget;
-            this.Class = InstrClass.ConditionalTransfer;
+            this.Class = InstrClass.CondJump;
         }
 
         /// <summary>

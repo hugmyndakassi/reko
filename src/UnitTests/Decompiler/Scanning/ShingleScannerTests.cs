@@ -235,9 +235,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
                     new RtlCall(
                         Address.Ptr32((uint)uAddrDst),
                         0,
-                        InstrClass.Transfer|InstrClass.Call))
+                        InstrClass.Call))
             {
-                Class = InstrClass.Transfer|InstrClass.Call
+                Class = InstrClass.Call
             });
         }
 
@@ -250,9 +250,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
                     new RtlBranch(
                         id,
                         Address.Ptr32(b),
-                        InstrClass.ConditionalTransfer))
+                        InstrClass.CondJump))
                 {
-                    Class = InstrClass.ConditionalTransfer
+                    Class = InstrClass.CondJump
                 });
         }
 
@@ -264,9 +264,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var addr = Address.Ptr32(uAddr);
             var addrDst = Address.Ptr32(uAddrDst);
             clusters.Add(uAddr, new RtlInstructionCluster(addr, len,
-                new RtlGoto(addrDst, InstrClass.Transfer))
+                new RtlGoto(addrDst, InstrClass.Jump))
             {
-                Class = InstrClass.Transfer
+                Class = InstrClass.Jump
             });
         }
 
@@ -277,9 +277,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
         {
             var addr = Address.Ptr32((uint) uAddr);
             clusters.Add(uAddr, new RtlInstructionCluster(addr, len,
-                new RtlGoto(id, InstrClass.Transfer | InstrClass.Indirect))
+                new RtlGoto(id, InstrClass.JumpInd))
                 {
-                    Class = InstrClass.Transfer | InstrClass.Indirect
+                    Class = InstrClass.JumpInd
                 });
         }
 
@@ -301,9 +301,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
             clusters.Add(
                 uAddr,
                 new RtlInstructionCluster(addr, len,
-                    new RtlReturn(0, 0, InstrClass.Transfer|InstrClass.Return))
+                    new RtlReturn(0, 0, InstrClass.Return))
                 {
-                    Class = InstrClass.Transfer | InstrClass.Return
+                    Class = InstrClass.Return
                 });
         }
 

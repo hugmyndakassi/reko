@@ -2547,7 +2547,7 @@ namespace Reko.UnitTests.Arch.RiscV
         {
             Given_RiscVInstructions(0x00008067); // jalr zero,ra,0
             AssertCode(
-                "0|T--|0000000000010000(4): 1 instructions",
+                "0|R--|0000000000010000(4): 1 instructions",
                 "1|R--|return (0,0)");
         }
 
@@ -2664,7 +2664,7 @@ namespace Reko.UnitTests.Arch.RiscV
         {
             Given_HexString("73002030");
             AssertCode(     // mret
-                "0|R--|0000000000010000(4): 2 instructions",
+                "0|S--|0000000000010000(4): 2 instructions",
                 "1|L--|__mret()",
                 "2|R--|return (0,0)");
         }
@@ -2993,7 +2993,7 @@ namespace Reko.UnitTests.Arch.RiscV
         {
             Given_HexString("73002010");
             AssertCode(     // sret
-                "0|R--|0000000000010000(4): 2 instructions",
+                "0|S--|0000000000010000(4): 2 instructions",
                 "1|L--|__sret()",
                 "2|R--|return (0,0)");
         }

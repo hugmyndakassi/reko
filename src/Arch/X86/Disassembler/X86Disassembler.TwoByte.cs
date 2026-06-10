@@ -242,11 +242,11 @@ namespace Reko.Arch.X86
                 d[0x04] = s_invalid;
                 d[0x05] = Amd64Instr(
                     s_invalid,
-                    Instr(Mnemonic.syscall, InstrClass.Transfer|InstrClass.Call));
+                    Instr(Mnemonic.syscall, InstrClass.Call));
                 d[0x06] = Instr(Mnemonic.clts, InstrClass.Linear|InstrClass.Privileged);
                 d[0x07] = Amd64Instr(
                     s_invalid,
-                    Instr(Mnemonic.sysret, InstrClass.Transfer | InstrClass.Return));
+                    Instr(Mnemonic.sysret, InstrClass.Return));
 
                 d[0x08] = Instr(Mnemonic.invd, InstrClass.Linear | InstrClass.Privileged);
                 d[0x09] = Instr(Mnemonic.wbinvd, InstrClass.Linear | InstrClass.Privileged);
@@ -387,12 +387,12 @@ namespace Reko.Arch.X86
                     dec66:VexInstr(Mnemonic.comisd, Mnemonic.vcomisd, Vsd,Wsd,Sae));
 
 				// 0F 30
-				d[0x30] = isRex2 ? s_invalid : Instr(Mnemonic.wrmsr, InstrClass.Linear|InstrClass.Privileged);
+				d[0x30] = isRex2 ? s_invalid : Instr(Mnemonic.wrmsr, InstrClass.Linear | InstrClass.Privileged);
                 d[0x31] = isRex2 ? s_invalid : Instr(Mnemonic.rdtsc, InstrClass.Linear | InstrClass.Privileged);
-                d[0x32] = isRex2 ? s_invalid : Instr(Mnemonic.rdmsr, InstrClass.Linear|InstrClass.Privileged);
+                d[0x32] = isRex2 ? s_invalid : Instr(Mnemonic.rdmsr, InstrClass.Linear | InstrClass.Privileged);
                 d[0x33] = isRex2 ? s_invalid : Instr(Mnemonic.rdpmc, InstrClass.Linear | InstrClass.Privileged);
                 d[0x34] = isRex2 ? s_invalid : Instr(Mnemonic.sysenter);
-                d[0x35] = isRex2 ? s_invalid : Instr(Mnemonic.sysexit, InstrClass.Transfer|InstrClass.Return);
+                d[0x35] = isRex2 ? s_invalid : Instr(Mnemonic.sysexit, InstrClass.Return);
                 d[0x36] = s_invalid;
                 d[0x37] = isRex2 ? s_invalid : Instr(Mnemonic.getsec, InstrClass.Linear|InstrClass.Privileged);
 
@@ -697,27 +697,27 @@ namespace Reko.Arch.X86
                     decF3:VexInstr(Mnemonic.movdqu, Mnemonic.vmovdqu, Wx,Vx));
 
                 // 0F 80
-                d[0x80] = isRex2 ? s_invalid : Instr(Mnemonic.jo, InstrClass.ConditionalTransfer, Jv);
-				d[0x81] = isRex2 ? s_invalid : Instr(Mnemonic.jno, InstrClass.ConditionalTransfer, Jv);
-				d[0x82] = isRex2 ? s_invalid : Instr(Mnemonic.jc,	InstrClass.ConditionalTransfer, Jv);
-				d[0x83] = isRex2 ? s_invalid : Instr(Mnemonic.jnc,	InstrClass.ConditionalTransfer, Jv);
+                d[0x80] = isRex2 ? s_invalid : Instr(Mnemonic.jo, InstrClass.CondJump, Jv);
+				d[0x81] = isRex2 ? s_invalid : Instr(Mnemonic.jno, InstrClass.CondJump, Jv);
+				d[0x82] = isRex2 ? s_invalid : Instr(Mnemonic.jc,	InstrClass.CondJump, Jv);
+				d[0x83] = isRex2 ? s_invalid : Instr(Mnemonic.jnc,	InstrClass.CondJump, Jv);
                 d[0x84] = isRex2 ? s_invalid : VexInstr(
-                    Instr(Mnemonic.jz, InstrClass.ConditionalTransfer, Jv),
-                    Instr(Mnemonic.jkz, InstrClass.ConditionalTransfer, vK, Jv));
+                    Instr(Mnemonic.jz, InstrClass.CondJump, Jv),
+                    Instr(Mnemonic.jkz, InstrClass.CondJump, vK, Jv));
                 d[0x85] = isRex2 ? s_invalid : VexInstr(
-                    Instr(Mnemonic.jnz, InstrClass.ConditionalTransfer, Jv),
-                    Instr(Mnemonic.jknz, InstrClass.ConditionalTransfer, vK, Jv));
-                d[0x86] = isRex2 ? s_invalid : Instr(Mnemonic.jbe, InstrClass.ConditionalTransfer, Jv);
-				d[0x87] = isRex2 ? s_invalid : Instr(Mnemonic.ja,  InstrClass.ConditionalTransfer, Jv);
+                    Instr(Mnemonic.jnz, InstrClass.CondJump, Jv),
+                    Instr(Mnemonic.jknz, InstrClass.CondJump, vK, Jv));
+                d[0x86] = isRex2 ? s_invalid : Instr(Mnemonic.jbe, InstrClass.CondJump, Jv);
+				d[0x87] = isRex2 ? s_invalid : Instr(Mnemonic.ja,  InstrClass.CondJump, Jv);
 
-				d[0x88] = isRex2 ? s_invalid : Instr(Mnemonic.js,  InstrClass.ConditionalTransfer, Jv);
-				d[0x89] = isRex2 ? s_invalid : Instr(Mnemonic.jns, InstrClass.ConditionalTransfer, Jv);
-				d[0x8A] = isRex2 ? s_invalid : Instr(Mnemonic.jpe, InstrClass.ConditionalTransfer, Jv);
-				d[0x8B] = isRex2 ? s_invalid : Instr(Mnemonic.jpo, InstrClass.ConditionalTransfer, Jv);
-				d[0x8C] = isRex2 ? s_invalid : Instr(Mnemonic.jl,  InstrClass.ConditionalTransfer, Jv);
-				d[0x8D] = isRex2 ? s_invalid : Instr(Mnemonic.jge, InstrClass.ConditionalTransfer, Jv);
-				d[0x8E] = isRex2 ? s_invalid : Instr(Mnemonic.jle, InstrClass.ConditionalTransfer, Jv);
-				d[0x8F] = isRex2 ? s_invalid : Instr(Mnemonic.jg,  InstrClass.ConditionalTransfer, Jv);
+				d[0x88] = isRex2 ? s_invalid : Instr(Mnemonic.js,  InstrClass.CondJump, Jv);
+				d[0x89] = isRex2 ? s_invalid : Instr(Mnemonic.jns, InstrClass.CondJump, Jv);
+				d[0x8A] = isRex2 ? s_invalid : Instr(Mnemonic.jpe, InstrClass.CondJump, Jv);
+				d[0x8B] = isRex2 ? s_invalid : Instr(Mnemonic.jpo, InstrClass.CondJump, Jv);
+				d[0x8C] = isRex2 ? s_invalid : Instr(Mnemonic.jl,  InstrClass.CondJump, Jv);
+				d[0x8D] = isRex2 ? s_invalid : Instr(Mnemonic.jge, InstrClass.CondJump, Jv);
+				d[0x8E] = isRex2 ? s_invalid : Instr(Mnemonic.jle, InstrClass.CondJump, Jv);
+				d[0x8F] = isRex2 ? s_invalid : Instr(Mnemonic.jg,  InstrClass.CondJump, Jv);
 
                 // 0F 90
                 d[0x90] = VexInstr(

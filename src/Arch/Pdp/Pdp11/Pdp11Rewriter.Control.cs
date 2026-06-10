@@ -36,29 +36,29 @@ namespace Reko.Arch.Pdp.Pdp11
     {
         private void RewriteBpt()
         {
-            this.iclass = InstrClass.Call | InstrClass.Transfer;
+            this.iclass = InstrClass.Call;
             var grf = binder.EnsureFlagGroup(Registers.NZVC);
             m.Assign(grf, m.Fn(bpt_intrinsic));
         }
 
         private void RewriteBr()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             m.Goto((Address)instr.Operands[0]);
         }
 
         private void RewriteBxx(ConditionCode cc, FlagGroupStorage flags)
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             m.Branch(
                 m.Test(cc, binder.EnsureFlagGroup(flags)),
                 (Address)instr.Operands[0],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteEmt()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Call;
             var imm = ((Constant)instr.Operands[0]).ToByte();
             var svc = m.Word16((ushort)(0x8800 | imm));
             m.SideEffect(m.Fn(CommonOps.Syscall_1, svc));
@@ -72,7 +72,7 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private void RewriteIot()
         {
-            this.iclass = InstrClass.Call | InstrClass.Transfer;
+            this.iclass = InstrClass.Call;
             var grf = binder.EnsureFlagGroup(arch.GetFlagGroup(Registers.psw, (uint)(FlagM.NF | FlagM.ZF | FlagM.VF | FlagM.CF)));
             m.Assign(grf, m.Fn(bpt_intrinsic));
         }
@@ -82,7 +82,7 @@ namespace Reko.Arch.Pdp.Pdp11
             var jmpDst = RewriteJmpSrc(instr.Operands[0]);
             if (jmpDst is not null)
             {
-                this.iclass = InstrClass.Transfer;
+                this.iclass = InstrClass.Jump;
                 m.Goto(jmpDst);
             }
             else
@@ -105,12 +105,12 @@ namespace Reko.Arch.Pdp.Pdp11
                     m.Assign(m.Mem16(sp), regLink);
 
                     m.Assign(regLink, instr.Address + instr.Length);
-                    this.iclass = InstrClass.Transfer;
+                    this.iclass = InstrClass.Jump;
                     m.Goto(callDst);
                 }
                 else
                 {
-                    this.iclass = InstrClass.Transfer | InstrClass.Call;
+                    this.iclass = InstrClass.Call;
                     m.Call(callDst, 2);
                 }
             }
@@ -122,7 +122,7 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private void RewriteMark()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var sp = binder.EnsureRegister(Registers.sp);
             var pc = binder.EnsureRegister(Registers.pc);
             var tmp = binder.CreateTemporary(PrimitiveType.Word16);
@@ -173,7 +173,7 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private void RewriteSob()
         {
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             var reg = RewriteSrc(instr.Operands[0]);
             if (reg is null)
             {
@@ -193,7 +193,7 @@ namespace Reko.Arch.Pdp.Pdp11
 
         private void RewriteTrap()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             var imm = ((Constant)instr.Operands[0]).ToByte();
             var svc = m.Word16((ushort)(0x8900 | imm));
             m.SideEffect(m.Fn(CommonOps.Syscall_1, svc));

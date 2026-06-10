@@ -27,13 +27,11 @@ using Reko.Core.Machine;
 using Reko.Core.Memory;
 using Reko.Core.Services;
 using Reko.Core.Types;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Reko.Arch.C166
 {
-    // C166 Family User’s Manual 29 V2.0, 2001-03
+    // C166 Family User's Manual 29 V2.0, 2001-03
     using Decoder = Reko.Core.Machine.Decoder<C166Disassembler, Mnemonic, C166Instruction>;
 
     public class C166Disassembler : DisassemblerBase<C166Instruction, Mnemonic>
@@ -47,7 +45,7 @@ namespace Reko.Arch.C166
         {
             this.arch = arch;
             this.rdr = rdr;
-            this.ops = new List<MachineOperand>();
+            this.ops = [];
         }
 
         public override C166Instruction? DisassembleInstruction()
@@ -621,7 +619,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.bfldl, QQaadd),
             Instr(Mnemonic.mul, nm16),
             Instr(Mnemonic.rol, nm16),
-            Instr(Mnemonic.jmpr, InstrClass.Transfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.Jump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -649,7 +647,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.mulu, nm16),
 
             Instr(Mnemonic.rol, R8w, data4_16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -676,7 +674,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.bcmp, QQZZqz),
             Instr(Mnemonic.prior, nm16),
             Instr(Mnemonic.ror, nm16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -706,7 +704,7 @@ namespace Reko.Arch.C166
             invalid,
 
             Instr(Mnemonic.ror, R8w, data4_8),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -735,7 +733,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.div, nn),
 
             Instr(Mnemonic.shl, nm16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -763,7 +761,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.divu, nn),
 
             Instr(Mnemonic.shl, R8w, data4_8),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -792,7 +790,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.divl, nn),
 
             Instr(Mnemonic.shr, nm16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -820,7 +818,7 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.divlu, nn),
 
             Instr(Mnemonic.shr, R8w, data4_8),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -840,11 +838,11 @@ namespace Reko.Arch.C166
                     invalid)),
             Instr(Mnemonic.mov, PreDec8w,R12w),
             Instr(Mnemonic.movb, PreDec8b,R12b),
-            Instr(Mnemonic.jb, InstrClass.ConditionalTransfer, QQrrq),
+            Instr(Mnemonic.jb, InstrClass.CondJump, QQrrq),
             invalid,
             
             invalid,
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -866,11 +864,11 @@ namespace Reko.Arch.C166
             
             Instr(Mnemonic.mov, R12w, PostInc8w),
             Instr(Mnemonic.movb, R12b, PostInc8b),
-            Instr(Mnemonic.jnb, InstrClass.ConditionalTransfer, QQrrq),
-            Instr(Mnemonic.trap, InstrClass.Transfer|InstrClass.Call, trapNo),
+            Instr(Mnemonic.jnb, InstrClass.CondJump, QQrrq),
+            Instr(Mnemonic.trap, InstrClass.Call, trapNo),
             
-            Instr(Mnemonic.jmpi, InstrClass.Transfer, c, Rdmw),  // 2 - cc, [Rw] 
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpi, InstrClass.JumpInd, c, Rdmw),  // 2 - cc, [Rw] 
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
             
@@ -895,11 +893,11 @@ namespace Reko.Arch.C166
 
             Instr(Mnemonic.mov, R12w, Rdmw),
             Instr(Mnemonic.movb, R12b, Rdmb),
-            Instr(Mnemonic.jbc, InstrClass.ConditionalTransfer, QQrrq),
-            Instr(Mnemonic.calli, InstrClass.Call|InstrClass.Transfer, c, Rdmw),
+            Instr(Mnemonic.jbc, InstrClass.CondJump, QQrrq),
+            Instr(Mnemonic.calli, InstrClass.CondCall, c, Rdmw),
 
             Instr(Mnemonic.ashr, nm16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -923,10 +921,10 @@ namespace Reko.Arch.C166
                     invalid)),
             Instr(Mnemonic.mov, Rdmw, R12w),
             Instr(Mnemonic.movb, Rdmb, R12b),
-            Instr(Mnemonic.jnbs, InstrClass.ConditionalTransfer, QQrrq),
-            Instr(Mnemonic.callr, InstrClass.Call|InstrClass.ConditionalTransfer, rel),
+            Instr(Mnemonic.jnbs, InstrClass.CondJump, QQrrq),
+            Instr(Mnemonic.callr, InstrClass.CondCall, rel),
             Instr(Mnemonic.ashr, R8w, data4_16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -944,16 +942,16 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.mov, Rdnw, Rdmw),
             Instr(Mnemonic.movb, Rdnb, Rdmb),
             Select((8,4), Is0,
-                Instr(Mnemonic.calla, InstrClass.Call|InstrClass.ConditionalTransfer, c, caddr),
+                Instr(Mnemonic.calla, InstrClass.CondCall, c, caddr),
                 invalid),
             Select((8,8), Is0,
-                Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),
+                Instr(Mnemonic.ret, InstrClass.Return),
                 invalid),
             
             Select((8,8), Is0,
                 Instr(Mnemonic.nop, InstrClass.Linear|InstrClass.Padding),
                 invalid),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -977,15 +975,15 @@ namespace Reko.Arch.C166
 
             Instr(Mnemonic.mov, PostInc12w, Rdmw),
             Instr(Mnemonic.movb, PostInc12b, Rdmb),
-            Instr(Mnemonic.calls, InstrClass.Call|InstrClass.Transfer, seg, caddr),
+            Instr(Mnemonic.calls, InstrClass.Call, seg, caddr),
             Select((8,8), Is0,
-                Instr(Mnemonic.rets, InstrClass.Transfer| InstrClass.Return),
+                Instr(Mnemonic.rets, InstrClass.Return),
                 invalid),
 
             Select((14,2), u => u == 0b01,
                 Instr(Mnemonic.extp, R8w, data2_12),
                 invalid),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),  // 2 - cc_SGE, rel 
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),  // 2 - cc_SGE, rel 
             Instr(Mnemonic.bclr, q_QQ()),  // 2 - bitoff.13 
             Instr(Mnemonic.bset, q_QQ()),  // 2 - bitoff.13 
 
@@ -1003,12 +1001,12 @@ namespace Reko.Arch.C166
             Instr(Mnemonic.mov, Rdnw,PostInc8w),
             Instr(Mnemonic.movb, Rdnb,PostInc8b),
             Select((8,4), Is0,
-                Instr(Mnemonic.jmpa, InstrClass.ConditionalTransfer, c, caddr),
+                Instr(Mnemonic.jmpa, InstrClass.CondJump, c, caddr),
                 invalid),
-            Instr(Mnemonic.retp, InstrClass.Transfer| InstrClass.Return, reg16),
+            Instr(Mnemonic.retp, InstrClass.Return, reg16),
             
             Instr(Mnemonic.push, reg16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),
             Instr(Mnemonic.bclr, q_QQ()),
             Instr(Mnemonic.bset, q_QQ()),
 
@@ -1025,13 +1023,13 @@ namespace Reko.Arch.C166
 
             invalid,
             invalid,
-            Instr(Mnemonic.jmps, InstrClass.Transfer, seg, caddr),
+            Instr(Mnemonic.jmps, InstrClass.Jump, seg, caddr),
             Select((8, 8), u => u == 0x88u, "  FB",
-                Instr(Mnemonic.reti, InstrClass.Transfer| InstrClass.Return),
+                Instr(Mnemonic.reti, InstrClass.Return),
                 invalid),  // 2 - – 
 
             Instr(Mnemonic.pop, reg16),
-            Instr(Mnemonic.jmpr, InstrClass.ConditionalTransfer, c4, rel),  // 2 - cc_ULE, rel 
+            Instr(Mnemonic.jmpr, InstrClass.CondJump, c4, rel),  // 2 - cc_ULE, rel 
             Instr(Mnemonic.bclr, q_QQ()),  // 2 - bitoff.15 
             Instr(Mnemonic.bset, q_QQ())  // 2 - bitoff.15 
         };

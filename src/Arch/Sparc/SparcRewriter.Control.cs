@@ -85,7 +85,7 @@ namespace Reko.Arch.Sparc
 
         private void RewriteJmpl()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var rDst = (RegisterStorage) instrCur.Operands[2];
             var src1 = RewriteOp(instrCur.Operands[0]);
             var src2 = RewriteOp(instrCur.Operands[1]);
@@ -130,7 +130,7 @@ namespace Reko.Arch.Sparc
             m.BranchInMiddleOfInstruction(
                 cond.Invert(),
                 instrCur.Address + instrCur.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.SideEffect(
                 m.Fn(CommonOps.Syscall_1, SimplifySum(src1, src2)));
         }

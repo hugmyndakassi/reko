@@ -47,7 +47,7 @@ namespace Reko.Core.Rtl
             InstrClass rtlClass,
             IProcessorArchitecture? archSwitch = null) : base(target, rtlClass)
         {
-            Debug.Assert((rtlClass & (InstrClass.Call | InstrClass.Transfer)) != 0);
+            Debug.Assert((rtlClass & (InstrClass.Call)) != 0);
             this.ReturnAddressSize = stackPushedReturnAddressSize;
             this.Architecture = archSwitch;
         }

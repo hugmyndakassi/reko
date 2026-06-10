@@ -613,7 +613,7 @@ namespace Reko.Arch.Arm.AArch32
                 }
                 else
                 {
-                    iclass |= InstrClass.Call;
+                    iclass |= InstrClass.CtiCall;
                     ConditionalSkip(true);
                     m.Call(dst, 0);
                 }
@@ -636,7 +636,7 @@ namespace Reko.Arch.Arm.AArch32
                 }
                 else
                 {
-                    iclass = InstrClass.ConditionalTransfer;
+                    iclass = InstrClass.CondJump;
                     if (dstIsAddress)
                     {
                         m.Branch(TestCond(instr.Condition)!, (Address) dst, iclass);
@@ -662,10 +662,10 @@ namespace Reko.Arch.Arm.AArch32
 
         void RewriteCbnz(Func<Expression, Expression> ctor)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             m.Branch(ctor(Operand(0)),
                     (Address)instr.Operands[1],
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
         }
 
         // If a conditional ARM instruction is encountered, generate an IL
@@ -690,7 +690,7 @@ namespace Reko.Arch.Arm.AArch32
             m.BranchInMiddleOfInstruction(
                 TestCond(Invert(cc))!,
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         Expression EffectiveAddress(MemoryOperand mem)

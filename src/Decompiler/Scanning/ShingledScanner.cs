@@ -48,14 +48,8 @@ namespace Reko.Scanning
         private const byte MaybeCode = 1;
         private const byte Data = 0;
 
-        private const InstrClass L = InstrClass.Linear;
         private const InstrClass T = InstrClass.Transfer;
-        
-        private const InstrClass CL = InstrClass.Linear | InstrClass.Conditional;
-        private const InstrClass CT = InstrClass.Transfer | InstrClass.Conditional;
-        
         private const InstrClass DT = InstrClass.Transfer | InstrClass.Delay;
-        private const InstrClass DCT = InstrClass.Transfer | InstrClass.Conditional | InstrClass.Delay;
 
         /// <summary>
         /// A unique address that is used to represent invalid instructions.
@@ -245,7 +239,7 @@ namespace Reko.Scanning
                             }
                         }
                     }
-                    if ((i.Class & InstrClass.Transfer) != 0)
+                    if (i.Class.IsTransfer())
                     {
                         var aa = DestinationAddress(i);
                         if (aa is not null)
@@ -254,7 +248,7 @@ namespace Reko.Scanning
                             if (IsExecutable(addrDest))
                             {
                                 // call / jump destination is executable
-                                if ((i.Class & InstrClass.Call) != 0)
+                                if (i.Class.IsCall())
                                 {
                                     // Don't add edges to other procedures.
                                     if (!this.sr.DirectlyCalledAddresses.TryGetValue(addrDest, out int callTally))
@@ -277,11 +271,11 @@ namespace Reko.Scanning
                         }
                         else
                         {
-                            if ((i.Class & InstrClass.Call) != 0)
+                            if (i.Class.IsCall())
                             {
                                 this.sr.IndirectCalls.Add(i.Address);
                             }
-                            else if ((i.Class & InstrClass.Return) == 0)
+                            else if (!i.Class.IsReturn())
                             {
                                 this.sr.IndirectJumps.Add(i.Address);
                             }
@@ -429,7 +423,7 @@ namespace Reko.Scanning
                             addFallthroughEdgeDeferred = (instr.Class & DT) == DT;
                         }
                         var addrDst = DestinationAddress(instr.rtl);
-                        if (addrDst is not null && (instr.Class & InstrClass.Call) == 0)
+                        if (addrDst is not null && !instr.Class.IsCall())
                         {
                             edges.Add((block, addrDst.Value));
                         }
@@ -541,7 +535,7 @@ namespace Reko.Scanning
                 (i.Class &
                   (InstrClass.Linear 
                    | InstrClass.Conditional 
-                   | InstrClass.Call)) != 0;        //$REVIEW: what if you call a terminating function?
+                   | InstrClass.CtiCall)) != 0;        //$REVIEW: what if you call a terminating function?
         }
 
         /// <summary>

@@ -200,7 +200,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
         private void Call(int uAddr, int len, int next, int uAddrDst)
         {
             var addr = Address.Ptr32((uint)uAddr);
-            var iclass = InstrClass.Call | InstrClass.Transfer;
+            var iclass = InstrClass.Call;
             var cluster = new RtlInstructionCluster(addr, len, [
                 new RtlCall(
                     Address.Ptr32((uint)uAddrDst),
@@ -224,10 +224,10 @@ namespace Reko.UnitTests.Decompiler.Scanning
             m.Branch(
                 m.True(),
                 Address.Ptr32((uint)a),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             var cluster = new RtlInstructionCluster(addr, len, m.Instructions.ToArray())
             {
-                Class = InstrClass.ConditionalTransfer,
+                Class = InstrClass.CondJump,
             };
             EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {
@@ -242,7 +242,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
         {
             var addr = Address.Ptr32((uint) uAddr);
             var m = new RtlEmitter([]);
-            var iclass = InstrClass.ConditionalTransfer | InstrClass.Delay;
+            var iclass = InstrClass.CondJump | InstrClass.Delay;
             if (generator is not null)
             {
                 var ee = generator(m);
@@ -281,7 +281,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
             var addr = Address.Ptr32((uint)uAddr);
             var cluster = new RtlInstructionCluster(addr, len, [])
             {
-                Class = InstrClass.Transfer
+                Class = InstrClass.Jump
             };
             EnsureArch(sr, arch).Add(addr, new ScanResults.Instr
             {

@@ -921,16 +921,16 @@ namespace Reko.Arch.Xtensa
                 reserved);
 
             var decoderJR = new n_Rec(
-                Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),
-                Instr(Mnemonic.retw, InstrClass.Transfer | InstrClass.Return),
-                Instr(Mnemonic.jx, InstrClass.Transfer, Rs),
+                Instr(Mnemonic.ret, InstrClass.Return),
+                Instr(Mnemonic.retw, InstrClass.Return),
+                Instr(Mnemonic.jx, InstrClass.JumpInd, Rs),
                 reserved);
 
             var decoderCALLX = new n_Rec(
-                Instr(Mnemonic.callx0,  InstrClass.Transfer|InstrClass.Call, Rs),
-                Instr(Mnemonic.callx4,  InstrClass.Transfer|InstrClass.Call, Rs),
-                Instr(Mnemonic.callx8,  InstrClass.Transfer|InstrClass.Call, Rs),
-                Instr(Mnemonic.callx12, InstrClass.Transfer|InstrClass.Call, Rs));
+                Instr(Mnemonic.callx0,  InstrClass.CallInd, Rs),
+                Instr(Mnemonic.callx4,  InstrClass.CallInd, Rs),
+                Instr(Mnemonic.callx8,  InstrClass.CallInd, Rs),
+                Instr(Mnemonic.callx12, InstrClass.CallInd, Rs));
 
             var decoderSNM0 = new m_Decoder(
                 Instr(Mnemonic.ill, InstrClass.Invalid|InstrClass.Zero),
@@ -960,7 +960,7 @@ namespace Reko.Arch.Xtensa
                 Instr(Mnemonic.nop, InstrClass.Linear|InstrClass.Padding));
 
             var decoderRFET = new s_Rec(
-                Instr(Mnemonic.rfe, InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.rfe, InstrClass.Return),
                 Instr(Mnemonic.rfue),
                 Instr(Mnemonic.rfde),
                 reserved,
@@ -982,7 +982,7 @@ namespace Reko.Arch.Xtensa
 
             var decoderRFEI = new t_Decoder(
                 decoderRFET,
-                Instr(Mnemonic.rfi, InstrClass.Transfer|InstrClass.Return, Is),
+                Instr(Mnemonic.rfi, InstrClass.Return, Is),
                 Instr(Mnemonic.rfme),
                 reserved,
 
@@ -1009,10 +1009,10 @@ namespace Reko.Arch.Xtensa
                 new bz_Decoder(Mnemonic.bgez));
 
             var decoderBI0 = new m_Decoder(
-                Instr(Mnemonic.beqi, InstrClass.ConditionalTransfer, Rs,bs,j),
-                Instr(Mnemonic.bnei, InstrClass.ConditionalTransfer, Rs,bs,j),
-                Instr(Mnemonic.blti, InstrClass.ConditionalTransfer, Rs,bs,j),
-                Instr(Mnemonic.bgei, InstrClass.ConditionalTransfer, Rs,bs,j));
+                Instr(Mnemonic.beqi, InstrClass.CondJump, Rs,bs,j),
+                Instr(Mnemonic.bnei, InstrClass.CondJump, Rs,bs,j),
+                Instr(Mnemonic.blti, InstrClass.CondJump, Rs,bs,j),
+                Instr(Mnemonic.bgei, InstrClass.CondJump, Rs,bs,j));
 
             var decoderB1 = new r_Decoder(
                 Instr(Mnemonic.bf, Bs, j),
@@ -1038,8 +1038,8 @@ namespace Reko.Arch.Xtensa
             var decoderBI1 = new m_Decoder(
                 Instr(Mnemonic.entry, Rs, I12_3),
                 decoderB1,
-                Instr(Mnemonic.bltui, InstrClass.ConditionalTransfer, Rs,bu,j),
-                Instr(Mnemonic.bgeui, InstrClass.ConditionalTransfer, Rs,bu,j));
+                Instr(Mnemonic.bltui, InstrClass.CondJump, Rs,bu,j),
+                Instr(Mnemonic.bgeui, InstrClass.CondJump, Rs,bu,j));
 
             var decoderSI = new n_Rec(
                 Instr(Mnemonic.j, J),
@@ -1048,25 +1048,25 @@ namespace Reko.Arch.Xtensa
                 decoderBI1);
 
             var decoderB = new r_Decoder(
-               Instr(Mnemonic.bnone, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bltu, InstrClass.ConditionalTransfer, Rs,Rt,j),
+               Instr(Mnemonic.bnone, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.beq, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.blt, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bltu, InstrClass.CondJump, Rs,Rt,j),
 
-               Instr(Mnemonic.ball, InstrClass.ConditionalTransfer, Rs, Rt,j),
-               Instr(Mnemonic.bbc,  InstrClass.ConditionalTransfer, Rs, Rt,j),
-               Instr(Mnemonic.bbci, InstrClass.ConditionalTransfer, Rs, Irt, j),
-               Instr(Mnemonic.bbci, InstrClass.ConditionalTransfer, Rs, Irt, j),
+               Instr(Mnemonic.ball, InstrClass.CondJump, Rs, Rt,j),
+               Instr(Mnemonic.bbc,  InstrClass.CondJump, Rs, Rt,j),
+               Instr(Mnemonic.bbci, InstrClass.CondJump, Rs, Irt, j),
+               Instr(Mnemonic.bbci, InstrClass.CondJump, Rs, Irt, j),
 
-               Instr(Mnemonic.bany, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bgeu, InstrClass.ConditionalTransfer, Rs,Rt,j),
+               Instr(Mnemonic.bany, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bne, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bge, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bgeu, InstrClass.CondJump, Rs,Rt,j),
 
-               Instr(Mnemonic.bnall, InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bbs,  InstrClass.ConditionalTransfer, Rs,Rt,j),
-               Instr(Mnemonic.bbsi, InstrClass.ConditionalTransfer, Rs, Irt, j),
-               Instr(Mnemonic.bbsi, InstrClass.ConditionalTransfer, Rs, Irt, j));
+               Instr(Mnemonic.bnall, InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bbs,  InstrClass.CondJump, Rs,Rt,j),
+               Instr(Mnemonic.bbsi, InstrClass.CondJump, Rs, Irt, j),
+               Instr(Mnemonic.bbsi, InstrClass.CondJump, Rs, Irt, j));
 
             var decoderST0 = new r_Decoder(
                 decoderSNM0,
@@ -1075,7 +1075,7 @@ namespace Reko.Arch.Xtensa
                 decoderRFEI,
 
                 Instr(Mnemonic.@break, Is,It),
-                Instr(Mnemonic.syscall, InstrClass.Transfer|InstrClass.Call),
+                Instr(Mnemonic.syscall, InstrClass.Call),
                 Instr(Mnemonic.rsil, Rt,Is),
                 Instr(Mnemonic.waiti, Is),
 
@@ -1121,20 +1121,20 @@ namespace Reko.Arch.Xtensa
                 new Movi_nDecoder(),
                 new Movi_nDecoder(),
 
-                Instr2byte(Mnemonic.beqz_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.beqz_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.beqz_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.beqz_n, InstrClass.ConditionalTransfer, Rs, jrt),
+                Instr2byte(Mnemonic.beqz_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.beqz_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.beqz_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.beqz_n, InstrClass.CondJump, Rs, jrt),
 
-                Instr2byte(Mnemonic.bnez_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.bnez_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.bnez_n, InstrClass.ConditionalTransfer, Rs, jrt),
-                Instr2byte(Mnemonic.bnez_n, InstrClass.ConditionalTransfer, Rs, jrt));
+                Instr2byte(Mnemonic.bnez_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.bnez_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.bnez_n, InstrClass.CondJump, Rs, jrt),
+                Instr2byte(Mnemonic.bnez_n, InstrClass.CondJump, Rs, jrt));
 
             var decoderS3 = new t_Decoder(
-                Instr2byte(Mnemonic.ret_n, InstrClass.Transfer | InstrClass.Return),
-                Instr2byte(Mnemonic.retw_n, InstrClass.Transfer | InstrClass.Return),
-                Instr2byte(Mnemonic.break_n, InstrClass.Transfer|InstrClass.Call, Is),
+                Instr2byte(Mnemonic.ret_n, InstrClass.Return),
+                Instr2byte(Mnemonic.retw_n, InstrClass.Return),
+                Instr2byte(Mnemonic.break_n, InstrClass.Call, Is),
                 Instr2byte(Mnemonic.nop_n, InstrClass.Linear|InstrClass.Padding),
 
                 reserved,

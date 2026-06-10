@@ -190,22 +190,22 @@ namespace Reko.Arch.Qualcomm
 
         private void Branch(Expression cond, Address target)
         {
-            deferredTransfers.Add(new RtlBranch(cond, target, InstrClass.ConditionalTransfer));
+            deferredTransfers.Add(new RtlBranch(cond, target, InstrClass.CondJump));
         }
 
         private void Call(Expression target)
         {
-            deferredTransfers.Add(new RtlCall(target, 0, InstrClass.Transfer | InstrClass.Call));
+            deferredTransfers.Add(new RtlCall(target, 0, InstrClass.Call));
         }
 
         private void Goto(Expression target)
         {
-            deferredTransfers.Add(new RtlGoto(target, InstrClass.Transfer));
+            deferredTransfers.Add(new RtlGoto(target, InstrClass.Jump));
         }
 
         private void Return()
         {
-            deferredTransfers.Add(new RtlReturn(0, 0, InstrClass.Transfer | InstrClass.Return));
+            deferredTransfers.Add(new RtlReturn(0, 0, InstrClass.Return));
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace Reko.Arch.Qualcomm
             if (instr.ConditionPredicate is not null)
             {
                 var pred = RewritePredicateExpression(instr.ConditionPredicate, !instr.ConditionInverted);
-                m.BranchInMiddleOfInstruction(pred, instr.Address + 4, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(pred, instr.Address + 4, InstrClass.CondJump);
             }
             Call(OperandSrc(instr.Operands[0])!);
         }
@@ -698,7 +698,7 @@ namespace Reko.Arch.Qualcomm
             var rop = (RegisterStorage) opDst;
             if (rop == Registers.lr)
             {
-                this.iclass = InstrClass.Transfer | InstrClass.Return;
+                this.iclass = InstrClass.Return;
                 Return();
             }
             else

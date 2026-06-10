@@ -692,15 +692,15 @@ namespace Reko.Arch.RiscV
 
                 var branches = new Decoder[]            // 0b11000
                 {
-                    Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, r1,r2,B),
-                    Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, r1,r2,B),
+                    Instr(Mnemonic.beq, InstrClass.CondJump, r1,r2,B),
+                    Instr(Mnemonic.bne, InstrClass.CondJump, r1,r2,B),
                     Nyi(""),
                     Nyi(""),
 
-                    Instr(Mnemonic.blt,  InstrClass.ConditionalTransfer, r1,r2,B),
-                    Instr(Mnemonic.bge,  InstrClass.ConditionalTransfer, r1,r2,B),
-                    Instr(Mnemonic.bltu, InstrClass.ConditionalTransfer, r1,r2,B),
-                    Instr(Mnemonic.bgeu, InstrClass.ConditionalTransfer, r1,r2,B),
+                    Instr(Mnemonic.blt,  InstrClass.CondJump, r1,r2,B),
+                    Instr(Mnemonic.bge,  InstrClass.CondJump, r1,r2,B),
+                    Instr(Mnemonic.bltu, InstrClass.CondJump, r1,r2,B),
+                    Instr(Mnemonic.bgeu, InstrClass.CondJump, r1,r2,B),
                 };
 
                 var amo = Mask(12, 3, "  AMO",
@@ -745,11 +745,11 @@ namespace Reko.Arch.RiscV
                     Sparse(25, 7, "  system 000",  
                         Nyi("system 000"),
                         (0x00, Sparse(20, 5, "  system 0x00", Nyi("system 0x00"),
-                            (0, Instr(Mnemonic.ecall, InstrClass.Transfer | InstrClass.Call)),
+                            (0, Instr(Mnemonic.ecall, InstrClass.Call)),
                             (1, Instr(Mnemonic.ebreak, InstrClass.Terminates)),
-                            (2, Instr(Mnemonic.uret, InstrClass.Transfer | InstrClass.Return)))),
+                            (2, Instr(Mnemonic.uret, InstrClass.Return)))),
                         (0x08, Sparse(20, 5, "  system 0x08", Nyi("system 0x08"),
-                            (2, Instr(Mnemonic.sret, InstrClass.Privileged | InstrClass.Transfer | InstrClass.Return)),
+                            (2, Instr(Mnemonic.sret, InstrClass.Privileged | InstrClass.Return)),
                             (4, Instr(Mnemonic.sfence_vm, InstrClass.Privileged | InstrClass.Linear, r1)),
                             (5, Instr(Mnemonic.wfi, InstrClass.Privileged | InstrClass.Linear)))),
                         (0x09, Instr(Mnemonic.sfence_vma, InstrClass.Privileged | InstrClass.Linear, r1, r2)),
@@ -765,7 +765,7 @@ namespace Reko.Arch.RiscV
                         (0x33, Instr(Mnemonic.hinval_gvma, InstrClass.Privileged | InstrClass.Linear, r1, r2)),
 
                         (0x18, Sparse(20, 5, "  system 11000", Nyi("system 11000"),
-                            (2, Instr(Mnemonic.mret, InstrClass.Privileged | InstrClass.Transfer | InstrClass.Return))))),
+                            (2, Instr(Mnemonic.mret, InstrClass.Privileged | InstrClass.Return))))),
 
                     Instr(Mnemonic.csrrw, rd, Csr20, r1),
                     Instr(Mnemonic.csrrs, rd, Csr20, r1),
@@ -848,9 +848,9 @@ namespace Reko.Arch.RiscV
                     instr48bit,
 
                     Mask(12, 3, "branches", branches),
-                    Instr(Mnemonic.jalr, InstrClass.Transfer | InstrClass.Return, rd, r1, i),
+                    Instr(Mnemonic.jalr, InstrClass.Call, rd, r1, i),
                     Nyi("Reserved"),
-                    Instr(Mnemonic.jal, InstrClass.Transfer | InstrClass.Call, Rd, J),
+                    Instr(Mnemonic.jal, InstrClass.Call, Rd, J),
 
                     system,
                     Nyi("Reserved"),
@@ -900,7 +900,7 @@ namespace Reko.Arch.RiscV
                             invalid),
                         Instr(Mnemonic.c_addi, R(7), ImmS(bf_12_1_2_5))),
                     WordSize(
-                        rv32: Instr(Mnemonic.c_jal, InstrClass.Transfer|InstrClass.Call, Jc),
+                        rv32: Instr(Mnemonic.c_jal, InstrClass.Call, Jc),
                         rv64: Instr(Mnemonic.c_addiw, R_nz(7), ImmS(bf_12_1_2_5)),
                         rv128: Instr(Mnemonic.c_addiw, R(7), ImmS(bf_12_1_2_5))),
                     Instr(Mnemonic.c_li, R(7), ImmS(bf_12_1_2_5)),
@@ -934,9 +934,9 @@ namespace Reko.Arch.RiscV
                                 invalid,
                                 invalid))),
 
-                    Instr(Mnemonic.c_j, InstrClass.Transfer, Jc),
-                    Instr(Mnemonic.c_beqz, InstrClass.ConditionalTransfer, Rc(7), PcRel(1, bf_12_1_5_2_2_1_10_2_3_2)),
-                    Instr(Mnemonic.c_bnez, InstrClass.ConditionalTransfer, Rc(7), PcRel(1, bf_12_1_5_2_2_1_10_2_3_2)),
+                    Instr(Mnemonic.c_j, InstrClass.Jump, Jc),
+                    Instr(Mnemonic.c_beqz, InstrClass.CondJump, Rc(7), PcRel(1, bf_12_1_5_2_2_1_10_2_3_2)),
+                    Instr(Mnemonic.c_bnez, InstrClass.CondJump, Rc(7), PcRel(1, bf_12_1_5_2_2_1_10_2_3_2)),
                 };
 
                 var compressed10 = new Decoder[8]
@@ -958,12 +958,12 @@ namespace Reko.Arch.RiscV
                     ),
                     Mask(12, 1,  "",
                         Select((2, 5), u => u == 0, "",
-                            Instr(Mnemonic.c_jr, InstrClass.Transfer, R(7), useLr(7)),
+                            Instr(Mnemonic.c_jr, InstrClass.JumpInd, R(7), useLr(7)),
                             Instr(Mnemonic.c_mv, R(7), R(2))),
                         Select((2, 5), Eq0,
                             Select((7, 5), Eq0,
                                 Instr(Mnemonic.c_ebreak, InstrClass.Terminates),
-                                Instr(Mnemonic.c_jalr, InstrClass.Transfer|InstrClass.Return, R(7))),
+                                Instr(Mnemonic.c_jalr, InstrClass.Return, R(7))),
                             Instr(Mnemonic.c_add, R(7), R(2)))),
                     WordSize(
                         rv32: FpInstr64(Mnemonic.c_fsdsp, F(2), MemcSpRel(PrimitiveType.Word64, bf_7_3_10_3)),

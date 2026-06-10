@@ -36,10 +36,10 @@ namespace Reko.Arch.Arc
     public class ArcDisassembler : DisassemblerBase<ArcInstruction, Mnemonic>
     {
         private static readonly Decoder rootDecoder;
-        private const InstrClass T = InstrClass.Transfer;
-        private const InstrClass TD = InstrClass.Transfer | InstrClass.Delay;
-        private const InstrClass CT = InstrClass.ConditionalTransfer;
-        private const InstrClass CTD = InstrClass.ConditionalTransfer | InstrClass.Delay;
+        private const InstrClass J = InstrClass.Jump;
+        private const InstrClass JD = InstrClass.JumpD;
+        private const InstrClass JC = InstrClass.CondJump;
+        private const InstrClass JCD = InstrClass.JCD;
         private const int LongImmediateDataIndicator = 62;
 
         private readonly ARCompactArchitecture arch;
@@ -695,14 +695,14 @@ namespace Reko.Arch.Arc
 
                 Nyi("jeq_s [blink]"),
                 Nyi("jne_s [blink]"),
-                Instr(Mnemonic.j_s, InstrClass.Transfer, Mblink),   // delay slot doesn't execute.
+                Instr(Mnemonic.j_s, InstrClass.Jump, Mblink),   // delay slot doesn't execute.
                 Nyi("j_s.d [blink]"));
 
             var SOPs = Mask(5, 3, "  Single operand, Jumps and Special Format Instructions",
-                Instr(Mnemonic.j_s, T, Mr_s(PrimitiveType.Word32)),
-                Instr(Mnemonic.j_s, TD, N(true), Mr_s(PrimitiveType.Word32)),
-                Instr(Mnemonic.jl_s, InstrClass.Call | T, Mr_s(PrimitiveType.Word32)),
-                Instr(Mnemonic.jl_s, InstrClass.Call | TD, N(true), Mr_s(PrimitiveType.Word32)),
+                Instr(Mnemonic.j_s, J, Mr_s(PrimitiveType.Word32)),
+                Instr(Mnemonic.j_s, JD, N(true), Mr_s(PrimitiveType.Word32)),
+                Instr(Mnemonic.jl_s, InstrClass.Call, Mr_s(PrimitiveType.Word32)),
+                Instr(Mnemonic.jl_s, InstrClass.CallD, N(true), Mr_s(PrimitiveType.Word32)),
 
                 invalid,
                 invalid,
@@ -711,7 +711,7 @@ namespace Reko.Arch.Arc
 
             Decoder BLcc(bool delay)
             {
-                var iclass = delay ? (TD | InstrClass.Call) : (T | InstrClass.Call);
+                var iclass = delay ? (InstrClass.CallD) : (InstrClass.Call);
                 var offset = PcRel4(Bf((6, 10), (18, 9)));
                 return Mask(0, 5, " BLcc delay=" + delay,
                     Instr(Mnemonic.blal, iclass, N5, offset),
@@ -756,51 +756,51 @@ namespace Reko.Arch.Arc
             }
 
             var breq = Mask(0, 4, "  BRcc",
-                Instr(Mnemonic.breq, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                Instr(Mnemonic.brne, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                Instr(Mnemonic.brlt, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                Instr(Mnemonic.brge, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.breq, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.brne, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.brlt, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.brge, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
 
-                Instr(Mnemonic.brlo, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                Instr(Mnemonic.brhs, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                reserved,
-                reserved,
-
-                reserved,
-                reserved,
+                Instr(Mnemonic.brlo, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.brhs, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
                 reserved,
                 reserved,
 
                 reserved,
                 reserved,
-                Instr(Mnemonic.bbit0, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))),
-                Instr(Mnemonic.bbit1, CT, B, C, PcRel2(Bf((15, 1), (17, 7)))));
+                reserved,
+                reserved,
+
+                reserved,
+                reserved,
+                Instr(Mnemonic.bbit0, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))),
+                Instr(Mnemonic.bbit1, JC, B, C, PcRel2(Bf((15, 1), (17, 7)))));
 
             var majorOpc_00 = new W32Decoder(Mask(16, 1, "  00 Bcc Branch  32-bit",
                 Mask(5, 1, "  Branch Conditionally",
                     Mask(0, 5, "  N=0",
-                        Instr(Mnemonic.b, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.beq, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bne, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bpl, CT, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.b, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.beq, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bne, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bpl, JC, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bmi, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bcs, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bcc, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bvs, CT, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bmi, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bcs, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bcc, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bvs, JC, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bvc, T, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bgt, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bge, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.blt, CT, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bvc, J, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bgt, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bge, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.blt, JC, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.ble, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bhi, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bls, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bpnz, CT, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.ble, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bhi, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bls, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bpnz, JC, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bss, CT, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bsc, CT, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bss, JC, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bsc, JC, PcRel2(Bf((6, 10), (17, 10)))),
                         invalid,
                         invalid,
 
@@ -819,28 +819,28 @@ namespace Reko.Arch.Arc
                         invalid,
                         invalid),
                     Mask(0, 5, "  N=1",
-                        Instr(Mnemonic.b, TD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.beq, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bne, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bpl, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.b, JD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.beq, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bne, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bpl, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bmi, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bcs, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bcc, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bvs, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bmi, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bcs, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bcc, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bvs, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bvc, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bgt, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bge, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.blt, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bvc, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bgt, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bge, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.blt, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.ble, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bhi, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bls, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bpnz, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.ble, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bhi, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bls, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bpnz, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
 
-                        Instr(Mnemonic.bss, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
-                        Instr(Mnemonic.bsc, CTD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bss, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
+                        Instr(Mnemonic.bsc, JCD, N5, PcRel2(Bf((6, 10), (17, 10)))),
                         invalid,
                         invalid,
 
@@ -859,8 +859,8 @@ namespace Reko.Arch.Arc
                         invalid,
                         invalid)),
                 Mask(5, 1, "  Branch far unconditionally",
-                    Instr(Mnemonic.b, T, N5, PcRel2(Bf((0, 4), (6, 10), (17, 10)))),
-                    Instr(Mnemonic.b, TD, N5, PcRel2(Bf((0, 4), (6, 10), (17, 10)))))));
+                    Instr(Mnemonic.b, J, N5, PcRel2(Bf((0, 4), (6, 10), (17, 10)))),
+                    Instr(Mnemonic.b, JD, N5, PcRel2(Bf((0, 4), (6, 10), (17, 10)))))));
 
             bool C_or_u6(uint uInstr, ArcDisassembler dasm)
             {
@@ -887,7 +887,7 @@ namespace Reko.Arch.Arc
 
             Decoder Jcc(bool delay)
             {
-                var iclass = delay ? T : TD;
+                var iclass = delay ? InstrClass.Jump : InstrClass.JumpD;
                 var ndelay = N(delay);
                 return Mask(22, 2, "  Jcc",
                     Instr(Mnemonic.j, iclass, N(delay), Mr_C),
@@ -937,7 +937,7 @@ namespace Reko.Arch.Arc
 
             Decoder JLcc(bool delay)
             {
-                var iclass = delay ? (InstrClass.Call | T) : (InstrClass.Call | TD);
+                var iclass = delay ? InstrClass.Call : InstrClass.CallD;
                 return Mask(22, 2, "  JLcc",
                     Instr(Mnemonic.jl, iclass, N(delay), Mr_C),
                     Nyi("  JLcc - 01"),
@@ -995,7 +995,7 @@ namespace Reko.Arch.Arc
 
             var ZOP = Sparse(24, 3, "  ZOP", invalid,
                 (0x01, Nyi("sleep")),
-                (0x02, Instr(Mnemonic.trap0, T | InstrClass.Call)),
+                (0x02, Instr(Mnemonic.trap0, InstrClass.Call)),
                 (0x03, Nyi("sync")),
                 (0x04, Nyi("rtie")),
                 (0x05, Instr(Mnemonic.brk, InstrClass.Terminates)));
@@ -1123,8 +1123,8 @@ namespace Reko.Arch.Arc
                             BLcc(false),
                             BLcc(true)),
                         Mask(5, 1, "  Branch and link unconditionally",
-                            Instr(Mnemonic.bl, T | InstrClass.Call, PcRel4(Bf((0, 4), (6, 10), (18, 9)))),
-                            Instr(Mnemonic.bl, TD | InstrClass.Call, PcRel4(Bf((0, 4), (6, 10), (18, 9)))))),
+                            Instr(Mnemonic.bl, InstrClass.Call, PcRel4(Bf((0, 4), (6, 10), (18, 9)))),
+                            Instr(Mnemonic.bl, InstrClass.CallD, PcRel4(Bf((0, 4), (6, 10), (18, 9)))))),
                     Mask(4, 1, "    BLcc 1?",
                         breq,
                         Nyi("    BLcc 11")))),
@@ -1203,7 +1203,7 @@ namespace Reko.Arch.Arc
 
                     Instr(Mnemonic.asr_s, b,c,n(1)),
                     Instr(Mnemonic.lsr_s, b,c,n(1)),
-                    Instr(Mnemonic.trap_s, T| InstrClass.Call),
+                    Instr(Mnemonic.trap_s, InstrClass.Call),
                     Instr(Mnemonic.brk_s, InstrClass.Terminates)),
 
                 // 0x10
@@ -1235,23 +1235,23 @@ namespace Reko.Arch.Arc
                     Instr(Mnemonic.add_s, b,b,U(0,7)),
                     Instr(Mnemonic.cmp_s, b,U(0,7))),
                 Mask(7, 1, "  1D BRcc_S b,0,s8 Branch conditionally on reg z/nz 16-bit",
-                    Instr(Mnemonic.breq_s, CT, b,n(0),PcRel2(Bf((0,7)))),
-                    Instr(Mnemonic.brne_s, CT, b,n(0),PcRel2(Bf((0,7))))),
+                    Instr(Mnemonic.breq_s, JC, b,n(0),PcRel2(Bf((0,7)))),
+                    Instr(Mnemonic.brne_s, JC, b,n(0),PcRel2(Bf((0,7))))),
                 Mask(9, 2, "  1E Bcc_S s10/s7 Branch conditionally 16-bit",
-                    Instr(Mnemonic.b_s, T, PcRel_s(Bf((0,9)))),
-                    Instr(Mnemonic.beq_s, CT, PcRel_s(Bf((0,9)))),
-                    Instr(Mnemonic.bne_s, CT, PcRel_s(Bf((0,9)))),
+                    Instr(Mnemonic.b_s, J, PcRel_s(Bf((0,9)))),
+                    Instr(Mnemonic.beq_s, JC, PcRel_s(Bf((0,9)))),
+                    Instr(Mnemonic.bne_s, JC, PcRel_s(Bf((0,9)))),
                     Mask(6, 3, "  Bcc_S",
-                        Instr(Mnemonic.bgt_s, CT, PcRel_s(Bf((0,6)))),
-                        Instr(Mnemonic.bge_s, CT, PcRel_s(Bf((0, 6)))),
-                        Instr(Mnemonic.blt_s, CT, PcRel_s(Bf((0, 6)))),
-                        Instr(Mnemonic.ble_s, CT, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.bgt_s, JC, PcRel_s(Bf((0,6)))),
+                        Instr(Mnemonic.bge_s, JC, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.blt_s, JC, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.ble_s, JC, PcRel_s(Bf((0, 6)))),
 
-                        Instr(Mnemonic.bhi_s, CT, PcRel_s(Bf((0, 6)))),
-                        Instr(Mnemonic.bhs_s, CT, PcRel_s(Bf((0, 6)))),
-                        Instr(Mnemonic.blo_s, CT, PcRel_s(Bf((0, 6)))),
-                        Instr(Mnemonic.bls_s, CT, PcRel_s(Bf((0, 6)))))),
-                Instr(Mnemonic.bl_s, InstrClass.Call | T,  PcRel4(Bf((0, 11)))));
+                        Instr(Mnemonic.bhi_s, JC, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.bhs_s, JC, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.blo_s, JC, PcRel_s(Bf((0, 6)))),
+                        Instr(Mnemonic.bls_s, JC, PcRel_s(Bf((0, 6)))))),
+                Instr(Mnemonic.bl_s, InstrClass.Call,  PcRel4(Bf((0, 11)))));
         }
     }
 }

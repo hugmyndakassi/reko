@@ -88,7 +88,7 @@ namespace Reko.Arch.PowerPC
                 m.BranchInMiddleOfInstruction(
                     m.Test(cc, cr).Invert(),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 var dst = binder.EnsureRegister(arch.lr);
                 if (updateLinkregister)
                 {
@@ -107,12 +107,12 @@ namespace Reko.Arch.PowerPC
                     m.BranchInMiddleOfInstruction(
                         m.Test(cc, cr).Invert(),
                         instr.Address + instr.Length,
-                        InstrClass.ConditionalTransfer);
+                        InstrClass.CondJump);
                     m.Call(dst, 0);
                 }
                 else
                 {
-                    m.Branch(m.Test(cc, cr), (Address)dst, InstrClass.ConditionalTransfer);
+                    m.Branch(m.Test(cc, cr), (Address)dst, InstrClass.CondJump);
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace Reko.Arch.PowerPC
                 m.BranchInMiddleOfInstruction(
                     cond.Invert(),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 m.Call(dest, 0);
             }
             else
@@ -170,7 +170,7 @@ namespace Reko.Arch.PowerPC
                 m.Branch(
                     cond,
                     (Address)dest,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
         }
 
@@ -320,7 +320,7 @@ namespace Reko.Arch.PowerPC
             }
             else
             {
-                m.BranchInMiddleOfInstruction(m.Test(cc.Invert(), flag), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Test(cc.Invert(), flag), instr.Address + instr.Length, InstrClass.CondJump);
                 m.Goto(destination);
             }
         }

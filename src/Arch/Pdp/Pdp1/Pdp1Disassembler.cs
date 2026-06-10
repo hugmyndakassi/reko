@@ -148,8 +148,8 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
         var invalid = Instr(Mnemonic.Invalid, InstrClass.Invalid);
 
         var skp = Instr(Mnemonic.skp);
-        var szs = Instr(Mnemonic.szs, InstrClass.ConditionalTransfer, Sw);
-        var szf = Instr(Mnemonic.szf, InstrClass.ConditionalTransfer, F);
+        var szs = Instr(Mnemonic.szs, InstrClass.CondJump, Sw);
+        var szf = Instr(Mnemonic.szf, InstrClass.CondJump, F);
         var decode6400 = Sparse(0, 6, "  6400..", skp,
             (0, szs),
             (1, szf),
@@ -169,8 +169,8 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
             (56, szs));
 
         var skp_i = Instr(Mnemonic.skp_i);
-        var szs_i = Instr(Mnemonic.szs_i, InstrClass.ConditionalTransfer, Sw);
-        var szf_i = Instr(Mnemonic.szf_i, InstrClass.ConditionalTransfer, F);
+        var szs_i = Instr(Mnemonic.szs_i, InstrClass.CondJump, Sw);
+        var szf_i = Instr(Mnemonic.szf_i, InstrClass.CondJump, F);
         var decode6500 = Sparse(0, 6, "  6400..", skp_i,
             (0, szs_i),
             (1, szf_i),
@@ -192,19 +192,19 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
         //$TODO: if low 6 bits are not zero, should be a skip instruction?
         var decode64 = Sparse(6, 6, "  64....", invalid,
             (0b000000, decode6400),
-            (0b000001, Instr(Mnemonic.sza, InstrClass.ConditionalTransfer)),
-            (0b000010, Instr(Mnemonic.spa, InstrClass.ConditionalTransfer)),
-            (0b000100, Instr(Mnemonic.sma, InstrClass.ConditionalTransfer)),
-            (0b001000, Instr(Mnemonic.szo, InstrClass.ConditionalTransfer)),
-            (0b010000, Instr(Mnemonic.spi, InstrClass.ConditionalTransfer)));
+            (0b000001, Instr(Mnemonic.sza, InstrClass.CondJump)),
+            (0b000010, Instr(Mnemonic.spa, InstrClass.CondJump)),
+            (0b000100, Instr(Mnemonic.sma, InstrClass.CondJump)),
+            (0b001000, Instr(Mnemonic.szo, InstrClass.CondJump)),
+            (0b010000, Instr(Mnemonic.spi, InstrClass.CondJump)));
 
         var decode65 = Sparse(6, 6, "  65....", invalid,
             (0b000000, decode6500),
-            (0b000001, Instr(Mnemonic.sza_i, InstrClass.ConditionalTransfer)),
-            (0b000010, Instr(Mnemonic.spa_i, InstrClass.ConditionalTransfer)),
-            (0b000100, Instr(Mnemonic.sma_i, InstrClass.ConditionalTransfer)),
-            (0b001000, Instr(Mnemonic.szo_i, InstrClass.ConditionalTransfer)),
-            (0b010000, Instr(Mnemonic.spi_i, InstrClass.ConditionalTransfer)));
+            (0b000001, Instr(Mnemonic.sza_i, InstrClass.CondJump)),
+            (0b000010, Instr(Mnemonic.spa_i, InstrClass.CondJump)),
+            (0b000100, Instr(Mnemonic.sma_i, InstrClass.CondJump)),
+            (0b001000, Instr(Mnemonic.szo_i, InstrClass.CondJump)),
+            (0b010000, Instr(Mnemonic.spi_i, InstrClass.CondJump)));
 
         var decode66 = Mask(9, 3, "  66....",
             invalid,
@@ -282,7 +282,7 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
             invalid,
             invalid,
             Instr(Mnemonic.cal, Y),
-            Instr(Mnemonic.jda, InstrClass.Transfer, Y),
+            Instr(Mnemonic.jda, InstrClass.Jump, Y),
 
             Instr(Mnemonic.lac, Y),
             Instr(Mnemonic.lac_i, Y),
@@ -308,13 +308,13 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
             Instr(Mnemonic.sub_i, Y),
             Instr(Mnemonic.idx, Y),
             Instr(Mnemonic.idx_i, Y),
-            Instr(Mnemonic.isp, InstrClass.ConditionalTransfer, Y),
-            Instr(Mnemonic.isp_i, InstrClass.ConditionalTransfer, Y),
+            Instr(Mnemonic.isp, InstrClass.CondJump, Y),
+            Instr(Mnemonic.isp_i, InstrClass.CondJump, Y),
 
-            Instr(Mnemonic.sad, InstrClass.ConditionalTransfer, Y),
-            Instr(Mnemonic.sad_i, InstrClass.ConditionalTransfer, Y),
-            Instr(Mnemonic.sas, InstrClass.ConditionalTransfer, Y),
-            Instr(Mnemonic.sas_i, InstrClass.ConditionalTransfer, Y),
+            Instr(Mnemonic.sad, InstrClass.CondJump, Y),
+            Instr(Mnemonic.sad_i, InstrClass.CondJump, Y),
+            Instr(Mnemonic.sas, InstrClass.CondJump, Y),
+            Instr(Mnemonic.sas_i, InstrClass.CondJump, Y),
             Instr(Mnemonic.mul, Y),
             Instr(Mnemonic.mul_i, Y),
             Instr(Mnemonic.div, Y),
@@ -324,10 +324,10 @@ public class Pdp1Disassembler : DisassemblerBase<Pdp1Instruction, Mnemonic>
             //{ Mnemonic.dis,   0560000, 0770000, PDP1_INSTR_MEMREF },
             //{ Mnemonic.dis_i, 0570000, 0770000, PDP1_INSTR_MEMREF },
 
-            Instr(Mnemonic.jmp, InstrClass.Transfer, Y),
-            Instr(Mnemonic.jmp_i, InstrClass.Transfer, Y),
-            Instr(Mnemonic.jsp, InstrClass.Transfer | InstrClass.Call, Y),
-            Instr(Mnemonic.jsp_i, InstrClass.Transfer | InstrClass.Call, Y),
+            Instr(Mnemonic.jmp, InstrClass.Jump, Y),
+            Instr(Mnemonic.jmp_i, InstrClass.Jump, Y),
+            Instr(Mnemonic.jsp, InstrClass.Call, Y),
+            Instr(Mnemonic.jsp_i, InstrClass.Call, Y),
             decode64,
             decode65,
             decode66,

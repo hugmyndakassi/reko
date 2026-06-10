@@ -864,7 +864,7 @@ namespace Reko.UnitTests.Arch.Mips
         public void MipsRw_eret()
         {
             AssertCode(0x43564D58,   // eret
-                "0|R--|00100000(4): 1 instructions",
+                "0|S--|00100000(4): 1 instructions",
                 "1|R--|return (0,0)");
         }
 

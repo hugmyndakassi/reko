@@ -92,14 +92,14 @@ namespace Reko.Arch.Msp430
                 if (instr.Operands[1] is RegisterStorage dst &&
                     dst == registers.pc)
                 {
-                    instr.InstructionClass = InstrClass.Transfer;
+                    instr.InstructionClass = InstrClass.Jump;
                     if (instr.Operands[0] is MemoryOperand mem &&
                         mem.PostIncrement &&
                         mem.Base == registers.sp)
                     {
                         instr.Mnemonic = Mnemonics.ret;
                         instr.InstructionClass |= InstrClass.Return;
-                        instr.Operands = Array.Empty<MachineOperand>();
+                        instr.Operands = [];
                     }
                     else
                     {

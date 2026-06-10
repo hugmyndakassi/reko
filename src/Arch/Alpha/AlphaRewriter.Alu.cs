@@ -57,10 +57,10 @@ namespace Reko.Arch.Alpha
             m.BranchInMiddleOfInstruction(
                 m.Not(m.Fn(ov_intrinsic, dst)),
                 instr.Address + instr.Length, 
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.SideEffect(
                 m.Fn(trap_overflow),
-                InstrClass.Transfer|InstrClass.Call);
+                InstrClass.Call);
         }
 
         private void RewriteInstrinsic(IntrinsicProcedure instrinic)
@@ -159,7 +159,7 @@ namespace Reko.Arch.Alpha
         private void RewriteTrapb()
         {
             m.SideEffect(m.Fn(trap_barrier_intrinsic),
-                InstrClass.Transfer|InstrClass.Call);
+                InstrClass.Call);
         }
 
         private Expression addl(Expression a, Expression b)

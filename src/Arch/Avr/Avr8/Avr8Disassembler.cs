@@ -534,8 +534,8 @@ namespace Reko.Arch.Avr.Avr8
                 Instr(Mnemonic.clt),
                 Instr(Mnemonic.cli),
 
-                Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),
-                Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return),
+                Instr(Mnemonic.ret, InstrClass.Return),
+                Instr(Mnemonic.reti, InstrClass.Return),
                 invalid,
                 invalid,
 
@@ -557,8 +557,8 @@ namespace Reko.Arch.Avr.Avr8
 
             var decoders95_8 = new Decoder[]
             {
-                Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),
-                Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return),
+                Instr(Mnemonic.ret, InstrClass.Return),
+                Instr(Mnemonic.reti, InstrClass.Return),
                 invalid,
                 invalid,
 
@@ -580,16 +580,16 @@ namespace Reko.Arch.Avr.Avr8
 
             var decoders94_9 = new (uint, Decoder)[]
             {
-                ( 0, Instr(Mnemonic.ijmp, InstrClass.Transfer) ),
-                ( 1, Instr(Mnemonic.eijmp, InstrClass.Transfer) ),
-                ( 16, Instr(Mnemonic.icall, InstrClass.Transfer|InstrClass.Call) ),
-                ( 17, Instr(Mnemonic.eicall, InstrClass.Transfer|InstrClass.Call) ),
+                ( 0, Instr(Mnemonic.ijmp, InstrClass.Jump) ),
+                ( 1, Instr(Mnemonic.eijmp, InstrClass.Jump) ),
+                ( 16, Instr(Mnemonic.icall, InstrClass.Call) ),
+                ( 17, Instr(Mnemonic.eicall, InstrClass.Call) ),
             };
 
             var decoders95_9 = new (uint, Decoder)[] 
             {
-                ( 0, Instr(Mnemonic.icall, InstrClass.Transfer|InstrClass.Call)),
-                ( 1, Instr(Mnemonic.eicall, InstrClass.Transfer|InstrClass.Call)),
+                ( 0, Instr(Mnemonic.icall, InstrClass.Call)),
+                ( 1, Instr(Mnemonic.eicall, InstrClass.Call)),
             };
 
             var decoders90 = new Decoder[]
@@ -655,10 +655,10 @@ namespace Reko.Arch.Avr.Avr8
                 Instr(Mnemonic.dec, D),
                 Instr(Mnemonic.des, i),
 
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Q),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Q),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Q),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Q),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Q),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Q),
+                Instr(Mnemonic.call, InstrClass.Call, Q),
+                Instr(Mnemonic.call, InstrClass.Call, Q),
             };
 
             var decoders95 = new Decoder[]
@@ -678,10 +678,10 @@ namespace Reko.Arch.Avr.Avr8
                 Instr(Mnemonic.dec, D),
                 invalid,
 
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Q),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Q),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Q),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Q),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Q),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Q),
+                Instr(Mnemonic.call, InstrClass.Call, Q),
+                Instr(Mnemonic.call, InstrClass.Call, Q),
             };
 
             var decoders9 = new Decoder[]
@@ -765,8 +765,8 @@ namespace Reko.Arch.Avr.Avr8
                 invalid,
                 Mask(0xB, 1, decodersB),
 
-                Instr(Mnemonic.rjmp, InstrClass.Transfer, J),
-                Instr(Mnemonic.rcall, InstrClass.Transfer|InstrClass.Call, J),
+                Instr(Mnemonic.rjmp, InstrClass.Jump, J),
+                Instr(Mnemonic.rcall, InstrClass.Call, J),
                 Instr(Mnemonic.ldi, d,K),
                 Mask(8, 4, decodersF),
             };
@@ -790,7 +790,7 @@ namespace Reko.Arch.Avr.Avr8
                 o(wInstr, dasm);
                 return new Avr8Instruction
                 {
-                    InstructionClass = InstrClass.ConditionalTransfer,
+                    InstructionClass = InstrClass.CondJump,
                     Mnemonic = branches[br],
                     Operands = dasm.ops.ToArray()
                 };

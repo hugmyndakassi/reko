@@ -1092,7 +1092,7 @@ public class IA64RewriterTests : RewriterTestBase
             "0|L--|0000000000100000(6): 1 instructions",
             "1|L--|if (p28) nop",
             "2|L--|0000000000100006(6): 0 instructions",
-            "3|---|000000000010000C(4): 1 instructions",
+            "3|S--|000000000010000C(4): 1 instructions",
             "4|R--|if (p01) { __return_from_interrupt(); return (0,0); }");
     }
 

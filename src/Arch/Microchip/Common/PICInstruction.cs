@@ -32,10 +32,10 @@ namespace Reko.Arch.MicrochipPIC.Common
     public abstract class PICInstruction : MachineInstruction
     {
         public const InstrClass CondLinear = InstrClass.Conditional | InstrClass.Linear;
-        public const InstrClass CondTransfer = InstrClass.Conditional | InstrClass.Transfer;
-        public const InstrClass LinkTransfer = InstrClass.Call | InstrClass.Transfer;
-        public const InstrClass Transfer = InstrClass.Transfer;
-        public const InstrClass Return = InstrClass.Transfer | InstrClass.Return;
+        public const InstrClass CondTransfer = InstrClass.CondJump;
+        public const InstrClass LinkTransfer = InstrClass.Call;
+        public const InstrClass Transfer = InstrClass.Jump;
+        public const InstrClass Return = InstrClass.Return;
 
         private static readonly Dictionary<Mnemonic, InstrClass> classOf = new Dictionary<Mnemonic, InstrClass>()
         {

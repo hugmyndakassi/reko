@@ -807,9 +807,9 @@ public class NX8_200Disassembler : DisassemblerBase<NX8_200Instruction, Mnemonic
         rootDecoder = Mask(0, 8, "NX8",
             // 0x00
             Instr(Mnemonic.nop, InstrClass.Linear|InstrClass.Padding|InstrClass.Zero),
-            Instr(Mnemonic.rt, InstrClass.Transfer|InstrClass.Return),
-            Instr(Mnemonic.rti, InstrClass.Transfer|InstrClass.Return),
-            Instr(Mnemonic.j, InstrClass.Transfer, Addr16),
+            Instr(Mnemonic.rt, InstrClass.Return),
+            Instr(Mnemonic.rti, InstrClass.Return),
+            Instr(Mnemonic.j, InstrClass.Jump, Addr16),
 
             nyi,
             nyi,
@@ -827,15 +827,15 @@ public class NX8_200Disassembler : DisassemblerBase<NX8_200Instruction, Mnemonic
             InstrDD(Mnemonic.addb, Mnemonic.add, a, rr7),
 
             // 0x10
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x0028)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x002A)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x002C)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x002E)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x0028)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x002A)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x002C)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x002E)),
 
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x0030)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x0032)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x0034)),
-            Instr(Mnemonic.vcal, InstrClass.Transfer|InstrClass.Call, Addr(0x0036)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x0030)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x0032)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x0034)),
+            Instr(Mnemonic.vcal, InstrClass.Call, Addr(0x0036)),
 
             InstrDD(Mnemonic.adcb, Mnemonic.adc, a, rr0),
             InstrDD(Mnemonic.adcb, Mnemonic.adc, a, rr1),
@@ -869,9 +869,9 @@ public class NX8_200Disassembler : DisassemblerBase<NX8_200Instruction, Mnemonic
             InstrDD(Mnemonic.subb, Mnemonic.sub, a, rr7),
 
             // 0x30
-            Instr(Mnemonic.jrnz, InstrClass.ConditionalTransfer, DP, pcdisp8),
-            Instr(Mnemonic.scal, InstrClass.Transfer|InstrClass.Call, pcdisp8),
-            Instr(Mnemonic.cal, InstrClass.Transfer|InstrClass.Call, Addr16),
+            Instr(Mnemonic.jrnz, InstrClass.CondJump, DP, pcdisp8),
+            Instr(Mnemonic.scal, InstrClass.Call, pcdisp8),
+            Instr(Mnemonic.cal, InstrClass.Call, Addr16),
             InstrDD(Mnemonic.rolb, Mnemonic.rol, a),
 
             nyi,
@@ -1068,15 +1068,15 @@ public class NX8_200Disassembler : DisassemblerBase<NX8_200Instruction, Mnemonic
             InstrDD(Mnemonic.cmpb, Mnemonic.cmp, a, Ndd),
             nyi,
 
-            Instr(Mnemonic.jgt, InstrClass.ConditionalTransfer,  pcdisp8),
-            Instr(Mnemonic.jeq, InstrClass.ConditionalTransfer,  pcdisp8),
-            Instr(Mnemonic.jlt, InstrClass.ConditionalTransfer,  pcdisp8),
-            Instr(Mnemonic.sj,  InstrClass.Transfer, pcdisp8),
+            Instr(Mnemonic.jgt, InstrClass.CondJump,  pcdisp8),
+            Instr(Mnemonic.jeq, InstrClass.CondJump,  pcdisp8),
+            Instr(Mnemonic.jlt, InstrClass.CondJump,  pcdisp8),
+            Instr(Mnemonic.sj,  InstrClass.Jump, pcdisp8),
 
             nyi,
-            Instr(Mnemonic.jge, InstrClass.ConditionalTransfer, pcdisp8),
-            Instr(Mnemonic.jne, InstrClass.ConditionalTransfer, pcdisp8),
-            Instr(Mnemonic.jle, InstrClass.ConditionalTransfer, pcdisp8),
+            Instr(Mnemonic.jge, InstrClass.CondJump, pcdisp8),
+            Instr(Mnemonic.jne, InstrClass.CondJump, pcdisp8),
+            Instr(Mnemonic.jle, InstrClass.CondJump, pcdisp8),
 
             // 0xD0
             InstrDD(Mnemonic.stb, Mnemonic.st, a, Md16_X1),

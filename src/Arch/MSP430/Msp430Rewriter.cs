@@ -404,20 +404,20 @@ namespace Reko.Arch.Msp430
 
         private void RewriteBr()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             m.Goto(RewriteOp(instr.Operands[0]));
         }
 
         private void RewriteBranch(ConditionCode cc, FlagM flags)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var grf = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.Registers.sr, (uint)flags));
-            m.Branch(m.Test(cc, grf), (Address)instr.Operands[0], InstrClass.ConditionalTransfer);
+            m.Branch(m.Test(cc, grf), (Address)instr.Operands[0], InstrClass.CondJump);
         }
 
         private void RewriteCall()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             instr.dataWidth = PrimitiveType.Word16;
             m.Call(RewriteOp(instr.Operands[0]), 2);
         }
@@ -441,7 +441,7 @@ namespace Reko.Arch.Msp430
 
         private void RewriteGoto()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             m.Goto(RewriteOp(instr.Operands[0]));
         }
 

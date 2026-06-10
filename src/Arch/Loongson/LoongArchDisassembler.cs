@@ -1077,17 +1077,17 @@ namespace Reko.Arch.Loongson
                 (0b001010, opcode_0A),
                 (0b001110, opcode_0E),
 
-                (0b010000, Instr(Mnemonic.beqz, InstrClass.ConditionalTransfer, r5,j21)),
-                (0b010001, Instr(Mnemonic.bnez, InstrClass.ConditionalTransfer, r5,j21)),
-                (0b010011, Instr(Mnemonic.jirl, InstrClass.Transfer|InstrClass.Call, r5,r0,jr16)),
-                (0b010100, Instr(Mnemonic.b, InstrClass.Transfer, J)),
-                (0b010101, Instr(Mnemonic.bl, InstrClass.Transfer|InstrClass.Call, J)),
-                (0b010110, Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, r5,r0,j16)),
-                (0b010111, Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, r5,r0,j16)),
-                (0b011000, Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, r5,r0,j16)),
-                (0b011001, Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, r5,r0,j16)),
-                (0b011010, Instr(Mnemonic.bltu, InstrClass.ConditionalTransfer, r5,r0,j16)),
-                (0b011011, Instr(Mnemonic.bgeu, InstrClass.ConditionalTransfer, r5,r0,j16))
+                (0b010000, Instr(Mnemonic.beqz, InstrClass.CondJump, r5,j21)),
+                (0b010001, Instr(Mnemonic.bnez, InstrClass.CondJump, r5,j21)),
+                (0b010011, Instr(Mnemonic.jirl, InstrClass.Call, r5,r0,jr16)),
+                (0b010100, Instr(Mnemonic.b, InstrClass.Jump, J)),
+                (0b010101, Instr(Mnemonic.bl, InstrClass.Call, J)),
+                (0b010110, Instr(Mnemonic.beq, InstrClass.CondJump, r5,r0,j16)),
+                (0b010111, Instr(Mnemonic.bne, InstrClass.CondJump, r5,r0,j16)),
+                (0b011000, Instr(Mnemonic.blt, InstrClass.CondJump, r5,r0,j16)),
+                (0b011001, Instr(Mnemonic.bge, InstrClass.CondJump, r5,r0,j16)),
+                (0b011010, Instr(Mnemonic.bltu, InstrClass.CondJump, r5,r0,j16)),
+                (0b011011, Instr(Mnemonic.bgeu, InstrClass.CondJump, r5,r0,j16))
                 );
         }
     }

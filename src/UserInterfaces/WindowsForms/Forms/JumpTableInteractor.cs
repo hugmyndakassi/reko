@@ -164,7 +164,7 @@ namespace Reko.UserInterfaces.WindowsForms.Forms
                 var dasm = dlg.Program.CreateDisassembler(dlg.Program.Architecture, addr);
                 text = string.Join(
                     Environment.NewLine,
-                    dasm.TakeWhile(i => (i.InstructionClass & InstrClass.Transfer) == 0)
+                    dasm.TakeWhile(i => (i.InstructionClass & InstrClass.Jump) == 0)
                         .Take(400)
                         .Select(i => i.ToString()));
             }

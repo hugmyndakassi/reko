@@ -21,7 +21,6 @@
 using Reko.Core;
 using Reko.Core.Expressions;
 using Reko.Core.Intrinsics;
-using Reko.Core.Machine;
 using Reko.Core.Memory;
 using Reko.Core.Rtl;
 using Reko.Core.Services;
@@ -352,7 +351,7 @@ namespace Reko.Arch.MicroBlaze
                 m.BranchInMiddleOfInstruction(
                     cond.Invert(),
                     instrCur.Address + instrCur.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 m.Goto(m.IAdd(instrCur.Address, regDst));
             }
         }

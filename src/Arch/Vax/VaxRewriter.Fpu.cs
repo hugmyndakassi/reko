@@ -20,12 +20,8 @@
 
 using Reko.Core;
 using Reko.Core.Expressions;
-using Reko.Core.Intrinsics;
 using Reko.Core.Types;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Reko.Arch.Vax
 {

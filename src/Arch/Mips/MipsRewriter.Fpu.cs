@@ -118,7 +118,7 @@ namespace Reko.Arch.Mips
                 ? cc.Invert()
                 : cc,
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Assign(dst, src);
         }
 

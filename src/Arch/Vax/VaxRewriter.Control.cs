@@ -20,15 +20,9 @@
 
 using Reko.Core;
 using Reko.Core.Expressions;
-using Reko.Core.Machine;
-using Reko.Core.Operators;
-using Reko.Core.Rtl;
 using Reko.Core.Types;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Reko.Arch.Vax
 {
@@ -61,14 +55,14 @@ namespace Reko.Arch.Vax
                 m.Branch(
                     m.FLe(index, limit),
                     addrOp,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
             else
             {
                 m.Branch(
                     m.FGe(index, limit),
                     addrOp,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
         }
 
@@ -99,14 +93,14 @@ namespace Reko.Arch.Vax
                 m.Branch(
                     m.Le(index, limit),
                     addr,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
             else
             {
                 m.Branch(
                     m.Ge(index, limit),
                     addr,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
         }
 
@@ -127,7 +121,7 @@ namespace Reko.Arch.Vax
             }
             m.Branch(test,
                 (Address)this.instr.Operands[2],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBbxx(bool testBit, bool updateBit)
@@ -212,7 +206,7 @@ namespace Reko.Arch.Vax
             m.Branch(
                 m.Test(cc, FlagGroup(flags)),
                 (Address)this.instr.Operands[0],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteAob(
@@ -300,7 +294,7 @@ namespace Reko.Arch.Vax
                 m.BranchInMiddleOfInstruction(
                     m.Gt(tmp, lim),
                     addrEndTable,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 m.Goto(m.IAdd(addrBeginTable, m.IMul(tmp, 2)));
             }
             m.Invalid();
@@ -318,7 +312,7 @@ namespace Reko.Arch.Vax
             m.Branch(
                 cmp(dst, m.Word32(0)),
                 (Address)this.instr.Operands[1],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteJmp()

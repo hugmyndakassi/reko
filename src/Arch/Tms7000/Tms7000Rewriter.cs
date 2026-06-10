@@ -240,7 +240,7 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteBtj(Func<Expression, Expression> fn)
         {
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             var opLeft = Operand(instr.Operands[1]);
             var opRight = Operand(instr.Operands[0]);
             NZ0(m.And(opLeft, fn(opRight)));
@@ -248,12 +248,12 @@ namespace Reko.Arch.Tms7000
             m.Branch(
                 m.Test(ConditionCode.NE, z),
                 (Address)instr.Operands[2],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBr()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var dst = Operand(instr.Operands[0]);
             var ea = ((MemoryAccess)dst).EffectiveAddress;
             m.Goto(ea);
@@ -261,7 +261,7 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteCall()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var dst = Operand(instr.Operands[0]);
             var ea = ((MemoryAccess)dst).EffectiveAddress;
             m.Call(ea, 2);
@@ -327,7 +327,7 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteDjnz()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var reg = Operand(instr.Operands[0]);
             m.Assign(reg, m.ISub(reg, 1));
             m.Branch(m.Ne0(reg), (Address)instr.Operands[1], iclass);
@@ -347,7 +347,7 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteJcc(ConditionCode cc, FlagM grf)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var dst = (Address)instr.Operands[0];
             var flags = binder.EnsureFlagGroup(arch.GetFlagGroup(arch.st, (uint)grf));
             m.Branch(m.Test(cc, flags), dst, iclass);
@@ -355,7 +355,7 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteJmp()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             m.Goto(Operand(instr.Operands[0]));
         }
 
@@ -434,13 +434,13 @@ namespace Reko.Arch.Tms7000
 
         private void RewriteReti()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Return;
             m.Return(2, 1);
         }
 
         private void RewriteRets()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Return;
             m.Return(2, 0);
         }
 

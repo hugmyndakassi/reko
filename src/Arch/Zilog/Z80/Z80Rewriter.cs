@@ -190,7 +190,7 @@ namespace Reko.Arch.Zilog.Z80
             m.Assign(bc, m.ISub(bc, 1));
             if (repeat)
             {
-                m.BranchInMiddleOfInstruction(m.Ne0(bc), dasm.Current.Address, InstrClass.Transfer);
+                m.BranchInMiddleOfInstruction(m.Ne0(bc), dasm.Current.Address, InstrClass.CondJump);
             }
             m.Assign(V, m.Const(PrimitiveType.Bool, 0));
         }
@@ -319,7 +319,7 @@ namespace Reko.Arch.Zilog.Z80
             m.Branch(
                 GenerateTestExpression(cOp, false),
                 dst,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private TestCondition GenerateTestExpression(ConditionOperand<CondCode> cOp, bool invert)
@@ -349,7 +349,7 @@ namespace Reko.Arch.Zilog.Z80
                 m.BranchInMiddleOfInstruction(
                     GenerateTestExpression(cOp, true),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 m.Call((Address)instr.Operands[1], 2);
             }
             else
@@ -384,8 +384,8 @@ namespace Reko.Arch.Zilog.Z80
             m.Assign(bc, m.ISub(bc, 1));
             if (repeat)
             {
-                m.BranchInMiddleOfInstruction(m.Eq0(bc), addr + dasm.Current.Length, InstrClass.ConditionalTransfer);
-                m.Branch(m.Test(ConditionCode.NE, z), addr, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq0(bc), addr + dasm.Current.Length, InstrClass.CondJump);
+                m.Branch(m.Test(ConditionCode.NE, z), addr, InstrClass.CondJump);
             }
         }
 
@@ -417,7 +417,7 @@ namespace Reko.Arch.Zilog.Z80
             var dst = instr.Operands[0];
             var b = binder.EnsureRegister(Registers.b);
             m.Assign(b, m.ISub(b, 1));
-            m.Branch(m.Ne0(b), (Address)dst, InstrClass.Transfer);
+            m.Branch(m.Ne0(b), (Address)dst, InstrClass.Jump);
         }
 
         private void RewriteDi()
@@ -584,7 +584,7 @@ namespace Reko.Arch.Zilog.Z80
             m.Assign(Z, m.Cond(Registers.f.DataType, b));
             if (repeat)
             {
-                m.Branch(m.Ne0(b), dasm.Current.Address, InstrClass.ConditionalTransfer);
+                m.Branch(m.Ne0(b), dasm.Current.Address, InstrClass.CondJump);
             }
         }
 
@@ -658,7 +658,7 @@ namespace Reko.Arch.Zilog.Z80
                 m.BranchInMiddleOfInstruction(
                     GenerateTestExpression(cOp, true),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
             m.Return(2, 0);
         }

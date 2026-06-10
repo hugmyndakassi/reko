@@ -169,7 +169,7 @@ namespace Reko.Arch.Mips
             }
             else
             {
-                m.Branch(cond, addr, InstrClass.ConditionalTransfer | InstrClass.Delay);
+                m.Branch(cond, addr, InstrClass.CondJump | InstrClass.Delay);
             }
         }
 
@@ -179,7 +179,7 @@ namespace Reko.Arch.Mips
             if (!opTrue)
                 cond = m.Not(cond);
             var addr = (Address)RewriteOperand0(instr.Operands[1]);
-            iclass = InstrClass.ConditionalTransfer | InstrClass.Delay;
+            iclass = InstrClass.CondJump | InstrClass.Delay;
             m.Branch(cond, addr, iclass);
         }
 
@@ -206,7 +206,7 @@ namespace Reko.Arch.Mips
             m.CallD(RewriteOperand0(instr.Operands[0]), 0);
         }
 
-        private void RewriteJalr(MipsInstruction instr)
+        private void RewriteJalr(MipsInstruction instr, InstrClass iclassJump)
         {
             //$TODO: if we want explicit representation of the continuation of call
             // use the line below
@@ -221,7 +221,7 @@ namespace Reko.Arch.Mips
             else
             {
                 m.Assign(binder.EnsureRegister(lr), instr.Address + 8);
-                m.Goto(dst, instr.InstructionClass & ~InstrClass.Call);
+                m.Goto(dst, iclassJump);
             }
         }
 
@@ -246,7 +246,7 @@ namespace Reko.Arch.Mips
         private void RewriteJalr_hb(MipsInstruction instr)
         {
             m.SideEffect(m.Fn(intrinsics.clear_hazard_barrier));
-            RewriteJalr(instr);
+            RewriteJalr(instr, InstrClass.JumpInd);
         }
 
         private void RewriteJr(MipsInstruction instr)

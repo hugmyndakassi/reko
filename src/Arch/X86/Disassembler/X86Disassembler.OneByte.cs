@@ -208,23 +208,23 @@ namespace Reko.Arch.X86
 				d[0x6F] = Instr186(Mnemonic.outs, InstrClass.Linear | InstrClass.Privileged, DX, Xv);
 
 				// 70
-				d[0x70] = isRex2 ? s_invalid : Instr(Mnemonic.jo, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x71] = isRex2 ? s_invalid : Instr(Mnemonic.jno, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x72] = isRex2 ? s_invalid : Instr(Mnemonic.jc, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x73] = isRex2 ? s_invalid : Instr(Mnemonic.jnc, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x74] = isRex2 ? s_invalid : Instr(Mnemonic.jz, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x75] = isRex2 ? s_invalid : Instr(Mnemonic.jnz, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x76] = isRex2 ? s_invalid : Instr(Mnemonic.jbe, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x77] = isRex2 ? s_invalid : Instr(Mnemonic.ja, InstrClass.Transfer|InstrClass.Conditional, Jb);
+				d[0x70] = isRex2 ? s_invalid : Instr(Mnemonic.jo, InstrClass.CondJump, Jb);
+				d[0x71] = isRex2 ? s_invalid : Instr(Mnemonic.jno, InstrClass.CondJump, Jb);
+				d[0x72] = isRex2 ? s_invalid : Instr(Mnemonic.jc, InstrClass.CondJump, Jb);
+				d[0x73] = isRex2 ? s_invalid : Instr(Mnemonic.jnc, InstrClass.CondJump, Jb);
+				d[0x74] = isRex2 ? s_invalid : Instr(Mnemonic.jz, InstrClass.CondJump, Jb);
+				d[0x75] = isRex2 ? s_invalid : Instr(Mnemonic.jnz, InstrClass.CondJump, Jb);
+				d[0x76] = isRex2 ? s_invalid : Instr(Mnemonic.jbe, InstrClass.CondJump, Jb);
+				d[0x77] = isRex2 ? s_invalid : Instr(Mnemonic.ja, InstrClass.CondJump, Jb);
 
-				d[0x78] = isRex2 ? s_invalid : Instr(Mnemonic.js, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x79] = isRex2 ? s_invalid : Instr(Mnemonic.jns, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7A] = isRex2 ? s_invalid : Instr(Mnemonic.jpe, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7B] = isRex2 ? s_invalid : Instr(Mnemonic.jpo, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7C] = isRex2 ? s_invalid : Instr(Mnemonic.jl, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7D] = isRex2 ? s_invalid : Instr(Mnemonic.jge, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7E] = isRex2 ? s_invalid : Instr(Mnemonic.jle, InstrClass.Transfer|InstrClass.Conditional, Jb);
-				d[0x7F] = isRex2 ? s_invalid : Instr(Mnemonic.jg, InstrClass.Transfer|InstrClass.Conditional, Jb);
+				d[0x78] = isRex2 ? s_invalid : Instr(Mnemonic.js, InstrClass.CondJump, Jb);
+				d[0x79] = isRex2 ? s_invalid : Instr(Mnemonic.jns, InstrClass.CondJump, Jb);
+				d[0x7A] = isRex2 ? s_invalid : Instr(Mnemonic.jpe, InstrClass.CondJump, Jb);
+				d[0x7B] = isRex2 ? s_invalid : Instr(Mnemonic.jpo, InstrClass.CondJump, Jb);
+				d[0x7C] = isRex2 ? s_invalid : Instr(Mnemonic.jl, InstrClass.CondJump, Jb);
+				d[0x7D] = isRex2 ? s_invalid : Instr(Mnemonic.jge, InstrClass.CondJump, Jb);
+				d[0x7E] = isRex2 ? s_invalid : Instr(Mnemonic.jle, InstrClass.CondJump, Jb);
+				d[0x7F] = isRex2 ? s_invalid : Instr(Mnemonic.jg, InstrClass.CondJump, Jb);
 
 				// 80
 				d[0x80] = new GroupDecoder(Grp1, Eb,Ib);
@@ -271,7 +271,7 @@ namespace Reko.Arch.X86
                     bit32:Instr(Mnemonic.cdq),
                     bit64:Instr(Mnemonic.cqo));
                 d[0x9A] = Amd64Instr(
-                    Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Ap),
+                    Instr(Mnemonic.call, InstrClass.Call, Ap),
                     s_invalid);
 				d[0x9B] = Instr(Mnemonic.wait);
 				d[0x9C] = Instr(Mnemonic.pushf);
@@ -322,8 +322,8 @@ namespace Reko.Arch.X86
 				// C0
 				d[0xC0] = Instr286(new GroupDecoder(Grp2, Eb,Ib));
 				d[0xC1] = Instr286(new GroupDecoder(Grp2, Ev,Ib));
-				d[0xC2] = Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, Iw);
-				d[0xC3] = Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return);
+				d[0xC2] = Instr(Mnemonic.ret, InstrClass.Return, Iw);
+				d[0xC3] = Instr(Mnemonic.ret, InstrClass.Return);
                 d[0xC4] = isRex2 ? s_invalid : Amd64Instr(
                     new C0Decoder(
                         Instr(Mnemonic.les, Gv, Mp),
@@ -345,14 +345,14 @@ namespace Reko.Arch.X86
                     dec: Instr186(Mnemonic.enter, Iw, Ib),
                     dec66: Instr186(Mnemonic.enterw, Iw, Ib));
 				d[0xC9] = Instr186(Mnemonic.leave);
-				d[0xCA] = Instr(Mnemonic.retf, InstrClass.Transfer | InstrClass.Return, Iw);
-				d[0xCB] = Instr(Mnemonic.retf, InstrClass.Transfer | InstrClass.Return);
+				d[0xCA] = Instr(Mnemonic.retf, InstrClass.Return, Iw);
+				d[0xCB] = Instr(Mnemonic.retf, InstrClass.Return);
 				d[0xCC] = Instr(Mnemonic.@int, InstrClass.Linear|InstrClass.Padding, n3);
 				d[0xCD] = new InterruptDecoder(Mnemonic.@int, Ib);
 				d[0xCE] = Amd64Instr(
                     Instr(Mnemonic.into),
                     s_invalid);
-				d[0xCF] = Instr(Mnemonic.iret, InstrClass.Transfer | InstrClass.Return);
+				d[0xCF] = Instr(Mnemonic.iret, InstrClass.Return);
 
 				// D0
 				d[0xD0] = new GroupDecoder(Grp2, Eb,n1);
@@ -378,24 +378,24 @@ namespace Reko.Arch.X86
 				d[0xDF] = X87Instr();
 
 				// E0
-				d[0xE0] = isRex2 ? s_invalid : Instr(Mnemonic.loopne, InstrClass.ConditionalTransfer, Jb);
-				d[0xE1] = isRex2 ? s_invalid : Instr(Mnemonic.loope, InstrClass.ConditionalTransfer, Jb);
-				d[0xE2] = isRex2 ? s_invalid : Instr(Mnemonic.loop, InstrClass.ConditionalTransfer, Jb);
+				d[0xE0] = isRex2 ? s_invalid : Instr(Mnemonic.loopne, InstrClass.CondJump, Jb);
+				d[0xE1] = isRex2 ? s_invalid : Instr(Mnemonic.loope, InstrClass.CondJump, Jb);
+				d[0xE2] = isRex2 ? s_invalid : Instr(Mnemonic.loop, InstrClass.CondJump, Jb);
 				d[0xE3] = isRex2 ? s_invalid : AddrWidthDependent(
-                    bit16:Instr(Mnemonic.jcxz, InstrClass.ConditionalTransfer, Jb),
-                    bit32:Instr(Mnemonic.jecxz, InstrClass.ConditionalTransfer, Jb),
-                    bit64:Instr(Mnemonic.jrcxz, InstrClass.ConditionalTransfer, Jb));
+                    bit16:Instr(Mnemonic.jcxz, InstrClass.CondJump, Jb),
+                    bit32:Instr(Mnemonic.jecxz, InstrClass.CondJump, Jb),
+                    bit64:Instr(Mnemonic.jrcxz, InstrClass.CondJump, Jb));
                 d[0xE4] = isRex2 ? s_invalid : Instr(Mnemonic.@in,  InstrClass.Linear|InstrClass.Privileged, AL,Ib);
 				d[0xE5] = isRex2 ? s_invalid : Instr(Mnemonic.@in,  InstrClass.Linear|InstrClass.Privileged, eAX,Ib);
 				d[0xE6] = isRex2 ? s_invalid : Instr(Mnemonic.@out, InstrClass.Linear|InstrClass.Privileged, Ib,AL);
 				d[0xE7] = isRex2 ? s_invalid : Instr(Mnemonic.@out, InstrClass.Linear|InstrClass.Privileged, Ib,eAX);
 
-				d[0xE8] = isRex2 ? s_invalid : Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Jv);
-				d[0xE9] = isRex2 ? s_invalid : Instr(Mnemonic.jmp, InstrClass.Transfer, Jv);
+				d[0xE8] = isRex2 ? s_invalid : Instr(Mnemonic.call, InstrClass.Call, Jv);
+				d[0xE9] = isRex2 ? s_invalid : Instr(Mnemonic.jmp, InstrClass.Jump, Jv);
 				d[0xEA] = isRex2 ? s_invalid : Amd64Instr(
-                    Instr(Mnemonic.jmp, InstrClass.Transfer, Ap),
+                    Instr(Mnemonic.jmp, InstrClass.Jump, Ap),
                     s_invalid);
-				d[0xEB] = isRex2 ? s_invalid : Instr(Mnemonic.jmp, InstrClass.Transfer, Jb);
+				d[0xEB] = isRex2 ? s_invalid : Instr(Mnemonic.jmp, InstrClass.Jump, Jb);
 				d[0xEC] = isRex2 ? s_invalid : Instr(Mnemonic.@in, AL,DX);
 				d[0xED] = isRex2 ? s_invalid : Instr(Mnemonic.@in, eAX,DX);
 				d[0xEE] = isRex2 ? s_invalid : Instr(Mnemonic.@out, DX,AL);

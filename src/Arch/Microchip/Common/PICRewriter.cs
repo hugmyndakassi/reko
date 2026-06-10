@@ -190,7 +190,7 @@ namespace Reko.Arch.MicrochipPIC.Common
 
         protected void ArithCondSkip(Expression dst, Expression src, Expression cond, FSRIndexedMode indMode, Expression memPtr)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             switch (indMode)
             {
                 case FSRIndexedMode.None:
@@ -229,7 +229,7 @@ namespace Reko.Arch.MicrochipPIC.Common
 
         protected void CondBranch(TestCondition test)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             if (instrCurr.Operands[0] is PICOperandProgMemoryAddress brop)
             {
                 m.Branch(test, PICProgAddress.Ptr(brop.CodeTarget.ToUInt32()), iclass);
@@ -240,7 +240,7 @@ namespace Reko.Arch.MicrochipPIC.Common
 
         protected void CondSkipIndirect(Expression cond, FSRIndexedMode indMode, Expression memPtr)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             switch (indMode)
             {
                 case FSRIndexedMode.None:

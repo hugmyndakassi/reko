@@ -255,8 +255,8 @@ namespace Reko.Arch.i8051
         private static readonly Decoder[] decoders = new Decoder[256] {
         /*
 /*00	1	*/ Instr(Mnemonic.nop), 
-/*01	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j), // 	addr11
-/*02	3	*/ Instr(Mnemonic.ljmp, InstrClass.Transfer, J), // 	addr16
+/*01	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j), // 	addr11
+/*02	3	*/ Instr(Mnemonic.ljmp, InstrClass.Jump, J), // 	addr16
 /*03	1	*/ Instr(Mnemonic.rr, A), // 	A
 /*04	1	*/ Instr(Mnemonic.inc, A), // 	A
 /*05	2	*/ Instr(Mnemonic.inc, d),
@@ -270,9 +270,9 @@ namespace Reko.Arch.i8051
 /*0D	1	*/ Instr(Mnemonic.inc, r), // 	R5
 /*0E	1	*/ Instr(Mnemonic.inc, r), // 	R6
 /*0F	1	*/ Instr(Mnemonic.inc, r), // 	R7
-/*10	3	*/ Instr(Mnemonic.jbc, InstrClass.ConditionalTransfer, b,o), // 	bit, offset
-/*11	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j), // 	addr11
-/*12	3	*/ Instr(Mnemonic.lcall, InstrClass.Transfer|InstrClass.Call, J), // 	addr16
+/*10	3	*/ Instr(Mnemonic.jbc, InstrClass.CondJump, b,o), // 	bit, offset
+/*11	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j), // 	addr11
+/*12	3	*/ Instr(Mnemonic.lcall, InstrClass.Call, J), // 	addr16
 /*13	1	*/ Instr(Mnemonic.rrc, A), // 	A
 /*14	1	*/ Instr(Mnemonic.dec, A),
 /*15	2	*/ Instr(Mnemonic.dec, d),
@@ -287,9 +287,9 @@ namespace Reko.Arch.i8051
 /*1E	1	*/ Instr(Mnemonic.dec, r),
 /*1F	1	*/ Instr(Mnemonic.dec, r),
 
-/*20	3	*/ Instr(Mnemonic.jb, InstrClass.ConditionalTransfer, b,o),
-/*21	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j),
-/*22	1	*/ Instr(Mnemonic.ret, InstrClass.Transfer|InstrClass.Return),
+/*20	3	*/ Instr(Mnemonic.jb, InstrClass.CondJump, b,o),
+/*21	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j),
+/*22	1	*/ Instr(Mnemonic.ret, InstrClass.Return),
 /*23	1	*/ Instr(Mnemonic.rl, A),
 /*24	2	*/ Instr(Mnemonic.add, A,i),
 /*25	2	*/ Instr(Mnemonic.add, A,d),
@@ -304,9 +304,9 @@ namespace Reko.Arch.i8051
 /*2E	1	*/ Instr(Mnemonic.add, A,r),
 /*2F	1	*/ Instr(Mnemonic.add, A,r),
 
-/*30	3	*/ Instr(Mnemonic.jnb, InstrClass.ConditionalTransfer, b,o),
-/*31	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j),
-/*32	1	*/ Instr(Mnemonic.reti, InstrClass.Transfer|InstrClass.Return),
+/*30	3	*/ Instr(Mnemonic.jnb, InstrClass.CondJump, b,o),
+/*31	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j),
+/*32	1	*/ Instr(Mnemonic.reti, InstrClass.Return),
 /*33	1	*/ Instr(Mnemonic.rlc, A),
 /*34	2	*/ Instr(Mnemonic.addc, A,i),
 /*35	2	*/ Instr(Mnemonic.addc, A,d),
@@ -321,8 +321,8 @@ namespace Reko.Arch.i8051
 /*3E	1	*/ Instr(Mnemonic.addc, A,r),
 /*3F	1	*/ Instr(Mnemonic.addc, A,r),
 
-/*40	2	*/ Instr(Mnemonic.jc, InstrClass.ConditionalTransfer, o),
-/*41	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j),
+/*40	2	*/ Instr(Mnemonic.jc, InstrClass.CondJump, o),
+/*41	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j),
 /*42	2	*/ Instr(Mnemonic.orl, d,A),
 /*43	3	*/ Instr(Mnemonic.orl, d,i),
 /*44	2	*/ Instr(Mnemonic.orl, A,i),
@@ -338,8 +338,8 @@ namespace Reko.Arch.i8051
 /*4E	1	*/ Instr(Mnemonic.orl, A,r),
 /*4F	1	*/ Instr(Mnemonic.orl, A,r),
 
-/*50	2	*/ Instr(Mnemonic.jnc, InstrClass.ConditionalTransfer, o),
-/*51	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j),
+/*50	2	*/ Instr(Mnemonic.jnc, InstrClass.CondJump, o),
+/*51	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j),
 /*52	2	*/ Instr(Mnemonic.anl, d,A),
 /*53	3	*/ Instr(Mnemonic.anl, d,i),
 /*54	2	*/ Instr(Mnemonic.anl, A,i),
@@ -355,8 +355,8 @@ namespace Reko.Arch.i8051
 /*5E	1	*/ Instr(Mnemonic.anl, A,r),
 /*5F	1	*/ Instr(Mnemonic.anl, A,r),
 
-/*60	2	*/ Instr(Mnemonic.jz, InstrClass.ConditionalTransfer,  o),
-/*61	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j),
+/*60	2	*/ Instr(Mnemonic.jz, InstrClass.CondJump,  o),
+/*61	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j),
 /*62	2	*/ Instr(Mnemonic.xrl, d,A),
 /*63	3	*/ Instr(Mnemonic.xrl, d,i),
 /*64	2	*/ Instr(Mnemonic.xrl, A,i),
@@ -372,10 +372,10 @@ namespace Reko.Arch.i8051
 /*6E	1	*/ Instr(Mnemonic.xrl, A,r),
 /*6F	1	*/ Instr(Mnemonic.xrl, A,r),
 
-/*70	2	*/ Instr(Mnemonic.jnz, InstrClass.ConditionalTransfer, o),
-/*71	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j),
+/*70	2	*/ Instr(Mnemonic.jnz, InstrClass.CondJump, o),
+/*71	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j),
 /*72	2	*/ Instr(Mnemonic.orl, C,b),
-/*73	1	*/ Instr(Mnemonic.jmp, InstrClass.Transfer, Adptr), // 	@A+DPTR
+/*73	1	*/ Instr(Mnemonic.jmp, InstrClass.JumpInd, Adptr), // 	@A+DPTR
 /*74	2	*/ Instr(Mnemonic.mov, A,i), // 	A, #immed
 /*75	3	*/ Instr(Mnemonic.mov, d,i), // 	direct, #immed
 /*76	2	*/ Instr(Mnemonic.mov, Ind,i), // 	@R0, #immed
@@ -389,8 +389,8 @@ namespace Reko.Arch.i8051
 /*7E	2	*/ Instr(Mnemonic.mov, r,i), // 	R6, #immed
 /*7F	2	*/ Instr(Mnemonic.mov, r,i), // 	R7, #immed	 	
 
-/*80	2	*/ Instr(Mnemonic.sjmp, InstrClass.Transfer, o), // 	offset
-/*81	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j), // 	addr11
+/*80	2	*/ Instr(Mnemonic.sjmp, InstrClass.Jump, o), // 	offset
+/*81	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j), // 	addr11
 /*82	2	*/ Instr(Mnemonic.anl, C,b), // 	C, bit
 /*83	1	*/ Instr(Mnemonic.movc, P), // 	A, IndA+PC
 /*84	1	*/ Instr(Mnemonic.div, AB), // 	AB
@@ -407,7 +407,7 @@ namespace Reko.Arch.i8051
 /*8F	2	*/ Instr(Mnemonic.mov, d,r), // 	direct, R7
 
 /*90	3	*/ Instr(Mnemonic.mov, p,I), // 	DPTR, #immed
-/*91	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j), // 	addr11
+/*91	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j), // 	addr11
 /*92	2	*/ Instr(Mnemonic.mov, b,C), // 	bit, C
 /*93	1	*/ Instr(Mnemonic.movc, Adptr), // 	A, IndA+DPTR
 /*94	2	*/ Instr(Mnemonic.subb, A,i), // 	A, #immed
@@ -424,7 +424,7 @@ namespace Reko.Arch.i8051
 /*9F	1	*/ Instr(Mnemonic.subb, A,r), // 	A, R7
 
 /*A0	2	*/ Instr(Mnemonic.orl, C,B), // 	C, /bit
-/*A1	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j), // 	addr11
+/*A1	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j), // 	addr11
 /*A2	2	*/ Instr(Mnemonic.mov, C,b), // 	C, bit
 /*A3	1	*/ Instr(Mnemonic.inc, p), // 	DPTR
 /*A4	1	*/ Instr(Mnemonic.mul, AB), // 	AB
@@ -441,24 +441,24 @@ namespace Reko.Arch.i8051
 /*AF	2	*/ Instr(Mnemonic.mov, r,d), // 	R7, direct
 
 /*B0	2	*/ Instr(Mnemonic.anl, C,B), // 	C, /bit
-/*B1	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j), // 	addr11
+/*B1	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j), // 	addr11
 /*B2	2	*/ Instr(Mnemonic.cpl, B), // 	bit
 /*B3	1	*/ Instr(Mnemonic.cpl, C), // 	C
-/*B4	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, A,i,o), // 	A, #immed, offset
-/*B5	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, A,i,o), // 	A, direct, offset
-/*B6	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, Ind,i,o), // 	@R0, #immed, offset
-/*B7	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, Ind,i,o), // 	@R1, #immed, offset
-/*B8	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R0, #immed, offset
-/*B9	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R1, #immed, offset
-/*BA	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R2, #immed, offset
-/*BB	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R3, #immed, offset
-/*BC	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R4, #immed, offset
-/*BD	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R5, #immed, offset
-/*BE	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R6, #immed, offset
-/*BF	3	*/ Instr(Mnemonic.cjne, InstrClass.ConditionalTransfer, r,i,o), // 	R7, #immed, offset
+/*B4	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, A,i,o), // 	A, #immed, offset
+/*B5	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, A,i,o), // 	A, direct, offset
+/*B6	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, Ind,i,o), // 	@R0, #immed, offset
+/*B7	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, Ind,i,o), // 	@R1, #immed, offset
+/*B8	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R0, #immed, offset
+/*B9	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R1, #immed, offset
+/*BA	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R2, #immed, offset
+/*BB	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R3, #immed, offset
+/*BC	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R4, #immed, offset
+/*BD	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R5, #immed, offset
+/*BE	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R6, #immed, offset
+/*BF	3	*/ Instr(Mnemonic.cjne, InstrClass.CondJump, r,i,o), // 	R7, #immed, offset
 
 /*C0	2	*/ Instr(Mnemonic.push, d), // 	direct
-/*C1	2	*/ Instr(Mnemonic.ajmp, InstrClass.Transfer, j), // 	addr11
+/*C1	2	*/ Instr(Mnemonic.ajmp, InstrClass.Jump, j), // 	addr11
 /*C2	2	*/ Instr(Mnemonic.clr, b), // 	bit
 /*C3	1	*/ Instr(Mnemonic.clr, C), // 	C
 /*C4	1	*/ Instr(Mnemonic.swap, A), // 	A
@@ -475,24 +475,24 @@ namespace Reko.Arch.i8051
 /*CF	1	*/ Instr(Mnemonic.xch, A,r), // 	A, R7
 
 /*D0	2	*/ Instr(Mnemonic.pop, d), // 	direct
-/*D1	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j), // 	addr11
+/*D1	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j), // 	addr11
 /*D2	2	*/ Instr(Mnemonic.setb, b), // 	bit
 /*D3	1	*/ Instr(Mnemonic.setb, C), // 	C
 /*D4	1	*/ Instr(Mnemonic.da, A), // 	A
-/*D5	3	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, d,o), // 	direct, offset
+/*D5	3	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, d,o), // 	direct, offset
 /*D6	1	*/ Instr(Mnemonic.xchd, A,Ind), // 	A, @R0
 /*D7	1	*/ Instr(Mnemonic.xchd, A,Ind), // 	A, @R1
-/*D8	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R0, offset
-/*D9	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R1, offset
-/*DA	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R2, offset
-/*DB	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R3, offset
-/*DC	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R4, offset
-/*DD	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R5, offset
-/*DE	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R6, offset
-/*DF	2	*/ Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, r,o), // 	R7, offset
+/*D8	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R0, offset
+/*D9	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R1, offset
+/*DA	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R2, offset
+/*DB	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R3, offset
+/*DC	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R4, offset
+/*DD	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R5, offset
+/*DE	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R6, offset
+/*DF	2	*/ Instr(Mnemonic.djnz, InstrClass.CondJump, r,o), // 	R7, offset
 
 /*E0	1	*/ Instr(Mnemonic.movx, A,D), // 	A, @DPTR
-/*E1	2	*/ Instr(Mnemonic.ajmp,  InstrClass.Transfer, j), // 	addr11
+/*E1	2	*/ Instr(Mnemonic.ajmp,  InstrClass.Jump, j), // 	addr11
 /*E2	1	*/ Instr(Mnemonic.movx, A,Ind), // 	A, @R0
 /*E3	1	*/ Instr(Mnemonic.movx, A,Ind), // 	A, @R1
 /*E4	1	*/ Instr(Mnemonic.clr, A), // 	A
@@ -509,7 +509,7 @@ namespace Reko.Arch.i8051
 /*EF	1	*/ Instr(Mnemonic.mov, A,r), // 	A, R7
 
 /*F0	1	*/ Instr(Mnemonic.movx, D,A), // 	@DPTR, A
-/*F1	2	*/ Instr(Mnemonic.acall, InstrClass.Transfer|InstrClass.Call, j), // 	addr11
+/*F1	2	*/ Instr(Mnemonic.acall, InstrClass.Call, j), // 	addr11
 /*F2	1	*/ Instr(Mnemonic.movx, Ind,A), // 	@R0, A
 /*F3	1	*/ Instr(Mnemonic.movx, Ind,A), // 	@R1, A
 /*F4	1	*/ Instr(Mnemonic.cpl, A), // 	A

@@ -341,7 +341,7 @@ namespace Reko.Arch.Avr.Avr8
         {
             var grf = binder.EnsureFlagGroup(flags);
             var target = (Address)RewriteOp(0);
-            m.Branch(m.Test(cc, grf), target, InstrClass.ConditionalTransfer);
+            m.Branch(m.Test(cc, grf), target, InstrClass.CondJump);
         }
 
         private void RewriteBranch(FlagGroupStorage grf, bool set)
@@ -350,7 +350,7 @@ namespace Reko.Arch.Avr.Avr8
             if (!set)
                 test = m.Not(test);
             var target = (Address)RewriteOp(0);
-            m.Branch(test, target, InstrClass.ConditionalTransfer);
+            m.Branch(test, target, InstrClass.CondJump);
         }
 
         private void RewriteMov()
@@ -409,7 +409,7 @@ namespace Reko.Arch.Avr.Avr8
             }
             var left = RewriteOp(0);
             var right = RewriteOp(1);
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             m.Branch(cond(left,right), nextInstr!.Address + nextInstr.Length, iclass);
         }
 
@@ -455,7 +455,7 @@ namespace Reko.Arch.Avr.Avr8
 
         private void RewriteIcall()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var z = binder.EnsureRegister(Registers.z);
             m.Call(z, 2);
         }
@@ -467,7 +467,7 @@ namespace Reko.Arch.Avr.Avr8
 
         private void RewriteIjmp()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var z = binder.EnsureRegister(Registers.z);
             m.Goto(z);
         }
@@ -521,7 +521,7 @@ namespace Reko.Arch.Avr.Avr8
 
         private void RewriteJmp()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var op = RewriteOp(0);
             if (op is Constant c)
             {
@@ -587,8 +587,8 @@ namespace Reko.Arch.Avr.Avr8
                 return;
             }
             var addrSkip = dasm.Current.Address + dasm.Current.Length;
-            var branch = m.BranchInMiddleOfInstruction(bis, addrSkip, InstrClass.ConditionalTransfer);
-            clusters.Add(m.MakeCluster(this.instr.Address, this.instr.Length, InstrClass.ConditionalTransfer));
+            var branch = m.BranchInMiddleOfInstruction(bis, addrSkip, InstrClass.CondJump);
+            clusters.Add(m.MakeCluster(this.instr.Address, this.instr.Length, InstrClass.CondJump));
             Rewrite(dasm.Current);
         }
 

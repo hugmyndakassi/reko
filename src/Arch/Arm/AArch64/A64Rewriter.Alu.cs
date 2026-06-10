@@ -212,7 +212,7 @@ namespace Reko.Arch.Arm.AArch64
             m.Assign(tmp, this.TestCond(cond));
             var c = ((Constant)instr.Operands[2]).ToUInt32();
             m.Assign(nzcv, Constant.Word32(c << 28));
-            m.BranchInMiddleOfInstruction(tmp, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(tmp, instr.Address + instr.Length, InstrClass.CondJump);
             var left = RewriteOp(instr.Operands[0]);
             var right = RewriteOp(instr.Operands[1]);
             m.Assign(nzcv, m.Cond(nzcv.DataType, m.IAdd(left, right)));
@@ -226,7 +226,7 @@ namespace Reko.Arch.Arm.AArch64
             m.Assign(tmp, this.TestCond(cond));
             var c = ((Constant)instr.Operands[2]).ToUInt32();
             m.Assign(nzcv, Constant.Word32(c << 28));
-            m.BranchInMiddleOfInstruction(tmp, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(tmp, instr.Address + instr.Length, InstrClass.CondJump);
             var left = RewriteOp(instr.Operands[0]);
             var right = RewriteOp(instr.Operands[1]);
             m.Assign(nzcv, m.Cond(nzcv.DataType, m.ISub(left, right)));
@@ -273,7 +273,7 @@ namespace Reko.Arch.Arm.AArch64
             src = RewriteOp(instr.Operands[1]);
             if (rFalse.Number != 31 && rTrue == rFalse)
             {
-                m.BranchInMiddleOfInstruction(TestCond(Invert(cond)), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(TestCond(Invert(cond)), instr.Address + instr.Length, InstrClass.CondJump);
                 m.Assign(dst, m.IAdd(src, 1));
                 return;
             }

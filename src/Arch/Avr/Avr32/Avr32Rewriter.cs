@@ -244,7 +244,7 @@ namespace Reko.Arch.Avr.Avr32
         {
             if (instr.Condition != Avr32Condition.al)
             {
-                m.BranchInMiddleOfInstruction(Condition().Invert(), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(Condition().Invert(), instr.Address + instr.Length, InstrClass.CondJump);
             }
         }
 
@@ -665,7 +665,7 @@ namespace Reko.Arch.Avr.Avr32
 
         private void RewriteGoto()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             m.Goto((Address) instr.Operands[0]);
         }
 

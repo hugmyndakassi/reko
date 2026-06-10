@@ -209,9 +209,9 @@ namespace Reko.UnitTests.Decompiler.Scanning
         private void Given_TransferPatch(uint uAddr, int length, Action<RtlEmitter> generateCode)
         {
             var addr = Address.Ptr32(uAddr);
-            var m = new RtlEmitter(new List<RtlInstruction>());
+            var m = new RtlEmitter([]);
             generateCode(m);
-            var cluster = m.MakeCluster(addr, length, InstrClass.Transfer);
+            var cluster = m.MakeCluster(addr, length, InstrClass.Jump);
             program.User.Patches.Add(addr, new CodePatch(cluster));
         }
 
@@ -319,7 +319,7 @@ namespace Reko.UnitTests.Decompiler.Scanning
         public void Bwi_HandleBranch()
         {
             trace.Add(m =>
-                m.Branch(r1, Address.Ptr32(0x00104000), InstrClass.ConditionalTransfer));
+                m.Branch(r1, Address.Ptr32(0x00104000), InstrClass.CondJump));
             trace.Add(m =>
                 m.Assign(r1, r2));
             var blockElse = new Block(proc, Address.Ptr32(0x00104010), "else");
@@ -663,7 +663,7 @@ testProc_exit:
                 proc,
                 It.IsNotNull<ProcessorState>())).Returns(l00100008);
 
-            trace.Add(m => m.Branch(r1, Address.Ptr32(0x101000), InstrClass.ConditionalTransfer | InstrClass.Delay));
+            trace.Add(m => m.Branch(r1, Address.Ptr32(0x101000), InstrClass.CondJump | InstrClass.Delay));
             trace.Add(m => m.Assign(r0, r1));   // 100004
             trace.Add(m => m.Assign(r2, r1));   // 100008
 
@@ -772,7 +772,7 @@ testProc_exit:
                 Address.Ptr32(0x00100008),
                 proc,
                 It.IsNotNull<ProcessorState>())).Returns(l00100008);
-            trace.Add(m => m.Branch(r1, Address.Ptr32(0x101000), InstrClass.ConditionalTransfer | InstrClass.Delay | InstrClass.Annul));
+            trace.Add(m => m.Branch(r1, Address.Ptr32(0x101000), InstrClass.CondJump | InstrClass.Delay | InstrClass.Annul));
             trace.Add(m => m.Assign(r0, r1));   // 100004
             trace.Add(m => m.Assign(r2, r1));   // 100008
 
@@ -880,7 +880,7 @@ testProc_exit:
                 addrNext,
                 proc,
                 It.IsAny<ProcessorState>())).Returns(blockOther);
-            trace.Add(m => m.Branch(m.Mem8(m.Word32(0x12340)), addrNext, InstrClass.ConditionalTransfer));
+            trace.Add(m => m.Branch(m.Mem8(m.Word32(0x12340)), addrNext, InstrClass.CondJump));
 
             var wi = CreateWorkItem(addrStart);
             wi.Process();
@@ -1061,9 +1061,9 @@ call r1 (retsize: 4;)
             trace.Add(m => m.Assign(r1, 42));
             Given_SimpleTrace(trace);
             Given_TransferPatch(addrStart.ToUInt32() + 4, 8, m => {
-                m.BranchInMiddleOfInstruction(m.Eq(r0, 1), Address.Ptr32(0x00100100), InstrClass.ConditionalTransfer);
-                m.BranchInMiddleOfInstruction(m.Eq(r0, 2), Address.Ptr32(0x00100200), InstrClass.ConditionalTransfer);
-                m.BranchInMiddleOfInstruction(m.Eq(r0, 3), Address.Ptr32(0x00100300), InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq(r0, 1), Address.Ptr32(0x00100100), InstrClass.CondJump);
+                m.BranchInMiddleOfInstruction(m.Eq(r0, 2), Address.Ptr32(0x00100200), InstrClass.CondJump);
+                m.BranchInMiddleOfInstruction(m.Eq(r0, 3), Address.Ptr32(0x00100300), InstrClass.CondJump);
                 m.Goto(Address.Ptr32(0x00100400));
             });
             Given_ExpectedBranchTarget(0x00100100, "case1");

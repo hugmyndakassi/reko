@@ -136,13 +136,13 @@ namespace Reko.Arch.X86.Rewriter
                 }
                 m.Call(target, (byte) opsize.Size);
             }
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
         }
 
         private void RewriteConditionalGoto(ConditionCode cc, MachineOperand op1)
         {
-            iclass = InstrClass.ConditionalTransfer;
-            m.Branch(CreateTestCondition(cc, instrCur.Mnemonic), OperandAsCodeAddress(op1)!, InstrClass.ConditionalTransfer);
+            iclass = InstrClass.CondJump;
+            m.Branch(CreateTestCondition(cc, instrCur.Mnemonic), OperandAsCodeAddress(op1)!, InstrClass.CondJump);
         }
 
         private void RewriteConditionalMaskGoto(Func<Expression,Expression> eq)
@@ -167,7 +167,7 @@ namespace Reko.Arch.X86.Rewriter
         private void RewriteInt()
         {
             m.SideEffect(m.Fn(CommonOps.Syscall_1, SrcOp(0)));
-            iclass |= InstrClass.Call | InstrClass.Transfer;
+            iclass |= InstrClass.Call;
         }
 
         private void RewriteIcebp()
@@ -183,7 +183,7 @@ namespace Reko.Arch.X86.Rewriter
             m.BranchInMiddleOfInstruction(
                 m.Test(ConditionCode.NO, binder.EnsureFlagGroup(arch.Registers.O)),
                 instrCur.Address + instrCur.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.SideEffect(m.Fn(CommonOps.Syscall_1, m.Byte(4)));
         }
 
@@ -192,7 +192,7 @@ namespace Reko.Arch.X86.Rewriter
             m.Branch(
                 m.Eq0(orw.AluRegister(cx)),
                 OperandAsCodeAddress(instrCur.Operands[0])!,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteJmp()
@@ -213,7 +213,7 @@ namespace Reko.Arch.X86.Rewriter
 				return;
 			}
 
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
 			Address? addr = OperandAsCodeAddress(instrCur.Operands[0]);
 			if (addr is not null)
             {
@@ -246,11 +246,11 @@ namespace Reko.Arch.X86.Rewriter
                         m.Test(cc, binder.EnsureFlagGroup(useFlags)),
                         m.Ne0(cx)),
                     OperandAsCodeAddress(instrCur.Operands[0])!,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
             else
             {
-                m.Branch(m.Ne0(cx), OperandAsCodeAddress(instrCur.Operands[0])!, InstrClass.ConditionalTransfer);
+                m.Branch(m.Ne0(cx), OperandAsCodeAddress(instrCur.Operands[0])!, InstrClass.CondJump);
             }
         }
 

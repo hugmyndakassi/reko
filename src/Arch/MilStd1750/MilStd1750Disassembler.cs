@@ -640,25 +640,25 @@ namespace Reko.Arch.MilStd1750
                 Instr(Mnemonic.dscr, Ra,Rb),
 
                 // 70
-                Instr(Mnemonic.jc, InstrClass.ConditionalTransfer, N,Ax),
+                Instr(Mnemonic.jc, InstrClass.CondJump, N,Ax),
                 Instr(Mnemonic.jci, _("jci")),
-                Instr(Mnemonic.js, InstrClass.Transfer|InstrClass.Call, Ra,Ax),
-                Instr(Mnemonic.soj, InstrClass.ConditionalTransfer, Ra,Ax),
+                Instr(Mnemonic.js, InstrClass.Call, Ra,Ax),
+                Instr(Mnemonic.soj, InstrClass.CondJump, Ra,Ax),
 
-                Instr(Mnemonic.br, InstrClass.Transfer, ICR),
-                Instr(Mnemonic.bez, InstrClass.ConditionalTransfer, ICR),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, ICR),
-                Instr(Mnemonic.bex, InstrClass.ConditionalTransfer, Imm4),
+                Instr(Mnemonic.br, InstrClass.Jump, ICR),
+                Instr(Mnemonic.bez, InstrClass.CondJump, ICR),
+                Instr(Mnemonic.blt, InstrClass.CondJump, ICR),
+                Instr(Mnemonic.bex, InstrClass.CondJump, Imm4),
 
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, ICR),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, ICR),
-                Instr(Mnemonic.bnz, InstrClass.ConditionalTransfer, ICR),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, ICR),
+                Instr(Mnemonic.ble, InstrClass.CondJump, ICR),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, ICR),
+                Instr(Mnemonic.bnz, InstrClass.CondJump, ICR),
+                Instr(Mnemonic.bge, InstrClass.CondJump, ICR),
 
                 Instr(Mnemonic.lsti, _("lsti")), // b
                 Instr(Mnemonic.lst, _("lst")), // b
-                Instr(Mnemonic.sjs, InstrClass.Transfer|InstrClass.Call, Ra,Ax),
-                Instr(Mnemonic.urs, InstrClass.Transfer|InstrClass.Return, Ra),
+                Instr(Mnemonic.sjs, InstrClass.Call, Ra,Ax),
+                Instr(Mnemonic.urs, InstrClass.Return, Ra),
 
                 // 80
                 Instr(Mnemonic.l, Ra,Dx_w16),

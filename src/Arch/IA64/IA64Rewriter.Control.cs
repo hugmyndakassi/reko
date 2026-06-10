@@ -35,7 +35,7 @@ public partial class IA64Rewriter
         var target = ReadOp(instr, 0);
         var lc = binder.EnsureRegister(Registers.LC);
         var addrNext = instr.Address + instr.Length;
-        m.BranchInMiddleOfInstruction(m.Eq0(lc), addrNext, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(lc), addrNext, InstrClass.CondJump);
         m.Assign(lc, m.ISub(lc, 1));
         m.Goto(target);
     }

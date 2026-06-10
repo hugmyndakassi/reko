@@ -511,7 +511,7 @@ namespace Reko.UnitTests.Arch.Avr
         public void Avr32Dis_lddpc_to_pc()
         {
             var instr = DisassembleHexBytes("485F");
-            Assert.AreEqual(InstrClass.Transfer, instr.InstructionClass);
+            Assert.AreEqual(InstrClass.JumpInd, instr.InstructionClass);
             Assert.AreEqual("lddpc\tpc,pc[20]", instr.ToString());
         }
 
@@ -541,7 +541,7 @@ namespace Reko.UnitTests.Arch.Avr
         public void Avr32Dis_ldm_post()
         {
             var instr = DisassembleHexBytes("E3CD8040");
-            Assert.AreEqual(InstrClass.Transfer, instr.InstructionClass);
+            Assert.AreEqual(InstrClass.JumpInd, instr.InstructionClass);
             Assert.AreEqual("ldm\tsp++,r6,pc", instr.ToString());
         }
 
@@ -549,7 +549,7 @@ namespace Reko.UnitTests.Arch.Avr
         public void Avr32Dis_ldmts_post()
         {
             var instr = DisassembleHexBytes("E7CD8040");
-            Assert.AreEqual(InstrClass.Transfer, instr.InstructionClass);
+            Assert.AreEqual(InstrClass.JumpInd, instr.InstructionClass);
             Assert.AreEqual("ldmts\tsp++,r6,pc", instr.ToString());
         }
 
@@ -1074,7 +1074,7 @@ namespace Reko.UnitTests.Arch.Avr
         {
             var instr = DisassembleHexBytes("D822");
             Assert.AreEqual("popm\tr4-r7,pc", instr.ToString());
-            Assert.AreEqual(InstrClass.Transfer, instr.InstructionClass);
+            Assert.AreEqual(InstrClass.Jump, instr.InstructionClass);
         }
 
         [Test]

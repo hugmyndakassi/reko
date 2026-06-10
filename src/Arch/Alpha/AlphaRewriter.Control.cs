@@ -67,7 +67,7 @@ namespace Reko.Arch.Alpha
             var cond = Rewrite(instr.Operands[0]);
             var src = Rewrite(instr.Operands[1]);
             var dst = Rewrite(instr.Operands[2]);
-            m.BranchInMiddleOfInstruction(skip(cond).Invert(), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(skip(cond).Invert(), instr.Address + instr.Length, InstrClass.CondJump);
             m.Assign(dst, src);
         }
 
@@ -77,7 +77,7 @@ namespace Reko.Arch.Alpha
             var src = Rewrite(instr.Operands[1]);
             var dst = Rewrite(instr.Operands[2]);
             cond = m.Bin(op, PrimitiveType.Bool, cond, Constant.Real64(0.0));
-            m.BranchInMiddleOfInstruction(cond.Invert(), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(cond.Invert(), instr.Address + instr.Length, InstrClass.CondJump);
             m.Assign(dst, src);
         }
 
@@ -89,7 +89,7 @@ namespace Reko.Arch.Alpha
                 m.Bin(
                     op, PrimitiveType.Bool, src, Constant.Real64(0.0)),
                 dst,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteJmp()
@@ -112,7 +112,7 @@ namespace Reko.Arch.Alpha
             {
                 if (ret.Number == ReturnAddress)
                 {
-                    iclass = InstrClass.Transfer | InstrClass.Call;
+                    iclass = InstrClass.Call;
                     m.Call(dst, 0);
                 }
                 else

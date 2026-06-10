@@ -358,7 +358,7 @@ namespace Reko.Arch.CSky
             {
                 c = m.Not(c);
             }
-            m.BranchInMiddleOfInstruction(c, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(c, instr.Address + instr.Length, InstrClass.CondJump);
             this.conditionalExecutionMask >>= 1;
         }
 

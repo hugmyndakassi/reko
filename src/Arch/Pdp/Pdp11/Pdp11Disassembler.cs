@@ -214,9 +214,9 @@ namespace Reko.Arch.Pdp.Pdp11
         {
             var illegal = Instr(Mnemonic.illegal, InstrClass.Invalid);
 
-            var jsr = Instr(Mnemonic.jsr, InstrClass.Transfer | InstrClass.Call, w, r, E);
-            var emt = Instr(Mnemonic.emt, InstrClass.Transfer | InstrClass.Call, Ib);
-            var trap = Instr(Mnemonic.trap, InstrClass.Transfer, Ib);
+            var jsr = Instr(Mnemonic.jsr, InstrClass.Call, w, r, E);
+            var emt = Instr(Mnemonic.emt, InstrClass.Call, Ib);
+            var trap = Instr(Mnemonic.trap, InstrClass.Jump, Ib);
 
             var condCode = Select((0, 5), u => u == 0,
                 Instr(Mnemonic.nop, InstrClass.Linear | InstrClass.Padding),
@@ -228,15 +228,15 @@ namespace Reko.Arch.Pdp.Pdp11
                 (0x000, Sparse(0, 6, "  0x000", illegal,
                     (0x00, Instr(Mnemonic.halt, InstrClass.Terminates | InstrClass.Zero)),
                     (0x01, Instr(Mnemonic.wait)),
-                    (0x02, Instr(Mnemonic.rti, InstrClass.Transfer | InstrClass.Return)),
+                    (0x02, Instr(Mnemonic.rti, InstrClass.Return)),
                     (0x03, Instr(Mnemonic.bpt)),
                     (0x04, Instr(Mnemonic.iot)),
-                    (0x05, Instr(Mnemonic.reset, InstrClass.Transfer)),
-                    (0x06, Instr(Mnemonic.rtt, InstrClass.Transfer | InstrClass.Return)),
+                    (0x05, Instr(Mnemonic.reset, InstrClass.Jump)),
+                    (0x06, Instr(Mnemonic.rtt, InstrClass.Return)),
                     (0x07, Instr(Mnemonic.mfpt)))),
-                (0x001, Instr(Mnemonic.jmp, InstrClass.Transfer, E)),
+                (0x001, Instr(Mnemonic.jmp, InstrClass.Jump, E)),
                 (0x002, Mask(3, 3, "  002",
-                    Instr(Mnemonic.rts, InstrClass.Transfer | InstrClass.Return, R0),
+                    Instr(Mnemonic.rts, InstrClass.Return, R0),
                     illegal,
                     illegal,
                     Instr(Mnemonic.spl, I3),
@@ -297,21 +297,21 @@ namespace Reko.Arch.Pdp.Pdp11
                (0x237, Instr(Mnemonic.mfps, b, E)));
 
             var nondouble = Sparse(8, 8, nondoubleFb,
-                (0x01, Instr(Mnemonic.br, InstrClass.Transfer, PcRel)),
-                (0x02, Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, PcRel)),
-                (0x03, Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, PcRel)),
-                (0x04, Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, PcRel)),
-                (0x05, Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, PcRel)),
-                (0x06, Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, PcRel)),
-                (0x07, Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, PcRel)),
-                (0x80, Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer, PcRel)),
-                (0x81, Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer, PcRel)),
-                (0x82, Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, PcRel)),
-                (0x83, Instr(Mnemonic.blos,InstrClass.ConditionalTransfer, PcRel)),
-                (0x84, Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer, PcRel)),
-                (0x85, Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer, PcRel)),
-                (0x86, Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, PcRel)),
-                (0x87, Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, PcRel)));
+                (0x01, Instr(Mnemonic.br, InstrClass.Jump, PcRel)),
+                (0x02, Instr(Mnemonic.bne, InstrClass.CondJump, PcRel)),
+                (0x03, Instr(Mnemonic.beq, InstrClass.CondJump, PcRel)),
+                (0x04, Instr(Mnemonic.bge, InstrClass.CondJump, PcRel)),
+                (0x05, Instr(Mnemonic.blt, InstrClass.CondJump, PcRel)),
+                (0x06, Instr(Mnemonic.bgt, InstrClass.CondJump, PcRel)),
+                (0x07, Instr(Mnemonic.ble, InstrClass.CondJump, PcRel)),
+                (0x80, Instr(Mnemonic.bpl, InstrClass.CondJump, PcRel)),
+                (0x81, Instr(Mnemonic.bmi, InstrClass.CondJump, PcRel)),
+                (0x82, Instr(Mnemonic.bhi, InstrClass.CondJump, PcRel)),
+                (0x83, Instr(Mnemonic.blos,InstrClass.CondJump, PcRel)),
+                (0x84, Instr(Mnemonic.bvc, InstrClass.CondJump, PcRel)),
+                (0x85, Instr(Mnemonic.bvs, InstrClass.CondJump, PcRel)),
+                (0x86, Instr(Mnemonic.bcc, InstrClass.CondJump, PcRel)),
+                (0x87, Instr(Mnemonic.bcs, InstrClass.CondJump, PcRel)));
 
             var fpu2Decoders = Mask(8, 4, "  fpu2Decoders",
                 illegal,

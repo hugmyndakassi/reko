@@ -563,48 +563,48 @@ MOVE C, src.<b> C ← src.<b> fbbb 0111 ssss ssss C
 (0b0111_1010, Instr(Mnemonic.subb, acc, Src)),  // SUBB src Acc ← Acc – (src + C) f111 1010 ssss ssss C, S, Z, OV Y 1
 (0b1111_1010, Instr(Mnemonic.subb, acc, Src)),  // SUBB src Acc ← Acc – (src + C) f111 1010 ssss ssss C, S, Z, OV Y 1
 
-(0b0000_1100, Instr(Mnemonic.ljump, InstrClass.Transfer, W0L8)), // {L/S}JUMP src IP ← IP + src or src   0000 1100 ssss ssss 6
+(0b0000_1100, Instr(Mnemonic.ljump, InstrClass.Jump, W0L8)), // {L/S}JUMP src IP ← IP + src or src   0000 1100 ssss ssss 6
 //(0b1000_1100, Instr(Mnemonic.ljump, InstrClass.Transfer, Src)), // {L/S}JUMP src IP ← IP + src or src   0000 1100 ssss ssss 6
 // {L/S}JUMP src IP ← IP + src or src                  1000 1100 ssss ssss 6
-(0b0010_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, C, W0L8)),// {L/S}JUMP C, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
+(0b0010_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, C, W0L8)),// {L/S}JUMP C, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
 // {L/S}JUMP C, src If C=1, IP ← (IP + src) or src     1010 1100 ssss ssss 6
-(0b0110_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, NC, W0L8)),// {L/S}JUMP NC, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
+(0b0110_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, NC, W0L8)),// {L/S}JUMP NC, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
 // {L/S}JUMP NC, src If C=0, IP ← (IP + src) or src    1110 1100 ssss ssss 6
-(0b0001_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, Z, W0L8)),// {L/S}JUMP NC, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
+(0b0001_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, Z, W0L8)),// {L/S}JUMP NC, src If C=0, IP ← (IP + src) or src    0110 1100 ssss ssss 6
 // {L/S}JUMP Z, src If Z=1, IP ← (IP + src) or src     1001 1100 ssss ssss 6
-(0b0101_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, NZ, W0L8)), // {L/S}JUMP NZ, src If Z=0, IP ← (IP + src) or src    0101 1100 ssss ssss 6
+(0b0101_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, NZ, W0L8)), // {L/S}JUMP NZ, src If Z=0, IP ← (IP + src) or src    0101 1100 ssss ssss 6
 // {L/S}JUMP NZ, src If Z=0, IP ← (IP + src) or src    1101 1100 ssss ssss 6
-(0b0011_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, E, W0L8)), // {L/S}JUMP E, src If E=1, IP ← (IP + src) or src     0011 1100 ssss ssss 6
+(0b0011_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, E, W0L8)), // {L/S}JUMP E, src If E=1, IP ← (IP + src) or src     0011 1100 ssss ssss 6
 // {L/S}JUMP E, src If E=1, IP ← (IP + src) or src     1011 1100 ssss ssss 6
-(0b0111_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, NE, W0L8)),// {L/S}JUMP NE, src If E=0, IP ← (IP + src) or src    0111 1100 ssss ssss 6
+(0b0111_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, NE, W0L8)),// {L/S}JUMP NE, src If E=0, IP ← (IP + src) or src    0111 1100 ssss ssss 6
 // {L/S}JUMP NE, src If E=0, IP ← (IP + src) or src    1111 1100 ssss ssss 6
-(0b0100_1100, Instr(Mnemonic.ljump, InstrClass.ConditionalTransfer, S, W0L8)),// {L/S}JUMP S, src If S=1, IP ← (IP + src) or src     0100 1100 ssss ssss 6
+(0b0100_1100, Instr(Mnemonic.ljump, InstrClass.CondJump, S, W0L8)),// {L/S}JUMP S, src If S=1, IP ← (IP + src) or src     0100 1100 ssss ssss 6
 // {L/S}JUMP S, src If S=1, IP ← (IP + src) or src     1100 1100 ssss ssss 6
 
-(0b0100_1101, Instr(Mnemonic.ldjnz, InstrClass.ConditionalTransfer, LC(0), Src)),   // {L/S}DJNZ LC[n], src If --LC[n] <> 0, IP← (IP + src) or src f10n 1101 ssss ssss 6
-(0b0101_1101, Instr(Mnemonic.ldjnz, InstrClass.ConditionalTransfer, LC(1), Src)),
-(0b1100_1101, Instr(Mnemonic.ldjnz, InstrClass.ConditionalTransfer, LC(0), Src)),
-(0b1101_1101, Instr(Mnemonic.ldjnz, InstrClass.ConditionalTransfer, LC(1), Src)),
-(0b0011_1101, Instr(Mnemonic.lcall, InstrClass.Transfer | InstrClass.Call, Src)), //  { L/S}CALL src @++SP ← IP+1; IP ← (IP+src) or src f011 1101 ssss ssss 6,7
-(0b1011_1101, Instr(Mnemonic.scall, InstrClass.Transfer | InstrClass.Call, Src)), //  { L/S}CALL src @++SP ← IP+1; IP ← (IP+src) or src f011 1101 ssss ssss 6,7
+(0b0100_1101, Instr(Mnemonic.ldjnz, InstrClass.CondJump, LC(0), Src)),   // {L/S}DJNZ LC[n], src If --LC[n] <> 0, IP← (IP + src) or src f10n 1101 ssss ssss 6
+(0b0101_1101, Instr(Mnemonic.ldjnz, InstrClass.CondJump, LC(1), Src)),
+(0b1100_1101, Instr(Mnemonic.ldjnz, InstrClass.CondJump, LC(0), Src)),
+(0b1101_1101, Instr(Mnemonic.ldjnz, InstrClass.CondJump, LC(1), Src)),
+(0b0011_1101, Instr(Mnemonic.lcall, InstrClass.Call, Src)), //  { L/S}CALL src @++SP ← IP+1; IP ← (IP+src) or src f011 1101 ssss ssss 6,7
+(0b1011_1101, Instr(Mnemonic.scall, InstrClass.Call, Src)), //  { L/S}CALL src @++SP ← IP+1; IP ← (IP+src) or src f011 1101 ssss ssss 6,7
 (0b1000_1100, Mask(7, 1, 
-    Instr(Mnemonic.ret, InstrClass.Transfer| InstrClass.Return),         // RET IP ← @SP--           1000 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return))),       // RETI IP ← @SP-- ; INS← 0 1000 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return),         // RET IP ← @SP--           1000 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return))),       // RETI IP ← @SP-- ; INS← 0 1000 1100 1000 1101
 (0b1010_1100, Mask(7, 1,
-    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, C), // RET C If C=1, IP ← @SP--     1010 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return, C))),  // RETI C If C=1, IP ← @SP-- ; INS← 0 1010 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return, C), // RET C If C=1, IP ← @SP--     1010 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return, C))),  // RETI C If C=1, IP ← @SP-- ; INS← 0 1010 1100 1000 1101
 (0b1110_1100, Mask(7, 1,
-    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, NC), // RET NC If C=0, IP ← @SP--              1110 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return, NC))), // RETI NC If C=0, IP ← @SP-- ; INS← 0 1110 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return, NC), // RET NC If C=0, IP ← @SP--              1110 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return, NC))), // RETI NC If C=0, IP ← @SP-- ; INS← 0 1110 1100 1000 1101
 (0b1001_1100, Mask(7, 1,
-    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, Z), // RET Z If Z=1, IP ← @SP--     1001 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return, Z))),  // RETI Z If Z=1, IP ← @SP-- ; INS← 0 1001 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return, Z), // RET Z If Z=1, IP ← @SP--     1001 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return, Z))),  // RETI Z If Z=1, IP ← @SP-- ; INS← 0 1001 1100 1000 1101
 (0b1101_1100, Mask(7, 1,
-    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, NZ), // RET NZ If Z=0, IP ← @SP--   1101 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return, NZ))), // RETI NZ If Z=0, IP ← @SP-- ; INS← 0    1101 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return, NZ), // RET NZ If Z=0, IP ← @SP--   1101 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return, NZ))), // RETI NZ If Z=0, IP ← @SP-- ; INS← 0    1101 1100 1000 1101
 (0b1100_1100, Mask(7, 1,
-    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, S),     // RET S If S=1, IP ← @SP--             1100 1100 0000 1101
-    Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return, S))),  // RETI S If S=1, IP ← @SP-- ; INS← 0     1100 1100 1000 1101
+    Instr(Mnemonic.ret, InstrClass.Return, S),     // RET S If S=1, IP ← @SP--             1100 1100 0000 1101
+    Instr(Mnemonic.reti, InstrClass.Return, S))),  // RETI S If S=1, IP ← @SP-- ; INS← 0     1100 1100 1000 1101
 /*
 //MOVE dst, src dst ← src fddd dddd ssss ssss C, S, Z, E (Note 8) 7, 8
 */

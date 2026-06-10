@@ -82,18 +82,18 @@ namespace Reko.Arch.PaRisc
             if (linkReg == arch.Registers.GpRegs[0])
             {
                 // continuation thrown away == goto
-                iclass = InstrClass.Transfer | InstrClass.Delay;
+                iclass = InstrClass.JumpD;
                 m.GotoD(dest);
             }
             else if (linkReg == arch.Registers.GpRegs[2] || linkReg == arch.Registers.GpRegs[31])
             {
-                iclass = InstrClass.Transfer | InstrClass.Delay | InstrClass.Call;
+                iclass = InstrClass.CallD;
                 m.CallD(dest, 0);
             }
             else
             {
                 //$TODO: r2 is the default link register. If this is not used, come up with a workaround
-                iclass = InstrClass.Transfer | InstrClass.Delay | InstrClass.Call;
+                iclass = InstrClass.CallD;
                 m.CallD(dest, 0);
                 host.Warn(instr.Address, "Unusual link register usage in {0}", instr);
             }
@@ -130,7 +130,7 @@ namespace Reko.Arch.PaRisc
 
         private void RewriteBv()
         {
-            iclass = InstrClass.Transfer | InstrClass.Delay;
+            iclass = InstrClass.JumpD;
             if (instr.Annul)
                 iclass |= InstrClass.Annul;
             var dst = (MemoryOperand) instr.Operands[0];
@@ -214,7 +214,7 @@ namespace Reko.Arch.PaRisc
                 {
                     // We're jumping backward, so we annul the falling out of the loop.
                     // Generate the jump out of the loop, without delay slot.
-                    MaybeConditionalJump(InstrClass.ConditionalTransfer, instr.Address + 8, rewriteCondition, true, reg, right);
+                    MaybeConditionalJump(InstrClass.CondJump, instr.Address + 8, rewriteCondition, true, reg, right);
                     // Generate jump to top of loop, with delay slot.
                     m.GotoD(addrDest);
                 }
@@ -223,14 +223,14 @@ namespace Reko.Arch.PaRisc
                     // We're jumping forward, so we annul only when the branch is taken. 
                     // This is equivalent to a branch on a "normal" architecture with no
                     // delay slots.
-                    MaybeConditionalJump(InstrClass.ConditionalTransfer, addrDest, rewriteCondition, false, reg, right);
-                    this.iclass = InstrClass.ConditionalTransfer;
+                    MaybeConditionalJump(InstrClass.CondJump, addrDest, rewriteCondition, false, reg, right);
+                    this.iclass = InstrClass.CondJump;
                 }
             }
             else
             {
                 MaybeConditionalJump(
-                    InstrClass.ConditionalTransfer | InstrClass.Delay,
+                    InstrClass.CondJump | InstrClass.Delay,
                     addrDest, rewriteCondition, false, reg, right);
             }
         }

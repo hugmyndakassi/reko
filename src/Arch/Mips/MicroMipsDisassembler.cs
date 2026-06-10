@@ -546,12 +546,12 @@ namespace Reko.Arch.Mips
                 Nyi("beqzc16"),
 
                 Nyi("slti32"),
-                Low16(Instr(Mnemonic.bc, InstrClass.Transfer, pcRel26)),
+                Low16(Instr(Mnemonic.bc, InstrClass.Jump, pcRel26)),
                 Nyi("swc132"),
                 Nyi("lwc132"),
 
                 //
-                Instr(Mnemonic.bnezc16, InstrClass.ConditionalTransfer, r7, pcRel7),
+                Instr(Mnemonic.bnezc16, InstrClass.CondJump, r7, pcRel7),
                 invalid,
                 Instr(Mnemonic.sh16, rz7, Mh),
                 Nyi("bnezc16"),
@@ -566,7 +566,7 @@ namespace Reko.Arch.Mips
                 Nyi("blezalc/bgezalc/bgeuc"),
                 invalid,
                 Nyi("swsp16"),
-                Instr(Mnemonic.bc16, InstrClass.Transfer, pcRel10),
+                Instr(Mnemonic.bc16, InstrClass.Jump, pcRel10),
 
                 Low16(Instr(Mnemonic.andi32, R21,R16,UI16)),
                 Nyi("bgtzc /bltzc /bltc"),

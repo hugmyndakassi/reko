@@ -504,7 +504,7 @@ namespace Reko.Arch.MN103
             }
             else
             {
-                m.BranchInMiddleOfInstruction(m.Not(m.Test(cc, flags)), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Not(m.Test(cc, flags)), instr.Address + instr.Length, InstrClass.CondJump);
                 m.Goto(binder.EnsureRegister(Registers.lar));
             }
         }

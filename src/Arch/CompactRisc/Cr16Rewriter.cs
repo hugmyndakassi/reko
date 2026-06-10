@@ -446,7 +446,7 @@ namespace Reko.Arch.CompactRisc
             m.BranchInMiddleOfInstruction(
                 m.Test(cc, id),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Goto(Operand(0));
         }
 
@@ -455,7 +455,7 @@ namespace Reko.Arch.CompactRisc
             m.BranchInMiddleOfInstruction(
                 binder.EnsureFlagGroup(grf),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Goto(Operand(0));
         }
 
@@ -464,7 +464,7 @@ namespace Reko.Arch.CompactRisc
             m.BranchInMiddleOfInstruction(
                 m.Not(binder.EnsureFlagGroup(grf)),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Goto(Operand(0));
         }
 

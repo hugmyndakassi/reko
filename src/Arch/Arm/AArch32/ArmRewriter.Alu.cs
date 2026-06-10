@@ -232,7 +232,7 @@ namespace Reko.Arch.Arm.AArch32
 
         private void RewriteTableBranch(DataType elemSize)
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             var mem = (MemoryOperand) instr.Operands[0];
             Expression tableBase;
             if (mem.BaseRegister == Registers.pc)
@@ -348,8 +348,8 @@ namespace Reko.Arch.Arm.AArch32
                     // of this procedure. That requires more advanced 
                     // analyses than Reko can manage presently.
                     iclass = instr.Condition == ArmCondition.AL
-                        ? InstrClass.Transfer
-                        : InstrClass.ConditionalTransfer;
+                        ? InstrClass.Jump
+                        : InstrClass.CondJump;
                     m.Assign(baseReg, m.IAdd(baseReg, mem.Offset!));
                     m.Return(0, 0);
                     return;
@@ -364,7 +364,7 @@ namespace Reko.Arch.Arm.AArch32
             }
             if (isJump)
             {
-                iclass = InstrClass.Transfer;
+                iclass = InstrClass.Jump;
                 m.Goto(src);
             }
             else
@@ -526,8 +526,8 @@ namespace Reko.Arch.Arm.AArch32
             if (pcRestored)
             {
                 iclass = instr.Condition == ArmCondition.AL
-                    ? InstrClass.Transfer
-                    : InstrClass.ConditionalTransfer;
+                    ? InstrClass.Jump
+                    : InstrClass.CondJump;
                 m.Return(0, 0);
             }
         }

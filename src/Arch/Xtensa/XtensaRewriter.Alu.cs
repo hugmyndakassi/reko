@@ -311,7 +311,7 @@ namespace Reko.Arch.Xtensa
             m.BranchInMiddleOfInstruction(
                 fn(cond, Constant.Zero(cond.DataType)).Invert(),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Assign(dst, src);
         }
 

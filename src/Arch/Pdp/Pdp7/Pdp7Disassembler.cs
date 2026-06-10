@@ -176,9 +176,9 @@ namespace Reko.Arch.Pdp.Pdp7
                 invalid);
 
             rootDecoder = Mask(new[] { BeField(0, 4) }, "PDP-7",
-                Instr(Mnemonic.cal, InstrClass.Transfer | InstrClass.Call),
+                Instr(Mnemonic.cal, InstrClass.Call),
                 Instr(Mnemonic.dac, Y),
-                Instr(Mnemonic.jms, InstrClass.Transfer | InstrClass.Call, Y),
+                Instr(Mnemonic.jms, InstrClass.Call, Y),
                 Instr(Mnemonic.dzm, Y),
 
                 Instr(Mnemonic.lac, Y),
@@ -191,7 +191,7 @@ namespace Reko.Arch.Pdp.Pdp7
                 Instr(Mnemonic.and, Y),
                 Instr(Mnemonic.sad, Y),
 
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Y),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Y),
                 Nyi("64"),
                 Nyi("70"),
                 operateDecoder);

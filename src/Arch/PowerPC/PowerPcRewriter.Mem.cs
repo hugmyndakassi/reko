@@ -619,7 +619,7 @@ namespace Reko.Arch.PowerPC
             m.BranchInMiddleOfInstruction(
                 op(ra, rb).Invert(),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.SideEffect(m.Fn(trap_intrinsic));
         }
     }

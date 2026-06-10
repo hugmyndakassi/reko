@@ -442,7 +442,7 @@ namespace Reko.Arch.Mips
             m.BranchInMiddleOfInstruction(
                 cmp0(opCond).Invert(),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.Assign(opDst, opSrc);
         }
 

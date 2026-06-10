@@ -1475,7 +1475,7 @@ namespace Reko.UnitTests.Arch.CSky
         {
             Given_HexString("6114");
             AssertCode(     // nir
-                "0|R--|00100000(2): 2 instructions",
+                "0|S--|00100000(2): 2 instructions",
                 "1|L--|__interrup_nesting_return()",
                 "2|R--|return (0,0)");
         }
@@ -1626,7 +1626,7 @@ namespace Reko.UnitTests.Arch.CSky
         {
             Given_HexString("00C0 2044");
             AssertCode(     // rfi
-                "0|R--|00100000(4): 2 instructions",
+                "0|S--|00100000(4): 2 instructions",
                 "1|L--|__rfi()",
                 "2|R--|return (0,0)");
         }
@@ -1663,7 +1663,7 @@ namespace Reko.UnitTests.Arch.CSky
         {
             Given_HexString("00C0 2040");
             AssertCode(     // rte
-                "0|R--|00100000(4): 2 instructions",
+                "0|S--|00100000(4): 2 instructions",
                 "1|L--|__rte()",
                 "2|R--|return (0,0)");
         }
@@ -1770,7 +1770,7 @@ namespace Reko.UnitTests.Arch.CSky
         {
             Given_HexString("00C0 207C");
             AssertCode(     // srte
-                "0|R--|00100000(4): 2 instructions",
+                "0|S--|00100000(4): 2 instructions",
                 "1|L--|__srte()",
                 "2|R--|return (0,0)");
         }

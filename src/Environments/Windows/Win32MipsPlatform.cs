@@ -256,7 +256,7 @@ namespace Reko.Environments.Windows
                             m.AnyId("r1s"),
                             m.AnyConst("lo"))))),
                 new RtlInstructionMatcher(
-                    new RtlGoto(ExpressionMatcher.AnyId("r2s"), InstrClass.Delay|InstrClass.Transfer))
+                    new RtlGoto(ExpressionMatcher.AnyId("r2s"), InstrClass.JumpD))
             };
         }
     }

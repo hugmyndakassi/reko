@@ -20,11 +20,6 @@
 
 using Reko.Core;
 using Reko.Core.Machine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reko.Arch.Tlcs.Tlcs90
 {
@@ -308,25 +303,25 @@ namespace Reko.Arch.Tlcs.Tlcs90
             invalid,
 
             // D0
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
 
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
 
-            Instr(Mnemonic.ret, InstrClass.Transfer|InstrClass.Return),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
+            Instr(Mnemonic.ret, InstrClass.Return),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
 
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
-            Instr(Mnemonic.ret, InstrClass.ConditionalTransfer|InstrClass.Return, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
+            Instr(Mnemonic.ret, InstrClass.CondReturn, c),
 
             // E0
             invalid,

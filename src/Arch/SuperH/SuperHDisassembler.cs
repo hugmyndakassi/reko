@@ -981,9 +981,9 @@ namespace Reko.Arch.SuperH
                 (0xB, Select((8, 4), Ne0,
                     invalid,
                     Sparse(4, 4, "  B", invalid,
-                        (0x0, Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return|InstrClass.Delay)),
+                        (0x0, Instr(Mnemonic.rts, InstrClass.ReturnD)),
                         (0x1, Instr(Mnemonic.sleep)),
-                        (0x2, Instr(Mnemonic.rte, InstrClass.Transfer|InstrClass.Return|InstrClass.Delay)),
+                        (0x2, Instr(Mnemonic.rte, InstrClass.ReturnD)),
                         (0x3, Instr(Mnemonic.brk))))
                 ),
                 (0xC, Instr(Mnemonic.mov_b, X2b,r1) ),

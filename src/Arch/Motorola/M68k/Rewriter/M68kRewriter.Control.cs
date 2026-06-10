@@ -43,7 +43,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
                 m.Branch(
                     m.Test(cc, binder.EnsureFlagGroup(flags)),
                     addr,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
                     m.Ge0(src),
                     m.Le(src, bound)),
                 instr.Address + instr.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
             m.SideEffect(
                 m.Fn(CommonOps.Syscall_1, m.Byte(6)));
         }
@@ -99,7 +99,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
                         m.Ge(reg, lowBound),
                         m.Le(reg, hiBound)),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
                 m.SideEffect(
                     m.Fn(CommonOps.Syscall_1, m.Byte(6)),
                     InstrClass.Linear);
@@ -133,18 +133,18 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             var addr = (Address)orw.RewriteSrc(instr.Operands[1], instr.Address, true);
             if (cc == ConditionCode.ALWAYS)
             {
-                iclass = InstrClass.Transfer;
+                iclass = InstrClass.Jump;
                 m.Goto(addr);
             }
             else
             {
-                iclass = InstrClass.ConditionalTransfer;
+                iclass = InstrClass.CondJump;
                 if (cc != ConditionCode.None)
                 {
                     m.BranchInMiddleOfInstruction(
                         m.Test(cc, binder.EnsureFlagGroup(flags!)),
                         instr.Address + 4,
-                        InstrClass.ConditionalTransfer);
+                        InstrClass.CondJump);
                 }
                 var src = orw.RewriteSrc(instr.Operands[0], instr.Address);
                 var tmp = binder.CreateTemporary(PrimitiveType.Word16);
@@ -156,7 +156,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
                 m.Branch(
                     m.Ne(tmp, m.Word16(0xFFFF)),
                     addr,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
         }
 
@@ -166,7 +166,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             {
                 // Used to model A-line and F-line instructions.
                 m.SideEffect(m.Fn(CommonOps.Syscall_1, RewriteSrcOperand(this.instr.Operands[0])));
-                iclass = InstrClass.Call | InstrClass.Transfer;
+                iclass = InstrClass.Call;
             }
             else
             {
@@ -225,7 +225,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
                 m.Branch(
                     m.Test(cc, binder.EnsureFlagGroup(flags!)).Invert(),
                     instr.Address + instr.Length,
-                    InstrClass.ConditionalTransfer);
+                    InstrClass.CondJump);
             }
             var args = new List<Expression> { m.UInt16(7) };
             Expression call;

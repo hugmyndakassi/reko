@@ -571,7 +571,7 @@ namespace Reko.Scanning
             int iLast = block.Instructions.Count - 1;
             if (iLast < 0)
                 return false;
-            if (block.Instructions[iLast].Class == (InstrClass.Call | InstrClass.Transfer))
+            if (block.Instructions[iLast].Class == InstrClass.Call)
                 return true;
             return false;
         }
@@ -678,20 +678,20 @@ namespace Reko.Scanning
                     return "Pad ";
                 if ((t & InstrClass.Delay) != 0)
                 {
-                    if ((t & InstrClass.Call) != 0)
+                    if (t.IsCall())
                         return "CalD ";
-                    if ((t & InstrClass.ConditionalTransfer) == InstrClass.ConditionalTransfer)
+                    if ((t & InstrClass.CondJump) == InstrClass.CondJump)
                         return "BraD ";
-                    if ((t & InstrClass.Transfer) != 0)
+                    if (t.IsTransfer())
                         return "EndD";
                 }
                 else
                 {
-                    if ((t & InstrClass.Call) != 0)
+                    if (t.IsCall())
                         return "Cal ";
-                    if ((t & InstrClass.ConditionalTransfer) == InstrClass.ConditionalTransfer)
+                    if ((t & InstrClass.CondJump) == InstrClass.CondJump)
                         return "Bra ";
-                    if ((t & InstrClass.Transfer) != 0)
+                    if (t.IsTransfer())
                         return "End";
                 }
                 return "Lin ";

@@ -35,31 +35,31 @@ namespace Reko.Arch.Xtensa
     {
         private void RewriteBall()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var a = RewriteOp(instr.Operands[0]);
             var b = RewriteOp(instr.Operands[1]);
             var cond = m.Eq0(m.And(m.Comp(a), b));
             m.Branch(
                 cond, 
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBany()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var a = RewriteOp(instr.Operands[0]);
             var b = RewriteOp(instr.Operands[1]);
             var cond = m.Ne0(m.And(a, b));
             m.Branch(
                 cond,
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBbx(Func<Expression, Expression> cmp0)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var src = RewriteOp(instr.Operands[0]);
             Expression mask;
             if (instr.Operands[1] is Constant immOp)
@@ -73,57 +73,57 @@ namespace Reko.Arch.Xtensa
             m.Branch(
                 cmp0(m.And(src, mask)),
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBnall()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var a = RewriteOp(instr.Operands[0]);
             var b = RewriteOp(instr.Operands[1]);
             var cond = m.Ne0(m.And(m.Comp(a), b));
             m.Branch(
                 cond,
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBnone()
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var a = RewriteOp(instr.Operands[0]);
             var b = RewriteOp(instr.Operands[1]);
             var cond = m.Eq0(m.And(a, b));
             m.Branch(
                 cond,
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBranch(Func<Expression,Expression,Expression> cmp)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var left = RewriteOp(instr.Operands[0]);
             var right = RewriteOp(instr.Operands[1]);
             m.Branch(
                 cmp(left, right), 
                 (Address)RewriteOp(instr.Operands[2]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteBranchZ(Func<Expression, Expression> cmp0)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             var src = RewriteOp(instr.Operands[0]);
             m.Branch(
                 cmp0(src),
                 (Address)RewriteOp(instr.Operands[1]),
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteCall0()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var dst = RewriteOp(instr.Operands[0]);
             var rDst = dst as Identifier;
             if (rDst is not null && rDst.Storage == Registers.a0)
@@ -169,7 +169,7 @@ namespace Reko.Arch.Xtensa
                 }
             }
 
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             ShiftRegisters(iReg);
             var dst = RewriteOp(instr.Operands[0]);
             var rDst = dst as Identifier;
@@ -188,7 +188,7 @@ namespace Reko.Arch.Xtensa
 
         private void RewriteJ()
         {
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             m.Goto(RewriteOp(instr.Operands[0]));
         }
 
@@ -212,7 +212,7 @@ namespace Reko.Arch.Xtensa
 
         private void RewriteRet()
         {
-            iclass = InstrClass.Transfer | InstrClass.Return;
+            iclass = InstrClass.Return;
             m.Return(0, 0);
         }
     }

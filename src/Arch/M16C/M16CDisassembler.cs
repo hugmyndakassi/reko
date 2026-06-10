@@ -1181,10 +1181,10 @@ public class M16CDisassembler : DisassemblerBase<M16CInstruction, Mnemonic>
                 (0xF2, Instr(Mnemonic.enter, imm8(0)))));
 
         var decode7D = Mask(4, 4, "  0x7D",
-            Instr(Mnemonic.jmpi, InstrClass.Transfer, szA, jmpaop4),
-            Instr(Mnemonic.jsri, InstrClass.Transfer | InstrClass.Call, szA, jmpaop4),
-            Instr(Mnemonic.jmpi, InstrClass.Transfer, szW, jmpop4),
-            Instr(Mnemonic.jsri, InstrClass.Transfer | InstrClass.Call, szW, jmpop4),
+            Instr(Mnemonic.jmpi, InstrClass.Jump, szA, jmpaop4),
+            Instr(Mnemonic.jsri, InstrClass.Call, szA, jmpaop4),
+            Instr(Mnemonic.jmpi, InstrClass.Jump, szW, jmpop4),
+            Instr(Mnemonic.jsri, InstrClass.Call, szW, jmpop4),
 
             Instr(Mnemonic.mulu, szW, mulop4, imm16(0)),
             Instr(Mnemonic.mul, szW, mulop4, imm16(0)),
@@ -1265,16 +1265,16 @@ public class M16CDisassembler : DisassemblerBase<M16CInstruction, Mnemonic>
             nyi);
 
         var jCnd = Mask(0, 3, "  jCnd",
-            Instr(Mnemonic.jgeu, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jgtu, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jeq, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jn, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jltu, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jleu, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jne, InstrClass.ConditionalTransfer, labelP1_8),
-            Instr(Mnemonic.jpz, InstrClass.ConditionalTransfer, labelP1_8));
+            Instr(Mnemonic.jgeu, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jgtu, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jeq, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jn, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jltu, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jleu, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jne, InstrClass.CondJump, labelP1_8),
+            Instr(Mnemonic.jpz, InstrClass.CondJump, labelP1_8));
 
-        var jmp_s = Instr(Mnemonic.jmp, InstrClass.Transfer, labelP2_3);
+        var jmp_s = Instr(Mnemonic.jmp, InstrClass.Jump, labelP2_3);
         var stnz = Instr(Mnemonic.stnz, imm8(0), op3(0));
 
         var stz = Instr(Mnemonic.stz, imm8(0), op3(0));
@@ -1529,7 +1529,7 @@ public class M16CDisassembler : DisassemblerBase<M16CInstruction, Mnemonic>
                     decodeEB0, // ldintb, // mova?? popc
                     decodeEB0,
                     decodeEB10,
-                    Instr(Mnemonic.@int, InstrClass.Transfer|InstrClass.Call, immq6)))),
+                    Instr(Mnemonic.@int, InstrClass.Call, immq6)))),
             Mask(0, 1, "  EC/ED",
                 Instr(Mnemonic.pushm, multireg(pushmreg, false)),
                 Instr(Mnemonic.popm, multireg(pushmreg, true))), // ldc #16?
@@ -1541,15 +1541,15 @@ public class M16CDisassembler : DisassemblerBase<M16CInstruction, Mnemonic>
             NextByte(Instr(Mnemonic.sha, sz(8),simmq_4, op4(0))),
             Mask(0, 1, "  F2/F3",
                 Instr(Mnemonic.dec, szW, a0),   
-                Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return)),
+                Instr(Mnemonic.rts, InstrClass.Return)),
             Mask(0, 1, "  F4/F5",
                 Instr(Mnemonic.jmp, szW, labelP1_16),
                 Instr(Mnemonic.jsr, szW, labelP1_16)),
             Mask(0, 1, "  F6/F7",
-                Instr(Mnemonic.into, InstrClass.Transfer|InstrClass.Call),
+                Instr(Mnemonic.into, InstrClass.Call),
                 nyi),
             NextByte(
-                Instr(Mnemonic.adjnz, InstrClass.ConditionalTransfer, sz(8), simmq_4, op4(0), labelP2_8)),
+                Instr(Mnemonic.adjnz, InstrClass.CondJump, sz(8), simmq_4, op4(0), labelP2_8)),
             Mask(0, 1, "  FA/FB",
                 Instr(Mnemonic.dec, szW, a1),
                 Instr(Mnemonic.reit)),

@@ -923,7 +923,7 @@ namespace Reko.UnitTests.Arch.Arc
         [Test]
         public void ARCompactRw_j_s_blink()
         {
-            Given_HexString("7EE0"); // j_s	[blink]
+            Given_HexString("7EE0"); // j.s	[blink]
             AssertCode(
                 "0|R--|00100000(2): 1 instructions",
                 "1|R--|return (0,0)");

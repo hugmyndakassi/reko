@@ -141,7 +141,7 @@ namespace Reko.Arch.Avr.Avr32
             {
                 var iReg = bitfield.Read(u);
                 if (iReg == 0xF)
-                    d.iclass = InstrClass.Transfer;
+                    d.iclass = InstrClass.JumpInd;
                 var reg = Registers.GpRegisters[iReg];
                 d.ops.Add(reg);
                 return true;
@@ -172,7 +172,7 @@ namespace Reko.Arch.Avr.Avr32
             {
                 var iReg = bitfield.Read(u);
                 if (write && iReg == 0xF)
-                    d.iclass = InstrClass.Transfer;
+                    d.iclass = InstrClass.Jump;
                 var isHighPart = Bits.IsBitSet(u, bitPosRegPart)
                     ? RegisterPart.Top 
                     : RegisterPart.Bottom;
@@ -196,7 +196,7 @@ namespace Reko.Arch.Avr.Avr32
             {
                 var iReg = rDstField.Read(u);
                 if (write && iReg == 0xF)
-                    d.iclass = InstrClass.Transfer;
+                    d.iclass = InstrClass.JumpInd;
                 var regPart = regParts[regParField.Read(u)];
                 d.ops.Add(new RegisterPartOperand(Registers.GpRegisters[iReg], regPart));
                 return true;
@@ -489,7 +489,7 @@ namespace Reko.Arch.Avr.Avr32
                 if (regMask == 0)
                     return false;
                 if (read && (regMask & 0x8000) != 0)   // if we read PC, we are a jmp/return
-                    dasm.iclass = InstrClass.Transfer;
+                    dasm.iclass = InstrClass.JumpInd;
                 int iRegFirst = -1;
                 uint m = 1u;
                 for (int i = 0; i < regs.Length; ++i, m <<= 1)
@@ -557,7 +557,7 @@ namespace Reko.Arch.Avr.Avr32
                 if ((regMask & 128) != 0)
                 {
                     if (pop)
-                        dasm.iclass = InstrClass.Transfer;
+                        dasm.iclass = InstrClass.Jump;
                     dasm.ops.Add(gp[15]);
                     if (setr12)
                     {
@@ -745,13 +745,13 @@ namespace Reko.Arch.Avr.Avr32
                 (0b01110, Instr(Mnemonic.tnbz, R0)),
                 (0b01111, Instr(Mnemonic.rol, R0)),
                 (0b10000, Instr(Mnemonic.ror, R0)),
-                (0b10001, Instr(Mnemonic.icall, InstrClass.Transfer | InstrClass.Call,  R0)),
+                (0b10001, Instr(Mnemonic.icall, InstrClass.Call,  R0)),
                 (0b10010, Instr(Mnemonic.mustr, R0)),
                 (0b10011, Instr(Mnemonic.musfr, R0))
 
                 );
 
-            var returnConditionally = Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, Cond(4, 4), R0);
+            var returnConditionally = Instr(Mnemonic.ret, InstrClass.Return, Cond(4, 4), R0);
 
             var setRegisterConditionally = Instr(Mnemonic.sr, Cond(4, 4), Rw0);
 
@@ -1051,7 +1051,7 @@ namespace Reko.Arch.Avr.Avr32
                 Instr(Mnemonic.eorl, Rw16, Iu_h0_16),
                 Instr(Mnemonic.eorh, Rw16, Iu_h0_16),
 
-                Instr(Mnemonic.mcall, InstrClass.Transfer|InstrClass.Call, Mdisp_w0_16),
+                Instr(Mnemonic.mcall, InstrClass.Call, Mdisp_w0_16),
                 Instr(Mnemonic.pref, Msdisp_b0_16),
                 cacheOperation,
                 Instr(Mnemonic.memc, Imm_signed(0, 15), Imm_unsigned(PrimitiveType.Byte, 15, 5)),
@@ -1061,9 +1061,9 @@ namespace Reko.Arch.Avr.Avr32
                 Instr(Mnemonic.movh, Rw16, Iu_h0_16),
                 Nyi("0b1111"));
 
-            var brLong = Instr(Mnemonic.br, InstrClass.ConditionalTransfer, Cond(16, 4), PcRelBranch);
+            var brLong = Instr(Mnemonic.br, InstrClass.CondJump, Cond(16, 4), PcRelBranch);
 
-            var rcallLong = Instr(Mnemonic.rcall, InstrClass.Transfer | InstrClass.Call, PcRelBranch);
+            var rcallLong = Instr(Mnemonic.rcall, InstrClass.Call, PcRelBranch);
 
             var addLongImm = Instr(Mnemonic.sub, Rw16, Imm_signed(Bf((25, 4), (20, 1), (0, 16))));
 
@@ -1257,7 +1257,7 @@ namespace Reko.Arch.Avr.Avr32
                     Instr(Mnemonic.st_h, Cond(12, 4), MunsignedDisplacement(PrimitiveType.Word16, 25, 0, 9), R16),
                     Instr(Mnemonic.st_b, Cond(12, 4), MunsignedDisplacement(PrimitiveType.Byte, 25, 0, 9), R16))));
 
-            var shortBranch = Instr(Mnemonic.br, InstrClass.ConditionalTransfer, Cond(0, 3), Pcrel4_8);
+            var shortBranch = Instr(Mnemonic.br, InstrClass.CondJump, Cond(0, 3), Pcrel4_8);
 
             var incjosp = Instr(Mnemonic.incjosp, Imm_unsigned_mapped(4, 3, new[]
             {
@@ -1304,10 +1304,10 @@ namespace Reko.Arch.Avr.Avr32
                     Mask(2, 2, "  0",
                         shortBranch,
                         shortBranch,
-                        Instr(Mnemonic.rjmp, InstrClass.Transfer, Pcrel_0_2_4_8),
-                        Instr(Mnemonic.rcall, InstrClass.Call | InstrClass.Transfer, Pcrel_0_2_4_8)),
+                        Instr(Mnemonic.rjmp, InstrClass.Jump, Pcrel_0_2_4_8),
+                        Instr(Mnemonic.rcall, InstrClass.Call, Pcrel_0_2_4_8)),
                     Mask(0, 4, "  1",
-                        Instr(Mnemonic.acall, InstrClass.Call | InstrClass.Transfer, Imm_unsignedShifted(PrimitiveType.Int32, 4, 8, 2)),
+                        Instr(Mnemonic.acall, InstrClass.Call, Imm_unsignedShifted(PrimitiveType.Int32, 4, 8, 2)),
                         Instr(Mnemonic.pushm, multiRegisterCompact(false, false)),
                         Instr(Mnemonic.popm, multiRegisterCompact(true, false)),
                         Mask(9, 3, "  0011",
@@ -1321,10 +1321,10 @@ namespace Reko.Arch.Avr.Avr32
                                 Instr(Mnemonic.csrf, Iu8_4_5),
                                 Instr(Mnemonic.csrf, InstrClass.Linear|InstrClass.Privileged, Iu8_4_5)),
                             Sparse(4, 5, "  011", Nyi("110..011"),
-                                (0x00, Instr<Avr32Disassembler>(Mnemonic.rete, InstrClass.Transfer|InstrClass.Return)),
-                                (0x01, Instr<Avr32Disassembler>(Mnemonic.rets, InstrClass.Transfer|InstrClass.Return)),
-                                (0x02, Instr<Avr32Disassembler>(Mnemonic.retd, InstrClass.Transfer|InstrClass.Return)),
-                                (0x03, Instr<Avr32Disassembler>(Mnemonic.retj, InstrClass.Transfer|InstrClass.Return)),
+                                (0x00, Instr<Avr32Disassembler>(Mnemonic.rete, InstrClass.Return)),
+                                (0x01, Instr<Avr32Disassembler>(Mnemonic.rets, InstrClass.Return)),
+                                (0x02, Instr<Avr32Disassembler>(Mnemonic.retd, InstrClass.Return)),
+                                (0x03, Instr<Avr32Disassembler>(Mnemonic.retj, InstrClass.Return)),
                                 (0x04, Instr<Avr32Disassembler>(Mnemonic.tlbr, InstrClass.Linear|InstrClass.Privileged)),
                                 (0x05, Instr<Avr32Disassembler>(Mnemonic.tlbs, InstrClass.Linear|InstrClass.Privileged)),
                                 (0x06, Instr<Avr32Disassembler>(Mnemonic.tlbw, InstrClass.Linear|InstrClass.Privileged)),
@@ -1343,7 +1343,7 @@ namespace Reko.Arch.Avr.Avr32
                                 (0x13, Instr<Avr32Disassembler>(Mnemonic.scall)),
                                 (0x14, Instr<Avr32Disassembler>(Mnemonic.frs)),
                                 (0x15, Instr<Avr32Disassembler>(Mnemonic.sscall)),
-                                (0x16, Instr<Avr32Disassembler>(Mnemonic.retss, InstrClass.Transfer|InstrClass.Return))),
+                                (0x16, Instr<Avr32Disassembler>(Mnemonic.retss, InstrClass.Return))),
                             invalid,
                             invalid,
                             invalid,

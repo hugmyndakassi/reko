@@ -539,7 +539,7 @@ namespace Reko.Arch.Infineon.TriCore
             var target = (RegisterStorage) instr.Operands[0];
             if (target == Registers.a11)
             {
-                iclass = InstrClass.Transfer | InstrClass.Return;
+                iclass = InstrClass.Return;
                 m.Return(0, 0);
             }
             else

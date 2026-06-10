@@ -727,29 +727,29 @@ namespace Reko.Arch.OpenRISC.Aeon
                 (0b1111, Instr(Mnemonic.bg_mfspr, Ru21, R16, uimm4_12)));       // chenxing, source
 
             var decoder110100 = Mask(0, 3, "  opc=110100",
-                Instr(Mnemonic.bg_blesi__, InstrClass.ConditionalTransfer, R21, simm16_5, disp3_13),  // guess
-                Instr(Mnemonic.bg_bleui__, InstrClass.ConditionalTransfer, R21, simm16_5, disp3_13),  // guess
-                Instr(Mnemonic.bg_beqi__, InstrClass.ConditionalTransfer, R21, simm16_5, disp3_13),   // guess
-                Instr(Mnemonic.bg_chk_lu__, InstrClass.ConditionalTransfer, R21, Ms(16, 3, 8, 1, PrimitiveType.Byte), R11),  // objdump
-                Instr(Mnemonic.bg_bgtsi__, InstrClass.ConditionalTransfer, R21, uimm16_5, disp3_13),  // guess
-                Instr(Mnemonic.bg_bgtui__, InstrClass.ConditionalTransfer, R21, uimm16_5, disp3_13),  // guess
-                Instr(Mnemonic.bg_bltui__, InstrClass.ConditionalTransfer, R21, uimm16_5, disp3_13),  // guess
-                Instr(Mnemonic.bg_chk_ll__, InstrClass.ConditionalTransfer, R21, Ms(16, 3, 8, 1, PrimitiveType.Byte), R11)); // objdump
+                Instr(Mnemonic.bg_blesi__, InstrClass.CondJump, R21, simm16_5, disp3_13),  // guess
+                Instr(Mnemonic.bg_bleui__, InstrClass.CondJump, R21, simm16_5, disp3_13),  // guess
+                Instr(Mnemonic.bg_beqi__, InstrClass.CondJump, R21, simm16_5, disp3_13),   // guess
+                Instr(Mnemonic.bg_chk_lu__, InstrClass.CondJump, R21, Ms(16, 3, 8, 1, PrimitiveType.Byte), R11),  // objdump
+                Instr(Mnemonic.bg_bgtsi__, InstrClass.CondJump, R21, uimm16_5, disp3_13),  // guess
+                Instr(Mnemonic.bg_bgtui__, InstrClass.CondJump, R21, uimm16_5, disp3_13),  // guess
+                Instr(Mnemonic.bg_bltui__, InstrClass.CondJump, R21, uimm16_5, disp3_13),  // guess
+                Instr(Mnemonic.bg_chk_ll__, InstrClass.CondJump, R21, Ms(16, 3, 8, 1, PrimitiveType.Byte), R11)); // objdump
 
             var decoder110101 = Mask(0, 3, "  opc=110101",
-                Instr(Mnemonic.bg_bleu__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),     // guess
-                Instr(Mnemonic.bg_bges__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),     // guess
-                Instr(Mnemonic.bg_beq__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),      // guess
+                Instr(Mnemonic.bg_bleu__, InstrClass.CondJump, R21, R16, disp3_13),     // guess
+                Instr(Mnemonic.bg_bges__, InstrClass.CondJump, R21, R16, disp3_13),     // guess
+                Instr(Mnemonic.bg_beq__, InstrClass.CondJump, R21, R16, disp3_13),      // guess
                 // $REVIEW: could displacement be larger? There are 5 bits left over
-                Instr(Mnemonic.bg_bf, InstrClass.ConditionalTransfer, disp3_13),                   // source
-                Instr(Mnemonic.bg_bgts__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),     // guess
-                Instr(Mnemonic.bg_bgeu__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),     // guess
-                Instr(Mnemonic.bg_bne__, InstrClass.ConditionalTransfer, R21, R16, disp3_13),      // guess
-                Instr(Mnemonic.bg_bnf, InstrClass.ConditionalTransfer, disp3_13));                 // objdump
+                Instr(Mnemonic.bg_bf, InstrClass.CondJump, disp3_13),                   // source
+                Instr(Mnemonic.bg_bgts__, InstrClass.CondJump, R21, R16, disp3_13),     // guess
+                Instr(Mnemonic.bg_bgeu__, InstrClass.CondJump, R21, R16, disp3_13),     // guess
+                Instr(Mnemonic.bg_bne__, InstrClass.CondJump, R21, R16, disp3_13),      // guess
+                Instr(Mnemonic.bg_bnf, InstrClass.CondJump, disp3_13));                 // objdump
 
             var decoder111001 = Mask(0, 1, "  opc=111001",
-                Instr(Mnemonic.bg_jal, InstrClass.Transfer | InstrClass.Call, disp1_25), // guess
-                Instr(Mnemonic.bg_j, InstrClass.Transfer, disp1_25));                    // guess
+                Instr(Mnemonic.bg_jal, InstrClass.Call, disp1_25),                   // guess
+                Instr(Mnemonic.bg_j, InstrClass.Jump, disp1_25));                    // guess
 
             var decoder111010 = Mask(0, 1, "  opc=111010",
                 Instr(Mnemonic.bg_lhs__, Ru21, Ms(16, 1, 15, 1, PrimitiveType.Int16)),   // guess
@@ -851,7 +851,7 @@ namespace Reko.Arch.OpenRISC.Aeon
                 decoder100000_stack);
 
             var decoder100001_sub0 =
-                Instr(Mnemonic.bt_rfe, InstrClass.Transfer | InstrClass.Return); // source
+                Instr(Mnemonic.bt_rfe, InstrClass.Return); // source
 
             var decoder100001 = Sparse(0, 5, "  opc=100001", nyi_5,
                 (0b00000, decoder100001_sub0),
@@ -861,10 +861,10 @@ namespace Reko.Arch.OpenRISC.Aeon
                 (0b00100, Instr(Mnemonic.bt_wait__)),
                 (0b00101, Instr(Mnemonic.bt_synci__)),
                 (0b00110, Instr(Mnemonic.bt_syncd__)),
-                (0b00111, Instr(Mnemonic.bt_return__, InstrClass.Transfer|InstrClass.Return)),
-                (0b01000, Instr(Mnemonic.bt_jalr__, InstrClass.Transfer, Ru5)), // guess
-                (0b01001, Instr(Mnemonic.bt_jr, InstrClass.Transfer, Ru5)),     // source
-                (0b01010, Instr(Mnemonic.bt_pop__, Ru5)),                      // objdump
+                (0b00111, Instr(Mnemonic.bt_return__, InstrClass.Return)),
+                (0b01000, Instr(Mnemonic.bt_jalr__, InstrClass.CallInd, Ru5)),       // guess
+                (0b01001, Instr(Mnemonic.bt_jr, InstrClass.JumpInd, Ru5)),           // source
+                (0b01010, Instr(Mnemonic.bt_pop__, Ru5)),                       // objdump
                 (0b01011, Instr(Mnemonic.bt_push__, Ru5)),                      // objdump
                 (0b01100, Instr(Mnemonic.bt_syncp__)),
                 (0b10000, Instr(Mnemonic.bt_sfgtui_minus32769__, R5)),
@@ -886,7 +886,7 @@ namespace Reko.Arch.OpenRISC.Aeon
                 Instr(Mnemonic.bt_add__, Ru5, R0),                   // guess
 
                 // opcode 100100
-                Instr(Mnemonic.bt_j, InstrClass.Transfer, disp0_10), // chenxing
+                Instr(Mnemonic.bt_j, InstrClass.Jump, disp0_10), // chenxing
                 // opcode 100101
                 Instr(Mnemonic.bt_movhi__, Ru5, uimm0_5),            // guess
                 // opcode 100110
@@ -919,17 +919,17 @@ namespace Reko.Arch.OpenRISC.Aeon
             
             var decode001000 = Mask(0, 2, "  8",
                 // branch if reg == imm
-                Instr(Mnemonic.bn_beqi__, InstrClass.ConditionalTransfer, R13, simm10_3, disp2_8),   // guess
-                Instr(Mnemonic.bn_bf, InstrClass.ConditionalTransfer, disp2_16),                     // chenxing(mod), source
-                Instr(Mnemonic.bn_bnei__, InstrClass.ConditionalTransfer, R13, simm10_3, disp2_8),
-                Instr(Mnemonic.bn_bnf__, InstrClass.ConditionalTransfer, disp2_16));
+                Instr(Mnemonic.bn_beqi__, InstrClass.CondJump, R13, simm10_3, disp2_8),   // guess
+                Instr(Mnemonic.bn_bf, InstrClass.CondJump, disp2_16),                     // chenxing(mod), source
+                Instr(Mnemonic.bn_bnei__, InstrClass.CondJump, R13, simm10_3, disp2_8),
+                Instr(Mnemonic.bn_bnf__, InstrClass.CondJump, disp2_16));
 
             var decode001001 = Mask(0, 2, "  9",
-                Instr(Mnemonic.bn_blesi__, InstrClass.ConditionalTransfer, R13, uimm10_3, disp2_8),
+                Instr(Mnemonic.bn_blesi__, InstrClass.CondJump, R13, uimm10_3, disp2_8),
                 // branch if reg <= imm XXX: signed/unsigned?
-                Instr(Mnemonic.bn_bleui__, InstrClass.ConditionalTransfer, R13, uimm10_3, disp2_8), // wild guess
-                Instr(Mnemonic.bn_blesi____, InstrClass.ConditionalTransfer, R13, simm10_3, disp2_8), // guess
-                Instr(Mnemonic.bn_bgtui__, InstrClass.ConditionalTransfer, R13, uimm10_3, disp2_8)); // wild guess
+                Instr(Mnemonic.bn_bleui__, InstrClass.CondJump, R13, uimm10_3, disp2_8), // wild guess
+                Instr(Mnemonic.bn_blesi____, InstrClass.CondJump, R13, simm10_3, disp2_8), // guess
+                Instr(Mnemonic.bn_bgtui__, InstrClass.CondJump, R13, uimm10_3, disp2_8)); // wild guess
 
             var decode010000 = Mask(0, 3, "  10",
                 //$REVIEW: divs and divu may be mixed up
@@ -1079,9 +1079,9 @@ namespace Reko.Arch.OpenRISC.Aeon
                 decode001000,
                 decode001001,
                 // opcode 001010
-                Instr(Mnemonic.bn_jal__, InstrClass.Transfer|InstrClass.Call, disp0_18),
+                Instr(Mnemonic.bn_jal__, InstrClass.Call, disp0_18),
                 // opcode 001011
-                Instr(Mnemonic.bn_j, InstrClass.Transfer, disp0_18),
+                Instr(Mnemonic.bn_j, InstrClass.Jump, disp0_18),
 
                 // opcode 001100
                 Instr(Mnemonic.bn_mlwz__, Ru13, Ms(8, 2, 6, 2, PrimitiveType.Word32), uimm0_2),

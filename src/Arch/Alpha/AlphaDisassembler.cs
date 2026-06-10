@@ -148,10 +148,10 @@ namespace Reko.Arch.Alpha
 
             private readonly static InstrClass[] iclasses =
             {
-                InstrClass.Transfer,
-                InstrClass.Transfer|InstrClass.Call,
-                InstrClass.Transfer,
-                InstrClass.Transfer|InstrClass.Call,
+                InstrClass.Jump,
+                InstrClass.Call,
+                InstrClass.Jump,
+                InstrClass.Call,
             };
 
             public JMemDecoder()
@@ -199,8 +199,8 @@ namespace Reko.Arch.Alpha
                 return new AlphaInstruction
                 {
                     Mnemonic = this.mnemonic,
-                    InstructionClass = InstrClass.ConditionalTransfer,
-                    Operands = new MachineOperand[] { op1, op2 }
+                    InstructionClass = InstrClass.CondJump,
+                    Operands = [ op1, op2 ]
                 };
             }
         }
@@ -222,8 +222,8 @@ namespace Reko.Arch.Alpha
                 return new AlphaInstruction
                 {
                     Mnemonic = this.mnemonic,
-                    InstructionClass = InstrClass.ConditionalTransfer,
-                    Operands = new MachineOperand[] { op1, op2 }
+                    InstructionClass = InstrClass.CondJump,
+                    Operands = [ op1, op2 ]
                 };
             }
         }
@@ -867,7 +867,7 @@ namespace Reko.Arch.Alpha
 
             new PalDecoder(new Dictionary<uint, (Mnemonic,InstrClass)> // 18
             {
-                { 0x0000, (Mnemonic.trapb,InstrClass.Transfer|InstrClass.Call) }
+                { 0x0000, (Mnemonic.trapb,InstrClass.Call) }
             }),
             new PalDecoder(new Dictionary<uint, (Mnemonic,InstrClass)> // 19 
             {

@@ -1427,7 +1427,7 @@ namespace Reko.Arch.Qualcomm
 
         private static Decoder IfJump(params Mutator<HexagonDisassembler>[] mutators)
         {
-            return new InstrDecoder(InstrClass.ConditionalTransfer, Mnemonic.jump, mutators);
+            return new InstrDecoder(InstrClass.CondJump, Mnemonic.jump, mutators);
         }
 
         private static Decoder If(int bitpos, int bitlength, Predicate<uint> predicate, Decoder decoder)
@@ -1603,13 +1603,13 @@ namespace Reko.Arch.Qualcomm
                         Mask(6, 2, "  0b1",
                             Instr(Mnemonic.deallocframe),
                             Mask(2, 1, "  0b11",
-                                Instr(Mnemonic.dealloc_return, InstrClass.Transfer|InstrClass.Return),
-                                Instr(Mnemonic.dealloc_return, InstrClass.ConditionalTransfer | InstrClass.Return,
-                Conditional_p0(1, -1, 0))),
+                                Instr(Mnemonic.dealloc_return, InstrClass.Return),
+                                Instr(Mnemonic.dealloc_return, InstrClass.CondReturn,
+                                    Conditional_p0(1, -1, 0))),
                             invalid,
                             Mask(2, 1, "  0b11",
-                                Instr(Mnemonic.jumpr, InstrClass.Transfer | InstrClass.Return, Reg(Registers.lr)),
-                                Instr(Mnemonic.jumpr, InstrClass.ConditionalTransfer | InstrClass.Return, Reg(Registers.lr),
+                                Instr(Mnemonic.jumpr, InstrClass.Return, Reg(Registers.lr)),
+                                Instr(Mnemonic.jumpr, InstrClass.CondReturn, Reg(Registers.lr),
                 Conditional_p0(1, -1, 0)))))));
 
             /*
@@ -1729,17 +1729,17 @@ namespace Reko.Arch.Qualcomm
             var decoder_11 = Mask(23, 1, "  0x11",
                 Seq(
                     Assign(P0, Apply(Mnemonic.cmp__gtu, R16_4, Imm_Minus1)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
                 Mask(7, 2, "  0b10",
                     Seq(
                         Assign(P0, Apply(Mnemonic.cmp__eq, R16_4, Imm_Minus1)),
-                        Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
+                        Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
                     Seq(
                         Assign(P0, Apply(Mnemonic.cmp__eq, R16_4, Imm_Minus1)),
-                        Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
+                        Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
                     Seq(
                         Assign(P0, Apply(Mnemonic.tstbit, R16_4, Imm_0)),
-                        Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
+                        Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(14, 22))),
                     invalid));
 
             /*
@@ -1755,10 +1755,10 @@ namespace Reko.Arch.Qualcomm
             var decoder_12 = Mask(23, 1, "  0x12...",
                 Seq(
                     Assign(P1, Mnemonic.cmp__eq, R16, uw_8L5),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p1_new(14, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p1_new(14, 22))),
                 Seq(
                     Assign(P1, Mnemonic.cmp__gt, R16, uw_8L5),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p1_new(14, 22))));
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p1_new(14, 22))));
 
             /*
             0,0,0,1, 0,0,1,1, 0,0,j,j,s,s,s,s,P,P,0,I,I,I,I,I,j,j,j,j,j,j,j,-,"p1=cmp.gtu(Rs,#U5); if(p1.new) jump:nt #r9:2"
@@ -1815,16 +1815,16 @@ namespace Reko.Arch.Qualcomm
             var decoder_14 = BitFields(Bf((23, 1), (12, 1)), "  0x14...",
                 Seq(
                     Assign(P0, Apply(Mnemonic.cmp__eq, R16_4, Imm_Minus1)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
                 Seq(
                     Assign(P1, Apply(Mnemonic.cmp__eq, R16_4, Imm_Minus1)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))),
                 Seq(
                     Assign(P0, Apply(Mnemonic.cmp__gt, R16_4, Imm_Minus1)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
                 Seq(
                     Assign(P1, Apply(Mnemonic.cmp__gt, R16_4, Imm_Minus1)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))));
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))));
             /*
             0,0,0,1, 0,1,0,1, 0,0,j,j,s,s,s,s,P,P,0,0,t,t,t,t,j,j,j,j,j,j,j,-,"p0=cmp.gtu(Rs,Rt); if(p0.new) jump:nt #r9:2"
             0,0,0,1, 0,1,0,1, 0,0,j,j,s,s,s,s,P,P,0,1,t,t,t,t,j,j,j,j,j,j,j,-,"p1=cmp.gtu(Rs,Rt); if(p1.new) jump:nt #r9:2"
@@ -1838,10 +1838,10 @@ namespace Reko.Arch.Qualcomm
             var decoder_15 = Mask(12, 1, "  0x15...",
                 Seq(
                     Assign(P0, Apply(Mnemonic.cmp__gtu, R16_4, R8_4)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p0_new(13, 22))),
                 Seq(
                     Assign(P1, Apply(Mnemonic.cmp__gtu, R16_4, R8_4)),
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))));
+                    Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7, Conditional_p1_new(13, 22))));
             /*
             0,0,0,1, 0,1,1,0, -,-,j,j,d,d,d,d,P,P,I,I,I,I,I,I,j,j,j,j,j,j,j,-,"Rd=#U6 ; jump #r9:2"
             0,0,0,1, 0,1,1,1, -,-,j,j,s,s,s,s,P,P,-,-,d,d,d,d,j,j,j,j,j,j,j,-,"Rd=Rs ; jump #r9:2"
@@ -2117,9 +2117,9 @@ namespace Reko.Arch.Qualcomm
             0,0,1,0, 0,0,0,0, 1,1,j,j,-,s,s,s,P,P,1,t,t,t,t,t,j,j,j,j,j,j,j,-,"if (!cmp.gt(Ns.new,Rt))jump:t #r9:2"
             */
             var decoder_20 = Mask(23, 1, "  0x20...",
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__eq, New16, R8)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__gt, R8, New16)));
             /*
             0,0,1,0, 0,0,0,1, 0,0,j,j,-,s,s,s,P,P,0,t,t,t,t,t,j,j,j,j,j,j,j,-,"if (cmp.gtu(Ns.new,Rt))jump:nt #r9:2"
@@ -2133,9 +2133,9 @@ namespace Reko.Arch.Qualcomm
             0,0,1,0, 0,0,0,1, 1,1,j,j,-,s,s,s,P,P,1,t,t,t,t,t,j,j,j,j,j,j,j,-,"if (!cmp.gt(Rt,Ns.new))jump:t #r9:2"
             */
             var decoder_21 = Mask(23, 1, "  0x21...",
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__gtu, New16, R8)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__gtu, R8, New16)));
             /*
             0,0,1,0, 0,0,1,0, 0,0,j,j,-,s,s,s,P,P,0,t,t,t,t,t,j,j,j,j,j,j,j,-,"if (cmp.gtu(Rt,Ns.new))jump:nt #r9:2"
@@ -2144,7 +2144,7 @@ namespace Reko.Arch.Qualcomm
             0,0,1,0, 0,0,1,0, 0,1,j,j,-,s,s,s,P,P,1,t,t,t,t,t,j,j,j,j,j,j,j,-,"if (!cmp.gtu(Rt,Ns.new))jump:t #r9:2"
             */
             var decoder_22 = Mask(23, 1, "  0x22...",
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__gtu, R8, New16)),
                 invalid);
             /*
@@ -2173,9 +2173,9 @@ namespace Reko.Arch.Qualcomm
             0,0,1,0, 0,1,0,1, 1,1,j,j,-,s,s,s,P,P,1,-,-,-,-,-,j,j,j,j,j,j,j,-,"if (!tstbit(Ns.new,#0)) jump:t#r9:2"
             */
             var decoder_25 = Mask(23, 1, "  0x25...",
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__gtu, New16, uw_7L5)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.tstbit, New16, Imm_0)));
 
             /*
@@ -2189,9 +2189,9 @@ namespace Reko.Arch.Qualcomm
             0,0,1,0, 0,1,1,0, 1,1,j,j,-,s,s,s,P,P,1,-,-,-,-,-,j,j,j,j,j,j,j,-,"if (!cmp.gt(Ns.new,#-1))jump:t #r9:2"
              */
             var decoder_26 = Mask(23, 1, "  0x25...",
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.cmp__eq, New16, Imm_Minus1)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_20L2_1L7,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_20L2_1L7,
                     ConditionalApply(22, 13, Mnemonic.tstbit, New16, Imm_Minus1)));
 
             /*
@@ -2670,9 +2670,9 @@ namespace Reko.Arch.Qualcomm
             0,1,0,1, 0,0,0, 1,0,0,1,s,s,s,s,s,P,P,-,-,-,-,u,u,-,-,-,-,-,-,-,-,"if (!Pu) callr Rs"
             */
             var decoder_5_0 = Sparse(21, 4, "  5_0", invalid,
-                (0b0101, Instr(Mnemonic.callr, InstrClass.Transfer|InstrClass.Call, R16)),
-                (0b1000, Instr(Mnemonic.callr, InstrClass.ConditionalTransfer | InstrClass.Call, R16, Conditional(8, -1, -1, -1))),
-                (0b1001, Instr(Mnemonic.callr, InstrClass.ConditionalTransfer | InstrClass.Call, R16, Conditional(8, -1, -1, 21))));
+                (0b0101, Instr(Mnemonic.callr, InstrClass.CallInd, R16)),
+                (0b1000, Instr(Mnemonic.callr, InstrClass.CondCallInd, R16, Conditional(8, -1, -1, -1))),
+                (0b1001, Instr(Mnemonic.callr, InstrClass.CondCallInd, R16, Conditional(8, -1, -1, 21))));
 
             /*
             0,1,0,1, 0,0,1, 0,1,0,0,s,s,s,s,s,P,P,-,-,-,-,-,-,-,-,-,-,-,-,-,-,"jumpr Rs"
@@ -2691,14 +2691,14 @@ namespace Reko.Arch.Qualcomm
                 invalid,
                 invalid,
                 invalid,
-                Instr(Mnemonic.jumpr, InstrClass.Transfer, R16),
+                Instr(Mnemonic.jumpr, InstrClass.JumpInd, R16),
                 Instr(Mnemonic.SIDEEFFECT, Apply(Mnemonic.hintjr, R16)),
                 invalid,
                 invalid,
                 invalid,
                 invalid,
-                Instr(Mnemonic.jumpr, InstrClass.ConditionalTransfer, R16, Conditional(8, 11, 12, 21)),
-                Instr(Mnemonic.jumpr, InstrClass.ConditionalTransfer, R16, Conditional(8, 11, 12, 21)),
+                Instr(Mnemonic.jumpr, InstrClass.CondJump, R16, Conditional(8, 11, 12, 21)),
+                Instr(Mnemonic.jumpr, InstrClass.CondJump, R16, Conditional(8, 11, 12, 21)),
                 invalid,
                 invalid,
                 invalid,
@@ -2739,8 +2739,8 @@ namespace Reko.Arch.Qualcomm
                     (0b010, Instr(Mnemonic.ickill)))),
                 (0b1110, Instr(Mnemonic.isync)),
                 (0b1111, Mask(12, 1, "  0b1111",
-                    Instr(Mnemonic.rte, InstrClass.Transfer|InstrClass.Return),
-                    Instr(Mnemonic.rteunlock, InstrClass.Transfer|InstrClass.Return))));
+                    Instr(Mnemonic.rte, InstrClass.Return),
+                    Instr(Mnemonic.rteunlock, InstrClass.Return))));
             /*
             0,1,0,1, 1,0,0, j,j,j,j,j,j,j,j,j,P,P,j,j,j,j,j,j,j,j,j,j,j,j,j,-,"jump #r22:2"
             0,1,0,1, 1,0,1, j,j,j,j,j,j,j,j,j,P,P,j,j,j,j,j,j,j,j,j,j,j,j,j,0,"call #r22:2"
@@ -2765,11 +2765,11 @@ namespace Reko.Arch.Qualcomm
                 decoder_5_2,
                 decoder_5_3,
 
-                Instr(Mnemonic.jump, InstrClass.Transfer, PcRelExt_22_2),
-                Instr(Mnemonic.call, InstrClass.Transfer| InstrClass.Call, PcRelExt_22_2),
+                Instr(Mnemonic.jump, InstrClass.Jump, PcRelExt_22_2),
+                Instr(Mnemonic.call, InstrClass.Call, PcRelExt_22_2),
                 Mask(24, 1, "  0b110",
-                    Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, Conditional(8, 11, 12, 21), PcRelExt_15_2),
-                    Instr(Mnemonic.call, InstrClass.ConditionalTransfer | InstrClass.Call, Conditional(8, -1, -1, -1), PcRelExt_15_2)),
+                    Instr(Mnemonic.jump, InstrClass.CondJump, Conditional(8, 11, 12, 21), PcRelExt_15_2),
+                    Instr(Mnemonic.call, InstrClass.CondCall, Conditional(8, -1, -1, -1), PcRelExt_15_2)),
                 invalid);
 
             /*
@@ -3059,13 +3059,13 @@ namespace Reko.Arch.Qualcomm
                     Assign(P_29L2, Mnemonic.sp2loop0, PcRelExt_8L5_3L2, R16),
                     Assign(P_29L2, Mnemonic.sp3loop0, PcRelExt_8L5_3L2, R16)),
 
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_1L13_2,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_1L13_2,
                     ConditionalApply(21, 12, Mnemonic.NE, R16, Imm_0)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_1L13_2,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_1L13_2,
                     ConditionalApply(21, 12, Mnemonic.GE, R16, Imm_0)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_1L13_2,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_1L13_2,
                     ConditionalApply(21, 12, Mnemonic.EQ, R16, Imm_0)),
-                Instr(Mnemonic.jump, InstrClass.ConditionalTransfer, PcRelExt_1L13_2,
+                Instr(Mnemonic.jump, InstrClass.CondJump, PcRelExt_1L13_2,
                     ConditionalApply(21, 12, Mnemonic.LE, R16, Imm_0)));
             /*
             0,1,1,0, 0,0,1, 0,0,0,0,s,s,s,s,s,P,P,-,-,-,-,-,-,-,-,-,d,d,d,d,d,"Gd=Rs"
@@ -3975,8 +3975,8 @@ namespace Reko.Arch.Qualcomm
             var decoder_96 = Mask(21, 3, "  96",
                 Select(Bf((16,5),(0,5)), u=> u == 0b11110_11110,
                     Select(Bf((10, 4)), Eq0,
-                        Instr(Mnemonic.dealloc_return, InstrClass.Transfer | InstrClass.Return),
-                        Instr(Mnemonic.dealloc_return, InstrClass.ConditionalTransfer | InstrClass.Return, Conditional(8, 11, 12, 13))),
+                        Instr(Mnemonic.dealloc_return, InstrClass.Return),
+                        Instr(Mnemonic.dealloc_return, InstrClass.CondReturn, Conditional(8, 11, 12, 13))),
                     invalid),
                 decoder_9_0jj0,
                 decoder_9_0jj0,

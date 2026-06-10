@@ -136,7 +136,7 @@ namespace Reko.Scanning
                             return current;
                         }
                         break;
-                    case InstrClass.Transfer | InstrClass.Call:
+                    case InstrClass.Call:
                         addrOp = DestinationAddress(instr);
                         if (addrOp is not null)
                         {
@@ -164,7 +164,7 @@ namespace Reko.Scanning
                         block = Disassemble(instr.Address + instr.Length);
                         AddEdge(current, block);
                         return current;
-                    case InstrClass.Transfer:
+                    case InstrClass.Jump:
                         addrOp = DestinationAddress(instr);
                         if (addrOp is not null)
                         {
@@ -183,9 +183,9 @@ namespace Reko.Scanning
                             return current;
                         }
                         return current;
-                    case InstrClass.Transfer | InstrClass.Return:
+                    case InstrClass.Return:
                         return current;
-                    case InstrClass.Transfer | InstrClass.Conditional:
+                    case InstrClass.CondJump:
                         FallthroughToInvalid(instr);
                         addrOp = DestinationAddress(instr);
                         if (addrOp is not null && program.Memory.IsValidAddress(addrOp.Value))

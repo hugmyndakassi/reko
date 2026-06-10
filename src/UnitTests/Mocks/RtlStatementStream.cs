@@ -68,14 +68,14 @@ namespace Reko.UnitTests.Mocks
 
         public RtlInstruction Call(Expression target)
         {
-            var call = new RtlCall(target, 4, InstrClass.Transfer);
+            var call = new RtlCall(target, 4, InstrClass.Call);
             return Emit(call);
         }
 
         // Delayed call (for SPARC / MIPS)
         public RtlInstruction CallD(Expression target)
         {
-            var call = new RtlCall(target, 4, InstrClass.Transfer|InstrClass.Delay);
+            var call = new RtlCall(target, 4, InstrClass.CallD);
             return Emit(call);
         }
 
@@ -87,19 +87,19 @@ namespace Reko.UnitTests.Mocks
 
         public RtlInstruction Goto(uint target)
         {
-            var g = new RtlGoto(Address.Ptr32(target), InstrClass.Transfer);
+            var g = new RtlGoto(Address.Ptr32(target), InstrClass.Jump);
             return Emit(g);
         }
 
         public RtlInstruction Return()
         {
-            var ret = new RtlReturn(0, 0, InstrClass.Transfer);
+            var ret = new RtlReturn(0, 0, InstrClass.Return);
             return Emit(ret);
         }
 
         public RtlInstruction ReturnD()
         {
-            var ret = new RtlReturn(0, 0, InstrClass.Transfer|InstrClass.Delay);
+            var ret = new RtlReturn(0, 0, InstrClass.ReturnD);
             return Emit(ret);
         }
 

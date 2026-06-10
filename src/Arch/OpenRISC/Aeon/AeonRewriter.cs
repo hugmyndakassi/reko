@@ -849,7 +849,7 @@ namespace Reko.Arch.OpenRISC.Aeon
             var op0 = (Identifier)Op(0);
             if ((int)op0.Storage.Domain == 9)
             {
-                iclass = InstrClass.Transfer | InstrClass.Return;
+                iclass = InstrClass.Return;
                 m.Return(0, 0);
                 return;
             }

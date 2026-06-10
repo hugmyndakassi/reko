@@ -343,14 +343,14 @@ l00001018: // l:4; ft:0000101C
             {
                 m => m.Assign(r1, r2),
                 m => m.Assign(r2, m.ISub(r2, 1)),
-                m => m.Branch(m.Ne0(r2), Address.Ptr32(0x100C), InstrClass.ConditionalTransfer|InstrClass.Delay ),
+                m => m.Branch(m.Ne0(r2), Address.Ptr32(0x100C), InstrClass.CondJump|InstrClass.Delay ),
                 m => m.Nop(),
                 m => m.ReturnD(0, 0),
                 m => m.Nop()
             });
             Given_Trace(new RtlTrace(0x1014)
             {
-                m => m.Branch(m.Ne0(r2), Address.Ptr32(0x100C), InstrClass.ConditionalTransfer|InstrClass.Delay ),
+                m => m.Branch(m.Ne0(r2), Address.Ptr32(0x100C), InstrClass.CondJump|InstrClass.Delay ),
                 m => m.Nop(),
                 m => m.ReturnD(0, 0),
                 m => m.Nop()
@@ -565,7 +565,7 @@ l00001000: // l:4; ft:00001004
                 m => m.Assign(r1, m.Mem32(m.Ptr32(0x3000))),
                 m =>
                 {
-                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
+                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.CondJump);
                     m.Assign(r2, m.SDiv(r2, r1));
                 },
                 m => m.Assign(m.Mem32(m.Ptr32(0x4000)), r2),
@@ -1073,8 +1073,8 @@ l00001050: // l:4; ft:00001054
                 m => m.Assign(r1, m.Mem32(m.Word32(0x00123000))),
                 m =>
                 {
-                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
-                    m.BranchInMiddleOfInstruction(m.Eq(r2, m.Mem32(r1)), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
+                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.CondJump);
+                    m.BranchInMiddleOfInstruction(m.Eq(r2, m.Mem32(r1)), Address.Ptr32(0x1008), InstrClass.CondJump);
                     m.Assign(r1, m.ISub(r1, 4));
                     m.Goto(Address.Ptr32(0x1004));
                 }
@@ -1083,8 +1083,8 @@ l00001050: // l:4; ft:00001054
             {
                  m =>
                 {
-                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
-                    m.BranchInMiddleOfInstruction(m.Eq(r2, m.Mem32(r1)), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
+                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.CondJump);
+                    m.BranchInMiddleOfInstruction(m.Eq(r2, m.Mem32(r1)), Address.Ptr32(0x1008), InstrClass.CondJump);
                     m.Assign(r1, m.ISub(r1, 4));
                     m.Goto(Address.Ptr32(0x1004));
                 }
@@ -1128,7 +1128,7 @@ l00001008: // l:8; ft:00001010
                 m => m.Assign(r2, m.Mem32(m.Word32(0x00123000))),
                 m =>
                 {
-                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.ConditionalTransfer);
+                    m.BranchInMiddleOfInstruction(m.Eq0(r1), Address.Ptr32(0x1008), InstrClass.CondJump);
                     m.Call(Address.Ptr32(0x1010), 0);
                 }
             });

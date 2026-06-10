@@ -344,39 +344,39 @@ public class C33Disassembler : DisassemblerBase<C33Instruction, Mnemonic>
         var decode000_0001 = Sparse(4, 5, "  000 0001", nyi,
             (0b00000, Instr(Mnemonic.pushn, r0)),
             (0b00100, Instr(Mnemonic.popn, r0)),
-            (0b01100, Instr(Mnemonic.jpr, InstrClass.Transfer, r0)),
-            (0b11100, Instr(Mnemonic.jpr_d, InstrClass.Transfer|InstrClass.Delay, r0)));
+            (0b01100, Instr(Mnemonic.jpr, InstrClass.Jump, r0)),
+            (0b11100, Instr(Mnemonic.jpr_d, InstrClass.JumpD, r0)));
         var decode000_0010 = Sparse(4, 5, "  000 0010", nyi,
             (0b00000, If(0, 4, Eq0, Instr(Mnemonic.brk, InstrClass.Terminates))),
-            (0b00100, If(0, 4, Eq0, Instr(Mnemonic.retd, InstrClass.Transfer | InstrClass.Return))),
-            (0b01000, If(0, 4, Eq0, Instr(Mnemonic.@int, InstrClass.Transfer | InstrClass.Call, imm2))),
-            (0b01100, If(0, 4, Eq0, Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return))));
+            (0b00100, If(0, 4, Eq0, Instr(Mnemonic.retd, InstrClass.Return))),
+            (0b01000, If(0, 4, Eq0, Instr(Mnemonic.@int, InstrClass.Call, imm2))),
+            (0b01100, If(0, 4, Eq0, Instr(Mnemonic.reti, InstrClass.Return))));
         var decode000_0011 = Sparse(4, 5, "  000 0011", nyi,
-            (0b00000, Instr(Mnemonic.call, InstrClass.Transfer | InstrClass.Call, NoExt, r0)),
-            (0b00100, If(0, 4, Eq0, Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return))),
-            (0b01000, Instr(Mnemonic.jp, InstrClass.Transfer, r0)),
-            (0b10000, Instr(Mnemonic.call_d, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay, r0)),
-            (0b10100, Instr(Mnemonic.ret_d, InstrClass.Transfer | InstrClass.Return | InstrClass.Delay)),
-            (0b11000, Instr(Mnemonic.jp_d, InstrClass.Transfer | InstrClass.Delay, r0)));
+            (0b00000, Instr(Mnemonic.call, InstrClass.Call, NoExt, r0)),
+            (0b00100, If(0, 4, Eq0, Instr(Mnemonic.ret, InstrClass.Return))),
+            (0b01000, Instr(Mnemonic.jp, InstrClass.Jump, r0)),
+            (0b10000, Instr(Mnemonic.call_d, InstrClass.CallD, r0)),
+            (0b10100, Instr(Mnemonic.ret_d, InstrClass.ReturnD)),
+            (0b11000, Instr(Mnemonic.jp_d, InstrClass.JumpD, r0)));
 
-        var CT = InstrClass.ConditionalTransfer;
-        var CTD = CT | InstrClass.Delay;
-        var Tcall = InstrClass.Transfer | InstrClass.Call;
+        var Branch = InstrClass.CondJump;
+        var BranchD = Branch | InstrClass.Delay;
+        var Tcall = InstrClass.Call;
         var TcallD = Tcall | InstrClass.Delay;
-        var T = InstrClass.Transfer;
-        var TD = InstrClass.Transfer | InstrClass.Delay;
-        var decode000_0100 = Instr_8(Mnemonic.jrgt, Mnemonic.jrgt_d, CT, CTD, disp8);
-        var decode000_0101 = Instr_8(Mnemonic.jrge, Mnemonic.jrge_d, CT, CTD, disp8);
-        var decode000_0110 = Instr_8(Mnemonic.jrlt, Mnemonic.jrlt_d, CT, CTD, disp8);
-        var decode000_0111 = Instr_8(Mnemonic.jrle, Mnemonic.jrle_d, CT, CTD, disp8);
-        var decode000_1000 = Instr_8(Mnemonic.jrugt, Mnemonic.jrugt_d, CT, CTD, disp8);
-        var decode000_1001 = Instr_8(Mnemonic.jruge, Mnemonic.jruge_d, CT, CTD, disp8);
-        var decode000_1010 = Instr_8(Mnemonic.jrult, Mnemonic.jrult_d, CT, CTD, disp8);
-        var decode000_1011 = Instr_8(Mnemonic.jrule, Mnemonic.jrule_d, CT, CTD, disp8);
-        var decode000_1100 = Instr_8(Mnemonic.jreq, Mnemonic.jreq_d, CT, CTD, disp8);
-        var decode000_1101 = Instr_8(Mnemonic.jrne, Mnemonic.jrne_d, CT, CTD, disp8);
+        var Jump = InstrClass.Jump;
+        var JumpD = InstrClass.JumpD;
+        var decode000_0100 = Instr_8(Mnemonic.jrgt, Mnemonic.jrgt_d, Branch, BranchD, disp8);
+        var decode000_0101 = Instr_8(Mnemonic.jrge, Mnemonic.jrge_d, Branch, BranchD, disp8);
+        var decode000_0110 = Instr_8(Mnemonic.jrlt, Mnemonic.jrlt_d, Branch, BranchD, disp8);
+        var decode000_0111 = Instr_8(Mnemonic.jrle, Mnemonic.jrle_d, Branch, BranchD, disp8);
+        var decode000_1000 = Instr_8(Mnemonic.jrugt, Mnemonic.jrugt_d, Branch, BranchD, disp8);
+        var decode000_1001 = Instr_8(Mnemonic.jruge, Mnemonic.jruge_d, Branch, BranchD, disp8);
+        var decode000_1010 = Instr_8(Mnemonic.jrult, Mnemonic.jrult_d, Branch, BranchD, disp8);
+        var decode000_1011 = Instr_8(Mnemonic.jrule, Mnemonic.jrule_d, Branch, BranchD, disp8);
+        var decode000_1100 = Instr_8(Mnemonic.jreq, Mnemonic.jreq_d, Branch, BranchD, disp8);
+        var decode000_1101 = Instr_8(Mnemonic.jrne, Mnemonic.jrne_d, Branch, BranchD, disp8);
         var decode000_1110 = Instr_8(Mnemonic.call, Mnemonic.call_d, Tcall, TcallD, disp8);
-        var decode000_1111 = Instr_8(Mnemonic.jp, Mnemonic.jp_d, T, TD, disp8);
+        var decode000_1111 = Instr_8(Mnemonic.jp, Mnemonic.jp_d, Jump, JumpD, disp8);
 
 
         var decode000 = Mask(9, 4, "  000",

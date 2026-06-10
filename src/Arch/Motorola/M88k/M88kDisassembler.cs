@@ -439,15 +439,15 @@ public class M88kDisassembler : DisassemblerBase<M88kInstruction, Mnemonic>
             (0b101000, Instr(Mnemonic.mak, D, S1, S2)),
             (0b101010, Instr(Mnemonic.rot, D, S1, S2)),
 
-            (0b110000, Instr(Mnemonic.jmp, InstrClass.Transfer, S2)),
-            (0b110001, Instr(Mnemonic.jmp_n, InstrClass.Transfer | InstrClass.Delay, S2)),
-            (0b110010, Instr(Mnemonic.jsr, InstrClass.Transfer | InstrClass.Call, S2)),
-            (0b110011, Instr(Mnemonic.jsr_n, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay, S2)),
+            (0b110000, Instr(Mnemonic.jmp, InstrClass.Jump, S2)),
+            (0b110001, Instr(Mnemonic.jmp_n, InstrClass.JumpD, S2)),
+            (0b110010, Instr(Mnemonic.jsr, InstrClass.Call, S2)),
+            (0b110011, Instr(Mnemonic.jsr_n, InstrClass.CallD, S2)),
 
             (0b111010, Instr(Mnemonic.ff1, D, S2)),
             (0b111011, Instr(Mnemonic.ff0, D, S2)),
             (0b111110, Instr(Mnemonic.tbnd, S1, S2)),
-            (0b111111, Instr(Mnemonic.rte, InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged)));
+            (0b111111, Instr(Mnemonic.rte, InstrClass.Return | InstrClass.Privileged)));
 
 
         rootDecoder = Mask(26, 6, "M88k",
@@ -514,20 +514,20 @@ public class M88kDisassembler : DisassemblerBase<M88kInstruction, Mnemonic>
             invalid,
 
             // 0x30
-            Instr(Mnemonic.br, InstrClass.Transfer, D26),
-            Instr(Mnemonic.br_n, InstrClass.Transfer | InstrClass.Delay, D26),
-            Instr(Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call, D26),
-            Instr(Mnemonic.bsr_n, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay, D26),
+            Instr(Mnemonic.br, InstrClass.Jump, D26),
+            Instr(Mnemonic.br_n, InstrClass.JumpD, D26),
+            Instr(Mnemonic.bsr, InstrClass.Call, D26),
+            Instr(Mnemonic.bsr_n, InstrClass.CallD, D26),
 
-            Instr(Mnemonic.bb0, InstrClass.ConditionalTransfer, B5, S1, D16),
-            Instr(Mnemonic.bb0_n, InstrClass.ConditionalTransfer | InstrClass.Delay, B5, S1, D16),
-            Instr(Mnemonic.bb1, InstrClass.ConditionalTransfer, B5, S1, D16),
-            Instr(Mnemonic.bb1_n, InstrClass.ConditionalTransfer | InstrClass.Delay, B5, S1, D16),
+            Instr(Mnemonic.bb0, InstrClass.CondJump, B5, S1, D16),
+            Instr(Mnemonic.bb0_n, InstrClass.CondJump | InstrClass.Delay, B5, S1, D16),
+            Instr(Mnemonic.bb1, InstrClass.CondJump, B5, S1, D16),
+            Instr(Mnemonic.bb1_n, InstrClass.CondJump | InstrClass.Delay, B5, S1, D16),
 
             invalid,
             invalid,
-            Instr(Mnemonic.bcnd, InstrClass.ConditionalTransfer, M5, S1, D16),
-            Instr(Mnemonic.bcnd_n, InstrClass.ConditionalTransfer | InstrClass.Delay, M5, S1, D16),
+            Instr(Mnemonic.bcnd, InstrClass.CondJump, M5, S1, D16),
+            Instr(Mnemonic.bcnd_n, InstrClass.CondJump | InstrClass.Delay, M5, S1, D16),
 
             decode111100,
             decode111101,

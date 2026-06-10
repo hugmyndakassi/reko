@@ -384,11 +384,11 @@ namespace Reko.Arch.MCore
             var decode_C = Instr(Mnemonic.ld_h, R8, MdispH);
             var decode_D = Instr(Mnemonic.st_h, R8, MdispH);
             var decode_E = Mask(11, 1, "  1110",
-                Instr(Mnemonic.bt, InstrClass.ConditionalTransfer, D11),
-                Instr(Mnemonic.bf, InstrClass.ConditionalTransfer, D11));
+                Instr(Mnemonic.bt, InstrClass.CondJump, D11),
+                Instr(Mnemonic.bf, InstrClass.CondJump, D11));
             var decode_F = Mask(11, 1, "  1111",
-                Instr(Mnemonic.br, InstrClass.Transfer, D11),
-                Instr(Mnemonic.bsr, InstrClass.Transfer | InstrClass.Call, D11));
+                Instr(Mnemonic.br, InstrClass.Jump, D11),
+                Instr(Mnemonic.bsr, InstrClass.Call, D11));
 
             rootDecoder = Mask(12, 4, "MCore",
                 decode_0,

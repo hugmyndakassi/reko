@@ -575,7 +575,7 @@ namespace Reko.Arch.RiscV
             {
                 var iReg = (int) regMask.Read(u);
                 if (iReg == d.arch.LinkRegister.Number)
-                    d.state.iclass = InstrClass.Transfer | InstrClass.Return;
+                    d.state.iclass = InstrClass.Return;
                 return true;
             };
 

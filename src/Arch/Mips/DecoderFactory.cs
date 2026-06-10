@@ -619,7 +619,7 @@ namespace Reko.Arch.Mips
                     (0x02, Instr(PRIV, Mnemonic.tlbwi)),
                     (0x06, Instr(PRIV, Mnemonic.tlbwr)),
                     (0x08, Instr(PRIV, Mnemonic.tlbp)),
-                    (0x18, Instr(InstrClass.Transfer|InstrClass.Return|InstrClass.Privileged, Mnemonic.eret)),
+                    (0x18, Instr(InstrClass.Return|InstrClass.Privileged, Mnemonic.eret)),
                     (0x20, Instr(PRIV, Mnemonic.wait)));
                 var cop1 = Mask(21, 5, "COP1",
                     Instr(Mnemonic.mfc1, R2, F3),
@@ -632,8 +632,8 @@ namespace Reko.Arch.Mips
                     invalid,
 
                     Mask(16, 1,
-                        Instr(InstrClass.ConditionalTransfer | InstrClass.Delay, Mnemonic.bc1f, c18, j),
-                        Instr(InstrClass.ConditionalTransfer | InstrClass.Delay, Mnemonic.bc1t, c18, j)),
+                        Instr(InstrClass.CondJump | InstrClass.Delay, Mnemonic.bc1f, c18, j),
+                        Instr(InstrClass.CondJump | InstrClass.Delay, Mnemonic.bc1t, c18, j)),
                     invalid,
                     invalid,
                     invalid,

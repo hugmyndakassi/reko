@@ -318,7 +318,7 @@ namespace Reko.Arch.Motorola.M6809
                 if (writeRegs && (b & 0x80) != 0)
                 {
                     // PCR register was written.
-                    dasm.iclass = InstrClass.Transfer | InstrClass.Return;
+                    dasm.iclass = InstrClass.Return;
                 }
                 return true;
             };
@@ -470,23 +470,23 @@ namespace Reko.Arch.Motorola.M6809
                 // 20
                 invalid,
                 Instr(Mnemonic.lbrn, PCw),
-                Instr(Mnemonic.lbhi, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbls, InstrClass.ConditionalTransfer, PCw),
+                Instr(Mnemonic.lbhi, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbls, InstrClass.CondJump, PCw),
 
-                Instr(Mnemonic.lbhs, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lblo, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbne, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbeq, InstrClass.ConditionalTransfer, PCw),
+                Instr(Mnemonic.lbhs, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lblo, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbne, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbeq, InstrClass.CondJump, PCw),
 
-                Instr(Mnemonic.lbvc, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbvs, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbpl, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbmi, InstrClass.ConditionalTransfer, PCw),
+                Instr(Mnemonic.lbvc, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbvs, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbpl, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbmi, InstrClass.CondJump, PCw),
 
-                Instr(Mnemonic.lbge, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lblt, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lbgt, InstrClass.ConditionalTransfer, PCw),
-                Instr(Mnemonic.lble, InstrClass.ConditionalTransfer, PCw),
+                Instr(Mnemonic.lbge, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lblt, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lbgt, InstrClass.CondJump, PCw),
+                Instr(Mnemonic.lble, InstrClass.CondJump, PCw),
 
                 // 30
                 invalid,
@@ -1121,7 +1121,7 @@ namespace Reko.Arch.Motorola.M6809
 
                 Instr(Mnemonic.inc, Dir),
                 Instr(Mnemonic.tst, Dir),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Dir),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Dir),
                 Instr(Mnemonic.clr, Dir),
 
                 // 10
@@ -1132,8 +1132,8 @@ namespace Reko.Arch.Motorola.M6809
 
                 invalid,
                 invalid,
-                Instr(Mnemonic.lbra, InstrClass.Transfer, PCw),
-                Instr(Mnemonic.lbsr, InstrClass.Transfer|InstrClass.Call, PCw),
+                Instr(Mnemonic.lbra, InstrClass.Jump, PCw),
+                Instr(Mnemonic.lbsr, InstrClass.Call, PCw),
 
                 invalid,
                 Instr(Mnemonic.daa),
@@ -1146,25 +1146,25 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.tfr, Exg),
 
                 // 20
-                Instr(Mnemonic.bra, InstrClass.Transfer, PCb),
+                Instr(Mnemonic.bra, InstrClass.Jump, PCb),
                 Instr(Mnemonic.brn, InstrClass.Linear, PCb),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, PCb),
+                Instr(Mnemonic.bhi, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bls, InstrClass.CondJump, PCb),
 
-                Instr(Mnemonic.bhs, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.blo, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, PCb),
+                Instr(Mnemonic.bhs, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.blo, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bne, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.beq, InstrClass.CondJump, PCb),
 
-                Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer, PCb),
+                Instr(Mnemonic.bvc, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bvs, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bpl, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bmi, InstrClass.CondJump, PCb),
 
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, PCb),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, PCb),
+                Instr(Mnemonic.bge, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.blt, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, PCb),
+                Instr(Mnemonic.ble, InstrClass.CondJump, PCb),
 
                 // 30
                 Instr(Mnemonic.leax, Idx),
@@ -1178,9 +1178,9 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.pulu, Mregs(true, regsS)),
 
                 invalid,
-                Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.rts, InstrClass.Return),
                 Instr(Mnemonic.abx),
-                Instr(Mnemonic.rti, InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.rti, InstrClass.Return),
 
                 Instr(Mnemonic.cwai, Ib),
                 Instr(Mnemonic.mul),
@@ -1247,7 +1247,7 @@ namespace Reko.Arch.Motorola.M6809
 
                 Instr(Mnemonic.inc, Idx),
                 Instr(Mnemonic.tst, Idx),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Idx),
+                Instr(Mnemonic.jmp, InstrClass.JumpInd, Idx),
                 Instr(Mnemonic.clr, Idx),
 
                 // 70
@@ -1288,7 +1288,7 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.adda, Ib),
 
                 Instr(Mnemonic.cmpx, Iw),
-                Instr(Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call, PCb),
+                Instr(Mnemonic.bsr, InstrClass.Call, PCb),
                 Instr(Mnemonic.ldx, Iw),
                 invalid,
 
@@ -1309,7 +1309,7 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.adda, Dir),
 
                 Instr(Mnemonic.cmpx, Dirw),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, Dirw),
+                Instr(Mnemonic.jsr, InstrClass.Call, Dirw),
                 Instr(Mnemonic.ldx, Dirw),
                 Instr(Mnemonic.stx, Dirw),
 
@@ -1330,7 +1330,7 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.adda, Idx),
 
                 Instr(Mnemonic.cmpx, IdxW),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, IdxW),
+                Instr(Mnemonic.jsr, InstrClass.CallInd, IdxW),
                 Instr(Mnemonic.ldx, IdxW),
                 Instr(Mnemonic.stx, IdxW),
 
@@ -1351,7 +1351,7 @@ namespace Reko.Arch.Motorola.M6809
                 Instr(Mnemonic.adda, Ext),
 
                 Instr(Mnemonic.cmpx, ExtW),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call,ExtW),
+                Instr(Mnemonic.jsr, InstrClass.CallInd, ExtW),
                 Instr(Mnemonic.ldx, ExtW),
                 Instr(Mnemonic.stx, ExtW),
 

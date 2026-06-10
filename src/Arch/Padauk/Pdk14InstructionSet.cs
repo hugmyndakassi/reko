@@ -58,8 +58,8 @@ namespace Reko.Arch.Padauk
                     (0b111_0111, Instr(Mnemonic.stopexe)),
                     (0b111_1000, Instr(Mnemonic.engint)),
                     (0b111_1001, Instr(Mnemonic.disgint)),
-                    (0b111_1010, Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return)),
-                    (0b111_1011, Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return)),
+                    (0b111_1010, Instr(Mnemonic.ret, InstrClass.Return)),
+                    (0b111_1011, Instr(Mnemonic.reti, InstrClass.Return)),
                     (0b111_1100, Instr(Mnemonic.mul)));
 
                 var decoder00_0 = Mask(7, 4, "",
@@ -72,8 +72,8 @@ namespace Reko.Arch.Padauk
                         Instr(Mnemonic.mov, p0_6, a),
                         Instr(Mnemonic.mov, a, p0_6)),
 
-                    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, i0_8),
-                    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, i0_8),
+                    Instr(Mnemonic.ret, InstrClass.Return, i0_8),
+                    Instr(Mnemonic.ret, InstrClass.Return, i0_8),
                     Mask(0, 1, "",
                         Instr(Mnemonic.stt16, w1_7),
                         Instr(Mnemonic.ldt16, w1_7)),
@@ -115,8 +115,8 @@ namespace Reko.Arch.Padauk
                 var decoder01_0 = Mask(7, 4, "",
                     Instr(Mnemonic.addc, m0_7),
                     Instr(Mnemonic.subc, m0_7),
-                    Instr(Mnemonic.izsn, InstrClass.ConditionalTransfer, m0_7),
-                    Instr(Mnemonic.dzsn, InstrClass.ConditionalTransfer, m0_7),
+                    Instr(Mnemonic.izsn, InstrClass.CondJump, m0_7),
+                    Instr(Mnemonic.dzsn, InstrClass.CondJump, m0_7),
 
                     Instr(Mnemonic.inc, m0_7),
                     Instr(Mnemonic.dec, m0_7),
@@ -130,8 +130,8 @@ namespace Reko.Arch.Padauk
 
                     Instr(Mnemonic.src, m0_7),
                     Instr(Mnemonic.slc, m0_7),
-                    Instr(Mnemonic.ceqsn, InstrClass.Transfer | InstrClass.Conditional, a, m0_7),
-                    Instr(Mnemonic.cneqsn, InstrClass.Transfer | InstrClass.Conditional, a, m0_7));
+                    Instr(Mnemonic.ceqsn, InstrClass.CondJump, a, m0_7),
+                    Instr(Mnemonic.cneqsn, InstrClass.CondJump, a, m0_7));
 
                 var decoder01_1 = Mask(9, 2, "",
                     Instr(Mnemonic.t0sn, Pn_0_6),
@@ -140,16 +140,16 @@ namespace Reko.Arch.Padauk
                     Instr(Mnemonic.set1, Pn_0_6));
 
                 var decoder10_0 = Mask(9, 2, "",
-                    Instr(Mnemonic.t0sn, InstrClass.ConditionalTransfer, Mn_0_6),
-                    Instr(Mnemonic.t1sn, InstrClass.ConditionalTransfer, Mn_0_6),
+                    Instr(Mnemonic.t0sn, InstrClass.CondJump, Mn_0_6),
+                    Instr(Mnemonic.t1sn, InstrClass.CondJump, Mn_0_6),
                     Instr(Mnemonic.set0, Mn_0_6),
                     Instr(Mnemonic.set1, Mn_0_6));
 
                 var decoder10_1 = Mask(8, 3, "",
                      Instr(Mnemonic.add, a, i0_8),
                      Instr(Mnemonic.sub, a, i0_8),
-                     Instr(Mnemonic.ceqsn, InstrClass.Transfer | InstrClass.Conditional, a, i0_8),
-                     Instr(Mnemonic.cneqsn, InstrClass.Transfer | InstrClass.Conditional, a, i0_8),
+                     Instr(Mnemonic.ceqsn, InstrClass.CondJump, a, i0_8),
+                     Instr(Mnemonic.cneqsn, InstrClass.CondJump, a, i0_8),
                      Instr(Mnemonic.and, a, i0_8),
                      Instr(Mnemonic.or, a, i0_8),
                      Instr(Mnemonic.xor, a, i0_8),
@@ -163,8 +163,8 @@ namespace Reko.Arch.Padauk
 
                     decoder10_0,
                     decoder10_1,
-                    Instr(Mnemonic.@goto, InstrClass.Transfer, a11),
-                    Instr(Mnemonic.call, InstrClass.Transfer | InstrClass.Call, a11));
+                    Instr(Mnemonic.@goto, InstrClass.Jump, a11),
+                    Instr(Mnemonic.call, InstrClass.Call, a11));
             }
         }
     }

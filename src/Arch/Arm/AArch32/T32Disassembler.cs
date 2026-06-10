@@ -2028,7 +2028,7 @@ namespace Reko.Arch.Arm.AArch32
         {
             var reg = (RegisterStorage) dasm.state.ops[^1];
             if (reg == Registers.lr)
-                dasm.state.iclass = InstrClass.Transfer | InstrClass.Return;
+                dasm.state.iclass = InstrClass.Return;
             return true;
         }
 
@@ -2218,7 +2218,7 @@ namespace Reko.Arch.Arm.AArch32
                 Instr(Mnemonic.b, noIt, c8, PcRelative(1, Bf((0, 8)))),
                 Instr(Mnemonic.b, noIt, c8, PcRelative(1, Bf((0, 8)))),
                 Instr(Mnemonic.udf, Imm(0,8)),
-                Instr(Mnemonic.svc, InstrClass.Transfer | InstrClass.Call, noIt, Imm(0, 8)));
+                Instr(Mnemonic.svc, InstrClass.Call, noIt, Imm(0, 8)));
 
             return Mask(13, 3, "  16-bit",
                 decAlu,
@@ -2230,8 +2230,8 @@ namespace Reko.Arch.Arm.AArch32
                         decDataHiRegisters,
                         decDataHiRegisters,
                         Mask(7,1,
-                            Instr(Mnemonic.bx, InstrClass.Transfer, noItUnlessLast, R3, useLr),
-                            Instr(Mnemonic.blx, InstrClass.Transfer|InstrClass.Call, noItUnlessLast, R3))),
+                            Instr(Mnemonic.bx, InstrClass.Jump, noItUnlessLast, R3, useLr),
+                            Instr(Mnemonic.blx, InstrClass.Call, noItUnlessLast, R3))),
                     LdrLiteral,
                     LdrLiteral,
 
@@ -2406,7 +2406,7 @@ namespace Reko.Arch.Arm.AArch32
             var LdStMultiple = Mask(7 + 16, 2,
                 Mask(4 + 16, 1,
                     Instr(Mnemonic.srsdb, w21,sp,Imm(0,5)),
-                    Instr(Mnemonic.rfedb, InstrClass.Transfer|InstrClass.Return, w21,R16)),
+                    Instr(Mnemonic.rfedb, InstrClass.Return, w21,R16)),
                 Mask(4 + 16, 1,
                     new LdmStmDecoder32(Mnemonic.stm),
                     new LdmStmDecoder32(Mnemonic.ldm)),
@@ -2415,7 +2415,7 @@ namespace Reko.Arch.Arm.AArch32
                     new LdmStmDecoder32(Mnemonic.ldmdb)),
                 Mask(4 + 16, 1,
                     Instr(Mnemonic.srsia, w21,sp,Imm(0,5)),
-                    Instr(Mnemonic.rfeia, InstrClass.Transfer|InstrClass.Return, w21,R16)));
+                    Instr(Mnemonic.rfeia, InstrClass.Return, w21,R16)));
 
             var DataProcessingModifiedImmediate = Mask(4 + 16, 5,
                 Instr(Mnemonic.and, R8,R16,M),

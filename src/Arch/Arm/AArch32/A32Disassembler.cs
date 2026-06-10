@@ -885,7 +885,7 @@ namespace Reko.Arch.Arm.AArch32
                 var imm = bitfield.Read(u);
                 // Test (L)oad and r15 bits.
                 if ((u & 0x0010_8000) == 0x0010_8000)
-                    d.state.iclass = InstrClass.Transfer;
+                    d.state.iclass = InstrClass.JumpInd;
                 d.state.ops.Add(new MultiRegisterOperand(Registers.GpRegs, PrimitiveType.Word16, (ushort) imm));
                 return true;
             };
@@ -1572,7 +1572,7 @@ namespace Reko.Arch.Arm.AArch32
         {
             var reg = (RegisterStorage) dasm.state.ops[^1];
             if (reg == Registers.lr)
-                dasm.state.iclass = InstrClass.Transfer | InstrClass.Return;
+                dasm.state.iclass = InstrClass.Return;
             return true;
         }
 
@@ -1658,11 +1658,11 @@ namespace Reko.Arch.Arm.AArch32
             {
                 if (regSrc == Registers.lr)
                 {
-                    dasm.state.iclass = InstrClass.Transfer | InstrClass.Return;
+                    dasm.state.iclass = InstrClass.Return;
                 }
                 else
                 {
-                    dasm.state.iclass = InstrClass.Transfer | InstrClass.Indirect;
+                    dasm.state.iclass = InstrClass.JumpInd;
                 }
             }
             return true;
@@ -1672,7 +1672,7 @@ namespace Reko.Arch.Arm.AArch32
         {
             if (dasm.state.ops[0] == Registers.pc)
             {
-                dasm.state.iclass = InstrClass.Transfer | InstrClass.Indirect;
+                dasm.state.iclass = InstrClass.JumpInd;
             }
             return true;
         }
@@ -2087,11 +2087,11 @@ namespace Reko.Arch.Arm.AArch32
                 Hvc,
                 Smc);
 
-            var Bx = Instr(Mnemonic.bx, InstrClass.Transfer, r(0), useLr);
-            var Bxj = Instr(Mnemonic.bxj, InstrClass.Transfer, r(0));
-            var Blx = Instr(Mnemonic.blx, InstrClass.Transfer|InstrClass.Call, J);
+            var Bx = Instr(Mnemonic.bx, InstrClass.Jump, r(0), useLr);
+            var Bxj = Instr(Mnemonic.bxj, InstrClass.Jump, r(0));
+            var Blx = Instr(Mnemonic.blx, InstrClass.Call, J);
             var Clz = Instr(Mnemonic.clz, r(3),r(0));
-            var Eret = Instr(Mnemonic.eret, InstrClass.Transfer | InstrClass.Return);
+            var Eret = Instr(Mnemonic.eret, InstrClass.Return);
 
             var ChangeProcessState = Mask(16, 1, "Change Process State", 
                 Mask(17, 3, "  imod:M",
@@ -2136,7 +2136,7 @@ namespace Reko.Arch.Arm.AArch32
                 MoveSpecialRegister,
                 Bx,
                 Bxj,
-                Instr(Mnemonic.blx, InstrClass.Transfer|InstrClass.Call, r(0)),
+                Instr(Mnemonic.blx, InstrClass.Call, r(0)),
 
                 CyclicRedundancyCheck,
                 IntegerSaturatingArithmetic,
@@ -2858,9 +2858,9 @@ namespace Reko.Arch.Arm.AArch32
 
             var BranchImmediate = new PcDecoder(28,
                 Mask(24, 1,
-                    Instr(Mnemonic.b, InstrClass.Transfer, J),
-                    Instr(Mnemonic.bl, InstrClass.Transfer|InstrClass.Call, J)),
-                Instr(Mnemonic.blx, InstrClass.Transfer | InstrClass.Call, X));
+                    Instr(Mnemonic.b, InstrClass.Jump, J),
+                    Instr(Mnemonic.bl, InstrClass.Call, J)),
+                Instr(Mnemonic.blx, InstrClass.Call, X));
 
             var Branch_BranchLink_BlockDataTransfer = Mask(25, 1, "Branch, branch with link, and block data transfer",
                 new PcDecoder(28,
@@ -3562,7 +3562,7 @@ namespace Reko.Arch.Arm.AArch32
                     Mask(4, 1, "10xxxx op=?",
                         FloatingPointDataProcessing,
                         AdvancedSIMDandFloatingPoint32bitMove),
-                    Instr(Mnemonic.svc, InstrClass.Transfer | InstrClass.Call, i(0,24))),
+                    Instr(Mnemonic.svc, InstrClass.Call, i(0,24))),
                 Mask(24, 2, "coproc!=101x ??xxxx",
                     Select("op1=00?x?x", 21, 0b101, u => u == 0,
                         SystemRegister_64bitMove,
@@ -3579,7 +3579,7 @@ namespace Reko.Arch.Arm.AArch32
                         Mask(20, 1, "10xxx? op=0",
                             Instr(Mnemonic.mcr, CP(8), i(21,3), r(3), CR(16), CR(0), i(5,3)),
                             Instr(Mnemonic.mrc, CP(8), i(21,3), r(3), CR(16), CR(0), i(5,3)))),
-                    Instr(Mnemonic.svc, InstrClass.Transfer | InstrClass.Call, i(0,24))));
+                    Instr(Mnemonic.svc, InstrClass.Call, i(0,24))));
 
             Decoder SystemRegister_AdvancedSimd_FloatingPoint = Mask(24, 2, "SystemRegister_AdvancedSimd_FloatingPoint",
                 Select(9, 7, n => n == 7,
@@ -3605,7 +3605,7 @@ namespace Reko.Arch.Arm.AArch32
                                 AdvancedSIMDandFloatingPoint32bitMove),
                             invalid),
                         Select(10, 3, n => n == 2, AdvancedSimd_TwoRegistersScalarExtension, invalid))),
-                    Instr(Mnemonic.svc, InstrClass.Transfer | InstrClass.Call, i(0,24)));
+                    Instr(Mnemonic.svc, InstrClass.Call, i(0,24)));
 
             var VmullIntegerPolynomial = Mask(24, 1, 9, 1, "  vmull (Integer and Polynomial), u:op",
                 Instr(Mnemonic.vmull, visBHW_, Q22_12, D7_16, D5_0),
@@ -4347,7 +4347,7 @@ namespace Reko.Arch.Arm.AArch32
                     Mask(4, 1, "  op1=111",
                         invalid,
                         SystemRegister32BitMove)),
-                Instr(Mnemonic.svc, InstrClass.Transfer | InstrClass.Call, i(0, 24)));
+                Instr(Mnemonic.svc, InstrClass.Call, i(0, 24)));
 
             var ConditionalDecoder = new CondMaskDecoder(25, 3, "",
                 DataProcessingAndMisc,

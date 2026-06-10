@@ -408,8 +408,8 @@ namespace Reko.Arch.SuperH
         private void RewriteBranch(bool takenOnTset, bool delaySlot)
         {
             this.iclass = delaySlot
-                ? InstrClass.ConditionalTransfer | InstrClass.Delay
-                : InstrClass.ConditionalTransfer;
+                ? InstrClass.CondJump | InstrClass.Delay
+                : InstrClass.CondJump;
             Expression cond = binder.EnsureFlagGroup(Registers.T);
             var addr = (Address) instr.Operands[0];
             if (!takenOnTset)
@@ -419,7 +419,7 @@ namespace Reko.Arch.SuperH
 
         private void RewriteBraf()
         {
-            this.iclass = InstrClass.Delay | InstrClass.Transfer;
+            this.iclass = InstrClass.JumpD;
             var reg = binder.EnsureRegister((RegisterStorage) instr.Operands[0]);
             m.GotoD(m.IAdd(instr.Address + 4, reg));
         }
@@ -431,14 +431,14 @@ namespace Reko.Arch.SuperH
 
         private void RewriteBsr()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Call | InstrClass.Delay;
+            this.iclass = InstrClass.CallD;
             var dst = SrcOp(instr.Operands[0], null);
             m.CallD(dst, 0);
         }
 
         private void RewriteBsrf()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Delay;
+            this.iclass = InstrClass.JumpD;
             var src = SrcOp(instr.Operands[0], null);
             var reg = binder.EnsureRegister((RegisterStorage) instr.Operands[0]);
             m.CallD(m.IAdd(instr.Address + 4, src), 0);
@@ -446,7 +446,7 @@ namespace Reko.Arch.SuperH
 
         private void RewriteGoto()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Delay;
+            this.iclass = InstrClass.JumpD;
             var addr = (Address)instr.Operands[0];
             m.GotoD(addr);
         }
@@ -602,14 +602,14 @@ namespace Reko.Arch.SuperH
 
         private void RewriteJmp()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Delay;
+            this.iclass = InstrClass.JumpD;
             var src = SrcOp(instr.Operands[0]);
             m.GotoD(((MemoryAccess) src).EffectiveAddress);
         }
 
         private void RewriteJsr()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Delay;
+            this.iclass = InstrClass.CallD;
             var dst = SrcOp(instr.Operands[0], null);
             m.CallD(dst, 0);
         }

@@ -139,7 +139,7 @@ namespace Reko.Arch.X86.Rewriter
             m.BranchInMiddleOfInstruction(
                 m.Test(cc, binder.EnsureFlagGroup(flag)),
                 instrCur.Address + instrCur.Length,
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
 
             var dst = SrcOp(0);
             var src = SrcOp(1);
@@ -398,8 +398,8 @@ namespace Reko.Arch.X86.Rewriter
 
         private void Branch(ConditionCode code, MachineOperand op)
         {
-            this.iclass = InstrClass.ConditionalTransfer;
-            m.Branch(m.Test(code, orw.AluRegister(arch.Registers.FPUF)), OperandAsCodeAddress(op)!, InstrClass.ConditionalTransfer);
+            this.iclass = InstrClass.CondJump;
+            m.Branch(m.Test(code, orw.AluRegister(arch.Registers.FPUF)), OperandAsCodeAddress(op)!, InstrClass.CondJump);
         }
 
         private void RewriteFtst()

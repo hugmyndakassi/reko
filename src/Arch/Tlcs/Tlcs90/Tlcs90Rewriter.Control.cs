@@ -35,7 +35,7 @@ namespace Reko.Arch.Tlcs.Tlcs90
             if (instr.Operands.Length >= 2)
             {
                 var cc = RewriteCondition((ConditionOperand<CondCode>)instr.Operands[0]).Invert();
-                m.Branch(cc, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.Branch(cc, instr.Address + instr.Length, InstrClass.CondJump);
                 instr.Operands[1].DataType = PrimitiveType.Ptr16;
                 m.Call(RewriteSrc(instr.Operands[1]), 2);
             }
@@ -68,7 +68,7 @@ namespace Reko.Arch.Tlcs.Tlcs90
                 one = Constant.SByte(1);
             }
             m.Assign(reg, m.ISub(reg, one));
-            m.Branch(m.Ne0(reg), (Address)op, InstrClass.ConditionalTransfer);
+            m.Branch(m.Ne0(reg), (Address)op, InstrClass.CondJump);
         }
 
         private void RewriteEi()
@@ -89,10 +89,10 @@ namespace Reko.Arch.Tlcs.Tlcs90
                 var cc = RewriteCondition((ConditionOperand<CondCode>)instr.Operands[0]);
                 if (instr.Operands[1] is Address addr)
                 {
-                    m.Branch(cc, addr, InstrClass.ConditionalTransfer);
+                    m.Branch(cc, addr, InstrClass.CondJump);
                     return;
                 }
-                m.Branch(cc.Invert(), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.Branch(cc.Invert(), instr.Address + instr.Length, InstrClass.CondJump);
                 op = instr.Operands[1];
             }
             else

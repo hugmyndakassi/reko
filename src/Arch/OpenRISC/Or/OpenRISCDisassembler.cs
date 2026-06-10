@@ -34,9 +34,9 @@ namespace Reko.Arch.OpenRISC.Or
 
     public class OpenRISCDisassembler : DisassemblerBase<OpenRISCInstruction, Mnemonic>
     {
-        private const InstrClass TD = InstrClass.Transfer | InstrClass.Delay;
-        private const InstrClass TDR = InstrClass.Transfer | InstrClass.Delay | InstrClass.Return;
-        private const InstrClass TDC = InstrClass.Transfer | InstrClass.Delay | InstrClass.Call;
+        private const InstrClass TD = InstrClass.JumpD;
+        private const InstrClass TDR = InstrClass.ReturnD;
+        private const InstrClass TDC = InstrClass.CallD;
 
         private static readonly Decoder rootDecoder;
 

@@ -875,25 +875,25 @@ namespace Reko.Arch.H8
                 (0xF, mov_l_reg_reg));
 
             var decoder58 = If(0, 4, Is0, Mask(4, 4, "  058",
-                Instr(Mnemonic.bra, InstrClass.Transfer, disp16),
+                Instr(Mnemonic.bra, InstrClass.Jump, disp16),
                 Instr(Mnemonic.brn, InstrClass.Linear | InstrClass.Padding, disp16),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, disp16),
+                Instr(Mnemonic.bhi, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bls, InstrClass.CondJump, disp16),
 
-                Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, disp16),
+                Instr(Mnemonic.bcc, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bcs, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bne, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.beq, InstrClass.CondJump, disp16),
 
-                Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer, disp16),
+                Instr(Mnemonic.bvc, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bvs, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bpl, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bmi, InstrClass.CondJump, disp16),
 
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, disp16),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, disp16)));
+                Instr(Mnemonic.bge, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.blt, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, disp16),
+                Instr(Mnemonic.ble, InstrClass.CondJump, disp16)));
 
             var decoder6A1 = Sparse(0, 4, "  6A1x", invalid,
                 (0, Read16Next(Sparse(8, 8, "  6A10", invalid,
@@ -1170,25 +1170,25 @@ namespace Reko.Arch.H8
                 mov_b_aa8_st,
 
                 // 40
-                Instr(Mnemonic.bra, InstrClass.Transfer, disp8),
+                Instr(Mnemonic.bra, InstrClass.Jump, disp8),
                 Instr(Mnemonic.brn, InstrClass.Linear|InstrClass.Padding, disp8),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, disp8),
+                Instr(Mnemonic.bhi, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bls, InstrClass.CondJump, disp8),
 
-                Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, disp8),
+                Instr(Mnemonic.bcc, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bcs, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bne, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.beq, InstrClass.CondJump, disp8),
 
-                Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer, disp8),
+                Instr(Mnemonic.bvc, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bvs, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bpl, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bmi, InstrClass.CondJump, disp8),
 
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, disp8),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, disp8),
+                Instr(Mnemonic.bge, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.blt, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, disp8),
+                Instr(Mnemonic.ble, InstrClass.CondJump, disp8),
 
                 // 50
                 Instr(Mnemonic.mulxu, b, rh, rl),
@@ -1196,20 +1196,20 @@ namespace Reko.Arch.H8
                 Instr(Mnemonic.mulxu, w, rh, rl),
                 Instr(Mnemonic.divxu, w, rh, l, rl, w),
 
-                If(0, 8, u => u == 0x70, Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return)),
-                Instr(Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call, Cdisp8),
-                If(0, 8, u => u == 0x70, Instr(Mnemonic.rte, InstrClass.Transfer|InstrClass.Return)),
+                If(0, 8, u => u == 0x70, Instr(Mnemonic.rts, InstrClass.Return)),
+                Instr(Mnemonic.bsr, InstrClass.Call, Cdisp8),
+                If(0, 8, u => u == 0x70, Instr(Mnemonic.rte, InstrClass.Return)),
                 If(u => (u & 0xC) == 0, Instr(Mnemonic.trapa, TrapNo)),
 
                 decoder58,
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Mind),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, aa24_16),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, Def_aa8),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Mind),
+                Instr(Mnemonic.jmp, InstrClass.Jump, aa24_16),
+                Instr(Mnemonic.jmp, InstrClass.Jump, Def_aa8),
 
-                If(0, 8, Is0, Instr(Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call, Cdisp16)),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, Mind),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, aa24_16),
-                Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, Def_aa8),
+                If(0, 8, Is0, Instr(Mnemonic.bsr, InstrClass.Call, Cdisp16)),
+                Instr(Mnemonic.jsr, InstrClass.Call, Mind),
+                Instr(Mnemonic.jsr, InstrClass.Call, aa24_16),
+                Instr(Mnemonic.jsr, InstrClass.Call, Def_aa8),
 
                 // 60 
                 Instr(Mnemonic.bset, rbh, rbl),

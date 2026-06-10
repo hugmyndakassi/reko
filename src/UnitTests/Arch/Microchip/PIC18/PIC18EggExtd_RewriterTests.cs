@@ -1483,13 +1483,13 @@ namespace Reko.UnitTests.Arch.Microchip.PIC18.Rewriter
         public void PIC18EggExtd_Rewriter_RETFIE()
         {
             ExecTest(Words(0x0010),
-                "0|T--|000200(2): 3 instructions",
+                "0|R--|000200(2): 3 instructions",
                     "1|L--|STKPTR = STKPTR - 1<8>",
                     "2|L--|TOS = Stack[STKPTR]",
                     "3|R--|return (0,0)"
                 );
             ExecTest(Words(0x0011),
-                "0|T--|000200(2): 3 instructions",
+                "0|R--|000200(2): 3 instructions",
                     "1|L--|STKPTR = STKPTR - 1<8>",
                     "2|L--|TOS = Stack[STKPTR]",
                     "3|R--|return (0,0)"

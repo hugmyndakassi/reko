@@ -30,9 +30,8 @@ namespace Reko.Arch.Sparc
 
     public class InstructionSet
     {
-        private const InstrClass Transfer = InstrClass.Delay | InstrClass.Transfer;
-        private const InstrClass CondTransfer = InstrClass.Delay | InstrClass.Transfer | InstrClass.Conditional;
-        private const InstrClass LinkTransfer = InstrClass.Delay | InstrClass.Transfer | InstrClass.Call;
+        private const InstrClass CondTransfer = InstrClass.JCD;
+        private const InstrClass LinkTransfer = InstrClass.CondCallD;
 
         private readonly bool is64Bit;
 
@@ -499,8 +498,8 @@ namespace Reko.Arch.Sparc
 
                 Instr(Mnemonic.jmpl, r14,Rs13,r25),
                 Instr64(
-                    Instr(Mnemonic.@return, Transfer|InstrClass.Return|InstrClass.Delay, r14,Rs13),
-                    Instr(Mnemonic.rett, Transfer|InstrClass.Return|InstrClass.Delay, r14,Rs13)),
+                    Instr(Mnemonic.@return, InstrClass.ReturnD, r14,Rs13),
+                    Instr(Mnemonic.rett, InstrClass.ReturnD, r14,Rs13)),
                 new BranchDecoder(branchOps, 0x30),
                 Instr(Mnemonic.flush),
                 Instr(Mnemonic.save, r14,Ru13,r25),

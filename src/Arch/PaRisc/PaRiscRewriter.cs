@@ -155,7 +155,7 @@ namespace Reko.Arch.PaRisc
         private void MaybeAnnulNextInstruction(InstrClass iclass, Expression e)
         {
             var addrNext = instr.Address + 8;
-            MaybeConditionalJump(InstrClass.ConditionalTransfer, addrNext, RewriteCondition, false, e);
+            MaybeConditionalJump(InstrClass.CondJump, addrNext, RewriteCondition, false, e);
         }
 
         private bool MaybeSkipNextInstruction(InstrClass iclass, bool invert, Expression left, Expression? right = null)
@@ -163,7 +163,7 @@ namespace Reko.Arch.PaRisc
             var addrNext = instr.Address + 8;
             if (MaybeConditionalJump(iclass, addrNext, RewriteCondition, invert, left, right))
             {
-                this.iclass = InstrClass.ConditionalTransfer;
+                this.iclass = InstrClass.CondJump;
                 return true;
             }
             else

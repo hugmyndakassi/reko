@@ -80,13 +80,13 @@ namespace Reko.Arch.X86
                 Grp5[0] = Instr(Mnemonic.inc, Ev, Ndd);
                 Grp5[1] = Instr(Mnemonic.dec, Ev, Ndd);
                 Grp5[2] = Amd64Instr(
-                        Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Ev),
-                        Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Eq));
-                Grp5[3] = Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Ep);
+                        Instr(Mnemonic.call, InstrClass.CallInd, Ev),
+                        Instr(Mnemonic.call, InstrClass.CallInd, Eq));
+                Grp5[3] = Instr(Mnemonic.call, InstrClass.CallInd, Ep);
                 Grp5[4] = Amd64Instr(
-                        Instr(Mnemonic.jmp, InstrClass.Transfer, Ev),
-                        Instr(Mnemonic.jmp, InstrClass.Transfer, Eq));
-                Grp5[5] = Instr(Mnemonic.jmp, InstrClass.Transfer, Ep);
+                        Instr(Mnemonic.jmp, InstrClass.JumpInd, Ev),
+                        Instr(Mnemonic.jmp, InstrClass.JumpInd, Eq));
+                Grp5[5] = Instr(Mnemonic.jmp, InstrClass.JumpInd, Ep);
                 Grp5[6] = Amd64Instr(
                         Instr(Mnemonic.push, Ev),
                         Instr(Mnemonic.push, EV));

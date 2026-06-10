@@ -247,7 +247,7 @@ namespace Reko.Arch.PowerPC
             public override PowerPcInstruction Decode(uint wInstr, PowerPcDisassembler dasm)
             {
                 var mnemonic = (wInstr & 1) == 1 ? Mnemonic.bl : Mnemonic.b;
-                var iclass = (wInstr & 1) == 1 ? InstrClass.Transfer | InstrClass.Call : InstrClass.Transfer;
+                var iclass = (wInstr & 1) == 1 ? InstrClass.Call : InstrClass.Jump;
                 var sOffset = (int) Bits.SignExtend(wInstr & 0x03FF_FFFC, 26);
                 var baseAddr = (wInstr & 2) != 0 ? Address.Create(dasm.defaultWordWidth, 0) : dasm.rdr.Address - 4;
                 return new PowerPcInstruction(mnemonic)
@@ -320,7 +320,7 @@ namespace Reko.Arch.PowerPC
                 var crf = grfBi >> 2;
 
                 Mnemonic mnemonic;
-                InstrClass iclass = link == 1 ? InstrClass.Transfer | InstrClass.Call : InstrClass.Transfer;
+                InstrClass iclass = link == 1 ? InstrClass.Call : InstrClass.Jump;
                 var ops = new List<MachineOperand>();
                 var baseAddr = (wInstr & 2) != 0 ? Address.Create(dasm.defaultWordWidth, 0) : dasm.rdr.Address - 4;
                 var dst = baseAddr + sOffset;
@@ -433,14 +433,14 @@ namespace Reko.Arch.PowerPC
                 {
                     return new PowerPcInstruction(Mnemonic.blr)
                     {
-                        InstructionClass = InstrClass.Transfer|InstrClass.Return,
-                        Operands = Array.Empty<MachineOperand>()
+                        InstructionClass = InstrClass.Return,
+                        Operands = []
                     };
                 }
 
                 var iclass = link 
-                    ? InstrClass.Transfer | InstrClass.Call 
-                    : InstrClass.Transfer | InstrClass.Return;
+                    ? InstrClass.CallInd
+                    : InstrClass.Return;
                 switch (condCode)
                 {
                 default:

@@ -63,7 +63,7 @@ namespace Reko.Environments.AmigaOS
                         ExpressionMatcher.AnyId("addrReg"),
                         ExpressionMatcher.AnyConstant("Offset")),
                     4,
-                    InstrClass.Transfer));
+                    InstrClass.Jump));
             this.StructureMemberAlignment = 4;
             this.TrashedRegisters = new HashSet<RegisterStorage>
             {

@@ -678,16 +678,16 @@ namespace Reko.Arch.PowerPC
                 (0b10000, Sparse(21, 5,
                     (0b00000, new BclrDecoder()),                       // P1
                     (0b10000, Mask(31, 1,                               // P1
-                        Instr(InstrClass.ConditionalTransfer, Mnemonic.bcctr, I1, I2),
-                        Instr(InstrClass.ConditionalTransfer | InstrClass.Call, Mnemonic.bcctrl, I1, I2))),
+                        Instr(InstrClass.CondJump, Mnemonic.bcctr, I1, I2),
+                        Instr(InstrClass.CondCall, Mnemonic.bcctrl, I1, I2))),
                     (0b10001, Mask(31, 1, 
                         Instr(InstrClass.Conditional, Mnemonic.bctar, I1, I2),          // v2.07 bctar[l] Branch Conditional to BTAR [& Link]
                         Instr(InstrClass.Conditional, Mnemonic.bctarl, I1, I2))))),     // v2.07 bctar[l] Branch Conditional to BTAR [& Link]
                 (0b10010, Sparse(21, 5,
-                    (0b00000, Instr(InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged, Mnemonic.rfid)),   //  PPC  P  rfid Return from Interrupt Dword
+                    (0b00000, Instr(InstrClass.Return | InstrClass.Privileged, Mnemonic.rfid)),   //  PPC  P  rfid Return from Interrupt Dword
                     (0b00010, Nyi(Mnemonic.rfscv)),                     // v3.0 P  rfscv Return From System Call Vectored
-                    (0b00100, Instr(InstrClass.Transfer | InstrClass.Return, Mnemonic.rfebb, u11_1)),                   // v2.07   rfebb Return from Event Based Branch
-                    (0b01000, Instr(InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged, Mnemonic.hrfid)),  // v2.02 H hrfid Return From Interrupt Dword Hypervisor
+                    (0b00100, Instr(InstrClass.Return, Mnemonic.rfebb, u11_1)),                   // v2.07   rfebb Return from Event Based Branch
+                    (0b01000, Instr(InstrClass.Return | InstrClass.Privileged, Mnemonic.hrfid)),  // v2.02 H hrfid Return From Interrupt Dword Hypervisor
                     (0b01011, Instr(InstrClass.Terminates | InstrClass.Privileged, Mnemonic.stop)))),                   // v3.0 P  stop Stop
                 (0b10110, Select(21, 5, u => u == 0b00100,
                     Instr(Mnemonic.isync),                              // P1 isync Instruction Synchronize

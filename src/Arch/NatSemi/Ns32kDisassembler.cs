@@ -830,9 +830,9 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
 
         var decode7F = Read16(Sparse(8, 3, "  01111111", Nyi("01111111"),
             (0b000, Instr(Mnemonic.cxpd, gen11_5)),
-            (0b010, Instr(Mnemonic.jump, InstrClass.Transfer, gen11_5)),
+            (0b010, Instr(Mnemonic.jump, InstrClass.Jump, gen11_5)),
             (0b101, adjspi),
-            (0b110, Instr(Mnemonic.jsr, InstrClass.Transfer | InstrClass.Call, gen11_5)),
+            (0b110, Instr(Mnemonic.jsr, InstrClass.Call, gen11_5)),
             (0b111, casei)));
 
         var decodeAE = Read24(Mask(10, 1, "  10101110",
@@ -901,23 +901,23 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             (0b01010, Instr_F(Mnemonic.logbf, Mnemonic.logbl, fgen19_5, fgen14_5))));
 
         var bcond = Mask(4, 4, "  bcond",
-            Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, jdisp),
+            Instr(Mnemonic.beq, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bne, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bcs, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bcc, InstrClass.CondJump, jdisp),
 
-            Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, jdisp),
+            Instr(Mnemonic.bhi, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bls, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bgt, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.ble, InstrClass.CondJump, jdisp),
 
-            Instr(Mnemonic.bfs, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bfc, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.blo, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bhs, InstrClass.ConditionalTransfer, jdisp),
+            Instr(Mnemonic.bfs, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bfc, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.blo, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bhs, InstrClass.CondJump, jdisp),
 
-            Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, jdisp),
-            Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, jdisp),
+            Instr(Mnemonic.blt, InstrClass.CondJump, jdisp),
+            Instr(Mnemonic.bge, InstrClass.CondJump, jdisp),
             invalid,
             invalid);
 
@@ -946,7 +946,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             // 00
             addi,
             addi,
-            Instr(Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call, jdisp),
+            Instr(Mnemonic.bsr, InstrClass.Call, jdisp),
             addi,
 
             cmpi,
@@ -967,7 +967,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             // 10
             addci,
             addci,
-            Instr(Mnemonic.ret, InstrClass.Transfer|InstrClass.Return, disp),
+            Instr(Mnemonic.ret, InstrClass.Return, disp),
             addci,
 
             movi,
@@ -1009,7 +1009,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             // 30
             subci,
             subci,
-            Instr(Mnemonic.rxp, InstrClass.Transfer | InstrClass.Return, disp),
+            Instr(Mnemonic.rxp, InstrClass.Return, disp),
             subci,
 
             tbiti,
@@ -1030,7 +1030,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             // 40
             addi,
             addi,
-            Instr(Mnemonic.rett, InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged, disp),
+            Instr(Mnemonic.rett, InstrClass.Return | InstrClass.Privileged, disp),
             addi,
 
             cmpi,
@@ -1051,7 +1051,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
             // 50
             addci,
             addci,
-            Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged),
+            Instr(Mnemonic.reti, InstrClass.Return | InstrClass.Privileged),
             addci,
 
             movi,
@@ -1250,7 +1250,7 @@ public class Ns32kDisassembler : DisassemblerBase<Ns32kInstruction, Mnemonic>
 
             andi,
             andi,
-            Instr(Mnemonic.br, InstrClass.Transfer, jdisp),
+            Instr(Mnemonic.br, InstrClass.Jump, jdisp),
             andi,
 
             lpri,

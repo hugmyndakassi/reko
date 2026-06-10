@@ -107,7 +107,7 @@ namespace Reko.Arch.MicrochipPIC.PIC18
         private void RewriteCALLW()
         {
 
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
 
             var pclat = binder.EnsureRegister(PIC18Registers.PCLAT);
             var target = m.Fn(callw_intrinsic, Wreg, pclat);

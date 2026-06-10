@@ -402,40 +402,40 @@ namespace Reko.Arch.Etrax
             var reserved = Instr(Mnemonic.Invalid, InstrClass.Invalid);
 
             var bcc = Mask(12, 4, "  Bcc",
-                Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.ba,  InstrClass.Transfer | InstrClass.Delay, Jb),
-                Instr(Mnemonic.bwf, InstrClass.ConditionalTransfer | InstrClass.Delay, Jb));
+                Instr(Mnemonic.bcc, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bcs, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bne, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.beq, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bvc, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bvs, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bpl, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bmi, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bls, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bhi, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bge, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.blt, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.bgt, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.ble, InstrClass.CondJump | InstrClass.Delay, Jb),
+                Instr(Mnemonic.ba,  InstrClass.JumpD, Jb),
+                Instr(Mnemonic.bwf, InstrClass.CondJump | InstrClass.Delay, Jb));
 
             var bccW = Mask(12, 4, "  BccW",
-                Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bne, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.beq, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.ba, InstrClass.Transfer | InstrClass.Delay, Jw),
-                Instr(Mnemonic.bwf, InstrClass.ConditionalTransfer | InstrClass.Delay, Jw));
+                Instr(Mnemonic.bcc, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bcs, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bne, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.beq, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bvc, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bvs, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bpl, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bmi, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bls, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bhi, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bge, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.blt, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.bgt, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.ble, InstrClass.CondJump | InstrClass.Delay, Jw),
+                Instr(Mnemonic.ba, InstrClass.JumpD, Jw),
+                Instr(Mnemonic.bwf, InstrClass.CondJump | InstrClass.Delay, Jw));
 
 
             var scc = Mask(12, 4, "  Scc",
@@ -612,8 +612,8 @@ namespace Reko.Arch.Etrax
                     Select((0, 4), u => u == 0b1111,
                         // Assignments to PC are jumps.
                         Select((12, 4), u => u == 0b1011,
-                            Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),
-                            Instr(Mnemonic.move, InstrClass.Transfer, P0, R12)),
+                            Instr(Mnemonic.ret, InstrClass.Return),
+                            Instr(Mnemonic.move, InstrClass.Jump, P0, R12)),
                         Instr(Mnemonic.move, P0, R12))),
                 SizedInstr(
                     Instr(Mnemonic.sub, zz, R0, R12),
@@ -655,13 +655,13 @@ namespace Reko.Arch.Etrax
                         Instr(Mnemonic.muls,zz, R0, NpcRd),    // Dest.reg. 1 0  0 1 0 0 z z Source reg.
                         Instr(Mnemonic.mulu,zz, R0, NpcRd)),   // Dest.reg. 1 1  0 1 0 0 z z Source reg.
                     Sparse(12, 4, "  jbrc/jsrc", reserved, // specreg -8 1 m 0 1 0 0 1 1 Source
-                        (0x0, Instr(Mnemonic.jump, InstrClass.Transfer, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0x2, Instr(Mnemonic.jirc, InstrClass.Transfer, MemJ, skip4)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0x3, Instr(Mnemonic.jsrc, InstrClass.Transfer|InstrClass.Call, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0x6, Instr(Mnemonic.jbrc, InstrClass.Transfer, MemJ, skip4)),    // 0 1 1 0 1 m 0 1 0 0 1 1 Source
-                        (0x8, Instr(Mnemonic.jmpu, InstrClass.Transfer, MemJ, skip4)),
-                        (0xA, Instr(Mnemonic.jir, InstrClass.Transfer, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0xB, Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x0, Instr(Mnemonic.jump, InstrClass.Jump, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x2, Instr(Mnemonic.jirc, InstrClass.Jump, MemJ, skip4)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x3, Instr(Mnemonic.jsrc, InstrClass.Call, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x6, Instr(Mnemonic.jbrc, InstrClass.Jump, MemJ, skip4)),    // 0 1 1 0 1 m 0 1 0 0 1 1 Source
+                        (0x8, Instr(Mnemonic.jmpu, InstrClass.Jump, MemJ, skip4)),
+                        (0xA, Instr(Mnemonic.jir, InstrClass.Jump, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0xB, Instr(Mnemonic.jsr, InstrClass.Call, MemJ)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
                         (0xF, reserved))),             //         1 0 0 0 1 m 0 1 0 0 1 1 Source
                         //Nyi("jsr / jir[ ]         "),     //    Special reg. 1 m 0 1 0 0 1 1 Source
                         //Nyi("break                "),     //       n 1 1 1 0 1 0 0 1 0 0 1 1 n
@@ -671,12 +671,12 @@ namespace Reko.Arch.Etrax
                 SizedInstr(
                     reserved,
                     Sparse(12, 4, reserved,
-                        (0x0, Instr(Mnemonic.jump, InstrClass.Transfer, R0)),   // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0x2, Instr(Mnemonic.jirc, InstrClass.Transfer, R0, skip4)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0x3, Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, R0, skip4)),     // 1 0 1 1 1 m 0 1 0 0 1 1 Source
-                        (0x6, Instr(Mnemonic.jbrc, InstrClass.Transfer, R0, skip4)),    // 0 1 1 0 1 m 0 1 0 0 1 1 Source
-                        (0xA, Instr(Mnemonic.jir, InstrClass.Transfer, R0)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
-                        (0xB, Instr(Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call, R0))     // 1 0 1 1 1 m 0 1 0 0 1 1 Source
+                        (0x0, Instr(Mnemonic.jump, InstrClass.Jump, R0)),   // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x2, Instr(Mnemonic.jirc, InstrClass.Jump, R0, skip4)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0x3, Instr(Mnemonic.jsr, InstrClass.Call, R0, skip4)),     // 1 0 1 1 1 m 0 1 0 0 1 1 Source
+                        (0x6, Instr(Mnemonic.jbrc, InstrClass.Jump, R0, skip4)),    // 0 1 1 0 1 m 0 1 0 0 1 1 Source
+                        (0xA, Instr(Mnemonic.jir, InstrClass.Jump, R0)),    // 0 0 0 0 1 m 0 1 0 0 1 1 Source
+                        (0xB, Instr(Mnemonic.jsr, InstrClass.Call, R0))     // 1 0 1 1 1 m 0 1 0 0 1 1 Source
                     )),
                 SizedInstr(
                     Instr(Mnemonic.bound,zz, Mem, R12),  // index     1 m 0 1 1 1 z z Bound

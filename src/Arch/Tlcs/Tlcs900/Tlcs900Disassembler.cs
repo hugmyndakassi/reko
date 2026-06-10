@@ -727,7 +727,7 @@ namespace Reko.Arch.Tlcs.Tlcs900
             invalid,
             Instr(Mnemonic.halt),
             Instr(Mnemonic.ei, Ib),
-            Instr(Mnemonic.reti, InstrClass.Transfer|InstrClass.Return),
+            Instr(Mnemonic.reti, InstrClass.Return),
 
             invalid,
             Instr(Mnemonic.push, Ib),
@@ -736,8 +736,8 @@ namespace Reko.Arch.Tlcs.Tlcs900
 
             Instr(Mnemonic.incf),
             Instr(Mnemonic.decf),
-            Instr(Mnemonic.ret, InstrClass.Transfer|InstrClass.Return),
-            Instr(Mnemonic.retd, InstrClass.Transfer|InstrClass.Return, Iw),
+            Instr(Mnemonic.ret, InstrClass.Return),
+            Instr(Mnemonic.retd, InstrClass.Return, Iw),
             // 10
             Instr(Mnemonic.rcf),
             Instr(Mnemonic.scf),

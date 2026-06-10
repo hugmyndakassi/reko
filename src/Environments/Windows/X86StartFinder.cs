@@ -153,7 +153,7 @@ namespace Reko.Environments.Windows
 
             var instr = p.Current;
             var op0 = instr.Operands.Length > 0 ? instr.Operands[0] : null;
-            if (instr.InstructionClass == InstrClass.Transfer)
+            if (instr.InstructionClass == InstrClass.Jump)
             {
                 if (op0 is Address addrOp0 && addrOp0 > instr.Address)
                 {

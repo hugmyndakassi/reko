@@ -507,7 +507,7 @@ namespace Reko.Environments.C64
             if (!EatSpaces() ||
                 !GetInteger(out lineNumber))
                 SyntaxError();
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var addr = Lines[(ushort) lineNumber].Address;
             m.Call(addr, 2);
         }
@@ -518,7 +518,7 @@ namespace Reko.Environments.C64
             if (!EatSpaces() ||
                 !GetInteger(out lineNumber))
                 SyntaxError();
-            iclass = InstrClass.Transfer;
+            iclass = InstrClass.Jump;
             var addr = Lines[(ushort) lineNumber].Address;
             m.Goto(addr);
         }
@@ -540,8 +540,8 @@ namespace Reko.Environments.C64
                 {
                     if (!GetInteger(out int lineNumber))
                         SyntaxError();
-                    iclass = InstrClass.ConditionalTransfer;
-                    m.Branch(expr, Lines[(ushort)lineNumber].Address, InstrClass.ConditionalTransfer);
+                    iclass = InstrClass.CondJump;
+                    m.Branch(expr, Lines[(ushort)lineNumber].Address, InstrClass.CondJump);
                     return;
                 }
                 var cl = rtlInstructions;
@@ -558,8 +558,8 @@ namespace Reko.Environments.C64
             {
                 if (!GetInteger(out int lineNumber))
                     SyntaxError();
-                iclass = InstrClass.ConditionalTransfer;
-                m.Branch(expr, Lines[(ushort) lineNumber].Address, InstrClass.ConditionalTransfer);
+                iclass = InstrClass.CondJump;
+                m.Branch(expr, Lines[(ushort) lineNumber].Address, InstrClass.CondJump);
                 return;
             }
             throw new NotImplementedException();
@@ -755,7 +755,7 @@ namespace Reko.Environments.C64
         
         private void RewriteReturn()
         {
-            iclass = InstrClass.Transfer|InstrClass.Return;
+            iclass = InstrClass.Return;
             m.Return(2, 0);
         }
 
@@ -766,7 +766,7 @@ namespace Reko.Environments.C64
                 throw new InvalidOperationException("Expected address after SYS.");
             var addrMachineCode = Address.Ptr16((ushort) addr);
             IProcessorArchitecture arch6502 = host.GetArchitecture("m6502");
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             m.CallX(addrMachineCode, 2, arch6502);
         }
 

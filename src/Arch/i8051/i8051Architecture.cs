@@ -256,10 +256,10 @@ namespace Reko.Arch.i8051
                 if (!rdr.TryReadByte(out byte bValue))
                     break;
                 var addrDst = Address.Ptr16(uAddrDst);
-                m.BranchInMiddleOfInstruction(m.Eq(areg, bValue), addrDst, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq(areg, bValue), addrDst, InstrClass.CondJump);
             }
             int length = (int) (rdr.Address - addrPatch);
-            var cluster = m.MakeCluster(addrPatch, length, InstrClass.Transfer);
+            var cluster = m.MakeCluster(addrPatch, length, InstrClass.Jump);
             return cluster;
         }
     }

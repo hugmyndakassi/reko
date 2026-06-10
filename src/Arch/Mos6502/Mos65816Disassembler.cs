@@ -449,7 +449,7 @@ namespace Reko.Arch.Mos6502
 
 
             // $10
-    Instr(Mnemonic.bpl, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bpl, InstrClass.CondJump, rel),
     Instr(Mnemonic.ora, idy),
     Instr(Mnemonic.ora, idp),
     Instr(Mnemonic.ora, isy),
@@ -468,9 +468,9 @@ namespace Reko.Arch.Mos6502
 
 
     // $20
-    Instr(Mnemonic.jsr, InstrClass.Call|InstrClass.Transfer, abs),
+    Instr(Mnemonic.jsr, InstrClass.Call, abs),
     Instr(Mnemonic.and, idx),
-    Instr(Mnemonic.jsr, InstrClass.Call|InstrClass.Transfer, abl),
+    Instr(Mnemonic.jsr, InstrClass.Call, abl),
     Instr(Mnemonic.and, sr),
     Instr(Mnemonic.bit, dp),
     Instr(Mnemonic.and, dp),
@@ -486,7 +486,7 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.and, abl),
 
     // $30
-    Instr(Mnemonic.bmi, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bmi, InstrClass.CondJump, rel),
     Instr(Mnemonic.and, idy),
     Instr(Mnemonic.and, idp),
     Instr(Mnemonic.and, isy),
@@ -504,7 +504,7 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.and, alx),
 
     // $40
-    Instr(Mnemonic.rti, InstrClass.Transfer|InstrClass.Return),
+    Instr(Mnemonic.rti, InstrClass.Return),
     Instr(Mnemonic.eor, idx),
      Instr(Mnemonic.wdm, InstrClass.Invalid),
     Instr(Mnemonic.eor, sr),
@@ -516,14 +516,14 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.eor, imm),
     Instr(Mnemonic.lsr),
     Instr(Mnemonic.phk),
-    Instr(Mnemonic.jmp, InstrClass.Transfer, abs),
+    Instr(Mnemonic.jmp, InstrClass.Jump, abs),
     Instr(Mnemonic.eor, abs),
     Instr(Mnemonic.lsr, abs),
     Instr(Mnemonic.eor, abl),
 
 
     // $50
-    Instr(Mnemonic.bvc, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bvc, InstrClass.CondJump, rel),
     Instr(Mnemonic.eor, idy),
     Instr(Mnemonic.eor, idp),
     Instr(Mnemonic.eor, isy),
@@ -535,14 +535,14 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.eor, aby),
     Instr(Mnemonic.phy),
     Instr(Mnemonic.tcd),
-    Instr(Mnemonic.jmp, InstrClass.Transfer, abl),
+    Instr(Mnemonic.jmp, InstrClass.Jump, abl),
     Instr(Mnemonic.eor, abx),
     Instr(Mnemonic.lsr, abx),
     Instr(Mnemonic.eor, alx),
 
 
     // $60
-    Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return),
+    Instr(Mnemonic.rts, InstrClass.Return),
     Instr(Mnemonic.adc, idx),
     Instr(Mnemonic.per, rell),
     Instr(Mnemonic.adc, sr),
@@ -554,13 +554,13 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.adc, imm),
     Instr(Mnemonic.ror),
     Instr(Mnemonic.rtl),
-    Instr(Mnemonic.jmp, InstrClass.Transfer, ind),
+    Instr(Mnemonic.jmp, InstrClass.Jump, ind),
     Instr(Mnemonic.adc, abs),
     Instr(Mnemonic.ror, abs),
     Instr(Mnemonic.adc, abl),
 
     // $70
-    Instr(Mnemonic.bvs, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bvs, InstrClass.CondJump, rel),
     Instr(Mnemonic.adc, idy),
     Instr(Mnemonic.adc, idp),
     Instr(Mnemonic.adc, isy),
@@ -573,16 +573,16 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.ply),
     Instr(Mnemonic.tdc),
 
-    Instr(Mnemonic.jmp, InstrClass.Transfer, ial),
+    Instr(Mnemonic.jmp, InstrClass.Jump, ial),
     Instr(Mnemonic.adc, abx),
     Instr(Mnemonic.ror, abx),
     Instr(Mnemonic.adc, alx),
 
 
     // $80
-    Instr(Mnemonic.bra, InstrClass.Transfer, rel),
+    Instr(Mnemonic.bra, InstrClass.Jump, rel),
     Instr(Mnemonic.sta, idx),
-    Instr(Mnemonic.brl, InstrClass.Transfer, rell),
+    Instr(Mnemonic.brl, InstrClass.Jump, rell),
     Instr(Mnemonic.sta, sr),
     Instr(Mnemonic.sty, dp),
     Instr(Mnemonic.sta, dp),
@@ -599,7 +599,7 @@ namespace Reko.Arch.Mos6502
 
 
     // $90
-    Instr(Mnemonic.bcc, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bcc, InstrClass.CondJump, rel),
     Instr(Mnemonic.sta, idy),
     Instr(Mnemonic.sta, idp),
     Instr(Mnemonic.sta, isy),
@@ -637,7 +637,7 @@ namespace Reko.Arch.Mos6502
 
 
     // $b0
-    Instr(Mnemonic.bcs, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bcs, InstrClass.CondJump, rel),
     Instr(Mnemonic.lda, idy),
     Instr(Mnemonic.lda, idp),
     Instr(Mnemonic.lda, isy),
@@ -675,7 +675,7 @@ namespace Reko.Arch.Mos6502
 
 
     // $d0
-    Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.bne, InstrClass.CondJump, rel),
     Instr(Mnemonic.cmp, idy),
     Instr(Mnemonic.cmp, idp),
     Instr(Mnemonic.cmp, isy),
@@ -687,7 +687,7 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.cmp, aby),
     Instr(Mnemonic.phx),
     Instr(Mnemonic.stp),
-    Instr(Mnemonic.jmp, InstrClass.Transfer, iax),
+    Instr(Mnemonic.jmp, InstrClass.JumpInd, iax),
     Instr(Mnemonic.cmp, abx),
     Instr(Mnemonic.dec, abx),
     Instr(Mnemonic.cmp, alx),
@@ -713,7 +713,7 @@ namespace Reko.Arch.Mos6502
 
 
     // $f0
-    Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, rel),
+    Instr(Mnemonic.beq, InstrClass.CondJump, rel),
     Instr(Mnemonic.sbc, idy),
     Instr(Mnemonic.sbc, idp),
     Instr(Mnemonic.sbc, isy),
@@ -725,7 +725,7 @@ namespace Reko.Arch.Mos6502
     Instr(Mnemonic.sbc, aby),
     Instr(Mnemonic.plx),
     Instr(Mnemonic.xce),
-    Instr(Mnemonic.jsr, InstrClass.Call|InstrClass.Transfer, iax),
+    Instr(Mnemonic.jsr, InstrClass.CallInd, iax),
     Instr(Mnemonic.sbc, abx),
     Instr(Mnemonic.inc, abx),
     Instr(Mnemonic.sbc, alx),

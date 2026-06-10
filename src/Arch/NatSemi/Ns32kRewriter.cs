@@ -567,7 +567,7 @@ public class Ns32kRewriter : IEnumerable<RtlInstructionCluster>
         m.BranchInMiddleOfInstruction(
             m.Not(condition),
             instr.Address + instr.Length,
-            InstrClass.ConditionalTransfer);
+            InstrClass.CondJump);
         m.Goto(target);
     }
 
@@ -723,7 +723,7 @@ public class Ns32kRewriter : IEnumerable<RtlInstructionCluster>
             m.BranchInMiddleOfInstruction(
                 m.Test(cc.Invert(), flags),
                 instr.Address + instr.Length,
-                 InstrClass.ConditionalTransfer);
+                 InstrClass.CondJump);
             m.Goto(target);
         }
     }
@@ -743,7 +743,7 @@ public class Ns32kRewriter : IEnumerable<RtlInstructionCluster>
             m.BranchInMiddleOfInstruction(
                 test.Invert(),
                 instr.Address + instr.Length,
-                 InstrClass.ConditionalTransfer);
+                 InstrClass.CondJump);
             m.Goto(target);
         }
     }
@@ -878,18 +878,18 @@ public class Ns32kRewriter : IEnumerable<RtlInstructionCluster>
             ? ((LiteralOperand) instr.Operands[0]).ToString()
             : "";
         var addrNext = instr.Address + instr.Length;
-        m.BranchInMiddleOfInstruction(m.Eq0(r0), addrNext, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r0), addrNext, InstrClass.CondJump);
         var value1 = binder.CreateTemporary(dt);
         var value2 = binder.CreateTemporary(dt);
         m.Assign(value1, m.Mem(dt, r1));
         m.Assign(value2, m.Mem(dt, r2));
         if (flags.Contains('u'))
         {
-            m.BranchInMiddleOfInstruction(m.Eq(value1, value2), addrNext, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Eq(value1, value2), addrNext, InstrClass.CondJump);
         }
         if (flags.Contains('w'))
         {
-            m.BranchInMiddleOfInstruction(m.Ne(value1, value2), addrNext, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Ne(value1, value2), addrNext, InstrClass.CondJump);
         }
         if (flags.Contains('b'))
         {
@@ -1510,16 +1510,16 @@ public class Ns32kRewriter : IEnumerable<RtlInstructionCluster>
         var r4 = MaybeSlice(binder.EnsureRegister(Registers.GpRegisters[4]), dt);
         var flags = ((LiteralOperand) instr.Operands[0]).ToString();
         var addrNext = instr.Address + instr.Length;
-        m.BranchInMiddleOfInstruction(m.Eq0(r0), addrNext, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r0), addrNext, InstrClass.CondJump);
         var value = binder.CreateTemporary(dt);
         m.Assign(value, m.Mem(dt, r1));
         if (flags.Contains('u'))
         {
-            m.BranchInMiddleOfInstruction(m.Eq(value, r4), addrNext, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Eq(value, r4), addrNext, InstrClass.CondJump);
         }
         if (flags.Contains('w'))
         { 
-            m.BranchInMiddleOfInstruction(m.Ne(value, r4), addrNext, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Ne(value, r4), addrNext, InstrClass.CondJump);
         }
         if (flags.Contains('b'))
         {

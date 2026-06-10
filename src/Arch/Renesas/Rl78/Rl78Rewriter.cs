@@ -319,7 +319,7 @@ namespace Reko.Arch.Renesas.Rl78
         {
             var cond = RewriteSrc(instr.Operands[0]);
             var target = (Address) RewriteSrc(instr.Operands[1]);
-            m.Branch(m.Not(cond), target, InstrClass.ConditionalTransfer);
+            m.Branch(m.Not(cond), target, InstrClass.CondJump);
         }
 
         private void RewriteBr()
@@ -336,20 +336,20 @@ namespace Reko.Arch.Renesas.Rl78
         private void RewriteBranch(ConditionCode cc, Identifier grf)
         {
             var target = (Address) RewriteSrc(instr.Operands[0]);
-            m.Branch(m.Test(cc, grf), target, InstrClass.ConditionalTransfer);
+            m.Branch(m.Test(cc, grf), target, InstrClass.CondJump);
         }
 
         private void RewriteBt()
         {
             var cond = RewriteSrc(instr.Operands[0]);
             var target = (Address) RewriteSrc(instr.Operands[1]);
-            m.Branch(cond, target, InstrClass.ConditionalTransfer);
+            m.Branch(cond, target, InstrClass.CondJump);
         }
 
         private void RewriteBtclr()
         {
             var cond = RewriteSrc(instr.Operands[0]);
-            m.BranchInMiddleOfInstruction(m.Not(cond), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(m.Not(cond), instr.Address + instr.Length, InstrClass.CondJump);
             RewriteDst(instr.Operands[0], m.False(), (a, b) => b);
             m.Goto((Address)instr.Operands[1]);
         }
@@ -541,7 +541,7 @@ namespace Reko.Arch.Renesas.Rl78
                 return;
             }
             var addrSkip = instrNext!.Address + instrNext.Length;
-            m.Branch(m.Test(cc, flagGroup), addrSkip, InstrClass.ConditionalTransfer);
+            m.Branch(m.Test(cc, flagGroup), addrSkip, InstrClass.CondJump);
         }
 
         private void RewriteSub()

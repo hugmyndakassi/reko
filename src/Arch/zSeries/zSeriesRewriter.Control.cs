@@ -36,7 +36,7 @@ namespace Reko.Arch.zSeries
     {
         private void RewriteBasr()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Call;
+            this.iclass = InstrClass.Call;
             var lr = Reg(0);
             m.Assign(lr, instr.Address + instr.Length);
             var dst = Reg(1);
@@ -45,7 +45,7 @@ namespace Reko.Arch.zSeries
 
         private void RewriteBassm()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Call;
+            this.iclass = InstrClass.Call;
             var lr = Reg(0);
             m.Assign(lr, instr.Address + instr.Length);
             var dst = Reg(1);
@@ -54,14 +54,14 @@ namespace Reko.Arch.zSeries
 
         private void RewriteBr()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             var dst = Op(0, arch.PointerType);
             m.Goto(dst);
         }
 
         private void RewriteBranch(ConditionCode condCode)
         {
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             var dst = Op(0, arch.PointerType);
             var cc = binder.EnsureFlagGroup(Registers.CC);
             m.BranchInMiddleOfInstruction(m.Test(condCode, cc).Invert(), instr.Address + instr.Length, iclass);
@@ -103,7 +103,7 @@ namespace Reko.Arch.zSeries
             }
             else
             {
-                m.BranchInMiddleOfInstruction(m.Eq0(index), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq0(index), instr.Address + instr.Length, InstrClass.CondJump);
                 m.Goto(dst);
             }
         }
@@ -176,7 +176,7 @@ namespace Reko.Arch.zSeries
 
         private void RewriteBrasl()
         {
-            this.iclass = InstrClass.Transfer | InstrClass.Call;
+            this.iclass = InstrClass.Call;
             var dst = Reg(0);
             m.Assign(dst, instr.Address + instr.Length);
             m.Call(Addr(1), 0);
@@ -184,7 +184,7 @@ namespace Reko.Arch.zSeries
 
         private void RewriteBrctg()
         {
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             var reg = Reg(0);
             m.Assign(reg, m.ISubS(reg, 1));
             var ea = EffectiveAddress(1);
@@ -239,14 +239,14 @@ namespace Reko.Arch.zSeries
         
         private void RewriteJ()
         {
-            this.iclass = InstrClass.Transfer;
+            this.iclass = InstrClass.Jump;
             var dst = Addr(0);
             m.Goto(dst);
         }
 
         private void RewriteJcc(ConditionCode condCode)
         {
-            this.iclass = InstrClass.ConditionalTransfer;
+            this.iclass = InstrClass.CondJump;
             var dst = Addr(0);
             var cc = binder.EnsureFlagGroup(Registers.CC);
             m.Branch(m.Test(condCode, cc), dst, iclass);

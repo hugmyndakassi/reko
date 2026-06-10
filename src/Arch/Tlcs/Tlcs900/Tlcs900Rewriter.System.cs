@@ -67,7 +67,7 @@ namespace Reko.Arch.Tlcs.Tlcs900
 
         private void RewriteSwi()
         {
-            iclass = InstrClass.Transfer | InstrClass.Call;
+            iclass = InstrClass.Call;
             var xsp = binder.EnsureRegister(Registers.xsp);
             var sr = binder.EnsureRegister(Registers.sr);
             var dst = Address.Ptr32(0xFFFF00u + ((Constant)instr.Operands[0]).ToUInt32() * 4);

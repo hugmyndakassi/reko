@@ -1790,7 +1790,7 @@ namespace Reko.ImageLoaders.OdbgScript
                 else if (run_till_return)
                 {
                     var instr = Host.Disassemble(Debugger.InstructionPointer);
-                    if (instr is not null && (instr.InstructionClass.HasFlag(InstrClass.Return)))
+                    if (instr is not null && instr.InstructionClass.IsReturn())
                     {
                         run_till_return = false;
                         stepcount = 0;

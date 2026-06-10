@@ -191,17 +191,17 @@ public class M8CDisassembler : DisassemblerBase<M8CInstruction, Mnemonic>
 
     static M8CDisassembler()
     {
-        var jmp = Instr(Mnemonic.jmp, InstrClass.Transfer, D12);                // 8x 5 2 JMP
-        var call = Instr(Mnemonic.call, InstrClass.ConditionalTransfer, D12);   // 9x 11 2 CALL
-        var jz = Instr(Mnemonic.jz, InstrClass.ConditionalTransfer, D12);       // Ax 5 2 JZ
-        var jnz = Instr(Mnemonic.jnz, InstrClass.ConditionalTransfer, D12);     // Bx 5 2 JNZ
-        var jc = Instr(Mnemonic.jc, InstrClass.ConditionalTransfer, D12);       // Cx 5 2 JC
-        var jnc = Instr(Mnemonic.jnc, InstrClass.ConditionalTransfer, D12);     // Dx 5 2 JNC
-        var jacc = Instr(Mnemonic.jacc, InstrClass.Transfer, D12);              // Ex 7 2 JACC
+        var jmp = Instr(Mnemonic.jmp, InstrClass.Jump, D12);                // 8x 5 2 JMP
+        var call = Instr(Mnemonic.call, InstrClass.CondJump, D12);   // 9x 11 2 CALL
+        var jz = Instr(Mnemonic.jz, InstrClass.CondJump, D12);       // Ax 5 2 JZ
+        var jnz = Instr(Mnemonic.jnz, InstrClass.CondJump, D12);     // Bx 5 2 JNZ
+        var jc = Instr(Mnemonic.jc, InstrClass.CondJump, D12);       // Cx 5 2 JC
+        var jnc = Instr(Mnemonic.jnc, InstrClass.CondJump, D12);     // Dx 5 2 JNC
+        var jacc = Instr(Mnemonic.jacc, InstrClass.Jump, D12);              // Ex 7 2 JACC
         var index = Instr(Mnemonic.index, D12);                                 // Fx 13 2 INDEX Z
 
         rootDecoder = Mask(0, 8, "m8c",
-            Instr(Mnemonic.ssc, InstrClass.Transfer|InstrClass.Call),   // 15 1 SSC                         
+            Instr(Mnemonic.ssc, InstrClass.Call),   // 15 1 SSC                         
             Instr(Mnemonic.add, A, Imm),   // 4 2 ADD  A, expr C,   Z          
             Instr(Mnemonic.add, A, Mem),   // 6 2 ADD  A, [expr] C, Z          
             Instr(Mnemonic.add, A, MemX),   // 7 2 ADD  A, [X + expr] C, Z      
@@ -337,9 +337,9 @@ public class M8CDisassembler : DisassemblerBase<M8CInstruction, Mnemonic>
             Instr(Mnemonic.dec, Mem),  // 7 2 DEC [expr] C,Z
             Instr(Mnemonic.dec, MemX),  // 8 2 DEC [X + expr] C,Z
             Instr(Mnemonic.lcall, Addr),  // 7C 13 3 LCALL
-            Instr(Mnemonic.ljmp, Addr),    // 7D 7 3 LJMP
-            Instr(Mnemonic.reti, InstrClass.Transfer|InstrClass.Return),  // 10 1 RETI  C,Z
-            Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return),  // 7F 8 1 RET
+            Instr(Mnemonic.ljmp, Addr),             // 7D 7 3 LJMP
+            Instr(Mnemonic.reti, InstrClass.Return),     // 10 1 RETI  C,Z
+            Instr(Mnemonic.ret, InstrClass.Return),      // 7F 8 1 RET
 
             jmp,
             jmp,

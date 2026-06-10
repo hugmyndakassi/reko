@@ -175,7 +175,7 @@ namespace Reko.Arch.Mips
                 case Mnemonic.eret: RewriteEret(instr); break;
                 case Mnemonic.j: RewriteJump(instr); break;
                 case Mnemonic.jal: RewriteJal(instr); break;
-                case Mnemonic.jalr: RewriteJalr(instr); break;
+                case Mnemonic.jalr: RewriteJalr(instr, InstrClass.JumpIndD); break;
                 case Mnemonic.jalx: RewriteJalx(instr); break;
                 case Mnemonic.jr: RewriteJr(instr); break;
                 case Mnemonic.lb: RewriteLoad(instr, PrimitiveType.SByte); break;
@@ -327,7 +327,7 @@ namespace Reko.Arch.Mips
                 case Mnemonic.cachee: RewriteCache(instr, intrinsics.cache_EVA_intrinsic); break;
                 case Mnemonic.ext: RewriteExt(instr); break;
                 case Mnemonic.ins: RewriteIns(instr); break;
-                case Mnemonic.jalrc: RewriteJalr(instr); break;
+                case Mnemonic.jalrc: RewriteJalr(instr, InstrClass.JumpInd); break;
                 case Mnemonic.jalrc_hb: RewriteJalr_hb(instr); break;
                 case Mnemonic.jrc: RewriteJr(instr); break;
                 case Mnemonic.lbue: RewriteLe(instr, PrimitiveType.Byte); break;

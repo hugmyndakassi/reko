@@ -738,7 +738,7 @@ public class NX8_500Disassembler : DisassemblerBase<NX8_500Instruction, Mnemonic
             nyi,
             nyi,
 
-            Instr(Mnemonic.sj, InstrClass.ConditionalTransfer, rdiff8),
+            Instr(Mnemonic.sj, InstrClass.CondJump, rdiff8),
             nyi,
             nyi,
             nyi,
@@ -1065,7 +1065,7 @@ public class NX8_500Disassembler : DisassemblerBase<NX8_500Instruction, Mnemonic
 
             nyi,
             nyi,
-            Instr(Mnemonic.cal, InstrClass.Transfer|InstrClass.Call, Addr16),
+            Instr(Mnemonic.cal, InstrClass.Call, Addr16),
             Instr(Mnemonic.brk, InstrClass.Terminates|InstrClass.Padding));
     }
 }

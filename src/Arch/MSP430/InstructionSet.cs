@@ -58,7 +58,7 @@ namespace Reko.Arch.Msp430
                     ( 0x09, nyi ),
                     ( 0x0A, nyi ),
                     ( 0x0C, Sparse(0, 6,  "  0C", invalid,
-                        ( 0x00, InstrX(Mnemonics.reti, InstrClass.Transfer|InstrClass.Return))))),
+                        ( 0x00, InstrX(Mnemonics.reti, InstrClass.Return))))),
                 invalid,
                 invalid,
 
@@ -89,14 +89,14 @@ namespace Reko.Arch.Msp430
 
                 (Mnemonics, InstrClass)[] jmps = new (Mnemonics, InstrClass)[8]
                 {
-                ( Mnemonics.jnz,  InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jz,   InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jnc,  InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jc,   InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jn,   InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jge,  InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jl,   InstrClass.ConditionalTransfer ),
-                ( Mnemonics.jmp,  InstrClass.Transfer ),
+                ( Mnemonics.jnz,  InstrClass.CondJump ),
+                ( Mnemonics.jz,   InstrClass.CondJump ),
+                ( Mnemonics.jnc,  InstrClass.CondJump ),
+                ( Mnemonics.jc,   InstrClass.CondJump ),
+                ( Mnemonics.jn,   InstrClass.CondJump ),
+                ( Mnemonics.jge,  InstrClass.CondJump ),
+                ( Mnemonics.jl,   InstrClass.CondJump ),
+                ( Mnemonics.jmp,  InstrClass.Jump),
                 };
 
                 return new Decoder[16]
@@ -135,11 +135,11 @@ namespace Reko.Arch.Msp430
 
                     Instr(Mnemonics.push, w,s),
                     Instr(Mnemonics.push, w,s),
-                    Instr(Mnemonics.call, InstrClass.Transfer|InstrClass.Call, s),
+                    Instr(Mnemonics.call, InstrClass.Call, s),
                     invalid,
 
                     Sparse(0, 6, "  0C", invalid,
-                        ( 0x00, Instr(Mnemonics.reti, InstrClass.Transfer) )),
+                        ( 0x00, Instr(Mnemonics.reti, InstrClass.Return) )),
                     nyi, // InstrX(Mnemonics.calla, S),
                     invalid,
                     invalid,
@@ -208,9 +208,9 @@ namespace Reko.Arch.Msp430
                 new JmpDecoder(jmps),
 
                 Select(u => (u & 0x0F3F) == 0x0130, // mask: As & S
-                    Instr(Mnemonics.ret, InstrClass.Transfer|InstrClass.Return),
+                    Instr(Mnemonics.ret, InstrClass.Return),
                     Select(u => (u & 0x8F) == 0, // mask: Ad & D
-                        Instr(Mnemonics.br, InstrClass.Transfer, Saddr),
+                        Instr(Mnemonics.br, InstrClass.Jump, Saddr),
                         Instr(Mnemonics.mov, w,S,D))),
                 Instr(Mnemonics.add, w,S,D),
                 Instr(Mnemonics.addc, w,S,D),

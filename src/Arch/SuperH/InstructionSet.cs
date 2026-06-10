@@ -166,9 +166,9 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     Instr_3_4(Mnemonic.stc, LinPri, RBank2_3bit, r1));
 
                 var decoders_0_3 = Mask(4, 4, "  0..3",
-                    Instr_2(Mnemonic.bsrf, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay, r1),
+                    Instr_2(Mnemonic.bsrf, InstrClass.CallD, r1),
                     invalid,
-                    Instr_2(Mnemonic.braf, InstrClass.Transfer | InstrClass.Delay, r1),
+                    Instr_2(Mnemonic.braf, InstrClass.JumpD, r1),
                     invalid,
 
                     invalid,
@@ -233,9 +233,9 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     Instr_4(Mnemonic.stc, LinPri, dbr, r1));
 
                 var decoders_0_B = Sparse(4, 4, "  0..B", invalid,
-                    (0x0, Instr(Mnemonic.rts, InstrClass.Transfer | InstrClass.Return | InstrClass.Delay)),
-                    (0x1, Instr(Mnemonic.sleep, InstrClass.Transfer | InstrClass.Privileged)),
-                    (0x2, Instr(Mnemonic.rte, InstrClass.Transfer | InstrClass.Return | InstrClass.Delay | InstrClass.Privileged)),
+                    (0x0, Instr(Mnemonic.rts, InstrClass.ReturnD)),
+                    (0x1, Instr(Mnemonic.sleep, InstrClass.Call | InstrClass.Privileged)),
+                    (0x2, Instr(Mnemonic.rte, InstrClass.ReturnD | InstrClass.Privileged)),
                     (0x3, Instr(Mnemonic.brk)),
                     (0x5, Instr_2a(Mnemonic.resbank)),
                     (0x6, Instr_2a(Mnemonic.rts_n)),
@@ -402,7 +402,7 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     (0x28, Instr(Mnemonic.shll16, r1)),
                     (0x29, Instr(Mnemonic.shlr16, r1)),
                     (0x2A, Instr(Mnemonic.lds, LinPri, r1, pr)),
-                    (0x2B, Instr(Mnemonic.jmp, InstrClass.Transfer, Ind1l)),
+                    (0x2B, Instr(Mnemonic.jmp, InstrClass.Jump, Ind1l)),
 
                     (0x2E, Instr(Mnemonic.ldc, LinPri, r1, vbr)),
 
@@ -418,7 +418,7 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     (0x47, Instr_3_4(Mnemonic.ldc_l, LinPri, Post1l, spc)),
 
                     (0x4A, Instr_2a(Mnemonic.ldc, r1, tbr)),
-                    (0x4B, Instr_2a(Mnemonic.jsr_n, InstrClass.Transfer | InstrClass.Call, Ind1l)),
+                    (0x4B, Instr_2a(Mnemonic.jsr_n, InstrClass.Call, Ind1l)),
 
                     (0x4E, Instr_3_4(Mnemonic.ldc, LinPri, r1, spc)),
 
@@ -615,7 +615,7 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     Instr(Mnemonic.mov_b, R0, D2b),
                     Instr(Mnemonic.mov_w, R0, D2w),
                     Instr_DSP(Mnemonic.setrc, I),
-                    Instr_2a(Mnemonic.jsr_n, InstrClass.Transfer | InstrClass.Call, DindTbr_l),
+                    Instr_2a(Mnemonic.jsr_n, InstrClass.Call, DindTbr_l),
 
                     Instr(Mnemonic.mov_b, D2b, R0),
                     Instr(Mnemonic.mov_w, D2w, R0),
@@ -627,9 +627,9 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                         Instr_2a(Mnemonic.bld, i3, r2)),
 
                     Instr(Mnemonic.cmp_eq, I, R0),
-                    Instr(Mnemonic.bt, InstrClass.ConditionalTransfer, j),
+                    Instr(Mnemonic.bt, InstrClass.CondJump, j),
                     invalid,
-                    Instr(Mnemonic.bf, InstrClass.ConditionalTransfer, j),
+                    Instr(Mnemonic.bf, InstrClass.CondJump, j),
 
                     Instr_DSP(Mnemonic.ldrs, Pl),
                     Instr(Mnemonic.bt_s, j),
@@ -643,7 +643,7 @@ SH1 SH2 SH3 SH4 SH4A SH2A
                     Instr(Mnemonic.mov_b, R0, Gin_b),
                     Instr(Mnemonic.mov_w, R0, Gin_w),
                     Instr(Mnemonic.mov_l, R0, Gin_l),
-                    Instr(Mnemonic.trapa, InstrClass.Transfer | InstrClass.Call, I),
+                    Instr(Mnemonic.trapa, InstrClass.Call, I),
 
                     Instr(Mnemonic.mov_b, Gin_b, R0),
                     Instr(Mnemonic.mov_w, Gin_w, R0),

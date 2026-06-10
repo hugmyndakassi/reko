@@ -183,7 +183,7 @@ namespace Reko.Scanning
                     default:
                         throw new NotImplementedException($"{rtl.GetType()} - not implemented");
                     }
-                    Debug.Assert(rtl.Class.HasFlag(InstrClass.Transfer));
+                    Debug.Assert(rtl.Class.IsTransfer());
                     if (IsPaddingBoundary(cluster, instrs))
                     {
                         var block = MakeFallthroughBlock(this.Address, cluster.Address, instrs);
@@ -319,7 +319,7 @@ namespace Reko.Scanning
                 return false;
             }
             var rtlDelayed = Trace.Current;
-            if (rtlDelayed.Class.HasFlag(InstrClass.Transfer))
+            if (rtlDelayed.Class.IsTransfer())
             {
                 // Can't deal with transfer functions in delay slots yet.
                 return false;
@@ -363,7 +363,7 @@ namespace Reko.Scanning
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
                             rtlTransfer.Length,
-                            new RtlBranch(tmp, (Address) branch.Target, InstrClass.ConditionalTransfer));
+                            new RtlBranch(tmp, (Address) branch.Target, InstrClass.CondJump));
                     }
                     break;
                 case RtlGoto g:
@@ -374,7 +374,7 @@ namespace Reko.Scanning
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
                             rtlTransfer.Length,
-                            new RtlGoto(tmp, InstrClass.Transfer));
+                            new RtlGoto(tmp, InstrClass.Jump));
                     }
                     break;
                 case RtlCall call:
@@ -385,7 +385,7 @@ namespace Reko.Scanning
                         rtlTransfer = new RtlInstructionCluster(
                             rtlTransfer.Address,
                             rtlTransfer.Length,
-                            new RtlCall(tmp, (byte) call.ReturnAddressSize, InstrClass.Transfer | InstrClass.Call));
+                            new RtlCall(tmp, (byte) call.ReturnAddressSize, InstrClass.Call));
                     }
                     break;
                 case RtlReturn:
@@ -440,7 +440,7 @@ namespace Reko.Scanning
                     var call = new RtlCall(
                         new ProcedureConstant(state.Architecture.PointerType, ext),
                         0,
-                        InstrClass.Transfer | InstrClass.Call);
+                        InstrClass.Call);
                     cluster.Instructions[^1] = call;
                     if (rtlLast is RtlGoto)
                     {
@@ -467,7 +467,7 @@ namespace Reko.Scanning
 
             if (needsExtraReturn)
             {
-                ExtendLastClusterWith(instrs, new RtlReturn(0, 0, InstrClass.Return | InstrClass.Transfer));
+                ExtendLastClusterWith(instrs, new RtlReturn(0, 0, InstrClass.Return));
             }
 
             // The trace may have moved if a delay slot was consumed.

@@ -344,29 +344,29 @@ namespace Reko.Arch.V850
                     Instr(Mnemonic.sst_w, r, Mep(1, 6, ~1, 0, PrimitiveType.Word32)));
 
             var bcond_9 = Mask(0, 4, "   bcond",
-                Instr(Mnemonic.bv, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bl, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bz, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bnh, InstrClass.ConditionalTransfer, disp9),
+                Instr(Mnemonic.bv, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bl, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bz, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bnh, InstrClass.CondJump, disp9),
 
-                Instr(Mnemonic.bn, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.br, InstrClass.Transfer, disp9),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, disp9),
+                Instr(Mnemonic.bn, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.br, InstrClass.Jump, disp9),
+                Instr(Mnemonic.blt, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.ble, InstrClass.CondJump, disp9),
 
-                Instr(Mnemonic.bnv, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bnl, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bnz, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bh, InstrClass.ConditionalTransfer, disp9),
+                Instr(Mnemonic.bnv, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bnl, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bnz, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bh, InstrClass.CondJump, disp9),
 
-                Instr(Mnemonic.bp, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bsa, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, disp9),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, disp9));
+                Instr(Mnemonic.bp, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bsa, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bge, InstrClass.CondJump, disp9),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, disp9));
 
             var dispose = Instr(Mnemonic.dispose); //$TODO operands
 
-            var jr_disp22 = Instr(Mnemonic.jr, InstrClass.Transfer, disp22);
+            var jr_disp22 = Instr(Mnemonic.jr, InstrClass.Jump, disp22);
 
             var prepare2 = Nyi("prepare2");
             var prepare3 = Nyi("prepare3");
@@ -391,7 +391,7 @@ namespace Reko.Arch.V850
                     Mask(4, 1, "000011",
                         Instr(Mnemonic.sld_bu, Mep(0, 4, ~0, 0, PrimitiveType.Byte), r),
                         Instr(Mnemonic.sld_hu, Mep(0, 4, ~1, 1, PrimitiveType.Word16), r)),
-                    Instr(Mnemonic.jmp, InstrClass.Transfer, Mep(11, 5, ~0, 0, PrimitiveType.Word32)))),
+                    Instr(Mnemonic.jmp, InstrClass.Jump, Mep(11, 5, ~0, 0, PrimitiveType.Word32)))),
 
                 (4, Select((11, 5), Ne0,
                     Instr(Mnemonic.satsubr, R, r),
@@ -431,7 +431,7 @@ namespace Reko.Arch.V850
                 (23, Select((11, 5), Ne0,
                     Instr(Mnemonic.mulh, Is0_5, r),
                     Select((0, 5), Ne0, 
-                        Instr(Mnemonic.jarl, InstrClass.Transfer|InstrClass.Call, disp32,R),
+                        Instr(Mnemonic.jarl, InstrClass.Call, disp32,R),
                         Nyi("jr disp32")))),
 
                 (24, Instr(Mnemonic.sld_b, Mep_b, r)),
@@ -480,7 +480,7 @@ namespace Reko.Arch.V850
                 (54, Instr(Mnemonic.andi, Simm16, R, r)),
                 (55, Select((11, 5), Ne0, "  110111",
                     Instr(Mnemonic.mulhi, Simm16, R, r),
-                    Instr(Mnemonic.jmp, InstrClass.Transfer, Mw32))),
+                    Instr(Mnemonic.jmp, InstrClass.Jump, Mw32))),
 
                 (56, Instr(Mnemonic.ld_b, Mb, r)),
                 (57, Mdisp16_op(Mask(0, 1, "  111001",
@@ -493,7 +493,7 @@ namespace Reko.Arch.V850
 
                 (60, Select((11, 5), Ne0, "  111100",
                     Mdisp16_op(Mask(0, 1, "  111100 r!=0",
-                        Instr(Mnemonic.jarl, InstrClass.Transfer|InstrClass.Call, disp22, r),
+                        Instr(Mnemonic.jarl, InstrClass.Call, disp22, r),
                         Nyi("ld.bu disp16"))),
                     Mdisp16_op(Mask(0, 4, "  111100 r=0",
                         jr_disp22,
@@ -517,7 +517,7 @@ namespace Reko.Arch.V850
                         Instr(Mnemonic.st_w, r, Mdisp23(PrimitiveType.Byte)))))),
                 (61, Select((11, 5), Ne0, "  111101",
                     Mdisp16_op(Mask(0, 1, "  111101 r!=0",
-                        Instr(Mnemonic.jarl, InstrClass.Transfer|InstrClass.Call, disp22, r),
+                        Instr(Mnemonic.jarl, InstrClass.Call, disp22, r),
                         Nyi("ld.bu disp16"))), // Who comes up with these encodings...
                     Mdisp16_op(Mask(0, 4, "  111101 r=0",
                         jr_disp22,

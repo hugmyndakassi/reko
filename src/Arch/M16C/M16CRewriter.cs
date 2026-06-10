@@ -423,7 +423,7 @@ internal class M16CRewriter : IEnumerable<RtlInstructionCluster>
         m.Assign(fb, m.Mem16(sp));
         m.Assign(sp, m.IAddS(sp, 2));
         m.Return(3, 0);
-        iclass = InstrClass.Transfer | InstrClass.Return;
+        iclass = InstrClass.Return;
     }
 
     private void RewriteFclr()
@@ -657,7 +657,7 @@ internal class M16CRewriter : IEnumerable<RtlInstructionCluster>
         m.BranchInMiddleOfInstruction(
             test(binder, m),
             instr.Address + instr.Length,
-            InstrClass.ConditionalTransfer);
+            InstrClass.CondJump);
         var src = Operand(0);
         var dst = Operand(1, src.DataType);
         Assign(dst, src);

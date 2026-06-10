@@ -34,7 +34,7 @@ namespace Reko.Arch.LatticeMico
 
     public class LatticeMico32Disassembler : DisassemblerBase<LatticeMico32Instruction, Mnemonic>
     {
-        private const InstrClass CT = InstrClass.ConditionalTransfer;
+        private const InstrClass CT = InstrClass.CondJump;
 
         private static readonly Decoder rootDecoder;
 
@@ -262,24 +262,24 @@ namespace Reko.Arch.LatticeMico
                 Instr(Mnemonic.sl, z11, r11, r21, r16),
 
                 // 30
-                Instr(Mnemonic.b, InstrClass.Transfer, z21, r21),
+                Instr(Mnemonic.b, InstrClass.Jump, z21, r21),
                 Instr(Mnemonic.modu, z11, r11, r21, r16),
                 Instr(Mnemonic.sub, z11, r11, r21, r16),
                 Instr(Mnemonic.reserved, InstrClass.Invalid),
 
                 Instr(Mnemonic.wcsr, nyi("wcsr")),
                 Instr(Mnemonic.mod, z11, r11, r21, r16),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, z21, r21),
+                Instr(Mnemonic.call, InstrClass.Call, z21, r21),
                 Instr(Mnemonic.sexth, z11, r11, r21),
 
-                Instr(Mnemonic.bi, InstrClass.Transfer, PcRel26),
+                Instr(Mnemonic.bi, InstrClass.Jump, PcRel26),
                 Instr(Mnemonic.cmpe, z11, r11, r21, r16),
                 Instr(Mnemonic.cmpg, z11, r11, r21, r16),
                 Instr(Mnemonic.cmpge, z11, r11, r21, r16),
 
                 Instr(Mnemonic.cmpgeu, z11, r11, r21, r16),
                 Instr(Mnemonic.cmpgu, z11, r11, r21, r16),
-                Instr(Mnemonic.calli, InstrClass.Transfer|InstrClass.Call, PcRel26),
+                Instr(Mnemonic.calli, InstrClass.Call, PcRel26),
                 Instr(Mnemonic.cmpne, z11, r11, r21, r16));
         }
     }

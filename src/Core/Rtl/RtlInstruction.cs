@@ -97,15 +97,15 @@ namespace Reko.Core.Rtl
         public static string FormatClass(InstrClass rtlClass)
         {
             var sb = new StringBuilder();
-            switch (rtlClass & (InstrClass.Transfer | InstrClass.Linear | InstrClass.Return  | InstrClass.Terminates | InstrClass.Privileged))
+            var g = rtlClass & (InstrClass.Transfer | InstrClass.Linear | InstrClass.CtiReturn | InstrClass.Terminates | InstrClass.Privileged);
+            switch (rtlClass & (InstrClass.Transfer | InstrClass.Linear | InstrClass.CtiReturn | InstrClass.Terminates | InstrClass.Privileged))
             {
             case InstrClass.Linear:
                 sb.Append((rtlClass & InstrClass.Unlikely) != 0 ? 'U':'L'); break;
             case InstrClass.Transfer:
             case InstrClass.Transfer | InstrClass.Linear:
                 sb.Append('T'); break;
-            case InstrClass.Transfer | InstrClass.Return:
-            case InstrClass.Transfer | InstrClass.Return | InstrClass.Privileged:
+            case InstrClass.Transfer | InstrClass.CtiReturn:
                 sb.Append('R'); break;
             case InstrClass.Terminates:
             case InstrClass.Terminates | InstrClass.Privileged:
@@ -113,6 +113,7 @@ namespace Reko.Core.Rtl
             case InstrClass.Privileged:
             case InstrClass.Privileged | InstrClass.Linear:
             case InstrClass.Privileged | InstrClass.Transfer:
+            case InstrClass.Privileged | InstrClass.Transfer | InstrClass.CtiReturn:
                 sb.Append('S'); break;
             default: sb.Append('-'); break;
             }

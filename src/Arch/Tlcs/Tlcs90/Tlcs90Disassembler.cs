@@ -622,15 +622,15 @@ namespace Reko.Arch.Tlcs.Tlcs90
             Instr(Mnemonic.add, S,Iw),
             Instr(Mnemonic.ldar, H,jw),
 
-            Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, jb ),
-            Instr(Mnemonic.djnz, InstrClass.ConditionalTransfer, B,jb),
-            Instr(Mnemonic.jp, InstrClass.Transfer, Jw),
-            Instr(Mnemonic.jr, InstrClass.Transfer, jw),
+            Instr(Mnemonic.djnz, InstrClass.CondJump, jb ),
+            Instr(Mnemonic.djnz, InstrClass.CondJump, B,jb),
+            Instr(Mnemonic.jp, InstrClass.Jump, Jw),
+            Instr(Mnemonic.jr, InstrClass.Jump, jw),
 
-            Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, Jw),
-            Instr(Mnemonic.callr, InstrClass.Transfer|InstrClass.Call, jw),
-            Instr(Mnemonic.ret, InstrClass.Transfer|InstrClass.Return),
-            Instr(Mnemonic.reti, InstrClass.Transfer|InstrClass.Return), 
+            Instr(Mnemonic.call, InstrClass.Call, Jw),
+            Instr(Mnemonic.callr, InstrClass.Call, jw),
+            Instr(Mnemonic.ret, InstrClass.Return),
+            Instr(Mnemonic.reti, InstrClass.Return), 
 
             // 20
             Instr(Mnemonic.ld, a,r),
@@ -843,25 +843,25 @@ namespace Reko.Arch.Tlcs.Tlcs90
             Instr(Mnemonic.set, i,mb),
 
             // C0
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
 
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
 
-            Instr(Mnemonic.jr, InstrClass.Transfer, jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
+            Instr(Mnemonic.jr, InstrClass.Jump, jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
 
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
-            Instr(Mnemonic.jr, InstrClass.ConditionalTransfer, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
+            Instr(Mnemonic.jr, InstrClass.CondJump, c,jb),
 
             // D0
             invalid,
@@ -924,7 +924,7 @@ namespace Reko.Arch.Tlcs.Tlcs90
             new RegDecoder(Registers.h, Registers.ix),
             new RegDecoder(Registers.l, Registers.iy),
             new RegDecoder(Registers.a, Registers.sp),
-            Instr(Mnemonic.swi, InstrClass.Transfer|InstrClass.Call), 
+            Instr(Mnemonic.swi, InstrClass.Call), 
         };
         private Address addr;
 

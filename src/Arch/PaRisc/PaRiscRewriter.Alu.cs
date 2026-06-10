@@ -43,7 +43,7 @@ namespace Reko.Arch.PaRisc
                 var cf = binder.EnsureFlagGroup(Registers.CF);
                 m.Assign(cf, m.Cond(cf.DataType, dst));
             }
-            MaybeSkipNextInstruction(InstrClass.ConditionalTransfer, false, dst, null);
+            MaybeSkipNextInstruction(InstrClass.CondJump, false, dst, null);
         }
 
         private void RewriteAdd_c()
@@ -81,7 +81,7 @@ namespace Reko.Arch.PaRisc
                 var c = RewriteCondition(dst, zero);
                 if (!c.IsZero)
                 {
-                    m.BranchInMiddleOfInstruction(c.Invert(), instr.Address + 4, InstrClass.ConditionalTransfer);
+                    m.BranchInMiddleOfInstruction(c.Invert(), instr.Address + 4, InstrClass.CondJump);
                 }
                 m.SideEffect(m.Fn(trap_intrinsic));
             }
@@ -252,7 +252,7 @@ namespace Reko.Arch.PaRisc
             var shamt = RewriteOp(2);
             var dst = RewriteOp(3);
             m.Assign(dst, m.Slice(m.Shr(regp, shamt), dt));
-            MaybeSkipNextInstruction(InstrClass.ConditionalTransfer, false, dst);
+            MaybeSkipNextInstruction(InstrClass.CondJump, false, dst);
         }
 
         private void RewriteSt(PrimitiveType size)

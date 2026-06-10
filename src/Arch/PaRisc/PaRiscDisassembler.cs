@@ -37,8 +37,8 @@ namespace Reko.Arch.PaRisc
 
     public class PaRiscDisassembler : DisassemblerBase<PaRiscInstruction, Mnemonic>
     {
-        private const InstrClass TD = InstrClass.Transfer | InstrClass.Delay;
-        private const InstrClass CTD = InstrClass.ConditionalTransfer | InstrClass.Delay;
+        private const InstrClass TD = InstrClass.JumpD;
+        private const InstrClass CTD = InstrClass.JCD;
 
         private static readonly MaskDecoder rootDecoder;
         private static readonly Decoder invalid;
@@ -1485,14 +1485,14 @@ namespace Reko.Arch.PaRisc
             invalid = Instr(Mnemonic.invalid, InstrClass.Invalid);
 
             var systemOp = Mask(19, 8, invalid,
-                (0x00, Instr(Mnemonic.@break, InstrClass.Call|InstrClass.Transfer, u8(27,5), u16(6,13))),
+                (0x00, Instr(Mnemonic.@break, InstrClass.Call, u8(27,5), u16(6,13))),
                 (0x20, Nyi(Mnemonic.sync, "")),
                 (0x20, Nyi(Mnemonic.syncdma, "")),
-                (0x60, Instr(Mnemonic.rfi, InstrClass.Privileged | InstrClass.Transfer | InstrClass.Return)),
-                (0x65, Instr(Mnemonic.rfi_r, InstrClass.Privileged | InstrClass.Transfer | InstrClass.Return)),
+                (0x60, Instr(Mnemonic.rfi, InstrClass.Privileged | InstrClass.Return)),
+                (0x65, Instr(Mnemonic.rfi_r, InstrClass.Privileged | InstrClass.Return)),
                 (0x6B, Nyi(Mnemonic.ssm, "")),
                 (0x73, Nyi(Mnemonic.rsm, "")),
-                (0xC3, Instr(Mnemonic.mtsm, InstrClass.Privileged|InstrClass.Transfer, r11)),
+                (0xC3, Instr(Mnemonic.mtsm, InstrClass.Privileged|InstrClass.Jump, r11)),
                 (0x85, Cond(16,2, Eq0,
                     Instr(Mnemonic.ldsid, r6,r27),
                     Instr(Mnemonic.ldsid, sr(16),r27))),
@@ -1844,7 +1844,7 @@ namespace Reko.Arch.PaRisc
                 invalid,
 
                 Instr(Mnemonic.be,  TD, Mpsh(PrimitiveType.Ptr32, BeFields((11,5),(19,11),(31,1)), assemble_17, 6, 16), Annul(30)),
-                Instr(Mnemonic.be_l,TD | InstrClass.Call, Mpsh(PrimitiveType.Ptr32, BeFields((11,5),(19,11),(31,1)), assemble_17, 6, 16), Annul(30)),
+                Instr(Mnemonic.be_l, InstrClass.CallD, Mpsh(PrimitiveType.Ptr32, BeFields((11,5),(19,11),(31,1)), assemble_17, 6, 16), Annul(30)),
                 branch,
                 invalid,
 

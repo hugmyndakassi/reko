@@ -384,12 +384,7 @@ namespace Reko.Scanning
 
         private static bool BlockEndsWithCall(RtlBlock block)
         {
-            int len = block.Instructions.Count;
-            if (len < 1)
-                return false;
-            if (block.Instructions[len - 1].Class == (InstrClass.Call | InstrClass.Transfer))
-                return true;
-            return false;
+            return block.Instructions.Count > 0 && block.Instructions[^1].Class.IsCall();
         }
 
         /// <summary>

@@ -235,7 +235,7 @@ namespace Reko.Scanning
 
         private void RemoveDirectlyCalledAddress(RtlInstructionCluster i)
         {
-            var callTransfer = InstrClass.Call | InstrClass.Transfer;
+            var callTransfer = InstrClass.Call;
             if ((i.Class & callTransfer) != callTransfer)
                 return;
             var addrDest = DestinationAddress(i);

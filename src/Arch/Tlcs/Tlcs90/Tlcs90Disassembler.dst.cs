@@ -20,11 +20,6 @@
 
 using Reko.Core;
 using Reko.Core.Machine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reko.Arch.Tlcs.Tlcs90
 {
@@ -287,46 +282,46 @@ namespace Reko.Arch.Tlcs.Tlcs90
             invalid,
 
             // C0
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
 
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
 
-            Instr(Mnemonic.jp, InstrClass.Transfer, x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
+            Instr(Mnemonic.jp, InstrClass.Jump, x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
 
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
-            Instr(Mnemonic.jp, InstrClass.ConditionalTransfer, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
+            Instr(Mnemonic.jp, InstrClass.CondJump, c,x),
 
             // D0
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
 
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
 
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.Transfer, dw, x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.Call, dw, x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
 
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
-            Instr(Mnemonic.call, InstrClass.Call|InstrClass.ConditionalTransfer, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
+            Instr(Mnemonic.call, InstrClass.CondCall, dw, c,x),
 
             // E0
             invalid,

@@ -585,7 +585,7 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
 
             var decode_ea_7f = Instr(Mnemonic.xchw, rw5, ea_w);
 
-            var callv = Instr(Mnemonic.callv, InstrClass.Transfer|InstrClass.Call, vct8);
+            var callv = Instr(Mnemonic.callv, InstrClass.Call, vct8);
             var mov_a_ri = Instr(Mnemonic.movx, a, r0);
             var mov_ri_a = Instr(Mnemonic.movx, r0, a);
             var mov_ri_imm8 = Instr(Mnemonic.movx, r0, imm8);
@@ -611,12 +611,12 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
                 (0x0C, Instr(Mnemonic.setb, io, bp)),
                 (0x0D, Instr(Mnemonic.setb, dir, bp)),
                 (0x0F, Instr(Mnemonic.setb, addr16, bp)),
-                (0x10, Instr(Mnemonic.bbc, InstrClass.ConditionalTransfer, io, bp, rel)),
-                (0x11, Instr(Mnemonic.bbc, InstrClass.ConditionalTransfer, dir, bp, rel)),
-                (0x13, Instr(Mnemonic.bbc, InstrClass.ConditionalTransfer, addr16, bp, rel)),
-                (0x14, Instr(Mnemonic.bbs, InstrClass.ConditionalTransfer, io, bp, rel)),
-                (0x15, Instr(Mnemonic.bbs, InstrClass.ConditionalTransfer, dir, bp, rel)),
-                (0x17, Instr(Mnemonic.bbs, InstrClass.ConditionalTransfer, addr16, bp, rel)),
+                (0x10, Instr(Mnemonic.bbc, InstrClass.CondJump, io, bp, rel)),
+                (0x11, Instr(Mnemonic.bbc, InstrClass.CondJump, dir, bp, rel)),
+                (0x13, Instr(Mnemonic.bbc, InstrClass.CondJump, addr16, bp, rel)),
+                (0x14, Instr(Mnemonic.bbs, InstrClass.CondJump, io, bp, rel)),
+                (0x15, Instr(Mnemonic.bbs, InstrClass.CondJump, dir, bp, rel)),
+                (0x17, Instr(Mnemonic.bbs, InstrClass.CondJump, addr16, bp, rel)),
                 (0x18, Instr(Mnemonic.wbts, io, bp)),
                 (0x1C, Instr(Mnemonic.wbtc, io, bp)),
                 (0x1F, Instr(Mnemonic.sbbs, io, bp)));
@@ -715,7 +715,7 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
                 Prefix(Registers.cmr),
                 Prefix(Registers.ncc),
                 Instr(Mnemonic.subdc, a),
-                Instr(Mnemonic.jctx, InstrClass.Transfer, inda),
+                Instr(Mnemonic.jctx, InstrClass.Jump, inda),
                 Instr(Mnemonic.ext),
                 Instr(Mnemonic.zext),
                 Instr(Mnemonic.swap),
@@ -807,19 +807,19 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
                 Instr(Mnemonic.popw, rlst),
 
                 // 0x60
-                Instr(Mnemonic.bra, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, inda),
-                Instr(Mnemonic.jmp, InstrClass.Transfer, addr16),
-                Instr(Mnemonic.jmpp, InstrClass.Transfer, addr24),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, addr16),
-                Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, addr24),
-                Instr(Mnemonic.retp, InstrClass.Transfer|InstrClass.Return),
-                Instr(Mnemonic.ret , InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.bra, InstrClass.CondJump, rel),
+                Instr(Mnemonic.jmp, InstrClass.Jump, inda),
+                Instr(Mnemonic.jmp, InstrClass.Jump, addr16),
+                Instr(Mnemonic.jmpp, InstrClass.Jump, addr24),
+                Instr(Mnemonic.call, InstrClass.Call, addr16),
+                Instr(Mnemonic.call, InstrClass.Call, addr24),
+                Instr(Mnemonic.retp, InstrClass.Return),
+                Instr(Mnemonic.ret , InstrClass.Return),
 
                 Instr(Mnemonic.@int, vct8),
                 Instr(Mnemonic.@int, addr16),
                 Instr(Mnemonic.intp, addr24),
-                Instr(Mnemonic.reti, InstrClass.Transfer|InstrClass.Return),
+                Instr(Mnemonic.reti, InstrClass.Return),
 
                 TwoByteInstr(decode_bit_manipulation),
                 invalid,
@@ -979,23 +979,23 @@ namespace Reko.Arch.Fujitsu.F2MC16FX
                 callv,
 
                 // 0xF0
-                Instr(Mnemonic.bz,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bnz, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bc,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bnc, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bn,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bp,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bv,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bnv, InstrClass.ConditionalTransfer, rel),
+                Instr(Mnemonic.bz,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bnz, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bc,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bnc, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bn,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bp,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bv,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bnv, InstrClass.CondJump, rel),
 
-                Instr(Mnemonic.bt,  InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bnt, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.blt, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bge, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.ble, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bgt, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bls, InstrClass.ConditionalTransfer, rel),
-                Instr(Mnemonic.bhi, InstrClass.ConditionalTransfer, rel)
+                Instr(Mnemonic.bt,  InstrClass.CondJump, rel),
+                Instr(Mnemonic.bnt, InstrClass.CondJump, rel),
+                Instr(Mnemonic.blt, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bge, InstrClass.CondJump, rel),
+                Instr(Mnemonic.ble, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bgt, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bls, InstrClass.CondJump, rel),
+                Instr(Mnemonic.bhi, InstrClass.CondJump, rel)
             });
         }
     }

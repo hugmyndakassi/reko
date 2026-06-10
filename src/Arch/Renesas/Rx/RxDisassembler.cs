@@ -805,10 +805,10 @@ namespace Reko.Arch.Renesas.Rx
                 ));
 
             var decode7F = Fetch8(Sparse(4, 4, "  7F", Nyi("7F"),
-                (0x0, Instr(Mnemonic.jmp, InstrClass.Transfer, R0)),
-                (0x1, Instr(Mnemonic.jsr, InstrClass.Transfer | InstrClass.Call, R0)),
-                (0x4, Instr(Mnemonic.bra, InstrClass.Transfer, L, R0)),
-                (0x5, Instr(Mnemonic.bsr, InstrClass.Transfer | InstrClass.Call, L, R0)),
+                (0x0, Instr(Mnemonic.jmp, InstrClass.Jump, R0)),
+                (0x1, Instr(Mnemonic.jsr, InstrClass.Call, R0)),
+                (0x4, Instr(Mnemonic.bra, InstrClass.Jump, L, R0)),
+                (0x5, Instr(Mnemonic.bsr, InstrClass.Call, L, R0)),
                 (0x8, Mask(0, 4, "  8",
                         Instr(Mnemonic.suntil, bwl_0),
                         Instr(Mnemonic.suntil, bwl_0),
@@ -828,8 +828,8 @@ namespace Reko.Arch.Renesas.Rx
                         Instr(Mnemonic.smovf))),
                 (0x9, Sparse(0, 4, "  9", Nyi("9"),
                     (0x3, Instr(Mnemonic.satr)),
-                    (0x4, Instr(Mnemonic.rtfi, InstrClass.Transfer|InstrClass.Return)),
-                    (0x5, Instr(Mnemonic.rte, InstrClass.Transfer|InstrClass.Return)),
+                    (0x4, Instr(Mnemonic.rtfi, InstrClass.Return)),
+                    (0x5, Instr(Mnemonic.rte, InstrClass.Return)),
                     (0x6, Instr(Mnemonic.wait)),
                     (0x7, Instr(Mnemonic.smovu)),
                     (0xB, Instr(Mnemonic.smovb)),
@@ -1168,10 +1168,10 @@ namespace Reko.Arch.Renesas.Rx
                 Instr(Mnemonic.bclr, UB, UI_0_3, Mr4_8)));
             var bclr_imm5 = Fetch8(Instr(Mnemonic.bclr, UI4_5, R0));
             var bset_imm5 = Fetch8(Instr(Mnemonic.bset, UI4_5, R0));
-            var beq_pcdisp3 = Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, S, pcdisp3);
-            var bne_pcdisp3 = Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, S, pcdisp3);
-            var bra_pcdisp3 = Instr(Mnemonic.bra, InstrClass.Transfer, S, pcdisp3);
-            var bra_pcdisp24 = Instr(Mnemonic.bra, InstrClass.Transfer, pcdisp24);
+            var beq_pcdisp3 = Instr(Mnemonic.beq, InstrClass.CondJump, S, pcdisp3);
+            var bne_pcdisp3 = Instr(Mnemonic.bne, InstrClass.CondJump, S, pcdisp3);
+            var bra_pcdisp3 = Instr(Mnemonic.bra, InstrClass.Jump, S, pcdisp3);
+            var bra_pcdisp24 = Instr(Mnemonic.bra, InstrClass.Jump, pcdisp24);
             var btst_imm3 = Fetch8(Mask(3, 1, " btst/?",
                 Instr(Mnemonic.btst, UI_0_3, R0),
                 Instr(Mnemonic.push, bwl_0, Mr4_8)));
@@ -1208,7 +1208,7 @@ namespace Reko.Arch.Renesas.Rx
             rootDecoder = Sparse(0, 8, "Rx", Nyi("Rx"),
                 // 00
                 (0x00, Instr(Mnemonic.brk, InstrClass.Terminates|InstrClass.Zero)),
-                (0x02, Instr(Mnemonic.rts, InstrClass.Transfer|InstrClass.Return)),
+                (0x02, Instr(Mnemonic.rts, InstrClass.Return)),
                 (0x03, Instr(Mnemonic.nop, InstrClass.Padding|InstrClass.Linear)),
                 (0x04, bra_pcdisp24),
                 (0x06, decode06),
@@ -1233,28 +1233,28 @@ namespace Reko.Arch.Renesas.Rx
                 (0x1F, bne_pcdisp3),
 
                 // 20
-                (0x20, Instr(Mnemonic.beq,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x21, Instr(Mnemonic.bne,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x22, Instr(Mnemonic.bgeu, InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x23, Instr(Mnemonic.bltu, InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x24, Instr(Mnemonic.bgtu, InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x25, Instr(Mnemonic.bleu, InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x26, Instr(Mnemonic.bpz,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x27, Instr(Mnemonic.bn,   InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x28, Instr(Mnemonic.bge,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x29, Instr(Mnemonic.blt,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x2A, Instr(Mnemonic.bgt,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x2B, Instr(Mnemonic.ble,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x2C, Instr(Mnemonic.bo,   InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x2D, Instr(Mnemonic.bno,  InstrClass.ConditionalTransfer, B, pcdisp8)),
-                (0x2E, Instr(Mnemonic.bra,  InstrClass.Transfer, B, pcdisp8)),
+                (0x20, Instr(Mnemonic.beq,  InstrClass.CondJump, B, pcdisp8)),
+                (0x21, Instr(Mnemonic.bne,  InstrClass.CondJump, B, pcdisp8)),
+                (0x22, Instr(Mnemonic.bgeu, InstrClass.CondJump, B, pcdisp8)),
+                (0x23, Instr(Mnemonic.bltu, InstrClass.CondJump, B, pcdisp8)),
+                (0x24, Instr(Mnemonic.bgtu, InstrClass.CondJump, B, pcdisp8)),
+                (0x25, Instr(Mnemonic.bleu, InstrClass.CondJump, B, pcdisp8)),
+                (0x26, Instr(Mnemonic.bpz,  InstrClass.CondJump, B, pcdisp8)),
+                (0x27, Instr(Mnemonic.bn,   InstrClass.CondJump, B, pcdisp8)),
+                (0x28, Instr(Mnemonic.bge,  InstrClass.CondJump, B, pcdisp8)),
+                (0x29, Instr(Mnemonic.blt,  InstrClass.CondJump, B, pcdisp8)),
+                (0x2A, Instr(Mnemonic.bgt,  InstrClass.CondJump, B, pcdisp8)),
+                (0x2B, Instr(Mnemonic.ble,  InstrClass.CondJump, B, pcdisp8)),
+                (0x2C, Instr(Mnemonic.bo,   InstrClass.CondJump, B, pcdisp8)),
+                (0x2D, Instr(Mnemonic.bno,  InstrClass.CondJump, B, pcdisp8)),
+                (0x2E, Instr(Mnemonic.bra,  InstrClass.Jump, B, pcdisp8)),
                 (0x2F, invalid),
 
                 // 30
-                (0x38, Instr(Mnemonic.bra, InstrClass.Transfer, W, pcdisp16)),
-                (0x39, Instr(Mnemonic.bsr, InstrClass.Transfer, W, pcdisp16)),
-                (0x3A, Instr(Mnemonic.beq, InstrClass.ConditionalTransfer, W, pcdisp16)),
-                (0x3B, Instr(Mnemonic.bne, InstrClass.ConditionalTransfer, W, pcdisp16)),
+                (0x38, Instr(Mnemonic.bra, InstrClass.Jump, W, pcdisp16)),
+                (0x39, Instr(Mnemonic.bsr, InstrClass.Call, W, pcdisp16)),
+                (0x3A, Instr(Mnemonic.beq, InstrClass.CondJump, W, pcdisp16)),
+                (0x3B, Instr(Mnemonic.bne, InstrClass.CondJump, W, pcdisp16)),
                 (0x3C, Fetch8(Instr(Mnemonic.mov, B, Uimm8, Mdsp5_0))),
                 (0x3D, Fetch8(Instr(Mnemonic.mov, W, Uimm8, Mdsp5_0))),
                 (0x3E, Fetch8(Instr(Mnemonic.mov, L, Uimm8, Mdsp5_0))),

@@ -38,8 +38,8 @@ namespace Reko.Arch.Padauk
                     (0b000_0000, Instr(Mnemonic.nop)),
                     (0b110_0000, Instr(Mnemonic.addc, a)),
                     (0b110_0001, Instr(Mnemonic.subc, a)),
-                    (0b110_0010, Instr(Mnemonic.izsn, InstrClass.ConditionalTransfer, a)),
-                    (0b110_0011, Instr(Mnemonic.dzsn, InstrClass.ConditionalTransfer, a)),
+                    (0b110_0010, Instr(Mnemonic.izsn, InstrClass.CondJump, a)),
+                    (0b110_0011, Instr(Mnemonic.dzsn, InstrClass.CondJump, a)),
                     (0b110_0111, Instr(Mnemonic.pcadd, a)),
                     (0b110_1000, Instr(Mnemonic.not, a)),
                     (0b110_1001, Instr(Mnemonic.neg, a)),
@@ -56,8 +56,8 @@ namespace Reko.Arch.Padauk
                     (0b111_0111, Instr(Mnemonic.stopexe)),
                     (0b111_1000, Instr(Mnemonic.engint)),
                     (0b111_1001, Instr(Mnemonic.disgint)),
-                    (0b111_1010, Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return)),
-                    (0b111_1011, Instr(Mnemonic.reti, InstrClass.Transfer | InstrClass.Return)),
+                    (0b111_1010, Instr(Mnemonic.ret, InstrClass.Return)),
+                    (0b111_1011, Instr(Mnemonic.reti, InstrClass.Return)),
                     (0b111_1100, Instr(Mnemonic.mul)));
 
                 var decoder000_00 = Mask(7, 3, "  000_00",
@@ -66,8 +66,8 @@ namespace Reko.Arch.Padauk
                     Instr(Mnemonic.mov, p0_7, a),
                     Instr(Mnemonic.mov, a, p0_7),
                     
-                    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, i0_8),
-                    Instr(Mnemonic.ret, InstrClass.Transfer | InstrClass.Return, i0_8),
+                    Instr(Mnemonic.ret, InstrClass.Return, i0_8),
+                    Instr(Mnemonic.ret, InstrClass.Return, i0_8),
                     invalid,
                     invalid);
 
@@ -113,8 +113,8 @@ namespace Reko.Arch.Padauk
                     Mask(8, 2, "  01000",
                         Instr(Mnemonic.addc, m0_8),
                         Instr(Mnemonic.subc, m0_8),
-                        Instr(Mnemonic.izsn, InstrClass.ConditionalTransfer, m0_8),
-                        Instr(Mnemonic.dzsn, InstrClass.ConditionalTransfer, m0_8)),
+                        Instr(Mnemonic.izsn, InstrClass.CondJump, m0_8),
+                        Instr(Mnemonic.dzsn, InstrClass.CondJump, m0_8)),
                     Mask(8, 2, "  01001",
                         Instr(Mnemonic.inc, m0_8),
                         Instr(Mnemonic.dec, m0_8),
@@ -128,24 +128,24 @@ namespace Reko.Arch.Padauk
                     Mask(8, 2, "  01011",
                         Instr(Mnemonic.src, m0_8),
                         Instr(Mnemonic.slc, m0_8),
-                        Instr(Mnemonic.ceqsn, InstrClass.Transfer | InstrClass.Conditional, a, m0_8),
-                        Instr(Mnemonic.cneqsn, InstrClass.Transfer | InstrClass.Conditional, a, m0_8)),
+                        Instr(Mnemonic.ceqsn, InstrClass.CondJump, a, m0_8),
+                        Instr(Mnemonic.cneqsn, InstrClass.CondJump, a, m0_8)),
 
-                    Instr(Mnemonic.t0sn, InstrClass.ConditionalTransfer, Pn_0_7),
-                    Instr(Mnemonic.t1sn, InstrClass.ConditionalTransfer, Pn_0_7),
+                    Instr(Mnemonic.t0sn, InstrClass.CondJump, Pn_0_7),
+                    Instr(Mnemonic.t1sn, InstrClass.CondJump, Pn_0_7),
                     Instr(Mnemonic.set0, Pn_0_7),
                     Instr(Mnemonic.set1, Pn_0_7),
 
-                    Instr(Mnemonic.t0sn, InstrClass.ConditionalTransfer, Mn_0_7),
-                    Instr(Mnemonic.t1sn, InstrClass.ConditionalTransfer, Mn_0_7),
+                    Instr(Mnemonic.t0sn, InstrClass.CondJump, Mn_0_7),
+                    Instr(Mnemonic.t1sn, InstrClass.CondJump, Mn_0_7),
                     Instr(Mnemonic.set0, Mn_0_7),
                     Instr(Mnemonic.set1, Mn_0_7),
 
                     Mask(8, 2, "  10100",
                         Instr(Mnemonic.add, a, i0_8),
                         Instr(Mnemonic.sub, a, i0_8),
-                        Instr(Mnemonic.ceqsn, InstrClass.Transfer | InstrClass.Conditional, a, i0_8),
-                        Instr(Mnemonic.cneqsn, InstrClass.Transfer | InstrClass.Conditional, a, i0_8)),
+                        Instr(Mnemonic.ceqsn, InstrClass.CondJump, a, i0_8),
+                        Instr(Mnemonic.cneqsn, InstrClass.CondJump, a, i0_8)),
                     Mask(8, 2, "  10101",
                         Instr(Mnemonic.and, a, i0_8),
                         Instr(Mnemonic.or, a, i0_8),
@@ -155,16 +155,16 @@ namespace Reko.Arch.Padauk
                     Instr(Mnemonic.swapc, Pn_0_7),
 
                     // 11000
-                    Instr(Mnemonic.@goto, InstrClass.Transfer, a12),
-                    Instr(Mnemonic.@goto, InstrClass.Transfer, a12),
-                    Instr(Mnemonic.@goto, InstrClass.Transfer, a12),
-                    Instr(Mnemonic.@goto, InstrClass.Transfer, a12),
+                    Instr(Mnemonic.@goto, InstrClass.Jump, a12),
+                    Instr(Mnemonic.@goto, InstrClass.Jump, a12),
+                    Instr(Mnemonic.@goto, InstrClass.Jump, a12),
+                    Instr(Mnemonic.@goto, InstrClass.Jump, a12),
 
                     // 11100
-                    Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, a12),
-                    Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, a12),
-                    Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, a12),
-                    Instr(Mnemonic.call, InstrClass.Transfer|InstrClass.Call, a12));
+                    Instr(Mnemonic.call, InstrClass.Call, a12),
+                    Instr(Mnemonic.call, InstrClass.Call, a12),
+                    Instr(Mnemonic.call, InstrClass.Call, a12),
+                    Instr(Mnemonic.call, InstrClass.Call, a12));
                 return decoder;
             }
         }

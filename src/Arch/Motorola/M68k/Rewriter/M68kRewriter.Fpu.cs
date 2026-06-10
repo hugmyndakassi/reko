@@ -52,12 +52,12 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             }
             else if (cc == ConditionCode.ALWAYS)
             {
-                iclass = InstrClass.Transfer;
+                iclass = InstrClass.Jump;
                 m.Goto(addr);
             }
             else
             {
-                iclass = InstrClass.ConditionalTransfer;
+                iclass = InstrClass.CondJump;
                 var test = m.Test(cc, binder.EnsureFlagGroup(Registers.FPUFLAGS));
                 m.Branch(test, addr, iclass);
             }
@@ -65,11 +65,11 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
 
         private void RewriteFbcc(Func<Expression, Expression> fnTest)
         {
-            iclass = InstrClass.ConditionalTransfer;
+            iclass = InstrClass.CondJump;
             m.Branch(fnTest(
                 binder.EnsureRegister(Registers.fpsr)),
                 (Address)instr.Operands[0],
-                InstrClass.ConditionalTransfer);
+                InstrClass.CondJump);
         }
 
         private void RewriteFBinIntrinsic(IntrinsicProcedure intrinsic)

@@ -124,7 +124,7 @@ namespace Reko.Scanning
                     // after conversion from "raw" RTL.
                     if (branch.Target.Address.Offset == 0)  //$REVIEW: unit test this.
                         yield break;
-                    rtl = new RtlBranch(branch.Condition, branch.Target.Address, InstrClass.ConditionalTransfer);
+                    rtl = new RtlBranch(branch.Condition, branch.Target.Address, InstrClass.CondJump);
                     break;
                 case CallInstruction call:
                     rtl = new RtlCall(call.Callee, (byte)call.CallSite.SizeOfReturnAddressOnStack, InstrClass.Call);
@@ -133,10 +133,10 @@ namespace Reko.Scanning
                     rtl = new RtlSideEffect(side.Expression, InstrClass.Linear);
                     break;
                 case GotoInstruction go:
-                    rtl = new RtlGoto(go.Target, InstrClass.Transfer);
+                    rtl = new RtlGoto(go.Target, InstrClass.Jump);
                     break;
                 case ReturnInstruction ret:
-                    rtl = new RtlReturn(0, 0, InstrClass.Transfer | InstrClass.Return);
+                    rtl = new RtlReturn(0, 0, InstrClass.Return);
                     break;
                 default:
                     throw new NotImplementedException($"Translation needed for {stm.Instruction}.");

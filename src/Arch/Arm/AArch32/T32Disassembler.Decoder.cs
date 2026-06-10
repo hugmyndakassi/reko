@@ -113,9 +113,9 @@ namespace Reko.Arch.Arm.AArch32
                 off <<= 1;
                 return new T32Instruction
                 {
-                    InstructionClass = InstrClass.Transfer|InstrClass.Call,
+                    InstructionClass = InstrClass.Call,
                     Mnemonic = Mnemonic.bl,
-                    Operands = new MachineOperand[] { dasm.addr + (off + 4) }
+                    Operands = [dasm.addr + (off + 4) ]
                 };
             }
         }
@@ -160,7 +160,7 @@ namespace Reko.Arch.Arm.AArch32
                 var w = SBitfield(wInstr, 16 + 5, 1) != 0;
                 var l = SBitfield(wInstr, 16 + 4, 1);
                 var iclass = (l != 0 && (registers & 0x8000) != 0)
-                    ? InstrClass.Transfer
+                    ? InstrClass.Jump
                     : InstrClass.Linear;
                 // writeback
                 if (rn == Registers.sp)

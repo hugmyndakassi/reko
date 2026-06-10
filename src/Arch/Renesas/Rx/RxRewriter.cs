@@ -846,7 +846,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
             Registers.GpRegisters[4]);
         var tmp = binder.CreateTemporary(acc.DataType);
 
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         Debug.Assert(instr.DataType is not null);
         m.Assign(tmp, m.Convert(
@@ -984,7 +984,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var tmp1 = binder.CreateTemporary(PrimitiveType.Byte);
         var tmp2 = binder.CreateTemporary(PrimitiveType.Byte);
 
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp1, m.Mem8(r1));
         m.Assign(r1, m.IAdd(r1, 1));
@@ -1000,7 +1000,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var r2 = binder.EnsureRegister(Registers.GpRegisters[2]);
         var r3 = binder.EnsureRegister(Registers.GpRegisters[3]);
         var tmp = binder.CreateTemporary(PrimitiveType.Byte);
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp, m.Mem8(r2));
         m.Assign(r2, m.ISub(r2, 1));
@@ -1016,7 +1016,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var r2 = binder.EnsureRegister(Registers.GpRegisters[2]);
         var r3 = binder.EnsureRegister(Registers.GpRegisters[3]);
         var tmp = binder.CreateTemporary(PrimitiveType.Byte);
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp, m.Mem8(r2));
         m.Assign(r2, m.IAdd(r2, 1));
@@ -1032,7 +1032,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var r2 = binder.EnsureRegister(Registers.GpRegisters[2]);
         var r3 = binder.EnsureRegister(Registers.GpRegisters[3]);
         var tmp = binder.CreateTemporary(PrimitiveType.Byte);
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp, m.Mem8(r2));
         m.Assign(r2, m.IAdd(r2, 1));
@@ -1051,7 +1051,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         Debug.Assert(instr.DataType != null);
         var val = binder.CreateTemporary(instr.DataType);
         m.Assign(val, m.MaybeSlice(r2, val.DataType));
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(m.Mem(instr.DataType, r1), val);
         m.Assign(r1, m.IAdd(r1, 1));
@@ -1062,7 +1062,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
     private void RewriteSt(RxInstruction instr, ConditionCode cc)
     {
         var z = binder.EnsureFlagGroup(Registers.Z);
-        m.BranchInMiddleOfInstruction(m.Test(cc, z), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Test(cc, z), instr.Address + instr.Length, InstrClass.CondJump);
         var src = OpSrc(instr, 0);
         OpDst(instr, 1, src);
     }
@@ -1079,7 +1079,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var r2 = binder.EnsureRegister(Registers.GpRegisters[2]);
         var r3 = binder.EnsureRegister(Registers.GpRegisters[3]);
         var tmp = binder.CreateTemporary(PrimitiveType.Word32);
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp, m.Convert(m.Mem8(r1), PrimitiveType.Byte, PrimitiveType.Word32));
         m.Assign(r1, m.IAdd(r1, 1));
@@ -1094,7 +1094,7 @@ public class RxRewriter : IEnumerable<RtlInstructionCluster>
         var r2 = binder.EnsureRegister(Registers.GpRegisters[2]);
         var r3 = binder.EnsureRegister(Registers.GpRegisters[3]);
         var tmp = binder.CreateTemporary(PrimitiveType.Word32);
-        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+        m.BranchInMiddleOfInstruction(m.Eq0(r3), instr.Address + instr.Length, InstrClass.CondJump);
 
         m.Assign(tmp, m.Convert(m.Mem8(r1), PrimitiveType.Byte, PrimitiveType.Word32));
         m.Assign(r1, m.IAdd(r1, 1));

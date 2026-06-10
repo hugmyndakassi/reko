@@ -668,14 +668,14 @@ namespace Reko.Arch.Mips
                 invalid);
 
             var jrcDecoders = Mask(5, 3, "  JRC",
-                Instr(Mnemonic.jr, InstrClass.Transfer|InstrClass.Delay, R8),
-                Instr(Mnemonic.jr, InstrClass.Transfer | InstrClass.Delay, ra),
-                Instr(Mnemonic.jalr, InstrClass.Transfer | InstrClass.Delay | InstrClass.Call, R8),
+                Instr(Mnemonic.jr, InstrClass.JumpIndD, R8),
+                Instr(Mnemonic.jr, InstrClass.JumpIndD, ra),
+                Instr(Mnemonic.jalr, InstrClass.CallIndD, R8),
                 invalid,
 
-                Instr(Mnemonic.jrc, InstrClass.Transfer, R8),
-                Instr(Mnemonic.jrc, InstrClass.Transfer, ra),
-                Instr(Mnemonic.jalrc, InstrClass.Transfer | InstrClass.Call, R8),
+                Instr(Mnemonic.jrc, InstrClass.JumpInd, R8),
+                Instr(Mnemonic.jrc, InstrClass.JumpInd, ra),
+                Instr(Mnemonic.jalrc, InstrClass.CallInd, R8),
                 invalid);
 
 
@@ -728,18 +728,18 @@ namespace Reko.Arch.Mips
                     Instr(Mnemonic.la, R8, AImm8),
                     Instr(Mnemonic.la, R8, AImmEx5)),
                 Ex(
-                    Instr(Mnemonic.b, InstrClass.Transfer, ARel11),
-                    Instr(Mnemonic.b, InstrClass.Transfer, ARelEx)),
+                    Instr(Mnemonic.b, InstrClass.Jump, ARel11),
+                    Instr(Mnemonic.b, InstrClass.Jump, ARelEx)),
                 new Read32Decoder(Mask(26, 1, "  JAL(X)",
-                    Instr(Mnemonic.jal, InstrClass.Transfer|InstrClass.Call|InstrClass.Delay, ARegRel),
-                    Instr(Mnemonic.jalx, InstrClass.Transfer|InstrClass.Call|InstrClass.Delay, ARegRel))),
+                    Instr(Mnemonic.jal, InstrClass.CallD, ARegRel),
+                    Instr(Mnemonic.jalx, InstrClass.CallD, ARegRel))),
 
                 Ex(
-                    Instr(Mnemonic.beqz, InstrClass.ConditionalTransfer, R8, ARel8),
-                    Instr(Mnemonic.beqz, InstrClass.ConditionalTransfer, R8, ARelEx)),
+                    Instr(Mnemonic.beqz, InstrClass.CondJump, R8, ARel8),
+                    Instr(Mnemonic.beqz, InstrClass.CondJump, R8, ARelEx)),
                 Ex(
-                    Instr(Mnemonic.bnez, InstrClass.ConditionalTransfer, R8, ARel8),
-                    Instr(Mnemonic.bnez, InstrClass.ConditionalTransfer, R8, ARelEx)),
+                    Instr(Mnemonic.bnez, InstrClass.CondJump, R8, ARel8),
+                    Instr(Mnemonic.bnez, InstrClass.CondJump, R8, ARelEx)),
                 Mask(0, 2, "  SHIFT",
                     Ex(
                         Instr(Mnemonic.sll, R8,R5,ShAmt),

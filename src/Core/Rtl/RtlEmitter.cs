@@ -125,7 +125,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter Branch(Expression condition, Expression target)
         {
-            Instructions.Add(new RtlBranch(condition, target, InstrClass.ConditionalTransfer));
+            Instructions.Add(new RtlBranch(condition, target, InstrClass.CondJump));
             return this;
         }
 
@@ -157,7 +157,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter Call(Expression target, byte retSize, InstrClass iclass)
         {
-            var requiredBits = InstrClass.Transfer | InstrClass.Call;
+            var requiredBits = InstrClass.Call;
             if ((iclass & requiredBits) != requiredBits)
                 throw new ArgumentException(nameof(iclass), "InstrClass bits must be consistent with a call.");
             Instructions.Add(new RtlCall(target, retSize, iclass));
@@ -175,7 +175,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter Call(Expression target, byte retSize)
         {
-            Instructions.Add(new RtlCall(target, retSize, InstrClass.Transfer | InstrClass.Call));
+            Instructions.Add(new RtlCall(target, retSize, InstrClass.Call));
             return this;
         }
 
@@ -190,7 +190,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter CallD(Expression target, byte retSize)
         {
-            Instructions.Add(new RtlCall(target, retSize, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay));
+            Instructions.Add(new RtlCall(target, retSize, InstrClass.CallD));
             return this;
         }
 
@@ -206,7 +206,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter CallX(Expression target, byte retSize, IProcessorArchitecture arch)
         {
-            Instructions.Add(new RtlCall(target, retSize, InstrClass.Transfer | InstrClass.Call, arch));
+            Instructions.Add(new RtlCall(target, retSize, InstrClass.Call, arch));
             return this;
         }
 
@@ -222,7 +222,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter CallXD(Expression target, byte retSize, IProcessorArchitecture arch)
         {
-            Instructions.Add(new RtlCall(target, retSize, InstrClass.Transfer | InstrClass.Call | InstrClass.Delay, arch));
+            Instructions.Add(new RtlCall(target, retSize, InstrClass.CallD, arch));
             return this;
         }
 
@@ -244,7 +244,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter Goto(Expression target)
         {
-            Instructions.Add(new RtlGoto(target, InstrClass.Transfer));
+            Instructions.Add(new RtlGoto(target, InstrClass.Jump));
             return this;
         }
 
@@ -267,7 +267,7 @@ namespace Reko.Core.Rtl
         /// <returns>A reference to this RtlEmitter.</returns>
         public RtlEmitter GotoD(Expression target)
         {
-            Instructions.Add(new RtlGoto(target, InstrClass.Transfer|InstrClass.Delay));
+            Instructions.Add(new RtlGoto(target, InstrClass.JumpD));
             return this;
         }
 
@@ -330,8 +330,8 @@ namespace Reko.Core.Rtl
             int extraBytesPopped,
             InstrClass iclass)
         {
-            if ((iclass & InstrClass.Transfer) != InstrClass.Transfer)
-                throw new ArgumentException(nameof(iclass), "Instruction class must be a transfer.");
+            if ((iclass & InstrClass.Return) != InstrClass.Return)
+                throw new ArgumentException(nameof(iclass), "Instruction class must be a Return.");
             Instructions.Add(new RtlReturn(returnAddressBytes, extraBytesPopped, iclass));
             return this;
         }
@@ -347,7 +347,7 @@ namespace Reko.Core.Rtl
             int returnAddressBytes,
             int extraBytesPopped)
         {
-            Instructions.Add(new RtlReturn(returnAddressBytes, extraBytesPopped, InstrClass.Transfer|InstrClass.Return));
+            Instructions.Add(new RtlReturn(returnAddressBytes, extraBytesPopped, InstrClass.Return));
             return this;
         }
 
@@ -362,7 +362,7 @@ namespace Reko.Core.Rtl
             int returnAddressBytes,
             int extraBytesPopped)
         {
-            var ret = new RtlReturn(returnAddressBytes, extraBytesPopped, InstrClass.Transfer | InstrClass.Return | InstrClass.Delay);
+            var ret = new RtlReturn(returnAddressBytes, extraBytesPopped, InstrClass.ReturnD);
             Instructions.Add(ret);
             return this;
         }

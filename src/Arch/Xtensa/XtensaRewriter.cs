@@ -371,7 +371,7 @@ namespace Reko.Arch.Xtensa
             {
                 var addrNext = instr.Address + instr.Length;
                 var lcount = binder.EnsureRegister(Registers.LCOUNT);
-                m.BranchInMiddleOfInstruction(m.Eq0(lcount), addrNext, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq0(lcount), addrNext, InstrClass.CondJump);
                 m.Assign(lcount, m.ISub(lcount, 1));
                 m.Goto(this.lbegin!);
 

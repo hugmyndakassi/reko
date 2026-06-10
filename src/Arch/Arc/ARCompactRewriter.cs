@@ -21,7 +21,6 @@
 using Reko.Core;
 using Reko.Core.Expressions;
 using Reko.Core.Intrinsics;
-using Reko.Core.Machine;
 using Reko.Core.Memory;
 using Reko.Core.Rtl;
 using Reko.Core.Services;
@@ -53,7 +52,7 @@ namespace Reko.Arch.Arc
             this.binder = binder;
             this.host = host;
             this.dasm = new ArcDisassembler(arch, rdr).GetEnumerator();
-            this.instrs = new List<RtlInstruction>();
+            this.instrs = [];
             this.m = new RtlEmitter(instrs);
             this.instr = default!;
         }
@@ -328,17 +327,17 @@ namespace Reko.Arch.Arc
                 Expression eBackEdgeTarget;
                 if (start is Constant cStart && cStart.IsValid)
                 {
-                    eBackEdgeTarget= Address.Ptr32(cStart.ToUInt32());
+                    eBackEdgeTarget = Address.Ptr32(cStart.ToUInt32());
                 }
                 else
                 {
                     eBackEdgeTarget = binder.EnsureRegister(Registers.LpStart);
                 }
-                m.BranchInMiddleOfInstruction(m.Eq(lpCount, 1), addrNext, InstrClass.ConditionalTransfer);
+                m.BranchInMiddleOfInstruction(m.Eq(lpCount, 1), addrNext, InstrClass.CondJump);
 
                 m.Assign(lpCount, m.ISubS(lpCount, 1));
                 m.Goto(eBackEdgeTarget);
-                iclass = InstrClass.ConditionalTransfer;
+                iclass = InstrClass.CondJump;
             }
         }
 
@@ -465,7 +464,7 @@ namespace Reko.Arch.Arc
             if (cond == ArcCondition.AL)
                 return;
             var test = TestFlags(cond).Invert();
-            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.CondJump);
         }
 
 
@@ -473,7 +472,6 @@ namespace Reko.Arch.Arc
         {
             FlagM grf = 0;
             ConditionCode cc = ConditionCode.None;
-            var flagreg = Registers.Status32;
             switch (cond)
             {
             case ArcCondition.EQ: cc = ConditionCode.EQ; grf = FlagM.ZF; break;
@@ -694,7 +692,7 @@ namespace Reko.Arch.Arc
                 {
                     if (mop.Base == Registers.Blink)
                     {
-                        iclass |= InstrClass.Return;
+                        iclass = (iclass & ~InstrClass.Jump) | InstrClass.Return;
                         m.Return(0, 0, iclass);
                         return;
                     }

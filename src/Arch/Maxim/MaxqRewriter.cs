@@ -447,7 +447,7 @@ public class MaxqRewriter : IEnumerable<RtlInstructionCluster>
         if (instr.Operands.Length != 0)
         {
             var test = this.MakeInvertedTest(instr.Operands[0]);
-            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.CondJump);
         }
         m.Return(2, 0);
     }
@@ -457,7 +457,7 @@ public class MaxqRewriter : IEnumerable<RtlInstructionCluster>
         if (instr.Operands.Length != 0)
         {
             var test = this.MakeInvertedTest(instr.Operands[0]);
-            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.ConditionalTransfer);
+            m.BranchInMiddleOfInstruction(test, instr.Address + instr.Length, InstrClass.CondJump);
         }
         m.SideEffect(m.Fn(intrinsic_rti));
         m.Return(2, 0);

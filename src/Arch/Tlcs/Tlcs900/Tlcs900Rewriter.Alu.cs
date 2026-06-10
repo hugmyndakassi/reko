@@ -163,7 +163,7 @@ namespace Reko.Arch.Tlcs.Tlcs900
             m.Assign(src, m.IAddS(src, dt.Size));
             m.Assign(dst, m.IAddS(dst, dt.Size));
             m.Assign(cnt, m.ISub(cnt, 1));
-            m.Branch(m.Ne0(cnt), instr.Address, InstrClass.ConditionalTransfer);
+            m.Branch(m.Ne0(cnt), instr.Address, InstrClass.CondJump);
             EmitCc(InvalidConstant.Create(PrimitiveType.Word16), flags);
         }
 

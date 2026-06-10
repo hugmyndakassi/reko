@@ -602,7 +602,7 @@ namespace Reko.Arch.Motorola.M68k.Rewriter
             // it on the stack, and transfers control with a `rts` instruction.
             if (IsPeaAddiRtsSequence(out Address addrTarget))
             {
-                this.iclass = InstrClass.Transfer;
+                this.iclass = InstrClass.Jump;
                 dasm.MoveNext();
                 dasm.MoveNext();
                 m.Assign(m.Mem32(m.ISubS(sp, 4)), addrTarget);

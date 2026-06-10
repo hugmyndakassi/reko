@@ -1091,7 +1091,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
             if (!dasm.TryReadImm8(out byte b))
                 return false;
             dasm.mnemonic = Mnemonic.callm;
-            dasm.iclass = InstrClass.Transfer | InstrClass.Call;
+            dasm.iclass = InstrClass.Call;
             dasm.ops.Add(Constant.Byte(b));
             var op = dasm.DecodeEa8(uInstr);
             if (op is null)
@@ -1300,7 +1300,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
             if (!dasm.rdr.TryReadBeInt16(out var displacement))
                 return false;
             dasm.mnemonic = mnemonic;
-            dasm.iclass = InstrClass.ConditionalTransfer;
+            dasm.iclass = InstrClass.CondJump;
             dasm.ops.Add(new_pc + displacement);
             return true;
         }
@@ -1466,7 +1466,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
                 return false;
             if ((sDisplacement & 1) != 0)
                 return false;
-            dasm.iclass = InstrClass.ConditionalTransfer;
+            dasm.iclass = InstrClass.CondJump;
             dasm.mnemonic = g_dbcc[uInstr >> 8 & 0xf];
             dasm.ops.Add(get_data_reg(uInstr & 7));
             dasm.ops.Add(temp_pc + sDisplacement);
@@ -2105,7 +2105,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
         private static bool d68000_trap(uint uInstr, M68kDisassembler dasm)
         {
             dasm.mnemonic = Mnemonic.trap;
-            dasm.iclass = InstrClass.Call | InstrClass.Transfer;
+            dasm.iclass = InstrClass.Call;
             dasm.ops.Add(Constant.Byte((byte) (uInstr & 0xf)));
             return true;
         }
@@ -2115,7 +2115,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
             dasm.LIMIT_CPU_TYPES(uInstr, M68020_PLUS);
             dasm.mnemonic = g_trapcc[uInstr >> 8 & 0xf];
             dasm.iclass = dasm.mnemonic != Mnemonic.trapf
-                ? InstrClass.Call | InstrClass.Transfer
+                ? InstrClass.Call
                 : InstrClass.Linear;
             return true;
         }
@@ -2127,7 +2127,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
                 return false;
 
             dasm.mnemonic = g_trapcc[uInstr >> 8 & 0xf];
-            dasm.iclass = InstrClass.Call | InstrClass.Transfer;
+            dasm.iclass = InstrClass.Call;
             dasm.ops.Add(Constant.UInt16(uImm));
             return true;
         }
@@ -2139,7 +2139,7 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
                 return false;
 
             dasm.mnemonic = g_trapcc[uInstr >> 8 & 0xf];
-            dasm.iclass = InstrClass.Call | InstrClass.Transfer;
+            dasm.iclass = InstrClass.Call;
             dasm.ops.Add(Constant.UInt32(uOp1));
             return true;
         }
@@ -2724,9 +2724,9 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
 	Instr(sw,D9,D0, 0xf1f8, 0xe160, 0x000, Mnemonic.asl),           // d68000_asl_r_16
 	Instr(sl,D9,D0, 0xf1f8, 0xe1a0, 0x000, Mnemonic.asl),           // d68000_asl_r_32
 	Instr(sw,E0,    0xffc0, 0xe1c0, 0x3f8, Mnemonic.asl),           // d68000_asl_ea  
-	Instr(MnBcc,J,  0xf000, 0x6000, 0x000, 0, iclass:InstrClass.ConditionalTransfer),  // d68000_bcc_8
-    Instr(MnBcc,J,  0xf0ff, 0x6000, 0x000, 0, iclass:InstrClass.ConditionalTransfer),  // d68000_bcc_16
-    Instr(MnBcc,J,  0xf0ff, 0x60ff, 0x000, 0, iclass:InstrClass.ConditionalTransfer),  // d68020_bcc_32
+	Instr(MnBcc,J,  0xf000, 0x6000, 0x000, 0, iclass:InstrClass.CondJump),  // d68000_bcc_8
+    Instr(MnBcc,J,  0xf0ff, 0x6000, 0x000, 0, iclass:InstrClass.CondJump),  // d68000_bcc_16
+    Instr(MnBcc,J,  0xf0ff, 0x60ff, 0x000, 0, iclass:InstrClass.CondJump),  // d68020_bcc_32
     Instr(sr,D9,E0, 0xf1c0, 0x0140, 0xbf8, Mnemonic.bchg),          // d68000_bchg_r 
 	Instr(sr,Ib,E0, 0xffc0, 0x0840, 0xbf8, Mnemonic.bchg),          // d68000_bchg_s 
 	Instr(sr,D9,E0, 0xf1c0, 0x0180, 0xbf8, Mnemonic.bclr),          // d68000_bclr_r 
@@ -2740,17 +2740,17 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
     Instr(d68020_bfset        , 0xffc0, 0xeec0, 0xa78),
     Instr(d68020_bftst        , 0xffc0, 0xe8c0, 0xa7b),
     Instr(d68010_bkpt         , 0xfff8, 0x4848, 0x000),
-    Instr(J, 0xff00, 0x6000, 0x000, Mnemonic.bra, InstrClass.Transfer),              // d68000_bra_8
-	Instr(J, 0xffff, 0x6000, 0x000, Mnemonic.bra, InstrClass.Transfer),              // d68000_bra_16
-	Instr(J, 0xffff, 0x60ff, 0x000, Mnemonic.bra, InstrClass.Transfer),              // d68020_bra_32
+    Instr(J, 0xff00, 0x6000, 0x000, Mnemonic.bra, InstrClass.Jump),              // d68000_bra_8
+	Instr(J, 0xffff, 0x6000, 0x000, Mnemonic.bra, InstrClass.Jump),              // d68000_bra_16
+	Instr(J, 0xffff, 0x60ff, 0x000, Mnemonic.bra, InstrClass.Jump),              // d68020_bra_32
 	Instr(D9,E0, 0xf1c0, 0x01c0, 0xbf8, Mnemonic.bset),         // d68000_bset_r
 	Instr(Iw,E0, 0xffc0, 0x08c0, 0xbf8, Mnemonic.bset),         // d68000_bset_s
-	Instr(J, 0xff00, 0x6100, 0x000, Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call),   // d68000_bsr_8 
-	Instr(J, 0xffff, 0x6100, 0x000, Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call),   // d68000_bsr_16
-	Instr(J, 0xffff, 0x61ff, 0x000, Mnemonic.bsr, InstrClass.Transfer|InstrClass.Call),   // d68020_bsr_32
+	Instr(J, 0xff00, 0x6100, 0x000, Mnemonic.bsr, InstrClass.Call),   // d68000_bsr_8 
+	Instr(J, 0xffff, 0x6100, 0x000, Mnemonic.bsr, InstrClass.Call),   // d68000_bsr_16
+	Instr(J, 0xffff, 0x61ff, 0x000, Mnemonic.bsr, InstrClass.Call),   // d68020_bsr_32
 	Instr(sl,D9,E0, 0xf1c0, 0x0100, 0xbff, Mnemonic.btst),      // d68000_btst_r 
 	Instr(sw,Iw,E0, 0xffc0, 0x0800, 0xbfb, Mnemonic.btst),      // d68000_btst_s
-	Instr(d68020_callm        , 0xffc0, 0x06c0, 0x27b, iclass:InstrClass.Transfer|InstrClass.Call),
+	Instr(d68020_callm        , 0xffc0, 0x06c0, 0x27b, iclass:InstrClass.Call),
     Instr(d68020_cas_8        , 0xffc0, 0x0ac0, 0x3f8),
     Instr(d68020_cas_16       , 0xffc0, 0x0cc0, 0x3f8),
     Instr(d68020_cas_32       , 0xffc0, 0x0ec0, 0x3f8),
@@ -2814,8 +2814,8 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
 	Instr(sl,D0, 0xfff8, 0x48c0, 0x000, Mnemonic.ext),              // d68000_ext_32
     Instr(d68040_fpu         , 0xffc0, 0xf200, 0x000),
     Instr(d68000_illegal      , 0xffff, 0x4afc, 0x000, iclass:InstrClass.Invalid),
-    Instr(sl,E0, 0xffc0, 0x4ec0, 0x27b, Mnemonic.jmp, InstrClass.Transfer),   // d68000_jmp
-	Instr(sl,E0, 0xffc0, 0x4e80, 0x27b, Mnemonic.jsr, InstrClass.Transfer|InstrClass.Call),   // d68000_jsr
+    Instr(sl,E0, 0xffc0, 0x4ec0, 0x27b, Mnemonic.jmp, InstrClass.Jump), // d68000_jmp
+	Instr(sl,E0, 0xffc0, 0x4e80, 0x27b, Mnemonic.jsr, InstrClass.Call), // d68000_jsr
 	Instr(E0,A9, 0xf1c0, 0x41c0, 0x27b, Mnemonic.lea),              // d68000_lea
 	Instr(A0,Iw, 0xfff8, 0x4e50, 0x000, Mnemonic.link),             // d68000_link_16 
 	Instr(A0,Il, 0xfff8, 0x4808, 0x000, Mnemonic.link),             // d68020_link_32
@@ -2922,11 +2922,11 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
 	Instr(sw,D9,D0, 0xf1f8, 0xe170, 0x000, Mnemonic.roxl),      // d68000_roxl_r_16
 	Instr(sl,D9,D0, 0xf1f8, 0xe1b0, 0x000, Mnemonic.roxl),      // d68000_roxl_r_32
 	Instr(sl,E0, 0xffc0, 0xe5c0, 0x3f8, Mnemonic.roxl),         // d68000_roxl_ea 
-	Instr(Iw, 0xffff, 0x4e74, 0x000, Mnemonic.rtd, InstrClass.Transfer|InstrClass.Return),      // d68010_rtd
-	Instr(0xffff, 0x4e73, 0x000, Mnemonic.rte, InstrClass.Transfer|InstrClass.Privileged),      // d68000_rte
-	Instr(d68020_rtm, 0xfff0, 0x06c0, 0x000, iclass:InstrClass.Transfer|InstrClass.Return),
-    Instr(0xffff, 0x4e77, 0x000, Mnemonic.rtr, InstrClass.Transfer|InstrClass.Return),          // d68000_rtr
-	Instr(0xffff, 0x4e75, 0x000, Mnemonic.rts, InstrClass.Transfer|InstrClass.Return),          // d68000_rts
+	Instr(Iw, 0xffff, 0x4e74, 0x000, Mnemonic.rtd, InstrClass.Return),      // d68010_rtd
+	Instr(0xffff, 0x4e73, 0x000, Mnemonic.rte, InstrClass.Return|InstrClass.Privileged),      // d68000_rte
+	Instr(d68020_rtm, 0xfff0, 0x06c0, 0x000, iclass:InstrClass.Return),
+    Instr(0xffff, 0x4e77, 0x000, Mnemonic.rtr, InstrClass.Return),   // d68000_rtr
+	Instr(0xffff, 0x4e75, 0x000, Mnemonic.rts, InstrClass.Return),   // d68000_rts
 	Instr(D0,D9, 0xf1f8, 0x8100, 0x000, Mnemonic.sbcd),         // d68000_sbcd_rr
 	Instr(Pre0,Pre9, 0xf1f8, 0x8108, 0x000, Mnemonic.sbcd),     // d68000_sbcd_mm
 	Instr(d68000_scc          , 0xf0c0, 0x50c0, 0xbf8),
@@ -2953,11 +2953,11 @@ namespace Reko.Arch.Motorola.M68k.Disassembler
 	Instr(sl,Pre0,Pre9, 0xf1f8, 0x9188, 0x000, Mnemonic.subx),  // d68000_subx_mm_32
 	Instr(sl,D0,      0xfff8, 0x4840, 0x000, Mnemonic.swap),    // d68000_swap
 	Instr(d68000_tas          , 0xffc0, 0x4ac0, 0xbf8),
-    Instr(d68000_trap         , 0xfff0, 0x4e40, 0x000, iclass:InstrClass.Transfer|InstrClass.Call),
-    Instr(d68020_trapcc_0     , 0xf0ff, 0x50fc, 0x000, iclass:InstrClass.Transfer|InstrClass.Call),
-    Instr(d68020_trapcc_16    , 0xf0ff, 0x50fa, 0x000, iclass:InstrClass.Transfer|InstrClass.Call),
-    Instr(d68020_trapcc_32    , 0xf0ff, 0x50fb, 0x000, iclass:InstrClass.Transfer|InstrClass.Call),
-    Instr(0xffff, 0x4e76, 0x000, Mnemonic.trapv, InstrClass.Transfer|InstrClass.Call),  // d68000_trapv
+    Instr(d68000_trap         , 0xfff0, 0x4e40, 0x000, iclass:InstrClass.Call),
+    Instr(d68020_trapcc_0     , 0xf0ff, 0x50fc, 0x000, iclass:InstrClass.Call),
+    Instr(d68020_trapcc_16    , 0xf0ff, 0x50fa, 0x000, iclass:InstrClass.Call),
+    Instr(d68020_trapcc_32    , 0xf0ff, 0x50fb, 0x000, iclass:InstrClass.Call),
+    Instr(0xffff, 0x4e76, 0x000, Mnemonic.trapv, InstrClass.Call),  // d68000_trapv
 	Instr(sb,E0, 0xffc0, 0x4a00, 0xbf8, Mnemonic.tst),              // d68000_tst_8
 	Instr(sb,E0, 0xffff, 0x4a3a, 0x000, Mnemonic.tst),              // d68020_tst_pcdi_8
 	Instr(sb,E0, 0xffff, 0x4a3b, 0x000, Mnemonic.tst),              // d68020_tst_pcix_8

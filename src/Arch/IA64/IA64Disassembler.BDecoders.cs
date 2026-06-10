@@ -27,10 +27,10 @@ public partial class IA64Disassembler
     private static UnitDecoder MakeBdecoders()
     {
         var indirectBranch = Sparse(6, 3, "  indirectBranch", invalid,
-            (0, Instr(Mnemonic.br_cond, InstrClass.Transfer, B4)),
+            (0, Instr(Mnemonic.br_cond, InstrClass.Jump, B4)),
             (1, Instr(Mnemonic.br_ia, B4)));
         var indirectReturn = Sparse(6, 3, "  indirectReturn", invalid,
-            (4, Instr(Mnemonic.br_ret, InstrClass.Transfer | InstrClass.Return, B4)));
+            (4, Instr(Mnemonic.br_ret, InstrClass.Return, B4)));
         var miscIndirectBranch = Sparse(27, 6, "  Misc/IndirectBranch", prReserved,
             (0x00, Instr(Mnemonic.break_b, InstrClass.Terminates, B9)),
             (0x02, Instr(Mnemonic.cover, B8)),
@@ -42,22 +42,22 @@ public partial class IA64Disassembler
             (0x10, Instr(Mnemonic.epc, InstrClass.Linear | InstrClass.Privileged, B8)),
             (0x20, indirectBranch),
             (0x21, indirectReturn));
-        var indirectCall = Instr(Mnemonic.br_call, InstrClass.Transfer | InstrClass.Call, B5);
+        var indirectCall = Instr(Mnemonic.br_call, InstrClass.Call, B5);
         var indirectPredictNop = Sparse(27, 6, "  Indirect Predict/Nop", prReserved,
             (0x00, Instr(Mnemonic.nop_b, B9)),
             (0x10, Instr(Mnemonic.brp, B7)),
             (0x11, Instr(Mnemonic.brp_ret, B7)));
         var ipRelativeBranch = Mask(6, 3, "IP-relative Branch",
-            Instr(Mnemonic.br_cond, InstrClass.Transfer, B1),
+            Instr(Mnemonic.br_cond, InstrClass.Jump, B1),
             invalid,
             Instr(Mnemonic.br_wexit, B1),
             Instr(Mnemonic.br_wtop, B1),
 
             invalid,
-            Instr(Mnemonic.br_cloop, InstrClass.ConditionalTransfer, B2),
-            Instr(Mnemonic.br_cond, InstrClass.Transfer, B2),
-            Instr(Mnemonic.br_cond, InstrClass.Transfer, B2));
-        var ipRelativeCall = Instr(Mnemonic.br_call, InstrClass.Transfer | InstrClass.Call, B3);
+            Instr(Mnemonic.br_cloop, InstrClass.CondJump, B2),
+            Instr(Mnemonic.br_cond, InstrClass.Jump, B2),
+            Instr(Mnemonic.br_cond, InstrClass.Jump, B2));
+        var ipRelativeCall = Instr(Mnemonic.br_call, InstrClass.Call, B3);
         var ipRelativePredict = Instr(Mnemonic.brp, B6);
 
         return new UnitDecoder('b', Mask(37, 4, "  B",
