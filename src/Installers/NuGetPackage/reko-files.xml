@@ -388,6 +388,7 @@
       <File Source="$(var.SolutionDir)..\external\Capstone\$(var.Platform)\capstone.dll" />
       <File Source="$(var.WindowsDecompiler.TargetDir)AutomaticGraphLayout.dll" />
       <File Source="$(var.WindowsDecompiler.TargetDir)AutomaticGraphLayout.Drawing.dll" />
+      <File Source="$(var.WindowsDecompiler.TargetDir)DynamicData.dll" />
       <File Source="$(var.WindowsDecompiler.TargetDir)Microsoft.Msagl.GraphViewerGdi.dll" />
       <File Source="$(var.WindowsDecompiler.TargetDir)Microsoft.Dynamic.dll" />
       <File Source="$(var.WindowsDecompiler.TargetDir)Microsoft.Scripting.dll" />
