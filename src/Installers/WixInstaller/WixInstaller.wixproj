@@ -33,6 +33,30 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arch\Infineon\Infineon.csproj">
+      <Name>Infineon</Name>
+      <Project>{51b1a518-1346-479c-b479-2598bc1b5633}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\Arch\Sanyo\Sanyo.csproj">
+      <Name>Sanyo</Name>
+      <Project>{02305353-9a37-4e2c-a3bf-213230dcbd6c}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\Arch\Tms320C28\Tms320C28.csproj">
+      <Name>Tms320C28</Name>
+      <Project>{c5f8ad7d-bfa3-4e24-9331-3078d269a4c5}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\Arch\Alpha\Alpha.csproj">
       <Name>Alpha</Name>
       <Project>{c4c56725-bfd0-405a-802c-2c66fcd0ef06}</Project>
