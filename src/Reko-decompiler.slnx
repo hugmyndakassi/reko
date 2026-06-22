@@ -1,0 +1,996 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="UnixDebug" />
+    <BuildType Name="UnixRelease" />
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Architectures/">
+    <Project Path="Arch/Alpha/Alpha.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Altera/Altera.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Angstrem/Angstrem.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Arc/Arc.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Arm/Arm.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Avr/Avr.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Blackfin/Blackfin.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/C166/C166.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Cil/Cil.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/CompactRisc/CompactRisc.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Cray/Cray.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/CSky/CSky.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Epson/Epson.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Release" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Etrax/Etrax.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Fujitsu/Fujitsu.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/H8/H8.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/i8051/i8051.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/IA64/IA64.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Infineon/Infineon.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Kalimba/Kalimba.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Release" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/LatticeMico/LatticeMico.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Loongson/Loongson.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/M16C/M16C.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Maxim/Maxim.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/MCore/MCore.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/MicroBlaze/MicroBlaze.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Microchip/MicrochipPIC.csproj">
+      <BuildDependency Project="tools/genPICdb/genPICdb.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/MicrochipPIC.Design/MicrochipPIC.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Arch/MilStd1750/MilStd1750.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Mips/Mips.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/MN103/MN103.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Mos6502/Mos6502.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Motorola.Design/Motorola.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Arch/Motorola/Motorola.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/MSP430/MSP430.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/NatSemi/NatSemi.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|Any CPU" Project="Debug" />
+      <BuildType Solution="UnixRelease|ARM64" Project="Release" />
+      <BuildType Solution="UnixRelease|x64" Project="Release" />
+      <BuildType Solution="UnixRelease|x86" Project="Debug" />
+    </Project>
+    <Project Path="Arch/Nec/Nec.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Oki/Oki.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/OpenRISC/OpenRISC.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Padauk/Padauk.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/PaRisc/PaRisc.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Pdp/Pdp.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/PowerPC.Design/PowerPC.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Arch/PowerPC/PowerPC.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Qualcomm/Qualcomm.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Renesas/Renesas.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Release" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/RiscV/RiscV.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Sanyo/Sanyo.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|Any CPU" Project="Debug" />
+      <BuildType Solution="UnixRelease|ARM64" Project="Release" />
+      <BuildType Solution="UnixRelease|x64" Project="Release" />
+      <BuildType Solution="UnixRelease|x86" Project="Debug" />
+    </Project>
+    <Project Path="Arch/Sparc/Sparc.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/SuperH/SuperH.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Telink/Telink.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Tlcs/Tlcs.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Tms320C28/Tms320C28.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|Any CPU" Project="Debug" />
+      <BuildType Solution="UnixRelease|ARM64" Project="Release" />
+      <BuildType Solution="UnixRelease|x64" Project="Release" />
+      <BuildType Solution="UnixRelease|x86" Project="Debug" />
+    </Project>
+    <Project Path="Arch/Tms7000/Tms7000.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/V850/V850.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Vax/Vax.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/WE32100/WE32100.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/X86.Design/X86.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Arch/X86/X86.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/XCore/XCore.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Xtensa/Xtensa.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/Zilog/Zilog.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Arch/zSeries/zSeries.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Drivers/">
+    <File Path="Drivers/ApiTracking.items" />
+    <File Path="Drivers/Common.items" />
+    <File Path="Drivers/CommonBuildProperties.items" />
+    <File Path="Drivers/PreBuild.targets" />
+    <File Path="Drivers/reko.config" />
+    <Project Path="Drivers/AvaloniaShell/AvaloniaShell.csproj">
+      <BuildDependency Project="Arch/Oki/Oki.csproj" />
+      <BuildDependency Project="ImageLoaders/AOut/AOut.csproj" />
+      <BuildDependency Project="ImageLoaders/DiskImages/DiskImages.csproj" />
+      <BuildDependency Project="Libraries/MacsBug/MacsBug.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+    </Project>
+    <Project Path="Drivers/CmdLine/CmdLine.csproj">
+      <BuildDependency Project="Arch/Alpha/Alpha.csproj" />
+      <BuildDependency Project="Arch/Angstrem/Angstrem.csproj" />
+      <BuildDependency Project="Arch/Arm/Arm.csproj" />
+      <BuildDependency Project="Arch/Avr/Avr.csproj" />
+      <BuildDependency Project="Arch/Cil/Cil.csproj" />
+      <BuildDependency Project="Arch/i8051/i8051.csproj" />
+      <BuildDependency Project="Arch/Mips/Mips.csproj" />
+      <BuildDependency Project="Arch/Mos6502/Mos6502.csproj" />
+      <BuildDependency Project="Arch/Motorola/Motorola.csproj" />
+      <BuildDependency Project="Arch/MSP430/MSP430.csproj" />
+      <BuildDependency Project="Arch/Oki/Oki.csproj" />
+      <BuildDependency Project="Arch/PowerPC.Design/PowerPC.Design.csproj" />
+      <BuildDependency Project="Arch/PowerPC/PowerPC.csproj" />
+      <BuildDependency Project="Arch/RiscV/RiscV.csproj" />
+      <BuildDependency Project="Arch/Sparc/Sparc.csproj" />
+      <BuildDependency Project="Arch/SuperH/SuperH.csproj" />
+      <BuildDependency Project="Arch/Tlcs/Tlcs.csproj" />
+      <BuildDependency Project="Arch/Tms7000/Tms7000.csproj" />
+      <BuildDependency Project="Arch/Vax/Vax.csproj" />
+      <BuildDependency Project="Arch/X86.Design/X86.Design.csproj" />
+      <BuildDependency Project="Arch/X86/X86.csproj" />
+      <BuildDependency Project="Arch/Xtensa/Xtensa.csproj" />
+      <BuildDependency Project="Arch/Zilog/Zilog.csproj" />
+      <BuildDependency Project="Environments/AmigaOS/AmigaOS.csproj" />
+      <BuildDependency Project="Environments/AtariTOS/AtariTOS.csproj" />
+      <BuildDependency Project="Environments/C64/C64.csproj" />
+      <BuildDependency Project="Environments/Cpm/Cpm.csproj" />
+      <BuildDependency Project="Environments/Dreamcast/Dreamcast.csproj" />
+      <BuildDependency Project="Environments/MacOS/MacOS.csproj" />
+      <BuildDependency Project="Environments/Msdos.Design/Msdos.Design.csproj" />
+      <BuildDependency Project="Environments/Msdos/Msdos.csproj" />
+      <BuildDependency Project="Environments/NeoGeo/NeoGeo.csproj" />
+      <BuildDependency Project="Environments/Ps3/Ps3.csproj" />
+      <BuildDependency Project="Environments/RiscOS/RiscOS.csproj" />
+      <BuildDependency Project="Environments/RT11/RT11.csproj" />
+      <BuildDependency Project="Environments/SegaGenesis/SegaGenesis.csproj" />
+      <BuildDependency Project="Environments/SysV/SysV.csproj" />
+      <BuildDependency Project="Environments/Trs80/Trs80.csproj" />
+      <BuildDependency Project="Environments/Wii/Wii.csproj" />
+      <BuildDependency Project="Environments/Windows/Windows.csproj" />
+      <BuildDependency Project="Environments/ZX81/ZX81.csproj" />
+      <BuildDependency Project="Gui/Gui.csproj" />
+      <BuildDependency Project="ImageLoaders/AOut/AOut.csproj" />
+      <BuildDependency Project="ImageLoaders/BinHex/BinHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Coff/Coff.csproj" />
+      <BuildDependency Project="ImageLoaders/DiskImages/DiskImages.csproj" />
+      <BuildDependency Project="ImageLoaders/Dol/Dol.csproj" />
+      <BuildDependency Project="ImageLoaders/Elf/Elf.csproj" />
+      <BuildDependency Project="ImageLoaders/Hunk/Hunk.csproj" />
+      <BuildDependency Project="ImageLoaders/IntelHex/IntelHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Llvm/LLVM.csproj" />
+      <BuildDependency Project="ImageLoaders/MachO/MachO.csproj" />
+      <BuildDependency Project="ImageLoaders/MzExe/MzExe.csproj" />
+      <BuildDependency Project="ImageLoaders/OdbgScript/OdbgScript.csproj" />
+      <BuildDependency Project="ImageLoaders/Omf/Omf.csproj" />
+      <BuildDependency Project="ImageLoaders/TypeLib/TypeLib.csproj" />
+      <BuildDependency Project="ImageLoaders/VmsExe/VmsExe.csproj" />
+      <BuildDependency Project="ImageLoaders/WebAssembly/WebAssembly.csproj" />
+      <BuildDependency Project="Libraries/Libc/Libc.csproj" />
+      <BuildDependency Project="Libraries/MacsBug/MacsBug.csproj" />
+      <BuildDependency Project="Libraries/Microchip/Utils/Microchip.Utils.csproj" />
+      <BuildDependency Project="Libraries/Python/Python.csproj" />
+      <BuildDependency Project="Symbols/LGSymLoader/LGSymLoader.csproj" />
+      <BuildDependency Project="tools/xslt/xslt.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+      <Platform Solution="Release|Any CPU" Project="x64" />
+      <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+      <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+      <Build Solution="Debug|Any CPU" Project="false" />
+      <Build Solution="Debug|ARM64" Project="false" />
+      <Build Solution="Release|ARM64" Project="false" />
+    </Project>
+    <Project Path="Drivers/WebSite/website.csproj">
+      <BuildDependency Project="Arch/Alpha/Alpha.csproj" />
+      <BuildDependency Project="Arch/Arm/Arm.csproj" />
+      <BuildDependency Project="Arch/Avr/Avr.csproj" />
+      <BuildDependency Project="Arch/Cil/Cil.csproj" />
+      <BuildDependency Project="Arch/i8051/i8051.csproj" />
+      <BuildDependency Project="Arch/M16C/M16C.csproj" />
+      <BuildDependency Project="Arch/Mips/Mips.csproj" />
+      <BuildDependency Project="Arch/Mos6502/Mos6502.csproj" />
+      <BuildDependency Project="Arch/Motorola.Design/Motorola.Design.csproj" />
+      <BuildDependency Project="Arch/Motorola/Motorola.csproj" />
+      <BuildDependency Project="Arch/MSP430/MSP430.csproj" />
+      <BuildDependency Project="Arch/PowerPC/PowerPC.csproj" />
+      <BuildDependency Project="Arch/RiscV/RiscV.csproj" />
+      <BuildDependency Project="Arch/Sparc/Sparc.csproj" />
+      <BuildDependency Project="Arch/SuperH/SuperH.csproj" />
+      <BuildDependency Project="Arch/Tlcs/Tlcs.csproj" />
+      <BuildDependency Project="Arch/Vax/Vax.csproj" />
+      <BuildDependency Project="Arch/X86.Design/X86.Design.csproj" />
+      <BuildDependency Project="Arch/X86/X86.csproj" />
+      <BuildDependency Project="Arch/Xtensa/Xtensa.csproj" />
+      <BuildDependency Project="Arch/Zilog/Zilog.csproj" />
+      <BuildDependency Project="Environments/AmigaOS.Design/AmigaOS.Design.csproj" />
+      <BuildDependency Project="Environments/AmigaOS/AmigaOS.csproj" />
+      <BuildDependency Project="Environments/AtariTOS/AtariTOS.csproj" />
+      <BuildDependency Project="Environments/C64/C64.csproj" />
+      <BuildDependency Project="Environments/Cpm/Cpm.csproj" />
+      <BuildDependency Project="Environments/Dreamcast/Dreamcast.csproj" />
+      <BuildDependency Project="Environments/MacOS/MacOS.csproj" />
+      <BuildDependency Project="Environments/Msdos.Design/Msdos.Design.csproj" />
+      <BuildDependency Project="Environments/Msdos/Msdos.csproj" />
+      <BuildDependency Project="Environments/NeoGeo/NeoGeo.csproj" />
+      <BuildDependency Project="Environments/Ps3/Ps3.csproj" />
+      <BuildDependency Project="Environments/RiscOS/RiscOS.csproj" />
+      <BuildDependency Project="Environments/RT11/RT11.csproj" />
+      <BuildDependency Project="Environments/SegaGenesis/SegaGenesis.csproj" />
+      <BuildDependency Project="Environments/SysV/SysV.csproj" />
+      <BuildDependency Project="Environments/Trs80/Trs80.csproj" />
+      <BuildDependency Project="Environments/Wii/Wii.csproj" />
+      <BuildDependency Project="Environments/Windows/Windows.csproj" />
+      <BuildDependency Project="Environments/ZX81/ZX81.csproj" />
+      <BuildDependency Project="ImageLoaders/BinHex/BinHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Coff/Coff.csproj" />
+      <BuildDependency Project="ImageLoaders/Dol/Dol.csproj" />
+      <BuildDependency Project="ImageLoaders/Elf/Elf.csproj" />
+      <BuildDependency Project="ImageLoaders/Hunk/Hunk.csproj" />
+      <BuildDependency Project="ImageLoaders/IntelHex/IntelHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Llvm/LLVM.csproj" />
+      <BuildDependency Project="ImageLoaders/MachO/MachO.csproj" />
+      <BuildDependency Project="ImageLoaders/MzExe/MzExe.csproj" />
+      <BuildDependency Project="ImageLoaders/OdbgScript/OdbgScript.csproj" />
+      <BuildDependency Project="ImageLoaders/TypeLib/TypeLib.csproj" />
+      <BuildDependency Project="ImageLoaders/VmsExe/VmsExe.csproj" />
+      <BuildDependency Project="ImageLoaders/WebAssembly/WebAssembly.csproj" />
+      <BuildDependency Project="Libraries/Libc/Libc.csproj" />
+      <BuildDependency Project="Libraries/Python/Python.csproj" />
+      <BuildDependency Project="tools/c2xml/c2xml.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+    </Project>
+    <Project Path="Drivers/WindowsDecompiler/WindowsDecompiler.csproj">
+      <BuildDependency Project="Arch/Alpha/Alpha.csproj" />
+      <BuildDependency Project="Arch/Angstrem/Angstrem.csproj" />
+      <BuildDependency Project="Arch/Arm/Arm.csproj" />
+      <BuildDependency Project="Arch/Avr/Avr.csproj" />
+      <BuildDependency Project="Arch/Blackfin/Blackfin.csproj" />
+      <BuildDependency Project="Arch/Cil/Cil.csproj" />
+      <BuildDependency Project="Arch/i8051/i8051.csproj" />
+      <BuildDependency Project="Arch/Microchip/MicrochipPIC.csproj" />
+      <BuildDependency Project="Arch/Mips/Mips.csproj" />
+      <BuildDependency Project="Arch/Mos6502/Mos6502.csproj" />
+      <BuildDependency Project="Arch/Motorola.Design/Motorola.Design.csproj" />
+      <BuildDependency Project="Arch/Motorola/Motorola.csproj" />
+      <BuildDependency Project="Arch/MSP430/MSP430.csproj" />
+      <BuildDependency Project="Arch/Oki/Oki.csproj" />
+      <BuildDependency Project="Arch/PowerPC.Design/PowerPC.Design.csproj" />
+      <BuildDependency Project="Arch/PowerPC/PowerPC.csproj" />
+      <BuildDependency Project="Arch/RiscV/RiscV.csproj" />
+      <BuildDependency Project="Arch/Sparc/Sparc.csproj" />
+      <BuildDependency Project="Arch/SuperH/SuperH.csproj" />
+      <BuildDependency Project="Arch/Tlcs/Tlcs.csproj" />
+      <BuildDependency Project="Arch/Tms7000/Tms7000.csproj" />
+      <BuildDependency Project="Arch/Vax/Vax.csproj" />
+      <BuildDependency Project="Arch/X86.Design/X86.Design.csproj" />
+      <BuildDependency Project="Arch/X86/X86.csproj" />
+      <BuildDependency Project="Arch/Xtensa/Xtensa.csproj" />
+      <BuildDependency Project="Arch/Zilog/Zilog.csproj" />
+      <BuildDependency Project="Environments/AmigaOS.Design/AmigaOS.Design.csproj" />
+      <BuildDependency Project="Environments/AmigaOS/AmigaOS.csproj" />
+      <BuildDependency Project="Environments/AtariTOS/AtariTOS.csproj" />
+      <BuildDependency Project="Environments/C64/C64.csproj" />
+      <BuildDependency Project="Environments/Cpm/Cpm.csproj" />
+      <BuildDependency Project="Environments/Dreamcast/Dreamcast.csproj" />
+      <BuildDependency Project="Environments/MacOS/MacOS.csproj" />
+      <BuildDependency Project="Environments/Msdos.Design/Msdos.Design.csproj" />
+      <BuildDependency Project="Environments/Msdos/Msdos.csproj" />
+      <BuildDependency Project="Environments/NeoGeo/NeoGeo.csproj" />
+      <BuildDependency Project="Environments/Ps3/Ps3.csproj" />
+      <BuildDependency Project="Environments/RiscOS/RiscOS.csproj" />
+      <BuildDependency Project="Environments/RT11/RT11.csproj" />
+      <BuildDependency Project="Environments/SegaGenesis/SegaGenesis.csproj" />
+      <BuildDependency Project="Environments/Snes/Snes.csproj" />
+      <BuildDependency Project="Environments/SysV/SysV.csproj" />
+      <BuildDependency Project="Environments/Trs80/Trs80.csproj" />
+      <BuildDependency Project="Environments/Wii/Wii.csproj" />
+      <BuildDependency Project="Environments/Windows/Windows.csproj" />
+      <BuildDependency Project="Environments/Xbox/Xbox.csproj" />
+      <BuildDependency Project="Environments/ZX81/ZX81.csproj" />
+      <BuildDependency Project="ImageLoaders/AOut/AOut.csproj" />
+      <BuildDependency Project="ImageLoaders/BinHex/BinHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Coff/Coff.csproj" />
+      <BuildDependency Project="ImageLoaders/DiskImages/DiskImages.csproj" />
+      <BuildDependency Project="ImageLoaders/Dol/Dol.csproj" />
+      <BuildDependency Project="ImageLoaders/Elf/Elf.csproj" />
+      <BuildDependency Project="ImageLoaders/Hunk/Hunk.csproj" />
+      <BuildDependency Project="ImageLoaders/IntelHex/IntelHex.csproj" />
+      <BuildDependency Project="ImageLoaders/Llvm/LLVM.csproj" />
+      <BuildDependency Project="ImageLoaders/MachO/MachO.csproj" />
+      <BuildDependency Project="ImageLoaders/MzExe/MzExe.csproj" />
+      <BuildDependency Project="ImageLoaders/OdbgScript/OdbgScript.csproj" />
+      <BuildDependency Project="ImageLoaders/TypeLib/TypeLib.csproj" />
+      <BuildDependency Project="ImageLoaders/VmsExe/VmsExe.csproj" />
+      <BuildDependency Project="ImageLoaders/WebAssembly/WebAssembly.csproj" />
+      <BuildDependency Project="ImageLoaders/XexLoader/Xex.csproj" />
+      <BuildDependency Project="Libraries/Libc/Libc.csproj" />
+      <BuildDependency Project="Libraries/MacsBug/MacsBug.csproj" />
+      <BuildDependency Project="Libraries/Microchip/Utils/Microchip.Utils.csproj" />
+      <BuildDependency Project="Libraries/Python/Python.csproj" />
+      <BuildDependency Project="Symbols/LGSymLoader/LGSymLoader.csproj" />
+      <BuildDependency Project="tools/genPICdb/genPICdb.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+      <Platform Solution="Release|Any CPU" Project="x64" />
+      <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+      <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+      <Build Solution="*|ARM64" Project="false" />
+      <Build Solution="Debug|Any CPU" Project="false" />
+      <Build Solution="Release|Any CPU" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+  </Folder>
+  <Folder Name="/Environments/">
+    <Project Path="Environments/AmigaOS.Design/AmigaOS.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Environments/AmigaOS/AmigaOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/AtariTOS/AtariTOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/BbcMicro/BbcMicro.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/C64/C64.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Cpm/Cpm.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Dreamcast/Dreamcast.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Gameboy/Gameboy.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Hpux/Hpux.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/MacOS/MacOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/MorphOS/MorphOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Msdos.Design/Msdos.Design.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="Environments/Msdos/Msdos.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/NeoGeo/NeoGeo.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/OpenVMS/OpenVMS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/OS2/OS2.csproj">
+      <BuildDependency Project="tools/c2xml/c2xml.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/PalmOS/PalmOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Pdp10Env/Pdp10Env.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Ps3/Ps3.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/RiscOS/RiscOS.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/RT11/RT11.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/SegaGenesis/SegaGenesis.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Snes/Snes.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Switch/Switch.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/SysV/SysV.csproj">
+      <BuildDependency Project="Arch/Arm/Arm.csproj" />
+      <BuildDependency Project="Arch/PowerPC/PowerPC.csproj" />
+      <BuildDependency Project="Arch/Sparc/Sparc.csproj" />
+      <BuildDependency Project="Arch/X86/X86.csproj" />
+      <BuildDependency Project="tools/c2xml/c2xml.csproj" />
+      <BuildDependency Project="tools/xslt/xslt.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Trs80/Trs80.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Wii/Wii.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+    </Project>
+    <Project Path="Environments/Windows/Windows.csproj">
+      <BuildDependency Project="tools/c2xml/c2xml.csproj" />
+      <BuildDependency Project="tools/xslt/xslt.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/Xbox/Xbox.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Environments/ZX81/ZX81.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Installers/">
+    <Project Path="Installers/Runtime/Runtime.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+      <Platform Solution="Debug|ARM64" Project="x86" />
+      <Platform Solution="Release|Any CPU" Project="x64" />
+      <Platform Solution="Release|ARM64" Project="x86" />
+      <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+      <Platform Solution="UnixDebug|ARM64" Project="x64" />
+      <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+      <Platform Solution="UnixRelease|ARM64" Project="x64" />
+      <Build Solution="Debug|Any CPU" Project="false" />
+      <Build Solution="Debug|ARM64" Project="false" />
+      <Build Solution="Release|ARM64" Project="false" />
+    </Project>
+    <Project Path="Installers/WixInstaller/WixInstaller.wixproj">
+      <BuildDependency Project="ImageLoaders/Llvm/LLVM.csproj" />
+      <BuildType Solution="UnixDebug|Any CPU" Project="Release" />
+      <BuildType Solution="UnixDebug|ARM64" Project="Debug" />
+      <BuildType Solution="UnixDebug|x64" Project="Debug" />
+      <BuildType Solution="UnixDebug|x86" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+      <Platform Solution="Debug|ARM64" Project="x86" />
+      <Platform Solution="Release|Any CPU" Project="x64" />
+      <Platform Solution="Release|ARM64" Project="x86" />
+      <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+      <Platform Solution="UnixDebug|ARM64" Project="x64" />
+      <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+      <Platform Solution="UnixRelease|ARM64" Project="x64" />
+      <Platform Solution="UnixRelease|x64" Project="x86" />
+      <Build Solution="UnixDebug|Any CPU" />
+      <Build Solution="UnixRelease|Any CPU" />
+    </Project>
+  </Folder>
+  <Folder Name="/Installers/NuGet/">
+    <File Path="Installers/NuGetPackage/.gitignore" />
+    <File Path="Installers/NuGetPackage/devnotes.md" />
+    <File Path="Installers/NuGetPackage/NuGetPackage.nuspec" />
+    <File Path="Installers/NuGetPackage/NuGetPackage.template" />
+    <File Path="Installers/NuGetPackage/pack_nuget.bat" />
+    <File Path="Installers/NuGetPackage/README.md" />
+    <File Path="Installers/NuGetPackage/reko-64x64.png" />
+    <File Path="Installers/NuGetPackage/reko-files.xml" />
+    <File Path="Installers/NuGetPackage/update_packagers.py" />
+    <File Path="Installers/NuGetPackage/WixInstallerProduct.template" />
+  </Folder>
+  <Folder Name="/Libraries/">
+    <Project Path="Libraries/Libc/Libc.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Libraries/MacsBug/MacsBug.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Libraries/Microchip/Utils/Microchip.Utils.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="Libraries/Python/Python.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Loaders/">
+    <Project Path="ImageLoaders/AOut/AOut.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Archives/Archives.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/BinHex/BinHex.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Coff/Coff.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/DiskImages/DiskImages.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Dol/Dol.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Elf/Elf.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/HpSom/HpSom.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Hunk/Hunk.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/IntelHex/IntelHex.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Ldm/Ldm.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Llvm/LLVM.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/MachO/MachO.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/MzExe/MzExe.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Nro/Nro.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/OdbgScript/OdbgScript.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Omf/Omf.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Pef/Pef.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Srec/Srec.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/TekHex/TekHex.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/TypeLib/TypeLib.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/VmsExe/VmsExe.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/WebAssembly/WebAssembly.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/Xbe/Xbe.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="ImageLoaders/XexLoader/Xex.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Scripts/">
+    <Project Path="Scripts/Python/Python.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../.travis.yml" />
+    <File Path="../appveyor.yml" />
+    <File Path=".editorconfig" />
+    <File Path="devnotes.txt" />
+  </Folder>
+  <Folder Name="/Symbols/">
+    <Project Path="Symbols/LGSymLoader/LGSymLoader.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Benchmarks/Benchmarks.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="UiPrototype/UiPrototype.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+    <Project Path="UnitTests/UnitTests.csproj">
+      <BuildDependency Project="Arch/Angstrem/Angstrem.csproj" />
+      <BuildDependency Project="Arch/Microchip/MicrochipPIC.csproj" />
+      <BuildDependency Project="Libraries/Microchip/Utils/Microchip.Utils.csproj" />
+      <BuildDependency Project="tools/genPICdb/genPICdb.csproj" />
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Platform Solution="Debug|Any CPU" Project="x86" />
+      <Platform Solution="Release|Any CPU" Project="x64" />
+      <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+      <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+      <Build Solution="Debug|Any CPU" Project="false" />
+      <Build Solution="Debug|ARM64" Project="false" />
+      <Build Solution="Release|ARM64" Project="false" />
+    </Project>
+    <Project Path="WindowsItp/WindowsItp.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+  </Folder>
+  <Folder Name="/Tools/">
+    <Project Path="tools/c2xml/c2xml.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/genPICdb/genPICdb.csproj">
+      <BuildType Solution="UnixDebug|x64" Project="Debug" />
+    </Project>
+    <Project Path="tools/hdrgen/hdrgen.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/hunktool/hunktool.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/makesigs/makesigs.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/regressionTests/regressionTests.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/specGen/specGen.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="tools/xslt/xslt.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/UserInterfaces/">
+    <Project Path="UserInterfaces/AvaloniaUI/AvaloniaUI.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+    </Project>
+    <Project Path="UserInterfaces/WindowsForms/WindowsForms.csproj">
+      <BuildType Solution="UnixDebug|*" Project="Debug" />
+      <BuildType Solution="UnixRelease|*" Project="Release" />
+      <Build Solution="UnixDebug|ARM64" Project="false" />
+      <Build Solution="UnixDebug|x64" Project="false" />
+      <Build Solution="UnixDebug|x86" Project="false" />
+      <Build Solution="UnixRelease|ARM64" Project="false" />
+      <Build Solution="UnixRelease|x64" Project="false" />
+    </Project>
+  </Folder>
+  <Project Path="Core/Core.csproj">
+    <BuildType Solution="UnixDebug|*" Project="Debug" />
+    <BuildType Solution="UnixRelease|*" Project="Release" />
+  </Project>
+  <Project Path="Decompiler/Decompiler.csproj">
+    <BuildType Solution="UnixDebug|*" Project="Debug" />
+    <BuildType Solution="UnixRelease|*" Project="Release" />
+  </Project>
+  <Project Path="Gui/Gui.csproj">
+    <BuildType Solution="UnixDebug|*" Project="Debug" />
+    <BuildType Solution="UnixRelease|*" Project="Release" />
+  </Project>
+  <Project Path="Native/NativeProxy.csproj">
+    <BuildType Solution="UnixDebug|x64" Project="Debug" />
+    <BuildType Solution="UnixDebug|x86" Project="Debug" />
+    <BuildType Solution="UnixRelease|x64" Project="Release" />
+    <BuildType Solution="UnixRelease|x86" Project="Release" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Platform Solution="Debug|Any CPU" Project="x86" />
+    <Platform Solution="Debug|ARM64" Project="x86" />
+    <Platform Solution="Release|Any CPU" Project="x64" />
+    <Platform Solution="Release|ARM64" Project="x86" />
+    <Platform Solution="UnixDebug|Any CPU" Project="x86" />
+    <Platform Solution="UnixDebug|ARM64" Project="x64" />
+    <Platform Solution="UnixRelease|Any CPU" Project="x86" />
+    <Platform Solution="UnixRelease|ARM64" Project="x64" />
+    <Build Solution="*|ARM64" Project="false" />
+    <Build Solution="Debug|Any CPU" Project="false" />
+    <Build Solution="UnixDebug|Any CPU" Project="false" />
+    <Build Solution="UnixRelease|Any CPU" Project="false" />
+  </Project>
+  <Properties Name="MonoDevelopProperties">
+    <Property Name="StartupItem" Value="Drivers\WindowsDecompiler\WindowsDecompiler.csproj" />
+  </Properties>
+  <Properties Name="TextTemplating" Scope="PostLoad">
+    <Property Name="TextTemplating" Value="1" />
+  </Properties>
+</Solution>

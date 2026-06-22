@@ -8,11 +8,11 @@ For the tl;dr crowd:
 
 To build the Reko solution for x86-64 versions of Windows, use the following command:
 ```
-msbuild /p:Configuration=Release /p:Platform=x64 src/Reko-decompiler.sln
+msbuild /p:Configuration=Release /p:Platform=x64 src/Reko-decompiler.slnx
 ```
 To build the solution for x86-64 Unix systems, use the following command:
 ```
-msbuild /p:Configuration=UnixRelease /p:Platform=x64 src/Reko-decompiler.sln
+msbuild /p:Configuration=UnixRelease /p:Platform=x64 src/Reko-decompiler.slnx
 ```
 
 ## Background 

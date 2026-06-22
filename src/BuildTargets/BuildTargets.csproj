@@ -24,7 +24,7 @@
     <CMake>"$(CMakeVS)"</CMake>
   </PropertyGroup>
 
-  <!-- Builds the whole Reko solution (the ~/src/Reko-decompiler.sln) -->
+  <!-- Builds the whole Reko solution (the ~/src/Reko-decompiler.slnx) -->
   <Target Name="build_solution">
     <Exec Command="$(CMake) $(CMakeArguments) -DTARGET=build_solution -P $(RekoCMake)" />
   </Target>

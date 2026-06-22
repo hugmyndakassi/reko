@@ -6,14 +6,14 @@
 # - weak intra-project target build order (we need project A to generate file X in project B)
 #
 # Particularly, using MSBuild's <Exec> element within a .csproj file,
-# **when this project is referenced by other projects or a .sln file**,
+# **when this project is referenced by other projects or a .slnx file**,
 # seems to cause MSBuild to think the project is outdated (maybe because <Exec> is unconditional).
 #
 # This "outdated" bit is propagated to all dependent projects, which will be rebuilt as a result.
 # This causes a big part of the solution to be rebuilt every time the project is built or ran, even tho nothing was changed
 #
-# The targets created in this file are invoked through a proxy project, `BuildTargets.csproj`, which is *NOT* part of Reko-decompiler.sln
-# `BuildTargets.csproj` is also *NOT* referenced by any other project,
+# The targets created in this file are invoked through a proxy project, `BuildTargets.csproj`, which is *NOT* part of
+# Reko-decompiler.slnx. `BuildTargets.csproj` is also *NOT* referenced by any other project,
 # but it's instead invoked directly with a <MSBuild> element placed in the required .csproj
 #
 
@@ -23,7 +23,7 @@ endif()
 
 # The path to the Reko's "src" directory, used for relative path
 set(REKO_SRC ${CMAKE_CURRENT_LIST_DIR})
-set(REKO_VERSION "0.12.3")
+set(REKO_VERSION "0.12.4")
 
 set(artifacts_dir ${REKO_SRC}/../bin)
 file(MAKE_DIRECTORY ${artifacts_dir})
@@ -437,7 +437,7 @@ elseif("${TARGET}" STREQUAL "build_solution")
 		COMMENT "Building solution..."
 		WORKING_DIRECTORY ${REKO_SRC}
 		COMMAND ${DOTNET_EXE} build
-				${REKO_SRC}/Reko-decompiler.sln
+				${REKO_SRC}/Reko-decompiler.slnx
 				-c ${CMAKE_BUILD_TYPE} /p:Platform=${REKO_PLATFORM}
 	)
 elseif("${TARGET}" STREQUAL "run_unit_tests")
