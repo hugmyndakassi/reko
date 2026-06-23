@@ -2524,7 +2524,7 @@ T_4: (in dwArg00 @ 00400220 : word32)
   Class: Eq_4
   DataType: word32
   OrigDataType: word32
-T_5: (in 10000920 @ 00400264 : ptr32)
+T_5: (in 0x10000920<p32> @ 00400264 : ptr32)
   Class: Eq_5
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_6 t0000)))
@@ -2536,7 +2536,7 @@ T_7: (in r2_17 @ 00400264 : word32)
   Class: Eq_6
   DataType: word32
   OrigDataType: word32
-T_8: (in 100008C8 @ 00400278 : ptr32)
+T_8: (in 0x100008C8<p32> @ 00400278 : ptr32)
   Class: Eq_8
   DataType: (ptr32 (ptr32 code))
   OrigDataType: (ptr32 (struct (0 T_9 t0000)))
@@ -6948,8 +6948,7 @@ T_1110: (in  @ 00400AF4 : int32)
   Class: Eq_1008
   DataType: Eq_1008
   OrigDataType: 
-T_1111: (in %d
- @ 00400AF4 : (ptr32 char))
+T_1111: (in "%d\n" @ 00400AF4 : (ptr32 char))
   Class: Eq_1109
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -11129,10 +11128,7 @@ T_2145: (in SLICE(256<i32>, size_t, 0) @ 00402128 : size_t)
   Class: Eq_1207
   DataType: Eq_1207
   OrigDataType: size_t
-T_2146: (in CONNECT %s:%d HTTP/1.1
-Host: %s:%d
-
- @ 00402128 : (ptr32 char))
+T_2146: (in "CONNECT %s:%d HTTP/1.1\r\nHost: %s:%d\r\n\r\n" @ 00402128 : (ptr32 char))
   Class: Eq_2137
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -17540,8 +17536,7 @@ T_3743: (in SLICE(256<i32>, size_t, 0) @ 004047C0 : size_t)
   Class: Eq_1207
   DataType: Eq_1207
   OrigDataType: size_t
-T_3744: (in %s %s %s
- @ 004047C0 : (ptr32 char))
+T_3744: (in "%s %s %s\r\n" @ 004047C0 : (ptr32 char))
   Class: Eq_2137
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -17605,8 +17600,7 @@ T_3759: (in SLICE(256<i32>, size_t, 0) @ 004048B8 : size_t)
   Class: Eq_1207
   DataType: Eq_1207
   OrigDataType: size_t
-T_3760: (in %s http://%s/%s %s
- @ 004048B8 : (ptr32 char))
+T_3760: (in "%s http://%s/%s %s\r\n" @ 004048B8 : (ptr32 char))
   Class: Eq_2137
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -17678,8 +17672,7 @@ T_3777: (in SLICE(256<i32>, size_t, 0) @ 00404848 : size_t)
   Class: Eq_1207
   DataType: Eq_1207
   OrigDataType: size_t
-T_3778: (in %s http://%s%s %s
- @ 00404848 : (ptr32 char))
+T_3778: (in "%s http://%s%s %s\r\n" @ 00404848 : (ptr32 char))
   Class: Eq_2137
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -21715,7 +21708,7 @@ T_4784: (in format @ 00406318 : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: 
-T_4785: (in Usage: redir -h  @ 00406318 : (ptr32 char))
+T_4785: (in "Usage: redir -h " @ 00406318 : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -21755,7 +21748,7 @@ T_4794: (in  @ 004062F0 : (ptr32 char))
   Class: Eq_4701
   DataType: Eq_4701
   OrigDataType: 
-T_4795: (in Usage: %s -h  @ 004062F0 : (ptr32 char))
+T_4795: (in "Usage: %s -h " @ 004062F0 : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -21815,8 +21808,7 @@ T_4809: (in signature of printf : void)
   Class: Eq_4808
   DataType: (ptr32 Eq_4808)
   OrigDataType: 
-T_4810: (in 
- @ 004065E4 : (ptr32 char))
+T_4810: (in "\n" @ 004065E4 : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -21876,7 +21868,7 @@ T_4824: (in  @ 004065AC : (ptr32 char))
   Class: Eq_4824
   DataType: (ptr32 char)
   OrigDataType: 
-T_4825: (in -%c %s  @ 004065AC : (ptr32 char))
+T_4825: (in "-%c %s " @ 004065AC : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -22196,7 +22188,7 @@ T_4904: (in  @ 00406518 : char)
   Class: Eq_4904
   DataType: char
   OrigDataType: 
-T_4905: (in -%c|%c  @ 00406518 : (ptr32 char))
+T_4905: (in "-%c|%c " @ 00406518 : (ptr32 char))
   Class: Eq_4784
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -23168,8 +23160,7 @@ T_5147: (in  @ 00406A80 : (ptr32 char))
   Class: Eq_5103
   DataType: (ptr32 char)
   OrigDataType: 
-T_5148: (in %s:%s.%03d:%s
- @ 00406A80 : (ptr32 char))
+T_5148: (in "%s:%s.%03d:%s\n" @ 00406A80 : (ptr32 char))
   Class: Eq_1109
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)

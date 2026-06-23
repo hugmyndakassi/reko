@@ -59,7 +59,7 @@ T_7: (in rArg10 @ 80000004 : real96)
   Class: Eq_6
   DataType: real96
   OrigDataType: real96
-T_8: (in 800004FC @ 80000138 : ptr32)
+T_8: (in 0x800004FC<p32> @ 80000138 : ptr32)
   Class: Eq_8
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_9 t0000)))
@@ -127,7 +127,7 @@ T_24: (in rArg04 @ 80000156 : real96)
   Class: Eq_6
   DataType: real96
   OrigDataType: real96
-T_25: (in 80000508 @ 80000194 : ptr32)
+T_25: (in 0x80000508<p32> @ 80000194 : ptr32)
   Class: Eq_25
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_26 t0000)))
@@ -199,7 +199,7 @@ T_42: (in rArg04 @ 800001B4 : real96)
   Class: Eq_6
   DataType: real96
   OrigDataType: real96
-T_43: (in 80000514 @ 80000210 : ptr32)
+T_43: (in 0x80000514<p32> @ 80000210 : ptr32)
   Class: Eq_43
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_44 t0000)))
@@ -339,7 +339,7 @@ T_77: (in rArg04 @ 80000222 : real96)
   Class: Eq_6
   DataType: real96
   OrigDataType: real96
-T_78: (in 80000520 @ 800002B8 : ptr32)
+T_78: (in 0x80000520<p32> @ 800002B8 : ptr32)
   Class: Eq_78
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_79 t0000)))
@@ -351,7 +351,7 @@ T_80: (in fp0_14 @ 800002B8 : real96)
   Class: Eq_76
   DataType: real96
   OrigDataType: real96
-T_81: (in 8000052C @ 800002CE : ptr32)
+T_81: (in 0x8000052C<p32> @ 800002CE : ptr32)
   Class: Eq_81
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_82 t0000)))
@@ -499,7 +499,7 @@ T_117: (in fn800002AE(rArg04) @ 80000396 : real96)
   Class: Eq_117
   DataType: real96
   OrigDataType: real96
-T_118: (in 80000538 @ 800003D0 : ptr32)
+T_118: (in 0x80000538<p32> @ 800003D0 : ptr32)
   Class: Eq_118
   DataType: (ptr32 real96)
   OrigDataType: (ptr32 (struct (0 T_119 t0000)))

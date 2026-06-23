@@ -14631,7 +14631,7 @@ T_2846: (in 0x2B640<32> @ 00012F2C : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_2847: (in %s:  @ 00012F2C : (ptr32 char))
+T_2847: (in "%s: " @ 00012F2C : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -14699,8 +14699,7 @@ T_2863: (in 0x2B640<32> @ 00012F60 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_2864: (in : %s
- @ 00012F60 : (ptr32 char))
+T_2864: (in ": %s\n" @ 00012F60 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -21952,8 +21951,7 @@ T_4676: (in 0x2B640<32> @ 000151DC : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_4677: (in %s: %s
- @ 000151DC : (ptr32 char))
+T_4677: (in "%s: %s\n" @ 000151DC : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -27863,8 +27861,7 @@ T_6142: (in 0x2B640<32> @ 000161F8 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6143: (in %s: option `%s' is ambiguous
- @ 000161F8 : (ptr32 char))
+T_6143: (in "%s: option `%s' is ambiguous\n" @ 000161F8 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -28220,8 +28217,7 @@ T_6231: (in 0x2B640<32> @ 000162CC : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6232: (in %s: option `%c%s' doesn't allow an argument
- @ 000162CC : (ptr32 char))
+T_6232: (in "%s: option `%c%s' doesn't allow an argument\n" @ 000162CC : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -28297,8 +28293,7 @@ T_6250: (in 0x2B640<32> @ 000162A8 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6251: (in %s: option `--%s' doesn't allow an argument
- @ 000162A8 : (ptr32 char))
+T_6251: (in "%s: option `--%s' doesn't allow an argument\n" @ 000162A8 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -28626,8 +28621,7 @@ T_6332: (in 0x2B640<32> @ 00016358 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6333: (in %s: option `%s' requires an argument
- @ 00016358 : (ptr32 char))
+T_6333: (in "%s: option `%s' requires an argument\n" @ 00016358 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -28899,8 +28893,7 @@ T_6400: (in 0x2B640<32> @ 0001646C : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6401: (in %s: unrecognized option `%c%s'
- @ 0001646C : (ptr32 char))
+T_6401: (in "%s: unrecognized option `%c%s'\n" @ 0001646C : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -28960,8 +28953,7 @@ T_6415: (in 0x2B640<32> @ 00016448 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6416: (in %s: unrecognized option `--%s'
- @ 00016448 : (ptr32 char))
+T_6416: (in "%s: unrecognized option `--%s'\n" @ 00016448 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -29433,8 +29425,7 @@ T_6533: (in 0x2B640<32> @ 00016548 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6534: (in %s: invalid option -- %c
- @ 00016548 : (ptr32 char))
+T_6534: (in "%s: invalid option -- %c\n" @ 00016548 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -29478,8 +29469,7 @@ T_6544: (in 0x2B640<32> @ 00016528 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6545: (in %s: illegal option -- %c
- @ 00016528 : (ptr32 char))
+T_6545: (in "%s: illegal option -- %c\n" @ 00016528 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -30235,8 +30225,7 @@ T_6733: (in 0x2B640<32> @ 000165EC : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6734: (in %s: option requires an argument -- %c
- @ 000165EC : (ptr32 char))
+T_6734: (in "%s: option requires an argument -- %c\n" @ 000165EC : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -30568,8 +30557,7 @@ T_6816: (in 0x2B640<32> @ 00016928 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6817: (in %s: option requires an argument -- %c
- @ 00016928 : (ptr32 char))
+T_6817: (in "%s: option requires an argument -- %c\n" @ 00016928 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -30745,8 +30733,7 @@ T_6860: (in 0x2B640<32> @ 0001670C : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6861: (in %s: option `-W %s' is ambiguous
- @ 0001670C : (ptr32 char))
+T_6861: (in "%s: option `-W %s' is ambiguous\n" @ 0001670C : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -31078,8 +31065,7 @@ T_6943: (in 0x2B640<32> @ 00016794 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6944: (in %s: option `-W %s' doesn't allow an argument
- @ 00016794 : (ptr32 char))
+T_6944: (in "%s: option `-W %s' doesn't allow an argument\n" @ 00016794 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -31283,8 +31269,7 @@ T_6994: (in 0x2B640<32> @ 00016818 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_6995: (in %s: option `%s' requires an argument
- @ 00016818 : (ptr32 char))
+T_6995: (in "%s: option `%s' requires an argument\n" @ 00016818 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -31952,7 +31937,7 @@ T_7161: (in 0x2B640<32> @ 00016BB0 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_7162: (in %s:  @ 00016BB0 : (ptr32 char))
+T_7162: (in "%s: " @ 00016BB0 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -32008,8 +31993,7 @@ T_7175: (in 0x2B640<32> @ 00016BE8 : word32)
   Class: Eq_2843
   DataType: (ptr32 Eq_2843)
   OrigDataType: (ptr32 FILE)
-T_7176: (in : %s
- @ 00016BE8 : (ptr32 char))
+T_7176: (in ": %s\n" @ 00016BE8 : (ptr32 char))
   Class: Eq_2844
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)

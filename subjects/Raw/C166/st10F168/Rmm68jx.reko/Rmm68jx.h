@@ -61,7 +61,7 @@ T_3: (in 0x8004<16> @ 0000 : word16)
   Class: Eq_3
   DataType: word16
   OrigDataType: word16
-T_4: (in FF12 @ 0000 : ptr16)
+T_4: (in 0xFF12<p16> @ 0000 : ptr16)
   Class: Eq_4
   DataType: (ptr16 word16)
   OrigDataType: (ptr16 (struct (0 T_3 t0000)))
@@ -525,7 +525,7 @@ T_119: (in fp @ 0110 : ptr16)
   Class: Eq_119
   DataType: ptr16
   OrigDataType: ptr16
-T_120: (in FEB0 @ 0110 : ptr16)
+T_120: (in 0xFEB0<p16> @ 0110 : ptr16)
   Class: Eq_120
   DataType: (ptr16 ptr16)
   OrigDataType: (ptr16 (struct (0 T_121 t0000)))

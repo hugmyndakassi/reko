@@ -3884,7 +3884,7 @@ T_809: (in bc_15 != 0<16> @ 028E : bool)
   Class: Eq_809
   DataType: bool
   OrigDataType: bool
-T_810: (in 0A4B @ 0296 : ptr16)
+T_810: (in 0x0A4B<p16> @ 0296 : ptr16)
   Class: Eq_810
   DataType: (ptr16 Eq_87)
   OrigDataType: (ptr16 (struct (0 T_811 t0000)))

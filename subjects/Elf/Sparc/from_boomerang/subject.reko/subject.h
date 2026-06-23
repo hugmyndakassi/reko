@@ -620,8 +620,7 @@ T_141: (in format @ 00010C60 : (ptr32 char))
   Class: Eq_141
   DataType: (ptr32 char)
   OrigDataType: 
-T_142: (in Failed!
- @ 00010C60 : (ptr32 char))
+T_142: (in "Failed!\n" @ 00010C60 : (ptr32 char))
   Class: Eq_141
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -637,8 +636,7 @@ T_145: (in signature of printf : void)
   Class: Eq_144
   DataType: (ptr32 Eq_144)
   OrigDataType: 
-T_146: (in Pass
- @ 00010C4C : (ptr32 char))
+T_146: (in "Pass\n" @ 00010C4C : (ptr32 char))
   Class: Eq_141
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)

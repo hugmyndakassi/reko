@@ -73,7 +73,7 @@ T_14: (in signature of reko_array_byref @ 00000002121D1000 : void)
   Class: Eq_13
   DataType: (ptr64 Eq_13)
   OrigDataType: 
-T_15: (in 00000002121D5000 @ 00000002121D104E : ptr64)
+T_15: (in 0x00000002121D5000<p64> @ 00000002121D104E : ptr64)
   Class: Eq_2
   DataType: (ptr64 (arr byte))
   OrigDataType: ptr64

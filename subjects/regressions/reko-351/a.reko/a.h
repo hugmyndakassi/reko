@@ -69,7 +69,7 @@ T_2: (in true @ 80000094 : bool)
   Class: Eq_2
   DataType: bool
   OrigDataType: bool
-T_3: (in 00000000 @ 8000009E : ptr32)
+T_3: (in 0x00000000<p32> @ 8000009E : ptr32)
   Class: Eq_3
   DataType: ptr32
   OrigDataType: ptr32
@@ -89,7 +89,7 @@ T_7: (in signature of fn00000000 : void)
   Class: Eq_7
   DataType: Eq_7
   OrigDataType: 
-T_8: (in 80002724 @ 800000A6 : ptr32)
+T_8: (in 0x80002724<p32> @ 800000A6 : ptr32)
   Class: Eq_8
   DataType: (ptr32 byte)
   OrigDataType: (ptr32 (struct (0 T_28 t0000)))
@@ -181,7 +181,7 @@ T_30: (in g_b80002724 != 0<8> @ 800000F2 : bool)
   Class: Eq_30
   DataType: bool
   OrigDataType: bool
-T_31: (in 80002726 @ 800000FA : ptr32)
+T_31: (in 0x80002726<p32> @ 800000FA : ptr32)
   Class: Eq_31
   DataType: (ptr32 uint32)
   OrigDataType: (ptr32 (struct (0 T_32 t0000)))
@@ -193,7 +193,7 @@ T_33: (in d0_19 @ 800000FA : uint32)
   Class: Eq_32
   DataType: uint32
   OrigDataType: up32
-T_34: (in 80002714 @ 800000F4 : ptr32)
+T_34: (in 0x80002714<p32> @ 800000F4 : ptr32)
   Class: Eq_34
   DataType: (ptr32 (arr (ptr32 code)))
   OrigDataType: ptr32
@@ -289,7 +289,7 @@ T_57: (in signature of fn00000000 : void)
   Class: Eq_57
   DataType: Eq_57
   OrigDataType: 
-T_58: (in 8000065C @ 80000140 : ptr32)
+T_58: (in 0x8000065C<p32> @ 80000140 : ptr32)
   Class: Eq_58
   DataType: ptr32
   OrigDataType: ptr32
@@ -305,7 +305,7 @@ T_61: (in 0x00000000<p32> == 0x00000000<p32> @ 8000016C : bool)
   Class: Eq_61
   DataType: bool
   OrigDataType: bool
-T_62: (in 8000271C @ 80000186 : ptr32)
+T_62: (in 0x8000271C<p32> @ 80000186 : ptr32)
   Class: Eq_62
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_63 t0000)))
@@ -329,7 +329,7 @@ T_67: (in signature of fn00000000 : void)
   Class: Eq_67
   DataType: Eq_67
   OrigDataType: 
-T_68: (in 8000272A @ 8000017A : ptr32)
+T_68: (in 0x8000272A<p32> @ 8000017A : ptr32)
   Class: Eq_68
   DataType: ptr32
   OrigDataType: ptr32
@@ -841,7 +841,7 @@ T_195: (in (real64) ((real96) rLoc0C_115 /96 rLoc14_123) < rArg0C @ 8000052C : b
   Class: Eq_195
   DataType: bool
   OrigDataType: bool
-T_196: (in 8000270C @ 8000062A : ptr32)
+T_196: (in 0x8000270C<p32> @ 8000062A : ptr32)
   Class: Eq_196
   DataType: (ptr32 (ptr32 code))
   OrigDataType: (ptr32 (struct (0 T_197 t0000)))

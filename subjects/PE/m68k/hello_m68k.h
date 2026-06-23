@@ -652,9 +652,9 @@ Eq_916: (union "Eq_916" (byte u0) ((ptr32 Eq_4104) u1))
 	T_2148 (in Mem25[a7_14 + -4<i32>:word32] @ 00002400 : word32)
 	T_2152 (in dwArg04 @ 00002404 : Eq_916)
 	T_2155 (in Mem25[a7_14 + -4<i32>:word32] @ 00002404 : word32)
-	T_2162 (in 000000FF @ 0000240A : ptr32)
+	T_2162 (in 0x000000FF<p32> @ 0000240A : ptr32)
 	T_2165 (in Mem45[a7_37 + 0<32>:word32] @ 0000240A : word32)
-	T_2171 (in 000000FC @ 00002420 : ptr32)
+	T_2171 (in 0x000000FC<p32> @ 00002420 : ptr32)
 	T_2190 (in Mem44[a7_43 + 0<32>:word32] @ 00002430 : word32)
 	T_2194 (in Mem44[a7_43 + 0<32>:word32] @ 00002434 : word32)
 	T_2215 (in (a5 + -1100<i32>)[d1_13 * 8<i32>] @ 00002468 : word32)
@@ -1314,7 +1314,7 @@ T_32: (in 0x1A<16> @ 000014B6 : word16)
   Class: Eq_32
   DataType: word16
   OrigDataType: word16
-T_33: (in 00000AF0 @ 000014B6 : ptr32)
+T_33: (in 0x00000AF0<p32> @ 000014B6 : ptr32)
   Class: Eq_33
   DataType: (ptr32 word16)
   OrigDataType: (ptr32 (struct (0 T_32 t0000)))
@@ -2394,7 +2394,7 @@ T_302: (in Mem101[a2_25 + 14<i32>:word16] @ 00001670 : word16)
   Class: Eq_298
   DataType: cui16
   OrigDataType: cui16
-T_303: (in 00000200 @ 0000163E : ptr32)
+T_303: (in 0x00000200<p32> @ 0000163E : ptr32)
   Class: Eq_303
   DataType: ptr32
   OrigDataType: ptr32
@@ -3429,11 +3429,11 @@ T_559: (in v50_232 @ 000017A6 : word24)
   Class: Eq_558
   DataType: word24
   OrigDataType: word24
-T_560: (in 000017B4 @ 000017AA : ptr32)
+T_560: (in 0x000017B4<p32> @ 000017AA : ptr32)
   Class: Eq_560
   DataType: (ptr32 (arr int16))
   OrigDataType: (ptr32 (struct (0 (arr T_4064) a0000)))
-T_561: (in 000017C0 @ 000017AA : ptr32)
+T_561: (in 0x000017C0<p32> @ 000017AA : ptr32)
   Class: Eq_561
   DataType: (ptr32 (arr byte))
   OrigDataType: (ptr32 (struct (0 (arr T_4066) a0000)))
@@ -9837,7 +9837,7 @@ T_2161: (in a7_37 @ 00002404 : (ptr32 Eq_320))
   Class: Eq_320
   DataType: (ptr32 Eq_320)
   OrigDataType: (ptr32 (struct (0 T_2165 t0000)))
-T_2162: (in 000000FF @ 0000240A : ptr32)
+T_2162: (in 0x000000FF<p32> @ 0000240A : ptr32)
   Class: Eq_916
   DataType: byte
   OrigDataType: ptr32
@@ -9873,7 +9873,7 @@ T_2170: (in fn0000243C @ 00002420 : ptr32)
   Class: Eq_2149
   DataType: (ptr32 Eq_2149)
   OrigDataType: (ptr32 (fn T_2174 (T_2136, T_2171, T_2173)))
-T_2171: (in 000000FC @ 00002420 : ptr32)
+T_2171: (in 0x000000FC<p32> @ 00002420 : ptr32)
   Class: Eq_916
   DataType: byte
   OrigDataType: ptr32

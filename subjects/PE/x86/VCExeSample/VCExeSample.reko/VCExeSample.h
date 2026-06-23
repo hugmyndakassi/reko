@@ -127,7 +127,7 @@ Eq_71: (fn void ((ptr32 cdecl_class), int32))
 Eq_72: (fn void ((ptr32 cdecl_class), int32))
 	T_72 (in Mem12[Mem12[c + 0<32>:word32] + 4<i32>:word32] @ 004010C4 : word32)
 Eq_75: cdecl_class_ptr
-	T_75 (in 00403018 @ 004010E3 : ptr32)
+	T_75 (in 0x00403018<p32> @ 004010E3 : ptr32)
 Eq_76: (union "Eq_76" ((ptr32 cdecl_class) u0) (cdecl_class_ptr u1))
 	T_76 (in Mem10[0x00403018<p32>:word32] @ 004010E3 : word32)
 	T_83 (in Mem6[0x00403018<p32>:word32] @ 004010E3 : word32)
@@ -172,7 +172,7 @@ Eq_111: (fn int32 ((ptr32 cdecl_class), int32, int32))
 Eq_112: (fn int32 ((ptr32 cdecl_class), int32, int32))
 	T_112 (in Mem19[Mem19[c + 0<32>:word32] + 8<i32>:word32] @ 00401150 : word32)
 Eq_120: thiscall_class
-	T_120 (in 00403034 @ 004011A5 : ptr32)
+	T_120 (in 0x00403034<p32> @ 004011A5 : ptr32)
 Eq_121: thiscall_class
 	T_121 (in Mem45[0x00403034<p32>:word32] @ 004011A5 : word32)
 	T_128 (in Mem45[0x00403034<p32>:word32] @ 004011A5 : word32)
@@ -252,9 +252,9 @@ Eq_262: (fn void ((ptr32 Eq_244)))
 	T_262 (in nested_structs_test12 @ 00401367 : ptr32)
 	T_263 (in signature of nested_structs_test12 @ 00401330 : void)
 Eq_267: nested_structs_type
-	T_267 (in 0040301C @ 00401383 : ptr32)
+	T_267 (in 0x0040301C<p32> @ 00401383 : ptr32)
 Eq_270: (struct "struct_0" 0008 (0 int32 b) (4 int32 c))
-	T_270 (in 00403020 @ 0040138D : ptr32)
+	T_270 (in 0x00403020<p32> @ 0040138D : ptr32)
 Eq_321: (struct "nested_structs_type" 0010 (0 int32 a) (4 Eq_323 str) (C int32 d))
 	T_321
 Eq_322: (struct "struct_0" 0008 (0 int32 b) (4 int32 c))
@@ -450,7 +450,7 @@ T_47: (in 0x4020DC<32> @ 00401079 : word32)
   Class: Eq_43
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
-T_48: (in 004020F0 @ 00401079 : ptr32)
+T_48: (in 0x004020F0<p32> @ 00401079 : ptr32)
   Class: Eq_48
   DataType: (ptr32 real32)
   OrigDataType: (ptr32 (struct (0 T_49 t0000)))
@@ -506,7 +506,7 @@ T_61: (in 0x4020E4<32> @ 0040109D : word32)
   Class: Eq_57
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
-T_62: (in 004020EC @ 0040109D : ptr32)
+T_62: (in 0x004020EC<p32> @ 0040109D : ptr32)
   Class: Eq_62
   DataType: (ptr32 real32)
   OrigDataType: (ptr32 (struct (0 T_63 t0000)))
@@ -558,7 +558,7 @@ T_74: (in c->vtbl->method04(c, 0x3E8<32>) @ 004010C4 : void)
   Class: Eq_74
   DataType: void
   OrigDataType: void
-T_75: (in 00403018 @ 004010E3 : ptr32)
+T_75: (in 0x00403018<p32> @ 004010E3 : ptr32)
   Class: Eq_75
   DataType: (ptr32 Eq_75)
   OrigDataType: (ptr32 (struct (0 cdecl_class_ptr t0000)))
@@ -634,7 +634,7 @@ T_93: (in 0x3E7<32> @ 00401113 : word32)
   Class: Eq_93
   DataType: word32
   OrigDataType: word32
-T_94: (in 004020F4 @ 00401113 : ptr32)
+T_94: (in 0x004020F4<p32> @ 00401113 : ptr32)
   Class: Eq_94
   DataType: (ptr32 real32)
   OrigDataType: (ptr32 (struct (0 T_95 t0000)))
@@ -738,7 +738,7 @@ T_119: (in rArg04 <= 1.0 @ 0040116D : bool)
   Class: Eq_119
   DataType: bool
   OrigDataType: bool
-T_120: (in 00403034 @ 004011A5 : ptr32)
+T_120: (in 0x00403034<p32> @ 004011A5 : ptr32)
   Class: Eq_120
   DataType: (ptr32 (ptr32 Eq_120))
   OrigDataType: (ptr32 (struct (0 (ptr32 thiscall_class) ptr0000)))
@@ -862,7 +862,7 @@ T_150: (in gbl_thiscall->vtbl->modify_double(gbl_thiscall, 0xFFFFFFFF<32>, rArg0
   Class: Eq_150
   DataType: real64
   OrigDataType: real64
-T_151: (in 00402100 @ 004011E0 : ptr32)
+T_151: (in 0x00402100<p32> @ 004011E0 : ptr32)
   Class: Eq_151
   DataType: (ptr32 real64)
   OrigDataType: (ptr32 (struct (0 T_152 t0000)))
@@ -910,7 +910,7 @@ T_162: (in test6(gbl_c, 6<32>, 7<32>) @ 00401218 : void)
   Class: Eq_162
   DataType: void
   OrigDataType: void
-T_163: (in 004020F8 @ 004011F0 : ptr32)
+T_163: (in 0x004020F8<p32> @ 004011F0 : ptr32)
   Class: Eq_163
   DataType: (ptr32 real64)
   OrigDataType: (ptr32 (struct (0 T_164 t0000)))
@@ -1094,7 +1094,7 @@ T_208: (in dwArg04 == 0<32> @ 004012B2 : bool)
   Class: Eq_208
   DataType: bool
   OrigDataType: bool
-T_209: (in 0040302C @ 004012BA : ptr32)
+T_209: (in 0x0040302C<p32> @ 004012BA : ptr32)
   Class: Eq_209
   DataType: (ptr32 uint32)
   OrigDataType: (ptr32 (struct (0 T_210 t0000)))
@@ -1102,7 +1102,7 @@ T_210: (in Mem23[0x0040302C<p32>:word32] @ 004012BA : word32)
   Class: Eq_205
   DataType: uint32
   OrigDataType: word32
-T_211: (in 00403030 @ 004012C0 : ptr32)
+T_211: (in 0x00403030<p32> @ 004012C0 : ptr32)
   Class: Eq_211
   DataType: (ptr32 uint32)
   OrigDataType: (ptr32 (struct (0 T_212 t0000)))
@@ -1326,7 +1326,7 @@ T_266: (in 5<32> @ 00401383 : word32)
   Class: Eq_266
   DataType: int32
   OrigDataType: word32
-T_267: (in 0040301C @ 00401383 : ptr32)
+T_267: (in 0x0040301C<p32> @ 00401383 : ptr32)
   Class: Eq_267
   DataType: (ptr32 Eq_267)
   OrigDataType: (ptr32 nested_structs_type)
@@ -1338,7 +1338,7 @@ T_269: (in 6<32> @ 0040138D : word32)
   Class: Eq_269
   DataType: int32
   OrigDataType: word32
-T_270: (in 00403020 @ 0040138D : ptr32)
+T_270: (in 0x00403020<p32> @ 0040138D : ptr32)
   Class: Eq_270
   DataType: (ptr32 Eq_270)
   OrigDataType: (ptr32 (struct "struct_0" 0008))
@@ -1350,7 +1350,7 @@ T_272: (in 7<32> @ 00401397 : word32)
   Class: Eq_272
   DataType: int32
   OrigDataType: word32
-T_273: (in 00403024 @ 00401397 : ptr32)
+T_273: (in 0x00403024<p32> @ 00401397 : ptr32)
   Class: Eq_273
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 (struct (0 int32 dw0000)))
@@ -1362,7 +1362,7 @@ T_275: (in 8<32> @ 004013A1 : word32)
   Class: Eq_275
   DataType: int32
   OrigDataType: word32
-T_276: (in 00403028 @ 004013A1 : ptr32)
+T_276: (in 0x00403028<p32> @ 004013A1 : ptr32)
   Class: Eq_276
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 (struct (0 int32 dw0000)))

@@ -40,13 +40,13 @@ Eq_16: (fn int32 ((ptr64 Eq_18), int32, (ptr64 (ptr64 char)), (ptr64 Eq_21), (pt
 	T_17 (in signature of __libc_start_main : void)
 Eq_18: (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char))))
 	T_18 (in main @ 0000000000000644 : (ptr64 (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char))))))
-	T_25 (in 0000000000000898 @ 0000000000000644 : ptr64)
+	T_25 (in 0x0000000000000898<p64> @ 0000000000000644 : ptr64)
 Eq_21: (fn void ())
 	T_21 (in init @ 0000000000000644 : (ptr64 (fn void ())))
-	T_29 (in 0000000000000A70 @ 0000000000000644 : ptr64)
+	T_29 (in 0x0000000000000A70<p64> @ 0000000000000644 : ptr64)
 Eq_22: (fn void ())
 	T_22 (in fini @ 0000000000000644 : (ptr64 (fn void ())))
-	T_30 (in 0000000000000AE0 @ 0000000000000644 : ptr64)
+	T_30 (in 0x0000000000000AE0<p64> @ 0000000000000644 : ptr64)
 Eq_33: (fn void ())
 	T_33 (in __halt @ 000000000000064A : ptr32)
 	T_34 (in signature of __halt : void)
@@ -141,7 +141,7 @@ Eq_276: (fn void ())
 	T_276 (in _init @ 0000000000000A9C : ptr64)
 	T_277 (in signature of _init @ 00000000000005A0 : void)
 Eq_279: (union "Eq_279" (int64 u0) (ptr64 u1))
-	T_279 (in 0000000000200DF0 @ 0000000000000A91 : ptr64)
+	T_279 (in 0x0000000000200DF0<p64> @ 0000000000000A91 : ptr64)
 Eq_287: (union "Eq_287" (int64 u0) (uint64 u1))
 	T_287 (in 0<u64> @ 0000000000000AA6 : uint64)
 	T_288 (in rbx_46 @ 0000000000000AA6 : Eq_287)
@@ -250,7 +250,7 @@ T_24: (in stack_end @ 0000000000000644 : (ptr64 void))
   Class: Eq_24
   DataType: (ptr64 void)
   OrigDataType: 
-T_25: (in 0000000000000898 @ 0000000000000644 : ptr64)
+T_25: (in 0x0000000000000898<p64> @ 0000000000000644 : ptr64)
   Class: Eq_18
   DataType: (ptr64 Eq_18)
   OrigDataType: (ptr64 (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char)))))
@@ -266,11 +266,11 @@ T_28: (in &ptrArg08 @ 0000000000000644 : (ptr64 (ptr64 char)))
   Class: Eq_20
   DataType: (ptr64 (ptr64 char))
   OrigDataType: (ptr64 (ptr64 char))
-T_29: (in 0000000000000A70 @ 0000000000000644 : ptr64)
+T_29: (in 0x0000000000000A70<p64> @ 0000000000000644 : ptr64)
   Class: Eq_21
   DataType: (ptr64 Eq_21)
   OrigDataType: (ptr64 (fn void ()))
-T_30: (in 0000000000000AE0 @ 0000000000000644 : ptr64)
+T_30: (in 0x0000000000000AE0<p64> @ 0000000000000644 : ptr64)
   Class: Eq_22
   DataType: (ptr64 Eq_22)
   OrigDataType: (ptr64 (fn void ()))
@@ -294,7 +294,7 @@ T_35: (in __halt() @ 000000000000064A : void)
   Class: Eq_35
   DataType: void
   OrigDataType: void
-T_36: (in 0000000000201048 @ 0000000000000665 : ptr64)
+T_36: (in 0x0000000000201048<p64> @ 0000000000000665 : ptr64)
   Class: Eq_36
   DataType: (ptr64 byte)
   OrigDataType: (union ((ptr64 byte) u1) (ptr64 u0))
@@ -454,7 +454,7 @@ T_75: (in d @ 00000000000006FE : (ptr64 void))
   Class: Eq_75
   DataType: (ptr64 void)
   OrigDataType: 
-T_76: (in 0000000000201040 @ 00000000000006FE : ptr64)
+T_76: (in 0x0000000000201040<p64> @ 00000000000006FE : ptr64)
   Class: Eq_76
   DataType: (ptr64 (ptr64 void))
   OrigDataType: (ptr64 (struct (0 T_77 t0000)))
@@ -654,7 +654,7 @@ T_125: (in CONVERT(rdi, uint64, uint128) @ 00000000000007EE : uint128)
   Class: Eq_125
   DataType: uint128
   OrigDataType: uint128
-T_126: (in 0000000000000B00 @ 00000000000007EE : ptr64)
+T_126: (in 0x0000000000000B00<p64> @ 00000000000007EE : ptr64)
   Class: Eq_126
   DataType: (ptr64 uint64)
   OrigDataType: (ptr64 (struct (0 T_127 t0000)))
@@ -1178,8 +1178,7 @@ T_256: (in  @ 0000000000000A23 : real64)
   Class: Eq_239
   DataType: real64
   OrigDataType: 
-T_257: (in %g
- @ 0000000000000A23 : (ptr64 char))
+T_257: (in "%g\n" @ 0000000000000A23 : (ptr64 char))
   Class: Eq_255
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1267,11 +1266,11 @@ T_278: (in _init() @ 0000000000000A9C : void)
   Class: Eq_278
   DataType: void
   OrigDataType: void
-T_279: (in 0000000000200DF0 @ 0000000000000A91 : ptr64)
+T_279: (in 0x0000000000200DF0<p64> @ 0000000000000A91 : ptr64)
   Class: Eq_279
   DataType: int64
   OrigDataType: (union (int64 u0) (ptr64 u1))
-T_280: (in 0000000000200DE8 @ 0000000000000A91 : ptr64)
+T_280: (in 0x0000000000200DE8<p64> @ 0000000000000A91 : ptr64)
   Class: Eq_280
   DataType: (ptr64 (arr (ptr64 code)))
   OrigDataType: (union ((ptr64 (arr Eq_307)) u1) ((ptr64 (arr Eq_307)) u0))

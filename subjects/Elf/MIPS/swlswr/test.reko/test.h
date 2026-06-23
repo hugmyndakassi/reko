@@ -131,7 +131,7 @@ T_5: (in __gmon_start__ == 0<32> @ 000005A4 : bool)
   Class: Eq_5
   DataType: bool
   OrigDataType: bool
-T_6: (in 00010AB4 @ 000005CC : ptr32)
+T_6: (in 0x00010AB4<p32> @ 000005CC : ptr32)
   Class: Eq_6
   DataType: (ptr32 ptr32)
   OrigDataType: (ptr32 (struct (0 T_7 t0000)))
@@ -187,7 +187,7 @@ T_19: (in dwArg00 @ 000005B0 : word32)
   Class: Eq_19
   DataType: word32
   OrigDataType: word32
-T_20: (in 00010A98 @ 0000062C : ptr32)
+T_20: (in 0x00010A98<p32> @ 0000062C : ptr32)
   Class: Eq_20
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_21 t0000)))
@@ -223,7 +223,7 @@ T_28: (in sp_17 @ 00000640 : (ptr32 Eq_27))
   Class: Eq_27
   DataType: (ptr32 Eq_27)
   OrigDataType: (ptr32 (struct (10 T_37 t0010) (14 T_40 t0014) (18 T_43 t0018)))
-T_29: (in 00010A9C @ 00000644 : ptr32)
+T_29: (in 0x00010A9C<p32> @ 00000644 : ptr32)
   Class: Eq_29
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_30 t0000)))
@@ -235,7 +235,7 @@ T_31: (in r7_18 @ 00000644 : word32)
   Class: Eq_30
   DataType: word32
   OrigDataType: word32
-T_32: (in 00010AA0 @ 00000648 : ptr32)
+T_32: (in 0x00010AA0<p32> @ 00000648 : ptr32)
   Class: Eq_32
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_33 t0000)))
@@ -283,7 +283,7 @@ T_43: (in Mem23[sp_17 + 24<i32>:word32] @ 00000654 : word32)
   Class: Eq_27
   DataType: (ptr32 Eq_27)
   OrigDataType: word32
-T_44: (in 00010ADC @ 0000065C : ptr32)
+T_44: (in 0x00010ADC<p32> @ 0000065C : ptr32)
   Class: Eq_44
   DataType: (ptr32 (ptr32 code))
   OrigDataType: (ptr32 (struct (0 T_45 t0000)))

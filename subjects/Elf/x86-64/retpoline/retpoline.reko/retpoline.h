@@ -67,7 +67,7 @@ Eq_117: (fn void ())
 	T_117 (in _init @ 000000000040073C : ptr64)
 	T_118 (in signature of _init @ 0000000000400428 : void)
 Eq_120: (union "Eq_120" (int64 u0) (ptr64 u1))
-	T_120 (in 0000000000600E18 @ 0000000000400731 : ptr64)
+	T_120 (in 0x0000000000600E18<p64> @ 0000000000400731 : ptr64)
 Eq_128: (union "Eq_128" (int64 u0) (uint64 u1))
 	T_128 (in 0<u64> @ 0000000000400746 : uint64)
 	T_129 (in rbx_46 @ 0000000000400746 : Eq_128)
@@ -238,7 +238,7 @@ T_41: (in 0<u64> @ 0000000000400513 : uint64)
   Class: Eq_41
   DataType: (ptr64 code)
   OrigDataType: (ptr64 code)
-T_42: (in 0000000000601040 @ 0000000000400527 : ptr64)
+T_42: (in 0x0000000000601040<p64> @ 0000000000400527 : ptr64)
   Class: Eq_42
   DataType: (ptr64 byte)
   OrigDataType: (ptr64 (struct (0 T_43 t0000)))
@@ -550,11 +550,11 @@ T_119: (in _init() @ 000000000040073C : void)
   Class: Eq_119
   DataType: void
   OrigDataType: void
-T_120: (in 0000000000600E18 @ 0000000000400731 : ptr64)
+T_120: (in 0x0000000000600E18<p64> @ 0000000000400731 : ptr64)
   Class: Eq_120
   DataType: int64
   OrigDataType: (union (int64 u0) (ptr64 u1))
-T_121: (in 0000000000600E10 @ 0000000000400731 : ptr64)
+T_121: (in 0x0000000000600E10<p64> @ 0000000000400731 : ptr64)
   Class: Eq_121
   DataType: (ptr64 (arr (ptr64 code)))
   OrigDataType: (union ((ptr64 (arr Eq_137)) u1) ((ptr64 (arr Eq_137)) u0))

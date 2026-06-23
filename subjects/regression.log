@@ -407,8 +407,7 @@ Building procedures [Done]
 Rewriting procedures. [Done]
 finish: error: An error occurred while renaming variables.
     The given key 'l004028A8' was not present in the dictionary.
-       at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
-   at Reko.Analysis.SsaLivenessAnalysis.LiveOutAtBlock(Block block, SsaIdentifier sid) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 214
+       at Reko.Analysis.SsaLivenessAnalysis.LiveOutAtBlock(Block block, SsaIdentifier sid) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 214
    at Reko.Analysis.SsaLivenessAnalysis.BuildInterferenceGraph(SsaIdentifierCollection ssaIds) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 114
    at Reko.Analysis.SsaLivenessAnalysis..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\SsaLiveness.cs:line 76
    at Reko.Analysis.LiveCopyInserter..ctor(SsaState ssa) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\LiveCopyInserter.cs:line 50
@@ -808,7 +807,7 @@ Rewriting expressions. [Done]
 safe_read: error: An error occurred while rewriting procedure to high-level language.
     Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
        at System.Collections.Generic.List`1.get_Item(Int32 index)
-   at Reko.Core.Block.get_ThenBlock() in C:\dev\uxmal\reko\master\src\Core\Block.cs:line 106
+   at Reko.Core.Block.get_ThenBlock() in c:\dev\uxmal\reko\master\src\Core\Block.cs:line 106
    at Reko.Structure.CompoundConditionCoalescer.MaybeCoalesce(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 100
    at Reko.Structure.CompoundConditionCoalescer.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 66
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
@@ -1308,8 +1307,8 @@ Collecting data types. [Done]
 Rewriting expressions. [Done]
 fn00000000: error: An error occurred while rewriting procedure to high-level language.
     Value cannot be null. (Parameter 'condition')
-       at Reko.Core.Absyn.AbsynLoop..ctor(Expression condition, List`1 body) in C:\dev\uxmal\reko\master\src\Core\Absyn\AbsynLoop.cs:line 40
-   at Reko.Core.Absyn.AbsynWhile..ctor(Expression condition, List`1 body) in C:\dev\uxmal\reko\master\src\Core\Absyn\AbsynWhile.cs:line 36
+       at Reko.Core.Absyn.AbsynLoop..ctor(Expression condition, List`1 body) in c:\dev\uxmal\reko\master\src\Core\Absyn\AbsynLoop.cs:line 40
+   at Reko.Core.Absyn.AbsynWhile..ctor(Expression condition, List`1 body) in c:\dev\uxmal\reko\master\src\Core\Absyn\AbsynWhile.cs:line 36
    at Reko.Structure.StructureAnalysis.ReduceCyclic(Region n) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 1079
    at Reko.Structure.StructureAnalysis.Execute() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 174
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 91
@@ -1431,28 +1430,28 @@ hello_m68k.exe: warning: Win32 M68k main procedure finder not supported.
 Error: Unable to load metadata file windows32.xml.
     Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
        at System.Collections.Generic.List`1.get_Item(Int32 index)
-   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in C:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 247
-   at Reko.Core.TypeLibraryDeserializer.VisitSignature(SerializedSignature sSig) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 446
-   at Reko.Core.Serialization.SerializedSignature.Accept[T](ISerializedTypeVisitor`1 visitor) in C:\dev\uxmal\reko\master\src\Core\Serialization\SerializedSignature.cs:line 100
-   at Reko.Core.TypeLibraryDeserializer.VisitTypedef(SerializedTypedef typedef) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 489
-   at Reko.Core.Serialization.SerializedTypedef.Accept[T](ISerializedTypeVisitor`1 visitor) in C:\dev\uxmal\reko\master\src\Core\Serialization\SerializedTypedef.cs:line 45
-   at Reko.Core.TypeLibraryDeserializer.LoadType(SerializedType sType) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 296
-   at Reko.Core.TypeLibraryDeserializer.LoadTypes(SerializedLibrary serializedLibrary) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 284
-   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 74
-   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
-   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
-   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in C:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
+   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in c:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 247
+   at Reko.Core.TypeLibraryDeserializer.VisitSignature(SerializedSignature sSig) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 446
+   at Reko.Core.Serialization.SerializedSignature.Accept[T](ISerializedTypeVisitor`1 visitor) in c:\dev\uxmal\reko\master\src\Core\Serialization\SerializedSignature.cs:line 100
+   at Reko.Core.TypeLibraryDeserializer.VisitTypedef(SerializedTypedef typedef) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 489
+   at Reko.Core.Serialization.SerializedTypedef.Accept[T](ISerializedTypeVisitor`1 visitor) in c:\dev\uxmal\reko\master\src\Core\Serialization\SerializedTypedef.cs:line 45
+   at Reko.Core.TypeLibraryDeserializer.LoadType(SerializedType sType) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 296
+   at Reko.Core.TypeLibraryDeserializer.LoadTypes(SerializedLibrary serializedLibrary) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 284
+   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 74
+   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
+   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
+   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in c:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
 Error: Unable to load metadata file wsock32.xml.
     An error occurred when loading the signature of procedure __WSAFDIsSet.
-       at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 217
-   at Reko.Core.TypeLibraryDeserializer.LoadProcedures(SerializedLibrary serializedLibrary) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 137
-   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 75
-   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
-   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
-   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in C:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
+       at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 217
+   at Reko.Core.TypeLibraryDeserializer.LoadProcedures(SerializedLibrary serializedLibrary) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 137
+   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 75
+   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
+   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
+   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in c:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
        at System.Collections.Generic.List`1.get_Item(Int32 index)
-   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in C:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 247
-   at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
+   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in c:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 247
+   at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
 hello_m68k.exe: warning: Win32 M68k main procedure finder not supported.
 Marking segment at 00001000 as executable because it contains known procedure entry points.
 Finding procedure candidates [Done]
@@ -1473,16 +1472,16 @@ Rewriting procedures to high-level language. [Done]
 test.exe: warning: Win32 MIPS main procedure finder not supported.
 Error: Unable to load metadata file windows32.xml.
     An error occurred when loading the signature of procedure lldiv.
-       at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 217
-   at Reko.Core.TypeLibraryDeserializer.LoadProcedures(SerializedLibrary serializedLibrary) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 137
-   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 75
-   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
-   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in C:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
-   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in C:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
+       at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 217
+   at Reko.Core.TypeLibraryDeserializer.LoadProcedures(SerializedLibrary serializedLibrary) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 137
+   at Reko.Core.TypeLibraryDeserializer.Load(SerializedLibrary sLib) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 75
+   at Reko.Core.Loading.TypeLibraryLoader.Load(IPlatform platform, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\TypeLibraryLoader.cs:line 52
+   at Reko.Core.Loading.MetadataLoader.Load(IPlatform platform, String moduleName, TypeLibrary dstLib) in c:\dev\uxmal\reko\master\src\Core\Loading\MetadataLoader.cs:line 70
+   at Reko.Core.Services.TypeLibraryLoaderServiceImpl.LoadMetadataIntoLibrary(IPlatform platform, TypeLibraryDefinition tlElement, TypeLibrary libDst) in c:\dev\uxmal\reko\master\src\Core\Services\ITypeLibraryLoaderService.cs:line 94
        at Reko.Environments.Windows.MipsCallingConvention.SetReturnRegister(ICallingConventionBuilder ccr, DataType dtArg) in c:\dev\uxmal\reko\master\src\Environments\Windows\Arch\MipsCallingConvention.cs:line 166
    at Reko.Environments.Windows.MipsCallingConvention.Generate(ICallingConventionBuilder ccr, Int32 retAddressOnStack, DataType dtRet, DataType dtThis, List`1 dtParams) in c:\dev\uxmal\reko\master\src\Environments\Windows\Arch\MipsCallingConvention.cs:line 92
-   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in C:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 222
-   at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in C:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
+   at Reko.Core.Serialization.ProcedureSerializer.Deserialize(SerializedSignature ss, Frame frame) in c:\dev\uxmal\reko\master\src\Core\Serialization\ProcedureSerializer.cs:line 222
+   at Reko.Core.TypeLibraryDeserializer.LoadProcedure(Procedure_v1 sProc) in c:\dev\uxmal\reko\master\src\Core\TypeLibraryDeserializer.cs:line 189
 0001179C: warning: Unable to resolve imported reference COREDLL.dll!Ordinal_2696.
 000114B8: warning: Call target address 00000000 is invalid.
 Finding procedure candidates [Done]
@@ -1897,7 +1896,7 @@ fn0001B1F8: warning: Structure analysis stopped making progress, quitting. Pleas
 fn0001B2AC: error: An error occurred while rewriting procedure to high-level language.
     Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
        at System.Collections.Generic.List`1.get_Item(Int32 index)
-   at Reko.Core.Block.get_ThenBlock() in C:\dev\uxmal\reko\master\src\Core\Block.cs:line 106
+   at Reko.Core.Block.get_ThenBlock() in c:\dev\uxmal\reko\master\src\Core\Block.cs:line 106
    at Reko.Structure.CompoundConditionCoalescer.MaybeCoalesce(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 100
    at Reko.Structure.CompoundConditionCoalescer.Transform() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\CompoundConditionCoalescer.cs:line 66
    at Reko.Structure.StructureAnalysis.Structure() in c:\dev\uxmal\reko\master\src\Decompiler\Structure\StructureAnalysis.cs:line 89
@@ -1992,16 +1991,16 @@ Rewriting procedures to high-level language. [Done]
 *** regressions\reko-121\m68k_jump
 Error: An error occurred while writing assembly language output.
     Address 0000C3F4 is outside of image. (Parameter 'addr')
-       at Reko.Core.Memory.ByteImageReader..ctor(ByteMemoryArea mem, Address addr, Int64 cUnits) in C:\dev\uxmal\reko\master\src\Core\Memory\ByteImageReader.cs:line 97
-   at Reko.Core.Memory.EndianByteImageReader..ctor(ByteMemoryArea img, Address addr, Int64 cUnits) in C:\dev\uxmal\reko\master\src\Core\Memory\EndianImageReader.cs:line 214
-   at Reko.Core.Memory.BeImageReader..ctor(ByteMemoryArea image, Address addr, Int64 cUnits) in C:\dev\uxmal\reko\master\src\Core\Memory\EndianImageReader.cs:line 642
-   at Reko.Core.Memory.ByteMemoryArea.CreateBeReader(Address addr, Int64 cUnits) in C:\dev\uxmal\reko\master\src\Core\Memory\ByteMemoryArea.cs:line 108
-   at Reko.Core.EndianServices.BeServices.CreateImageReader(MemoryArea mem, Address addr, Int64 cUnits) in C:\dev\uxmal\reko\master\src\Core\EndianServices.cs:line 417
-   at Reko.Core.ProcessorArchitecture.CreateImageReader(MemoryArea mem, Address addr, Int64 cbUnits) in C:\dev\uxmal\reko\master\src\Core\IProcessorArchitecture.cs:line 776
-   at Reko.Core.Output.Dumper.DumpData(IProcessorArchitecture arch, MemoryArea mem, Address address, Int64 cUnits, Boolean condenseZeroLines, Formatter formatter) in C:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 265
-   at Reko.Core.Output.Dumper.DumpData(SegmentMap map, IProcessorArchitecture arch, Address address, Int64 cUnits, Formatter formatter) in C:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 238
-   at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in C:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 157
-   at Reko.Core.Output.Dumper.Dump(Dictionary`2 segmentItems, Formatter formatter) in C:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 101
+       at Reko.Core.Memory.ByteImageReader..ctor(ByteMemoryArea mem, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\ByteImageReader.cs:line 97
+   at Reko.Core.Memory.EndianByteImageReader..ctor(ByteMemoryArea img, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\EndianImageReader.cs:line 214
+   at Reko.Core.Memory.BeImageReader..ctor(ByteMemoryArea image, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\EndianImageReader.cs:line 642
+   at Reko.Core.Memory.ByteMemoryArea.CreateBeReader(Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\Memory\ByteMemoryArea.cs:line 108
+   at Reko.Core.EndianServices.BeServices.CreateImageReader(MemoryArea mem, Address addr, Int64 cUnits) in c:\dev\uxmal\reko\master\src\Core\EndianServices.cs:line 417
+   at Reko.Core.ProcessorArchitecture.CreateImageReader(MemoryArea mem, Address addr, Int64 cbUnits) in c:\dev\uxmal\reko\master\src\Core\IProcessorArchitecture.cs:line 776
+   at Reko.Core.Output.Dumper.DumpData(IProcessorArchitecture arch, MemoryArea mem, Address address, Int64 cUnits, Boolean condenseZeroLines, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 265
+   at Reko.Core.Output.Dumper.DumpData(SegmentMap map, IProcessorArchitecture arch, Address address, Int64 cUnits, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 238
+   at Reko.Core.Output.Dumper.DumpItem(ImageSegment segment, ImageMapItem i, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 157
+   at Reko.Core.Output.Dumper.Dump(Dictionary`2 segmentItems, Formatter formatter) in c:\dev\uxmal\reko\master\src\Core\Output\Dumper.cs:line 101
    at Reko.Decompiler.DumpAssembler(Program program, Dictionary`2 segmentItems, Formatter wr) in c:\dev\uxmal\reko\master\src\Decompiler\Decompiler.cs:line 222
 Rewriting procedures. [Done]
 Building expressions. [Done]
@@ -2051,10 +2050,10 @@ Building procedures [Done]
 Rewriting procedures. [Done]
 fn0800_8F97: error: An internal error occurred while building the expressions of fn0800_8F97
     Dominator graph calculation timed out.
-       at Reko.Core.Graphs.DominatorGraph`1.Intersect(Dictionary`2 postdoms, T b1, T b2) in C:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 255
-   at Reko.Core.Graphs.DominatorGraph`1.Build(DirectedGraph`1 graph, T entryNode) in C:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 181
-   at Reko.Core.Graphs.DominatorGraph`1..ctor(DirectedGraph`1 graph, T entryNode) in C:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 46
-   at Reko.Core.Graphs.BlockDominatorGraph..ctor(DirectedGraph`1 graph, Block entry) in C:\dev\uxmal\reko\master\src\Core\Graphs\BlockDominatorGraph.cs:line 37
+       at Reko.Core.Graphs.DominatorGraph`1.Intersect(Dictionary`2 postdoms, T b1, T b2) in c:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 255
+   at Reko.Core.Graphs.DominatorGraph`1.Build(DirectedGraph`1 graph, T entryNode) in c:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 181
+   at Reko.Core.Graphs.DominatorGraph`1..ctor(DirectedGraph`1 graph, T entryNode) in c:\dev\uxmal\reko\master\src\Core\Graphs\DominatorGraph.cs:line 46
+   at Reko.Core.Graphs.BlockDominatorGraph..ctor(DirectedGraph`1 graph, Block entry) in c:\dev\uxmal\reko\master\src\Core\Graphs\BlockDominatorGraph.cs:line 37
    at Reko.Analysis.DataFlowAnalysis.BuildExpressionTrees(IReadOnlyCollection`1 ssts) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\DataFlowAnalysis.cs:line 289
 fn0800_1CF6: error: An error occurred while renaming variables.
     The given key 'l0800_1D54' was not present in the dictionary.
@@ -2829,8 +2828,8 @@ Rewriting procedures to high-level language. [Done]
 Rewriting procedures. [Done]
 fn000ECBDB: error: An internal error occurred while building the expressions of fn000ECBDB
     Argument size mismatch between real64 and word32.
-       at Reko.Core.Expressions.Conversion..ctor(Expression exp, DataType dtFrom, DataType dtTo) in C:\dev\uxmal\reko\master\src\Core\Expressions\Conversion.cs:line 51
-   at Reko.Core.Code.InstructionTransformer.VisitConversion(Conversion conversion) in C:\dev\uxmal\reko\master\src\Core\Code\InstructionTransformer.cs:line 257
+       at Reko.Core.Expressions.Conversion..ctor(Expression exp, DataType dtFrom, DataType dtTo) in c:\dev\uxmal\reko\master\src\Core\Expressions\Conversion.cs:line 51
+   at Reko.Core.Code.InstructionTransformer.VisitConversion(Conversion conversion) in c:\dev\uxmal\reko\master\src\Core\Code\InstructionTransformer.cs:line 257
    at Reko.Analysis.IdentifierReplacer.TransformAssignment(Assignment a) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\IdentifierReplacer.cs:line 65
    at Reko.Analysis.Coalescer.Worker.CoalesceStatements(SsaIdentifier sid, Expression defExpr, Statement def, Statement use) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 169
    at Reko.Analysis.Coalescer.Worker.Process(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 235
@@ -2839,8 +2838,8 @@ fn000ECBDB: error: An internal error occurred while building the expressions of 
    at Reko.Analysis.DataFlowAnalysis.BuildExpressionTrees(IReadOnlyCollection`1 ssts) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\DataFlowAnalysis.cs:line 280
 fn000F4A65: error: An internal error occurred while building the expressions of fn000F4A65
     Argument size mismatch between real64 and word32.
-       at Reko.Core.Expressions.Conversion..ctor(Expression exp, DataType dtFrom, DataType dtTo) in C:\dev\uxmal\reko\master\src\Core\Expressions\Conversion.cs:line 51
-   at Reko.Core.Code.InstructionTransformer.VisitConversion(Conversion conversion) in C:\dev\uxmal\reko\master\src\Core\Code\InstructionTransformer.cs:line 257
+       at Reko.Core.Expressions.Conversion..ctor(Expression exp, DataType dtFrom, DataType dtTo) in c:\dev\uxmal\reko\master\src\Core\Expressions\Conversion.cs:line 51
+   at Reko.Core.Code.InstructionTransformer.VisitConversion(Conversion conversion) in c:\dev\uxmal\reko\master\src\Core\Code\InstructionTransformer.cs:line 257
    at Reko.Analysis.IdentifierReplacer.TransformAssignment(Assignment a) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\IdentifierReplacer.cs:line 65
    at Reko.Analysis.Coalescer.Worker.CoalesceStatements(SsaIdentifier sid, Expression defExpr, Statement def, Statement use) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 169
    at Reko.Analysis.Coalescer.Worker.Process(Block block) in c:\dev\uxmal\reko\master\src\Decompiler\Analysis\Coalescer.cs:line 235
@@ -2972,4 +2971,4 @@ Collecting data types. [Done]
 Rewriting expressions. [Done]
 Rewriting procedures to high-level language. [Done]
 
-Decompiled 100 binaries in 48.61 seconds.
+Decompiled 100 binaries in 73.48 seconds.

@@ -144,7 +144,7 @@ T_6: (in fn004011FC(dwArg04) @ 00401071 : void)
   Class: Eq_6
   DataType: void
   OrigDataType: void
-T_7: (in 0040208B @ 00401112 : ptr32)
+T_7: (in 0x0040208B<p32> @ 00401112 : ptr32)
   Class: Eq_7
   DataType: (ptr32 uint32)
   OrigDataType: (ptr32 (struct (0 T_8 t0000)))
@@ -440,7 +440,7 @@ T_80: (in fn00401158() + 0x1C<32> @ 0040120E : word32)
   Class: Eq_80
   DataType: word32
   OrigDataType: word32
-T_81: (in 004020F8 @ 0040120E : ptr32)
+T_81: (in 0x004020F8<p32> @ 0040120E : ptr32)
   Class: Eq_81
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_82 t0000)))

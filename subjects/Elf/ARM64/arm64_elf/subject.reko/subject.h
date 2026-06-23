@@ -97,7 +97,7 @@ T_4: (in fn0000000000001498() @ 0000000000000D90 : void)
   Class: Eq_4
   DataType: void
   OrigDataType: void
-T_5: (in 000000000001FF08 @ 0000000000000EBC : ptr64)
+T_5: (in 0x000000000001FF08<p64> @ 0000000000000EBC : ptr64)
   Class: Eq_5
   DataType: (ptr64 (ptr64 code))
   OrigDataType: (ptr64 (struct (0 T_6 t0000)))
@@ -153,7 +153,7 @@ T_18: (in stack_end @ 0000000000001490 : (ptr64 void))
   Class: Eq_18
   DataType: (ptr64 void)
   OrigDataType: 
-T_19: (in 000000000001FFE8 @ 0000000000001490 : ptr64)
+T_19: (in 0x000000000001FFE8<p64> @ 0000000000001490 : ptr64)
   Class: Eq_19
   DataType: (ptr64 (ptr64 Eq_12))
   OrigDataType: (ptr64 (struct (0 T_20 t0000)))
@@ -173,7 +173,7 @@ T_23: (in &ptrArg08 @ 0000000000001490 : (ptr64 (ptr64 char)))
   Class: Eq_14
   DataType: (ptr64 (ptr64 char))
   OrigDataType: (ptr64 (ptr64 char))
-T_24: (in 000000000001FFE0 @ 0000000000001490 : ptr64)
+T_24: (in 0x000000000001FFE0<p64> @ 0000000000001490 : ptr64)
   Class: Eq_24
   DataType: (ptr64 (ptr64 Eq_15))
   OrigDataType: (ptr64 (struct (0 T_25 t0000)))
@@ -181,7 +181,7 @@ T_25: (in Mem0[0x000000000001FFE0<p64>:word64] @ 0000000000001490 : word64)
   Class: Eq_15
   DataType: (ptr64 Eq_15)
   OrigDataType: (ptr64 (fn void ()))
-T_26: (in 000000000001FF98 @ 0000000000001490 : ptr64)
+T_26: (in 0x000000000001FF98<p64> @ 0000000000001490 : ptr64)
   Class: Eq_26
   DataType: (ptr64 (ptr64 Eq_16))
   OrigDataType: (ptr64 (struct (0 T_27 t0000)))
@@ -209,7 +209,7 @@ T_32: (in abort() @ 0000000000001494 : void)
   Class: Eq_32
   DataType: void
   OrigDataType: void
-T_33: (in 000000000001FFD0 @ 00000000000014A0 : ptr64)
+T_33: (in 0x000000000001FFD0<p64> @ 00000000000014A0 : ptr64)
   Class: Eq_33
   DataType: (ptr64 word64)
   OrigDataType: (ptr64 (struct (0 T_34 t0000)))
@@ -237,7 +237,7 @@ T_39: (in fn0000000000000EB0() @ 00000000000014A4 : void)
   Class: Eq_39
   DataType: void
   OrigDataType: void
-T_40: (in 0000000000020008 @ 00000000000014C4 : ptr64)
+T_40: (in 0x0000000000020008<p64> @ 00000000000014C4 : ptr64)
   Class: Eq_40
   DataType: ptr64
   OrigDataType: ptr64
@@ -245,7 +245,7 @@ T_41: (in &g_t20008 == &g_t20008 @ 00000000000014C4 : bool)
   Class: Eq_41
   DataType: bool
   OrigDataType: bool
-T_42: (in 000000000001FFA0 @ 00000000000014CC : ptr64)
+T_42: (in 0x000000000001FFA0<p64> @ 00000000000014CC : ptr64)
   Class: Eq_42
   DataType: (ptr64 (ptr64 code))
   OrigDataType: (ptr64 (struct (0 T_43 t0000)))
@@ -277,7 +277,7 @@ T_49: (in x2_11 @ 0000000000001744 : (ptr64 void))
   Class: Eq_48
   DataType: (ptr64 void)
   OrigDataType: (ptr64 void)
-T_50: (in 000000000001FFD8 @ 0000000000001748 : ptr64)
+T_50: (in 0x000000000001FFD8<p64> @ 0000000000001748 : ptr64)
   Class: Eq_50
   DataType: (ptr64 (ptr64 (ptr64 void)))
   OrigDataType: (ptr64 (struct (0 T_51 t0000)))

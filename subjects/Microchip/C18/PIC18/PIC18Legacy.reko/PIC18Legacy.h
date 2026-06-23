@@ -19,7 +19,7 @@ Eq_1: (struct "Globals"
 		(CA byte b00CA))
 	globals_t (in globals : (ptr32 (struct "Globals")))
 Eq_8: (union "Eq_8" (ptr21 u0) (ptr32 u1))
-	T_8 (in 00014A @ 000146 : ptr21)
+	T_8 (in 0x00014A<p21> @ 000146 : ptr21)
 	T_11 (in Data21[1<8>] @ 000146 : ptr32)
 Eq_12: (fn void (cu8, Eq_15, Eq_16))
 	T_12 (in fn00000E @ 000146 : ptr32)
@@ -74,7 +74,7 @@ T_2: (in TABLAT : cu8)
   Class: Eq_2
   DataType: cu8
   OrigDataType: byte
-T_3: (in 0001 @ 000144 : ptr16)
+T_3: (in 0x0001<p16> @ 000144 : ptr16)
   Class: Eq_3
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_4 t0000)))
@@ -94,7 +94,7 @@ T_7: (in Data21[0x0001<p16>:byte] @ 000144 : byte)
   Class: Eq_4
   DataType: byte
   OrigDataType: byte
-T_8: (in 00014A @ 000146 : ptr21)
+T_8: (in 0x00014A<p21> @ 000146 : ptr21)
   Class: Eq_8
   DataType: ptr21
   OrigDataType: ptr21
@@ -166,7 +166,7 @@ T_25: (in __tblrd(TBLPTR, 1<8>) @ 00001C : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_26: (in 00C5 @ 000020 : 16)
+T_26: (in 0x00C5<p16> @ 000020 : 16)
   Class: Eq_26
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_2 t0000)))
@@ -186,7 +186,7 @@ T_30: (in __tblrd(TBLPTR, 1<8>) @ 000022 : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_31: (in 00C6 @ 000026 : 16)
+T_31: (in 0x00C6<p16> @ 000026 : 16)
   Class: Eq_31
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_2 t0000)))
@@ -242,7 +242,7 @@ T_44: (in __tblrd(TBLPTR, 1<8>) @ 000030 : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_45: (in 00C0 @ 000034 : 16)
+T_45: (in 0x00C0<p16> @ 000034 : 16)
   Class: Eq_45
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_46 t0000)))
@@ -262,7 +262,7 @@ T_49: (in __tblrd(TBLPTR, 1<8>) @ 000036 : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_50: (in 00C1 @ 00003A : 16)
+T_50: (in 0x00C1<p16> @ 00003A : 16)
   Class: Eq_50
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_51 t0000)))
@@ -282,7 +282,7 @@ T_54: (in __tblrd(TBLPTR, 1<8>) @ 00003C : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_55: (in 00C2 @ 000040 : 16)
+T_55: (in 0x00C2<p16> @ 000040 : 16)
   Class: Eq_55
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_56 t0000)))
@@ -362,7 +362,7 @@ T_74: (in __tblrd(TBLPTR, 1<8>) @ 000054 : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_75: (in 00C3 @ 000058 : 16)
+T_75: (in 0x00C3<p16> @ 000058 : 16)
   Class: Eq_75
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_2 t0000)))
@@ -382,7 +382,7 @@ T_79: (in __tblrd(TBLPTR, 1<8>) @ 00005A : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_80: (in 00C4 @ 00005E : 16)
+T_80: (in 0x00C4<p16> @ 00005E : 16)
   Class: Eq_80
   DataType: (ptr16 cu8)
   OrigDataType: (ptr16 (struct (0 T_2 t0000)))
@@ -414,7 +414,7 @@ T_87: (in __tblrd(TBLPTR, 1<8>) @ 000062 : void)
   Class: Eq_25
   DataType: void
   OrigDataType: void
-T_88: (in 00C7 @ 000064 : ptr16)
+T_88: (in 0x00C7<p16> @ 000064 : ptr16)
   Class: Eq_88
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_33 t0000)))
@@ -422,7 +422,7 @@ T_89: (in Data44[0x00C7<p16>:byte] @ 000064 : byte)
   Class: Eq_33
   DataType: byte
   OrigDataType: byte
-T_90: (in 00C8 @ 000068 : ptr16)
+T_90: (in 0x00C8<p16> @ 000068 : ptr16)
   Class: Eq_90
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_35 t0000)))
@@ -430,7 +430,7 @@ T_91: (in Data47[0x00C8<p16>:byte] @ 000068 : byte)
   Class: Eq_35
   DataType: byte
   OrigDataType: byte
-T_92: (in 00C9 @ 00006C : ptr16)
+T_92: (in 0x00C9<p16> @ 00006C : ptr16)
   Class: Eq_92
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_37 t0000)))
@@ -702,7 +702,7 @@ T_159: (in Data16[FSR1 + 1<16>:byte] @ 0000F4 : byte)
   Class: Eq_157
   DataType: byte
   OrigDataType: byte
-T_160: (in 00CA @ 0000E0 : 16)
+T_160: (in 0x00CA<p16> @ 0000E0 : 16)
   Class: Eq_160
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_161 t0000)))

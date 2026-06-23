@@ -75,11 +75,11 @@ namespace Reko.UnitTests.Decompiler.Typing
 
 		public void Write(TextWriter tw)
 		{
-            var formatter = new TextFormatter(tw);
+            var formatter = new CodeFormatter(new TextFormatter(tw));
 			foreach (KeyValuePair<TypeVariable,List<Trait>> de in items)
 			{
                 tw.Write(de.Key);
-                store.WriteExpressionOf(de.Key, false, writer: formatter);
+                store.WriteExpressionOf(de.Key, false, codeFormatter: formatter);
                 tw.WriteLine();
 				foreach (Trait tr in de.Value)
 				{

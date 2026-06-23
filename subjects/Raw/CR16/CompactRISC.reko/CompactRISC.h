@@ -14918,7 +14918,7 @@ T_2674: (in r3_r2.u1->t000C.u2 == 0<32> @ 00004D66 : bool)
   Class: Eq_2674
   DataType: bool
   OrigDataType: bool
-T_2675: (in 0000FC60 @ 00005D58 : ptr32)
+T_2675: (in 0x0000FC60<p32> @ 00005D58 : ptr32)
   Class: Eq_2675
   DataType: (ptr32 Eq_1987)
   OrigDataType: (ptr32 (struct (0 T_2676 t0000)))
@@ -15054,7 +15054,7 @@ T_2708: (in v39_161 != 0<8> @ 00004D8C : bool)
   Class: Eq_2708
   DataType: bool
   OrigDataType: bool
-T_2709: (in 0000FC6C @ 00005D2C : ptr32)
+T_2709: (in 0x0000FC6C<p32> @ 00005D2C : ptr32)
   Class: Eq_2709
   DataType: (ptr32 Eq_1987)
   OrigDataType: (ptr32 (struct (0 T_2710 t0000)))
@@ -30695,7 +30695,7 @@ T_6537: (in Mem527[r9_r8_988 + 4<32>:word16] @ 000064F6 : word16)
   Class: Eq_6534
   DataType: word16
   OrigDataType: word16
-T_6538: (in 0000FC68 @ 000064FE : ptr32)
+T_6538: (in 0x0000FC68<p32> @ 000064FE : ptr32)
   Class: Eq_6538
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_6539 t0000)))

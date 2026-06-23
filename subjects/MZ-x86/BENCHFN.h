@@ -10284,7 +10284,7 @@ T_2004: (in al @ 0800:0D90 : byte)
   Class: Eq_2004
   DataType: byte
   OrigDataType: 
-T_2005: (in 00000000 @ 0800:0D90 : (ptr32 int32))
+T_2005: (in 0x00000000<p32> @ 0800:0D90 : (ptr32 int32))
   Class: Eq_2003
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 int32)

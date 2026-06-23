@@ -177,7 +177,7 @@ T_4: (in fn0020060C() @ 00200089 : void)
   Class: Eq_4
   DataType: void
   OrigDataType: void
-T_5: (in 00006F86 @ 0020008C : ptr32)
+T_5: (in 0x00006F86<p32> @ 0020008C : ptr32)
   Class: Eq_5
   DataType: (ptr32 byte)
   OrigDataType: (ptr32 (struct (0 T_6 t0000)))
@@ -197,7 +197,7 @@ T_9: (in Mem11[0x00006F86<p32>:byte] @ 0020008C : byte)
   Class: Eq_6
   DataType: byte
   OrigDataType: byte
-T_10: (in 00200040 @ 00200090 : ptr32)
+T_10: (in 0x00200040<p32> @ 00200090 : ptr32)
   Class: Eq_10
   DataType: (ptr32 word32)
   OrigDataType: ptr32
@@ -205,7 +205,7 @@ T_11: (in xix_12 @ 00200090 : (ptr32 word32))
   Class: Eq_10
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct 0004 (0 word32 dw0000)))
-T_12: (in 00006FB8 @ 00200095 : ptr32)
+T_12: (in 0x00006FB8<p32> @ 00200095 : ptr32)
   Class: Eq_12
   DataType: (ptr32 word32)
   OrigDataType: ptr32
@@ -281,7 +281,7 @@ T_30: (in 0<32> @ 002000A4 : (union (byte u0) (ptr32 u1)))
   Class: Eq_30
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_31: (in 00008002 @ 002000A4 : ptr32)
+T_31: (in 0x00008002<p32> @ 002000A4 : ptr32)
   Class: Eq_31
   DataType: (ptr32 Eq_30)
   OrigDataType: (ptr32 (struct (0 T_32 t0000)))
@@ -293,7 +293,7 @@ T_33: (in 0<32> @ 002000A9 : (union (byte u0) (ptr32 u1)))
   Class: Eq_33
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_34: (in 00008003 @ 002000A9 : ptr32)
+T_34: (in 0x00008003<p32> @ 002000A9 : ptr32)
   Class: Eq_34
   DataType: (ptr32 Eq_33)
   OrigDataType: (ptr32 (struct (0 T_35 t0000)))
@@ -305,7 +305,7 @@ T_36: (in 0xA0<32> @ 002000AE : (union (byte u0) (ptr32 u1)))
   Class: Eq_36
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_37: (in 00008004 @ 002000AE : ptr32)
+T_37: (in 0x00008004<p32> @ 002000AE : ptr32)
   Class: Eq_37
   DataType: (ptr32 Eq_36)
   OrigDataType: (ptr32 (struct (0 T_38 t0000)))
@@ -317,7 +317,7 @@ T_39: (in 0x98<32> @ 002000B3 : (union (byte u0) (ptr32 u1)))
   Class: Eq_39
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_40: (in 00008005 @ 002000B3 : ptr32)
+T_40: (in 0x00008005<p32> @ 002000B3 : ptr32)
   Class: Eq_40
   DataType: (ptr32 Eq_39)
   OrigDataType: (ptr32 (struct (0 T_41 t0000)))
@@ -577,7 +577,7 @@ T_104: (in 0x33<32> @ 002000EC : (union (byte u0) (ptr32 u1)))
   Class: Eq_104
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_105: (in 000083E0 @ 002000EC : ptr32)
+T_105: (in 0x000083E0<p32> @ 002000EC : ptr32)
   Class: Eq_105
   DataType: (ptr32 Eq_104)
   OrigDataType: (ptr32 (struct (0 T_106 t0000)))
@@ -589,7 +589,7 @@ T_107: (in 7<32> @ 002000F1 : (union (byte u0) (ptr32 u1)))
   Class: Eq_107
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_108: (in 000083E1 @ 002000F1 : ptr32)
+T_108: (in 0x000083E1<p32> @ 002000F1 : ptr32)
   Class: Eq_108
   DataType: (ptr32 Eq_107)
   OrigDataType: (ptr32 (struct (0 T_109 t0000)))
@@ -601,7 +601,7 @@ T_110: (in 0x80<32> @ 002000F6 : (union (byte u0) (ptr32 u1)))
   Class: Eq_110
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_111: (in 00008118 @ 002000F6 : ptr32)
+T_111: (in 0x00008118<p32> @ 002000F6 : ptr32)
   Class: Eq_111
   DataType: (ptr32 Eq_110)
   OrigDataType: (ptr32 (struct (0 T_112 t0000)))
@@ -1441,7 +1441,7 @@ T_320: (in 0<32> @ 002004F3 : (union (byte u0) (ptr32 u1)))
   Class: Eq_318
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_321: (in 00004004 @ 002004F3 : ptr32)
+T_321: (in 0x00004004<p32> @ 002004F3 : ptr32)
   Class: Eq_321
   DataType: (ptr32 Eq_318)
   OrigDataType: (ptr32 (struct (0 T_318 t0000)))
@@ -2013,7 +2013,7 @@ T_463: (in Mem8[v10_17 + 0<32>:word32] @ 00200607 : word32)
   Class: Eq_463
   DataType: (ptr32 code)
   OrigDataType: (ptr32 code)
-T_464: (in 00006F91 @ 00200611 : ptr32)
+T_464: (in 0x00006F91<p32> @ 00200611 : ptr32)
   Class: Eq_464
   DataType: (ptr32 byte)
   OrigDataType: (ptr32 (struct (0 T_465 t0000)))
@@ -2029,7 +2029,7 @@ T_467: (in *(byte *) 0x00006F91<p32> != 0<8> @ 00200611 : bool)
   Class: Eq_467
   DataType: bool
   OrigDataType: bool
-T_468: (in 00006F83 @ 00200613 : ptr32)
+T_468: (in 0x00006F83<p32> @ 00200613 : ptr32)
   Class: Eq_468
   DataType: (ptr32 byte)
   OrigDataType: (ptr32 (struct (0 T_469 t0000)))
@@ -2053,7 +2053,7 @@ T_473: (in 0<32> @ 00200617 : (union (byte u0) (ptr32 u1)))
   Class: Eq_473
   DataType: byte
   OrigDataType: (union (byte u0) (ptr32 u1))
-T_474: (in 00006DA0 @ 00200617 : ptr32)
+T_474: (in 0x00006DA0<p32> @ 00200617 : ptr32)
   Class: Eq_474
   DataType: (ptr32 Eq_473)
   OrigDataType: (ptr32 (struct (0 T_475 t0000)))

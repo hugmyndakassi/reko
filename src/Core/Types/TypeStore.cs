@@ -333,6 +333,7 @@ namespace Reko.Core.Types
         public void Write(bool showExprAddresses, TextWriter w)
         {
             var writer = new TextFormatter(w);
+            var codeFormatter = new CodeFormatter(writer);
             writer.WriteLine("// Equivalence classes ////////////");
             foreach (TypeVariable tv in TypeVariables)
             {
@@ -342,7 +343,7 @@ namespace Reko.Core.Types
                     foreach (TypeVariable tvMember in tv.Class.ClassMembers)
                     {
                         writer.Write("\t{0}", tvMember);
-                        WriteExpressionOf(tvMember, showExprAddresses, writer);
+                        WriteExpressionOf(tvMember, showExprAddresses, codeFormatter);
                         writer.WriteLine();
                     }
                 }
@@ -351,7 +352,7 @@ namespace Reko.Core.Types
             writer.WriteLine("// Type Variables ////////////");
             foreach (TypeVariable tv in TypeVariables)
             {
-                WriteEntry(tv, showExprAddresses, writer);
+                WriteEntry(tv, showExprAddresses, codeFormatter);
             }
         }
 
@@ -360,41 +361,44 @@ namespace Reko.Core.Types
         /// </summary>
         /// <param name="tv">Type varaible</param>
         /// <param name="showExprAddresses">If trie show the address of the expression.</param>
-        /// <param name="writer">Output sink.</param>
-        public void WriteExpressionOf(TypeVariable tv, bool showExprAddresses, Formatter writer)
+        /// <param name="codeFormatter">Output sink.</param>
+        public void WriteExpressionOf(TypeVariable tv, bool showExprAddresses, CodeFormatter codeFormatter)
         {
+            var formatter = codeFormatter.InnerFormatter;
             if (tvSources.TryGetValue(tv, out (Address? addr, Expression e) dbg) && 
                 dbg.e is { })
             {
-                writer.Write(" (in {0}", dbg.e);
+                formatter.Write(" (in ");
+                dbg.e.Accept(codeFormatter);
                 if (showExprAddresses && dbg.addr is { })
                 { 
-                    writer.Write(" @ {0}", dbg.addr);
+                    formatter.Write(" @ {0}", dbg.addr);
                 }
                 if (dbg.e.DataType is { })
                 {
-                    writer.Write(" : ");
-                    writer.Write(dbg.e.DataType);
+                    formatter.Write(" : ");
+                    formatter.Write(dbg.e.DataType);
                 }
-                writer.Write(")");
+                formatter.Write(")");
             }
         }
 
-        private void WriteEntry(TypeVariable tv, bool showExprAddresses, Formatter writer)
+        private void WriteEntry(TypeVariable tv, bool showExprAddresses, CodeFormatter codeFormatter)
         {
-            writer.Write(tv.Name);
-            writer.Write(":");
-            WriteExpressionOf(tv, showExprAddresses, writer);
-            writer.WriteLine();
+            var formatter = codeFormatter.InnerFormatter;
+            formatter.Write(tv.Name);
+            formatter.Write(":");
+            WriteExpressionOf(tv, showExprAddresses, codeFormatter);
+            formatter.WriteLine();
 
-            writer.Write("  Class: ");
-            writer.WriteLine(tv.Class.Name);
+            formatter.Write("  Class: ");
+            formatter.WriteLine(tv.Class.Name);
 
-            writer.Write("  DataType: ");
-            writer.WriteLine(tv.DataType);
+            formatter.Write("  DataType: ");
+            formatter.WriteLine(tv.DataType);
 
-            writer.Write("  OrigDataType: ");
-            writer.WriteLine(tv.OriginalDataType);
+            formatter.Write("  OrigDataType: ");
+            formatter.WriteLine(tv.OriginalDataType);
         }
 
         /// <inheritdoc/>

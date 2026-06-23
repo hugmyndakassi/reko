@@ -31,7 +31,7 @@ T_6: (in Mem47[a0 + 0<32>:word32] @ 0000C034 : word32)
   Class: Eq_6
   DataType: int32
   OrigDataType: word32
-T_7: (in 00FF0F08 @ 0000C034 : ptr32)
+T_7: (in 0x00FF0F08<p32> @ 0000C034 : ptr32)
   Class: Eq_7
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 (struct (0 T_6 t0000)))
@@ -43,7 +43,7 @@ T_9: (in 0<32> @ 0000C03C : word32)
   Class: Eq_6
   DataType: int32
   OrigDataType: word32
-T_10: (in 00FF0F04 @ 0000C03C : ptr32)
+T_10: (in 0x00FF0F04<p32> @ 0000C03C : ptr32)
   Class: Eq_10
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 (struct (0 T_6 t0000)))

@@ -270,7 +270,7 @@ Eq_707: (fn void ())
 	T_707 (in _init @ 00000000004017AC : ptr64)
 	T_708 (in signature of _init @ 0000000000400AE8 : void)
 Eq_710: (union "Eq_710" (int64 u0) (ptr64 u1))
-	T_710 (in 0000000000601E08 @ 00000000004017A1 : ptr64)
+	T_710 (in 0x0000000000601E08<p64> @ 00000000004017A1 : ptr64)
 Eq_718: (union "Eq_718" (int64 u0) (uint64 u1))
 	T_718 (in 0<u64> @ 00000000004017B6 : uint64)
 	T_719 (in rbx_46 @ 00000000004017B6 : Eq_718)
@@ -457,7 +457,7 @@ T_42: (in 0<u64> @ 0000000000400D73 : uint64)
   Class: Eq_42
   DataType: (ptr64 code)
   OrigDataType: (ptr64 code)
-T_43: (in 0000000000602108 @ 0000000000400D87 : ptr64)
+T_43: (in 0x0000000000602108<p64> @ 0000000000400D87 : ptr64)
   Class: Eq_43
   DataType: (ptr64 byte)
   OrigDataType: (ptr64 (struct (0 T_44 t0000)))
@@ -681,7 +681,7 @@ T_98: (in  @ 0000000000400ED8 : uint32)
   Class: Eq_69
   DataType: Eq_69
   OrigDataType: 
-T_99: (in 0000000000602100 @ 0000000000400ED8 : ptr64)
+T_99: (in 0x0000000000602100<p64> @ 0000000000400ED8 : ptr64)
   Class: Eq_99
   DataType: (ptr64 (ptr64 Eq_96))
   OrigDataType: (ptr64 (struct (0 T_96 t0000)))
@@ -689,8 +689,7 @@ T_100: (in Mem70[0x0000000000602100<p64>:word64] @ 0000000000400ED8 : word64)
   Class: Eq_96
   DataType: (ptr64 Eq_96)
   OrigDataType: (ptr64 FILE)
-T_101: (in pngpixel: invalid bit depth %u
- @ 0000000000400ED8 : (ptr64 char))
+T_101: (in "pngpixel: invalid bit depth %u\n" @ 0000000000400ED8 : (ptr64 char))
   Class: Eq_97
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1086,8 +1085,7 @@ T_199: (in  @ 0000000000400F83 : uint32)
   Class: Eq_199
   DataType: uint32
   OrigDataType: 
-T_200: (in GRAY %u
- @ 0000000000400F83 : (ptr64 char))
+T_200: (in "GRAY %u\n" @ 0000000000400F83 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1135,8 +1133,7 @@ T_211: (in  @ 00000000004011C8 : uint32)
   Class: Eq_199
   DataType: uint32
   OrigDataType: 
-T_212: (in RGB %u %u %u
- @ 00000000004011C8 : (ptr64 char))
+T_212: (in "RGB %u %u %u\n" @ 00000000004011C8 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1292,8 +1289,7 @@ T_250: (in  @ 0000000000401220 : uint32)
   Class: Eq_199
   DataType: uint32
   OrigDataType: 
-T_251: (in GRAY+ALPHA %u %u
- @ 0000000000401220 : (ptr64 char))
+T_251: (in "GRAY+ALPHA %u %u\n" @ 0000000000401220 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1357,8 +1353,7 @@ T_266: (in  @ 00000000004012C2 : uint32)
   Class: Eq_199
   DataType: uint32
   OrigDataType: 
-T_267: (in RGBA %u %u %u %u
- @ 00000000004012C2 : (ptr64 char))
+T_267: (in "RGBA %u %u %u %u\n" @ 00000000004012C2 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1478,8 +1473,7 @@ T_296: (in  @ 0000000000401146 : uint32)
   Class: Eq_199
   DataType: uint32
   OrigDataType: 
-T_297: (in INDEXED %u = invalid index
- @ 0000000000401146 : (ptr64 char))
+T_297: (in "INDEXED %u = invalid index\n" @ 0000000000401146 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1583,8 +1577,7 @@ T_322: (in  @ 0000000000401130 : int32)
   Class: Eq_322
   DataType: word32
   OrigDataType: 
-T_323: (in INDEXED %u = %d %d %d
- @ 0000000000401130 : (ptr64 char))
+T_323: (in "INDEXED %u = %d %d %d\n" @ 0000000000401130 : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -1736,8 +1729,7 @@ T_360: (in  @ 00000000004010CA : int32)
   Class: Eq_347
   DataType: int32
   OrigDataType: 
-T_361: (in INDEXED %u = %d %d %d %d
- @ 00000000004010CA : (ptr64 char))
+T_361: (in "INDEXED %u = %d %d %d %d\n" @ 00000000004010CA : (ptr64 char))
   Class: Eq_198
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -2049,8 +2041,7 @@ T_438: (in Mem54[0x0000000000602100<p64>:word64] @ 0000000000401738 : word64)
   Class: Eq_96
   DataType: (ptr64 Eq_96)
   OrigDataType: (struct (0 (ptr64 FILE) ptr0000))
-T_439: (in pngpixel: %s: could not open file
- @ 0000000000401738 : (ptr64 char))
+T_439: (in "pngpixel: %s: could not open file\n" @ 0000000000401738 : (ptr64 char))
   Class: Eq_97
   DataType: (ptr64 char)
   OrigDataType: (ptr64 char)
@@ -3134,11 +3125,11 @@ T_709: (in _init() @ 00000000004017AC : void)
   Class: Eq_709
   DataType: void
   OrigDataType: void
-T_710: (in 0000000000601E08 @ 00000000004017A1 : ptr64)
+T_710: (in 0x0000000000601E08<p64> @ 00000000004017A1 : ptr64)
   Class: Eq_710
   DataType: int64
   OrigDataType: (union (int64 u0) (ptr64 u1))
-T_711: (in 0000000000601E00 @ 00000000004017A1 : ptr64)
+T_711: (in 0x0000000000601E00<p64> @ 00000000004017A1 : ptr64)
   Class: Eq_711
   DataType: (ptr64 (arr (ptr64 code)))
   OrigDataType: (union ((ptr64 (arr Eq_742)) u1) ((ptr64 (arr Eq_742)) u0))

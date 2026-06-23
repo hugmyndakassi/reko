@@ -695,7 +695,7 @@
       <Build Solution="Debug|ARM64" Project="false" />
       <Build Solution="Release|ARM64" Project="false" />
     </Project>
-    <Project Path="Installers/WixInstaller/WixInstaller.wixproj">
+    <Project Path="Installers/WixInstaller/WixInstaller.wixproj" Id="b1916638-ef20-4692-8c95-1c5ad6c67d30">
       <BuildDependency Project="ImageLoaders/Llvm/LLVM.csproj" />
       <BuildType Solution="UnixDebug|Any CPU" Project="Release" />
       <BuildType Solution="UnixDebug|ARM64" Project="Debug" />

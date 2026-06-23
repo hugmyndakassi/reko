@@ -1142,13 +1142,13 @@ Eq_1338: (fn int32 ((ptr64 Eq_1340), int32, (ptr64 (ptr64 char)), (ptr64 Eq_1343
 	T_1339 (in signature of __libc_start_main : void)
 Eq_1340: (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char))))
 	T_1340 (in main @ 0000000000015EEC : (ptr64 (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char))))))
-	T_1347 (in 0000000000015180 @ 0000000000015EEC : ptr64)
+	T_1347 (in 0x0000000000015180<p64> @ 0000000000015EEC : ptr64)
 Eq_1343: (fn void ())
 	T_1343 (in init @ 0000000000015EEC : (ptr64 (fn void ())))
-	T_1351 (in 00000000000182E8 @ 0000000000015EEC : ptr64)
+	T_1351 (in 0x00000000000182E8<p64> @ 0000000000015EEC : ptr64)
 Eq_1344: (fn void ())
 	T_1344 (in fini @ 0000000000015EEC : (ptr64 (fn void ())))
-	T_1352 (in 0000000000018378 @ 0000000000015EEC : ptr64)
+	T_1352 (in 0x0000000000018378<p64> @ 0000000000015EEC : ptr64)
 Eq_1353: (union "Eq_1353" (ui64 u0) (ptr64 u1))
 	T_1353 (in fp @ 0000000000015EEC : Eq_1353)
 Eq_1363: (struct "Eq_1363" (FFFFF894 byte bFFFFF894))
@@ -2119,7 +2119,7 @@ Eq_5042: (struct "Eq_5042" (FFFFFEF8 byte bFFFFFEF8))
 Eq_5050: (struct "Eq_5050" (FFFFFEF8 byte bFFFFFEF8))
 	T_5050 (in fp + -16<i64> + (word64) ((word32) a3_82) @ 0000000000018180 : word64)
 Eq_5111: (union "Eq_5111" (int64 u0) (ptr64 u1))
-	T_5111 (in 0000000000019E20 @ 0000000000018304 : ptr64)
+	T_5111 (in 0x0000000000019E20<p64> @ 0000000000018304 : ptr64)
 Eq_5138: (struct "sockaddr")
 	T_5138
 Eq_5139: (struct "addrinfo" 0020
@@ -3927,7 +3927,7 @@ globals_t: (in globals : (ptr64 (struct "Globals")))
   Class: Eq_1
   DataType: (ptr64 Eq_1)
   OrigDataType: (ptr64 (struct "Globals"))
-T_2: (in 000000000001A100 @ 0000000000015104 : ptr64)
+T_2: (in 0x000000000001A100<p64> @ 0000000000015104 : ptr64)
   Class: Eq_2
   DataType: (ptr64 (ptr64 code))
   OrigDataType: (ptr64 (struct (0 T_3 t0000)))
@@ -9348,7 +9348,7 @@ T_1346: (in stack_end @ 0000000000015EEC : (ptr64 void))
   Class: Eq_1346
   DataType: (ptr64 void)
   OrigDataType: 
-T_1347: (in 0000000000015180 @ 0000000000015EEC : ptr64)
+T_1347: (in 0x0000000000015180<p64> @ 0000000000015EEC : ptr64)
   Class: Eq_1340
   DataType: (ptr64 Eq_1340)
   OrigDataType: (ptr64 (fn int32 (int32, (ptr64 (ptr64 char)), (ptr64 (ptr64 char)))))
@@ -9364,11 +9364,11 @@ T_1350: (in &ptrArg08 @ 0000000000015EEC : (ptr64 (ptr64 char)))
   Class: Eq_1342
   DataType: (ptr64 (ptr64 char))
   OrigDataType: (ptr64 (ptr64 char))
-T_1351: (in 00000000000182E8 @ 0000000000015EEC : ptr64)
+T_1351: (in 0x00000000000182E8<p64> @ 0000000000015EEC : ptr64)
   Class: Eq_1343
   DataType: (ptr64 Eq_1343)
   OrigDataType: (ptr64 (fn void ()))
-T_1352: (in 0000000000018378 @ 0000000000015EEC : ptr64)
+T_1352: (in 0x0000000000018378<p64> @ 0000000000015EEC : ptr64)
   Class: Eq_1344
   DataType: (ptr64 Eq_1344)
   OrigDataType: (ptr64 (fn void ()))
@@ -24412,11 +24412,11 @@ T_5110: (in a2 @ 00000000000182E4 : word64)
   Class: Eq_5110
   DataType: word64
   OrigDataType: word64
-T_5111: (in 0000000000019E20 @ 0000000000018304 : ptr64)
+T_5111: (in 0x0000000000019E20<p64> @ 0000000000018304 : ptr64)
   Class: Eq_5111
   DataType: int64
   OrigDataType: (union (int64 u0) (ptr64 u1))
-T_5112: (in 0000000000019E18 @ 0000000000018304 : ptr64)
+T_5112: (in 0x0000000000019E18<p64> @ 0000000000018304 : ptr64)
   Class: Eq_5112
   DataType: (ptr64 (ptr64 code))
   OrigDataType: (union ((ptr64 (ptr64 code)) u1) (ptr64 u0))

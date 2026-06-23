@@ -3024,7 +3024,7 @@ T_270: (in 3<32> @ 00003F6C : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_271: (in couldn't get local hostname: %m @ 00003F6C : (ptr32 char))
+T_271: (in "couldn't get local hostname: %m" @ 00003F6C : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -3196,7 +3196,7 @@ T_313: (in 3<32> @ 00003F3C : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_314: (in auth_open: %m @ 00003F3C : (ptr32 char))
+T_314: (in "auth_open: %m" @ 00003F3C : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -3777,7 +3777,7 @@ T_456: (in fmt @ 00002AB4 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: 
-T_457: (in duplicate -L option @ 00002AB4 : (ptr32 char))
+T_457: (in "duplicate -L option" @ 00002AB4 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -4069,7 +4069,7 @@ T_529: (in signature of warnx : void)
   Class: Eq_528
   DataType: (ptr32 Eq_528)
   OrigDataType: 
-T_530: (in duplicate -R option @ 00002B7C : (ptr32 char))
+T_530: (in "duplicate -R option" @ 00002B7C : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -4313,7 +4313,7 @@ T_590: (in SLICE(0x13<32>, size_t, 0) @ 00002D4C : size_t)
   Class: Eq_257
   DataType: Eq_257
   OrigDataType: size_t
-T_591: (in %s?? @ 00002D4C : (ptr32 char))
+T_591: (in "%s??" @ 00002D4C : (ptr32 char))
   Class: Eq_584
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -4493,7 +4493,7 @@ T_635: (in 3<32> @ 00003E80 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_636: (in couldn't get core dump size: %m @ 00003E80 : (ptr32 char))
+T_636: (in "couldn't get core dump size: %m" @ 00003E80 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -4617,7 +4617,7 @@ T_666: (in 3<32> @ 00003E60 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_667: (in couldn't set core dump size to 0: %m @ 00003E60 : (ptr32 char))
+T_667: (in "couldn't set core dump size to 0: %m" @ 00003E60 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -4905,7 +4905,7 @@ T_738: (in signature of warnx : void)
   Class: Eq_737
   DataType: (ptr32 Eq_737)
   OrigDataType: 
-T_739: (in Failure to retrieve default class @ 00003E34 : (ptr32 char))
+T_739: (in "Failure to retrieve default class" @ 00003E34 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -5321,7 +5321,7 @@ T_842: (in 3<32> @ 00002E94 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_843: (in Invalid classify script: %s @ 00002E94 : (ptr32 char))
+T_843: (in "Invalid classify script: %s" @ 00002E94 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -5337,7 +5337,7 @@ T_846: (in signature of warnx : void)
   Class: Eq_845
   DataType: (ptr32 Eq_845)
   OrigDataType: 
-T_847: (in Classification failure @ 00002EA0 : (ptr32 char))
+T_847: (in "Classification failure" @ 00002EA0 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -5753,7 +5753,7 @@ T_950: (in  @ 00003F14 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_951: (in unable to exec %s @ 00003F14 : (ptr32 char))
+T_951: (in "unable to exec %s" @ 00003F14 : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -6125,7 +6125,7 @@ T_1043: (in 3<32> @ 00003DD8 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_1044: (in %m @ 00003DD8 : (ptr32 char))
+T_1044: (in "%m" @ 00003DD8 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -6909,7 +6909,7 @@ T_1239: (in 3<32> @ 00003D70 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_1240: (in %m @ 00003D70 : (ptr32 char))
+T_1240: (in "%m" @ 00003D70 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -8441,7 +8441,7 @@ T_1622: (in  @ 00003300 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_1623: (in %s login refused on this terminal. @ 00003300 : (ptr32 char))
+T_1623: (in "%s login refused on this terminal." @ 00003300 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -8485,7 +8485,7 @@ T_1633: (in 5<32> @ 00003384 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_1634: (in LOGIN %s REFUSED ON TTY %s @ 00003384 : (ptr32 char))
+T_1634: (in "LOGIN %s REFUSED ON TTY %s" @ 00003384 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -8745,7 +8745,7 @@ T_1698: (in signature of warn : void)
   Class: Eq_1697
   DataType: (ptr32 Eq_1697)
   OrigDataType: 
-T_1699: (in unable to setenv() @ 0000343C : (ptr32 char))
+T_1699: (in "unable to setenv()" @ 0000343C : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -8961,7 +8961,7 @@ T_1752: (in SLICE(0x10A<32>, size_t, 0) @ 0000347C : size_t)
   Class: Eq_257
   DataType: Eq_257
   OrigDataType: size_t
-T_1753: (in %s/%s @ 0000347C : (ptr32 char))
+T_1753: (in "%s/%s" @ 0000347C : (ptr32 char))
   Class: Eq_584
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -9021,7 +9021,7 @@ T_1767: (in signature of warn : void)
   Class: Eq_1766
   DataType: (ptr32 Eq_1766)
   OrigDataType: 
-T_1768: (in unable to setenv() @ 000034C8 : (ptr32 char))
+T_1768: (in "unable to setenv()" @ 000034C8 : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -9365,7 +9365,7 @@ T_1853: (in signature of warn : void)
   Class: Eq_1852
   DataType: (ptr32 Eq_1852)
   OrigDataType: 
-T_1854: (in unable to set user context @ 00003AAC : (ptr32 char))
+T_1854: (in "unable to set user context" @ 00003AAC : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -9825,9 +9825,7 @@ T_1968: (in  @ 000035A4 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_1969: (in WARNING: %s
-
- @ 000035A4 : (ptr32 char))
+T_1969: (in "WARNING: %s\n\n" @ 000035A4 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -9867,7 +9865,7 @@ T_1978: (in 5<32> @ 0000335C : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_1979: (in LOGIN %s REFUSED FROM %s%s%s ON TTY %s @ 0000335C : (ptr32 char))
+T_1979: (in "LOGIN %s REFUSED FROM %s%s%s ON TTY %s" @ 0000335C : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -9887,8 +9885,7 @@ T_1983: (in  @ 00003A8C : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_1984: (in No home directory %s!
- @ 00003A8C : (ptr32 char))
+T_1984: (in "No home directory %s!\n" @ 00003A8C : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -10588,7 +10585,7 @@ T_2156: (in 5<32> @ 00003964 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_2157: (in ROOT LOGIN (%s) ON %s @ 00003964 : (ptr32 char))
+T_2157: (in "ROOT LOGIN (%s) ON %s" @ 00003964 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -10776,7 +10773,7 @@ T_2203: (in 5<32> @ 000036DC : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_2204: (in ROOT LOGIN (%s) ON %s FROM %s%s%s @ 000036DC : (ptr32 char))
+T_2204: (in "ROOT LOGIN (%s) ON %s FROM %s%s%s" @ 000036DC : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -11244,7 +11241,7 @@ T_2320: (in 3<32> @ 000038A4 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_2321: (in couldn't reset core dump size: %m @ 000038A4 : (ptr32 char))
+T_2321: (in "couldn't reset core dump size: %m" @ 000038A4 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -11384,7 +11381,7 @@ T_2355: (in signature of warn : void)
   Class: Eq_2354
   DataType: (ptr32 Eq_2354)
   OrigDataType: 
-T_2356: (in unable to set user context @ 0000387C : (ptr32 char))
+T_2356: (in "unable to set user context" @ 0000387C : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -11468,8 +11465,7 @@ T_2376: (in  @ 00003850 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_2377: (in No home directory %s!
- @ 00003850 : (ptr32 char))
+T_2377: (in "No home directory %s!\n" @ 00003850 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -11777,7 +11773,7 @@ T_2453: (in 1<32> @ 00003810 : word32)
   Class: Eq_2450
   DataType: int32
   OrigDataType: int32
-T_2454: (in %s @ 00003810 : (ptr32 char))
+T_2454: (in "%s" @ 00003810 : (ptr32 char))
   Class: Eq_2451
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12017,7 +12013,7 @@ T_2513: (in  @ 000039E8 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_2514: (in Warning: your account expires on %s @ 000039E8 : (ptr32 char))
+T_2514: (in "Warning: your account expires on %s" @ 000039E8 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12389,8 +12385,7 @@ T_2606: (in  @ 00003934 : (ptr32 char))
   Class: Eq_117
   DataType: (ptr32 char)
   OrigDataType: 
-T_2607: (in You have %smail.
- @ 00003934 : (ptr32 char))
+T_2607: (in "You have %smail.\n" @ 00003934 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12406,7 +12401,7 @@ T_2610: (in signature of warn : void)
   Class: Eq_2609
   DataType: (ptr32 Eq_2609)
   OrigDataType: 
-T_2611: (in unable to setenv() @ 00003AD8 : (ptr32 char))
+T_2611: (in "unable to setenv()" @ 00003AD8 : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12490,7 +12485,7 @@ T_2631: (in signature of warn : void)
   Class: Eq_2630
   DataType: (ptr32 Eq_2630)
   OrigDataType: 
-T_2632: (in unable to setenv() @ 00003B08 : (ptr32 char))
+T_2632: (in "unable to setenv()" @ 00003B08 : (ptr32 char))
   Class: Eq_949
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12786,7 +12781,7 @@ T_2705: (in 3<32> @ 00003C48 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_2706: (in shell path too long: %s @ 00003C48 : (ptr32 char))
+T_2706: (in "shell path too long: %s" @ 00003C48 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -12802,7 +12797,7 @@ T_2709: (in signature of warnx : void)
   Class: Eq_2708
   DataType: (ptr32 Eq_2708)
   OrigDataType: 
-T_2710: (in invalid shell @ 00003C54 : (ptr32 char))
+T_2710: (in "invalid shell" @ 00003C54 : (ptr32 char))
   Class: Eq_456
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -13326,7 +13321,7 @@ T_2840: (in 3<32> @ 00003D08 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_2841: (in %m @ 00003D08 : (ptr32 char))
+T_2841: (in "%m" @ 00003D08 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -14051,7 +14046,7 @@ T_3019: (in 3<32> @ 00002CB8 : word32)
   Class: Eq_267
   DataType: int32
   OrigDataType: int32
-T_3020: (in invalid flag %c @ 00002CB8 : (ptr32 char))
+T_3020: (in "invalid flag %c" @ 00002CB8 : (ptr32 char))
   Class: Eq_268
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -16306,7 +16301,7 @@ T_3581: (in  @ 00004458 : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_3582: (in Last login: %.*s  @ 00004458 : (ptr32 char))
+T_3582: (in "Last login: %.*s " @ 00004458 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -16330,7 +16325,7 @@ T_3587: (in  @ 00004470 : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_3588: (in on %.*s @ 00004470 : (ptr32 char))
+T_3588: (in "on %.*s" @ 00004470 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -16378,7 +16373,7 @@ T_3599: (in  @ 000044EC : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_3600: (in  from %.*s @ 000044EC : (ptr32 char))
+T_3600: (in " from %.*s" @ 000044EC : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -18754,8 +18749,7 @@ T_4193: (in  @ 00004B9C : uint32)
   Class: Eq_2095
   DataType: Eq_2095
   OrigDataType: 
-T_4194: (in There have been %lu unsuccessful login attempts to your account.
- @ 00004B9C : (ptr32 char))
+T_4194: (in "There have been %lu unsuccessful login attempts to your account.\n" @ 00004B9C : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -18803,7 +18797,7 @@ T_4205: (in  @ 00004A98 : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_4206: (in Last unsuccessful login: %.*s @ 00004A98 : (ptr32 char))
+T_4206: (in "Last unsuccessful login: %.*s" @ 00004A98 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -18827,7 +18821,7 @@ T_4211: (in  @ 00004AAC : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_4212: (in  on %.*s @ 00004AAC : (ptr32 char))
+T_4212: (in " on %.*s" @ 00004AAC : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -18911,7 +18905,7 @@ T_4232: (in  @ 00004B8C : (ptr32 char))
   Class: Eq_2096
   DataType: (ptr32 char)
   OrigDataType: 
-T_4233: (in  from %.*s @ 00004B8C : (ptr32 char))
+T_4233: (in " from %.*s" @ 00004B8C : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)
@@ -18943,7 +18937,7 @@ T_4240: (in  @ 00004AE0 : (ptr32 char))
   Class: Eq_2098
   DataType: (ptr32 char)
   OrigDataType: 
-T_4241: (in  from %.*s@%.*s @ 00004AE0 : (ptr32 char))
+T_4241: (in " from %.*s@%.*s" @ 00004AE0 : (ptr32 char))
   Class: Eq_1967
   DataType: (ptr32 char)
   OrigDataType: (ptr32 char)

@@ -18,8 +18,7 @@
  */
 #endregion
 
-
-using Reko.Core.Types;
+namespace Reko.Core.Types;
 
 /// <summary>
 /// Represents a field in a structure or class.

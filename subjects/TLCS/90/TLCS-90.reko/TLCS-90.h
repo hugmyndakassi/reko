@@ -760,7 +760,7 @@ T_2: (in a : byte)
   Class: Eq_2
   DataType: byte
   OrigDataType: byte
-T_3: (in 0000 @ 0100 : ptr16)
+T_3: (in 0x0000<p16> @ 0100 : ptr16)
   Class: Eq_3
   DataType: (ptr16 byte)
   OrigDataType: (ptr16 (struct (0 T_4 t0000)))

@@ -1820,7 +1820,7 @@ T_399: (in  @ 000E0404 : real64)
   Class: Eq_399
   DataType: real64
   OrigDataType: real64
-T_400: (in 00100000 @ 000E0409 : ptr32)
+T_400: (in 0x00100000<p32> @ 000E0409 : ptr32)
   Class: Eq_400
   DataType: (ptr32 (ptr32 Eq_3))
   OrigDataType: (ptr32 (struct (0 T_3 t0000)))
@@ -2588,7 +2588,7 @@ T_591: (in Mem0[0x00100000<p32>:word32] + 0x120<32> @ 000E0778 : word32)
   Class: Eq_591
   DataType: ptr32
   OrigDataType: ptr32
-T_592: (in 00100008 @ 000E0778 : ptr32)
+T_592: (in 0x00100008<p32> @ 000E0778 : ptr32)
   Class: Eq_592
   DataType: (ptr32 ptr32)
   OrigDataType: (ptr32 (struct (0 T_591 t0000)))
@@ -2608,7 +2608,7 @@ T_596: (in g_ptr100008 + 0x500000<32> @ 000E0782 : word32)
   Class: Eq_596
   DataType: word32
   OrigDataType: word32
-T_597: (in 0010000C @ 000E0782 : ptr32)
+T_597: (in 0x0010000C<p32> @ 000E0782 : ptr32)
   Class: Eq_597
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_598 t0000)))

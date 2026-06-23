@@ -475,7 +475,7 @@ T_77: (in Mem14[eax_10 + 0<32>:word32] @ 004011F4 : word32)
   Class: Eq_4
   DataType: int32
   OrigDataType: word32
-T_78: (in 00403018 @ 004011F4 : ptr32)
+T_78: (in 0x00403018<p32> @ 004011F4 : ptr32)
   Class: Eq_78
   DataType: (ptr32 int32)
   OrigDataType: (ptr32 (struct (0 T_79 t0000)))
@@ -495,7 +495,7 @@ T_82: (in Mem21[eax_10 + 4<i32>:word32] @ 004011FF : word32)
   Class: Eq_11
   DataType: real32
   OrigDataType: word32
-T_83: (in 0040301C @ 004011FF : ptr32)
+T_83: (in 0x0040301C<p32> @ 004011FF : ptr32)
   Class: Eq_83
   DataType: (ptr32 real32)
   OrigDataType: (ptr32 (struct (0 T_84 t0000)))
@@ -515,7 +515,7 @@ T_87: (in Mem24[eax_10 + 8<i32>:word32] @ 0040120B : word32)
   Class: Eq_18
   DataType: Eq_18
   OrigDataType: word32
-T_88: (in 00403020 @ 0040120B : ptr32)
+T_88: (in 0x00403020<p32> @ 0040120B : ptr32)
   Class: Eq_88
   DataType: (ptr32 Eq_18)
   OrigDataType: (ptr32 (struct (0 T_89 t0000)))
@@ -535,7 +535,7 @@ T_92: (in Mem27[eax_10 + 12<i32>:word32] @ 00401214 : word32)
   Class: Eq_92
   DataType: word32
   OrigDataType: word32
-T_93: (in 00403024 @ 00401214 : ptr32)
+T_93: (in 0x00403024<p32> @ 00401214 : ptr32)
   Class: Eq_93
   DataType: (ptr32 word32)
   OrigDataType: (ptr32 (struct (0 T_94 t0000)))
