@@ -15,7 +15,7 @@ set(REKO_EXE_FRAMEWORK "net8.0")
 set(REKO_WINFORMS_EXE_FRAMEWORK "net8.0-windows")
 
 if(WIN32)
-	set(REKO_COMPILER "Visual Studio 17 2022")
+	set(REKO_COMPILER "Visual Studio 18 2026")
 endif()
 
 add_subdirectory(src)
